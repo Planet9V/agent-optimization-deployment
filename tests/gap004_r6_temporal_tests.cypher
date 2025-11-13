@@ -80,7 +80,7 @@ RETURN
 
 // Test 3: Test EventStore retention policy (90-day)
 MATCH (es:EventStore)
-WHERE es.timestamp < datetime() - duration({days: es.retentionDays})
+WHERE es.timestamp < datetime() - duration('P' + toString(es.retentionDays) + 'D')
 WITH collect(es.storeId) AS expired_events
 RETURN
   CASE WHEN size(expired_events) >= 0 THEN 'PASS' ELSE 'FAIL' END AS test_3_result,
@@ -145,11 +145,11 @@ RETURN
 
 // Test 10: Test temporal event duration calculation
 MATCH (te:TemporalEvent)
-WITH te, duration.between(te.validFrom, te.validTo) AS event_duration
+WITH te, duration.between(te.validFrom, te.validTo).seconds AS event_duration_sec
 RETURN
-  CASE WHEN event_duration IS NOT NULL THEN 'PASS' ELSE 'FAIL' END AS test_10_result,
+  CASE WHEN event_duration_sec IS NOT NULL THEN 'PASS' ELSE 'FAIL' END AS test_10_result,
   'Calculate temporal event durations' AS test_10_description,
-  te.eventId, duration.inSeconds(event_duration) AS duration_seconds;
+  te.eventId, event_duration_sec AS duration_seconds;
 
 // Test 11: Test temporal overlap detection
 MATCH (te1:TemporalEvent), (te2:TemporalEvent)
@@ -181,7 +181,7 @@ RETURN
 
 // Test 14: Test EventStore retention policy enforcement simulation
 MATCH (es:EventStore)
-WHERE es.timestamp < datetime() - duration({days: es.retentionDays})
+WHERE es.timestamp < datetime() - duration('P' + toString(es.retentionDays) + 'D')
 WITH collect(es) AS expired_events
 FOREACH (event IN expired_events | DELETE event)
 RETURN
