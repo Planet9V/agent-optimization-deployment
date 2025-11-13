@@ -140,7 +140,7 @@ RETURN
 
 // Test 9: Test CustomerImpact duration aggregation
 MATCH (ci:CustomerImpact)
-WITH sum(duration.inSeconds(ci.duration)) AS total_duration_seconds
+WITH sum(ci.duration.seconds) AS total_duration_seconds
 RETURN
   CASE WHEN total_duration_seconds > 0 THEN 'PASS' ELSE 'FAIL' END AS test_9_result,
   'Calculate total customer impact duration' AS test_9_description,
