@@ -44,14 +44,61 @@ CREATE (fp2:FailurePropagation {
   damageLevel: 'severe'
 });
 
+// Week 7 Enhancement: Expand equipment graph to support 15-hop cascades
 CREATE (eq1:Equipment {equipmentId: 'EQ_TRANS_001', equipmentType: 'Transformer', name: 'Transformer A1', status: 'active'});
 CREATE (eq2:Equipment {equipmentId: 'EQ_SWITCH_001', equipmentType: 'Switch', name: 'Switch B1', status: 'active'});
 CREATE (eq3:Equipment {equipmentId: 'EQ_CIRCUIT_BREAKER_001', equipmentType: 'Circuit Breaker', name: 'CB C1', status: 'active'});
+CREATE (eq4:Equipment {equipmentId: 'EQ_SWITCH_002', equipmentType: 'Switch', name: 'Switch B2', status: 'active'});
+CREATE (eq5:Equipment {equipmentId: 'EQ_CIRCUIT_BREAKER_002', equipmentType: 'Circuit Breaker', name: 'CB C2', status: 'active'});
+CREATE (eq6:Equipment {equipmentId: 'EQ_RELAY_001', equipmentType: 'Relay', name: 'Relay D1', status: 'active'});
+CREATE (eq7:Equipment {equipmentId: 'EQ_SWITCH_003', equipmentType: 'Switch', name: 'Switch B3', status: 'active'});
+CREATE (eq8:Equipment {equipmentId: 'EQ_TRANS_002', equipmentType: 'Transformer', name: 'Transformer A2', status: 'active'});
+CREATE (eq9:Equipment {equipmentId: 'EQ_SWITCH_004', equipmentType: 'Switch', name: 'Switch B4', status: 'active'});
+CREATE (eq10:Equipment {equipmentId: 'EQ_CIRCUIT_BREAKER_003', equipmentType: 'Circuit Breaker', name: 'CB C3', status: 'active'});
+CREATE (eq11:Equipment {equipmentId: 'EQ_SWITCH_005', equipmentType: 'Switch', name: 'Switch B5', status: 'active'});
+CREATE (eq12:Equipment {equipmentId: 'EQ_TRANS_003', equipmentType: 'Transformer', name: 'Transformer A3', status: 'active'});
+CREATE (eq13:Equipment {equipmentId: 'EQ_CIRCUIT_BREAKER_004', equipmentType: 'Circuit Breaker', name: 'CB C4', status: 'active'});
+CREATE (eq14:Equipment {equipmentId: 'EQ_SWITCH_006', equipmentType: 'Switch', name: 'Switch B6', status: 'active'});
+CREATE (eq15:Equipment {equipmentId: 'EQ_CIRCUIT_BREAKER_005', equipmentType: 'Circuit Breaker', name: 'CB C5', status: 'active'});
+CREATE (eq16:Equipment {equipmentId: 'EQ_CAPACITOR_001', equipmentType: 'Capacitor', name: 'Capacitor E1', status: 'active'});
+// Week 7 Enhancement: Create 15-hop cascade chain with branching
 MATCH (eq1:Equipment {equipmentId: 'EQ_TRANS_001'})
 MATCH (eq2:Equipment {equipmentId: 'EQ_SWITCH_001'})
 MATCH (eq3:Equipment {equipmentId: 'EQ_CIRCUIT_BREAKER_001'})
+MATCH (eq4:Equipment {equipmentId: 'EQ_SWITCH_002'})
+MATCH (eq5:Equipment {equipmentId: 'EQ_CIRCUIT_BREAKER_002'})
+MATCH (eq6:Equipment {equipmentId: 'EQ_RELAY_001'})
+MATCH (eq7:Equipment {equipmentId: 'EQ_SWITCH_003'})
+MATCH (eq8:Equipment {equipmentId: 'EQ_TRANS_002'})
+MATCH (eq9:Equipment {equipmentId: 'EQ_SWITCH_004'})
+MATCH (eq10:Equipment {equipmentId: 'EQ_CIRCUIT_BREAKER_003'})
+MATCH (eq11:Equipment {equipmentId: 'EQ_SWITCH_005'})
+MATCH (eq12:Equipment {equipmentId: 'EQ_TRANS_003'})
+MATCH (eq13:Equipment {equipmentId: 'EQ_CIRCUIT_BREAKER_004'})
+MATCH (eq14:Equipment {equipmentId: 'EQ_SWITCH_006'})
+MATCH (eq15:Equipment {equipmentId: 'EQ_CIRCUIT_BREAKER_005'})
+MATCH (eq16:Equipment {equipmentId: 'EQ_CAPACITOR_001'})
+
+// Main cascade chain (15 hops)
 CREATE (eq1)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 100.0}]->(eq2)
-CREATE (eq2)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 80.0}]->(eq3);
+CREATE (eq2)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 80.0}]->(eq3)
+CREATE (eq3)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 75.0}]->(eq4)
+CREATE (eq4)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 70.0}]->(eq5)
+CREATE (eq5)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 65.0}]->(eq6)
+CREATE (eq6)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 60.0}]->(eq7)
+CREATE (eq7)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 55.0}]->(eq8)
+CREATE (eq8)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 90.0}]->(eq9)
+CREATE (eq9)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 50.0}]->(eq10)
+CREATE (eq10)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 45.0}]->(eq11)
+CREATE (eq11)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 40.0}]->(eq12)
+CREATE (eq12)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 85.0}]->(eq13)
+CREATE (eq13)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 35.0}]->(eq14)
+CREATE (eq14)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 30.0}]->(eq15)
+CREATE (eq15)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 25.0}]->(eq16)
+
+// Branching paths for realistic topology
+CREATE (eq2)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 60.0}]->(eq6)
+CREATE (eq8)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 70.0}]->(eq13);
 
 MATCH (ce1:CascadeEvent {eventId: 'CASCADE_TEST_001'})
 MATCH (ce2:CascadeEvent {eventId: 'CASCADE_TEST_002'})
@@ -133,7 +180,7 @@ RETURN
 MATCH path = (fp1:FailurePropagation)-[:PROPAGATES_TO]->(eq:Equipment)
              <-[:PROPAGATES_FROM]-(fp2:FailurePropagation)
 WITH path, fp1, fp2,
-     duration.inSeconds(fp1.propagationTime) + duration.inSeconds(fp2.propagationTime) AS total_time_seconds
+     fp1.propagationTime.seconds + fp2.propagationTime.seconds AS total_time_seconds
 RETURN
   CASE WHEN total_time_seconds > 0 THEN 'PASS' ELSE 'FAIL' END AS test_8_result,
   'Calculate total propagation time' AS test_8_description,
@@ -180,7 +227,7 @@ RETURN
 // Test 13: Test multi-cascade event correlation
 MATCH (ce1:CascadeEvent), (ce2:CascadeEvent)
 WHERE ce1.timestamp < ce2.timestamp
-  AND duration.between(ce1.timestamp, ce2.timestamp) < duration('PT10M')
+  AND duration.between(ce1.timestamp, ce2.timestamp).seconds < 600
 RETURN
   CASE WHEN count(*) > 0 THEN 'PASS' ELSE 'FAIL' END AS test_13_result,
   'Find correlated cascade events (within 10 minutes)' AS test_13_description,
