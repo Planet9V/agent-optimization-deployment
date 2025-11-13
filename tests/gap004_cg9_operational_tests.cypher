@@ -2,6 +2,12 @@
 // Test Suite: SLA, Revenue Models, Customer Impact
 // Total Tests: 20
 
+// Cleanup any existing test data from previous runs
+MATCH (om:OperationalMetric) WHERE om.metricId STARTS WITH 'METRIC_TEST_' DETACH DELETE om;
+MATCH (sl:ServiceLevel) WHERE sl.slaId STARTS WITH 'SLA_TEST_' DETACH DELETE sl;
+MATCH (rm:RevenueModel) WHERE rm.modelId STARTS WITH 'REVENUE_TEST_' DETACH DELETE rm;
+MATCH (ci:CustomerImpact) WHERE ci.impactId STARTS WITH 'IMPACT_TEST_' DETACH DELETE ci;
+
 // Setup: Create test operational data
 CREATE (om1:OperationalMetric {
   metricId: 'METRIC_TEST_001',

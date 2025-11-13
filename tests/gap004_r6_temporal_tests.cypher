@@ -2,6 +2,11 @@
 // Test Suite: Bitemporal Event Store & Versioned Nodes
 // Total Tests: 20
 
+// Cleanup any existing test data from previous runs
+MATCH (te:TemporalEvent) WHERE te.eventId STARTS WITH 'TEMP_EVENT_' DETACH DELETE te;
+MATCH (es:EventStore) WHERE es.storeId STARTS WITH 'STORE_TEST_' DETACH DELETE es;
+MATCH (vn:VersionedNode) WHERE vn.nodeId STARTS WITH 'VERSION_TEST_' DETACH DELETE vn;
+
 // Setup: Create test temporal data
 CREATE (te1:TemporalEvent {
   eventId: 'TEMP_EVENT_001',
