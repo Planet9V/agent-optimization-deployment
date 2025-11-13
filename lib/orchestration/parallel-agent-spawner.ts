@@ -77,7 +77,7 @@ export class ParallelAgentSpawner {
    */
   async spawnAgentsParallel(
     agents: AgentConfig[],
-    options: ParallelSpawnnerOptions = {}
+    options: ParallelSpawnerOptions = {}
   ): Promise<{ results: SpawnResult[]; metrics: BatchSpawnMetrics }> {
     const opts = { ...this.defaultOptions, ...options };
 
