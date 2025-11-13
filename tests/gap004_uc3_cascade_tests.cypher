@@ -2,6 +2,11 @@
 // Test Suite: Cascading Failure Propagation
 // Total Tests: 20
 
+// Cleanup any existing test data from previous runs
+MATCH (ce:CascadeEvent) WHERE ce.eventId STARTS WITH 'CASCADE_TEST_' DETACH DELETE ce;
+MATCH (fp:FailurePropagation) WHERE fp.propagationId STARTS WITH 'PROP_TEST_' DETACH DELETE fp;
+MATCH (eq:Equipment) WHERE eq.equipmentId STARTS WITH 'EQ_' DETACH DELETE eq;
+
 // Setup: Create test cascade scenario
 CREATE (ce1:CascadeEvent {
   eventId: 'CASCADE_TEST_001',
@@ -42,12 +47,24 @@ CREATE (fp2:FailurePropagation {
 CREATE (eq1:Equipment {equipmentId: 'EQ_TRANS_001', equipmentType: 'Transformer', name: 'Transformer A1', status: 'active'});
 CREATE (eq2:Equipment {equipmentId: 'EQ_SWITCH_001', equipmentType: 'Switch', name: 'Switch B1', status: 'active'});
 CREATE (eq3:Equipment {equipmentId: 'EQ_CIRCUIT_BREAKER_001', equipmentType: 'Circuit Breaker', name: 'CB C1', status: 'active'});
+MATCH (eq1:Equipment {equipmentId: 'EQ_TRANS_001'})
+MATCH (eq2:Equipment {equipmentId: 'EQ_SWITCH_001'})
+MATCH (eq3:Equipment {equipmentId: 'EQ_CIRCUIT_BREAKER_001'})
+CREATE (eq1)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 100.0}]->(eq2)
+CREATE (eq2)-[:CONNECTS_TO {connectionType: 'electrical', capacity: 80.0}]->(eq3);
 
-CREATE (ce1)-[:TRIGGERED_BY]->(eq1);
-CREATE (ce2)-[:TRIGGERED_BY]->(eq2);
-CREATE (fp1)-[:PROPAGATES_FROM]->(eq1);
-CREATE (fp1)-[:PROPAGATES_TO]->(eq2);
-CREATE (fp2)-[:PROPAGATES_FROM]->(eq2);
+MATCH (ce1:CascadeEvent {eventId: 'CASCADE_TEST_001'})
+MATCH (ce2:CascadeEvent {eventId: 'CASCADE_TEST_002'})
+MATCH (fp1:FailurePropagation {propagationId: 'PROP_TEST_001'})
+MATCH (fp2:FailurePropagation {propagationId: 'PROP_TEST_002'})
+MATCH (eq1:Equipment {equipmentId: 'EQ_TRANS_001'})
+MATCH (eq2:Equipment {equipmentId: 'EQ_SWITCH_001'})
+MATCH (eq3:Equipment {equipmentId: 'EQ_CIRCUIT_BREAKER_001'})
+CREATE (ce1)-[:TRIGGERED_BY]->(eq1)
+CREATE (ce2)-[:TRIGGERED_BY]->(eq2)
+CREATE (fp1)-[:PROPAGATES_FROM]->(eq1)
+CREATE (fp1)-[:PROPAGATES_TO]->(eq2)
+CREATE (fp2)-[:PROPAGATES_FROM]->(eq2)
 CREATE (fp2)-[:PROPAGATES_TO]->(eq3);
 
 // Test 1: Query CascadeEvent by triggerType
