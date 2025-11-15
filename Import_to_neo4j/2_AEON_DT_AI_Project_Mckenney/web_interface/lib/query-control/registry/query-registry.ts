@@ -62,7 +62,7 @@ export class QueryRegistry {
    */
   private async initializeQdrant(): Promise<void> {
     try {
-      const qdrantUrl = process.env.QDRANT_URL || 'http://172.18.0.6:6333';
+      const qdrantUrl = process.env.QDRANT_URL || 'http://localhost:6333';
       this.qdrantClient = new QdrantClient({ url: qdrantUrl });
 
       // Verify connection and ensure collection exists
