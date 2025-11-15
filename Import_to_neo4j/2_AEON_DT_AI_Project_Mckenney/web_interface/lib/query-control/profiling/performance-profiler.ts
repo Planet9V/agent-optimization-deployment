@@ -231,7 +231,7 @@ export class PerformanceProfiler {
    * @returns Recent performance alerts
    */
   getAlerts(severity?: 'warning' | 'critical', limit: number = 20): PerformanceAlert[] {
-    let filtered = severity
+    const filtered = severity
       ? this.alerts.filter(a => a.severity === severity)
       : this.alerts;
 

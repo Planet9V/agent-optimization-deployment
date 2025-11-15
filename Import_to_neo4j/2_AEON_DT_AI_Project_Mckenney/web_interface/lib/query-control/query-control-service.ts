@@ -20,7 +20,7 @@ import { getCheckpointManager, type Checkpoint, type CheckpointMetadata } from '
 import { getModelSwitcher, ModelType, type ModelSwitchResult } from './model/model-switcher';
 import { getPermissionManager, PermissionMode, type PermissionSwitchResult } from './permissions/permission-manager';
 import { getCommandExecutor, type CommandResult } from './commands/command-executor';
-import { QueryRegistry } from './registry/query-registry';
+import { getQueryRegistry } from './registry/query-registry';
 import type { ExecutionContext, ModelConfig } from './checkpoint/checkpoint-manager';
 import { getTelemetryService } from './telemetry/telemetry-service';
 import { getNeuralHooks } from './neural/neural-hooks';
@@ -94,7 +94,7 @@ export class QueryControlService {
   private modelSwitcher = getModelSwitcher();
   private permissionManager = getPermissionManager();
   private commandExecutor = getCommandExecutor();
-  private queryRegistry = new QueryRegistry();
+  private queryRegistry = getQueryRegistry(); // Use singleton getter to ensure shared L1 cache
 
   // Day 5: Neural optimization services
   private telemetryService = getTelemetryService();
@@ -120,6 +120,20 @@ export class QueryControlService {
       if (!stateMachine) {
         stateMachine = new QueryStateMachine(queryId);
         this.stateMachines.set(queryId, stateMachine);
+
+        // Register query in registry if not already registered
+        const existingQuery = await this.queryRegistry.getQuery(queryId);
+        if (!existingQuery) {
+          await this.queryRegistry.registerQuery(queryId, {
+            state: QueryState.INIT,
+            model: 'claude-sonnet-4-5',
+            permissionMode: 'default',
+            startTime: Date.now(),
+            agentCount: 0,
+            taskCount: 0,
+            checkpointCount: 0
+          });
+        }
       }
 
       // 2. Validate state allows pause (auto-start if in INIT)

@@ -402,15 +402,20 @@ export class CheckpointManager {
     }
 
     try {
+      // Generate UUID v4 for Qdrant point ID (Qdrant requires UUID or integer)
+      const pointId = this.generateUUID();
       const checkpointKey = `${checkpoint.queryId}:${checkpoint.timestamp}`;
 
-      // Upsert to Qdrant
+      // Upsert to Qdrant with UUID as ID and checkpoint key in payload
       await this.qdrantClient.upsert(this.collectionName, {
         points: [
           {
-            id: checkpointKey,
+            id: pointId, // Use UUID for Qdrant
             vector: checkpoint.embedding,
-            payload: checkpoint as unknown as Record<string, unknown>
+            payload: {
+              ...checkpoint as unknown as Record<string, unknown>,
+              checkpointKey // Store the original key for lookup
+            }
           }
         ]
       });
@@ -429,12 +434,26 @@ export class CheckpointManager {
     }
 
     try {
-      const result = await this.qdrantClient.retrieve(this.collectionName, {
-        ids: [checkpointKey]
+      // Search by checkpointKey in payload since ID is UUID
+      const result = await this.qdrantClient.scroll(this.collectionName, {
+        filter: {
+          must: [
+            {
+              key: 'checkpointKey',
+              match: { value: checkpointKey }
+            }
+          ]
+        },
+        limit: 1,
+        with_payload: true,
+        with_vector: false
       });
 
-      if (result && result.length > 0) {
-        const checkpoint = result[0].payload as unknown as Checkpoint;
+      if (result.points && result.points.length > 0) {
+        const payload = result.points[0].payload as Record<string, unknown>;
+        // Remove checkpointKey from payload before converting to Checkpoint
+        const { checkpointKey: _, ...checkpointData } = payload;
+        const checkpoint = checkpointData as unknown as Checkpoint;
 
         // Warm L1 cache
         this.checkpoints.set(checkpointKey, checkpoint);
@@ -537,6 +556,17 @@ export class CheckpointManager {
       hash = hash & hash; // Convert to 32-bit integer
     }
     return Math.abs(hash);
+  }
+
+  /**
+   * Generate UUID v4 for Qdrant point IDs
+   */
+  private generateUUID(): string {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+      const r = Math.random() * 16 | 0;
+      const v = c === 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
   }
 
   /**

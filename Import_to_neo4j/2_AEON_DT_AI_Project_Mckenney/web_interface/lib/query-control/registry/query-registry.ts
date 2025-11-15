@@ -218,18 +218,47 @@ export class QueryRegistry {
     // Remove from L1 cache
     const existed = this.queries.delete(queryId);
 
-    // Remove from L2 cache
+    // Remove from L2 cache (need to find point by queryId first)
     if (this.qdrantClient) {
       try {
-        await this.qdrantClient.delete(this.collectionName, {
-          points: [queryId]
+        // Find points with this queryId
+        const result = await this.qdrantClient.scroll(this.collectionName, {
+          filter: {
+            must: [
+              {
+                key: 'queryId',
+                match: { value: queryId }
+              }
+            ]
+          },
+          limit: 10,
+          with_payload: false,
+          with_vector: false
         });
+
+        if (result.points && result.points.length > 0) {
+          const pointIds = result.points.map(p => p.id);
+          await this.qdrantClient.delete(this.collectionName, {
+            points: pointIds
+          });
+        }
       } catch (error) {
         console.error('Failed to delete from Qdrant:', error);
       }
     }
 
     return existed;
+  }
+
+  /**
+   * Generate UUID v4 for Qdrant point IDs
+   */
+  private generateUUID(): string {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+      const r = Math.random() * 16 | 0;
+      const v = c === 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
   }
 
   /**
@@ -281,11 +310,14 @@ export class QueryRegistry {
       // Generate vector embedding for semantic search
       const vector = await this.generateEmbedding(metadata);
 
-      // Upsert to Qdrant
+      // Generate UUID v4 for Qdrant point ID (Qdrant requires UUID or integer)
+      const pointId = this.generateUUID();
+
+      // Upsert to Qdrant with UUID as ID
       await this.qdrantClient.upsert(this.collectionName, {
         points: [
           {
-            id: metadata.queryId,
+            id: pointId, // Use UUID for Qdrant
             vector,
             payload: metadata as unknown as Record<string, unknown>
           }
@@ -306,12 +338,23 @@ export class QueryRegistry {
     }
 
     try {
-      const result = await this.qdrantClient.retrieve(this.collectionName, {
-        ids: [queryId]
+      // Search by queryId in payload since ID is UUID
+      const result = await this.qdrantClient.scroll(this.collectionName, {
+        filter: {
+          must: [
+            {
+              key: 'queryId',
+              match: { value: queryId }
+            }
+          ]
+        },
+        limit: 1,
+        with_payload: true,
+        with_vector: false
       });
 
-      if (result && result.length > 0) {
-        return result[0].payload as unknown as QueryMetadata;
+      if (result.points && result.points.length > 0) {
+        return result.points[0].payload as unknown as QueryMetadata;
       }
 
       return null;
