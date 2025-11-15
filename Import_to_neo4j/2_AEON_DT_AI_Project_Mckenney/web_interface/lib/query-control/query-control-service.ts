@@ -297,6 +297,33 @@ export class QueryControlService {
 
       const resumeTime = Date.now() - startTime;
 
+      // Neural optimization: Record telemetry
+      this.telemetryService.recordOperation({
+        operationType: 'resume',
+        queryId,
+        startTime,
+        endTime: Date.now(),
+        durationMs: resumeTime,
+        success: true,
+        metadata: {
+          resumedFrom: checkpoint.timestamp,
+          checkpointId: `${checkpoint.queryId}:${checkpoint.timestamp}`,
+          state: QueryState.RUNNING
+        }
+      });
+
+      // Neural optimization: Record performance
+      this.performanceProfiler.recordLatency('resume', resumeTime);
+
+      // Neural optimization: Train transition pattern
+      await this.neuralHooks.trainTransitionPattern(
+        queryId,
+        QueryState.PAUSED,
+        QueryState.RUNNING,
+        resumeTime,
+        true
+      );
+
       console.log(`Query ${queryId} resumed successfully in ${resumeTime}ms`);
 
       return {
@@ -308,6 +335,20 @@ export class QueryControlService {
       };
     } catch (error) {
       const resumeTime = Date.now() - startTime;
+
+      // Neural optimization: Record failed operation
+      this.telemetryService.recordOperation({
+        operationType: 'resume',
+        queryId,
+        startTime,
+        endTime: Date.now(),
+        durationMs: resumeTime,
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error'
+      });
+
+      // Neural optimization: Record performance even for failures
+      this.performanceProfiler.recordLatency('resume', resumeTime);
 
       console.error(`Failed to resume query ${queryId}:`, error);
 
@@ -333,6 +374,8 @@ export class QueryControlService {
     targetModel: ModelType,
     reason: string = 'manual_switch'
   ): Promise<ModelSwitchResult> {
+    const startTime = Date.now();
+
     try {
       // Ensure query exists
       if (!this.stateMachines.has(queryId)) {
@@ -375,12 +418,55 @@ export class QueryControlService {
             modelSwitchedAt: Date.now()
           }
         });
+
+        const switchTime = result.switchTimeMs;
+
+        // Neural optimization: Record telemetry
+        this.telemetryService.recordOperation({
+          operationType: 'changeModel',
+          queryId,
+          startTime,
+          endTime: Date.now(),
+          durationMs: switchTime,
+          success: true,
+          metadata: {
+            previousModel: result.previousModel,
+            currentModel: result.currentModel,
+            reason
+          }
+        });
+
+        // Neural optimization: Record performance
+        this.performanceProfiler.recordLatency('changeModel', switchTime);
+
+        // Neural optimization: Train optimization pattern
+        await this.neuralHooks.trainOptimizationPattern(
+          queryId,
+          'model_switch',
+          { previousModel: result.previousModel, targetModel },
+          switchTime,
+          true
+        );
       }
 
       return result;
     } catch (error) {
       console.error(`Failed to change model for query ${queryId}:`, error);
 
+
+      const switchTime = Date.now() - startTime;
+
+      this.telemetryService.recordOperation({
+        operationType: 'changeModel',
+        queryId,
+        startTime,
+        endTime: Date.now(),
+        durationMs: switchTime,
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error'
+      });
+
+      this.performanceProfiler.recordLatency('changeModel', switchTime);
       return {
         success: false,
         previousModel: this.modelSwitcher.getCurrentModel(),
@@ -402,6 +488,8 @@ export class QueryControlService {
     queryId: string,
     mode: PermissionMode
   ): Promise<PermissionSwitchResult> {
+    const startTime = Date.now();
+
     try {
       // Ensure query exists
       if (!this.stateMachines.has(queryId)) {
@@ -424,11 +512,52 @@ export class QueryControlService {
             permissionSwitchedAt: Date.now()
           }
         });
+
+        // Record successful permission switch
+        const switchTime = result.switchTimeMs;
+
+        this.telemetryService.recordOperation({
+          operationType: 'changePermissions',
+          queryId,
+          startTime,
+          endTime: Date.now(),
+          durationMs: switchTime,
+          success: true,
+          metadata: {
+            previousMode: result.previousMode,
+            currentMode: result.currentMode
+          }
+        });
+
+        this.performanceProfiler.recordLatency('changePermissions', switchTime);
+
+        await this.neuralHooks.trainOptimizationPattern(
+          queryId,
+          'permission_switch',
+          { previousMode: result.previousMode, targetMode: mode },
+          switchTime,
+          true
+        );
       }
 
       return result;
     } catch (error) {
       console.error(`Failed to change permissions for query ${queryId}:`, error);
+
+      // Record failed permission switch
+      const switchTime = Date.now() - startTime;
+
+      this.telemetryService.recordOperation({
+        operationType: 'changePermissions',
+        queryId,
+        startTime,
+        endTime: Date.now(),
+        durationMs: switchTime,
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error'
+      });
+
+      this.performanceProfiler.recordLatency('changePermissions', switchTime);
 
       return {
         success: false,
@@ -451,9 +580,44 @@ export class QueryControlService {
     queryId: string,
     command: string
   ): Promise<CommandResult> {
+    const startTime = Date.now();
+
     try {
-      return await this.commandExecutor.executeCommand(queryId, command);
+      const result = await this.commandExecutor.executeCommand(queryId, command);
+
+      // Neural optimization: Record telemetry
+      this.telemetryService.recordOperation({
+        operationType: 'executeCommand',
+        queryId,
+        startTime,
+        endTime: Date.now(),
+        durationMs: result.executionTimeMs,
+        success: result.success,
+        metadata: {
+          command,
+          exitCode: result.exitCode
+        }
+      });
+
+      // Neural optimization: Record performance
+      this.performanceProfiler.recordLatency('executeCommand', result.executionTimeMs);
+
+      return result;
     } catch (error) {
+      const executionTime = Date.now() - startTime;
+
+      this.telemetryService.recordOperation({
+        operationType: 'executeCommand',
+        queryId,
+        startTime,
+        endTime: Date.now(),
+        durationMs: executionTime,
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error'
+      });
+
+      this.performanceProfiler.recordLatency('executeCommand', executionTime);
+
       console.error(`Failed to execute command for query ${queryId}:`, error);
 
       return {
@@ -505,6 +669,31 @@ export class QueryControlService {
 
       console.log(`Query ${queryId} terminated in ${terminateTime}ms`);
 
+      // Neural optimization: Record telemetry
+      this.telemetryService.recordOperation({
+        operationType: 'terminate',
+        queryId,
+        startTime,
+        endTime: Date.now(),
+        durationMs: terminateTime,
+        success: true,
+        metadata: {
+          finalState: QueryState.TERMINATED
+        }
+      });
+
+      // Neural optimization: Record performance
+      this.performanceProfiler.recordLatency('terminate', terminateTime);
+
+      // Neural optimization: Train transition pattern
+      await this.neuralHooks.trainTransitionPattern(
+        queryId,
+        currentState,
+        QueryState.TERMINATED,
+        terminateTime,
+        true
+      );
+
       return {
         success: true,
         finalState: QueryState.TERMINATED,
@@ -514,6 +703,18 @@ export class QueryControlService {
       const terminateTime = Date.now() - startTime;
 
       console.error(`Failed to terminate query ${queryId}:`, error);
+
+      this.telemetryService.recordOperation({
+        operationType: 'terminate',
+        queryId,
+        startTime,
+        endTime: Date.now(),
+        durationMs: terminateTime,
+        success: false,
+        error: error instanceof Error ? error.message : 'Unknown error'
+      });
+
+      this.performanceProfiler.recordLatency('terminate', terminateTime);
 
       return {
         success: false,
