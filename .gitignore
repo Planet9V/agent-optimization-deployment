@@ -1,0 +1,43 @@
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Build outputs
+.next/
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Test coverage
+coverage/
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+*.tmp
+
+# Test reports
+tests/reports/
+test-results*.log
+
+# Python
+__pycache__/
+venv/
+
+# Large files that exceed GitHub limits
+backups/pre-commit-2025-11-13_07-10-03/
+10_Ontologies/AEON_DR_Cybersec_Threat_Intelv2/exports/
+*.kmz
+5_Downer_Group_CRL_NZ.zip
