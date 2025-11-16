@@ -36,36 +36,8 @@ test-results*.log
 __pycache__/
 venv/
 
-# Large files that exceed GitHub limits (>100MB)
-backups/
-**/backups/
-**/neo4j-data/
-**/neostore.*.db
-**/neostore.transaction.db.*
-10_Ontologies/**/exports/
-**/metadata_export_*/
+# Large files that exceed GitHub limits
+backups/pre-commit-2025-11-13_07-10-03/
+10_Ontologies/AEON_DR_Cybersec_Threat_Intelv2/exports/
 *.kmz
-*.zip
-*_export_*.csv
-*_export_*.json
-
-# CVE/Vulnerability exports (often >100MB)
-**/cve_*.csv
-**/cve_*.json
-**/vulnerability_*.csv
-
-# Neo4j database files
-**/data.mdb
-**/lock.mdb
-UNTRACKED_FILES_BACKUP/
-tugraph/
-openspg-tugraph/
-.claude-flow/
-.gap004_phase2_checkpoint.json
-.swarm/
-10_Ontologies/1_Working_Directory_2025_OCT_30/
-10_Ontologies/AEON_DR_Cybersec_Threat_Intelv2/.claude-flow/
-1_AEON_DT_CyberSecurity_Wiki_Current/
-1_First_Steps.md
-2_OXOT_Projects_Dev.code-workspace
-10_Ontologies/
+5_Downer_Group_CRL_NZ.zip
