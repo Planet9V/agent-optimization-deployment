@@ -1,0 +1,59 @@
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Build outputs
+.next/
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Test coverage
+coverage/
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+*.tmp
+
+# Test reports
+tests/reports/
+test-results*.log
+
+# Python
+__pycache__/
+venv/
+
+# Large files that exceed GitHub limits (>100MB)
+backups/
+**/backups/
+**/neo4j-data/
+**/neostore.*.db
+**/neostore.transaction.db.*
+10_Ontologies/**/exports/
+**/metadata_export_*/
+*.kmz
+*.zip
+*_export_*.csv
+*_export_*.json
+
+# CVE/Vulnerability exports (often >100MB)
+**/cve_*.csv
+**/cve_*.json
+**/vulnerability_*.csv
+
+# Neo4j database files
+**/data.mdb
+**/lock.mdb
