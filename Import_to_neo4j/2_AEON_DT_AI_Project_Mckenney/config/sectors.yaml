@@ -1,0 +1,282 @@
+# 13 Critical Infrastructure Sectors Configuration
+# Based on CISA Critical Infrastructure Sectors
+
+sectors:
+  energy:
+    id: 1
+    name: "Energy"
+    folder_patterns:
+      - "energy"
+      - "power"
+      - "grid"
+      - "nuclear"
+      - "renewable"
+      - "solar"
+      - "wind"
+      - "hydroelectric"
+    subsector_count: 50
+    entity_types:
+      - "VENDOR"
+      - "PROTOCOL"
+      - "STANDARD"
+      - "COMPONENT"
+      - "MEASUREMENT"
+      - "ORGANIZATION"
+      - "SAFETY_CLASS"
+      - "SYSTEM_LAYER"
+      - "REACTOR_TYPE"
+      - "GRID_COMPONENT"
+    description: "Energy sector including electric power, oil, and natural gas"
+
+  water:
+    id: 2
+    name: "Water and Wastewater Systems"
+    folder_patterns:
+      - "water"
+      - "wastewater"
+      - "treatment"
+      - "drinking water"
+      - "utility"
+    subsector_count: 35
+    entity_types:
+      - "VENDOR"
+      - "PROTOCOL"
+      - "STANDARD"
+      - "COMPONENT"
+      - "MEASUREMENT"
+      - "ORGANIZATION"
+      - "TREATMENT_PROCESS"
+      - "WATER_QUALITY_PARAM"
+      - "ASSET_TYPE"
+    description: "Water and wastewater treatment facilities and distribution"
+
+  manufacturing:
+    id: 3
+    name: "Critical Manufacturing"
+    folder_patterns:
+      - "manufacturing"
+      - "industrial"
+      - "production"
+      - "factory"
+    subsector_count: 40
+    entity_types:
+      - "VENDOR"
+      - "PROTOCOL"
+      - "STANDARD"
+      - "COMPONENT"
+      - "MEASUREMENT"
+      - "ORGANIZATION"
+      - "MANUFACTURING_PROCESS"
+      - "EQUIPMENT_TYPE"
+      - "PRODUCTION_LINE"
+    description: "Critical manufacturing facilities and processes"
+
+  transportation:
+    id: 4
+    name: "Transportation Systems"
+    folder_patterns:
+      - "transportation"
+      - "transit"
+      - "rail"
+      - "aviation"
+      - "maritime"
+      - "highway"
+    subsector_count: 45
+    entity_types:
+      - "VENDOR"
+      - "PROTOCOL"
+      - "STANDARD"
+      - "COMPONENT"
+      - "MEASUREMENT"
+      - "ORGANIZATION"
+      - "VEHICLE_TYPE"
+      - "INFRASTRUCTURE_TYPE"
+    description: "Transportation systems including aviation, rail, maritime, highway"
+
+  chemical:
+    id: 5
+    name: "Chemical"
+    folder_patterns:
+      - "chemical"
+      - "petrochemical"
+      - "refinery"
+      - "processing"
+    subsector_count: 30
+    entity_types:
+      - "VENDOR"
+      - "PROTOCOL"
+      - "STANDARD"
+      - "COMPONENT"
+      - "MEASUREMENT"
+      - "ORGANIZATION"
+      - "CHEMICAL_PROCESS"
+      - "SAFETY_SYSTEM"
+      - "HAZARD_CLASS"
+    description: "Chemical manufacturing and processing facilities"
+
+  communications:
+    id: 6
+    name: "Communications"
+    folder_patterns:
+      - "communications"
+      - "telecom"
+      - "network"
+      - "internet"
+      - "5g"
+      - "cellular"
+    subsector_count: 35
+    entity_types:
+      - "VENDOR"
+      - "PROTOCOL"
+      - "STANDARD"
+      - "COMPONENT"
+      - "MEASUREMENT"
+      - "ORGANIZATION"
+      - "NETWORK_TYPE"
+      - "FREQUENCY_BAND"
+    description: "Communications networks and infrastructure"
+
+  healthcare:
+    id: 7
+    name: "Healthcare and Public Health"
+    folder_patterns:
+      - "healthcare"
+      - "hospital"
+      - "medical"
+      - "public health"
+      - "clinic"
+    subsector_count: 40
+    entity_types:
+      - "VENDOR"
+      - "PROTOCOL"
+      - "STANDARD"
+      - "COMPONENT"
+      - "MEASUREMENT"
+      - "ORGANIZATION"
+      - "MEDICAL_DEVICE"
+      - "CLINICAL_SYSTEM"
+    description: "Healthcare facilities and public health systems"
+
+  commercial_facilities:
+    id: 8
+    name: "Commercial Facilities"
+    folder_patterns:
+      - "commercial"
+      - "facility"
+      - "building"
+      - "retail"
+    subsector_count: 25
+    entity_types:
+      - "VENDOR"
+      - "PROTOCOL"
+      - "STANDARD"
+      - "COMPONENT"
+      - "MEASUREMENT"
+      - "ORGANIZATION"
+      - "BUILDING_SYSTEM"
+      - "SECURITY_SYSTEM"
+    description: "Commercial facilities and building systems"
+
+  dams:
+    id: 9
+    name: "Dams"
+    folder_patterns:
+      - "dams"
+      - "reservoir"
+      - "hydropower"
+      - "water control"
+    subsector_count: 20
+    entity_types:
+      - "VENDOR"
+      - "PROTOCOL"
+      - "STANDARD"
+      - "COMPONENT"
+      - "MEASUREMENT"
+      - "ORGANIZATION"
+      - "DAM_TYPE"
+      - "CONTROL_SYSTEM"
+    description: "Dam facilities and control systems"
+
+  emergency_services:
+    id: 10
+    name: "Emergency Services"
+    folder_patterns:
+      - "emergency"
+      - "911"
+      - "first responder"
+      - "dispatch"
+    subsector_count: 30
+    entity_types:
+      - "VENDOR"
+      - "PROTOCOL"
+      - "STANDARD"
+      - "COMPONENT"
+      - "MEASUREMENT"
+      - "ORGANIZATION"
+      - "RESPONSE_SYSTEM"
+      - "COMMUNICATION_SYSTEM"
+    description: "Emergency services and first responder systems"
+
+  food_agriculture:
+    id: 11
+    name: "Food and Agriculture"
+    folder_patterns:
+      - "food"
+      - "agriculture"
+      - "farming"
+      - "processing"
+      - "distribution"
+    subsector_count: 35
+    entity_types:
+      - "VENDOR"
+      - "PROTOCOL"
+      - "STANDARD"
+      - "COMPONENT"
+      - "MEASUREMENT"
+      - "ORGANIZATION"
+      - "PROCESS_TYPE"
+      - "STORAGE_SYSTEM"
+    description: "Food and agriculture production and distribution"
+
+  nuclear:
+    id: 12
+    name: "Nuclear Reactors, Materials, and Waste"
+    folder_patterns:
+      - "nuclear"
+      - "reactor"
+      - "radioactive"
+      - "waste"
+    subsector_count: 25
+    entity_types:
+      - "VENDOR"
+      - "PROTOCOL"
+      - "STANDARD"
+      - "COMPONENT"
+      - "MEASUREMENT"
+      - "ORGANIZATION"
+      - "REACTOR_TYPE"
+      - "SAFETY_SYSTEM"
+      - "WASTE_TYPE"
+    description: "Nuclear reactors, materials, and waste management"
+
+  government_facilities:
+    id: 13
+    name: "Government Facilities"
+    folder_patterns:
+      - "government"
+      - "federal"
+      - "military"
+      - "defense"
+    subsector_count: 30
+    entity_types:
+      - "VENDOR"
+      - "PROTOCOL"
+      - "STANDARD"
+      - "COMPONENT"
+      - "MEASUREMENT"
+      - "ORGANIZATION"
+      - "FACILITY_TYPE"
+      - "SECURITY_LEVEL"
+    description: "Government and military facilities"
+
+# Total subsectors across all sectors: 440 (expandable to 388+ variations)

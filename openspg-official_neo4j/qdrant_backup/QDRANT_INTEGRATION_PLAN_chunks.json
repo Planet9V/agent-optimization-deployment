@@ -1,0 +1,604 @@
+[
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_0",
+    "text": "# QDRANT VECTOR DATABASE INTEGRATION RESEARCH & PLAN\n**File:** QDRANT_INTEGRATION_PLAN.md\n**Created:** 2025-10-30\n**Version:** v1.0.0\n**Author:** AEON Digital Twin Cybersecurity Team\n**Purpose:** Comprehensive research analysis for Qdrant vector database integration\n**Status:** RESEARCH COMPLETE - AWAITING APPROVAL\n\n---\n\n## EXECUTIVE SUMMARY\n\n**Recommendation:** **HYBRID APPROACH** - Use Qdrant as a **semantic knowledge retrieval layer** alongside existing Neo4j graph database and file-based documentation, with specific focus on **agent coordination** and **developer knowledge base** use cases.\n\n**Key Finding:** Qdrant is ideally suited for 4 high-value use cases in this project:\n1. **Schema Knowledge Retrieval** for swarm agents (semantic search over 33+ markdown docs)\n2. **Agent Coordination Memory** (shared learning across 6+ specialized agents)\n3. **CVE Semantic Search** (find similar vulnerabilities beyond exact text matching)\n4. **Implementation Decision Tracking** (historical co",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_1",
+    "text": "tion Memory** (shared learning across 6+ specialized agents)\n3. **CVE Semantic Search** (find similar vulnerabilities beyond exact text matching)\n4. **Implementation Decision Tracking** (historical context for future work)\n\n**NOT Recommended For:**\n- Primary graph data storage (Neo4j is optimal for relationship traversal)\n- Real-time operational queries (Neo4j Cypher is faster for structured queries)\n- Replacing file-based documentation (markdown files remain authoritative)\n\n**Estimated Impact:**\n- **80% reduction** in agent \"schema research\" time (from reading full docs to targeted retrieval)\n- **3x improvement** in swarm coordination efficiency (agents learn from each other)\n- **50% faster** implementation decisions (historical context instantly available)\n- **Storage:** ~500MB for full knowledge base (267K CVEs + docs + decisions)\n\n**ROI Analysis:**\n- **Development Cost:** $32,100 (40 person-days + minimal OpenAI embeddings)\n- **Time Savings:** 96 hours/week \u00d7 $200/hour = $19,200/we",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_2",
+    "text": "knowledge base (267K CVEs + docs + decisions)\n\n**ROI Analysis:**\n- **Development Cost:** $32,100 (40 person-days + minimal OpenAI embeddings)\n- **Time Savings:** 96 hours/week \u00d7 $200/hour = $19,200/week\n- **Payback Period:** 1.7 weeks\n\n---\n\n## 1. SCHEMA KNOWLEDGE RETRIEVAL USE CASES\n\n### 1.1 Current Challenge\n**Problem:** Swarm agents must read through 1.5MB+ of markdown files (33 files, 3,000-88,000 words each) to find relevant implementation patterns.\n\n**Example Agent Query:**\n- \"How do I implement customer filtering for multi-tenant equipment?\"\n- \"What's the Cypher query pattern for Step 3 equipment assignment?\"\n- \"What are the validation criteria for CVE preservation?\"\n\n**Current Approach (File-Based):**\n```python\n# Agent must read full file\nwith open('CUSTOMER_ORGANIZATION_IMPLEMENTATION.md') as f:\n    content = f.read()  # 36KB, 1,137 lines\n    # Agent searches for relevant section manually\n```\n\n### 1.2 Qdrant Solution: Semantic Documentation Search\n\n**Collection Structure:**\n```",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_3",
+    "text": "ION.md') as f:\n    content = f.read()  # 36KB, 1,137 lines\n    # Agent searches for relevant section manually\n```\n\n### 1.2 Qdrant Solution: Semantic Documentation Search\n\n**Collection Structure:**\n```python\ncollection_name = \"schema_knowledge\"\n\n# Vector schema\n{\n    \"vectors\": {\n        \"size\": 1536,  # OpenAI text-embedding-3-small\n        \"distance\": \"Cosine\"\n    },\n    \"payload_schema\": {\n        \"document_type\": \"keyword\",  # schema_guide, query_example, validation_rule\n        \"file_source\": \"keyword\",\n        \"section_title\": \"text\",\n        \"content_text\": \"text\",\n        \"code_snippets\": \"text[]\",\n        \"related_questions\": \"keyword[]\",  # Q1, Q2, ... Q8\n        \"wave_number\": \"integer\",\n        \"ice_score\": \"float\",\n        \"implementation_status\": \"keyword\",\n        \"metadata\": {\n            \"created_date\": \"datetime\",\n            \"updated_date\": \"datetime\",\n            \"word_count\": \"integer\"\n        }\n    }\n}\n```\n\n**Sample Data Point:**\n```json\n{\n    \"id\": \"cust_org_impl_",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_4",
+    "text": " {\n            \"created_date\": \"datetime\",\n            \"updated_date\": \"datetime\",\n            \"word_count\": \"integer\"\n        }\n    }\n}\n```\n\n**Sample Data Point:**\n```json\n{\n    \"id\": \"cust_org_impl_step3_eq_assignment\",\n    \"vector\": [0.012, -0.034, ...],\n    \"payload\": {\n        \"document_type\": \"schema_guide\",\n        \"file_source\": \"CUSTOMER_ORGANIZATION_IMPLEMENTATION.md\",\n        \"section_title\": \"STEP 3: Enhance Asset Nodes with Customer Properties\",\n        \"content_text\": \"Assign Customer 1 (Energy) to servers in datacenter DC-PRIMARY-01...\",\n        \"code_snippets\": [\n            \"MATCH (s:Server) WHERE s.data_center = 'DC-PRIMARY-01' SET s.customer_id = 'CUST-001-ENERGY'...\"\n        ],\n        \"related_questions\": [\"Q1\", \"Q6\", \"Q8\"],\n        \"ice_score\": 9.0,\n        \"implementation_status\": \"READY_FOR_EXECUTION\"\n    }\n}\n```\n\n**Agent Query Example:**\n```python\nfrom qdrant_client import QdrantClient\nfrom openai import OpenAI\n\nclient = QdrantClient(\"http://localhost:6333\")\nop",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_5",
+    "text": "ation_status\": \"READY_FOR_EXECUTION\"\n    }\n}\n```\n\n**Agent Query Example:**\n```python\nfrom qdrant_client import QdrantClient\nfrom openai import OpenAI\n\nclient = QdrantClient(\"http://localhost:6333\")\nopenai = OpenAI()\n\n# Agent asks question\nagent_question = \"How do I filter equipment by customer for multi-tenant isolation?\"\n\n# Generate query embedding\nquery_vector = openai.embeddings.create(\n    model=\"text-embedding-3-small\",\n    input=agent_question\n).data[0].embedding\n\n# Hybrid search: semantic similarity + metadata filtering\nresults = client.search(\n    collection_name=\"schema_knowledge\",\n    query_vector=query_vector,\n    query_filter={\n        \"should\": [\n            {\"key\": \"related_questions\", \"match\": {\"any\": [\"Q1\", \"Q6\"]}},\n            {\"key\": \"document_type\", \"match\": {\"value\": \"query_example\"}}\n        ]\n    },\n    limit=5,\n    score_threshold=0.7\n)\n\n# Agent receives relevant code snippets instantly\nfor result in results:\n    print(f\"Score: {result.score}\")\n    print(f\"Source",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_6",
+    "text": "uery_example\"}}\n        ]\n    },\n    limit=5,\n    score_threshold=0.7\n)\n\n# Agent receives relevant code snippets instantly\nfor result in results:\n    print(f\"Score: {result.score}\")\n    print(f\"Source: {result.payload['file_source']} - {result.payload['section_title']}\")\n    print(f\"Code: {result.payload['code_snippets'][0][:200]}...\")\n```\n\n**Output:**\n```\nScore: 0.89\nSource: CUSTOMER_FILTERING_QUERY_EXAMPLES.md - Q1: CVE Impact on My Equipment\nCode: MATCH (customer:Customer {customer_id: $myCustomerID})...\n\nScore: 0.85\nSource: CUSTOMER_ORGANIZATION_IMPLEMENTATION.md - STEP 4: Create Ownership Relationships\nCode: MERGE (customer:Customer {customer_id: $id})...\n```\n\n### 1.3 Estimated Performance\n\n| Operation | File-Based | Qdrant | Improvement |\n|-----------|-----------|--------|-------------|\n| Find relevant schema section | 30-60 sec (read full file) | 0.5-1 sec (vector search) | **60x faster** |\n| Find all Cypher query examples | 2-3 min (grep across files) | 1-2 sec (metadata filter",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_7",
+    "text": "--|\n| Find relevant schema section | 30-60 sec (read full file) | 0.5-1 sec (vector search) | **60x faster** |\n| Find all Cypher query examples | 2-3 min (grep across files) | 1-2 sec (metadata filter) | **120x faster** |\n| Find similar implementation patterns | Manual (requires human) | Automatic (semantic similarity) | **Enables new capability** |\n\n### 1.4 Collection Size Estimate\n\n**Documentation Breakdown:**\n- 33 markdown files (avg 30KB each) = ~1MB text\n- Chunk size: 500 tokens (~375 words, ~2.5KB)\n- Total chunks: ~400 chunks\n- Embedding size: 1536 floats \u00d7 4 bytes = 6KB per vector\n- **Total storage:** 400 \u00d7 (6KB + 3KB payload) = **~3.6MB**\n\n**Recommendation:** Index all 33 markdown files with semantic chunking for comprehensive agent knowledge base.\n\n---\n\n## 2. SWARM AGENT COORDINATION USE CASES\n\n### 2.1 Current Challenge\n\n**Problem:** 6+ specialized agents (coder, reviewer, researcher, architect, tester, etc.) work in parallel but don't effectively share learnings across sessio",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_8",
+    "text": "ION USE CASES\n\n### 2.1 Current Challenge\n\n**Problem:** 6+ specialized agents (coder, reviewer, researcher, architect, tester, etc.) work in parallel but don't effectively share learnings across sessions.\n\n**Current MCP Memory Approach:**\n```javascript\n// Agent stores decision\nmcp__claude-flow__memory_store({\n    key: \"schema/agent_3/step_5_validation\",\n    value: \"Found database schema mismatch in Server.customer_id property...\"\n})\n\n// Other agents can't easily discover this\n// Must know exact key to retrieve\n```\n\n### 2.2 Qdrant Solution: Shared Agent Memory with Semantic Discovery\n\n**Collection Structure:**\n```python\ncollection_name = \"agent_shared_memory\"\n\n{\n    \"vectors\": {\n        \"size\": 1536,\n        \"distance\": \"Cosine\"\n    },\n    \"payload_schema\": {\n        \"agent_id\": \"keyword\",\n        \"agent_role\": \"keyword\",\n        \"session_id\": \"keyword\",\n        \"task_type\": \"keyword\",  # schema_validation, query_optimization, implementation\n        \"finding_type\": \"keyword\",  # issue, s",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_9",
+    "text": "       \"agent_role\": \"keyword\",\n        \"session_id\": \"keyword\",\n        \"task_type\": \"keyword\",  # schema_validation, query_optimization, implementation\n        \"finding_type\": \"keyword\",  # issue, solution, pattern, recommendation\n        \"finding_summary\": \"text\",\n        \"finding_detail\": \"text\",\n        \"related_files\": \"keyword[]\",\n        \"related_nodes\": \"keyword[]\",\n        \"ice_score\": \"float\",\n        \"timestamp\": \"datetime\",\n        \"resolution_status\": \"keyword\"  # pending, resolved, validated\n    }\n}\n```\n\n**Sample Agent Finding:**\n```json\n{\n    \"id\": \"agent_3_finding_schema_mismatch_20251030\",\n    \"vector\": [...],\n    \"payload\": {\n        \"agent_id\": \"reviewer_agent_3\",\n        \"agent_role\": \"reviewer\",\n        \"task_type\": \"schema_validation\",\n        \"finding_type\": \"issue\",\n        \"finding_summary\": \"Customer-to-Equipment relationship missing in Server nodes\",\n        \"finding_detail\": \"Validated Server schema. Found Server nodes have NO customer_id or organization_id",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_10",
+    "text": ",\n        \"finding_summary\": \"Customer-to-Equipment relationship missing in Server nodes\",\n        \"finding_detail\": \"Validated Server schema. Found Server nodes have NO customer_id or organization_id. This breaks multi-tenant filtering for Q1, Q6, Q8.\",\n        \"related_files\": [\"CUSTOMER_ORGANIZATION_IMPLEMENTATION.md\"],\n        \"related_nodes\": [\"Server\", \"Customer\", \"Organization\"],\n        \"ice_score\": 9.0,\n        \"resolution_status\": \"pending\"\n    }\n}\n```\n\n**Agent Discovery Example:**\n```python\n# Agent 5 (coder) starts implementing customer filtering\n# Automatically checks if other agents found related issues\n\nquery = \"implementing customer filtering on server nodes\"\nquery_vector = get_embedding(query)\n\n# Search agent memory\nsimilar_findings = client.search(\n    collection_name=\"agent_shared_memory\",\n    query_vector=query_vector,\n    query_filter={\n        \"must\": [\n            {\"key\": \"related_nodes\", \"match\": {\"any\": [\"Server\", \"Customer\"]}},\n            {\"key\": \"resolution_s",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_11",
+    "text": "nt_shared_memory\",\n    query_vector=query_vector,\n    query_filter={\n        \"must\": [\n            {\"key\": \"related_nodes\", \"match\": {\"any\": [\"Server\", \"Customer\"]}},\n            {\"key\": \"resolution_status\", \"match\": {\"value\": \"pending\"}}\n        ]\n    },\n    limit=10\n)\n\n# Agent 5 discovers Agent 3's finding immediately\nprint(f\"Found related work by {similar_findings[0].payload['agent_id']}\")\nprint(f\"Issue: {similar_findings[0].payload['finding_summary']}\")\n```\n\n### 2.3 Benefits Over MCP Memory\n\n| Feature | MCP Memory (Key-Value) | Qdrant (Vector + Metadata) |\n|---------|----------------------|---------------------------|\n| Discovery | Requires exact key | Semantic search (fuzzy matching) |\n| Cross-agent learning | Manual coordination | Automatic discovery |\n| Historical context | Limited to session | Persistent across all sessions |\n| Similarity matching | No | Yes (find similar issues) |\n| Rich filtering | Limited | Hybrid (vector + metadata) |\n\n---\n\n## 3. CVE SEMANTIC SEARCH USE CAS",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_12",
+    "text": "to session | Persistent across all sessions |\n| Similarity matching | No | Yes (find similar issues) |\n| Rich filtering | Limited | Hybrid (vector + metadata) |\n\n---\n\n## 3. CVE SEMANTIC SEARCH USE CASES\n\n### 3.1 Current Neo4j Limitation\n\n**Problem:** Neo4j excels at exact matching and graph traversal but cannot find \"similar\" vulnerabilities based on semantic meaning.\n\n**Current Query (Exact Match Only):**\n```cypher\n// Find CVE by exact ID\nMATCH (cve:CVE {cveID: 'CVE-2024-1234'})\nRETURN cve\n\n// Find CVEs by exact keyword in description\nMATCH (cve:CVE)\nWHERE cve.description CONTAINS 'buffer overflow'\nRETURN cve\n// Problem: Misses \"heap corruption\", \"stack overflow\", \"memory corruption\"\n```\n\n### 3.2 Qdrant Solution: Semantic CVE Discovery\n\n**Collection Structure:**\n```python\ncollection_name = \"cve_semantic_index\"\n\n{\n    \"vectors\": {\n        \"size\": 1536,\n        \"distance\": \"Cosine\"\n    },\n    \"payload_schema\": {\n        \"cve_id\": \"keyword\",\n        \"description\": \"text\",\n        \"cvss_s",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_13",
+    "text": "= \"cve_semantic_index\"\n\n{\n    \"vectors\": {\n        \"size\": 1536,\n        \"distance\": \"Cosine\"\n    },\n    \"payload_schema\": {\n        \"cve_id\": \"keyword\",\n        \"description\": \"text\",\n        \"cvss_score\": \"float\",\n        \"severity\": \"keyword\",\n        \"published_date\": \"datetime\",\n        \"attack_vector\": \"keyword\",\n        \"affected_systems\": \"keyword[]\",  # SCADA, PLC, HMI, Server\n        \"sector_relevance\": \"keyword[]\",  # energy, water, manufacturing\n        \"neo4j_node_id\": \"keyword\"  # Link back to Neo4j\n    }\n}\n```\n\n**Semantic Search Example:**\n```python\n# User query: \"Find vulnerabilities similar to CVE-2024-1234 affecting SCADA systems\"\n\n# 1. Get reference CVE from Qdrant\nreference_cve = client.retrieve(\n    collection_name=\"cve_semantic_index\",\n    ids=[\"cve_2024_1234\"]\n)[0]\n\n# 2. Find similar CVEs (semantic similarity)\nsimilar_cves = client.search(\n    collection_name=\"cve_semantic_index\",\n    query_vector=reference_cve.vector,\n    query_filter={\n        \"must\": [\n       ",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_14",
+    "text": "# 2. Find similar CVEs (semantic similarity)\nsimilar_cves = client.search(\n    collection_name=\"cve_semantic_index\",\n    query_vector=reference_cve.vector,\n    query_filter={\n        \"must\": [\n            {\"key\": \"affected_systems\", \"match\": {\"any\": [\"SCADA\", \"HMI\"]}},\n            {\"key\": \"cvss_score\", \"range\": {\"gte\": 7.0}}\n        ]\n    },\n    limit=20,\n    score_threshold=0.7\n)\n\n# 3. Enrich with Neo4j graph context\nfor cve in similar_cves:\n    neo4j_result = neo4j_session.run(f\"\"\"\n        MATCH (cve:CVE {{cveID: '{cve.payload['cve_id']}'}})\n        MATCH (cve)<-[:HAS_VULNERABILITY]-(comp:SoftwareComponent)\n        MATCH (comp)-[:INSTALLED_ON]->(asset:Asset)\n        MATCH (customer:Customer {{customer_id: $myID}})-[:OWNS_EQUIPMENT]->(asset)\n        RETURN cve, collect(DISTINCT asset.hostname) AS my_affected_assets\n    \"\"\", myID=current_customer_id)\n```\n\n**Use Cases Enabled:**\n1. **\"Find CVEs like this one\"** - Semantic similarity search\n2. **\"Show me all memory corruption vulnerabili",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_15",
+    "text": "name) AS my_affected_assets\n    \"\"\", myID=current_customer_id)\n```\n\n**Use Cases Enabled:**\n1. **\"Find CVEs like this one\"** - Semantic similarity search\n2. **\"Show me all memory corruption vulnerabilities in ICS\"** - Concept-based search\n3. **\"What CVEs target similar systems?\"** - Asset-type pattern matching\n4. **\"Find exploitation patterns similar to APT28 attacks\"** - Threat actor behavior analysis\n\n---\n\n## 4. IMPLEMENTATION DECISION TRACKING\n\n### 4.1 Problem Statement\n\n**Current Gap:** No systematic way to track:\n- \"Why did we choose approach X over Y for customer filtering?\"\n- \"What customer assignment strategies have been evaluated?\"\n- \"What were the trade-offs for Step 3 implementation?\"\n\n### 4.2 Qdrant Solution: Decision Knowledge Base\n\n**Collection Structure:**\n```python\ncollection_name = \"implementation_decisions\"\n\n{\n    \"vectors\": {\"size\": 1536, \"distance\": \"Cosine\"},\n    \"payload_schema\": {\n        \"decision_id\": \"keyword\",\n        \"decision_type\": \"keyword\",  # architectur",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_16",
+    "text": "n_name = \"implementation_decisions\"\n\n{\n    \"vectors\": {\"size\": 1536, \"distance\": \"Cosine\"},\n    \"payload_schema\": {\n        \"decision_id\": \"keyword\",\n        \"decision_type\": \"keyword\",  # architecture, schema_design, query_optimization\n        \"question\": \"text\",\n        \"decision_summary\": \"text\",\n        \"decision_rationale\": \"text\",\n        \"alternatives_considered\": \"text[]\",\n        \"trade_offs\": \"text\",\n        \"affected_components\": \"keyword[]\",\n        \"ice_score\": \"float\",\n        \"decision_date\": \"datetime\",\n        \"validation_status\": \"keyword\"  # proposed, accepted, implemented, validated\n    }\n}\n```\n\n**Sample Decision:**\n```json\n{\n    \"id\": \"decision_customer_filtering_approach\",\n    \"payload\": {\n        \"decision_id\": \"DEC-001-CUSTOMER-FILTERING\",\n        \"decision_type\": \"schema_design\",\n        \"question\": \"How should we implement multi-tenant customer filtering for equipment?\",\n        \"decision_summary\": \"Add Customer entity + customer_id properties + OWNS_EQUIPMENT",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_17",
+    "text": "schema_design\",\n        \"question\": \"How should we implement multi-tenant customer filtering for equipment?\",\n        \"decision_summary\": \"Add Customer entity + customer_id properties + OWNS_EQUIPMENT relationships\",\n        \"decision_rationale\": \"Evaluated 3 approaches. Chose hybrid for flexibility and query performance. Properties enable fast filtering, relationships enable ownership audit trail.\",\n        \"alternatives_considered\": [\n            \"Property-only: Fast but no ownership history\",\n            \"Relationship-only: Clean but slower for large-scale filtering\",\n            \"Separate Customer table: Requires joins, breaks graph model\"\n        ],\n        \"trade_offs\": \"Hybrid adds 5% storage but provides 40% query performance improvement.\",\n        \"affected_components\": [\"Customer\", \"Organization\", \"Server\", \"Equipment\"],\n        \"ice_score\": 9.6,\n        \"validation_status\": \"implemented\"\n    }\n}\n```\n\n**Benefits:**\n1. **Institutional Memory:** Captures \"why\" behind every majo",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_18",
+    "text": "\", \"Organization\", \"Server\", \"Equipment\"],\n        \"ice_score\": 9.6,\n        \"validation_status\": \"implemented\"\n    }\n}\n```\n\n**Benefits:**\n1. **Institutional Memory:** Captures \"why\" behind every major decision\n2. **Onboarding:** New team members understand rationale instantly\n3. **Pattern Reuse:** Find similar decisions for new problems\n4. **Audit Trail:** Track evolution of implementation approaches\n\n---\n\n## 5. COLLECTION STRUCTURE RECOMMENDATIONS\n\n### 5.1 Proposed Collections\n\n| Collection Name | Purpose | Size Estimate | Update Frequency |\n|----------------|---------|---------------|------------------|\n| `schema_knowledge` | Indexed documentation (33 markdown files) | 400 vectors (~4MB) | Weekly (as docs update) |\n| `agent_shared_memory` | Cross-agent findings & learnings | 1K-10K vectors (~50MB) | Real-time (per agent task) |\n| `cve_semantic_index` | Semantic CVE search | 267K vectors (~1.6GB) | Daily (new CVEs) |\n| `implementation_decisions` | Decision history & rationale | 500-1",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_19",
+    "text": "ors (~50MB) | Real-time (per agent task) |\n| `cve_semantic_index` | Semantic CVE search | 267K vectors (~1.6GB) | Daily (new CVEs) |\n| `implementation_decisions` | Decision history & rationale | 500-1K vectors (~5MB) | Weekly (major decisions) |\n| `query_patterns` | Cypher query examples & templates | 200 vectors (~2MB) | Monthly |\n\n**Total Estimated Storage:** ~1.7GB (with vectors + payloads + indices)\n\n### 5.2 Metadata Schema Design\n\n**Rich Metadata for Hybrid Search:**\n```python\n# Example: Schema knowledge point\npayload = {\n    # Classification\n    \"document_type\": \"query_example\",\n    \"file_source\": \"CUSTOMER_FILTERING_QUERY_EXAMPLES.md\",\n    \"section_title\": \"Q1: CVE Impact on My Equipment - After (With Customer Filtering)\",\n\n    # Content\n    \"content_text\": \"Customer-specific query - only returns equipment owned by the specified customer...\",\n    \"code_snippets\": [\n        \"MATCH (cust:Customer {id: $customerId})-[:OWNS]->(fac:Facility)...\"\n    ],\n\n    # Context\n    \"related_que",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_20",
+    "text": "- only returns equipment owned by the specified customer...\",\n    \"code_snippets\": [\n        \"MATCH (cust:Customer {id: $customerId})-[:OWNS]->(fac:Facility)...\"\n    ],\n\n    # Context\n    \"related_questions\": [\"Q1\", \"Q3\", \"Q5\"],  # Answers which of 8 questions\n    \"ice_score\": 10.0,\n    \"implementation_status\": \"READY_FOR_EXECUTION\",\n\n    # Technical details\n    \"node_types_referenced\": [\"Customer\", \"Facility\", \"Equipment\", \"CVE\"],\n    \"relationship_types\": [\"OWNS\", \"CONTAINS\", \"RUNS\", \"AFFECTS\"],\n    \"query_complexity\": \"medium\",\n    \"expected_performance\": \"<1 second\"\n}\n```\n\n---\n\n## 6. INTEGRATION ARCHITECTURE\n\n### 6.1 System Architecture (Conceptual)\n\n```\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502                    SWARM AGENTS (6+)                        \u2502\n\u2502  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510  \u2502\n\u2502  \u2502  Coder   \u2502 \u2502 Reviewer \u2502 \u2502 Researcher\u2502 \u2502 Architect    \u2502  \u2502\n\u2502  \u2514\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2518 \u2514\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2518 \u2514\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2514\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518  \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_21",
+    "text": "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510  \u2502\n\u2502  \u2502  Coder   \u2502 \u2502 Reviewer \u2502 \u2502 Researcher\u2502 \u2502 Architect    \u2502  \u2502\n\u2502  \u2514\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2518 \u2514\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2518 \u2514\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2518 \u2514\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518  \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n        \u2502            \u2502            \u2502             \u2502\n        \u25bc            \u25bc            \u25bc             \u25bc\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502              QDRANT VECTOR DATABASE                          \u2502\n\u2502  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510   \u2502\n\u2502  \u2502 schema_knowledge   \u2502  \u2502 agent_shared_memory         \u2502   \u2502\n\u2502  \u2502 \u2022 400 doc chunks   \u2502  \u2502 \u2022 Cross-agent findings      \u2502   \u2502\n\u2502  \u2502 \u2022 Semantic search  \u2502  \u2502 \u2022 Learning history          \u2502   \u2502\n\u2502  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518   \u2502\n\u2502  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510   \u2502\n\u2502  \u2502 cve_semantic_index \u2502  \u2502 implementation_decisions    \u2502   \u2502\n\u2502  \u2502 \u2022 267K CVE vectors \u2502  \u2502 \u2022 Decision rationale        \u2502   \u2502\n\u2502  \u2502 \u2022 Similarity se",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_22",
+    "text": "\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510   \u2502\n\u2502  \u2502 cve_semantic_index \u2502  \u2502 implementation_decisions    \u2502   \u2502\n\u2502  \u2502 \u2022 267K CVE vectors \u2502  \u2502 \u2022 Decision rationale        \u2502   \u2502\n\u2502  \u2502 \u2022 Similarity search\u2502  \u2502 \u2022 Trade-off analysis        \u2502   \u2502\n\u2502  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518   \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n              \u2502\n              \u2502 (Coordination & Knowledge)\n              \u2502\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502              NEO4J GRAPH DATABASE                           \u2502\n\u2502  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510    \u2502\n\u2502  \u2502  \u2022 267K CVE nodes (preserved)                      \u2502    \u2502\n\u2502  \u2502  \u2022 111 Equipment nodes                              \u2502    \u2502\n\u2502  \u2502  \u2022 Customer/Organization schema                    \u2502    \u2502\n\u2502  \u2502  \u2022 Relationship traversal (attack paths, OWNS)     \u2502    \u2502\n\u2502  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_23",
+    "text": "                 \u2502    \u2502\n\u2502  \u2502  \u2022 Relationship traversal (attack paths, OWNS)     \u2502    \u2502\n\u2502  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518    \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u252c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n              \u2502\n              \u2502 (Primary data store)\n              \u2502\n\u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2534\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510\n\u2502         FILE-BASED DOCUMENTATION (Authoritative)            \u2502\n\u2502  \u2022 33 markdown files (CUSTOMER_ORG_IMPL, SCHEMA_CAP, etc.) \u2502\n\u2502  \u2022 Cypher query examples                                   \u2502\n\u2502  \u2022 Validation criteria                                     \u2502\n\u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518\n```\n\n### 6.2 Integration Patterns\n\n**Pattern 1: Agent Knowledge Retrieval**\n```python\n# Agent needs implementation guidance\ndef agent_knowledge_lookup(agent_id, query):\n    # 1. Query Qdrant for relevant documentation\n    docs = qdrant_client.search(\n        collection_name=\"schema_knowledge\",\n        query_vector=get_embedding(query),\n ",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_24",
+    "text": "edge_lookup(agent_id, query):\n    # 1. Query Qdrant for relevant documentation\n    docs = qdrant_client.search(\n        collection_name=\"schema_knowledge\",\n        query_vector=get_embedding(query),\n        limit=5\n    )\n\n    # 2. Return code snippets + file references\n    results = []\n    for doc in docs:\n        results.append({\n            \"source_file\": doc.payload['file_source'],\n            \"section\": doc.payload['section_title'],\n            \"code\": doc.payload['code_snippets'],\n            \"relevance_score\": doc.score\n        })\n\n    return results\n```\n\n**Pattern 2: Hybrid Neo4j + Qdrant Query**\n```python\n# Find similar CVEs affecting my equipment\ndef find_similar_cves_on_my_equipment(reference_cve_id, customer_id):\n    # 1. Get similar CVEs from Qdrant (semantic search)\n    similar_cve_ids = qdrant_client.search(\n        collection_name=\"cve_semantic_index\",\n        query_vector=get_reference_vector(reference_cve_id),\n        limit=50,\n        score_threshold=0.7\n    )\n\n    # ",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_25",
+    "text": "r_cve_ids = qdrant_client.search(\n        collection_name=\"cve_semantic_index\",\n        query_vector=get_reference_vector(reference_cve_id),\n        limit=50,\n        score_threshold=0.7\n    )\n\n    # 2. Check which ones affect my equipment (Neo4j graph traversal)\n    cve_ids = [cve.payload['cve_id'] for cve in similar_cve_ids]\n\n    neo4j_query = \"\"\"\n    MATCH (customer:Customer {customer_id: $customer_id})-[:OWNS_EQUIPMENT]->(asset)\n    MATCH (asset)<-[:INSTALLED_ON]-(comp:SoftwareComponent)-[:HAS_VULNERABILITY]->(cve:CVE)\n    WHERE cve.cveID IN $cve_ids\n    RETURN cve.cveID, collect(DISTINCT asset.hostname) AS my_affected_assets\n    \"\"\"\n\n    results = neo4j_session.run(neo4j_query, customer_id=customer_id, cve_ids=cve_ids)\n\n    # 3. Combine: semantic similarity + graph context\n    return combined_results\n```\n\n---\n\n## 7. PERFORMANCE & SCALABILITY ANALYSIS\n\n### 7.1 Latency Comparison\n\n| Operation | Current (File/Neo4j) | With Qdrant | Improvement |\n|-----------|---------------------|---",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_26",
+    "text": "combined_results\n```\n\n---\n\n## 7. PERFORMANCE & SCALABILITY ANALYSIS\n\n### 7.1 Latency Comparison\n\n| Operation | Current (File/Neo4j) | With Qdrant | Improvement |\n|-----------|---------------------|-------------|-------------|\n| Find schema guidance | 30-60 sec (read file) | 0.5-1 sec | **60x faster** |\n| Find similar CVEs | N/A (not possible) | 50-100ms | **New capability** |\n| Check agent findings | N/A (manual coordination) | 100-200ms | **New capability** |\n| Query documentation | 2-3 min (grep all files) | 1-2 sec | **120x faster** |\n\n### 7.2 Storage Requirements\n\n**Per Collection:**\n\n| Collection | Vectors | Payload Size | Vector Size | Total Size |\n|-----------|---------|--------------|-------------|------------|\n| schema_knowledge | 400 | 3KB avg | 6KB (1536\u00d74 bytes) | ~3.6MB |\n| agent_shared_memory | 1,000-10,000 | 2KB avg | 6KB | ~8-80MB |\n| cve_semantic_index | 267,000 | 1KB avg | 6KB | ~1.87GB |\n| implementation_decisions | 500 | 4KB avg | 6KB | ~5MB |\n| query_patterns | 200",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_27",
+    "text": "ent_shared_memory | 1,000-10,000 | 2KB avg | 6KB | ~8-80MB |\n| cve_semantic_index | 267,000 | 1KB avg | 6KB | ~1.87GB |\n| implementation_decisions | 500 | 4KB avg | 6KB | ~5MB |\n| query_patterns | 200 | 2KB avg | 6KB | ~1.6MB |\n\n**Total:** ~1.9-2.0GB (including indices)\n\n### 7.3 Scalability Projections\n\n**Current State:**\n- 267K CVEs \u2192 1.87GB vectors\n- 33 docs \u2192 3.6MB knowledge base\n- 6 agents \u2192 ~1K findings/month \u2192 80MB/year\n\n**Future Growth (5 years):**\n- 400K CVEs (+50K/year) \u2192 ~2.8GB\n- 50 docs (+5/year) \u2192 ~5.5MB\n- 10 agents, 5K findings/year \u2192 1GB total\n\n**Total 5-Year Projection:** ~3.8GB (well within Qdrant's scalability)\n\n---\n\n## 8. PROS/CONS COMPARISON\n\n### 8.1 Comparison Matrix\n\n| Approach | Pros | Cons | Best For |\n|----------|------|------|----------|\n| **File-Based (Current)** | \u2022 Simple<br>\u2022 Human-readable<br>\u2022 Git version control<br>\u2022 Authoritative source | \u2022 Slow search<br>\u2022 No semantic discovery<br>\u2022 Manual coordination<br>\u2022 No similarity matching | Authoritative docume",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_28",
+    "text": "| \u2022 Simple<br>\u2022 Human-readable<br>\u2022 Git version control<br>\u2022 Authoritative source | \u2022 Slow search<br>\u2022 No semantic discovery<br>\u2022 Manual coordination<br>\u2022 No similarity matching | Authoritative documentation, version control |\n| **MCP Memory (Current)** | \u2022 Session persistence<br>\u2022 Key-value simplicity<br>\u2022 Claude-Flow integration | \u2022 No semantic search<br>\u2022 Requires exact keys<br>\u2022 Limited discoverability | Simple session state, temporary data |\n| **Qdrant (Proposed)** | \u2022 Semantic search<br>\u2022 Fast retrieval<br>\u2022 Similarity matching<br>\u2022 Rich metadata filtering<br>\u2022 Cross-agent discovery | \u2022 Additional infrastructure<br>\u2022 Embedding cost (OpenAI)<br>\u2022 Learning curve<br>\u2022 Vector maintenance | Knowledge retrieval, agent coordination, semantic search |\n| **Neo4j (Current)** | \u2022 Relationship traversal<br>\u2022 Complex graph queries<br>\u2022 Strong consistency<br>\u2022 ACID transactions | \u2022 No semantic search<br>\u2022 Exact matching only<br>\u2022 Not for unstructured text | Graph relationships, structured data",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_29",
+    "text": "raversal<br>\u2022 Complex graph queries<br>\u2022 Strong consistency<br>\u2022 ACID transactions | \u2022 No semantic search<br>\u2022 Exact matching only<br>\u2022 Not for unstructured text | Graph relationships, structured data, operational queries |\n\n### 8.2 Recommended Hybrid Approach\n\n**Use Each Tool for Its Strengths:**\n\n1. **File-Based Markdown:**\n   - **Purpose:** Authoritative documentation source\n   - **Update:** When documentation changes\n\n2. **Qdrant:**\n   - **Purpose:** Semantic knowledge retrieval, agent coordination\n   - **Update:** Real-time (agents), daily (CVEs), weekly (docs)\n\n3. **MCP Memory:**\n   - **Purpose:** Simple session state, temporary coordination\n   - **Update:** Per-task execution\n\n4. **Neo4j:**\n   - **Purpose:** Primary graph database for relationships & operations\n   - **Update:** Real-time for operational data\n\n---\n\n## 9. IMPLEMENTATION EFFORT ESTIMATE (ICE SCORING)\n\n### 9.1 Phase 1: Schema Knowledge Retrieval (Weeks 1-2)\n\n**Tasks:**\n1. Set up Qdrant collections (schema_knowledge,",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_30",
+    "text": "-time for operational data\n\n---\n\n## 9. IMPLEMENTATION EFFORT ESTIMATE (ICE SCORING)\n\n### 9.1 Phase 1: Schema Knowledge Retrieval (Weeks 1-2)\n\n**Tasks:**\n1. Set up Qdrant collections (schema_knowledge, query_patterns)\n2. Build document chunking pipeline (33 markdown files)\n3. Generate embeddings (OpenAI text-embedding-3-small)\n4. Upload vectors + metadata to Qdrant\n5. Build agent query interface\n6. Test semantic search accuracy\n\n**ICE Score:**\n- **Impact:** 9/10 (Unlocks 60x faster agent schema lookup)\n- **Confidence:** 9/10 (Proven technology, clear use case)\n- **Ease:** 7/10 (Moderate complexity, requires chunking logic)\n- **Average:** **8.3/10**\n\n**Effort:** 8-10 person-days\n\n### 9.2 Phase 2: Agent Coordination Memory (Weeks 3-4)\n\n**Tasks:**\n1. Create agent_shared_memory collection\n2. Implement pre-task hook (check prior work)\n3. Implement post-task hook (store findings)\n4. Integrate with Claude-Flow swarm coordination\n5. Build agent discovery interface\n6. Test cross-agent learning\n\n",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_31",
+    "text": "plement pre-task hook (check prior work)\n3. Implement post-task hook (store findings)\n4. Integrate with Claude-Flow swarm coordination\n5. Build agent discovery interface\n6. Test cross-agent learning\n\n**ICE Score:**\n- **Impact:** 8/10 (3x swarm coordination efficiency)\n- **Confidence:** 7/10 (Novel integration, requires testing)\n- **Ease:** 6/10 (Complex agent hooks, workflow changes)\n- **Average:** **7.0/10**\n\n**Effort:** 10-12 person-days\n\n### 9.3 Phase 3: Implementation Decision Tracking (Week 7)\n\n**Tasks:**\n1. Create implementation_decisions collection\n2. Backfill major decisions from documentation\n3. Build decision capture workflow\n4. Integrate with agent post-task hooks\n5. Build decision search interface\n\n**ICE Score:**\n- **Impact:** 6/10 (Long-term knowledge retention)\n- **Confidence:** 9/10 (Simple collection, well-defined schema)\n- **Ease:** 8/10 (Low complexity, clear requirements)\n- **Average:** **7.7/10**\n\n**Effort:** 5-7 person-days\n\n### 9.4 Phase 4: CVE Semantic Search (We",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_32",
+    "text": ":** 9/10 (Simple collection, well-defined schema)\n- **Ease:** 8/10 (Low complexity, clear requirements)\n- **Average:** **7.7/10**\n\n**Effort:** 5-7 person-days\n\n### 9.4 Phase 4: CVE Semantic Search (Weeks 5-6, Optional)\n\n**Tasks:**\n1. Create cve_semantic_index collection\n2. Extract CVE descriptions from Neo4j (267K nodes)\n3. Generate embeddings (batch processing)\n4. Upload vectors + rich metadata\n5. Build hybrid Neo4j + Qdrant query API\n6. Performance testing & optimization\n\n**ICE Score:**\n- **Impact:** 8/10 (Enables new similarity search capability)\n- **Confidence:** 8/10 (Well-understood vector search)\n- **Ease:** 5/10 (Large dataset, batch processing complexity)\n- **Average:** **7.0/10**\n\n**Effort:** 12-15 person-days\n\n### 9.5 Total Implementation Effort\n\n**Overall ICE Score:** **7.5/10** (High value, moderate complexity)\n\n**Total Effort:** 35-44 person-days (~7-9 weeks for 1 developer, 4-5 weeks for 2 developers)\n\n**Cost Estimate:**\n- **Development:** 40 person-days \u00d7 $800/day = $32",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_33",
+    "text": "* (High value, moderate complexity)\n\n**Total Effort:** 35-44 person-days (~7-9 weeks for 1 developer, 4-5 weeks for 2 developers)\n\n**Cost Estimate:**\n- **Development:** 40 person-days \u00d7 $800/day = $32,000\n- **OpenAI Embeddings:** ~$50-100 (one-time for 267K CVEs + docs, <$5/month ongoing)\n- **Infrastructure:** Qdrant self-hosted (existing server) = $0\n- **Total:** ~$32,100\n\n**ROI:**\n- **Time Savings:** 80% reduction in agent research time \u00d7 6 agents \u00d7 20 hours/week = 96 hours/week saved\n- **Value:** 96 hours/week \u00d7 $200/hour = $19,200/week saved\n- **Payback Period:** 1.7 weeks\n\n---\n\n## 10. SPECIFIC RECOMMENDATIONS\n\n### 10.1 High-Priority (Implement First)\n\n**1. Schema Knowledge Retrieval**\n- **Why:** Immediate 60x speedup for agent documentation lookup\n- **Effort:** 8-10 days\n- **ROI:** Highest immediate impact\n- **Start:** Week 1\n\n**2. Agent Coordination Memory**\n- **Why:** Unlocks swarm intelligence, prevents duplicate work\n- **Effort:** 10-12 days\n- **ROI:** Multiplies agent effecti",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_34",
+    "text": "ghest immediate impact\n- **Start:** Week 1\n\n**2. Agent Coordination Memory**\n- **Why:** Unlocks swarm intelligence, prevents duplicate work\n- **Effort:** 10-12 days\n- **ROI:** Multiplies agent effectiveness\n- **Start:** Week 3\n\n### 10.2 Medium-Priority (Implement Second)\n\n**3. Implementation Decision Tracking**\n- **Why:** Long-term knowledge preservation, onboarding efficiency\n- **Effort:** 5-7 days\n- **ROI:** Pays off over time\n- **Start:** Week 7\n\n### 10.3 Lower-Priority (Implement Later)\n\n**4. CVE Semantic Search**\n- **Why:** Nice-to-have for research, not critical for current workflows\n- **Effort:** 12-15 days\n- **ROI:** Enables new capabilities but not urgent\n- **Start:** Month 2-3 (after core features stable)\n\n### 10.4 NOT Recommended\n\n**\u274c Using Qdrant for:**\n1. **Primary graph storage** - Neo4j is superior for relationship traversal\n2. **Real-time operational queries** - Neo4j Cypher is faster for structured queries\n3. **Transactional data** - Qdrant is not ACID-compliant\n4. **R",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_35",
+    "text": "ge** - Neo4j is superior for relationship traversal\n2. **Real-time operational queries** - Neo4j Cypher is faster for structured queries\n3. **Transactional data** - Qdrant is not ACID-compliant\n4. **Replacing file-based docs** - Markdown files remain authoritative source\n\n---\n\n## 11. SUCCESS METRICS\n\n### 11.1 Phase 1 Validation\n\n**Schema Knowledge Retrieval:**\n- [ ] Agent documentation lookup: <1 second (vs 30-60 sec baseline)\n- [ ] Search accuracy: >85% relevance score\n- [ ] Knowledge coverage: >90% of docs indexed\n- [ ] Agent satisfaction: >80% find answers on first query\n\n### 11.2 Phase 2 Validation\n\n**Agent Coordination:**\n- [ ] Agent coordination hits: >50% (find prior work before starting)\n- [ ] Duplicate work reduction: >60%\n- [ ] Cross-agent discovery latency: <200ms\n- [ ] Knowledge sharing events: >10 per week\n\n### 11.3 Overall System Health\n\n- [ ] Qdrant uptime: >99.5%\n- [ ] Query latency p95: <500ms\n- [ ] Storage growth: <100MB/month\n- [ ] Embedding cost: <$1/month\n\n---\n\n## ",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_36",
+    "text": "e sharing events: >10 per week\n\n### 11.3 Overall System Health\n\n- [ ] Qdrant uptime: >99.5%\n- [ ] Query latency p95: <500ms\n- [ ] Storage growth: <100MB/month\n- [ ] Embedding cost: <$1/month\n\n---\n\n## 12. NEXT STEPS\n\n### 12.1 Immediate Actions\n\n1. **Review & Approve** this research plan\n2. **Provision OpenAI API key** (~$100 budget for embeddings)\n3. **Assign developer** (estimated 2 weeks for Phase 1)\n4. **Set up monitoring** (query latency, accuracy, coverage metrics)\n\n### 12.2 Phase 1 Kickoff (Week 1)\n\n1. Create `schema_knowledge` collection in Qdrant\n2. Build document chunking pipeline for 33 markdown files\n3. Generate embeddings using OpenAI text-embedding-3-small\n4. Upload vectors + metadata to Qdrant\n5. Build agent query interface (Python client)\n6. Test semantic search accuracy with sample queries\n\n### 12.3 Success Criteria for Phase 1\n\n- [ ] All 33 markdown files indexed (~400 chunks)\n- [ ] Agent queries return results in <1 second\n- [ ] Semantic search accuracy >85% for test q",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_37",
+    "text": " sample queries\n\n### 12.3 Success Criteria for Phase 1\n\n- [ ] All 33 markdown files indexed (~400 chunks)\n- [ ] Agent queries return results in <1 second\n- [ ] Semantic search accuracy >85% for test queries\n- [ ] Integration with at least 2 swarm agents validated\n- [ ] Performance benchmarks documented\n\n---\n\n## APPENDIX: Technical Reference\n\n### A.1 Qdrant Python Client Sample\n\n```python\nfrom qdrant_client import QdrantClient\nfrom qdrant_client.models import Distance, VectorParams, PointStruct\nfrom openai import OpenAI\nimport uuid\n\n# Initialize clients\nqdrant = QdrantClient(\"http://localhost:6333\")\nopenai_client = OpenAI()\n\n# Create collection\nqdrant.create_collection(\n    collection_name=\"schema_knowledge\",\n    vectors_config=VectorParams(size=1536, distance=Distance.COSINE)\n)\n\n# Generate embedding\ndef get_embedding(text):\n    response = openai_client.embeddings.create(\n        model=\"text-embedding-3-small\",\n        input=text\n    )\n    return response.data[0].embedding\n\n# Upload doc",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_38",
+    "text": " embedding\ndef get_embedding(text):\n    response = openai_client.embeddings.create(\n        model=\"text-embedding-3-small\",\n        input=text\n    )\n    return response.data[0].embedding\n\n# Upload document chunk\ntext = \"STEP 3: Enhance Asset Nodes with Customer Properties...\"\nvector = get_embedding(text)\n\nqdrant.upsert(\n    collection_name=\"schema_knowledge\",\n    points=[PointStruct(\n        id=str(uuid.uuid4()),\n        vector=vector,\n        payload={\n            \"document_type\": \"schema_guide\",\n            \"file_source\": \"CUSTOMER_ORGANIZATION_IMPLEMENTATION.md\",\n            \"content_text\": text,\n            \"related_questions\": [\"Q1\", \"Q6\"]\n        }\n    )]\n)\n\n# Search\nquery_vector = get_embedding(\"how to add customer properties to servers?\")\nresults = qdrant.search(\n    collection_name=\"schema_knowledge\",\n    query_vector=query_vector,\n    limit=5\n)\n\nfor result in results:\n    print(f\"Score: {result.score}, Source: {result.payload['file_source']}\")\n```\n\n### A.2 Embedding Cost Esti",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_39",
+    "text": "e=\"schema_knowledge\",\n    query_vector=query_vector,\n    limit=5\n)\n\nfor result in results:\n    print(f\"Score: {result.score}, Source: {result.payload['file_source']}\")\n```\n\n### A.2 Embedding Cost Estimate\n\n**OpenAI text-embedding-3-small Pricing:**\n- **Cost:** $0.02 per 1M tokens\n- **Performance:** 1536 dimensions, 62,500 pages/dollar\n\n**One-Time Indexing (Initial Setup):**\n- 33 markdown files \u00d7 30KB avg = 1MB text = ~250K tokens\n- 267K CVEs \u00d7 200 tokens avg (description) = 53.4M tokens\n- **Total:** 53.65M tokens \u00d7 $0.02/1M = **$1.07 one-time**\n\n**Ongoing Updates:**\n- New CVEs: ~50/day \u00d7 200 tokens = 10K tokens/day = 300K/month = **$0.006/month**\n- Doc updates: ~10 chunks/week \u00d7 500 tokens = 20K/month = **$0.0004/month**\n- Agent findings: ~100/week \u00d7 300 tokens = 120K/month = **$0.0024/month**\n- **Total ongoing:** **~$0.01/month** (negligible)\n\n### A.3 Collection Index Recommendations\n\n**Create these indices for optimal query performance:**\n\n```python\n# schema_knowledge collection\nqdra",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_40",
+    "text": "th**\n- **Total ongoing:** **~$0.01/month** (negligible)\n\n### A.3 Collection Index Recommendations\n\n**Create these indices for optimal query performance:**\n\n```python\n# schema_knowledge collection\nqdrant.create_payload_index(\"schema_knowledge\", \"document_type\", \"keyword\")\nqdrant.create_payload_index(\"schema_knowledge\", \"related_questions\", \"keyword\")\nqdrant.create_payload_index(\"schema_knowledge\", \"ice_score\", \"float\")\nqdrant.create_payload_index(\"schema_knowledge\", \"file_source\", \"keyword\")\n\n# agent_shared_memory collection\nqdrant.create_payload_index(\"agent_shared_memory\", \"agent_id\", \"keyword\")\nqdrant.create_payload_index(\"agent_shared_memory\", \"task_type\", \"keyword\")\nqdrant.create_payload_index(\"agent_shared_memory\", \"finding_type\", \"keyword\")\nqdrant.create_payload_index(\"agent_shared_memory\", \"resolution_status\", \"keyword\")\n\n# cve_semantic_index collection (Phase 4)\nqdrant.create_payload_index(\"cve_semantic_index\", \"cve_id\", \"keyword\")\nqdrant.create_payload_index(\"cve_semantic_inde",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 40,
+      "start_char": 32000,
+      "end_char": 33000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_41",
+    "text": "emory\", \"resolution_status\", \"keyword\")\n\n# cve_semantic_index collection (Phase 4)\nqdrant.create_payload_index(\"cve_semantic_index\", \"cve_id\", \"keyword\")\nqdrant.create_payload_index(\"cve_semantic_index\", \"cvss_score\", \"float\")\nqdrant.create_payload_index(\"cve_semantic_index\", \"affected_systems\", \"keyword\")\n```\n\n---\n\n## CONCLUSION\n\n**Qdrant integration is HIGHLY RECOMMENDED** for this cybersecurity threat intelligence platform, with focus on:\n\n1. \u2705 **Schema knowledge retrieval** (60x faster, Phase 1 priority)\n2. \u2705 **Agent coordination memory** (3x efficiency, Phase 2 priority)\n3. \u2705 **Implementation decision tracking** (long-term value, Phase 3)\n4. \u26a0\ufe0f **CVE semantic search** (nice-to-have, Phase 4 optional)\n\n**Recommended Action:** Approve Phase 1 implementation (Schema Knowledge Retrieval) for immediate execution.\n\n**Total Investment:** $32,100 | **Payback Period:** 1.7 weeks | **Overall ICE Score:** 7.5/10\n\n---\n\n**END OF RESEARCH ANALYSIS**\n\n**Status:** COMPLETE - Ready for stakeholder",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 41,
+      "start_char": 32800,
+      "end_char": 33800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "QDRANT_INTEGRATION_PLAN.md_chunk_42",
+    "text": "for immediate execution.\n\n**Total Investment:** $32,100 | **Payback Period:** 1.7 weeks | **Overall ICE Score:** 7.5/10\n\n---\n\n**END OF RESEARCH ANALYSIS**\n\n**Status:** COMPLETE - Ready for stakeholder approval\n**Next Step:** Approve Phase 1 and assign developer resources\n",
+    "metadata": {
+      "file_name": "QDRANT_INTEGRATION_PLAN.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/QDRANT_INTEGRATION_PLAN.md",
+      "file_size": 33872,
+      "indexed_at": "2025-10-31T00:59:19.325417",
+      "chunk_id": 42,
+      "start_char": 33600,
+      "end_char": 34600,
+      "chunk_size": 272
+    }
+  }
+]

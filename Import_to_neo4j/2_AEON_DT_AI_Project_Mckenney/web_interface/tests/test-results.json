@@ -1,0 +1,375 @@
+{
+  "timestamp": "2025-11-04T03:09:35.694Z",
+  "backend": {
+    "Neo4j Connection": {
+      "status": "FAIL",
+      "httpStatus": 503,
+      "data": {
+        "error": "Failed to connect to Neo4j",
+        "totalCustomers": 0,
+        "totalDocuments": 0,
+        "totalTags": 0,
+        "totalSharedDocuments": 0
+      },
+      "verified": false,
+      "error": "Verification failed or invalid response"
+    },
+    "Qdrant Connection": {
+      "status": "FAIL",
+      "httpStatus": 503,
+      "data": {
+        "status": "degraded",
+        "timestamp": "2025-11-04T03:09:49.732Z",
+        "checks": {
+          "neo4j": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "Timeout after 2000ms"
+          },
+          "qdrant": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "The operation was aborted due to timeout"
+          },
+          "mysql": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "connect ETIMEDOUT"
+          },
+          "minio": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "Failed to parse URL from openspg-minio/minio/health/live"
+          },
+          "api": {
+            "status": "operational",
+            "connected": true,
+            "responseTime": 5,
+            "uptime": "99.9%"
+          },
+          "vectorDb": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "The operation was aborted due to timeout"
+          }
+        },
+        "environment": {
+          "nodeEnv": "development",
+          "appName": "AEON UI"
+        }
+      },
+      "verified": false,
+      "error": "Verification failed or invalid response"
+    },
+    "MySQL Connection": {
+      "status": "FAIL",
+      "httpStatus": 503,
+      "data": {
+        "status": "degraded",
+        "timestamp": "2025-11-04T03:09:51.753Z",
+        "checks": {
+          "neo4j": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "Timeout after 2000ms"
+          },
+          "qdrant": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "The operation was aborted due to timeout"
+          },
+          "mysql": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "connect ETIMEDOUT"
+          },
+          "minio": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "Failed to parse URL from openspg-minio/minio/health/live"
+          },
+          "api": {
+            "status": "operational",
+            "connected": true,
+            "responseTime": 5,
+            "uptime": "99.9%"
+          },
+          "vectorDb": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "The operation was aborted due to timeout"
+          }
+        },
+        "environment": {
+          "nodeEnv": "development",
+          "appName": "AEON UI"
+        }
+      },
+      "verified": false,
+      "error": "Verification failed or invalid response"
+    },
+    "MinIO Connection": {
+      "status": "FAIL",
+      "httpStatus": 503,
+      "data": {
+        "status": "degraded",
+        "timestamp": "2025-11-04T03:09:53.769Z",
+        "checks": {
+          "neo4j": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "Timeout after 2000ms"
+          },
+          "qdrant": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "The operation was aborted due to timeout"
+          },
+          "mysql": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "connect ETIMEDOUT"
+          },
+          "minio": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "Failed to parse URL from openspg-minio/minio/health/live"
+          },
+          "api": {
+            "status": "operational",
+            "connected": true,
+            "responseTime": 5,
+            "uptime": "99.9%"
+          },
+          "vectorDb": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "The operation was aborted due to timeout"
+          }
+        },
+        "environment": {
+          "nodeEnv": "development",
+          "appName": "AEON UI"
+        }
+      },
+      "verified": false,
+      "error": "Verification failed or invalid response"
+    }
+  },
+  "pages": {
+    "Home Dashboard": {
+      "status": "PASS",
+      "httpStatus": 200,
+      "contentLength": 33919,
+      "error": null
+    },
+    "Upload Page": {
+      "status": "PASS",
+      "httpStatus": 200,
+      "contentLength": 32410,
+      "error": null
+    },
+    "Search Page": {
+      "status": "FAIL",
+      "httpStatus": 500,
+      "contentLength": 23841,
+      "error": "HTTP 500"
+    },
+    "Tags Page": {
+      "status": "FAIL",
+      "httpStatus": 500,
+      "contentLength": 23815,
+      "error": "HTTP 500"
+    },
+    "Customers Page": {
+      "status": "PASS",
+      "httpStatus": 200,
+      "contentLength": 22150,
+      "error": null
+    },
+    "Chat Page": {
+      "status": "PASS",
+      "httpStatus": 200,
+      "contentLength": 33413,
+      "error": null
+    },
+    "Graph Page": {
+      "status": "FAIL",
+      "httpStatus": 500,
+      "contentLength": 17606,
+      "error": "HTTP 500"
+    },
+    "Analytics Page": {
+      "status": "PASS",
+      "httpStatus": 200,
+      "contentLength": 35487,
+      "error": null
+    },
+    "Observability Page": {
+      "status": "PASS",
+      "httpStatus": 200,
+      "contentLength": 26881,
+      "error": null
+    }
+  },
+  "apis": {
+    "Health Check": {
+      "status": "FAIL",
+      "httpStatus": 503,
+      "data": {
+        "status": "degraded",
+        "timestamp": "2025-11-04T03:10:07.736Z",
+        "checks": {
+          "neo4j": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "Timeout after 2000ms"
+          },
+          "qdrant": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "The operation was aborted due to timeout"
+          },
+          "mysql": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "connect ETIMEDOUT"
+          },
+          "minio": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "Failed to parse URL from openspg-minio/minio/health/live"
+          },
+          "api": {
+            "status": "operational",
+            "connected": true,
+            "responseTime": 5,
+            "uptime": "99.9%"
+          },
+          "vectorDb": {
+            "status": "unhealthy",
+            "connected": false,
+            "message": "The operation was aborted due to timeout"
+          }
+        },
+        "environment": {
+          "nodeEnv": "development",
+          "appName": "AEON UI"
+        }
+      },
+      "verified": false,
+      "error": "Verification failed"
+    },
+    "Neo4j Statistics": {
+      "status": "ERROR",
+      "error": "Request timeout"
+    },
+    "Observability Overview": {
+      "status": "FAIL",
+      "httpStatus": 500,
+      "data": "Internal Server Error",
+      "verified": false,
+      "error": "Verification failed"
+    },
+    "Customers API": {
+      "status": "FAIL",
+      "httpStatus": 500,
+      "data": "Internal Server Error",
+      "verified": false,
+      "error": "Verification failed"
+    },
+    "Tags API": {
+      "status": "FAIL",
+      "httpStatus": 500,
+      "data": "Internal Server Error",
+      "verified": false,
+      "error": "Verification failed"
+    },
+    "Search API": {
+      "status": "FAIL",
+      "httpStatus": 500,
+      "data": "Internal Server Error",
+      "verified": false,
+      "error": "Verification failed"
+    }
+  },
+  "navigation": {
+    "Home accessible": {
+      "status": "FAIL",
+      "httpStatus": 500
+    },
+    "Upload accessible": {
+      "status": "FAIL",
+      "httpStatus": 500
+    },
+    "Search accessible": {
+      "status": "FAIL",
+      "httpStatus": 500
+    },
+    "Analytics accessible": {
+      "status": "FAIL",
+      "httpStatus": 500
+    }
+  },
+  "quickActions": {
+    "Upload Document": {
+      "status": "FAIL",
+      "httpStatus": 500
+    },
+    "Search Knowledge": {
+      "status": "FAIL",
+      "httpStatus": 500
+    },
+    "View Graph": {
+      "status": "FAIL",
+      "httpStatus": 500
+    },
+    "Manage Tags": {
+      "status": "FAIL",
+      "httpStatus": 500
+    },
+    "View Customers": {
+      "status": "FAIL",
+      "httpStatus": 500
+    },
+    "Chat Interface": {
+      "status": "FAIL",
+      "httpStatus": 500
+    },
+    "View Analytics": {
+      "status": "FAIL",
+      "httpStatus": 500
+    }
+  },
+  "summary": {
+    "total": 30,
+    "passed": 6,
+    "failed": 24,
+    "errors": [
+      "Neo4j Connection: Failed verification",
+      "Qdrant Connection: Failed verification",
+      "MySQL Connection: Failed verification",
+      "MinIO Connection: Failed verification",
+      "Search Page: HTTP 500",
+      "Tags Page: HTTP 500",
+      "Graph Page: HTTP 500",
+      "Health Check: Failed verification",
+      "Neo4j Statistics: Request timeout",
+      "Observability Overview: Failed verification",
+      "Customers API: Failed verification",
+      "Tags API: Failed verification",
+      "Search API: Failed verification",
+      "Home accessible: HTTP 500",
+      "Upload accessible: HTTP 500",
+      "Search accessible: HTTP 500",
+      "Analytics accessible: HTTP 500",
+      "Upload Document: HTTP 500",
+      "Search Knowledge: HTTP 500",
+      "View Graph: HTTP 500",
+      "Manage Tags: HTTP 500",
+      "View Customers: HTTP 500",
+      "Chat Interface: HTTP 500",
+      "View Analytics: HTTP 500"
+    ]
+  }
+}

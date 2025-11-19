@@ -1,0 +1,168 @@
+version: "3.8"
+
+# ============================================================================
+# QDRANT VECTOR DATABASE FOR OPENSPG CYBERSECURITY PLATFORM
+# ============================================================================
+# Purpose: Separate Qdrant deployment that integrates with OpenSPG ecosystem
+# Network: Joins existing openspg-network for cross-container communication
+# Volumes: Dedicated persistence + shared data exchange + host backups
+# Security: API key authentication, resource limits, health monitoring
+# Created: 2025-10-31
+# ============================================================================
+
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: openspg-qdrant
+    restart: always
+
+    # ========================================================================
+    # NETWORK CONFIGURATION
+    # ========================================================================
+    # Joins existing OpenSPG network for seamless container-to-container access
+    # DNS name: openspg-qdrant (accessible from all OpenSPG containers)
+    networks:
+      - openspg-network
+
+    # ========================================================================
+    # PORT MAPPING
+    # ========================================================================
+    ports:
+      - "6333:6333"  # HTTP API (REST endpoints, web UI)
+      - "6334:6334"  # gRPC API (high-performance binary protocol)
+
+    # ========================================================================
+    # VOLUME MOUNTS
+    # ========================================================================
+    # CRITICAL: Separate concerns - dedicated storage + shared exchange
+    volumes:
+      # PRIMARY: Dedicated persistent storage for Qdrant internal database
+      # NEVER use shared volume for this - risk of corruption
+      - openspg-qdrant-data:/qdrant/storage
+
+      # SECONDARY: Shared volume for data exchange with OpenSPG services
+      # Use for: embeddings cache, exports, agent memory backups
+      - openspg-shared-data:/shared:rw
+
+      # TERTIARY: Host-mounted backup directory for disaster recovery
+      # Daily snapshots exported here for external backup systems
+      - ${HOME}/qdrant-backups:/qdrant/backups:rw
+
+      # Time synchronization with host
+      - /etc/localtime:/etc/localtime:ro
+
+    # ========================================================================
+    # ENVIRONMENT VARIABLES
+    # ========================================================================
+    # Loaded from .env.qdrant file for security
+    environment:
+      # Timezone
+      - TZ=Asia/Shanghai
+      - LANG=C.UTF-8
+
+      # Security: API Key Authentication
+      - QDRANT__SERVICE__API_KEY=${QDRANT_API_KEY}
+
+      # Logging
+      - QDRANT__LOG_LEVEL=${QDRANT_LOG_LEVEL:-INFO}
+
+      # Performance Tuning
+      - QDRANT__STORAGE__PERFORMANCE__MAX_SEARCH_THREADS=${QDRANT_STORAGE_PERFORMANCE_MAX_SEARCH_THREADS:-4}
+      - QDRANT__STORAGE__OPTIMIZERS__DEFAULT_SEGMENT_NUMBER=${QDRANT_STORAGE_OPTIMIZERS_DEFAULT_SEGMENT_NUMBER:-2}
+
+      # Collection Defaults (HNSW index parameters)
+      - QDRANT__COLLECTION__DEFAULT_HNSW_EF_CONSTRUCT=${QDRANT_COLLECTION_DEFAULT_HNSW_EF_CONSTRUCT:-100}
+      - QDRANT__COLLECTION__DEFAULT_HNSW_M=${QDRANT_COLLECTION_DEFAULT_HNSW_M:-16}
+
+    # ========================================================================
+    # HEALTH CHECK
+    # ========================================================================
+    # Ensures container is ready before marking as healthy
+    # Other services can use depends_on conditions if needed
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6333/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+    # ========================================================================
+    # RESOURCE LIMITS
+    # ========================================================================
+    # Prevents resource contention with OpenSPG services (Neo4j uses 6GB)
+    # Adjust based on your system capacity
+    deploy:
+      resources:
+        limits:
+          memory: ${QDRANT_MEMORY_LIMIT:-4G}
+          cpus: '${QDRANT_CPU_LIMIT:-2.0}'
+        reservations:
+          memory: ${QDRANT_MEMORY_RESERVATION:-2G}
+          cpus: '${QDRANT_CPU_RESERVATION:-1.0}'
+
+    # ========================================================================
+    # LABELS
+    # ========================================================================
+    # For monitoring and management
+    labels:
+      - "com.openspg.service=qdrant"
+      - "com.openspg.description=Vector database for semantic search and agent coordination"
+      - "com.openspg.version=1.0.0"
+      - "com.openspg.integration=option-b-12-wave-implementation"
+
+# ==============================================================================
+# NETWORKS
+# ==============================================================================
+# Use existing OpenSPG network - do NOT create new network
+networks:
+  openspg-network:
+    external: true  # CRITICAL: Must already exist from OpenSPG deployment
+    name: openspg-network
+
+# ==============================================================================
+# VOLUMES
+# ==============================================================================
+volumes:
+  # Dedicated Qdrant storage - persistent across container restarts
+  openspg-qdrant-data:
+    driver: local
+    name: openspg-qdrant-data
+    labels:
+      - "com.openspg.volume=qdrant-persistent-storage"
+      - "com.openspg.backup-schedule=daily"
+
+  # Shared data exchange volume - must already exist
+  openspg-shared-data:
+    external: true  # CRITICAL: Created by OpenSPG deployment
+    name: openspg-shared-data
+
+# ==============================================================================
+# USAGE INSTRUCTIONS
+# ==============================================================================
+#
+# START QDRANT:
+#   docker-compose -f docker-compose.qdrant.yml up -d
+#
+# STOP QDRANT:
+#   docker-compose -f docker-compose.qdrant.yml down
+#
+# VIEW LOGS:
+#   docker-compose -f docker-compose.qdrant.yml logs -f
+#
+# CHECK STATUS:
+#   docker-compose -f docker-compose.qdrant.yml ps
+#
+# RESTART QDRANT:
+#   docker-compose -f docker-compose.qdrant.yml restart
+#
+# ACCESS FROM OPENSPG CONTAINERS:
+#   curl -H "api-key: $QDRANT_API_KEY" http://openspg-qdrant:6333/health
+#
+# ACCESS FROM HOST:
+#   curl -H "api-key: $QDRANT_API_KEY" http://localhost:6333/health
+#
+# PYTHON CLIENT:
+#   from qdrant_client import QdrantClient
+#   client = QdrantClient(url="http://openspg-qdrant:6333", api_key=os.getenv("QDRANT_API_KEY"))
+#
+# ==============================================================================

@@ -1,0 +1,828 @@
+[
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_0",
+    "text": "# Wave 8: IT Infrastructure and Physical Security Integration\n\n**File**: 10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md\n**Created**: 2025-10-30\n**Version**: v1.0.0\n**Status**: ACTIVE\n**Wave Duration**: 3 weeks\n**Target Node Count**: ~400 nodes\n**Dependencies**: Waves 1-7 (ATT&CK, Assets, CVE, ICS, UCO/STIX, Psychometric)\n\n## 1. Wave Overview\n\n### 1.1 Objectives\n\nWave 8 completes the AEON Digital Twin cybersecurity knowledge graph by integrating comprehensive IT infrastructure topology, network architecture, and physical security controls. This wave bridges cyber and physical security domains, enabling holistic risk assessment across digital and physical attack surfaces.\n\n**Primary Goals**:\n- Model complete IT infrastructure topology (servers, network devices, endpoints)\n- Implement network architecture and segmentation models (VLANs, subnets, DMZs)\n- Integrate physical security controls (access control, surveillance, environmental)\n- Model data center and facility layouts\n- Connect infrastruc",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_1",
+    "text": "ecture and segmentation models (VLANs, subnets, DMZs)\n- Integrate physical security controls (access control, surveillance, environmental)\n- Model data center and facility layouts\n- Connect infrastructure to attack techniques and vulnerabilities\n- Enable cyber-physical attack path analysis\n- Support compliance frameworks (NIST 800-53 physical controls, ISO 27001 physical security)\n\n**Business Value**:\n- Complete attack surface visibility (cyber + physical)\n- Cyber-physical risk correlation and analysis\n- Data center security assessment\n- Network segmentation effectiveness validation\n- Physical penetration testing support\n- Regulatory compliance (SOC 2, PCI DSS, HIPAA physical security)\n- Incident response with infrastructure context\n\n### 1.2 Scope Definition\n\n**In Scope**:\n\n**IT Infrastructure**:\n- Servers (physical, virtual, cloud instances)\n- Network devices (routers, switches, firewalls, load balancers)\n- Endpoints (workstations, laptops, mobile devices)\n- Network topology and segme",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_2",
+    "text": "ture**:\n- Servers (physical, virtual, cloud instances)\n- Network devices (routers, switches, firewalls, load balancers)\n- Endpoints (workstations, laptops, mobile devices)\n- Network topology and segmentation\n- IP address management and DNS\n- Storage systems (SAN, NAS, object storage)\n\n**Physical Security**:\n- Physical access control systems (badge readers, biometrics)\n- Surveillance systems (CCTV, motion sensors)\n- Environmental controls (HVAC, fire suppression, power)\n- Perimeter security (fences, gates, guards)\n- Data center physical layout\n- Secure areas and zones\n\n**Integration Points**:\n- Infrastructure to CVE vulnerability mapping\n- Network paths to ATT&CK lateral movement techniques\n- Physical access to cyber asset compromise scenarios\n- Environmental failures to system availability impacts\n\n**Out of Scope**:\n- Building Information Modeling (BIM) detailed 3D models\n- Electrical engineering schematics (future consideration)\n- Detailed HVAC engineering specifications\n- Third-party",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_3",
+    "text": " impacts\n\n**Out of Scope**:\n- Building Information Modeling (BIM) detailed 3D models\n- Electrical engineering schematics (future consideration)\n- Detailed HVAC engineering specifications\n- Third-party facility management systems integration\n\n### 1.3 Dependencies\n\n**Required Completed Waves**:\n- Wave 2: Asset classification (for infrastructure asset types)\n- Wave 4: CVE integration (for infrastructure vulnerabilities)\n- Wave 5: ICS framework (for OT/IT convergence points)\n- Wave 6: UCO/STIX (for infrastructure in investigations)\n\n**External Standards**:\n- NIST SP 800-53 Physical and Environmental Protection (PE) controls\n- ISO/IEC 27001:2022 Annex A.7 Physical and Environmental Security\n- PCI DSS Requirement 9 (Physical Access)\n- Uptime Institute Data Center Tier Classification\n- TIA-942 Data Center Standards\n- IEEE 802.1Q VLAN Standards\n\n**Technical Requirements**:\n- Network discovery tools integration (Nmap, network scanners)\n- CMDB (Configuration Management Database) integration\n- Ph",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_4",
+    "text": "ta Center Standards\n- IEEE 802.1Q VLAN Standards\n\n**Technical Requirements**:\n- Network discovery tools integration (Nmap, network scanners)\n- CMDB (Configuration Management Database) integration\n- Physical security system APIs (where available)\n- Asset management system data feeds\n\n### 1.4 Success Metrics\n\n**Quantitative Metrics**:\n- 200+ infrastructure nodes (servers, network devices, endpoints)\n- 50+ network segment/VLAN nodes\n- 30+ physical security control nodes\n- 10+ data center/facility nodes\n- 500+ infrastructure-to-vulnerability mappings\n- 100+ network path relationships\n- 50+ physical-to-cyber attack path correlations\n- Query performance <1 second for attack path enumeration\n\n**Qualitative Metrics**:\n- Complete network topology visualization capability\n- Cyber-physical attack scenario modeling\n- Network segmentation validation\n- Physical security posture assessment\n- Integration with ATT&CK lateral movement techniques\n- Support for compliance audits (SOC 2, PCI DSS)\n\n## 2. Co",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_5",
+    "text": "nario modeling\n- Network segmentation validation\n- Physical security posture assessment\n- Integration with ATT&CK lateral movement techniques\n- Support for compliance audits (SOC 2, PCI DSS)\n\n## 2. Complete Node Schemas\n\n### 2.1 IT Infrastructure Nodes\n\n#### 2.1.1 Server Node\n\n**Node Label**: `Server`\n\n**Description**: Represents physical, virtual, or cloud server infrastructure.\n\n**Properties**:\n```cypher\n{\n  server_id: String,             // Unique server identifier\n  hostname: String,              // Server hostname (FQDN)\n  server_type: String,           // PHYSICAL, VIRTUAL, CLOUD, CONTAINER\n\n  // Hardware specifications (physical servers)\n  manufacturer: String,\n  model: String,\n  serial_number: String,\n  cpu_model: String,\n  cpu_cores: Integer,\n  ram_gb: Integer,\n  storage_type: String,          // SSD, HDD, NVME\n  storage_capacity_gb: Integer,\n\n  // Operating system\n  os_family: String,             // Windows, Linux, Unix, etc.\n  os_version: String,\n  os_patch_level: String,\n  ",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_6",
+    "text": "ing,          // SSD, HDD, NVME\n  storage_capacity_gb: Integer,\n\n  // Operating system\n  os_family: String,             // Windows, Linux, Unix, etc.\n  os_version: String,\n  os_patch_level: String,\n  kernel_version: String,\n\n  // Network configuration\n  primary_ip_address: String,\n  secondary_ip_addresses: [String],\n  mac_address: String,\n  network_segment: String,       // VLAN or subnet identifier\n  dns_names: [String],\n\n  // Cloud/virtualization (if applicable)\n  cloud_provider: String,        // AWS, Azure, GCP, etc.\n  cloud_instance_type: String,   // e.g., \"m5.xlarge\"\n  cloud_region: String,\n  cloud_availability_zone: String,\n  hypervisor: String,            // VMware, Hyper-V, KVM, etc.\n  vm_host_id: String,            // Parent physical host\n\n  // Role and criticality\n  server_role: String,           // \"Web Server\", \"Database Server\", \"Domain Controller\", etc.\n  business_services: [String],   // Business services hosted\n  criticality: String,           // LOW, MEDIUM, HIGH, CR",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_7",
+    "text": ": String,           // \"Web Server\", \"Database Server\", \"Domain Controller\", etc.\n  business_services: [String],   // Business services hosted\n  criticality: String,           // LOW, MEDIUM, HIGH, CRITICAL\n  uptime_requirement: String,    // \"99.99%\", \"24/7\", etc.\n\n  // Security configuration\n  antivirus_installed: Boolean,\n  edr_installed: Boolean,\n  firewall_enabled: Boolean,\n  encryption_at_rest: Boolean,\n  encryption_in_transit: Boolean,\n  patch_status: String,          // CURRENT, OUTDATED, CRITICAL_MISSING\n  last_patched: DateTime,\n\n  // Monitoring and management\n  monitoring_agent: String,\n  backup_schedule: String,\n  last_backup: DateTime,\n  backup_retention_days: Integer,\n\n  // Physical location (if physical server)\n  data_center: String,\n  rack_id: String,\n  rack_unit_position: String,\n  physical_access_zone: String,\n\n  // Operational status\n  operational_state: String,     // RUNNING, STOPPED, MAINTENANCE, DECOMMISSIONED\n  last_boot_time: DateTime,\n  uptime_days: Integer,\n\n",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_8",
+    "text": "String,\n  physical_access_zone: String,\n\n  // Operational status\n  operational_state: String,     // RUNNING, STOPPED, MAINTENANCE, DECOMMISSIONED\n  last_boot_time: DateTime,\n  uptime_days: Integer,\n\n  // Compliance and standards\n  compliance_requirements: [String], // PCI DSS, HIPAA, SOC 2, etc.\n  security_hardening_applied: Boolean,\n  hardening_standard: String,    // CIS Benchmark, STIG, etc.\n\n  // Vulnerabilities\n  known_vulnerabilities: [String], // CVE IDs\n  vulnerability_scan_date: DateTime,\n\n  // Metadata\n  node_id: String,\n  asset_owner: String,\n  asset_owner_email: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement (Example - Domain Controller)**:\n```cypher\n// Create Server: Domain Controller\nCREATE (s:Server {\n  server_id: \"SRV-DC-01\",\n  hostname: \"dc01.corp.example.com\",\n  server_type: \"VIRTUAL\",\n\n  manufacturer: \"Dell\",\n  model: \"PowerEdge R740\",\n  serial_number: \"VM-DC01-12345\",\n  cpu_model: \"I",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_9",
+    "text": ":Server {\n  server_id: \"SRV-DC-01\",\n  hostname: \"dc01.corp.example.com\",\n  server_type: \"VIRTUAL\",\n\n  manufacturer: \"Dell\",\n  model: \"PowerEdge R740\",\n  serial_number: \"VM-DC01-12345\",\n  cpu_model: \"Intel Xeon Gold 6248\",\n  cpu_cores: 8,\n  ram_gb: 64,\n  storage_type: \"SSD\",\n  storage_capacity_gb: 500,\n\n  os_family: \"Windows\",\n  os_version: \"Windows Server 2022 Datacenter\",\n  os_patch_level: \"21H2\",\n  kernel_version: \"10.0.20348.2031\",\n\n  primary_ip_address: \"10.10.1.10\",\n  secondary_ip_addresses: [],\n  mac_address: \"00:50:56:A1:B2:C3\",\n  network_segment: \"VLAN-10-SERVERS\",\n  dns_names: [\"dc01.corp.example.com\", \"dc01\"],\n\n  hypervisor: \"VMware ESXi 7.0\",\n  vm_host_id: \"ESXi-HOST-03\",\n\n  server_role: \"Active Directory Domain Controller\",\n  business_services: [\n    \"Active Directory Domain Services\",\n    \"DNS Server\",\n    \"Group Policy Management\",\n    \"LDAP Authentication\"\n  ],\n  criticality: \"CRITICAL\",\n  uptime_requirement: \"99.99% (4 nines)\",\n\n  antivirus_installed: true,\n  edr_instal",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_10",
+    "text": "rvices\",\n    \"DNS Server\",\n    \"Group Policy Management\",\n    \"LDAP Authentication\"\n  ],\n  criticality: \"CRITICAL\",\n  uptime_requirement: \"99.99% (4 nines)\",\n\n  antivirus_installed: true,\n  edr_installed: true,\n  firewall_enabled: true,\n  encryption_at_rest: true,\n  encryption_in_transit: true,\n  patch_status: \"CURRENT\",\n  last_patched: datetime('2024-10-25T02:00:00Z'),\n\n  monitoring_agent: \"SCOM Agent v2023\",\n  backup_schedule: \"Daily full + hourly incrementals\",\n  last_backup: datetime('2024-10-30T03:00:00Z'),\n  backup_retention_days: 90,\n\n  data_center: \"DC-PRIMARY-01\",\n  rack_id: \"RACK-A-15\",\n  rack_unit_position: \"U12-U14\",\n  physical_access_zone: \"ZONE-CRITICAL-SERVER-ROOM\",\n\n  operational_state: \"RUNNING\",\n  last_boot_time: datetime('2024-09-15T08:00:00Z'),\n  uptime_days: 45,\n\n  compliance_requirements: [\"SOC 2\", \"NIST 800-53\", \"CIS Controls\"],\n  security_hardening_applied: true,\n  hardening_standard: \"CIS Windows Server 2022 Benchmark v1.0\",\n\n  known_vulnerabilities: [],\n  vuln",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_11",
+    "text": "pliance_requirements: [\"SOC 2\", \"NIST 800-53\", \"CIS Controls\"],\n  security_hardening_applied: true,\n  hardening_standard: \"CIS Windows Server 2022 Benchmark v1.0\",\n\n  known_vulnerabilities: [],\n  vulnerability_scan_date: datetime('2024-10-28T00:00:00Z'),\n\n  node_id: randomUUID(),\n  asset_owner: \"IT Infrastructure Team\",\n  asset_owner_email: \"infra@corp.example.com\",\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n```cypher\n// Unique constraint on server ID\nCREATE CONSTRAINT server_id_unique IF NOT EXISTS\nFOR (s:Server) REQUIRE s.server_id IS UNIQUE;\n\n// Index on hostname for lookups\nCREATE INDEX server_hostname_idx IF NOT EXISTS\nFOR (s:Server) ON (s.hostname);\n\n// Index on primary IP address\nCREATE INDEX server_ip_idx IF NOT EXISTS\nFOR (s:Server) ON (s.primary_ip_address);\n\n// Index on server role\nCREATE INDEX server_role_idx IF NOT EXISTS\nFOR (s:Server) ON (s.server_role);\n\n// Index on criticality f",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_12",
+    "text": " server_ip_idx IF NOT EXISTS\nFOR (s:Server) ON (s.primary_ip_address);\n\n// Index on server role\nCREATE INDEX server_role_idx IF NOT EXISTS\nFOR (s:Server) ON (s.server_role);\n\n// Index on criticality for risk queries\nCREATE INDEX server_criticality_idx IF NOT EXISTS\nFOR (s:Server) ON (s.criticality);\n\n// Index on network segment for topology queries\nCREATE INDEX server_network_segment_idx IF NOT EXISTS\nFOR (s:Server) ON (s.network_segment);\n\n// Full-text search on hostname and DNS names\nCREATE FULLTEXT INDEX server_fulltext IF NOT EXISTS\nFOR (s:Server) ON EACH [s.hostname, s.server_id, s.dns_names];\n```\n\n#### 2.1.2 Network Device Node\n\n**Node Label**: `NetworkDevice`\n\n**Description**: Represents network infrastructure devices (routers, switches, firewalls, load balancers).\n\n**Properties**:\n```cypher\n{\n  device_id: String,             // Unique device identifier\n  hostname: String,              // Device hostname\n  device_type: String,           // ROUTER, SWITCH, FIREWALL, LOAD_BALANCER",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_13",
+    "text": "```cypher\n{\n  device_id: String,             // Unique device identifier\n  hostname: String,              // Device hostname\n  device_type: String,           // ROUTER, SWITCH, FIREWALL, LOAD_BALANCER, VPN_GATEWAY, IDS, IPS\n\n  // Hardware details\n  manufacturer: String,\n  model: String,\n  serial_number: String,\n  firmware_version: String,\n\n  // Network configuration\n  management_ip: String,\n  ip_addresses: [String],        // All configured IPs\n  mac_address: String,\n  interfaces: [Map],             // Interface details\n  routing_table: [Map],          // Routing information\n  vlans_configured: [String],    // VLANs on this device\n\n  // Role and placement\n  network_role: String,          // \"Core\", \"Distribution\", \"Access\", \"Perimeter\", \"DMZ\"\n  network_layer: String,         // \"Layer 2\", \"Layer 3\", \"Layer 4-7\"\n  physical_location: String,\n  data_center: String,\n  rack_id: String,\n\n  // Security configuration\n  access_control_lists: [Map],   // ACL rules\n  firewall_rules: [Map],       ",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_14",
+    "text": "\"Layer 3\", \"Layer 4-7\"\n  physical_location: String,\n  data_center: String,\n  rack_id: String,\n\n  // Security configuration\n  access_control_lists: [Map],   // ACL rules\n  firewall_rules: [Map],         // Firewall rule summary\n  port_security_enabled: Boolean,\n  encryption_protocols: [String], // TLS, IPSec, etc.\n  authentication_method: String,  // RADIUS, TACACS+, Local\n  snmp_enabled: Boolean,\n  snmp_version: String,\n\n  // High availability\n  ha_enabled: Boolean,\n  ha_partner_id: String,\n  ha_state: String,              // ACTIVE, STANDBY, FAULT\n\n  // Performance and capacity\n  throughput_gbps: Float,\n  port_count: Integer,\n  ports_in_use: Integer,\n  cpu_utilization_avg: Float,\n  memory_utilization_avg: Float,\n\n  // Criticality\n  criticality: String,           // LOW, MEDIUM, HIGH, CRITICAL\n  business_impact: String,\n\n  // Vulnerabilities\n  known_vulnerabilities: [String],\n  last_vulnerability_scan: DateTime,\n\n  // Operational status\n  operational_state: String,     // RUNNING, DEGR",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_15",
+    "text": "ICAL\n  business_impact: String,\n\n  // Vulnerabilities\n  known_vulnerabilities: [String],\n  last_vulnerability_scan: DateTime,\n\n  // Operational status\n  operational_state: String,     // RUNNING, DEGRADED, FAULT, MAINTENANCE\n  last_reboot: DateTime,\n  uptime_days: Integer,\n\n  // Metadata\n  node_id: String,\n  asset_owner: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement (Example - Core Router)**:\n```cypher\n// Create Network Device: Core Router\nCREATE (nd:NetworkDevice {\n  device_id: \"RTR-CORE-01\",\n  hostname: \"core-rtr-01.corp.example.com\",\n  device_type: \"ROUTER\",\n\n  manufacturer: \"Cisco\",\n  model: \"Catalyst 9500\",\n  serial_number: \"FCW2315G0QS\",\n  firmware_version: \"IOS-XE 17.9.3\",\n\n  management_ip: \"10.10.1.1\",\n  ip_addresses: [\"10.10.1.1\", \"192.168.100.1\", \"10.20.1.1\"],\n  mac_address: \"00:1E:BD:5A:3F:2C\",\n  interfaces: [\n    {name: \"GigabitEthernet1/0/1\", status: \"up\", vlan: \"VLAN-10\"},\n    {name: \"Giga",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_16",
+    "text": "1\",\n  ip_addresses: [\"10.10.1.1\", \"192.168.100.1\", \"10.20.1.1\"],\n  mac_address: \"00:1E:BD:5A:3F:2C\",\n  interfaces: [\n    {name: \"GigabitEthernet1/0/1\", status: \"up\", vlan: \"VLAN-10\"},\n    {name: \"GigabitEthernet1/0/2\", status: \"up\", vlan: \"VLAN-20\"},\n    {name: \"TenGigabitEthernet1/1/1\", status: \"up\", vlan: \"TRUNK\"}\n  ],\n  routing_table: [\n    {destination: \"0.0.0.0/0\", gateway: \"203.0.113.1\", interface: \"GigabitEthernet1/0/1\"},\n    {destination: \"10.10.0.0/16\", gateway: \"10.10.1.1\", interface: \"VLAN-10\"},\n    {destination: \"192.168.0.0/16\", gateway: \"192.168.100.1\", interface: \"VLAN-20\"}\n  ],\n  vlans_configured: [\"VLAN-10\", \"VLAN-20\", \"VLAN-30\", \"VLAN-100\"],\n\n  network_role: \"Core\",\n  network_layer: \"Layer 3\",\n  physical_location: \"Data Center - Core Network Room\",\n  data_center: \"DC-PRIMARY-01\",\n  rack_id: \"RACK-NET-01\",\n\n  access_control_lists: [\n    {acl_name: \"ACL-100\", direction: \"IN\", rules_count: 25},\n    {acl_name: \"ACL-101\", direction: \"OUT\", rules_count: 15}\n  ],\n  port_secu",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_17",
+    "text": "ARY-01\",\n  rack_id: \"RACK-NET-01\",\n\n  access_control_lists: [\n    {acl_name: \"ACL-100\", direction: \"IN\", rules_count: 25},\n    {acl_name: \"ACL-101\", direction: \"OUT\", rules_count: 15}\n  ],\n  port_security_enabled: true,\n  encryption_protocols: [\"TLS 1.3\", \"IPSec\"],\n  authentication_method: \"TACACS+\",\n  snmp_enabled: true,\n  snmp_version: \"SNMPv3\",\n\n  ha_enabled: true,\n  ha_partner_id: \"RTR-CORE-02\",\n  ha_state: \"ACTIVE\",\n\n  throughput_gbps: 100.0,\n  port_count: 48,\n  ports_in_use: 32,\n  cpu_utilization_avg: 35.2,\n  memory_utilization_avg: 48.5,\n\n  criticality: \"CRITICAL\",\n  business_impact: \"Complete network outage if failed\",\n\n  known_vulnerabilities: [],\n  last_vulnerability_scan: datetime('2024-10-28T00:00:00Z'),\n\n  operational_state: \"RUNNING\",\n  last_reboot: datetime('2024-08-15T00:00:00Z'),\n  uptime_days: 76,\n\n  node_id: randomUUID(),\n  asset_owner: \"Network Engineering Team\",\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_18",
+    "text": ":00Z'),\n  uptime_days: 76,\n\n  node_id: randomUUID(),\n  asset_owner: \"Network Engineering Team\",\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n```cypher\n// Unique constraint on device ID\nCREATE CONSTRAINT network_device_id_unique IF NOT EXISTS\nFOR (nd:NetworkDevice) REQUIRE nd.device_id IS UNIQUE;\n\n// Index on hostname\nCREATE INDEX network_device_hostname_idx IF NOT EXISTS\nFOR (nd:NetworkDevice) ON (nd.hostname);\n\n// Index on management IP\nCREATE INDEX network_device_mgmt_ip_idx IF NOT EXISTS\nFOR (nd:NetworkDevice) ON (nd.management_ip);\n\n// Index on device type\nCREATE INDEX network_device_type_idx IF NOT EXISTS\nFOR (nd:NetworkDevice) ON (nd.device_type);\n\n// Index on network role\nCREATE INDEX network_device_role_idx IF NOT EXISTS\nFOR (nd:NetworkDevice) ON (nd.network_role);\n```\n\n#### 2.1.3 Network Segment Node\n\n**Node Label**: `NetworkSegment`\n\n**Description**: Represents network segmentation bound",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_19",
+    "text": "evice_role_idx IF NOT EXISTS\nFOR (nd:NetworkDevice) ON (nd.network_role);\n```\n\n#### 2.1.3 Network Segment Node\n\n**Node Label**: `NetworkSegment`\n\n**Description**: Represents network segmentation boundaries (VLANs, subnets, DMZs).\n\n**Properties**:\n```cypher\n{\n  segment_id: String,            // Unique segment identifier\n  segment_name: String,          // Descriptive name\n  segment_type: String,          // VLAN, SUBNET, DMZ, TRUST_ZONE, UNTRUST_ZONE\n\n  // Network addressing\n  network_cidr: String,          // e.g., \"10.10.10.0/24\"\n  vlan_id: Integer,              // VLAN ID (if applicable)\n  gateway_ip: String,\n  dhcp_enabled: Boolean,\n  dhcp_range: String,\n\n  // Segmentation purpose\n  security_zone: String,         // \"INTERNAL\", \"DMZ\", \"EXTERNAL\", \"GUEST\", \"IOT\", \"OT\"\n  trust_level: String,           // \"TRUSTED\", \"SEMI_TRUSTED\", \"UNTRUSTED\"\n  asset_types_allowed: [String], // Types of assets permitted\n\n  // Security controls\n  firewall_rules: [Map],         // Inter-segment firewall",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_20",
+    "text": "ng,           // \"TRUSTED\", \"SEMI_TRUSTED\", \"UNTRUSTED\"\n  asset_types_allowed: [String], // Types of assets permitted\n\n  // Security controls\n  firewall_rules: [Map],         // Inter-segment firewall rules\n  access_restrictions: [String], // Who/what can access\n  traffic_monitoring: Boolean,\n  ids_ips_enabled: Boolean,\n\n  // Compliance and isolation\n  compliance_boundary: Boolean,  // PCI DSS, HIPAA segment?\n  compliance_requirements: [String],\n  air_gapped: Boolean,           // Physically isolated?\n\n  // Routing and connectivity\n  connected_segments: [String],  // Allowed connectivity\n  routing_protocol: String,      // OSPF, BGP, Static, etc.\n\n  // Capacity\n  total_ip_addresses: Integer,\n  allocated_ip_addresses: Integer,\n  available_ip_addresses: Integer,\n\n  // Criticality\n  criticality: String,\n\n  // Metadata\n  node_id: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement (Example - Production Server VLA",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_21",
+    "text": "ty: String,\n\n  // Metadata\n  node_id: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement (Example - Production Server VLAN)**:\n```cypher\n// Create Network Segment: Production Server VLAN\nCREATE (ns:NetworkSegment {\n  segment_id: \"VLAN-10-SERVERS\",\n  segment_name: \"Production Server Network\",\n  segment_type: \"VLAN\",\n\n  network_cidr: \"10.10.10.0/24\",\n  vlan_id: 10,\n  gateway_ip: \"10.10.10.1\",\n  dhcp_enabled: false,  // Static IPs only\n  dhcp_range: null,\n\n  security_zone: \"INTERNAL\",\n  trust_level: \"TRUSTED\",\n  asset_types_allowed: [\n    \"Server\",\n    \"Database Server\",\n    \"Application Server\",\n    \"Domain Controller\"\n  ],\n\n  firewall_rules: [\n    {rule: \"Allow VLAN-20 (Workstation) \u2192 VLAN-10 (Server) on ports 443, 3389\", action: \"PERMIT\"},\n    {rule: \"Deny VLAN-30 (Guest) \u2192 VLAN-10 (Server)\", action: \"DENY\"},\n    {rule: \"Allow VLAN-10 (Server) \u2192 Internet on ports 80, 443\", action: \"PERMIT\"}\n  ],\n  access_res",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_22",
+    "text": "3, 3389\", action: \"PERMIT\"},\n    {rule: \"Deny VLAN-30 (Guest) \u2192 VLAN-10 (Server)\", action: \"DENY\"},\n    {rule: \"Allow VLAN-10 (Server) \u2192 Internet on ports 80, 443\", action: \"PERMIT\"}\n  ],\n  access_restrictions: [\n    \"Workstation VLAN (VLAN-20) can access on specific ports\",\n    \"Admin VLAN (VLAN-100) has full access\",\n    \"All other segments blocked\"\n  ],\n  traffic_monitoring: true,\n  ids_ips_enabled: true,\n\n  compliance_boundary: true,\n  compliance_requirements: [\"SOC 2\", \"PCI DSS Level 1\"],\n  air_gapped: false,\n\n  connected_segments: [\"VLAN-20-WORKSTATIONS\", \"VLAN-100-ADMIN\", \"DMZ-WEB\"],\n  routing_protocol: \"OSPF\",\n\n  total_ip_addresses: 254,\n  allocated_ip_addresses: 87,\n  available_ip_addresses: 167,\n\n  criticality: \"CRITICAL\",\n\n  node_id: randomUUID(),\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n```cypher\n// Unique constraint on segment ID\nCREATE CONSTRAINT network_segment_id_unique IF NOT ",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_23",
+    "text": "ast_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n```cypher\n// Unique constraint on segment ID\nCREATE CONSTRAINT network_segment_id_unique IF NOT EXISTS\nFOR (ns:NetworkSegment) REQUIRE ns.segment_id IS UNIQUE;\n\n// Index on segment name\nCREATE INDEX network_segment_name_idx IF NOT EXISTS\nFOR (ns:NetworkSegment) ON (ns.segment_name);\n\n// Index on security zone\nCREATE INDEX network_segment_zone_idx IF NOT EXISTS\nFOR (ns:NetworkSegment) ON (ns.security_zone);\n\n// Index on trust level\nCREATE INDEX network_segment_trust_idx IF NOT EXISTS\nFOR (ns:NetworkSegment) ON (ns.trust_level);\n```\n\n### 2.2 Physical Security Nodes\n\n#### 2.2.1 Physical Access Control System\n\n**Node Label**: `PhysicalAccessControl`\n\n**Description**: Represents physical access control systems (badge readers, biometrics, doors).\n\n**Properties**:\n```cypher\n{\n  access_control_id: String,     // Unique identifier\n  control_type: String,          // BADGE_READER, BIOMETRIC, P",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_24",
+    "text": "ss control systems (badge readers, biometrics, doors).\n\n**Properties**:\n```cypher\n{\n  access_control_id: String,     // Unique identifier\n  control_type: String,          // BADGE_READER, BIOMETRIC, PIN_PAD, MANTRA, TURNSTILE\n  location: String,              // Physical location\n  access_zone: String,           // Controlled zone name\n\n  // Control details\n  manufacturer: String,\n  model: String,\n  authentication_methods: [String], // RFID, Fingerprint, Iris, PIN, etc.\n  multi_factor_required: Boolean,\n\n  // Access policy\n  access_granted_to: [String],   // Roles/groups with access\n  access_hours: String,          // \"24/7\", \"Business Hours\", etc.\n  anti_passback_enabled: Boolean,\n\n  // Monitoring and logging\n  access_logs_retained_days: Integer,\n  last_access_event: DateTime,\n  failed_access_attempts_threshold: Integer,\n\n  // Integration\n  integrated_with_cyber_systems: Boolean,\n  linked_server_id: String,      // Server managing this control\n\n  // Criticality\n  criticality: String,  ",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_25",
+    "text": "ess_attempts_threshold: Integer,\n\n  // Integration\n  integrated_with_cyber_systems: Boolean,\n  linked_server_id: String,      // Server managing this control\n\n  // Criticality\n  criticality: String,           // Criticality of protected zone\n\n  // Metadata\n  node_id: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create Physical Access Control: Data Center Entry\nCREATE (pac:PhysicalAccessControl {\n  access_control_id: \"PAC-DC-MAIN-DOOR\",\n  control_type: \"BADGE_READER\",\n  location: \"Data Center - Main Entrance\",\n  access_zone: \"ZONE-CRITICAL-SERVER-ROOM\",\n\n  manufacturer: \"HID Global\",\n  model: \"iCLASS SE R40\",\n  authentication_methods: [\"RFID Badge\", \"PIN\"],\n  multi_factor_required: true,\n\n  access_granted_to: [\n    \"Data Center Operations Staff\",\n    \"IT Infrastructure Team\",\n    \"Physical Security Team\",\n    \"Authorized Vendors (Escort Required)\"\n  ],\n  access_hours: \"24/7\",\n  anti_pass",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_26",
+    "text": "access_granted_to: [\n    \"Data Center Operations Staff\",\n    \"IT Infrastructure Team\",\n    \"Physical Security Team\",\n    \"Authorized Vendors (Escort Required)\"\n  ],\n  access_hours: \"24/7\",\n  anti_passback_enabled: true,\n\n  access_logs_retained_days: 365,\n  last_access_event: datetime('2024-10-30T08:45:23Z'),\n  failed_access_attempts_threshold: 3,\n\n  integrated_with_cyber_systems: true,\n  linked_server_id: \"SRV-PACS-01\",\n\n  criticality: \"CRITICAL\",\n\n  node_id: randomUUID(),\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n#### 2.2.2 Surveillance System\n\n**Node Label**: `SurveillanceSystem`\n\n**Description**: Represents physical surveillance systems (CCTV cameras, motion sensors).\n\n**Properties**:\n```cypher\n{\n  surveillance_id: String,       // Unique identifier\n  system_type: String,           // CCTV_CAMERA, MOTION_SENSOR, GLASS_BREAK_DETECTOR\n  location: String,              // Physical location\n  coverage_area: String,\n\n  // Camera speci",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_27",
+    "text": "Unique identifier\n  system_type: String,           // CCTV_CAMERA, MOTION_SENSOR, GLASS_BREAK_DETECTOR\n  location: String,              // Physical location\n  coverage_area: String,\n\n  // Camera specifications (if applicable)\n  camera_type: String,           // PTZ, Fixed, Dome, etc.\n  resolution: String,            // e.g., \"4K\", \"1080p\"\n  night_vision: Boolean,\n  field_of_view_degrees: Integer,\n\n  // Recording and storage\n  recording_enabled: Boolean,\n  recording_retention_days: Integer,\n  video_storage_server_id: String,\n  motion_detection_enabled: Boolean,\n\n  // Monitoring\n  live_monitoring: Boolean,\n  monitoring_station: String,\n\n  // Integration\n  integrated_with_cyber_systems: Boolean,\n  network_connected: Boolean,\n  network_segment: String,\n\n  // Criticality\n  criticality: String,\n\n  // Metadata\n  node_id: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create Surveillance System: ",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_28",
+    "text": "\n  // Metadata\n  node_id: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create Surveillance System: Data Center Entry Camera\nCREATE (ss:SurveillanceSystem {\n  surveillance_id: \"CCTV-DC-ENTRANCE\",\n  system_type: \"CCTV_CAMERA\",\n  location: \"Data Center - Main Entrance\",\n  coverage_area: \"Entrance vestibule and badge reader area\",\n\n  camera_type: \"PTZ Dome\",\n  resolution: \"4K\",\n  night_vision: true,\n  field_of_view_degrees: 360,\n\n  recording_enabled: true,\n  recording_retention_days: 90,\n  video_storage_server_id: \"SRV-VIDEO-NVR-01\",\n  motion_detection_enabled: true,\n\n  live_monitoring: true,\n  monitoring_station: \"Security Operations Center (SOC)\",\n\n  integrated_with_cyber_systems: true,\n  network_connected: true,\n  network_segment: \"VLAN-80-PHYSICAL-SECURITY\",\n\n  criticality: \"HIGH\",\n\n  node_id: randomUUID(),\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VA",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_29",
+    "text": "work_connected: true,\n  network_segment: \"VLAN-80-PHYSICAL-SECURITY\",\n\n  criticality: \"HIGH\",\n\n  node_id: randomUUID(),\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n#### 2.2.3 Data Center Facility\n\n**Node Label**: `DataCenterFacility`\n\n**Description**: Represents data center or server room physical facilities.\n\n**Properties**:\n```cypher\n{\n  facility_id: String,           // Unique facility identifier\n  facility_name: String,\n  facility_type: String,         // DATA_CENTER, SERVER_ROOM, CO_LOCATION\n\n  // Location\n  physical_address: String,\n  city: String,\n  country: String,\n  gps_coordinates: String,\n\n  // Classification\n  tier_level: String,            // \"Tier I\", \"Tier II\", \"Tier III\", \"Tier IV\"\n  uptime_sla: String,            // \"99.671%\", \"99.995%\", etc.\n\n  // Physical security\n  perimeter_security: [String],  // Fencing, guards, gates\n  access_control_layers: Integer, // Number of security layers\n  security_guards_24_7: Boolean",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_30",
+    "text": "671%\", \"99.995%\", etc.\n\n  // Physical security\n  perimeter_security: [String],  // Fencing, guards, gates\n  access_control_layers: Integer, // Number of security layers\n  security_guards_24_7: Boolean,\n  cctv_coverage: String,         // \"Full\", \"Partial\", \"None\"\n\n  // Environmental controls\n  hvac_redundancy: String,       // \"N+1\", \"2N\", \"None\"\n  fire_suppression_type: String, // \"Clean Agent\", \"Sprinkler\", etc.\n  fire_suppression_zones: Integer,\n  power_redundancy: String,      // \"N+1\", \"2N\", \"2(N+1)\", etc.\n  ups_capacity_minutes: Integer,\n  generator_fuel_hours: Integer,\n\n  // Capacity\n  total_square_feet: Integer,\n  rack_capacity: Integer,\n  power_capacity_kw: Integer,\n  cooling_capacity_tons: Integer,\n\n  // Compliance\n  compliance_certifications: [String], // ISO 27001, SOC 2, PCI DSS\n\n  // Criticality\n  criticality: String,\n\n  // Metadata\n  node_id: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement*",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_31",
+    "text": "SS\n\n  // Criticality\n  criticality: String,\n\n  // Metadata\n  node_id: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create Data Center Facility\nCREATE (dcf:DataCenterFacility {\n  facility_id: \"DC-PRIMARY-01\",\n  facility_name: \"Primary Corporate Data Center\",\n  facility_type: \"DATA_CENTER\",\n\n  physical_address: \"1234 Technology Drive, Suite 100\",\n  city: \"San Francisco\",\n  country: \"USA\",\n  gps_coordinates: \"37.7749\u00b0 N, 122.4194\u00b0 W\",\n\n  tier_level: \"Tier III\",\n  uptime_sla: \"99.982%\",\n\n  perimeter_security: [\n    \"8-foot security fence with barbed wire\",\n    \"Vehicle barriers\",\n    \"24/7 security guard patrol\",\n    \"Badge-controlled vehicle gate\",\n    \"Visitor registration and escort\"\n  ],\n  access_control_layers: 3,  // Perimeter, building entry, server room\n  security_guards_24_7: true,\n  cctv_coverage: \"Full\",\n\n  hvac_redundancy: \"N+1\",\n  fire_suppression_type: \"Clean Agent (FM-200)\",\n",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_32",
+    "text": "access_control_layers: 3,  // Perimeter, building entry, server room\n  security_guards_24_7: true,\n  cctv_coverage: \"Full\",\n\n  hvac_redundancy: \"N+1\",\n  fire_suppression_type: \"Clean Agent (FM-200)\",\n  fire_suppression_zones: 4,\n  power_redundancy: \"2N\",\n  ups_capacity_minutes: 15,\n  generator_fuel_hours: 48,\n\n  total_square_feet: 25000,\n  rack_capacity: 200,\n  power_capacity_kw: 2000,\n  cooling_capacity_tons: 500,\n\n  compliance_certifications: [\n    \"ISO 27001:2022\",\n    \"SOC 2 Type II\",\n    \"PCI DSS Level 1\",\n    \"NIST 800-53 Moderate\",\n    \"HIPAA Compliant\"\n  ],\n\n  criticality: \"CRITICAL\",\n\n  node_id: randomUUID(),\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n```cypher\n// Unique constraint on facility ID\nCREATE CONSTRAINT data_center_facility_id_unique IF NOT EXISTS\nFOR (dcf:DataCenterFacility) REQUIRE dcf.facility_id IS UNIQUE;\n\n// Index on facility name\nCREATE INDEX data_center_facility_name_",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_33",
+    "text": "ity ID\nCREATE CONSTRAINT data_center_facility_id_unique IF NOT EXISTS\nFOR (dcf:DataCenterFacility) REQUIRE dcf.facility_id IS UNIQUE;\n\n// Index on facility name\nCREATE INDEX data_center_facility_name_idx IF NOT EXISTS\nFOR (dcf:DataCenterFacility) ON (dcf.facility_name);\n\n// Index on tier level\nCREATE INDEX data_center_tier_idx IF NOT EXISTS\nFOR (dcf:DataCenterFacility) ON (dcf.tier_level);\n```\n\n## 3. Complete Relationship Schemas\n\n### 3.1 Server to Network Segment\n\n**Relationship Type**: `CONNECTED_TO_SEGMENT`\n\n**Description**: Links servers to the network segments they are connected to.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  interface_name: String,\n  connection_type: String,       // \"PRIMARY\", \"SECONDARY\", \"MANAGEMENT\"\n  bandwidth_mbps: Integer,\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link server to network segment\nMATCH (s:Server {server_id: \"SRV-DC-01\"})\nMATCH (ns:NetworkSegment {segment_id: \"VLAN-10-SERVERS\"})\nCREATE (s)-[r:CONN",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_34",
+    "text": "e\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link server to network segment\nMATCH (s:Server {server_id: \"SRV-DC-01\"})\nMATCH (ns:NetworkSegment {segment_id: \"VLAN-10-SERVERS\"})\nCREATE (s)-[r:CONNECTED_TO_SEGMENT {\n  relationship_id: randomUUID(),\n  interface_name: \"eth0\",\n  connection_type: \"PRIMARY\",\n  bandwidth_mbps: 10000,\n  created_date: datetime()\n}]->(ns)\n```\n\n### 3.2 Network Device Routing\n\n**Relationship Type**: `ROUTES_TO`\n\n**Description**: Links network devices showing routing/connectivity between segments.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  routing_protocol: String,\n  hop_count: Integer,\n  bandwidth_gbps: Float,\n  latency_ms: Float,\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link router to network segments it routes between\nMATCH (nd:NetworkDevice {device_id: \"RTR-CORE-01\"})\nMATCH (ns_source:NetworkSegment {segment_id: \"VLAN-10-SERVERS\"})\nMATCH (ns_dest:NetworkSegment {segment_id: \"VLAN-20-WORKSTATIONS\"})\nCREATE (nd)",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_35",
+    "text": "een\nMATCH (nd:NetworkDevice {device_id: \"RTR-CORE-01\"})\nMATCH (ns_source:NetworkSegment {segment_id: \"VLAN-10-SERVERS\"})\nMATCH (ns_dest:NetworkSegment {segment_id: \"VLAN-20-WORKSTATIONS\"})\nCREATE (nd)-[r1:ROUTES_TO {\n  relationship_id: randomUUID(),\n  routing_protocol: \"OSPF\",\n  hop_count: 1,\n  bandwidth_gbps: 10.0,\n  latency_ms: 0.5,\n  created_date: datetime()\n}]->(ns_source),\n(nd)-[r2:ROUTES_TO {\n  relationship_id: randomUUID(),\n  routing_protocol: \"OSPF\",\n  hop_count: 1,\n  bandwidth_gbps: 10.0,\n  latency_ms: 0.5,\n  created_date: datetime()\n}]->(ns_dest)\n```\n\n### 3.3 Physical Access to Cyber Asset\n\n**Relationship Type**: `GRANTS_PHYSICAL_ACCESS_TO`\n\n**Description**: Links physical access controls to cyber assets they protect.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  access_type: String,           // \"DIRECT\", \"INDIRECT\"\n  protection_level: String,      // \"PRIMARY\", \"SECONDARY\", \"TERTIARY\"\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_36",
+    "text": "ss_type: String,           // \"DIRECT\", \"INDIRECT\"\n  protection_level: String,      // \"PRIMARY\", \"SECONDARY\", \"TERTIARY\"\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link physical access control to protected server\nMATCH (pac:PhysicalAccessControl {access_control_id: \"PAC-DC-MAIN-DOOR\"})\nMATCH (s:Server {server_id: \"SRV-DC-01\"})\nCREATE (pac)-[r:GRANTS_PHYSICAL_ACCESS_TO {\n  relationship_id: randomUUID(),\n  access_type: \"INDIRECT\",  // Badge reader controls room, not server directly\n  protection_level: \"PRIMARY\",\n  created_date: datetime()\n}]->(s)\n```\n\n### 3.4 Surveillance Coverage\n\n**Relationship Type**: `MONITORS`\n\n**Description**: Links surveillance systems to physical access controls or areas they monitor.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  coverage_quality: String,      // \"FULL\", \"PARTIAL\", \"LIMITED\"\n  recording_enabled: Boolean,\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link camera to access cont",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_37",
+    "text": "ing,\n  coverage_quality: String,      // \"FULL\", \"PARTIAL\", \"LIMITED\"\n  recording_enabled: Boolean,\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link camera to access control point\nMATCH (ss:SurveillanceSystem {surveillance_id: \"CCTV-DC-ENTRANCE\"})\nMATCH (pac:PhysicalAccessControl {access_control_id: \"PAC-DC-MAIN-DOOR\"})\nCREATE (ss)-[r:MONITORS {\n  relationship_id: randomUUID(),\n  coverage_quality: \"FULL\",\n  recording_enabled: true,\n  created_date: datetime()\n}]->(pac)\n```\n\n### 3.5 Server Hosts Server (Virtualization)\n\n**Relationship Type**: `HOSTS`\n\n**Description**: Links physical servers (hypervisors) to virtual servers they host.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  hypervisor_type: String,\n  resource_allocation: Map,      // CPU, RAM, storage allocations\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link hypervisor to hosted VM\nMATCH (physical:Server {server_id: \"ESXi-HOST-03\"})\nMATCH (virtual:Server {ser",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_38",
+    "text": "torage allocations\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link hypervisor to hosted VM\nMATCH (physical:Server {server_id: \"ESXi-HOST-03\"})\nMATCH (virtual:Server {server_id: \"SRV-DC-01\"})\nWHERE virtual.server_type = \"VIRTUAL\"\nCREATE (physical)-[r:HOSTS {\n  relationship_id: randomUUID(),\n  hypervisor_type: \"VMware ESXi 7.0\",\n  resource_allocation: {\n    vcpu: 8,\n    ram_gb: 64,\n    storage_gb: 500\n  },\n  created_date: datetime()\n}]->(virtual)\n```\n\n### 3.6 Facility Contains Asset\n\n**Relationship Type**: `PHYSICALLY_LOCATED_IN`\n\n**Description**: Links assets to data center facilities.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  rack_id: String,\n  rack_unit: String,\n  power_circuit: String,\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link server to data center facility\nMATCH (s:Server {server_id: \"SRV-DC-01\"})\nMATCH (dcf:DataCenterFacility {facility_id: \"DC-PRIMARY-01\"})\nCREATE (s)-[r:PHYSICALLY_LOCATED_IN {\n  re",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_39",
+    "text": "t**:\n```cypher\n// Link server to data center facility\nMATCH (s:Server {server_id: \"SRV-DC-01\"})\nMATCH (dcf:DataCenterFacility {facility_id: \"DC-PRIMARY-01\"})\nCREATE (s)-[r:PHYSICALLY_LOCATED_IN {\n  relationship_id: randomUUID(),\n  rack_id: \"RACK-A-15\",\n  rack_unit: \"U12-U14\",\n  power_circuit: \"PDU-A-CIRCUIT-08\",\n  created_date: datetime()\n}]->(dcf)\n```\n\n### 3.7 Infrastructure to CVE (Vulnerability Mapping)\n\n**Relationship Type**: `HAS_VULNERABILITY`\n\n**Description**: Links infrastructure to known CVE vulnerabilities.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  affected_component: String,    // Software/firmware component\n  exploitability: String,        // EASY, MODERATE, DIFFICULT\n  patch_available: Boolean,\n  patch_status: String,          // PATCHED, PENDING, NOT_AVAILABLE\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link server to CVE vulnerability\nMATCH (s:Server {server_id: \"SRV-WEB-01\"})\nMATCH (cve:CVE {cve_id: \"CVE-2021-44228\"})  // Lo",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_40",
+    "text": "\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link server to CVE vulnerability\nMATCH (s:Server {server_id: \"SRV-WEB-01\"})\nMATCH (cve:CVE {cve_id: \"CVE-2021-44228\"})  // Log4Shell\nWHERE cve.cve_id IN s.known_vulnerabilities\nCREATE (s)-[r:HAS_VULNERABILITY {\n  relationship_id: randomUUID(),\n  affected_component: \"Apache Log4j 2.14.1\",\n  exploitability: \"EASY\",\n  patch_available: true,\n  patch_status: \"PATCHED\",\n  created_date: datetime()\n}]->(cve)\n```\n\n### 3.8 Network Path to ATT&CK Technique\n\n**Relationship Type**: `ENABLES_LATERAL_MOVEMENT`\n\n**Description**: Links network paths (segment-to-segment connectivity) to ATT&CK lateral movement techniques.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  technique_applicability: String,\n  attack_complexity: String,     // LOW, MEDIUM, HIGH\n  detection_difficulty: String,\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link network connectivity to lateral movement technique\nMATCH ",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 40,
+      "start_char": 32000,
+      "end_char": 33000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_41",
+    "text": "tring,     // LOW, MEDIUM, HIGH\n  detection_difficulty: String,\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link network connectivity to lateral movement technique\nMATCH (ns_source:NetworkSegment {segment_id: \"VLAN-20-WORKSTATIONS\"})\nMATCH (ns_dest:NetworkSegment {segment_id: \"VLAN-10-SERVERS\"})\nMATCH path = (ns_source)-[:ROUTES_TO*]-(ns_dest)\nMATCH (tech:Technique {technique_id: \"T1021.002\"})  // SMB/Windows Admin Shares\nCREATE (path)-[r:ENABLES_LATERAL_MOVEMENT {\n  relationship_id: randomUUID(),\n  technique_applicability: \"APPLICABLE\",\n  attack_complexity: \"LOW\",\n  detection_difficulty: \"MODERATE\",\n  created_date: datetime()\n}]->(tech)\n```\n\n## 4. Integration Patterns\n\n### 4.1 Cyber-Physical Attack Path Analysis\n\n**Objective**: Identify attack paths combining physical and cyber access.\n\n**Attack Path Query**:\n```cypher\n// Find cyber-physical attack paths\nMATCH (pac:PhysicalAccessControl)-[:GRANTS_PHYSICAL_ACCESS_TO]->(s:Server)\nMATCH (s)-[:CONNECTED_TO_SE",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 41,
+      "start_char": 32800,
+      "end_char": 33800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_42",
+    "text": " physical and cyber access.\n\n**Attack Path Query**:\n```cypher\n// Find cyber-physical attack paths\nMATCH (pac:PhysicalAccessControl)-[:GRANTS_PHYSICAL_ACCESS_TO]->(s:Server)\nMATCH (s)-[:CONNECTED_TO_SEGMENT]->(ns:NetworkSegment)\nMATCH (ns)<-[:CONNECTED_TO_SEGMENT]-(target_server:Server)\nWHERE target_server.criticality = \"CRITICAL\"\nMATCH (tech:Technique)-[:TARGETS_ASSET]->(target_server)\n\nRETURN\n  pac.access_control_id AS physical_entry_point,\n  pac.location AS entry_location,\n  s.hostname AS compromised_server,\n  ns.segment_name AS network_segment,\n  target_server.hostname AS target_critical_server,\n  target_server.server_role AS target_role,\n  collect(tech.technique_id) AS applicable_techniques,\n  \"Physical access + lateral movement\" AS attack_pattern\nLIMIT 10\n```\n\n### 4.2 Network Segmentation Validation\n\n**Objective**: Validate network segmentation effectiveness and find segmentation violations.\n\n**Segmentation Query**:\n```cypher\n// Find network segmentation violations\nMATCH (ns_untru",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 42,
+      "start_char": 33600,
+      "end_char": 34600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_43",
+    "text": "tion Validation\n\n**Objective**: Validate network segmentation effectiveness and find segmentation violations.\n\n**Segmentation Query**:\n```cypher\n// Find network segmentation violations\nMATCH (ns_untrusted:NetworkSegment {trust_level: \"UNTRUSTED\"})\nMATCH (ns_trusted:NetworkSegment {trust_level: \"TRUSTED\"})\nMATCH path = shortestPath((ns_untrusted)-[:ROUTES_TO*]-(ns_trusted))\nWHERE length(path) < 3  // Direct or 1-hop connection\n\nRETURN\n  ns_untrusted.segment_name AS untrusted_segment,\n  ns_trusted.segment_name AS trusted_segment,\n  length(path) AS hop_count,\n  [node IN nodes(path) | node.segment_name] AS path_segments,\n  \"SEGMENTATION_VIOLATION\" AS issue_type,\n  \"Untrusted network has short path to trusted network\" AS risk_description\n```\n\n### 4.3 Data Center Risk Assessment\n\n**Objective**: Assess cumulative risk at data center level.\n\n**Data Center Risk Query**:\n```cypher\n// Assess data center comprehensive risk\nMATCH (dcf:DataCenterFacility {facility_id: \"DC-PRIMARY-01\"})\nMATCH (s:Serv",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 43,
+      "start_char": 34400,
+      "end_char": 35400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_44",
+    "text": "Assess cumulative risk at data center level.\n\n**Data Center Risk Query**:\n```cypher\n// Assess data center comprehensive risk\nMATCH (dcf:DataCenterFacility {facility_id: \"DC-PRIMARY-01\"})\nMATCH (s:Server)-[:PHYSICALLY_LOCATED_IN]->(dcf)\nMATCH (s)-[vuln:HAS_VULNERABILITY]->(cve:CVE)\nWHERE vuln.patch_status IN [\"PENDING\", \"NOT_AVAILABLE\"]\n\nWITH\n  dcf,\n  count(DISTINCT s) AS total_servers,\n  sum(CASE WHEN s.criticality = \"CRITICAL\" THEN 1 ELSE 0 END) AS critical_servers,\n  count(DISTINCT cve) AS unique_vulnerabilities,\n  sum(CASE WHEN cve.cvss_base_score >= 9.0 THEN 1 ELSE 0 END) AS critical_cves\n\nOPTIONAL MATCH (pac:PhysicalAccessControl)-[:GRANTS_PHYSICAL_ACCESS_TO]->(s2:Server)-[:PHYSICALLY_LOCATED_IN]->(dcf)\nWITH\n  dcf,\n  total_servers,\n  critical_servers,\n  unique_vulnerabilities,\n  critical_cves,\n  count(DISTINCT pac) AS physical_access_controls\n\nRETURN\n  dcf.facility_name AS data_center,\n  dcf.tier_level AS tier_classification,\n  total_servers,\n  critical_servers,\n  unique_vulnerabi",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 44,
+      "start_char": 35200,
+      "end_char": 36200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_45",
+    "text": "cal_cves,\n  count(DISTINCT pac) AS physical_access_controls\n\nRETURN\n  dcf.facility_name AS data_center,\n  dcf.tier_level AS tier_classification,\n  total_servers,\n  critical_servers,\n  unique_vulnerabilities,\n  critical_cves,\n  physical_access_controls,\n  dcf.perimeter_security AS perimeter_security_controls,\n  CASE\n    WHEN critical_cves > 10 OR critical_servers > 20 THEN \"HIGH_RISK\"\n    WHEN critical_cves > 5 OR critical_servers > 10 THEN \"MEDIUM_RISK\"\n    ELSE \"LOW_RISK\"\n  END AS overall_risk_assessment\n```\n\n## 5. Validation Criteria\n\n### 5.1 Data Completeness Validation\n\n**Node Count Validation**:\n```cypher\n// Verify target node counts achieved\nMATCH (s:Server) WITH count(s) AS server_count\nMATCH (nd:NetworkDevice) WITH server_count, count(nd) AS network_device_count\nMATCH (ns:NetworkSegment) WITH server_count, network_device_count, count(ns) AS segment_count\nMATCH (pac:PhysicalAccessControl) WITH server_count, network_device_count, segment_count, count(pac) AS pac_count\nMATCH (ss:S",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 45,
+      "start_char": 36000,
+      "end_char": 37000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_46",
+    "text": "gment) WITH server_count, network_device_count, count(ns) AS segment_count\nMATCH (pac:PhysicalAccessControl) WITH server_count, network_device_count, segment_count, count(pac) AS pac_count\nMATCH (ss:SurveillanceSystem) WITH server_count, network_device_count, segment_count, pac_count, count(ss) AS surveillance_count\nMATCH (dcf:DataCenterFacility)\nRETURN\n  server_count AS servers,\n  network_device_count AS network_devices,\n  segment_count AS network_segments,\n  pac_count AS physical_access_controls,\n  surveillance_count AS surveillance_systems,\n  count(dcf) AS data_centers,\n  CASE\n    WHEN server_count >= 200 AND\n         network_device_count >= 50 AND\n         segment_count >= 50 AND\n         pac_count >= 30 AND\n         count(dcf) >= 10\n    THEN \"PASS\"\n    ELSE \"FAIL\"\n  END AS validation_status\n```\n\n### 5.2 Integration Validation\n\n**Infrastructure-CVE Mapping**:\n```cypher\n// Verify infrastructure-vulnerability mappings\nMATCH (s:Server)-[r:HAS_VULNERABILITY]->(cve:CVE)\nRETURN\n  count(D",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 46,
+      "start_char": 36800,
+      "end_char": 37800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_47",
+    "text": "status\n```\n\n### 5.2 Integration Validation\n\n**Infrastructure-CVE Mapping**:\n```cypher\n// Verify infrastructure-vulnerability mappings\nMATCH (s:Server)-[r:HAS_VULNERABILITY]->(cve:CVE)\nRETURN\n  count(DISTINCT s) AS servers_with_mapped_vulnerabilities,\n  count(r) AS total_vulnerability_mappings\n// Expected: 500+ mappings\n```\n\n### 5.3 Network Topology Completeness\n\n**Connectivity Validation**:\n```cypher\n// Verify network connectivity is modeled\nMATCH (ns:NetworkSegment)\nWITH count(ns) AS total_segments\nMATCH (ns:NetworkSegment)-[r:ROUTES_TO]-()\nRETURN\n  total_segments,\n  count(DISTINCT ns) AS connected_segments,\n  (count(DISTINCT ns) * 100.0 / total_segments) AS connectivity_percentage\n// Expected: connectivity_percentage >= 80%\n```\n\n## 6. Example Queries\n\n### 6.1 Critical Asset Inventory with Physical Location\n\n**Query**: Generate inventory of critical assets with physical and network location.\n\n```cypher\n// Critical asset inventory\nMATCH (s:Server {criticality: \"CRITICAL\"})\nOPTIONAL MAT",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 47,
+      "start_char": 37600,
+      "end_char": 38600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_48",
+    "text": "h Physical Location\n\n**Query**: Generate inventory of critical assets with physical and network location.\n\n```cypher\n// Critical asset inventory\nMATCH (s:Server {criticality: \"CRITICAL\"})\nOPTIONAL MATCH (s)-[:CONNECTED_TO_SEGMENT]->(ns:NetworkSegment)\nOPTIONAL MATCH (s)-[:PHYSICALLY_LOCATED_IN]->(dcf:DataCenterFacility)\nOPTIONAL MATCH (pac:PhysicalAccessControl)-[:GRANTS_PHYSICAL_ACCESS_TO]->(s)\n\nRETURN\n  s.hostname AS hostname,\n  s.server_role AS role,\n  s.primary_ip_address AS ip_address,\n  ns.segment_name AS network_segment,\n  ns.security_zone AS security_zone,\n  dcf.facility_name AS data_center,\n  s.rack_id AS rack,\n  s.rack_unit_position AS rack_unit,\n  collect(DISTINCT pac.access_control_id) AS physical_access_controls,\n  s.business_services AS business_services,\n  s.patch_status AS patch_status\nORDER BY s.hostname\n```\n\n### 6.2 Network Attack Surface Analysis\n\n**Query**: Identify externally-facing assets and their attack surface.\n\n```cypher\n// External attack surface analysis\nMAT",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 48,
+      "start_char": 38400,
+      "end_char": 39400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_49",
+    "text": "patch_status\nORDER BY s.hostname\n```\n\n### 6.2 Network Attack Surface Analysis\n\n**Query**: Identify externally-facing assets and their attack surface.\n\n```cypher\n// External attack surface analysis\nMATCH (ns:NetworkSegment {security_zone: \"DMZ\"})\nMATCH (s:Server)-[:CONNECTED_TO_SEGMENT]->(ns)\nOPTIONAL MATCH (s)-[vuln:HAS_VULNERABILITY]->(cve:CVE)\nWHERE cve.cvss_base_score >= 7.0\n\nRETURN\n  s.hostname AS exposed_server,\n  s.server_role AS role,\n  s.primary_ip_address AS public_ip,\n  ns.segment_name AS dmz_segment,\n  collect(DISTINCT cve.cve_id) AS high_severity_cves,\n  s.firewall_enabled AS firewall_status,\n  s.patch_status AS patch_status,\n  CASE\n    WHEN count(vuln) = 0 THEN \"LOW_RISK\"\n    WHEN count(vuln) <= 3 THEN \"MEDIUM_RISK\"\n    ELSE \"HIGH_RISK\"\n  END AS exposure_risk\nORDER BY count(vuln) DESC\n```\n\n### 6.3 Lateral Movement Path Enumeration\n\n**Query**: Find lateral movement paths from compromised workstation to critical servers.\n\n```cypher\n// Lateral movement path analysis\nMATCH (wo",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 49,
+      "start_char": 39200,
+      "end_char": 40200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_50",
+    "text": "ln) DESC\n```\n\n### 6.3 Lateral Movement Path Enumeration\n\n**Query**: Find lateral movement paths from compromised workstation to critical servers.\n\n```cypher\n// Lateral movement path analysis\nMATCH (workstation_segment:NetworkSegment {segment_name: \"VLAN-20-WORKSTATIONS\"})\nMATCH (server_segment:NetworkSegment {segment_name: \"VLAN-10-SERVERS\"})\nMATCH path = shortestPath((workstation_segment)-[:ROUTES_TO*..5]-(server_segment))\n\nMATCH (target:Server {criticality: \"CRITICAL\"})-[:CONNECTED_TO_SEGMENT]->(server_segment)\nOPTIONAL MATCH (tech:Technique)-[:ENABLES_LATERAL_MOVEMENT]->(path)\n\nRETURN\n  [node IN nodes(path) | node.segment_name] AS network_path,\n  length(path) AS hop_count,\n  target.hostname AS target_critical_server,\n  target.server_role AS target_role,\n  collect(DISTINCT tech.technique_id) AS applicable_lateral_movement_techniques,\n  server_segment.ids_ips_enabled AS target_segment_ids_enabled\nORDER BY length(path) ASC\nLIMIT 10\n```\n\n### 6.4 Physical Security Gap Analysis\n\n**Query**",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 50,
+      "start_char": 40000,
+      "end_char": 41000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_51",
+    "text": "_id) AS applicable_lateral_movement_techniques,\n  server_segment.ids_ips_enabled AS target_segment_ids_enabled\nORDER BY length(path) ASC\nLIMIT 10\n```\n\n### 6.4 Physical Security Gap Analysis\n\n**Query**: Identify servers without adequate physical security controls.\n\n```cypher\n// Physical security gap analysis\nMATCH (s:Server {criticality: \"CRITICAL\"})\nOPTIONAL MATCH (pac:PhysicalAccessControl)-[:GRANTS_PHYSICAL_ACCESS_TO]->(s)\nOPTIONAL MATCH (ss:SurveillanceSystem)-[:MONITORS]->(pac)\n\nWITH\n  s,\n  count(DISTINCT pac) AS access_controls,\n  count(DISTINCT ss) AS surveillance_coverage\n\nWHERE access_controls < 2 OR surveillance_coverage = 0\n\nRETURN\n  s.hostname AS critical_server,\n  s.data_center AS location,\n  s.rack_id AS rack,\n  access_controls AS physical_access_control_layers,\n  surveillance_coverage AS camera_coverage,\n  CASE\n    WHEN access_controls = 0 THEN \"CRITICAL - No physical access controls\"\n    WHEN access_controls < 2 THEN \"HIGH - Insufficient access control layers\"\n    WHEN s",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 51,
+      "start_char": 40800,
+      "end_char": 41800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_52",
+    "text": "_coverage AS camera_coverage,\n  CASE\n    WHEN access_controls = 0 THEN \"CRITICAL - No physical access controls\"\n    WHEN access_controls < 2 THEN \"HIGH - Insufficient access control layers\"\n    WHEN surveillance_coverage = 0 THEN \"MEDIUM - No surveillance coverage\"\n    ELSE \"LOW\"\n  END AS physical_security_risk\nORDER BY physical_security_risk DESC, s.hostname\n```\n\n### 6.5 Compliance Boundary Validation\n\n**Query**: Validate PCI DSS compliance boundary segmentation.\n\n```cypher\n// PCI DSS compliance boundary validation\nMATCH (pci_segment:NetworkSegment)\nWHERE any(req IN pci_segment.compliance_requirements WHERE req CONTAINS \"PCI DSS\")\n\nMATCH (pci_segment)<-[:CONNECTED_TO_SEGMENT]-(pci_server:Server)\nMATCH (pci_segment)-[route:ROUTES_TO]-(other_segment:NetworkSegment)\n\nWITH\n  pci_segment,\n  pci_server,\n  other_segment,\n  route,\n  NOT any(req IN other_segment.compliance_requirements WHERE req CONTAINS \"PCI DSS\") AS crosses_boundary\n\nWHERE crosses_boundary\n\nRETURN\n  pci_segment.segment_name ",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 52,
+      "start_char": 41600,
+      "end_char": 42600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_53",
+    "text": "i_server,\n  other_segment,\n  route,\n  NOT any(req IN other_segment.compliance_requirements WHERE req CONTAINS \"PCI DSS\") AS crosses_boundary\n\nWHERE crosses_boundary\n\nRETURN\n  pci_segment.segment_name AS pci_segment,\n  other_segment.segment_name AS connected_non_pci_segment,\n  other_segment.security_zone AS non_pci_zone,\n  pci_segment.firewall_rules AS boundary_firewall_rules,\n  pci_segment.ids_ips_enabled AS ids_ips_protection,\n  CASE\n    WHEN pci_segment.ids_ips_enabled = false THEN \"COMPLIANCE_VIOLATION - No IDS/IPS\"\n    WHEN size(pci_segment.firewall_rules) = 0 THEN \"COMPLIANCE_VIOLATION - No firewall rules\"\n    ELSE \"REQUIRES_REVIEW\"\n  END AS compliance_status\n```\n\n## 7. Wave 8 Implementation Checklist\n\n### 7.1 Pre-Implementation\n\n- [ ] Complete Waves 1-7 validation\n- [ ] Backup Neo4j database\n- [ ] Gather network topology diagrams\n- [ ] Collect CMDB asset inventory\n- [ ] Review physical security documentation\n- [ ] Coordinate with network engineering team\n- [ ] Coordinate with fac",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 53,
+      "start_char": 42400,
+      "end_char": 43400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_54",
+    "text": "database\n- [ ] Gather network topology diagrams\n- [ ] Collect CMDB asset inventory\n- [ ] Review physical security documentation\n- [ ] Coordinate with network engineering team\n- [ ] Coordinate with facilities/physical security team\n\n### 7.2 Implementation Phase 1: IT Infrastructure (Week 1)\n\n- [ ] Create Server nodes (200+ servers)\n- [ ] Create NetworkDevice nodes (50+ devices)\n- [ ] Create NetworkSegment nodes (50+ segments)\n- [ ] Create all indexes and constraints\n- [ ] Create CONNECTED_TO_SEGMENT relationships\n- [ ] Create ROUTES_TO relationships\n- [ ] Create HOSTS relationships (virtualization)\n- [ ] Validate network topology completeness\n\n### 7.3 Implementation Phase 2: Physical Security (Week 2)\n\n- [ ] Create PhysicalAccessControl nodes (30+ controls)\n- [ ] Create SurveillanceSystem nodes (30+ cameras/sensors)\n- [ ] Create DataCenterFacility nodes (10+ facilities)\n- [ ] Create all indexes and constraints\n- [ ] Create GRANTS_PHYSICAL_ACCESS_TO relationships\n- [ ] Create MONITORS re",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 54,
+      "start_char": 43200,
+      "end_char": 44200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_55",
+    "text": "odes (30+ cameras/sensors)\n- [ ] Create DataCenterFacility nodes (10+ facilities)\n- [ ] Create all indexes and constraints\n- [ ] Create GRANTS_PHYSICAL_ACCESS_TO relationships\n- [ ] Create MONITORS relationships\n- [ ] Create PHYSICALLY_LOCATED_IN relationships\n- [ ] Validate physical security coverage\n\n### 7.3 Implementation Phase 3: Integration & Validation (Week 3)\n\n- [ ] Create HAS_VULNERABILITY relationships (server \u2192 CVE, 500+ mappings)\n- [ ] Create ENABLES_LATERAL_MOVEMENT relationships (network \u2192 ATT&CK)\n- [ ] Test all example queries\n- [ ] Run data completeness validation\n- [ ] Run integration validation (infrastructure-CVE mappings)\n- [ ] Test cyber-physical attack path queries\n- [ ] Performance benchmarks (<1s attack path enumeration)\n- [ ] Generate Wave 8 completion report\n- [ ] Document any discovered segmentation gaps\n\n## 8. Wave 8 Success Criteria Summary\n\n**Quantitative Targets**:\n- \u2705 200+ infrastructure nodes (servers, network devices, endpoints)\n- \u2705 50+ network segment",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 55,
+      "start_char": 44000,
+      "end_char": 45000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_56",
+    "text": " Document any discovered segmentation gaps\n\n## 8. Wave 8 Success Criteria Summary\n\n**Quantitative Targets**:\n- \u2705 200+ infrastructure nodes (servers, network devices, endpoints)\n- \u2705 50+ network segment/VLAN nodes\n- \u2705 30+ physical security control nodes\n- \u2705 10+ data center/facility nodes\n- \u2705 500+ infrastructure-to-vulnerability mappings\n- \u2705 100+ network path relationships\n- \u2705 50+ physical-to-cyber attack path correlations\n- \u2705 Query performance <1 second for attack path enumeration\n\n**Qualitative Targets**:\n- \u2705 Complete network topology visualization capability\n- \u2705 Cyber-physical attack scenario modeling\n- \u2705 Network segmentation validation\n- \u2705 Physical security posture assessment\n- \u2705 Integration with ATT&CK lateral movement techniques\n- \u2705 Support for compliance audits (SOC 2, PCI DSS, NIST 800-53)\n\n---\n\n**Wave 8 Status**: Ready for implementation\n**Dependencies**: Waves 1-7 completed\n**Next Steps**: Complete Wave 8 implementation, then comprehensive multi-wave integration testing\n**Docume",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 56,
+      "start_char": 44800,
+      "end_char": 45800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_57",
+    "text": "0-53)\n\n---\n\n**Wave 8 Status**: Ready for implementation\n**Dependencies**: Waves 1-7 completed\n**Next Steps**: Complete Wave 8 implementation, then comprehensive multi-wave integration testing\n**Document Version**: v1.0.0\n**Last Updated**: 2025-10-30\n\n---\n\n## Conclusion: AEON Digital Twin Schema Enhancement Complete\n\nWith Wave 8 completion, the AEON Digital Twin cybersecurity knowledge graph will provide comprehensive coverage across:\n- **Cyber Threat Intelligence**: MITRE ATT&CK (Enterprise + ICS), CVE vulnerabilities, threat actors\n- **Standards Compliance**: STIX 2.1, UCO, CERT Insider Threat, IEC 62443, NIST 800-53\n- **Human Factors**: Psychological profiling, insider threat indicators, social engineering susceptibility\n- **Infrastructure**: Complete IT topology, network segmentation, physical security\n\nThe resulting knowledge graph enables advanced capabilities:\n- Multi-dimensional risk scoring (cyber + physical + human factors)\n- Complete attack path enumeration (IT \u2192 OT, cyber \u2192 ",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 57,
+      "start_char": 45600,
+      "end_char": 46600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md_chunk_58",
+    "text": "hysical security\n\nThe resulting knowledge graph enables advanced capabilities:\n- Multi-dimensional risk scoring (cyber + physical + human factors)\n- Complete attack path enumeration (IT \u2192 OT, cyber \u2192 physical)\n- Predictive threat modeling using behavioral psychology\n- Automated compliance validation\n- Incident investigation with full context (UCO forensics)\n- Threat intelligence sharing (STIX bundles via TAXII)\n\n**Total Achievement Across 8 Waves**:\n- ~2,500+ nodes created\n- ~5,000+ relationships established\n- 100% CVE preservation throughout\n- Full MITRE ATT&CK coverage (Enterprise + ICS)\n- Standards-compliant threat intelligence integration\n- Cyber-physical security convergence\n\n**Next Phase**: Wave integration testing, performance optimization, and production deployment planning.\n",
+    "metadata": {
+      "file_name": "10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/10_WAVE_8_IT_INFRASTRUCTURE_PHYSICAL.md",
+      "file_size": 47194,
+      "indexed_at": "2025-10-31T00:59:57.192060",
+      "chunk_id": 58,
+      "start_char": 46400,
+      "end_char": 47400,
+      "chunk_size": 794
+    }
+  }
+]

@@ -1,0 +1,898 @@
+[
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_0",
+    "text": "# Wave 2: Water Infrastructure Domain Extensions\n\n**File:** 04_WAVE_2_WATER_INFRASTRUCTURE.md\n**Created:** 2025-10-30 00:00:00 UTC\n**Version:** v1.0.0\n**Status:** ACTIVE\n**Purpose:** Complete implementation specification for Wave 2 water infrastructure ontology integration extending SAREF core for water treatment, distribution, and SCADA security\n\n---\n\n## 1. Wave Overview\n\n### 1.1 Objectives\n\nWave 2 extends the SAREF core foundation (Wave 1) with water infrastructure domain-specific ontologies, creating cyber-physical security models for water treatment plants, distribution systems, and SCADA networks. This wave focuses on:\n\n1. **Water Device Specialization**: Extend SAREF:Device for pumps, valves, sensors, RTUs specific to water infrastructure\n2. **Process Modeling**: Represent water treatment processes (filtration, chlorination, UV treatment) with security implications\n3. **SCADA Integration**: Model SCADA systems controlling water infrastructure with attack surface analysis\n4. **Hyd",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_1",
+    "text": "tment processes (filtration, chlorination, UV treatment) with security implications\n3. **SCADA Integration**: Model SCADA systems controlling water infrastructure with attack surface analysis\n4. **Hydraulic Property Extensions**: Water-specific properties (flow rate, pressure, chemical concentration, turbidity)\n5. **Regulatory Compliance**: Map devices and processes to water safety regulations (EPA, WHO standards)\n6. **Critical Infrastructure Protection**: Implement Department of Homeland Security critical infrastructure frameworks\n\n### 1.2 Duration & Resources\n\n- **Estimated Duration**: 7-9 weeks\n- **Target Node Count**: 12,000-18,000 new nodes\n- **Relationship Count**: 35,000-55,000 new relationships\n- **Integration Points**: 15 connection types (8 to Wave 1 SAREF, 7 to existing CVE/ICS data)\n- **Rollback Complexity**: Low-Medium (additive with Wave 1 dependencies)\n\n### 1.3 Dependencies\n\n**Prerequisites:**\n- Wave 1 SAREF core completed and validated\n- Existing AEON graph with CVE/ICS",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_2",
+    "text": "data)\n- **Rollback Complexity**: Low-Medium (additive with Wave 1 dependencies)\n\n### 1.3 Dependencies\n\n**Prerequisites:**\n- Wave 1 SAREF core completed and validated\n- Existing AEON graph with CVE/ICS data\n- Water infrastructure asset inventory\n- SCADA network topology documentation\n\n**External Dependencies:**\n- EPA Water Quality Standards\n- WHO Drinking Water Guidelines\n- ICS-CERT water sector advisories\n- Water utility SCADA documentation (Rockwell, Siemens, Schneider Electric)\n\n**Internal Dependencies:**\n- Wave 3 (Energy Grid) may reference water-energy nexus\n- Wave 4 (ICS Security) will leverage water SCADA attack patterns\n\n---\n\n## 2. Complete Node Schemas\n\n### 2.1 Water:WaterDevice Node (extends SAREF:Device)\n\n**Purpose:** Represents specialized water infrastructure devices inheriting SAREF core properties with water-specific extensions.\n\n**Inheritance:** All properties from `SAREF:Device` (Wave 1) plus:\n\n**Additional Properties:**\n\n| Property | Type | Required | Description | Exa",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_3",
+    "text": " SAREF core properties with water-specific extensions.\n\n**Inheritance:** All properties from `SAREF:Device` (Wave 1) plus:\n\n**Additional Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| waterDeviceType | String | Yes | Water infrastructure device classification | `Pump`, `Valve`, `Sensor`, `RTU`, `Chlorinator`, `Filter` |\n| flowCapacity | Float | No | Maximum flow rate (gallons/minute) | `2500.0` |\n| pressureRating | Float | No | Maximum pressure (PSI) | `150.0` |\n| materialComposition | String | No | Primary material | `Stainless Steel 316`, `PVC`, `Cast Iron` |\n| installationDepth | Float | No | Installation depth (feet below surface) | `15.5` |\n| regulatoryZone | String | Yes | Water regulatory zone | `Zone-A-Treatment`, `Zone-B-Distribution` |\n| epaAssetId | String | No | EPA asset tracking identifier | `EPA-WTR-2023-00147` |\n| maintenanceSchedule | String | No | Maintenance frequency | `Quarterly`, `Bian",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_4",
+    "text": "Treatment`, `Zone-B-Distribution` |\n| epaAssetId | String | No | EPA asset tracking identifier | `EPA-WTR-2023-00147` |\n| maintenanceSchedule | String | No | Maintenance frequency | `Quarterly`, `Biannual`, `Annual` |\n| lastMaintenanceDate | DateTime | No | Last maintenance performed | `2024-09-15T08:00:00Z` |\n| waterQualityImpact | String | Yes | Impact on water quality if compromised | `Critical`, `High`, `Medium`, `Low` |\n| cyberPhysicalRisk | String | Yes | Cyber-physical attack risk | `Critical`, `High`, `Medium`, `Low` |\n\n**Cypher CREATE Statement:**\n\n```cypher\n// Create specialized water device inheriting from SAREF:Device\nCREATE (wd:Water:WaterDevice:Device {\n    // SAREF:Device inherited properties\n    deviceId: 'water:device:pump-wtp-001',\n    name: 'High Service Pump 1 - Water Treatment Plant',\n    model: 'Grundfos CR 64-2',\n    manufacturer: 'Grundfos',\n    firmwareVersion: 'V3.2.1',\n    serialNumber: 'GF-2023-HSP-001',\n    deviceCategory: 'Actuator',\n    deploymentLocation",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_5",
+    "text": "reatment Plant',\n    model: 'Grundfos CR 64-2',\n    manufacturer: 'Grundfos',\n    firmwareVersion: 'V3.2.1',\n    serialNumber: 'GF-2023-HSP-001',\n    deviceCategory: 'Actuator',\n    deploymentLocation: 'Water Treatment Plant - Building A, Pump Room',\n    commissionDate: datetime('2023-03-20T10:00:00Z'),\n    operationalStatus: 'Active',\n    ipAddress: '192.168.10.50',\n    macAddress: '00:1E:4F:A2:B3:C4',\n    protocol: ['Modbus/TCP', 'Profibus'],\n    criticality: 'Critical',\n    lastUpdated: datetime(),\n\n    // Water-specific properties\n    waterDeviceType: 'Pump',\n    flowCapacity: 2500.0,\n    pressureRating: 150.0,\n    materialComposition: 'Stainless Steel 316',\n    installationDepth: 0.0,\n    regulatoryZone: 'Zone-A-Treatment',\n    epaAssetId: 'EPA-WTR-2023-00147',\n    maintenanceSchedule: 'Quarterly',\n    lastMaintenanceDate: datetime('2024-09-15T08:00:00Z'),\n    waterQualityImpact: 'Critical',\n    cyberPhysicalRisk: 'Critical'\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\n// Water",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_6",
+    "text": ": 'Quarterly',\n    lastMaintenanceDate: datetime('2024-09-15T08:00:00Z'),\n    waterQualityImpact: 'Critical',\n    cyberPhysicalRisk: 'Critical'\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\n// Water device type index for filtering\nCREATE INDEX water_device_type_idx IF NOT EXISTS\nFOR (wd:WaterDevice) ON (wd.waterDeviceType);\n\n// Regulatory zone index for compliance queries\nCREATE INDEX water_regulatory_zone_idx IF NOT EXISTS\nFOR (wd:WaterDevice) ON (wd.regulatoryZone);\n\n// EPA asset ID index for regulatory reporting\nCREATE INDEX water_epa_asset_idx IF NOT EXISTS\nFOR (wd:WaterDevice) ON (wd.epaAssetId);\n\n// Composite index for cyber-physical risk assessment\nCREATE INDEX water_cyber_risk_idx IF NOT EXISTS\nFOR (wd:WaterDevice) ON (wd.cyberPhysicalRisk, wd.waterQualityImpact);\n```\n\n---\n\n### 2.2 Water:WaterProperty Node (extends SAREF:Property)\n\n**Purpose:** Represents water-specific measurable properties critical for safety and security monitoring.\n\n**Inheritance:** All properties from `S",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_7",
+    "text": ".2 Water:WaterProperty Node (extends SAREF:Property)\n\n**Purpose:** Represents water-specific measurable properties critical for safety and security monitoring.\n\n**Inheritance:** All properties from `SAREF:Property` (Wave 1) plus:\n\n**Additional Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| waterPropertyCategory | String | Yes | Property category | `Hydraulic`, `Chemical`, `Physical`, `Biological` |\n| regulatoryLimit | Float | No | Maximum allowable limit (EPA/WHO) | `4.0` (mg/L for chlorine) |\n| actionLevel | Float | No | Level triggering corrective action | `3.5` (mg/L) |\n| healthImpact | String | Yes | Health impact if exceeded | `Critical`, `High`, `Medium`, `Low` |\n| samplingFrequency | String | Yes | Required sampling frequency | `Continuous`, `Hourly`, `Daily`, `Weekly` |\n| epaParameter | String | No | EPA parameter code | `EPA-1005` (Free Chlorine) |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (w",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_8",
+    "text": "red sampling frequency | `Continuous`, `Hourly`, `Daily`, `Weekly` |\n| epaParameter | String | No | EPA parameter code | `EPA-1005` (Free Chlorine) |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (wp:Water:WaterProperty:Property {\n    // SAREF:Property inherited properties\n    propertyId: 'water:property:chlorine-residual-001',\n    propertyType: 'ChemicalConcentration',\n    unitOfMeasure: 'mg/L',\n    minValue: 0.0,\n    maxValue: 4.0,\n    normalRangeMin: 0.2,\n    normalRangeMax: 2.0,\n    criticalThresholdMin: 0.1,\n    criticalThresholdMax: 4.0,\n    measurementAccuracy: 0.01,\n    description: 'Free chlorine residual in distribution system',\n    lastCalibration: datetime('2024-08-20T09:00:00Z'),\n\n    // Water-specific properties\n    waterPropertyCategory: 'Chemical',\n    regulatoryLimit: 4.0,\n    actionLevel: 3.5,\n    healthImpact: 'Critical',\n    samplingFrequency: 'Continuous',\n    epaParameter: 'EPA-1005'\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE INDEX water_property_cat",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_9",
+    "text": "0,\n    actionLevel: 3.5,\n    healthImpact: 'Critical',\n    samplingFrequency: 'Continuous',\n    epaParameter: 'EPA-1005'\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE INDEX water_property_category_idx IF NOT EXISTS\nFOR (wp:WaterProperty) ON (wp.waterPropertyCategory);\n\nCREATE INDEX water_epa_parameter_idx IF NOT EXISTS\nFOR (wp:WaterProperty) ON (wp.epaParameter);\n\nCREATE INDEX water_health_impact_idx IF NOT EXISTS\nFOR (wp:WaterProperty) ON (wp.healthImpact);\n```\n\n---\n\n### 2.3 Water:TreatmentProcess Node\n\n**Purpose:** Represents water treatment processes with security and safety implications.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| processId | String | Yes | Unique process identifier | `water:process:chlorination-001` |\n| processName | String | Yes | Human-readable process name | `Primary Chlorination` |\n| processType | String | Yes | Treatment process category | `Disinfection`, `Filtratio",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_10",
+    "text": "process:chlorination-001` |\n| processName | String | Yes | Human-readable process name | `Primary Chlorination` |\n| processType | String | Yes | Treatment process category | `Disinfection`, `Filtration`, `Coagulation`, `UV` |\n| processStage | String | Yes | Treatment stage | `PreTreatment`, `Primary`, `Secondary`, `Final` |\n| flowRate | Float | No | Design flow rate (MGD) | `5.0` |\n| retentionTime | Float | No | Process retention time (minutes) | `30.0` |\n| efficiency | Float | No | Process efficiency percentage | `99.5` |\n| criticalityRating | String | Yes | Process criticality | `Critical`, `High`, `Medium`, `Low` |\n| redundancyLevel | String | Yes | Redundancy configuration | `None`, `Standby`, `Parallel`, `N+1` |\n| automationLevel | String | Yes | Automation level | `Manual`, `SemiAutomatic`, `FullyAutomatic` |\n| scadaControlled | Boolean | Yes | SCADA control enabled | `true` |\n| safetyInterlocks | String[] | No | Safety interlock systems | `[\"HighPressureShutoff\", \"LowFlowAlarm\"]",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_11",
+    "text": "matic`, `FullyAutomatic` |\n| scadaControlled | Boolean | Yes | SCADA control enabled | `true` |\n| safetyInterlocks | String[] | No | Safety interlock systems | `[\"HighPressureShutoff\", \"LowFlowAlarm\"]` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (tp:Water:TreatmentProcess {\n    processId: 'water:process:chlorination-001',\n    processName: 'Primary Chlorination',\n    processType: 'Disinfection',\n    processStage: 'Primary',\n    flowRate: 5.0,\n    retentionTime: 30.0,\n    efficiency: 99.5,\n    criticalityRating: 'Critical',\n    redundancyLevel: 'N+1',\n    automationLevel: 'FullyAutomatic',\n    scadaControlled: true,\n    safetyInterlocks: ['HighPressureShutoff', 'LowFlowAlarm', 'ChlorineLeakDetection']\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT treatment_process_id_unique IF NOT EXISTS\nFOR (tp:TreatmentProcess) REQUIRE tp.processId IS UNIQUE;\n\nCREATE INDEX treatment_process_type_idx IF NOT EXISTS\nFOR (tp:TreatmentProcess) ON (tp.processType);\n\nCREATE INDEX tre",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_12",
+    "text": "d_unique IF NOT EXISTS\nFOR (tp:TreatmentProcess) REQUIRE tp.processId IS UNIQUE;\n\nCREATE INDEX treatment_process_type_idx IF NOT EXISTS\nFOR (tp:TreatmentProcess) ON (tp.processType);\n\nCREATE INDEX treatment_criticality_idx IF NOT EXISTS\nFOR (tp:TreatmentProcess) ON (tp.criticalityRating);\n\nCREATE INDEX treatment_scada_idx IF NOT EXISTS\nFOR (tp:TreatmentProcess) ON (tp.scadaControlled);\n```\n\n---\n\n### 2.4 Water:DistributionZone Node\n\n**Purpose:** Represents geographic distribution zones for water network segmentation and security.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| zoneId | String | Yes | Unique zone identifier | `water:zone:dist-north-001` |\n| zoneName | String | Yes | Human-readable zone name | `North Distribution Zone` |\n| zoneType | String | Yes | Zone classification | `Treatment`, `Distribution`, `Storage`, `Transfer` |\n| population | Integer | No | Population served | `45000` |\n| area | F",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_13",
+    "text": "North Distribution Zone` |\n| zoneType | String | Yes | Zone classification | `Treatment`, `Distribution`, `Storage`, `Transfer` |\n| population | Integer | No | Population served | `45000` |\n| area | Float | No | Geographic area (sq miles) | `12.5` |\n| averagePressure | Float | No | Average pressure (PSI) | `65.0` |\n| storageCapacity | Float | No | Storage capacity (gallons) | `2000000.0` |\n| demandProfile | String | No | Demand pattern | `Residential`, `Industrial`, `Mixed` |\n| vulnerabilityScore | Float | Yes | Zone vulnerability score (0-1) | `0.65` |\n| criticalInfrastructure | Boolean | Yes | Contains critical infrastructure | `true` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (dz:Water:DistributionZone {\n    zoneId: 'water:zone:dist-north-001',\n    zoneName: 'North Distribution Zone',\n    zoneType: 'Distribution',\n    population: 45000,\n    area: 12.5,\n    averagePressure: 65.0,\n    storageCapacity: 2000000.0,\n    demandProfile: 'Residential',\n    vulnerabilityScore: 0.65,\n  ",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_14",
+    "text": "one',\n    zoneType: 'Distribution',\n    population: 45000,\n    area: 12.5,\n    averagePressure: 65.0,\n    storageCapacity: 2000000.0,\n    demandProfile: 'Residential',\n    vulnerabilityScore: 0.65,\n    criticalInfrastructure: true\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT distribution_zone_id_unique IF NOT EXISTS\nFOR (dz:DistributionZone) REQUIRE dz.zoneId IS UNIQUE;\n\nCREATE INDEX distribution_zone_type_idx IF NOT EXISTS\nFOR (dz:DistributionZone) ON (dz.zoneType);\n\nCREATE INDEX distribution_vulnerability_idx IF NOT EXISTS\nFOR (dz:DistributionZone) ON (dz.vulnerabilityScore);\n```\n\n---\n\n### 2.5 Water:SCADASystem Node\n\n**Purpose:** Represents SCADA systems controlling water infrastructure with detailed security attributes.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| scadaId | String | Yes | Unique SCADA system identifier | `water:scada:wtp-master-001` |\n| systemName | String | Yes",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_15",
+    "text": " | Description | Example |\n|----------|------|----------|-------------|---------|\n| scadaId | String | Yes | Unique SCADA system identifier | `water:scada:wtp-master-001` |\n| systemName | String | Yes | Human-readable system name | `Water Treatment Plant Master SCADA` |\n| vendor | String | Yes | SCADA vendor | `Schneider Electric`, `Siemens`, `Rockwell` |\n| softwareVersion | String | Yes | SCADA software version | `ClearSCADA 2023 R2` |\n| hmiCount | Integer | No | Number of HMI stations | `5` |\n| rtuCount | Integer | No | Number of connected RTUs | `47` |\n| plcCount | Integer | No | Number of connected PLCs | `23` |\n| networkArchitecture | String | Yes | Network architecture type | `Flat`, `Segmented`, `DMZ-Protected` |\n| remoteAccessEnabled | Boolean | Yes | Remote access configuration | `true` |\n| authenticationMethod | String | Yes | Authentication method | `LDAP`, `Local`, `MultiFactorAuth` |\n| encryptionEnabled | Boolean | Yes | Data encryption status | `false` |\n| logRetentionDay",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_16",
+    "text": "`true` |\n| authenticationMethod | String | Yes | Authentication method | `LDAP`, `Local`, `MultiFactorAuth` |\n| encryptionEnabled | Boolean | Yes | Data encryption status | `false` |\n| logRetentionDays | Integer | No | Log retention period | `90` |\n| lastSecurityAudit | DateTime | No | Last security audit date | `2024-06-15T00:00:00Z` |\n| complianceFramework | String[] | No | Compliance frameworks | `[\"NIST-800-82\", \"ICS-CERT\"]` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (ss:Water:SCADASystem {\n    scadaId: 'water:scada:wtp-master-001',\n    systemName: 'Water Treatment Plant Master SCADA',\n    vendor: 'Schneider Electric',\n    softwareVersion: 'ClearSCADA 2023 R2',\n    hmiCount: 5,\n    rtuCount: 47,\n    plcCount: 23,\n    networkArchitecture: 'Segmented',\n    remoteAccessEnabled: true,\n    authenticationMethod: 'LDAP',\n    encryptionEnabled: false,\n    logRetentionDays: 90,\n    lastSecurityAudit: datetime('2024-06-15T00:00:00Z'),\n    complianceFramework: ['NIST-800-82', 'ICS-CERT",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_17",
+    "text": "e,\n    authenticationMethod: 'LDAP',\n    encryptionEnabled: false,\n    logRetentionDays: 90,\n    lastSecurityAudit: datetime('2024-06-15T00:00:00Z'),\n    complianceFramework: ['NIST-800-82', 'ICS-CERT', 'AWWA-J100']\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT scada_system_id_unique IF NOT EXISTS\nFOR (ss:SCADASystem) REQUIRE ss.scadaId IS UNIQUE;\n\nCREATE INDEX scada_vendor_idx IF NOT EXISTS\nFOR (ss:SCADASystem) ON (ss.vendor);\n\nCREATE INDEX scada_network_architecture_idx IF NOT EXISTS\nFOR (ss:SCADASystem) ON (ss.networkArchitecture);\n\nCREATE INDEX scada_remote_access_idx IF NOT EXISTS\nFOR (ss:SCADASystem) ON (ss.remoteAccessEnabled, ss.encryptionEnabled);\n```\n\n---\n\n### 2.6 Water:WaterQualityStandard Node\n\n**Purpose:** Represents regulatory water quality standards (EPA, WHO) for compliance monitoring.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| standardId | String | Yes | Unique st",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_18",
+    "text": " WHO) for compliance monitoring.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| standardId | String | Yes | Unique standard identifier | `water:standard:epa-mcl-chlorine` |\n| regulatoryBody | String | Yes | Issuing regulatory body | `EPA`, `WHO`, `StateRegulator` |\n| parameterName | String | Yes | Parameter being regulated | `Free Chlorine` |\n| maximumContaminantLevel | Float | No | MCL value | `4.0` |\n| maximumContaminantLevelGoal | Float | No | MCLG value | `4.0` |\n| unitOfMeasure | String | Yes | Measurement unit | `mg/L` |\n| healthEffect | String | Yes | Health effect description | `Eye/nose irritation, stomach discomfort` |\n| monitoringFrequency | String | Yes | Required monitoring frequency | `Daily` |\n| publicNotificationRequired | Boolean | Yes | Public notification if exceeded | `true` |\n| regulationReference | String | Yes | Regulation citation | `40 CFR 141.74` |\n| effectiveDate | DateTime | Y",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_19",
+    "text": "\n| publicNotificationRequired | Boolean | Yes | Public notification if exceeded | `true` |\n| regulationReference | String | Yes | Regulation citation | `40 CFR 141.74` |\n| effectiveDate | DateTime | Yes | Regulation effective date | `2006-01-01T00:00:00Z` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (wqs:Water:WaterQualityStandard {\n    standardId: 'water:standard:epa-mcl-chlorine',\n    regulatoryBody: 'EPA',\n    parameterName: 'Free Chlorine',\n    maximumContaminantLevel: 4.0,\n    maximumContaminantLevelGoal: 4.0,\n    unitOfMeasure: 'mg/L',\n    healthEffect: 'Eye/nose irritation, stomach discomfort at high levels',\n    monitoringFrequency: 'Daily',\n    publicNotificationRequired: true,\n    regulationReference: '40 CFR 141.74',\n    effectiveDate: datetime('2006-01-01T00:00:00Z')\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT water_quality_standard_id_unique IF NOT EXISTS\nFOR (wqs:WaterQualityStandard) REQUIRE wqs.standardId IS UNIQUE;\n\nCREATE INDEX water_standar",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_20",
+    "text": "`\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT water_quality_standard_id_unique IF NOT EXISTS\nFOR (wqs:WaterQualityStandard) REQUIRE wqs.standardId IS UNIQUE;\n\nCREATE INDEX water_standard_regulatory_body_idx IF NOT EXISTS\nFOR (wqs:WaterQualityStandard) ON (wqs.regulatoryBody);\n\nCREATE INDEX water_standard_parameter_idx IF NOT EXISTS\nFOR (wqs:WaterQualityStandard) ON (wqs.parameterName);\n```\n\n---\n\n### 2.7 Water:WaterIncident Node\n\n**Purpose:** Represents water infrastructure security/safety incidents for historical analysis and pattern recognition.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| incidentId | String | Yes | Unique incident identifier | `water:incident:2024-047` |\n| incidentType | String | Yes | Incident classification | `CyberAttack`, `Contamination`, `SystemFailure`, `PhysicalSecurity` |\n| severity | String | Yes | Incident severity | `Critical`, `High`, `Medium`, `Low` |\n| d",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_21",
+    "text": "String | Yes | Incident classification | `CyberAttack`, `Contamination`, `SystemFailure`, `PhysicalSecurity` |\n| severity | String | Yes | Incident severity | `Critical`, `High`, `Medium`, `Low` |\n| detectedAt | DateTime | Yes | Detection timestamp | `2024-03-15T14:23:00Z` |\n| resolvedAt | DateTime | No | Resolution timestamp | `2024-03-15T18:45:00Z` |\n| affectedPopulation | Integer | No | Population impacted | `12000` |\n| rootCause | String | No | Root cause analysis | `Unauthorized SCADA access via stolen credentials` |\n| publicNotified | Boolean | Yes | Public notification issued | `true` |\n| regulatoryReported | Boolean | Yes | Reported to regulators | `true` |\n| financialImpact | Float | No | Financial impact (USD) | `487000.0` |\n| lessonsLearned | String | No | Lessons learned summary | `Implement MFA on all SCADA access` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (wi:Water:WaterIncident {\n    incidentId: 'water:incident:2024-047',\n    incidentType: 'CyberAttack',\n    seve",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_22",
+    "text": "y | `Implement MFA on all SCADA access` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (wi:Water:WaterIncident {\n    incidentId: 'water:incident:2024-047',\n    incidentType: 'CyberAttack',\n    severity: 'High',\n    detectedAt: datetime('2024-03-15T14:23:00Z'),\n    resolvedAt: datetime('2024-03-15T18:45:00Z'),\n    affectedPopulation: 12000,\n    rootCause: 'Unauthorized SCADA access via stolen credentials',\n    publicNotified: true,\n    regulatoryReported: true,\n    financialImpact: 487000.0,\n    lessonsLearned: 'Implement MFA on all SCADA access points and enhance credential monitoring'\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT water_incident_id_unique IF NOT EXISTS\nFOR (wi:WaterIncident) REQUIRE wi.incidentId IS UNIQUE;\n\nCREATE INDEX water_incident_type_idx IF NOT EXISTS\nFOR (wi:WaterIncident) ON (wi.incidentType);\n\nCREATE INDEX water_incident_detected_idx IF NOT EXISTS\nFOR (wi:WaterIncident) ON (wi.detectedAt);\n\nCREATE INDEX water_incident_severity_idx IF NO",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_23",
+    "text": "T EXISTS\nFOR (wi:WaterIncident) ON (wi.incidentType);\n\nCREATE INDEX water_incident_detected_idx IF NOT EXISTS\nFOR (wi:WaterIncident) ON (wi.detectedAt);\n\nCREATE INDEX water_incident_severity_idx IF NOT EXISTS\nFOR (wi:WaterIncident) ON (wi.severity);\n```\n\n---\n\n## 3. Complete Relationship Schemas\n\n### 3.1 PART_OF_PROCESS Relationship\n\n**Purpose:** Links water devices to treatment processes they participate in.\n\n**Source:** `Water:WaterDevice`\n**Target:** `Water:TreatmentProcess`\n**Cardinality:** Many-to-Many (1 device can be part of multiple processes, 1 process uses multiple devices)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| role | String | Yes | Device role in process | `Primary`, `Backup`, `Monitoring`, `Control` |\n| criticality | String | Yes | Role criticality | `Essential`, `Important`, `Supplementary` |\n| assignedDate | DateTime | Yes | When device was assigned to process | `2023-03-20T10:00:00",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_24",
+    "text": ", `Control` |\n| criticality | String | Yes | Role criticality | `Essential`, `Important`, `Supplementary` |\n| assignedDate | DateTime | Yes | When device was assigned to process | `2023-03-20T10:00:00Z` |\n| isActive | Boolean | Yes | Currently active in process | `true` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (wd:WaterDevice {deviceId: 'water:device:pump-wtp-001'})\nMATCH (tp:TreatmentProcess {processId: 'water:process:chlorination-001'})\nCREATE (wd)-[r:PART_OF_PROCESS {\n    role: 'Primary',\n    criticality: 'Essential',\n    assignedDate: datetime('2023-03-20T10:00:00Z'),\n    isActive: true\n}]->(tp)\n```\n\n---\n\n### 3.2 LOCATED_IN_ZONE Relationship\n\n**Purpose:** Connects water devices to their distribution zones.\n\n**Source:** `Water:WaterDevice`\n**Target:** `Water:DistributionZone`\n**Cardinality:** Many-to-One (many devices in one zone)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| assignedDate | D",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_25",
+    "text": "Cardinality:** Many-to-One (many devices in one zone)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| assignedDate | DateTime | Yes | Zone assignment date | `2023-03-20T10:00:00Z` |\n| gpsCoordinates | String | No | GPS location | `40.7128,-74.0060` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (wd:WaterDevice {deviceId: 'water:device:pump-wtp-001'})\nMATCH (dz:DistributionZone {zoneId: 'water:zone:dist-north-001'})\nCREATE (wd)-[r:LOCATED_IN_ZONE {\n    assignedDate: datetime('2023-03-20T10:00:00Z'),\n    gpsCoordinates: '40.7128,-74.0060'\n}]->(dz)\n```\n\n---\n\n### 3.3 CONTROLLED_BY_SCADA Relationship\n\n**Purpose:** Links water devices to SCADA systems controlling them.\n\n**Source:** `Water:WaterDevice`\n**Target:** `Water:SCADASystem`\n**Cardinality:** Many-to-One (many devices controlled by one SCADA system)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_26",
+    "text": " `Water:SCADASystem`\n**Cardinality:** Many-to-One (many devices controlled by one SCADA system)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| controlType | String | Yes | Control mode | `Automatic`, `Manual`, `Supervisory` |\n| pollingInterval | Integer | No | Data polling interval (seconds) | `5` |\n| lastCommunication | DateTime | No | Last successful communication | `2025-10-30T14:23:00Z` |\n| communicationProtocol | String | Yes | Protocol used | `Modbus/TCP`, `DNP3`, `OPC-UA` |\n| failsafeMode | String | No | Behavior on SCADA failure | `LastKnownGood`, `SafeShutdown`, `LocalControl` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (wd:WaterDevice {deviceId: 'water:device:pump-wtp-001'})\nMATCH (ss:SCADASystem {scadaId: 'water:scada:wtp-master-001'})\nCREATE (wd)-[r:CONTROLLED_BY_SCADA {\n    controlType: 'Automatic',\n    pollingInterval: 5,\n    lastCommunication: datetime('2025-10-30T14:23:00Z'),\n    com",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_27",
+    "text": "tem {scadaId: 'water:scada:wtp-master-001'})\nCREATE (wd)-[r:CONTROLLED_BY_SCADA {\n    controlType: 'Automatic',\n    pollingInterval: 5,\n    lastCommunication: datetime('2025-10-30T14:23:00Z'),\n    communicationProtocol: 'Modbus/TCP',\n    failsafeMode: 'SafeShutdown'\n}]->(ss)\n```\n\n---\n\n### 3.4 COMPLIES_WITH_STANDARD Relationship\n\n**Purpose:** Links water properties to regulatory standards they must meet.\n\n**Source:** `Water:WaterProperty`\n**Target:** `Water:WaterQualityStandard`\n**Cardinality:** Many-to-Many (1 property may comply with multiple standards, 1 standard applies to multiple properties)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| complianceStatus | String | Yes | Current compliance status | `Compliant`, `NonCompliant`, `UnderReview` |\n| lastAssessment | DateTime | Yes | Last compliance assessment | `2024-10-15T00:00:00Z` |\n| nextAssessment | DateTime | No | Next scheduled assessment | `2025-",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_28",
+    "text": "pliant`, `NonCompliant`, `UnderReview` |\n| lastAssessment | DateTime | Yes | Last compliance assessment | `2024-10-15T00:00:00Z` |\n| nextAssessment | DateTime | No | Next scheduled assessment | `2025-01-15T00:00:00Z` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (wp:WaterProperty {propertyId: 'water:property:chlorine-residual-001'})\nMATCH (wqs:WaterQualityStandard {standardId: 'water:standard:epa-mcl-chlorine'})\nCREATE (wp)-[r:COMPLIES_WITH_STANDARD {\n    complianceStatus: 'Compliant',\n    lastAssessment: datetime('2024-10-15T00:00:00Z'),\n    nextAssessment: datetime('2025-01-15T00:00:00Z')\n}]->(wqs)\n```\n\n---\n\n### 3.5 INVOLVED_IN_INCIDENT Relationship\n\n**Purpose:** Links devices or processes to security/safety incidents.\n\n**Source:** `Water:WaterDevice` OR `Water:TreatmentProcess` OR `Water:SCADASystem`\n**Target:** `Water:WaterIncident`\n**Cardinality:** Many-to-Many (1 device/process/system can be involved in multiple incidents, 1 incident can involve multiple entities)\n\n**Propertie",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_29",
+    "text": "ater:SCADASystem`\n**Target:** `Water:WaterIncident`\n**Cardinality:** Many-to-Many (1 device/process/system can be involved in multiple incidents, 1 incident can involve multiple entities)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| involvement | String | Yes | Nature of involvement | `PointOfCompromise`, `AffectedAsset`, `DetectionPoint` |\n| impactLevel | String | Yes | Impact on this entity | `Total`, `Partial`, `Minimal` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (ss:SCADASystem {scadaId: 'water:scada:wtp-master-001'})\nMATCH (wi:WaterIncident {incidentId: 'water:incident:2024-047'})\nCREATE (ss)-[r:INVOLVED_IN_INCIDENT {\n    involvement: 'PointOfCompromise',\n    impactLevel: 'Partial'\n}]->(wi)\n```\n\n---\n\n### 3.6 MONITORS_PROCESS Relationship\n\n**Purpose:** Links SCADA systems to treatment processes they monitor.\n\n**Source:** `Water:SCADASystem`\n**Target:** `Water:TreatmentProcess`\n**Cardinality:*",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_30",
+    "text": "\n---\n\n### 3.6 MONITORS_PROCESS Relationship\n\n**Purpose:** Links SCADA systems to treatment processes they monitor.\n\n**Source:** `Water:SCADASystem`\n**Target:** `Water:TreatmentProcess`\n**Cardinality:** Many-to-Many (1 SCADA can monitor multiple processes, 1 process can be monitored by multiple SCADA systems)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| monitoringMode | String | Yes | Monitoring configuration | `RealTime`, `Periodic`, `OnDemand` |\n| alarmEnabled | Boolean | Yes | Alarm notifications enabled | `true` |\n| dataLoggingInterval | Integer | No | Data logging frequency (seconds) | `60` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (ss:SCADASystem {scadaId: 'water:scada:wtp-master-001'})\nMATCH (tp:TreatmentProcess {processId: 'water:process:chlorination-001'})\nCREATE (ss)-[r:MONITORS_PROCESS {\n    monitoringMode: 'RealTime',\n    alarmEnabled: true,\n    dataLoggingInterval: 60\n}]->(tp)\n```\n\n-",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_31",
+    "text": "tp:TreatmentProcess {processId: 'water:process:chlorination-001'})\nCREATE (ss)-[r:MONITORS_PROCESS {\n    monitoringMode: 'RealTime',\n    alarmEnabled: true,\n    dataLoggingInterval: 60\n}]->(tp)\n```\n\n---\n\n### 3.7 HAS_WATER_PROPERTY Relationship (extends HAS_PROPERTY from Wave 1)\n\n**Purpose:** Specialized property relationship with water-specific metadata.\n\n**Source:** `Water:WaterDevice`\n**Target:** `Water:WaterProperty`\n**Cardinality:** Many-to-Many\n\n**Properties:** Inherits from `HAS_PROPERTY` plus:\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| samplePoint | String | No | Sampling location | `InfluentPoint`, `EffluentPoint`, `DistributionMain` |\n| regulatoryRequired | Boolean | Yes | Regulatory requirement | `true` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (wd:WaterDevice {deviceId: 'water:device:chlorine-analyzer-001'})\nMATCH (wp:WaterProperty {propertyId: 'water:property:chlorine-residual-001'})\nCREATE (wd)-[r",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_32",
+    "text": "pher CREATE Statement:**\n\n```cypher\nMATCH (wd:WaterDevice {deviceId: 'water:device:chlorine-analyzer-001'})\nMATCH (wp:WaterProperty {propertyId: 'water:property:chlorine-residual-001'})\nCREATE (wd)-[r:HAS_WATER_PROPERTY:HAS_PROPERTY {\n    assignedDate: datetime('2023-03-20T10:00:00Z'),\n    isActive: true,\n    monitoringPriority: 'Critical',\n    samplePoint: 'EffluentPoint',\n    regulatoryRequired: true\n}]->(wp)\n```\n\n---\n\n### 3.8 THREATENS_WATER_INFRASTRUCTURE Relationship (extends VULNERABLE_TO)\n\n**Purpose:** Links water devices to CVE vulnerabilities with water-specific impact assessment.\n\n**Source:** `Water:WaterDevice`\n**Target:** `CVE` (existing node)\n**Cardinality:** Many-to-Many\n\n**Properties:** Inherits from `VULNERABLE_TO` plus:\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| waterSafetyImpact | String | Yes | Impact on water safety | `DirectContamination`, `ProcessDisruption`, `MonitoringBlindness` |\n| population",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_33",
+    "text": " |\n|----------|------|----------|-------------|---------|\n| waterSafetyImpact | String | Yes | Impact on water safety | `DirectContamination`, `ProcessDisruption`, `MonitoringBlindness` |\n| populationAtRisk | Integer | No | Population potentially affected | `45000` |\n| dhsSectorAlert | String | No | DHS sector alert ID | `DHS-WATER-2024-0012` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (wd:WaterDevice {deviceId: 'water:device:pump-wtp-001'})\nMATCH (cve:CVE {cveId: 'CVE-2023-98765'})\nCREATE (wd)-[r:THREATENS_WATER_INFRASTRUCTURE:VULNERABLE_TO {\n    discoveredDate: datetime('2024-03-15T00:00:00Z'),\n    affectedFirmwareVersions: ['V3.2.0', 'V3.2.1'],\n    patchAvailable: true,\n    patchVersion: 'V3.3.0',\n    exploitabilityScore: 3.9,\n    impactScore: 5.9,\n    isExploited: false,\n    mitigationStatus: 'Unpatched',\n    waterSafetyImpact: 'ProcessDisruption',\n    populationAtRisk: 45000,\n    dhsSectorAlert: 'DHS-WATER-2024-0012'\n}]->(cve)\n```\n\n---\n\n## 4. Integration Patterns\n\n### 4.1 Int",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_34",
+    "text": "ationStatus: 'Unpatched',\n    waterSafetyImpact: 'ProcessDisruption',\n    populationAtRisk: 45000,\n    dhsSectorAlert: 'DHS-WATER-2024-0012'\n}]->(cve)\n```\n\n---\n\n## 4. Integration Patterns\n\n### 4.1 Integration with Wave 1 SAREF Core\n\nWave 2 extends Wave 1 through inheritance and relationship augmentation:\n\n#### Integration Point 1: Device Inheritance\n\n**Query to create water device inheriting from SAREF:Device:**\n\n```cypher\n// Create water device with full SAREF inheritance\nCREATE (wd:Water:WaterDevice:Device {\n    // All SAREF:Device properties automatically available\n    deviceId: 'water:device:valve-dist-north-025',\n    name: 'Distribution Zone North - Control Valve 25',\n    model: 'Cla-Val 90-01',\n    manufacturer: 'Cla-Val',\n    firmwareVersion: 'V2.1.4',\n    deviceCategory: 'Actuator',\n    criticality: 'High',\n\n    // Water-specific extensions\n    waterDeviceType: 'Valve',\n    flowCapacity: 1200.0,\n    pressureRating: 200.0,\n    regulatoryZone: 'Zone-B-Distribution',\n    waterQual",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_35",
+    "text": ",\n    criticality: 'High',\n\n    // Water-specific extensions\n    waterDeviceType: 'Valve',\n    flowCapacity: 1200.0,\n    pressureRating: 200.0,\n    regulatoryZone: 'Zone-B-Distribution',\n    waterQualityImpact: 'Medium',\n    cyberPhysicalRisk: 'High'\n})\n\n// Verify inheritance - query works for both SAREF and Water layers\nMATCH (d:Device)\nWHERE d.criticality = 'High'\nRETURN d.deviceId, d.name, labels(d)\n\n// Returns both SAREF:Device and Water:WaterDevice:Device nodes\n```\n\n**Validation:**\n```cypher\n// Verify water devices appear in SAREF device queries\nMATCH (d:Device)\nWHERE d:WaterDevice\nRETURN count(d) as waterDevicesInSAREF\n\n// Expected: All water devices (1,500-2,000 nodes)\n```\n\n---\n\n#### Integration Point 2: Property Extension\n\n**Query linking water properties to SAREF measurement framework:**\n\n```cypher\n// Water property extends SAREF property\nMATCH (wp:WaterProperty {propertyId: 'water:property:flow-rate-001'})\n\n// Inherits SAREF measurement generation\nMATCH (wp)-[:GENERATES_MEASU",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_36",
+    "text": "work:**\n\n```cypher\n// Water property extends SAREF property\nMATCH (wp:WaterProperty {propertyId: 'water:property:flow-rate-001'})\n\n// Inherits SAREF measurement generation\nMATCH (wp)-[:GENERATES_MEASUREMENT]->(m:Measurement)\nWHERE m.timestamp > datetime() - duration({hours: 24})\n\n// Water-specific analysis\nWITH wp, m\nWHERE m.value < wp.normalRangeMin OR m.value > wp.normalRangeMax\nRETURN wp.propertyId,\n       wp.waterPropertyCategory,\n       wp.healthImpact,\n       count(m) as abnormalMeasurements,\n       collect(m.value)[..5] as sampleValues\n\n// Demonstrates seamless integration: water properties use SAREF measurement infrastructure\n```\n\n---\n\n#### Integration Point 3: Service Architecture Extension\n\n**Query showing water devices inheriting SAREF service model:**\n\n```cypher\n// Water device offers SAREF services\nMATCH (wd:WaterDevice)-[o:OFFERS_SERVICE]->(s:Service)\nWHERE s.protocol IN ['Modbus/TCP', 'DNP3']\n\n// Add water-specific service context\nWITH wd, s\nMATCH (wd)-[:CONTROLLED_BY_SC",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_37",
+    "text": " offers SAREF services\nMATCH (wd:WaterDevice)-[o:OFFERS_SERVICE]->(s:Service)\nWHERE s.protocol IN ['Modbus/TCP', 'DNP3']\n\n// Add water-specific service context\nWITH wd, s\nMATCH (wd)-[:CONTROLLED_BY_SCADA]->(scada:SCADASystem)\n\nRETURN wd.deviceId,\n       wd.waterDeviceType,\n       s.serviceName,\n       s.protocol,\n       s.authenticationRequired,\n       s.encryptionEnabled,\n       scada.systemName,\n       scada.vendor,\n       CASE\n         WHEN s.authenticationRequired = false AND wd.cyberPhysicalRisk = 'Critical'\n         THEN 'ImmediateAction'\n         WHEN s.encryptionEnabled = false AND wd.waterQualityImpact = 'Critical'\n         THEN 'HighPriority'\n         ELSE 'Monitor'\n       END as remediationPriority\n\n// Demonstrates SAREF service model extended with water safety context\n```\n\n---\n\n### 4.2 Integration with Existing CVE/ICS Data\n\n#### Integration Point 4: Water-Specific CVE Mapping\n\n**Query connecting water devices to relevant CVEs from existing graph:**\n\n```cypher\n// Match exis",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_38",
+    "text": "\n### 4.2 Integration with Existing CVE/ICS Data\n\n#### Integration Point 4: Water-Specific CVE Mapping\n\n**Query connecting water devices to relevant CVEs from existing graph:**\n\n```cypher\n// Match existing CVE nodes affecting water infrastructure\nMATCH (cve:CVE)\nWHERE cve.description CONTAINS 'water'\n   OR cve.description CONTAINS 'SCADA'\n   OR cve.description CONTAINS 'pump'\n   OR cve.description CONTAINS 'valve'\n   OR cve.affectedProducts CONTAINS 'Grundfos'\n   OR cve.affectedProducts CONTAINS 'Cla-Val'\n   OR cve.affectedProducts CONTAINS 'Schneider'\n\n// Match water devices potentially affected\nMATCH (wd:WaterDevice)\nWHERE wd.manufacturer IN ['Grundfos', 'Cla-Val', 'Schneider Electric']\n  AND (\n    cve.affectedProducts CONTAINS wd.model\n    OR cve.affectedProducts CONTAINS wd.manufacturer\n  )\n\n// Calculate water-specific impact\nWITH wd, cve,\n     CASE wd.waterQualityImpact\n       WHEN 'Critical' THEN 'DirectContamination'\n       WHEN 'High' THEN 'ProcessDisruption'\n       ELSE 'Monito",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_39",
+    "text": "\n  )\n\n// Calculate water-specific impact\nWITH wd, cve,\n     CASE wd.waterQualityImpact\n       WHEN 'Critical' THEN 'DirectContamination'\n       WHEN 'High' THEN 'ProcessDisruption'\n       ELSE 'MonitoringBlindness'\n     END as waterSafetyImpact\n\n// Match distribution zone to determine population at risk\nMATCH (wd)-[:LOCATED_IN_ZONE]->(dz:DistributionZone)\n\n// Create water-specific vulnerability relationship\nCREATE (wd)-[r:THREATENS_WATER_INFRASTRUCTURE:VULNERABLE_TO {\n    discoveredDate: cve.publishedDate,\n    affectedFirmwareVersions: [wd.firmwareVersion],\n    patchAvailable: CASE WHEN cve.patchStatus = 'Available' THEN true ELSE false END,\n    exploitabilityScore: cve.exploitabilityScore,\n    impactScore: cve.impactScore,\n    isExploited: cve.exploitedInWild,\n    mitigationStatus: 'Unpatched',\n    waterSafetyImpact: waterSafetyImpact,\n    populationAtRisk: dz.population,\n    dhsSectorAlert: CASE\n      WHEN cve.cvssScore >= 9.0 THEN 'DHS-WATER-' + substring(cve.cveId, 4, 4) + '-' + su",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_40",
+    "text": "ched',\n    waterSafetyImpact: waterSafetyImpact,\n    populationAtRisk: dz.population,\n    dhsSectorAlert: CASE\n      WHEN cve.cvssScore >= 9.0 THEN 'DHS-WATER-' + substring(cve.cveId, 4, 4) + '-' + substring(cve.cveId, 9)\n      ELSE null\n    END\n}]->(cve)\n\nRETURN count(r) as waterVulnerabilitiesLinked\n```\n\n**Expected Results:** 1,200-1,800 water-specific CVE links\n\n---\n\n#### Integration Point 5: SCADA CVE Correlation\n\n**Query linking SCADA systems to known vulnerabilities:**\n\n```cypher\n// Match SCADA systems with known vulnerable software\nMATCH (ss:SCADASystem)\n\n// Match CVEs affecting SCADA vendors\nMATCH (cve:CVE)\nWHERE cve.description CONTAINS ss.vendor\n   OR cve.affectedProducts CONTAINS ss.softwareVersion\n\n// Create SCADA-specific vulnerability tracking\nCREATE (ss)-[r:HAS_SCADA_VULNERABILITY {\n    discoveredDate: cve.publishedDate,\n    softwareVersion: ss.softwareVersion,\n    patchAvailable: CASE WHEN cve.patchStatus = 'Available' THEN true ELSE false END,\n    cvssScore: cve.cvssSc",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 40,
+      "start_char": 32000,
+      "end_char": 33000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_41",
+    "text": "BILITY {\n    discoveredDate: cve.publishedDate,\n    softwareVersion: ss.softwareVersion,\n    patchAvailable: CASE WHEN cve.patchStatus = 'Available' THEN true ELSE false END,\n    cvssScore: cve.cvssScore,\n    remoteExploitable: cve.accessVector = 'Network',\n    systemsAffected: ss.hmiCount + ss.rtuCount + ss.plcCount,\n    mitigationPriority: CASE\n      WHEN ss.remoteAccessEnabled = true AND cve.cvssScore >= 9.0 THEN 'Critical'\n      WHEN ss.remoteAccessEnabled = true AND cve.cvssScore >= 7.0 THEN 'High'\n      WHEN cve.cvssScore >= 7.0 THEN 'Medium'\n      ELSE 'Low'\n    END\n}]->(cve)\n\nRETURN ss.systemName,\n       ss.vendor,\n       ss.networkArchitecture,\n       ss.remoteAccessEnabled,\n       count(cve) as vulnerabilityCount,\n       collect(cve.cveId)[..5] as topCVEs\nORDER BY vulnerabilityCount DESC\n```\n\n**Expected Results:** 400-600 SCADA vulnerability links\n\n---\n\n### 4.3 Additive Enhancement Verification\n\n#### Example 1: Water Device Enriching Existing Asset Data\n\n**Before Wave 2:**\n``",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 41,
+      "start_char": 32800,
+      "end_char": 33800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_42",
+    "text": "unt DESC\n```\n\n**Expected Results:** 400-600 SCADA vulnerability links\n\n---\n\n### 4.3 Additive Enhancement Verification\n\n#### Example 1: Water Device Enriching Existing Asset Data\n\n**Before Wave 2:**\n```cypher\n// Generic asset from existing graph\n(asset:Asset {\n    assetId: 'ASSET-PUMP-WTP-001',\n    type: 'IndustrialPump',\n    location: 'Water Treatment Plant'\n})\n\n// SAREF device from Wave 1\n(d:Device {\n    deviceId: 'saref:device:pump-wtp-001',\n    name: 'High Service Pump 1'\n})-[:REPRESENTS_ASSET]->(asset)\n```\n\n**After Wave 2:**\n```cypher\n// Same generic asset and SAREF device, now enriched with water domain semantics\n(wd:WaterDevice:Device {\n    deviceId: 'saref:device:pump-wtp-001',\n    // All SAREF properties plus water extensions\n    waterDeviceType: 'Pump',\n    flowCapacity: 2500.0,\n    regulatoryZone: 'Zone-A-Treatment',\n    waterQualityImpact: 'Critical'\n})-[:REPRESENTS_ASSET]->(asset)\n\n// Now supports water-specific queries\nMATCH (asset:Asset {assetId: 'ASSET-PUMP-WTP-001'})\nMA",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 42,
+      "start_char": 33600,
+      "end_char": 34600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_43",
+    "text": "   regulatoryZone: 'Zone-A-Treatment',\n    waterQualityImpact: 'Critical'\n})-[:REPRESENTS_ASSET]->(asset)\n\n// Now supports water-specific queries\nMATCH (asset:Asset {assetId: 'ASSET-PUMP-WTP-001'})\nMATCH (wd:WaterDevice)-[:REPRESENTS_ASSET]->(asset)\nMATCH (wd)-[:PART_OF_PROCESS]->(tp:TreatmentProcess)\nMATCH (wd)-[:VULNERABLE_TO]->(cve:CVE)\nRETURN asset.assetId,\n       wd.waterDeviceType,\n       wd.flowCapacity,\n       tp.processName,\n       count(cve) as vulnerabilities\n\n// Additive enrichment: existing asset unchanged, new water semantics layered on top\n```\n\n**Verification:**\n```cypher\n// Verify existing asset properties unchanged\nMATCH (asset:Asset {assetId: 'ASSET-PUMP-WTP-001'})\nRETURN properties(asset)\n// Should return exact same properties as before Wave 2\n```\n\n---\n\n#### Example 2: SCADA System Adding Context to Existing Network Data\n\n**Before Wave 2:**\n```cypher\n// Generic network node from existing graph\n(network:NetworkSegment {\n    segmentId: 'NET-SCADA-WTP',\n    ipRange: '19",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 43,
+      "start_char": 34400,
+      "end_char": 35400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_44",
+    "text": "CADA System Adding Context to Existing Network Data\n\n**Before Wave 2:**\n```cypher\n// Generic network node from existing graph\n(network:NetworkSegment {\n    segmentId: 'NET-SCADA-WTP',\n    ipRange: '192.168.10.0/24',\n    vlan: 10\n})\n```\n\n**After Wave 2:**\n```cypher\n// Network segment unchanged, new SCADA context added\n(ss:SCADASystem {\n    scadaId: 'water:scada:wtp-master-001',\n    systemName: 'Water Treatment Plant Master SCADA',\n    vendor: 'Schneider Electric',\n    networkArchitecture: 'Segmented'\n})\n\n// Link SCADA to existing network\nMATCH (network:NetworkSegment {segmentId: 'NET-SCADA-WTP'})\nMATCH (ss:SCADASystem {scadaId: 'water:scada:wtp-master-001'})\nCREATE (ss)-[:DEPLOYED_ON_NETWORK {\n    deploymentDate: datetime('2023-01-15T00:00:00Z'),\n    isolationLevel: 'VLAN-Segmented'\n}]->(network)\n\n// Now supports integrated network + SCADA security queries\nMATCH (network:NetworkSegment)--(ss:SCADASystem)\nMATCH (ss)-[:CONTROLLED_BY_SCADA]-(wd:WaterDevice)\nMATCH (wd)-[:VULNERABLE_TO]->(cv",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 44,
+      "start_char": 35200,
+      "end_char": 36200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_45",
+    "text": "twork)\n\n// Now supports integrated network + SCADA security queries\nMATCH (network:NetworkSegment)--(ss:SCADASystem)\nMATCH (ss)-[:CONTROLLED_BY_SCADA]-(wd:WaterDevice)\nMATCH (wd)-[:VULNERABLE_TO]->(cve:CVE)\nWHERE cve.accessVector = 'Network'\nRETURN network.segmentId,\n       ss.systemName,\n       count(DISTINCT wd) as devicesOnNetwork,\n       count(DISTINCT cve) as networkExploitableCVEs,\n       ss.networkArchitecture,\n       CASE\n         WHEN ss.networkArchitecture = 'Flat' AND count(cve) > 0 THEN 'Critical'\n         WHEN ss.networkArchitecture = 'Segmented' AND count(cve) > 5 THEN 'High'\n         ELSE 'Medium'\n       END as networkRisk\n\n// Additive: existing network data preserved, new SCADA security context added\n```\n\n---\n\n### 4.4 CVE Preservation Verification\n\n#### Verification Query 1: CVE Node Count Unchanged\n\n```cypher\n// Verify CVE count identical to pre-Wave 2\nMATCH (cve:CVE)\nRETURN count(cve) as totalCVEs\n\n// Expected: Same count as after Wave 1 (no CVEs added/removed)\n// If ",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 45,
+      "start_char": 36000,
+      "end_char": 37000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_46",
+    "text": ": CVE Node Count Unchanged\n\n```cypher\n// Verify CVE count identical to pre-Wave 2\nMATCH (cve:CVE)\nRETURN count(cve) as totalCVEs\n\n// Expected: Same count as after Wave 1 (no CVEs added/removed)\n// If baseline was 45,672 CVEs, should still be 45,672\n```\n\n#### Verification Query 2: CVE Properties Intact\n\n```cypher\n// Sample CVEs linked to water infrastructure\nMATCH (cve:CVE)<-[:THREATENS_WATER_INFRASTRUCTURE]-(wd:WaterDevice)\nWITH cve LIMIT 50\nRETURN cve.cveId,\n       cve.cvssScore,\n       cve.publishedDate,\n       cve.description,\n       size(keys(properties(cve))) as propertyCount\nORDER BY cve.cveId\n\n// Verify property counts match pre-Wave 2 baseline for these CVEs\n```\n\n#### Verification Query 3: Original CVE Relationships Preserved\n\n```cypher\n// Verify existing CVE relationships unchanged (excluding new Wave 2 relationships)\nMATCH (cve:CVE)-[r]->(target)\nWHERE type(r) <> 'THREATENS_WATER_INFRASTRUCTURE'\n  AND type(r) <> 'HAS_SCADA_VULNERABILITY'\nWITH type(r) as relType, count(r) as r",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 46,
+      "start_char": 36800,
+      "end_char": 37800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_47",
+    "text": "d (excluding new Wave 2 relationships)\nMATCH (cve:CVE)-[r]->(target)\nWHERE type(r) <> 'THREATENS_WATER_INFRASTRUCTURE'\n  AND type(r) <> 'HAS_SCADA_VULNERABILITY'\nWITH type(r) as relType, count(r) as relCount\nRETURN relType, relCount\nORDER BY relType\n\n// Compare to pre-Wave 2 baseline - should match exactly\n```\n\n---\n\n## 5. Validation Criteria\n\n### 5.1 Acceptance Tests\n\n#### Test 1: Node Creation Completeness\n\n```cypher\nCALL {\n    MATCH (wd:WaterDevice) RETURN 'WaterDevice' as nodeType, count(wd) as nodeCount\n    UNION\n    MATCH (wp:WaterProperty) RETURN 'WaterProperty' as nodeType, count(wp) as nodeCount\n    UNION\n    MATCH (tp:TreatmentProcess) RETURN 'TreatmentProcess' as nodeType, count(tp) as nodeCount\n    UNION\n    MATCH (dz:DistributionZone) RETURN 'DistributionZone' as nodeType, count(dz) as nodeCount\n    UNION\n    MATCH (ss:SCADASystem) RETURN 'SCADASystem' as nodeType, count(ss) as nodeCount\n    UNION\n    MATCH (wqs:WaterQualityStandard) RETURN 'WaterQualityStandard' as nodeTyp",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 47,
+      "start_char": 37600,
+      "end_char": 38600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_48",
+    "text": "t(dz) as nodeCount\n    UNION\n    MATCH (ss:SCADASystem) RETURN 'SCADASystem' as nodeType, count(ss) as nodeCount\n    UNION\n    MATCH (wqs:WaterQualityStandard) RETURN 'WaterQualityStandard' as nodeType, count(wqs) as nodeCount\n    UNION\n    MATCH (wi:WaterIncident) RETURN 'WaterIncident' as nodeType, count(wi) as nodeCount\n}\nRETURN nodeType, nodeCount\nORDER BY nodeType\n```\n\n**Acceptance Criteria:**\n- WaterDevice: 1,500-2,000 nodes\n- WaterProperty: 4,000-6,000 nodes\n- TreatmentProcess: 500-800 nodes\n- DistributionZone: 100-200 nodes\n- SCADASystem: 20-40 nodes\n- WaterQualityStandard: 50-100 nodes\n- WaterIncident: 100-200 nodes (historical)\n\n**Total Target:** 6,270-9,340 core nodes (plus measurements bringing to 12,000-18,000 total)\n\n---\n\n#### Test 2: Relationship Integrity\n\n```cypher\nCALL {\n    MATCH ()-[r:PART_OF_PROCESS]->() RETURN 'PART_OF_PROCESS' as relType, count(r) as relCount\n    UNION\n    MATCH ()-[r:LOCATED_IN_ZONE]->() RETURN 'LOCATED_IN_ZONE' as relType, count(r) as relCount\n",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 48,
+      "start_char": 38400,
+      "end_char": 39400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_49",
+    "text": "    MATCH ()-[r:PART_OF_PROCESS]->() RETURN 'PART_OF_PROCESS' as relType, count(r) as relCount\n    UNION\n    MATCH ()-[r:LOCATED_IN_ZONE]->() RETURN 'LOCATED_IN_ZONE' as relType, count(r) as relCount\n    UNION\n    MATCH ()-[r:CONTROLLED_BY_SCADA]->() RETURN 'CONTROLLED_BY_SCADA' as relType, count(r) as relCount\n    UNION\n    MATCH ()-[r:COMPLIES_WITH_STANDARD]->() RETURN 'COMPLIES_WITH_STANDARD' as relType, count(r) as relCount\n    UNION\n    MATCH ()-[r:INVOLVED_IN_INCIDENT]->() RETURN 'INVOLVED_IN_INCIDENT' as relType, count(r) as relCount\n    UNION\n    MATCH ()-[r:MONITORS_PROCESS]->() RETURN 'MONITORS_PROCESS' as relType, count(r) as relCount\n    UNION\n    MATCH ()-[r:HAS_WATER_PROPERTY]->() RETURN 'HAS_WATER_PROPERTY' as relType, count(r) as relCount\n    UNION\n    MATCH ()-[r:THREATENS_WATER_INFRASTRUCTURE]->() RETURN 'THREATENS_WATER_INFRASTRUCTURE' as relType, count(r) as relCount\n}\nRETURN relType, relCount\nORDER BY relType\n```\n\n**Acceptance Criteria:**\n- PART_OF_PROCESS: 3,000-5",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 49,
+      "start_char": 39200,
+      "end_char": 40200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_50",
+    "text": "_WATER_INFRASTRUCTURE]->() RETURN 'THREATENS_WATER_INFRASTRUCTURE' as relType, count(r) as relCount\n}\nRETURN relType, relCount\nORDER BY relType\n```\n\n**Acceptance Criteria:**\n- PART_OF_PROCESS: 3,000-5,000\n- LOCATED_IN_ZONE: 1,500-2,000\n- CONTROLLED_BY_SCADA: 1,500-2,000\n- COMPLIES_WITH_STANDARD: 4,000-6,000\n- INVOLVED_IN_INCIDENT: 200-400\n- MONITORS_PROCESS: 100-200\n- HAS_WATER_PROPERTY: 6,000-9,000\n- THREATENS_WATER_INFRASTRUCTURE: 1,200-1,800\n\n**Total Target:** 17,500-26,400 new relationships\n\n---\n\n#### Test 3: Integration with Wave 1 Validation\n\n```cypher\n// Verify water devices inherit SAREF properties\nMATCH (wd:WaterDevice)\nWHERE wd:Device  // Must also be labeled as SAREF:Device\nWITH count(wd) as waterDevicesWithSAREF\n\nMATCH (wd:WaterDevice)\nWITH waterDevicesWithSAREF, count(wd) as totalWaterDevices\n\nRETURN waterDevicesWithSAREF,\n       totalWaterDevices,\n       CASE\n         WHEN waterDevicesWithSAREF = totalWaterDevices THEN 'PASS'\n         ELSE 'FAIL'\n       END as inheritance",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 50,
+      "start_char": 40000,
+      "end_char": 41000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_51",
+    "text": "otalWaterDevices\n\nRETURN waterDevicesWithSAREF,\n       totalWaterDevices,\n       CASE\n         WHEN waterDevicesWithSAREF = totalWaterDevices THEN 'PASS'\n         ELSE 'FAIL'\n       END as inheritanceTest\n\n// Expected: PASS (all water devices must inherit from SAREF:Device)\n\n\n// Verify water properties extend SAREF measurement framework\nMATCH (wp:WaterProperty)-[:GENERATES_MEASUREMENT]->(m:Measurement)\nWITH count(DISTINCT wp) as waterPropertiesGeneratingMeasurements\n\nMATCH (wp:WaterProperty)\nWHERE wp:Property  // Must also be labeled as SAREF:Property\nWITH waterPropertiesGeneratingMeasurements, count(wp) as totalWaterProperties\n\nRETURN waterPropertiesGeneratingMeasurements,\n       totalWaterProperties,\n       round((toFloat(waterPropertiesGeneratingMeasurements) / totalWaterProperties) * 100) as percentageWithMeasurements\n\n// Expected: > 80% of water properties generating measurements\n```\n\n---\n\n#### Test 4: Water Safety Validation\n\n```cypher\n// Verify all critical water devices have qu",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 51,
+      "start_char": 40800,
+      "end_char": 41800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_52",
+    "text": "00) as percentageWithMeasurements\n\n// Expected: > 80% of water properties generating measurements\n```\n\n---\n\n#### Test 4: Water Safety Validation\n\n```cypher\n// Verify all critical water devices have quality impact assessments\nMATCH (wd:WaterDevice)\nWHERE wd.criticality IN ['Critical', 'High']\n  AND (wd.waterQualityImpact IS NULL OR wd.cyberPhysicalRisk IS NULL)\nRETURN count(wd) as criticalDevicesWithoutAssessment\n\n// Acceptance: 0 critical devices without water quality/cyber-physical risk assessment\n\n\n// Verify all water properties have regulatory compliance links\nMATCH (wp:WaterProperty)\nWHERE wp.waterPropertyCategory = 'Chemical'\nOPTIONAL MATCH (wp)-[:COMPLIES_WITH_STANDARD]->(wqs:WaterQualityStandard)\nWITH wp, wqs\nWHERE wqs IS NULL\nRETURN count(wp) as chemicalPropertiesWithoutStandards\n\n// Acceptance: 0 chemical properties without regulatory standard links\n```\n\n---\n\n### 5.2 Performance Benchmarks\n\n#### Benchmark 1: Critical Infrastructure Query Performance\n\n```cypher\n// Query 1: Find",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 52,
+      "start_char": 41600,
+      "end_char": 42600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_53",
+    "text": "// Acceptance: 0 chemical properties without regulatory standard links\n```\n\n---\n\n### 5.2 Performance Benchmarks\n\n#### Benchmark 1: Critical Infrastructure Query Performance\n\n```cypher\n// Query 1: Find all vulnerable water devices serving >10K population (\u2264 800ms)\nPROFILE\nMATCH (wd:WaterDevice)-[:LOCATED_IN_ZONE]->(dz:DistributionZone)\nWHERE dz.population > 10000\nMATCH (wd)-[t:THREATENS_WATER_INFRASTRUCTURE]->(cve:CVE)\nWHERE cve.cvssScore >= 7.0\n  AND t.mitigationStatus = 'Unpatched'\nRETURN wd.deviceId,\n       wd.waterDeviceType,\n       dz.zoneName,\n       t.populationAtRisk,\n       cve.cveId,\n       cve.cvssScore,\n       t.waterSafetyImpact\nORDER BY t.populationAtRisk DESC, cve.cvssScore DESC\nLIMIT 20\n\n// Performance target: \u2264 800ms\n\n\n// Query 2: SCADA security audit across all systems (\u2264 1200ms)\nPROFILE\nMATCH (ss:SCADASystem)\nOPTIONAL MATCH (ss)-[:HAS_SCADA_VULNERABILITY]->(cve:CVE)\nWHERE cve.cvssScore >= 9.0\nOPTIONAL MATCH (ss)-[:CONTROLLED_BY_SCADA]-(wd:WaterDevice)\nWHERE wd.cyberPh",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 53,
+      "start_char": 42400,
+      "end_char": 43400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_54",
+    "text": "1200ms)\nPROFILE\nMATCH (ss:SCADASystem)\nOPTIONAL MATCH (ss)-[:HAS_SCADA_VULNERABILITY]->(cve:CVE)\nWHERE cve.cvssScore >= 9.0\nOPTIONAL MATCH (ss)-[:CONTROLLED_BY_SCADA]-(wd:WaterDevice)\nWHERE wd.cyberPhysicalRisk = 'Critical'\nRETURN ss.systemName,\n       ss.vendor,\n       ss.networkArchitecture,\n       ss.remoteAccessEnabled,\n       ss.authenticationMethod,\n       count(DISTINCT cve) as criticalVulnerabilities,\n       count(DISTINCT wd) as criticalDevicesControlled,\n       CASE\n         WHEN ss.remoteAccessEnabled = true AND count(cve) > 0 THEN 'ImmediateThreat'\n         WHEN ss.networkArchitecture = 'Flat' AND count(cve) > 0 THEN 'HighRisk'\n         ELSE 'Monitor'\n       END as threatLevel\nORDER BY threatLevel, criticalVulnerabilities DESC\n\n// Performance target: \u2264 1200ms\n```\n\n**Acceptance Criteria:**\n- All benchmark queries complete within target time\n- Query performance degradation \u2264 15% compared to Wave 1\n- Index hit rate > 90% for water-specific queries\n\n---\n\n### 5.3 Data Integrity ",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 54,
+      "start_char": 43200,
+      "end_char": 44200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_55",
+    "text": "Criteria:**\n- All benchmark queries complete within target time\n- Query performance degradation \u2264 15% compared to Wave 1\n- Index hit rate > 90% for water-specific queries\n\n---\n\n### 5.3 Data Integrity Checks\n\n#### Integrity Check 1: Referential Integrity\n\n```cypher\n// Check for water devices without zone assignment\nMATCH (wd:WaterDevice)\nWHERE NOT EXISTS((wd)-[:LOCATED_IN_ZONE]->(:DistributionZone))\nRETURN count(wd) as devicesWithoutZone\n\n// Acceptance: \u2264 5% of devices (some may be in transit/storage)\n\n\n// Check for treatment processes without monitoring SCADA\nMATCH (tp:TreatmentProcess)\nWHERE tp.scadaControlled = true\n  AND NOT EXISTS((:SCADASystem)-[:MONITORS_PROCESS]->(tp))\nRETURN count(tp) as scadaProcessesWithoutMonitoring\n\n// Acceptance: 0 SCADA-controlled processes without monitoring links\n```\n\n---\n\n### 5.4 Rollback Verification\n\n```cypher\n// Phase 1: Delete Wave 2 relationships\nMATCH ()-[r:PART_OF_PROCESS]->() DELETE r;\nMATCH ()-[r:LOCATED_IN_ZONE]->() DELETE r;\nMATCH ()-[r:CONT",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 55,
+      "start_char": 44000,
+      "end_char": 45000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_56",
+    "text": " links\n```\n\n---\n\n### 5.4 Rollback Verification\n\n```cypher\n// Phase 1: Delete Wave 2 relationships\nMATCH ()-[r:PART_OF_PROCESS]->() DELETE r;\nMATCH ()-[r:LOCATED_IN_ZONE]->() DELETE r;\nMATCH ()-[r:CONTROLLED_BY_SCADA]->() DELETE r;\nMATCH ()-[r:COMPLIES_WITH_STANDARD]->() DELETE r;\nMATCH ()-[r:INVOLVED_IN_INCIDENT]->() DELETE r;\nMATCH ()-[r:MONITORS_PROCESS]->() DELETE r;\nMATCH ()-[r:HAS_WATER_PROPERTY]->() DELETE r;\nMATCH ()-[r:THREATENS_WATER_INFRASTRUCTURE]->() DELETE r;\n\n// Phase 2: Delete Wave 2 nodes\nMATCH (wd:WaterDevice) DETACH DELETE wd;\nMATCH (wp:WaterProperty) DETACH DELETE wp;\nMATCH (tp:TreatmentProcess) DELETE tp;\nMATCH (dz:DistributionZone) DELETE dz;\nMATCH (ss:SCADASystem) DELETE ss;\nMATCH (wqs:WaterQualityStandard) DELETE wqs;\nMATCH (wi:WaterIncident) DELETE wi;\n\n// Phase 3: Verify Wave 1 SAREF nodes intact\nMATCH (d:Device) WHERE NOT d:WaterDevice\nRETURN count(d) as sarefDevicesRemaining\n\n// Expected: Same count as end of Wave 1\n\n// Phase 4: Verify CVE data intact\nMATCH (",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 56,
+      "start_char": 44800,
+      "end_char": 45800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_57",
+    "text": "Verify Wave 1 SAREF nodes intact\nMATCH (d:Device) WHERE NOT d:WaterDevice\nRETURN count(d) as sarefDevicesRemaining\n\n// Expected: Same count as end of Wave 1\n\n// Phase 4: Verify CVE data intact\nMATCH (cve:CVE)\nRETURN count(cve) as cveCount\n\n// Expected: Same count as before Wave 2 (45,672 or baseline)\n```\n\n**Acceptance Criteria:**\n- 100% of Wave 2 additions removed\n- 100% of Wave 1 and pre-existing data preserved\n- Rollback completes in \u2264 15 minutes\n\n---\n\n## 6. Example Queries\n\n### 6.1 Water Safety Queries\n\n#### Query 1: Population at Risk from Unpatched Vulnerabilities\n\n```cypher\nMATCH (wd:WaterDevice)-[:LOCATED_IN_ZONE]->(dz:DistributionZone)\nMATCH (wd)-[t:THREATENS_WATER_INFRASTRUCTURE]->(cve:CVE)\nWHERE t.mitigationStatus = 'Unpatched'\n  AND cve.cvssScore >= 7.0\n  AND t.waterSafetyImpact IN ['DirectContamination', 'ProcessDisruption']\nWITH dz.zoneName as zone,\n     sum(DISTINCT dz.population) as totalPopulation,\n     count(DISTINCT wd) as vulnerableDevices,\n     count(DISTINCT cve) a",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 57,
+      "start_char": 45600,
+      "end_char": 46600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_58",
+    "text": " IN ['DirectContamination', 'ProcessDisruption']\nWITH dz.zoneName as zone,\n     sum(DISTINCT dz.population) as totalPopulation,\n     count(DISTINCT wd) as vulnerableDevices,\n     count(DISTINCT cve) as uniqueVulnerabilities,\n     collect(DISTINCT cve.cveId)[..5] as topCVEs\nRETURN zone,\n       totalPopulation,\n       vulnerableDevices,\n       uniqueVulnerabilities,\n       topCVEs\nORDER BY totalPopulation DESC\nLIMIT 10\n```\n\n**Expected Results:** Top 10 zones with population-weighted vulnerability exposure\n\n**Performance:** \u2264 900ms\n\n---\n\n#### Query 2: Regulatory Compliance Dashboard\n\n```cypher\nMATCH (wp:WaterProperty)-[c:COMPLIES_WITH_STANDARD]->(wqs:WaterQualityStandard)\nWHERE wqs.regulatoryBody IN ['EPA', 'WHO']\nWITH wqs.parameterName as parameter,\n     wqs.regulatoryBody as regulator,\n     count(wp) as monitoringPoints,\n     sum(CASE WHEN c.complianceStatus = 'Compliant' THEN 1 ELSE 0 END) as compliantCount,\n     sum(CASE WHEN c.complianceStatus = 'NonCompliant' THEN 1 ELSE 0 END) as n",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 58,
+      "start_char": 46400,
+      "end_char": 47400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_59",
+    "text": " count(wp) as monitoringPoints,\n     sum(CASE WHEN c.complianceStatus = 'Compliant' THEN 1 ELSE 0 END) as compliantCount,\n     sum(CASE WHEN c.complianceStatus = 'NonCompliant' THEN 1 ELSE 0 END) as nonCompliantCount\nRETURN parameter,\n       regulator,\n       monitoringPoints,\n       compliantCount,\n       nonCompliantCount,\n       round((toFloat(compliantCount) / monitoringPoints) * 100) as compliancePercentage\nORDER BY compliancePercentage ASC, nonCompliantCount DESC\n```\n\n**Expected Results:** Compliance status by parameter\n\n**Performance:** \u2264 600ms\n\n---\n\n### 6.2 SCADA Security Queries\n\n#### Query 3: SCADA Attack Surface Analysis\n\n```cypher\nMATCH (ss:SCADASystem)\nOPTIONAL MATCH (ss)-[:CONTROLLED_BY_SCADA]-(wd:WaterDevice)\nWHERE wd.cyberPhysicalRisk IN ['Critical', 'High']\nOPTIONAL MATCH (ss)-[:HAS_SCADA_VULNERABILITY]->(cve:CVE)\nWHERE cve.accessVector = 'Network'\nWITH ss,\n     count(DISTINCT wd) as criticalDevices,\n     count(DISTINCT cve) as networkVulnerabilities,\n     CASE\n       ",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 59,
+      "start_char": 47200,
+      "end_char": 48200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_60",
+    "text": "(ss)-[:HAS_SCADA_VULNERABILITY]->(cve:CVE)\nWHERE cve.accessVector = 'Network'\nWITH ss,\n     count(DISTINCT wd) as criticalDevices,\n     count(DISTINCT cve) as networkVulnerabilities,\n     CASE\n       WHEN ss.remoteAccessEnabled = true AND ss.authenticationMethod = 'Local' THEN 10\n       WHEN ss.remoteAccessEnabled = true AND ss.authenticationMethod = 'LDAP' THEN 7\n       WHEN ss.remoteAccessEnabled = false THEN 3\n       ELSE 5\n     END as authScore,\n     CASE ss.networkArchitecture\n       WHEN 'Flat' THEN 10\n       WHEN 'Segmented' THEN 5\n       WHEN 'DMZ-Protected' THEN 2\n       ELSE 7\n     END as networkScore\nRETURN ss.systemName,\n       ss.vendor,\n       ss.networkArchitecture,\n       ss.remoteAccessEnabled,\n       ss.authenticationMethod,\n       criticalDevices,\n       networkVulnerabilities,\n       (authScore + networkScore + (networkVulnerabilities * 2)) as attackSurfaceScore\nORDER BY attackSurfaceScore DESC\nLIMIT 10\n```\n\n**Expected Results:** SCADA systems ranked by attack surfa",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 60,
+      "start_char": 48000,
+      "end_char": 49000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_61",
+    "text": "lities,\n       (authScore + networkScore + (networkVulnerabilities * 2)) as attackSurfaceScore\nORDER BY attackSurfaceScore DESC\nLIMIT 10\n```\n\n**Expected Results:** SCADA systems ranked by attack surface\n\n**Performance:** \u2264 1000ms\n\n---\n\n## 7. Implementation Roadmap\n\n### Week 1-2: Water Device & Property Schema\n- Create WaterDevice and WaterProperty nodes\n- Establish inheritance from SAREF core\n- Implement water-specific indexes\n\n### Week 3-4: Treatment Process & SCADA Integration\n- Create TreatmentProcess and SCADASystem nodes\n- Build process-device-SCADA relationships\n- Integrate with existing network topology\n\n### Week 5-6: Regulatory & Distribution Zones\n- Create WaterQualityStandard and DistributionZone nodes\n- Link properties to regulatory compliance\n- Map devices to geographic zones\n\n### Week 7: CVE Integration & Testing\n- Link water devices to existing CVEs\n- Create THREATENS_WATER_INFRASTRUCTURE relationships\n- Execute all acceptance tests\n\n### Week 8-9: Validation & Deployment\n",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 61,
+      "start_char": 48800,
+      "end_char": 49800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_62",
+    "text": "### Week 7: CVE Integration & Testing\n- Link water devices to existing CVEs\n- Create THREATENS_WATER_INFRASTRUCTURE relationships\n- Execute all acceptance tests\n\n### Week 8-9: Validation & Deployment\n- Performance benchmarking\n- Data integrity validation\n- Production deployment\n- Documentation finalization\n\n---\n\n## 8. Dependencies for Wave 3\n\nWave 3 (Energy Grid) will reference Wave 2 patterns:\n\n1. **SCADA Architecture**: Energy SCADA systems use similar models\n2. **Critical Infrastructure**: Water-energy nexus relationships\n3. **Regulatory Compliance**: Similar compliance framework patterns\n4. **Cyber-Physical Risk**: Shared risk assessment methodologies\n\n**Critical Handoff:** Wave 2 SCADA security patterns serve as template for Wave 3 energy SCADA systems.\n\n---\n\n**Wave 2 Status:** SPECIFICATION COMPLETE\n**Next Wave:** Wave 3 - Energy Grid Integration\n**Integration Status:** Additive enhancement extending Wave 1, preserving all existing data\n**Rollback Safety:** Complete rollback scri",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 62,
+      "start_char": 49600,
+      "end_char": 50600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "04_WAVE_2_WATER_INFRASTRUCTURE.md_chunk_63",
+    "text": "ICATION COMPLETE\n**Next Wave:** Wave 3 - Energy Grid Integration\n**Integration Status:** Additive enhancement extending Wave 1, preserving all existing data\n**Rollback Safety:** Complete rollback script provided\n\n",
+    "metadata": {
+      "file_name": "04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/04_WAVE_2_WATER_INFRASTRUCTURE.md",
+      "file_size": 50613,
+      "indexed_at": "2025-10-31T00:57:30.293932",
+      "chunk_id": 63,
+      "start_char": 50400,
+      "end_char": 51400,
+      "chunk_size": 213
+    }
+  }
+]

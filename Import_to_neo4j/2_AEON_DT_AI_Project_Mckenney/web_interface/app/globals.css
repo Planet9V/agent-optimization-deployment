@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* VulnCheck-Inspired Dark Theme */
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-50 antialiased;
+    font-feature-settings: "cv11", "ss01";
+    font-variation-settings: "opsz" auto;
+  }
+
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(30, 41, 59, 0.5);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(16, 185, 129, 0.3);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(16, 185, 129, 0.5);
+  }
+}
+
+@layer components {
+  /* Modern Card Component */
+  .modern-card {
+    @apply relative rounded-xl p-6 transition-all duration-300;
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+
+  .modern-card:hover {
+    border-color: rgba(16, 185, 129, 0.4);
+    box-shadow: 0 10px 40px rgba(16, 185, 129, 0.1);
+    transform: translateY(-4px);
+  }
+
+  /* Modern Button */
+  .modern-button {
+    @apply px-6 py-3 bg-emerald-500 text-slate-950 font-semibold rounded-lg;
+    @apply transition-all duration-300 active:scale-95;
+  }
+
+  .modern-button:hover {
+    @apply bg-emerald-400;
+    box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+  }
+
+  /* Modern Button Secondary */
+  .modern-button-secondary {
+    @apply px-6 py-3 bg-slate-800 text-slate-50 font-semibold rounded-lg;
+    @apply transition-all duration-300 active:scale-95;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+  }
+
+  .modern-button-secondary:hover {
+    @apply bg-slate-700;
+    border-color: rgba(16, 185, 129, 0.5);
+  }
+
+  /* Modern Input */
+  .modern-input {
+    @apply w-full px-4 py-3 rounded-lg text-slate-50 placeholder-slate-500;
+    @apply transition-all duration-300 focus:outline-none;
+    background: rgba(30, 41, 59, 0.5);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+
+  .modern-input:focus {
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  }
+
+  /* Dropdown Menu */
+  .modern-dropdown {
+    @apply absolute z-50 mt-2 py-2 rounded-xl;
+    @apply min-w-[200px];
+    background: rgba(30, 41, 59, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  }
+
+  .modern-dropdown-item {
+    @apply flex items-center gap-3 px-4 py-3 text-slate-300;
+    @apply transition-all duration-200 cursor-pointer;
+  }
+
+  .modern-dropdown-item:hover {
+    background: rgba(16, 185, 129, 0.1);
+    @apply text-emerald-400;
+  }
+
+  /* Status Badges */
+  .badge-critical {
+    @apply inline-flex items-center gap-1 px-3 py-1 text-red-400;
+    @apply rounded-full text-xs font-semibold;
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .badge-high {
+    @apply inline-flex items-center gap-1 px-3 py-1 text-orange-400;
+    @apply rounded-full text-xs font-semibold;
+    background: rgba(251, 146, 60, 0.2);
+    border: 1px solid rgba(251, 146, 60, 0.3);
+  }
+
+  .badge-medium {
+    @apply inline-flex items-center gap-1 px-3 py-1 text-yellow-400;
+    @apply rounded-full text-xs font-semibold;
+    background: rgba(234, 179, 8, 0.2);
+    border: 1px solid rgba(234, 179, 8, 0.3);
+  }
+
+  .badge-low {
+    @apply inline-flex items-center gap-1 px-3 py-1 text-green-400;
+    @apply rounded-full text-xs font-semibold;
+    background: rgba(34, 197, 94, 0.2);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+
+  /* Animated Wave Background */
+  .wave-background {
+    @apply fixed inset-0 -z-10 overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950;
+  }
+
+  .wave-layer {
+    @apply absolute w-full h-full opacity-30;
+    animation: wave 20s ease-in-out infinite;
+  }
+
+  @keyframes wave {
+    0%, 100% {
+      transform: translateX(0) translateY(0);
+    }
+    25% {
+      transform: translateX(-5%) translateY(5%);
+    }
+    50% {
+      transform: translateX(-10%) translateY(0);
+    }
+    75% {
+      transform: translateX(-5%) translateY(-5%);
+    }
+  }
+
+  /* Glow Effect */
+  .glow-emerald {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  }
+
+  /* Fade In Animation */
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Pulse Animation for Critical Items */
+  .pulse-critical {
+    animation: pulseCritical 2s ease-in-out infinite;
+  }
+
+  @keyframes pulseCritical {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

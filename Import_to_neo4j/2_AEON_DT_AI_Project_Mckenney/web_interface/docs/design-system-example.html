@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="vulncheck">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VulnCheck Design System - Example</title>
+
+  <!-- Link to design system CSS -->
+  <link rel="stylesheet" href="../styles/vulncheck-design-system.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+
+    .demo-section {
+      margin-bottom: 3rem;
+    }
+
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .component-showcase {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+  </style>
+</head>
+<body class="theme-vulncheck">
+  <div class="vc-container" style="padding: 3rem 1.5rem;">
+
+    <!-- Header -->
+    <header style="margin-bottom: 3rem;">
+      <h1 style="color: var(--vc-text-primary); font-size: 2.25rem; font-weight: 700; margin-bottom: 0.5rem;">
+        VulnCheck Design System
+      </h1>
+      <p style="color: var(--vc-text-secondary); font-size: 1.125rem;">
+        AEON Digital Twin Cybersecurity Dashboard
+      </p>
+    </header>
+
+    <!-- Color Palette Section -->
+    <section class="demo-section">
+      <h2 style="color: var(--vc-text-primary); font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">
+        🎨 Color Palette
+      </h2>
+
+      <h3 style="color: var(--vc-text-secondary); font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">
+        Emerald Accents
+      </h3>
+      <div class="component-showcase" style="margin-bottom: 2rem;">
+        <div style="width: 100px; height: 100px; background: var(--vc-emerald-400); border-radius: var(--vc-radius-lg); display: flex; align-items: center; justify-content: center; color: var(--vc-bg-primary); font-weight: 600;">400</div>
+        <div style="width: 100px; height: 100px; background: var(--vc-emerald-500); border-radius: var(--vc-radius-lg); display: flex; align-items: center; justify-content: center; color: var(--vc-bg-primary); font-weight: 600;">500</div>
+        <div style="width: 100px; height: 100px; background: var(--vc-emerald-600); border-radius: var(--vc-radius-lg); display: flex; align-items: center; justify-content: center; color: var(--vc-text-primary); font-weight: 600;">600</div>
+        <div style="width: 100px; height: 100px; background: var(--vc-emerald-700); border-radius: var(--vc-radius-lg); display: flex; align-items: center; justify-content: center; color: var(--vc-text-primary); font-weight: 600;">700</div>
+      </div>
+
+      <h3 style="color: var(--vc-text-secondary); font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">
+        Backgrounds
+      </h3>
+      <div class="component-showcase">
+        <div style="width: 120px; height: 80px; background: var(--vc-bg-primary); border: 1px solid var(--vc-border-default); border-radius: var(--vc-radius-md); display: flex; align-items: center; justify-content: center; color: var(--vc-text-primary); font-size: 0.75rem; font-weight: 600;">Primary</div>
+        <div style="width: 120px; height: 80px; background: var(--vc-bg-secondary); border: 1px solid var(--vc-border-default); border-radius: var(--vc-radius-md); display: flex; align-items: center; justify-content: center; color: var(--vc-text-primary); font-size: 0.75rem; font-weight: 600;">Secondary</div>
+        <div style="width: 120px; height: 80px; background: var(--vc-bg-tertiary); border: 1px solid var(--vc-border-default); border-radius: var(--vc-radius-md); display: flex; align-items: center; justify-content: center; color: var(--vc-text-primary); font-size: 0.75rem; font-weight: 600;">Tertiary</div>
+        <div style="width: 120px; height: 80px; background: var(--vc-bg-elevated); border: 1px solid var(--vc-border-default); border-radius: var(--vc-radius-md); display: flex; align-items: center; justify-content: center; color: var(--vc-text-primary); font-size: 0.75rem; font-weight: 600;">Elevated</div>
+      </div>
+    </section>
+
+    <!-- Buttons Section -->
+    <section class="demo-section">
+      <h2 style="color: var(--vc-text-primary); font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">
+        🔘 Buttons
+      </h2>
+      <div class="component-showcase">
+        <button class="vc-btn-primary">Primary Button</button>
+        <button class="vc-btn-secondary">Secondary Button</button>
+        <button class="vc-btn-primary" disabled style="opacity: 0.5; cursor: not-allowed;">Disabled</button>
+      </div>
+    </section>
+
+    <!-- Severity Badges Section -->
+    <section class="demo-section">
+      <h2 style="color: var(--vc-text-primary); font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">
+        ⚠️ Severity Badges
+      </h2>
+      <div class="component-showcase">
+        <span class="vc-badge vc-badge-critical">Critical</span>
+        <span class="vc-badge vc-badge-high">High</span>
+        <span class="vc-badge vc-badge-medium">Medium</span>
+        <span class="vc-badge vc-badge-low">Low</span>
+        <span class="vc-badge vc-badge-info">Info</span>
+        <span class="vc-badge vc-badge-success">Success</span>
+      </div>
+    </section>
+
+    <!-- Cards Section -->
+    <section class="demo-section">
+      <h2 style="color: var(--vc-text-primary); font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">
+        🃏 Cards
+      </h2>
+      <div class="demo-grid">
+        <div class="vc-card">
+          <h3 style="color: var(--vc-text-primary); font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">
+            Standard Card
+          </h3>
+          <p style="color: var(--vc-text-secondary); font-size: 0.875rem;">
+            This is a standard card with hover effects. Try hovering over it!
+          </p>
+        </div>
+
+        <div class="vc-card-elevated">
+          <h3 style="color: var(--vc-text-primary); font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">
+            Elevated Card
+          </h3>
+          <p style="color: var(--vc-text-secondary); font-size: 0.875rem;">
+            This card has elevated styling with a shadow effect.
+          </p>
+        </div>
+
+        <div class="vc-card vc-glow-emerald">
+          <h3 style="color: var(--vc-text-primary); font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">
+            Card with Glow
+          </h3>
+          <p style="color: var(--vc-text-secondary); font-size: 0.875rem;">
+            This card has an emerald glow effect applied.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Input Fields Section -->
+    <section class="demo-section">
+      <h2 style="color: var(--vc-text-primary); font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">
+        📝 Input Fields
+      </h2>
+      <div style="max-width: 500px;">
+        <input
+          class="vc-input"
+          type="text"
+          placeholder="Search vulnerabilities..."
+          style="width: 100%; margin-bottom: 1rem;"
+        />
+        <input
+          class="vc-input"
+          type="text"
+          placeholder="Filter by CVE ID..."
+          style="width: 100%;"
+        />
+      </div>
+    </section>
+
+    <!-- Data Table Section -->
+    <section class="demo-section">
+      <h2 style="color: var(--vc-text-primary); font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">
+        📊 Data Table
+      </h2>
+      <div style="overflow-x: auto;">
+        <table class="vc-table">
+          <thead>
+            <tr>
+              <th>CVE ID</th>
+              <th>Severity</th>
+              <th>CVSS Score</th>
+              <th>Status</th>
+              <th>Published</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>CVE-2024-12345</td>
+              <td><span class="vc-badge vc-badge-critical">Critical</span></td>
+              <td>9.8</td>
+              <td>Active</td>
+              <td>2024-11-01</td>
+            </tr>
+            <tr>
+              <td>CVE-2024-12346</td>
+              <td><span class="vc-badge vc-badge-high">High</span></td>
+              <td>7.5</td>
+              <td>Mitigated</td>
+              <td>2024-10-28</td>
+            </tr>
+            <tr>
+              <td>CVE-2024-12347</td>
+              <td><span class="vc-badge vc-badge-medium">Medium</span></td>
+              <td>5.3</td>
+              <td>Active</td>
+              <td>2024-10-25</td>
+            </tr>
+            <tr>
+              <td>CVE-2024-12348</td>
+              <td><span class="vc-badge vc-badge-low">Low</span></td>
+              <td>3.1</td>
+              <td>Resolved</td>
+              <td>2024-10-20</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Loading States Section -->
+    <section class="demo-section">
+      <h2 style="color: var(--vc-text-primary); font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">
+        ⏳ Loading States
+      </h2>
+      <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 500px;">
+        <div class="vc-skeleton" style="height: 60px; width: 100%;"></div>
+        <div class="vc-skeleton" style="height: 40px; width: 70%;"></div>
+        <div class="vc-skeleton" style="height: 40px; width: 90%;"></div>
+      </div>
+    </section>
+
+    <!-- Glass Effect Section -->
+    <section class="demo-section">
+      <h2 style="color: var(--vc-text-primary); font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">
+        🪟 Glass Morphism
+      </h2>
+      <div style="position: relative; height: 200px; background: linear-gradient(135deg, var(--vc-emerald-600), var(--vc-emerald-500)); border-radius: var(--vc-radius-lg); padding: var(--vc-space-6); display: flex; align-items: center; justify-content: center;">
+        <div class="vc-glass" style="padding: var(--vc-space-6); border-radius: var(--vc-radius-lg); max-width: 400px;">
+          <h3 style="color: var(--vc-text-primary); font-size: 1.125rem; font-weight: 600; margin-bottom: 0.5rem;">
+            Glass Effect Card
+          </h3>
+          <p style="color: var(--vc-text-secondary); font-size: 0.875rem;">
+            This card demonstrates the glass morphism effect with backdrop blur and semi-transparent background.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography Section -->
+    <section class="demo-section">
+      <h2 style="color: var(--vc-text-primary); font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">
+        📖 Typography
+      </h2>
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <p style="color: var(--vc-text-primary); font-size: 1.5rem; font-weight: 700;">
+          Heading 1 - Primary Text
+        </p>
+        <p style="color: var(--vc-text-secondary); font-size: 1.25rem; font-weight: 600;">
+          Heading 2 - Secondary Text
+        </p>
+        <p style="color: var(--vc-text-tertiary); font-size: 1rem;">
+          Body text - Tertiary color for less emphasis
+        </p>
+        <p style="color: var(--vc-text-muted); font-size: 0.875rem;">
+          Small text - Muted color for helper text
+        </p>
+        <p class="vc-text-gradient" style="font-size: 1.5rem; font-weight: 700;">
+          Gradient Text Effect
+        </p>
+      </div>
+    </section>
+
+    <!-- Gradients Section -->
+    <section class="demo-section">
+      <h2 style="color: var(--vc-text-primary); font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;">
+        🌈 Gradient Backgrounds
+      </h2>
+      <div class="demo-grid">
+        <div class="vc-gradient-cyber" style="height: 120px; border-radius: var(--vc-radius-lg); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">
+          Cyber Gradient
+        </div>
+        <div class="vc-gradient-threat" style="height: 120px; border-radius: var(--vc-radius-lg); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600;">
+          Threat Gradient
+        </div>
+        <div style="height: 120px; border-radius: var(--vc-radius-lg); display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; background: linear-gradient(135deg, var(--vc-success), var(--vc-emerald-600));">
+          Safe Gradient
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--vc-border-subtle);">
+      <p style="color: var(--vc-text-tertiary); font-size: 0.875rem; text-align: center;">
+        VulnCheck Design System v1.0.0 | AEON Digital Twin | Created 2025-11-04
+      </p>
+    </footer>
+
+  </div>
+</body>
+</html>

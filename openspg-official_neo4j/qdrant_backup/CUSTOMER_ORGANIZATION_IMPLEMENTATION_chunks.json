@@ -1,0 +1,604 @@
+[
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_0",
+    "text": "# Customer/Organization Labeling Implementation Guide\n**File:** CUSTOMER_ORGANIZATION_IMPLEMENTATION.md\n**Created:** 2025-10-30\n**Version:** v1.0.0\n**Author:** AEON Digital Twin Implementation Team\n**Purpose:** Complete implementation guide for adding Customer/Organization multi-tenant labeling\n**Status:** READY FOR EXECUTION\n\n---\n\n## Executive Summary\n\n**Objective:** Add Customer/Organization ownership labeling to AEON schema to enable \"my equipment\" filtering across all 8 critical operational questions.\n\n**Current Gap:** Cannot distinguish \"my equipment\" vs \"other customer equipment\" - affects Questions 1, 6, 7, 8\n\n**Solution:** Additive-only, phased implementation with complete CVE preservation (all 147,923 nodes protected)\n\n**Implementation Approach:**\n- **Strategy:** Additive-only (no deletions, no modifications)\n- **Duration:** 2-3 days\n- **Execution Time:** 42 minutes of Cypher execution\n- **Average ICE Score:** 9.6/10\n- **Risk Level:** LOW (fully reversible)\n\n**Success Criteria",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_1",
+    "text": " deletions, no modifications)\n- **Duration:** 2-3 days\n- **Execution Time:** 42 minutes of Cypher execution\n- **Average ICE Score:** 9.6/10\n- **Risk Level:** LOW (fully reversible)\n\n**Success Criteria:**\n\u2705 All 147,923 CVE nodes preserved\n\u2705 ~2,500 assets assigned to customers/organizations\n\u2705 Customer isolation validated (no cross-tenant leaks)\n\u2705 All 8 questions answered with 100% capability\n\u2705 Query performance <1 second for customer-filtered queries\n\n---\n\n## Implementation Steps\n\n### STEP 1: Create Customer & Organization Schemas\n\n**ICE Score:** 10.0 (Impact: 10, Confidence: 10, Ease: 10)\n**Time:** 2 minutes\n**Risk:** ZERO\n\n#### 1.1 Create Constraints\n\n```cypher\n// Create unique constraint on Customer.customer_id\nCREATE CONSTRAINT customer_id_unique IF NOT EXISTS\nFOR (c:Customer) REQUIRE c.customer_id IS UNIQUE;\n\n// Create unique constraint on Organization.org_id\nCREATE CONSTRAINT organization_id_unique IF NOT EXISTS\nFOR (o:Organization) REQUIRE o.org_id IS UNIQUE;\n```\n\n#### 1.2 Create ",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_2",
+    "text": "customer_id IS UNIQUE;\n\n// Create unique constraint on Organization.org_id\nCREATE CONSTRAINT organization_id_unique IF NOT EXISTS\nFOR (o:Organization) REQUIRE o.org_id IS UNIQUE;\n```\n\n#### 1.2 Create Indexes for Fast Lookups\n\n```cypher\n// Index on customer_name for search\nCREATE INDEX customer_name_idx IF NOT EXISTS\nFOR (c:Customer) ON (c.customer_name);\n\n// Index on org_name for search\nCREATE INDEX org_name_idx IF NOT EXISTS\nFOR (o:Organization) ON (o.org_name);\n\n// Index on parent_customer_id for organization lookup\nCREATE INDEX org_parent_idx IF NOT EXISTS\nFOR (o:Organization) ON (o.parent_customer_id);\n\n// Index on industry_sector for sector-based queries\nCREATE INDEX customer_sector_idx IF NOT EXISTS\nFOR (c:Customer) ON (c.industry_sector);\n```\n\n#### 1.3 Validation Query\n\n```cypher\n// Verify constraints were created successfully\nSHOW CONSTRAINTS\nWHERE name CONTAINS 'customer' OR name CONTAINS 'organization';\n\n// Expected output: 2 constraints\n// - customer_id_unique\n// - organizat",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_3",
+    "text": " Verify constraints were created successfully\nSHOW CONSTRAINTS\nWHERE name CONTAINS 'customer' OR name CONTAINS 'organization';\n\n// Expected output: 2 constraints\n// - customer_id_unique\n// - organization_id_unique\n```\n\n#### 1.4 Rollback Procedure (if needed)\n\n```cypher\nDROP CONSTRAINT customer_id_unique IF EXISTS;\nDROP CONSTRAINT organization_id_unique IF EXISTS;\nDROP INDEX customer_name_idx IF EXISTS;\nDROP INDEX org_name_idx IF EXISTS;\nDROP INDEX org_parent_idx IF EXISTS;\nDROP INDEX customer_sector_idx IF EXISTS;\n```\n\n---\n\n### STEP 2: Create Sample Customer & Organization Nodes\n\n**ICE Score:** 9.3 (Impact: 9, Confidence: 10, Ease: 9)\n**Time:** 5 minutes\n**Risk:** ZERO\n\n#### 2.1 Customer 1: Energy Sector (Regional Power Authority)\n\n```cypher\nCREATE (c1:Customer {\n  customer_id: 'CUST-001-ENERGY',\n  customer_name: 'Regional Power Authority',\n  industry_sector: 'energy',\n  criticality_tier: 'Tier1',\n  contract_start_date: date('2020-01-15'),\n  contract_status: 'active',\n  regulatory_requ",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_4",
+    "text": "NERGY',\n  customer_name: 'Regional Power Authority',\n  industry_sector: 'energy',\n  criticality_tier: 'Tier1',\n  contract_start_date: date('2020-01-15'),\n  contract_status: 'active',\n  regulatory_requirements: ['NERC CIP', 'FERC', 'EPA Clean Power Plan'],\n  primary_contact_email: 'ops@regionalpower.example',\n  primary_contact_phone: '+1-555-0100',\n  billing_account_id: 'BILL-RPA-001',\n  headquarters_location: 'San Francisco, CA',\n  service_regions: ['Western US', 'Pacific Northwest'],\n  employee_count: 5000,\n  annual_revenue: 2500000000,\n  cybersecurity_maturity: 'Advanced',\n  incident_notification_required: true,\n  sla_tier: 'Platinum',\n  created_date: datetime(),\n  last_updated: datetime(),\n  node_id: randomUUID()\n});\n```\n\n#### 2.2 Organization 1: SCADA Operations (under Customer 1)\n\n```cypher\nCREATE (o1:Organization {\n  org_id: 'ORG-RPA-SCADA',\n  org_name: 'SCADA Operations - Western Region',\n  parent_customer_id: 'CUST-001-ENERGY',\n  business_unit: 'Grid Operations',\n  geographic_l",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_5",
+    "text": "cypher\nCREATE (o1:Organization {\n  org_id: 'ORG-RPA-SCADA',\n  org_name: 'SCADA Operations - Western Region',\n  parent_customer_id: 'CUST-001-ENERGY',\n  business_unit: 'Grid Operations',\n  geographic_location: 'San Francisco, CA',\n  facility_ids: ['DC-PRIMARY-01', 'SUBSTATION-WEST-01'],\n  org_criticality: 'critical',\n  org_function: 'Operational Technology Management',\n  asset_count_estimate: 850,\n  staff_count: 120,\n  budget_allocation: 15000000,\n  compliance_scope: ['NERC CIP-002', 'NERC CIP-005', 'NERC CIP-007'],\n  created_date: datetime(),\n  last_updated: datetime(),\n  node_id: randomUUID()\n});\n```\n\n#### 2.3 Link Customer 1 to Organization 1\n\n```cypher\nMATCH (c:Customer {customer_id: 'CUST-001-ENERGY'})\nMATCH (o:Organization {org_id: 'ORG-RPA-SCADA'})\nCREATE (c)-[:HAS_ORGANIZATION {\n  established_date: date('2020-02-01'),\n  reporting_structure: 'direct',\n  budget_authority: 'full',\n  operational_autonomy: 'high',\n  relationship_created: datetime()\n}]->(o);\n```\n\n#### 2.4 Customer 2: ",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_6",
+    "text": "stablished_date: date('2020-02-01'),\n  reporting_structure: 'direct',\n  budget_authority: 'full',\n  operational_autonomy: 'high',\n  relationship_created: datetime()\n}]->(o);\n```\n\n#### 2.4 Customer 2: Water Sector (Metropolitan Water District)\n\n```cypher\nCREATE (c2:Customer {\n  customer_id: 'CUST-002-WATER',\n  customer_name: 'Metropolitan Water District',\n  industry_sector: 'water',\n  criticality_tier: 'Tier1',\n  contract_start_date: date('2021-06-01'),\n  contract_status: 'active',\n  regulatory_requirements: ['EPA SDWA', 'EPA AWIA', 'State Water Resources Control Board'],\n  primary_contact_email: 'it@metrowater.example',\n  primary_contact_phone: '+1-555-0200',\n  billing_account_id: 'BILL-MWD-002',\n  headquarters_location: 'Austin, TX',\n  service_regions: ['Central Texas', 'Hill Country'],\n  employee_count: 2500,\n  annual_revenue: 800000000,\n  cybersecurity_maturity: 'Intermediate',\n  incident_notification_required: true,\n  sla_tier: 'Gold',\n  created_date: datetime(),\n  last_updated: da",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_7",
+    "text": " employee_count: 2500,\n  annual_revenue: 800000000,\n  cybersecurity_maturity: 'Intermediate',\n  incident_notification_required: true,\n  sla_tier: 'Gold',\n  created_date: datetime(),\n  last_updated: datetime(),\n  node_id: randomUUID()\n});\n```\n\n#### 2.5 Organization 2: Water Treatment Facilities (under Customer 2)\n\n```cypher\nCREATE (o2:Organization {\n  org_id: 'ORG-MWD-TREATMENT',\n  org_name: 'Water Treatment Facilities',\n  parent_customer_id: 'CUST-002-WATER',\n  business_unit: 'Water Quality Operations',\n  geographic_location: 'Austin, TX',\n  facility_ids: ['DC-SECONDARY-02', 'TREATMENT-PLANT-CENTRAL'],\n  org_criticality: 'high',\n  org_function: 'Water Purification and Quality Control',\n  asset_count_estimate: 450,\n  staff_count: 75,\n  budget_allocation: 8000000,\n  compliance_scope: ['EPA SDWA Section 1433', 'Texas Water Code'],\n  created_date: datetime(),\n  last_updated: datetime(),\n  node_id: randomUUID()\n});\n```\n\n#### 2.6 Link Customer 2 to Organization 2\n\n```cypher\nMATCH (c:Customer",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_8",
+    "text": "DWA Section 1433', 'Texas Water Code'],\n  created_date: datetime(),\n  last_updated: datetime(),\n  node_id: randomUUID()\n});\n```\n\n#### 2.6 Link Customer 2 to Organization 2\n\n```cypher\nMATCH (c:Customer {customer_id: 'CUST-002-WATER'})\nMATCH (o:Organization {org_id: 'ORG-MWD-TREATMENT'})\nCREATE (c)-[:HAS_ORGANIZATION {\n  established_date: date('2021-07-01'),\n  reporting_structure: 'direct',\n  budget_authority: 'delegated',\n  operational_autonomy: 'medium',\n  relationship_created: datetime()\n}]->(o);\n```\n\n#### 2.7 Customer 3: Manufacturing (Advanced Manufacturing Corp)\n\n```cypher\nCREATE (c3:Customer {\n  customer_id: 'CUST-003-MFG',\n  customer_name: 'Advanced Manufacturing Corp',\n  industry_sector: 'manufacturing',\n  criticality_tier: 'Tier2',\n  contract_start_date: date('2022-03-15'),\n  contract_status: 'active',\n  regulatory_requirements: ['NIST 800-171', 'CMMC Level 2', 'ITAR'],\n  primary_contact_email: 'security@advmfg.example',\n  primary_contact_phone: '+1-555-0300',\n  billing_account",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_9",
+    "text": "act_status: 'active',\n  regulatory_requirements: ['NIST 800-171', 'CMMC Level 2', 'ITAR'],\n  primary_contact_email: 'security@advmfg.example',\n  primary_contact_phone: '+1-555-0300',\n  billing_account_id: 'BILL-AMC-003',\n  headquarters_location: 'Detroit, MI',\n  service_regions: ['Great Lakes', 'Midwest'],\n  employee_count: 8000,\n  annual_revenue: 3200000000,\n  cybersecurity_maturity: 'Advanced',\n  incident_notification_required: false,\n  sla_tier: 'Silver',\n  created_date: datetime(),\n  last_updated: datetime(),\n  node_id: randomUUID()\n});\n```\n\n#### 2.8 Organization 3: Assembly Line Operations (under Customer 3)\n\n```cypher\nCREATE (o3:Organization {\n  org_id: 'ORG-AMC-ASSEMBLY',\n  org_name: 'Assembly Line Operations',\n  parent_customer_id: 'CUST-003-MFG',\n  business_unit: 'Production Engineering',\n  geographic_location: 'Detroit, MI',\n  facility_ids: ['DC-TERTIARY-03', 'FACTORY-DETROIT-MAIN'],\n  org_criticality: 'medium',\n  org_function: 'Automated Assembly and Quality Control',\n  asse",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_10",
+    "text": "eering',\n  geographic_location: 'Detroit, MI',\n  facility_ids: ['DC-TERTIARY-03', 'FACTORY-DETROIT-MAIN'],\n  org_criticality: 'medium',\n  org_function: 'Automated Assembly and Quality Control',\n  asset_count_estimate: 1200,\n  staff_count: 250,\n  budget_allocation: 25000000,\n  compliance_scope: ['NIST 800-171 r2', 'CMMC Level 2'],\n  created_date: datetime(),\n  last_updated: datetime(),\n  node_id: randomUUID()\n});\n```\n\n#### 2.9 Link Customer 3 to Organization 3\n\n```cypher\nMATCH (c:Customer {customer_id: 'CUST-003-MFG'})\nMATCH (o:Organization {org_id: 'ORG-AMC-ASSEMBLY'})\nCREATE (c)-[:HAS_ORGANIZATION {\n  established_date: date('2022-04-01'),\n  reporting_structure: 'direct',\n  budget_authority: 'full',\n  operational_autonomy: 'high',\n  relationship_created: datetime()\n}]->(o);\n```\n\n#### 2.10 Validation Query\n\n```cypher\n// Count customers and organizations created\nMATCH (c:Customer)\nOPTIONAL MATCH (c)-[:HAS_ORGANIZATION]->(o:Organization)\nRETURN\n  count(DISTINCT c) AS customer_count,\n  cou",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_11",
+    "text": "Validation Query\n\n```cypher\n// Count customers and organizations created\nMATCH (c:Customer)\nOPTIONAL MATCH (c)-[:HAS_ORGANIZATION]->(o:Organization)\nRETURN\n  count(DISTINCT c) AS customer_count,\n  count(DISTINCT o) AS organization_count,\n  collect(DISTINCT c.customer_name) AS customer_names,\n  collect(DISTINCT o.org_name) AS org_names;\n\n// Expected output:\n// customer_count: 3\n// organization_count: 3\n// customer_names: ['Regional Power Authority', 'Metropolitan Water District', 'Advanced Manufacturing Corp']\n```\n\n#### 2.11 Rollback Procedure (if needed)\n\n```cypher\n// Delete test customers and their organizations\nMATCH (c:Customer)\nWHERE c.customer_id IN ['CUST-001-ENERGY', 'CUST-002-WATER', 'CUST-003-MFG']\nDETACH DELETE c;\n\nMATCH (o:Organization)\nWHERE o.org_id IN ['ORG-RPA-SCADA', 'ORG-MWD-TREATMENT', 'ORG-AMC-ASSEMBLY']\nDETACH DELETE o;\n```\n\n---\n\n### STEP 3: Enhance Asset Nodes with Customer Properties\n\n**ICE Score:** 9.0 (Impact: 10, Confidence: 9, Ease: 8)\n**Time:** 10 minutes\n**R",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_12",
+    "text": "WD-TREATMENT', 'ORG-AMC-ASSEMBLY']\nDETACH DELETE o;\n```\n\n---\n\n### STEP 3: Enhance Asset Nodes with Customer Properties\n\n**ICE Score:** 9.0 (Impact: 10, Confidence: 9, Ease: 8)\n**Time:** 10 minutes\n**Risk:** LOW (property additions only)\n\n#### 3.1 Add Customer Properties to Server Nodes (Example Assignment)\n\n```cypher\n// Assign Customer 1 (Energy) to servers in datacenter DC-PRIMARY-01\nMATCH (s:Server)\nWHERE s.data_center = 'DC-PRIMARY-01'\n  AND s.customer_id IS NULL  // Only update if not already assigned\nSET s.customer_id = 'CUST-001-ENERGY',\n    s.organization_id = 'ORG-RPA-SCADA',\n    s.asset_owner = 'Regional Power Authority',\n    s.ownership_status = 'active',\n    s.shared_asset = false,\n    s.asset_acquisition_date = date('2020-03-01'),\n    s.last_customer_update = datetime();\n\n// Log updated count\nMATCH (s:Server)\nWHERE s.customer_id = 'CUST-001-ENERGY'\nRETURN count(s) AS servers_assigned_to_customer_1;\n```\n\n#### 3.2 Add Customer Properties to NetworkDevice Nodes\n\n```cypher\n// A",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_13",
+    "text": "g updated count\nMATCH (s:Server)\nWHERE s.customer_id = 'CUST-001-ENERGY'\nRETURN count(s) AS servers_assigned_to_customer_1;\n```\n\n#### 3.2 Add Customer Properties to NetworkDevice Nodes\n\n```cypher\n// Assign Customer 2 (Water) to network devices in datacenter DC-SECONDARY-02\nMATCH (nd:NetworkDevice)\nWHERE nd.data_center = 'DC-SECONDARY-02'\n  AND nd.customer_id IS NULL\nSET nd.customer_id = 'CUST-002-WATER',\n    nd.organization_id = 'ORG-MWD-TREATMENT',\n    nd.asset_owner = 'Metropolitan Water District',\n    nd.ownership_status = 'active',\n    nd.shared_asset = false,\n    nd.asset_acquisition_date = date('2021-08-15'),\n    nd.last_customer_update = datetime();\n\n// Log updated count\nMATCH (nd:NetworkDevice)\nWHERE nd.customer_id = 'CUST-002-WATER'\nRETURN count(nd) AS network_devices_assigned_to_customer_2;\n```\n\n#### 3.3 Add Customer Properties to ICS_Asset Nodes\n\n```cypher\n// Assign Customer 3 (Manufacturing) to ICS assets in Detroit location\nMATCH (ics:ICS_Asset)\nWHERE ics.physical_location",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_14",
+    "text": "customer_2;\n```\n\n#### 3.3 Add Customer Properties to ICS_Asset Nodes\n\n```cypher\n// Assign Customer 3 (Manufacturing) to ICS assets in Detroit location\nMATCH (ics:ICS_Asset)\nWHERE ics.physical_location CONTAINS 'Detroit'\n  AND ics.customer_id IS NULL\nSET ics.customer_id = 'CUST-003-MFG',\n    ics.organization_id = 'ORG-AMC-ASSEMBLY',\n    ics.asset_owner = 'Advanced Manufacturing Corp',\n    ics.ownership_status = 'active',\n    ics.shared_asset = false,\n    ics.asset_acquisition_date = date('2022-05-01'),\n    ics.last_customer_update = datetime();\n\n// Log updated count\nMATCH (ics:ICS_Asset)\nWHERE ics.customer_id = 'CUST-003-MFG'\nRETURN count(ics) AS ics_assets_assigned_to_customer_3;\n```\n\n#### 3.4 Add Customer Properties to saref:Device Nodes\n\n```cypher\n// Assign saref:Device nodes based on their location properties\n// Example: Energy sector devices\nMATCH (d)\nWHERE d:saref_Device\n  AND d.location CONTAINS 'San Francisco'\n  AND d.customer_id IS NULL\nSET d.customer_id = 'CUST-001-ENERGY',\n  ",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_15",
+    "text": "eir location properties\n// Example: Energy sector devices\nMATCH (d)\nWHERE d:saref_Device\n  AND d.location CONTAINS 'San Francisco'\n  AND d.customer_id IS NULL\nSET d.customer_id = 'CUST-001-ENERGY',\n    d.organization_id = 'ORG-RPA-SCADA',\n    d.asset_owner = 'Regional Power Authority',\n    d.ownership_status = 'active',\n    d.shared_asset = false,\n    d.last_customer_update = datetime();\n```\n\n#### 3.5 Mark Shared/Multi-Tenant Assets\n\n```cypher\n// Identify and mark shared infrastructure (e.g., shared database servers)\nMATCH (s:Server)\nWHERE s.server_role CONTAINS 'Shared'\n   OR s.hostname CONTAINS 'shared'\n   OR s.server_type = 'multi_tenant'\nSET s.shared_asset = true,\n    s.ownership_status = 'multi_tenant',\n    s.tenant_list = ['CUST-001-ENERGY', 'CUST-002-WATER'],  // Example\n    s.primary_tenant = 'CUST-001-ENERGY';  // Primary billing customer\n```\n\n#### 3.6 Create Index on customer_id for Fast Filtering\n\n```cypher\n// Create range index for customer_id across all node types\nCREATE I",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_16",
+    "text": "ry_tenant = 'CUST-001-ENERGY';  // Primary billing customer\n```\n\n#### 3.6 Create Index on customer_id for Fast Filtering\n\n```cypher\n// Create range index for customer_id across all node types\nCREATE INDEX asset_customer_id_idx IF NOT EXISTS\nFOR (n)\nON (n.customer_id)\nOPTIONS {indexProvider: 'range'};\n\n// Create index on organization_id\nCREATE INDEX asset_organization_id_idx IF NOT EXISTS\nFOR (n)\nON (n.organization_id)\nOPTIONS {indexProvider: 'range'};\n```\n\n#### 3.7 Validation Query\n\n```cypher\n// Verify property assignments across all asset types\nMATCH (asset)\nWHERE asset:Server OR asset:NetworkDevice OR asset:ICS_Asset OR asset:saref_Device\nRETURN\n  labels(asset)[0] AS asset_type,\n  count(asset) AS total_count,\n  count(asset.customer_id) AS assigned_count,\n  count(asset) - count(asset.customer_id) AS unassigned_count,\n  round((count(asset.customer_id) * 100.0 / count(asset)), 2) AS assignment_percentage\nORDER BY asset_type;\n\n// Check for unassigned assets that should be fixed\nMATCH (as",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_17",
+    "text": "omer_id) AS unassigned_count,\n  round((count(asset.customer_id) * 100.0 / count(asset)), 2) AS assignment_percentage\nORDER BY asset_type;\n\n// Check for unassigned assets that should be fixed\nMATCH (asset)\nWHERE (asset:Server OR asset:NetworkDevice OR asset:ICS_Asset OR asset:saref_Device)\n  AND asset.customer_id IS NULL\nRETURN\n  count(asset) AS unassigned_assets_remaining,\n  collect(DISTINCT labels(asset)[0])[0..5] AS unassigned_types;\n\n// Verify no CVE nodes were accidentally modified\nMATCH (cve:CVE)\nWHERE EXISTS(cve.customer_id)\nRETURN count(cve) AS incorrectly_modified_cves;\n// Expected: 0 (CVEs should NEVER have customer_id)\n```\n\n#### 3.8 Rollback Procedure (if needed)\n\n```cypher\n// Remove customer properties from all asset nodes\nMATCH (asset)\nWHERE asset:Server OR asset:NetworkDevice OR asset:ICS_Asset OR asset:saref_Device\nREMOVE asset.customer_id,\n       asset.organization_id,\n       asset.asset_owner,\n       asset.ownership_status,\n       asset.shared_asset,\n       asset.asset_",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_18",
+    "text": "OR asset:ICS_Asset OR asset:saref_Device\nREMOVE asset.customer_id,\n       asset.organization_id,\n       asset.asset_owner,\n       asset.ownership_status,\n       asset.shared_asset,\n       asset.asset_acquisition_date,\n       asset.tenant_list,\n       asset.primary_tenant,\n       asset.last_customer_update;\n\n// Drop indexes\nDROP INDEX asset_customer_id_idx IF EXISTS;\nDROP INDEX asset_organization_id_idx IF EXISTS;\n```\n\n---\n\n### STEP 4: Create Ownership Relationships\n\n**ICE Score:** 9.3 (Impact: 9, Confidence: 10, Ease: 9)\n**Time:** 5 minutes\n**Risk:** ZERO (relationships are additive)\n\n#### 4.1 Create Customer \u2192 Asset Ownership Relationships\n\n```cypher\n// Create OWNS_EQUIPMENT relationships for all customers\nMATCH (c:Customer)\nMATCH (asset)\nWHERE (asset:Server OR asset:NetworkDevice OR asset:ICS_Asset OR asset:saref_Device)\n  AND asset.customer_id = c.customer_id\n  AND NOT EXISTS((c)-[:OWNS_EQUIPMENT]->(asset))  // Avoid duplicates\nCREATE (c)-[:OWNS_EQUIPMENT {\n  acquired_date: coalesce",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_19",
+    "text": "t:ICS_Asset OR asset:saref_Device)\n  AND asset.customer_id = c.customer_id\n  AND NOT EXISTS((c)-[:OWNS_EQUIPMENT]->(asset))  // Avoid duplicates\nCREATE (c)-[:OWNS_EQUIPMENT {\n  acquired_date: coalesce(asset.asset_acquisition_date, date('2020-01-01')),\n  warranty_expiration: date('2025-12-31'),  // Default, update with real data\n  asset_criticality: coalesce(asset.criticality, 'medium'),\n  ownership_type: CASE\n    WHEN asset.shared_asset = true THEN 'shared'\n    ELSE 'owned'\n  END,\n  maintenance_status: 'active',\n  relationship_created: datetime()\n}]->(asset);\n\n// Log relationship counts by customer\nMATCH (c:Customer)-[owns:OWNS_EQUIPMENT]->(asset)\nRETURN\n  c.customer_name AS customer,\n  count(asset) AS equipment_count,\n  collect(DISTINCT labels(asset)[0]) AS asset_types\nORDER BY equipment_count DESC;\n```\n\n#### 4.2 Create Organization \u2192 Asset Management Relationships\n\n```cypher\n// Create MANAGES_EQUIPMENT relationships for all organizations\nMATCH (o:Organization)\nMATCH (asset)\nWHERE (as",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_20",
+    "text": "count DESC;\n```\n\n#### 4.2 Create Organization \u2192 Asset Management Relationships\n\n```cypher\n// Create MANAGES_EQUIPMENT relationships for all organizations\nMATCH (o:Organization)\nMATCH (asset)\nWHERE (asset:Server OR asset:NetworkDevice OR asset:ICS_Asset OR asset:saref_Device)\n  AND asset.organization_id = o.org_id\n  AND NOT EXISTS((o)-[:MANAGES_EQUIPMENT]->(asset))  // Avoid duplicates\nCREATE (o)-[:MANAGES_EQUIPMENT {\n  responsible_team: 'IT Operations',  // Default, update with real data\n  maintenance_contract: 'Standard',\n  budget_allocation: 'OpEx',\n  primary_contact: o.org_name + ' Operations Manager',\n  escalation_level: CASE o.org_criticality\n    WHEN 'critical' THEN 1\n    WHEN 'high' THEN 2\n    ELSE 3\n  END,\n  relationship_created: datetime()\n}]->(asset);\n\n// Log relationship counts by organization\nMATCH (o:Organization)-[manages:MANAGES_EQUIPMENT]->(asset)\nRETURN\n  o.org_name AS organization,\n  o.parent_customer_id AS parent_customer,\n  count(asset) AS managed_equipment_count\nOR",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_21",
+    "text": "by organization\nMATCH (o:Organization)-[manages:MANAGES_EQUIPMENT]->(asset)\nRETURN\n  o.org_name AS organization,\n  o.parent_customer_id AS parent_customer,\n  count(asset) AS managed_equipment_count\nORDER BY managed_equipment_count DESC;\n```\n\n#### 4.3 Create Indexes on Relationships for Fast Traversal\n\n```cypher\n// Create index on OWNS_EQUIPMENT relationship properties\nCREATE INDEX owns_equipment_criticality_idx IF NOT EXISTS\nFOR ()-[r:OWNS_EQUIPMENT]-() ON (r.asset_criticality);\n\n// Create index on MANAGES_EQUIPMENT relationship properties\nCREATE INDEX manages_equipment_team_idx IF NOT EXISTS\nFOR ()-[r:MANAGES_EQUIPMENT]-() ON (r.responsible_team);\n```\n\n#### 4.4 Validation Query\n\n```cypher\n// Verify ownership relationships created correctly\nMATCH (c:Customer)-[owns:OWNS_EQUIPMENT]->(asset)\nRETURN\n  c.customer_name AS customer,\n  count(DISTINCT asset) AS owned_assets,\n  collect(DISTINCT labels(asset)[0]) AS asset_types\nORDER BY owned_assets DESC;\n\n// Verify all assets with customer_id h",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_22",
+    "text": "\nRETURN\n  c.customer_name AS customer,\n  count(DISTINCT asset) AS owned_assets,\n  collect(DISTINCT labels(asset)[0]) AS asset_types\nORDER BY owned_assets DESC;\n\n// Verify all assets with customer_id have ownership relationship\nMATCH (asset)\nWHERE (asset:Server OR asset:NetworkDevice OR asset:ICS_Asset OR asset:saref_Device)\n  AND asset.customer_id IS NOT NULL\nWITH count(asset) AS assets_with_customer_id\nMATCH (:Customer)-[:OWNS_EQUIPMENT]->(asset2)\nWHERE asset2:Server OR asset2:NetworkDevice OR asset2:ICS_Asset OR asset2:saref_Device\nWITH assets_with_customer_id, count(DISTINCT asset2) AS assets_with_relationship\nRETURN\n  assets_with_customer_id AS expected_count,\n  assets_with_relationship AS actual_relationships,\n  assets_with_customer_id = assets_with_relationship AS validation_passed;\n\n// Check for orphaned relationships (relationships without matching property)\nMATCH (c:Customer)-[:OWNS_EQUIPMENT]->(asset)\nWHERE asset.customer_id <> c.customer_id\nRETURN count(asset) AS orphaned_re",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_23",
+    "text": "\n// Check for orphaned relationships (relationships without matching property)\nMATCH (c:Customer)-[:OWNS_EQUIPMENT]->(asset)\nWHERE asset.customer_id <> c.customer_id\nRETURN count(asset) AS orphaned_relationships;\n// Expected: 0\n```\n\n#### 4.5 Rollback Procedure (if needed)\n\n```cypher\n// Delete all ownership relationships\nMATCH (:Customer)-[r:OWNS_EQUIPMENT]->()\nDELETE r;\n\n// Delete all management relationships\nMATCH (:Organization)-[r:MANAGES_EQUIPMENT]->()\nDELETE r;\n\n// Drop relationship indexes\nDROP INDEX owns_equipment_criticality_idx IF EXISTS;\nDROP INDEX manages_equipment_team_idx IF EXISTS;\n```\n\n---\n\n### STEP 5: Validate CVE Preservation & Test Queries\n\n**ICE Score:** 10.0 (Impact: 10, Confidence: 10, Ease: 10)\n**Time:** 5 minutes\n**Risk:** ZERO (read-only validation)\n\n#### 5.1 CRITICAL: Verify CVE Count Unchanged\n\n```cypher\n// Count all CVE nodes\nMATCH (cve:CVE)\nRETURN count(cve) AS cve_count;\n\n// EXPECTED: 147,923\n// ABORT IMMEDIATELY IF NOT MATCHING - THIS IS CRITICAL\n```\n\n####",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_24",
+    "text": "AL: Verify CVE Count Unchanged\n\n```cypher\n// Count all CVE nodes\nMATCH (cve:CVE)\nRETURN count(cve) AS cve_count;\n\n// EXPECTED: 147,923\n// ABORT IMMEDIATELY IF NOT MATCHING - THIS IS CRITICAL\n```\n\n#### 5.2 Verify CVE Nodes Were Not Modified\n\n```cypher\n// Check if any CVE nodes have customer properties (they should NOT)\nMATCH (cve:CVE)\nWHERE EXISTS(cve.customer_id)\n   OR EXISTS(cve.organization_id)\n   OR EXISTS(cve.asset_owner)\nRETURN count(cve) AS incorrectly_modified_cves;\n\n// EXPECTED: 0\n// If > 0, investigate immediately and rollback Step 3\n```\n\n#### 5.3 Test \"My Equipment\" Filtering\n\n```cypher\n// Test Customer 1 equipment filtering\nMATCH (c:Customer {customer_id: 'CUST-001-ENERGY'})-[:OWNS_EQUIPMENT]->(asset)\nRETURN\n  labels(asset)[0] AS asset_type,\n  count(asset) AS my_equipment_count\nORDER BY my_equipment_count DESC;\n\n// Should return counts for each asset type owned by Customer 1\n```\n\n#### 5.4 Test CVE Impact on MY Equipment (Question 1 - Primary Use Case)\n\n```cypher\n// Find CVEs",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_25",
+    "text": "ORDER BY my_equipment_count DESC;\n\n// Should return counts for each asset type owned by Customer 1\n```\n\n#### 5.4 Test CVE Impact on MY Equipment (Question 1 - Primary Use Case)\n\n```cypher\n// Find CVEs impacting Customer 1's equipment\nMATCH (customer:Customer {customer_id: 'CUST-001-ENERGY'})\n      -[:OWNS_EQUIPMENT]->(server:Server)\nMATCH (server)-[:RUNS]->(app:Application)\n      -[:CONTAINS]->(comp:SoftwareComponent)\n      -[:HAS_VULNERABILITY]->(cve:CVE)\nWHERE cve.cvss_base_score >= 7.0\nRETURN\n  server.hostname AS my_equipment,\n  comp.name AS vulnerable_component,\n  cve.cve_id AS cve_id,\n  cve.cvss_base_score AS severity,\n  cve.published_date AS published\nORDER BY cve.cvss_base_score DESC\nLIMIT 10;\n\n// Verify query returns results and executes in <1 second\n```\n\n#### 5.5 Test Multi-Customer Isolation\n\n```cypher\n// Verify no assets are assigned to multiple customers (unless marked shared)\nMATCH (c1:Customer {customer_id: 'CUST-001-ENERGY'})-[:OWNS_EQUIPMENT]->(asset1)\nMATCH (c2:Custome",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_26",
+    "text": "er Isolation\n\n```cypher\n// Verify no assets are assigned to multiple customers (unless marked shared)\nMATCH (c1:Customer {customer_id: 'CUST-001-ENERGY'})-[:OWNS_EQUIPMENT]->(asset1)\nMATCH (c2:Customer {customer_id: 'CUST-002-WATER'})-[:OWNS_EQUIPMENT]->(asset2)\nWHERE asset1 = asset2\n  AND asset1.shared_asset <> true  // Exclude intentionally shared assets\nRETURN\n  count(asset1) AS incorrectly_shared_assets,\n  collect(asset1.hostname)[0..5] AS sample_assets;\n\n// EXPECTED: incorrectly_shared_assets = 0\n// If > 0, review Step 3 assignments\n```\n\n#### 5.6 Test Query Performance\n\n```cypher\n// Profile customer-filtered query to verify index usage\nPROFILE\nMATCH (c:Customer {customer_id: 'CUST-001-ENERGY'})-[:OWNS_EQUIPMENT]->(asset)\nMATCH (asset)<-[:INSTALLED_ON]-(comp:SoftwareComponent)\n      -[:HAS_VULNERABILITY]->(cve:CVE)\nWHERE cve.cvss_base_score >= 7.0\nRETURN count(DISTINCT asset) AS vulnerable_assets;\n\n// Verify:\n// - Uses customer_id index\n// - Execution time < 100ms\n// - DB Hits < 10",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_27",
+    "text": ":HAS_VULNERABILITY]->(cve:CVE)\nWHERE cve.cvss_base_score >= 7.0\nRETURN count(DISTINCT asset) AS vulnerable_assets;\n\n// Verify:\n// - Uses customer_id index\n// - Execution time < 100ms\n// - DB Hits < 10,000\n```\n\n#### 5.7 Comprehensive Validation Report\n\n```cypher\n// Generate complete validation report\nCALL {\n  // CVE count\n  MATCH (cve:CVE)\n  RETURN count(cve) AS cve_count\n}\nCALL {\n  // Customer count\n  MATCH (c:Customer)\n  RETURN count(c) AS customer_count\n}\nCALL {\n  // Organization count\n  MATCH (o:Organization)\n  RETURN count(o) AS organization_count\n}\nCALL {\n  // Assets with customer assignment\n  MATCH (asset)\n  WHERE (asset:Server OR asset:NetworkDevice OR asset:ICS_Asset OR asset:saref_Device)\n    AND asset.customer_id IS NOT NULL\n  RETURN count(asset) AS assigned_assets\n}\nCALL {\n  // Ownership relationships\n  MATCH (:Customer)-[r:OWNS_EQUIPMENT]->()\n  RETURN count(r) AS ownership_relationships\n}\nRETURN\n  cve_count,\n  customer_count,\n  organization_count,\n  assigned_assets,\n  owner",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_28",
+    "text": "Ownership relationships\n  MATCH (:Customer)-[r:OWNS_EQUIPMENT]->()\n  RETURN count(r) AS ownership_relationships\n}\nRETURN\n  cve_count,\n  customer_count,\n  organization_count,\n  assigned_assets,\n  ownership_relationships,\n  CASE\n    WHEN cve_count = 147923 THEN '\u2705 PASS'\n    ELSE '\u274c FAIL - ABORT IMPLEMENTATION'\n  END AS cve_preservation_check;\n\n// CRITICAL: If cve_preservation_check = FAIL, stop and rollback\n```\n\n---\n\n### STEP 6: Update Application Queries with Customer Filtering\n\n**ICE Score:** 10.0 (Impact: 10, Confidence: 10, Ease: 10)\n**Time:** 15 minutes\n**Risk:** ZERO (documentation only)\n\n#### 6.1 Before/After Query Examples\n\n##### Question 1: \"Does this CVE impact my equipment?\"\n\n**BEFORE (No Customer Filtering):**\n```cypher\n// Old query - shows ALL equipment across ALL customers\nMATCH (cve:CVE {cve_id: 'CVE-2024-1234'})\n      <-[:HAS_VULNERABILITY]-(comp:SoftwareComponent)\n      -[:INSTALLED_ON]->(server:Server)\nRETURN\n  server.hostname,\n  comp.name,\n  cve.cve_id;\n\n// Problem: Ca",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_29",
+    "text": "H (cve:CVE {cve_id: 'CVE-2024-1234'})\n      <-[:HAS_VULNERABILITY]-(comp:SoftwareComponent)\n      -[:INSTALLED_ON]->(server:Server)\nRETURN\n  server.hostname,\n  comp.name,\n  cve.cve_id;\n\n// Problem: Cannot distinguish \"my\" equipment from others\n// Shows equipment for ALL customers in multi-tenant environment\n```\n\n**AFTER (With Customer Filtering):**\n```cypher\n// New query - shows only MY equipment\nMATCH (customer:Customer {customer_id: $myCustomerID})\n      -[:OWNS_EQUIPMENT]->(server:Server)\nMATCH (server)<-[:INSTALLED_ON]-(comp:SoftwareComponent)\n      -[:HAS_VULNERABILITY]->(cve:CVE {cve_id: $targetCVE})\nRETURN\n  server.hostname AS my_equipment,\n  server.data_center AS location,\n  comp.name AS vulnerable_component,\n  comp.version AS component_version,\n  cve.cve_id AS cve_id,\n  cve.cvss_base_score AS severity,\n  cve.published_date AS published,\n  server.patch_status AS current_patch_status,\n  CASE\n    WHEN server.criticality = 'critical' THEN 'IMMEDIATE'\n    WHEN cve.cvss_base_score >",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_30",
+    "text": "ase_score AS severity,\n  cve.published_date AS published,\n  server.patch_status AS current_patch_status,\n  CASE\n    WHEN server.criticality = 'critical' THEN 'IMMEDIATE'\n    WHEN cve.cvss_base_score >= 9.0 THEN 'URGENT'\n    WHEN cve.cvss_base_score >= 7.0 THEN 'HIGH'\n    ELSE 'MEDIUM'\n  END AS remediation_priority\nORDER BY cve.cvss_base_score DESC, server.criticality DESC;\n\n// Solution: Only shows equipment owned by my customer\n// Enables multi-tenant isolation\n```\n\n##### Question 3: \"Does this new CVE impact any of my equipment in my facility?\"\n\n**BEFORE:**\n```cypher\n// Generic query without customer or facility filtering\nMATCH (cve:CVE)\nWHERE cve.published_date >= date('2025-10-30')\nMATCH (cve)<-[:HAS_VULNERABILITY]-(comp:SoftwareComponent)\n      -[:INSTALLED_ON]->(asset)\nRETURN count(DISTINCT asset) AS impacted_equipment;\n\n// Problem: Shows all equipment across all customers and facilities\n```\n\n**AFTER:**\n```cypher\n// Customer-specific facility query\nMATCH (customer:Customer {custom",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_31",
+    "text": "STINCT asset) AS impacted_equipment;\n\n// Problem: Shows all equipment across all customers and facilities\n```\n\n**AFTER:**\n```cypher\n// Customer-specific facility query\nMATCH (customer:Customer {customer_id: $myCustomerID})\n      -[:OWNS_EQUIPMENT]->(asset)\nWHERE asset.data_center IN $myFacilities  // e.g., ['DC-PRIMARY-01']\nWITH customer, asset\nMATCH (cve:CVE)\nWHERE cve.published_date >= date($today)  // New CVEs only\nMATCH (cve)<-[:HAS_VULNERABILITY]-(comp:SoftwareComponent)\n      -[:INSTALLED_ON]->(asset)\nRETURN\n  cve.cve_id AS new_cve,\n  cve.cvss_base_score AS severity,\n  cve.published_date AS published,\n  count(DISTINCT asset) AS my_impacted_equipment,\n  collect(DISTINCT asset.hostname)[0..10] AS sample_hosts,\n  collect(DISTINCT asset.data_center) AS my_facilities,\n  comp.name AS vulnerable_component\nORDER BY cve.cvss_base_score DESC;\n\n// Solution: Only my equipment in my facilities\n```\n\n##### Question 6: \"How many pieces of equipment do I have?\"\n\n**BEFORE:**\n```cypher\n// Total equ",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_32",
+    "text": "rable_component\nORDER BY cve.cvss_base_score DESC;\n\n// Solution: Only my equipment in my facilities\n```\n\n##### Question 6: \"How many pieces of equipment do I have?\"\n\n**BEFORE:**\n```cypher\n// Total equipment count (all customers)\nMATCH (s:Server)\nWHERE s.manufacturer = 'Dell' AND s.model = 'PowerEdge R740'\nRETURN count(s) AS totalCount;\n\n// Problem: Shows equipment across all customers\n```\n\n**AFTER:**\n```cypher\n// My equipment count only\nMATCH (customer:Customer {customer_id: $myCustomerID})\n      -[:OWNS_EQUIPMENT]->(equipment)\nWHERE equipment:Server\nRETURN\n  equipment.manufacturer AS manufacturer,\n  equipment.model AS model,\n  count(equipment) AS my_equipment_count,\n  collect(DISTINCT equipment.data_center) AS my_datacenters,\n  avg(duration.between(equipment.asset_acquisition_date, date()).years) AS avg_age_years\nORDER BY my_equipment_count DESC;\n\n// Solution: Customer-specific inventory count\n```\n\n##### Question 7: \"Do I have a specific application or operating system?\"\n\n**BEFORE:**\n",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_33",
+    "text": ").years) AS avg_age_years\nORDER BY my_equipment_count DESC;\n\n// Solution: Customer-specific inventory count\n```\n\n##### Question 7: \"Do I have a specific application or operating system?\"\n\n**BEFORE:**\n```cypher\n// Check existence globally\nMATCH (app:Application)\nWHERE app.applicationName = 'Apache Log4j' AND app.version = '2.14.1'\nRETURN count(app) > 0 AS hasApplication;\n\n// Problem: True even if other customers have it, not me\n```\n\n**AFTER:**\n```cypher\n// Check existence in my environment only\nMATCH (customer:Customer {customer_id: $myCustomerID})\n      -[:OWNS_EQUIPMENT]->(asset)\n      -[:RUNS]->(app:Application)\nWHERE app.applicationName = $searchApp  // e.g., 'Apache Log4j'\n  AND app.version = $searchVersion      // e.g., '2.14.1'\nRETURN\n  count(app) > 0 AS i_have_this_application,\n  count(DISTINCT asset) AS installed_on_my_assets,\n  collect(DISTINCT asset.hostname)[0..5] AS sample_installations,\n  collect(DISTINCT asset.data_center) AS my_affected_datacenters;\n\n// Solution: Custome",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_34",
+    "text": "unt(DISTINCT asset) AS installed_on_my_assets,\n  collect(DISTINCT asset.hostname)[0..5] AS sample_installations,\n  collect(DISTINCT asset.data_center) AS my_affected_datacenters;\n\n// Solution: Customer-specific software inventory\n```\n\n##### Question 8: \"Where is a specific vulnerability located?\"\n\n**BEFORE:**\n```cypher\n// Global vulnerability location\nMATCH (vuln:CVE {cve_id: 'CVE-2021-44228'})\n      <-[:HAS_VULNERABILITY]-(asset)\nMATCH (asset)-[:PHYSICALLY_LOCATED_IN]->(dc:DataCenterFacility)\nRETURN\n  asset.hostname,\n  dc.facility_name;\n\n// Problem: Shows all customers' vulnerable assets\n```\n\n**AFTER:**\n```cypher\n// My vulnerable assets only\nMATCH (customer:Customer {customer_id: $myCustomerID})\n      -[:OWNS_EQUIPMENT]->(asset)\n      -[:HAS_VULNERABILITY]->(vuln:CVE {cve_id: $targetCVE})\nMATCH (asset)-[:PHYSICALLY_LOCATED_IN]->(dc:DataCenterFacility)\nRETURN\n  asset.hostname AS my_affected_asset,\n  labels(asset)[0] AS asset_type,\n  asset.criticality AS asset_criticality,\n  dc.facility",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_35",
+    "text": "\nMATCH (asset)-[:PHYSICALLY_LOCATED_IN]->(dc:DataCenterFacility)\nRETURN\n  asset.hostname AS my_affected_asset,\n  labels(asset)[0] AS asset_type,\n  asset.criticality AS asset_criticality,\n  dc.facility_name AS my_facility,\n  asset.rack_id AS rack,\n  asset.rack_unit_position AS rack_unit,\n  vuln.cvss_base_score AS severity,\n  CASE asset.patch_status\n    WHEN 'patched' THEN '\u2705 Mitigated'\n    WHEN 'pending' THEN '\u26a0\ufe0f Patch Pending'\n    ELSE '\u274c Vulnerable'\n  END AS remediation_status\nORDER BY vuln.cvss_base_score DESC, asset.criticality DESC;\n\n// Solution: Customer-specific vulnerability tracking\n```\n\n---\n\n## Complete Rollback Procedure\n\n### Full System Rollback (Use if Implementation Fails)\n\n```cypher\n// STEP 1: Delete all ownership relationships\nMATCH (:Customer)-[r:OWNS_EQUIPMENT]->()\nDELETE r;\n\nMATCH (:Organization)-[r:MANAGES_EQUIPMENT]->()\nDELETE r;\n\n// STEP 2: Remove customer properties from assets\nMATCH (asset)\nWHERE asset:Server OR asset:NetworkDevice OR asset:ICS_Asset OR asset:sar",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_36",
+    "text": "r;\n\nMATCH (:Organization)-[r:MANAGES_EQUIPMENT]->()\nDELETE r;\n\n// STEP 2: Remove customer properties from assets\nMATCH (asset)\nWHERE asset:Server OR asset:NetworkDevice OR asset:ICS_Asset OR asset:saref_Device\nREMOVE asset.customer_id,\n       asset.organization_id,\n       asset.asset_owner,\n       asset.ownership_status,\n       asset.shared_asset,\n       asset.asset_acquisition_date,\n       asset.tenant_list,\n       asset.primary_tenant,\n       asset.last_customer_update;\n\n// STEP 3: Delete Customer and Organization nodes\nMATCH (c:Customer)\nDETACH DELETE c;\n\nMATCH (o:Organization)\nDETACH DELETE o;\n\n// STEP 4: Drop all indexes\nDROP INDEX customer_name_idx IF EXISTS;\nDROP INDEX org_name_idx IF EXISTS;\nDROP INDEX org_parent_idx IF EXISTS;\nDROP INDEX customer_sector_idx IF EXISTS;\nDROP INDEX asset_customer_id_idx IF EXISTS;\nDROP INDEX asset_organization_id_idx IF EXISTS;\nDROP INDEX owns_equipment_criticality_idx IF EXISTS;\nDROP INDEX manages_equipment_team_idx IF EXISTS;\n\n// STEP 5: Drop a",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_37",
+    "text": "sset_customer_id_idx IF EXISTS;\nDROP INDEX asset_organization_id_idx IF EXISTS;\nDROP INDEX owns_equipment_criticality_idx IF EXISTS;\nDROP INDEX manages_equipment_team_idx IF EXISTS;\n\n// STEP 5: Drop all constraints\nDROP CONSTRAINT customer_id_unique IF EXISTS;\nDROP CONSTRAINT organization_id_unique IF EXISTS;\n\n// STEP 6: Verify rollback complete\nMATCH (c:Customer) RETURN count(c) AS remaining_customers;\nMATCH (o:Organization) RETURN count(o) AS remaining_organizations;\nMATCH (asset)\nWHERE EXISTS(asset.customer_id)\nRETURN count(asset) AS assets_with_customer_properties;\n\n// All counts should be 0\n```\n\n### Verify System Restored to Pre-Implementation State\n\n```cypher\n// Critical verification\nMATCH (cve:CVE)\nRETURN count(cve) AS cve_count;\n// MUST return 147,923\n\n// Verify no customer-related artifacts remain\nMATCH (n)\nWHERE n:Customer OR n:Organization\nRETURN count(n) AS customer_org_count;\n// MUST return 0\n\nSHOW CONSTRAINTS WHERE name CONTAINS 'customer' OR name CONTAINS 'organization';",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_38",
+    "text": " artifacts remain\nMATCH (n)\nWHERE n:Customer OR n:Organization\nRETURN count(n) AS customer_org_count;\n// MUST return 0\n\nSHOW CONSTRAINTS WHERE name CONTAINS 'customer' OR name CONTAINS 'organization';\n// MUST return empty\n```\n\n---\n\n## Execution Timeline\n\n### Day 1 Morning (2 hours)\n- **Steps 1-2:** Create schemas and sample customers\n- **Validation:** Test in development environment\n- **Stakeholder Review:** Present sample data to business owners\n\n### Day 1 Afternoon (2 hours)\n- **Step 3 Pilot:** Enhance 10% of assets (250 nodes)\n- **Validation:** Run all Step 3 validation queries\n- **Review:** Assess assignment logic correctness\n\n### Day 2 (4 hours)\n- **Step 3 Complete:** Enhance all ~2,500 assets\n- **Step 4:** Create all ownership relationships\n- **Step 5:** Run complete validation suite\n- **CRITICAL:** Verify CVE count = 147,923\n\n### Day 3 (2 hours)\n- **Step 6:** Update query library and documentation\n- **Training:** Educate analysts on customer filtering\n- **Production Deployment:*",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_39",
+    "text": "\n- **CRITICAL:** Verify CVE count = 147,923\n\n### Day 3 (2 hours)\n- **Step 6:** Update query library and documentation\n- **Training:** Educate analysts on customer filtering\n- **Production Deployment:** Deploy to production if all validations pass\n\n---\n\n## Success Criteria Checklist\n\n- [ ] All 147,923 CVE nodes preserved (count verified)\n- [ ] 3 customers created (Energy, Water, Manufacturing)\n- [ ] 3 organizations created and linked to customers\n- [ ] ~2,500 assets assigned to customers/organizations\n- [ ] Ownership relationships created (Customer \u2192 Asset, Organization \u2192 Asset)\n- [ ] Customer isolation validated (no cross-tenant leaks)\n- [ ] All 8 questions answerable with customer filtering\n- [ ] Query performance <1 second for customer-filtered queries\n- [ ] Documentation updated with before/after examples\n- [ ] Analyst training completed\n\n---\n\n## Post-Implementation Monitoring\n\n### Week 1: Monitor Query Performance\n```cypher\n// Weekly performance check\nPROFILE\nMATCH (c:Customer {cus",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_40",
+    "text": "fore/after examples\n- [ ] Analyst training completed\n\n---\n\n## Post-Implementation Monitoring\n\n### Week 1: Monitor Query Performance\n```cypher\n// Weekly performance check\nPROFILE\nMATCH (c:Customer {customer_id: $customerId})-[:OWNS_EQUIPMENT]->(asset)\nMATCH (asset)<-[:INSTALLED_ON]-(comp)-[:HAS_VULNERABILITY]->(cve:CVE)\nWHERE cve.cvss_base_score >= 7.0\nRETURN count(DISTINCT asset);\n\n// Verify execution time < 100ms\n```\n\n### Month 1: Validate Data Quality\n```cypher\n// Check for unassigned assets that should have customers\nMATCH (asset)\nWHERE (asset:Server OR asset:NetworkDevice OR asset:ICS_Asset)\n  AND asset.customer_id IS NULL\n  AND asset.ownership_status IS NULL\nRETURN\n  count(asset) AS unassigned_assets,\n  collect(asset.hostname)[0..10] AS samples;\n\n// Investigate if count > 0\n```\n\n### Ongoing: CVE Preservation Audit\n```cypher\n// Monthly CVE count verification\nMATCH (cve:CVE)\nRETURN count(cve) AS cve_count,\n       date() AS audit_date;\n\n// Log result and compare to baseline (147,923)",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 40,
+      "start_char": 32000,
+      "end_char": 33000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_41",
+    "text": "ngoing: CVE Preservation Audit\n```cypher\n// Monthly CVE count verification\nMATCH (cve:CVE)\nRETURN count(cve) AS cve_count,\n       date() AS audit_date;\n\n// Log result and compare to baseline (147,923)\n```\n\n---\n\n## Conclusion\n\nThis implementation guide provides a **complete, safe, and reversible approach** to adding Customer/Organization multi-tenant labeling to the AEON Digital Twin Cybersecurity schema.\n\n**Key Achievements:**\n\u2705 Enables \"my equipment\" filtering for all 8 critical questions\n\u2705 Preserves all 147,923 existing CVE nodes\n\u2705 Supports multi-tenant deployments\n\u2705 Achieves 100% question coverage (up from 87.5%)\n\u2705 Provides complete rollback capability at every step\n\u2705 Delivers in 2-3 days with minimal risk\n\n**Next Steps:**\n1. Review implementation plan with stakeholders\n2. Execute Steps 1-2 in development environment\n3. Validate sample customer data\n4. Proceed with phased rollout per timeline\n5. Monitor performance and data quality post-deployment\n\n**Implementation Status:** READY F",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 41,
+      "start_char": 32800,
+      "end_char": 33800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md_chunk_42",
+    "text": " 1-2 in development environment\n3. Validate sample customer data\n4. Proceed with phased rollout per timeline\n5. Monitor performance and data quality post-deployment\n\n**Implementation Status:** READY FOR EXECUTION\n",
+    "metadata": {
+      "file_name": "CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_ORGANIZATION_IMPLEMENTATION.md",
+      "file_size": 33813,
+      "indexed_at": "2025-10-31T00:58:17.009783",
+      "chunk_id": 42,
+      "start_char": 33600,
+      "end_char": 34600,
+      "chunk_size": 213
+    }
+  }
+]

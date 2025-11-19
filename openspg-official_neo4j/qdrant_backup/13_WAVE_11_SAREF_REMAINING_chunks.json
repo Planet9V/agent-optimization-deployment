@@ -1,0 +1,506 @@
+[
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_0",
+    "text": "# WAVE 11: SAREF REMAINING DOMAINS\n**File:** 13_WAVE_11_SAREF_REMAINING.md\n**Created:** 2025-10-30 00:00:00 UTC\n**Version:** v1.0.0\n**Status:** ACTIVE\n**Wave Priority:** 11 of 12\n**Estimated Nodes:** ~4,000\n\n## Wave Overview\n\nWave 11 completes SAREF ontology integration by covering remaining specialized domains: SAREF4WEAR (wearables), SAREF4AGRI (agriculture-food), and SAREF4CITY (smart cities). These domains extend the cybersecurity threat intelligence ontology into IoT, environmental monitoring, and urban infrastructure contexts.\n\n### Objectives\n1. Complete SAREF4WEAR wearable device schemas\n2. Integrate SAREF4AGRI agriculture and food safety models\n3. Implement SAREF4CITY urban infrastructure schemas\n4. Connect IoT devices to threat intelligence\n5. Enable environmental context for security events\n6. Support smart city security monitoring\n\n### Dependencies\n- Wave 1-2: SAREF Core (device foundations)\n- Wave 3-5: Cybersecurity (threat correlation)\n- Wave 9: IT Infrastructure (device d",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_1",
+    "text": "rity events\n6. Support smart city security monitoring\n\n### Dependencies\n- Wave 1-2: SAREF Core (device foundations)\n- Wave 3-5: Cybersecurity (threat correlation)\n- Wave 9: IT Infrastructure (device deployment)\n\n---\n\n## COMPLETE NODE SCHEMAS\n\n### 1. SAREF4WEAR - WEARABLE DEVICES (~1,500 nodes)\n\n#### 1.1 Wearable Device Base (500 nodes)\n\n**WearableDevice**\n```yaml\nsaref4wear:WearableDevice:\n  extends: saref:Device\n  properties:\n    # Device Classification\n    wearableType: enum[\n      smartwatch, fitness_tracker, smart_glasses, smart_clothing,\n      medical_patch, hearing_aid, smart_ring, body_sensor,\n      activity_tracker, health_monitor, ar_headset, vr_headset\n    ]\n\n    # Physical Characteristics\n    wearLocation: enum[\n      wrist, chest, head, ankle, ear, finger, torso, arm, leg,\n      waist, neck, foot\n    ]\n    formFactor: enum[band, patch, clip, embedded, glasses, ring]\n    weight: float (grams)\n    dimensions: {length: float, width: float, height: float} (mm)\n    waterResistan",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_2",
+    "text": "  waist, neck, foot\n    ]\n    formFactor: enum[band, patch, clip, embedded, glasses, ring]\n    weight: float (grams)\n    dimensions: {length: float, width: float, height: float} (mm)\n    waterResistance: string (IP rating)\n    dustResistance: string (IP rating)\n\n    # Power Management\n    batteryCapacity: integer (mAh)\n    batteryLevel: float (percentage)\n    batteryType: enum[lithium_ion, lithium_polymer, zinc_air, rechargeable, disposable]\n    chargingMethod: enum[usb, wireless, inductive, solar, kinetic]\n    chargingStatus: enum[charging, discharging, full, not_charging]\n    powerConsumption: float (mW)\n    batteryLifeExpected: integer (hours)\n    batteryLifeRemaining: integer (hours)\n\n    # Connectivity\n    connectivity: array[enum[\n      bluetooth_le, bluetooth_classic, wifi, nfc, cellular_lte,\n      cellular_5g, zigbee, thread, lora, ant_plus, proprietary\n    ]]\n    bluetoothVersion: string\n    wifiStandards: array[string]\n    nfcEnabled: boolean\n    cellularCapable: boolean\n\n   ",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_3",
+    "text": "lular_lte,\n      cellular_5g, zigbee, thread, lora, ant_plus, proprietary\n    ]]\n    bluetoothVersion: string\n    wifiStandards: array[string]\n    nfcEnabled: boolean\n    cellularCapable: boolean\n\n    # Sensors Onboard\n    sensors: array[enum[\n      accelerometer, gyroscope, magnetometer, heart_rate, spo2,\n      ecg, temperature, gps, glonass, barometer, altimeter,\n      ambient_light, uv, skin_conductance, blood_pressure,\n      blood_glucose, microphone, camera\n    ]]\n\n    # Display\n    hasDisplay: boolean\n    displayType: enum[oled, amoled, lcd, e_ink, led, none]\n    displaySize: float (inches)\n    displayResolution: {width: integer, height: integer}\n    touchscreen: boolean\n    colorDisplay: boolean\n    alwaysOnDisplay: boolean\n\n    # User Interface\n    inputMethods: array[enum[touchscreen, button, crown, voice, gesture, none]]\n    hapticFeedback: boolean\n    audioOutput: boolean\n    microphoneInput: boolean\n\n    # Compatibility\n    compatibleOS: array[enum[ios, android, windows, ma",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_4",
+    "text": "een, button, crown, voice, gesture, none]]\n    hapticFeedback: boolean\n    audioOutput: boolean\n    microphoneInput: boolean\n\n    # Compatibility\n    compatibleOS: array[enum[ios, android, windows, macos, wear_os, tizen, fitbit_os, proprietary]]\n    minimumOSVersion: string\n    companionAppRequired: boolean\n\n    # Health & Medical\n    medicalGrade: boolean\n    fdaApproved: boolean\n    clinicalValidation: boolean\n    medicalDeviceClass: enum[class_i, class_ii, class_iii, not_medical]\n\n    # Data & Privacy\n    dataStorage: enum[local, cloud, hybrid]\n    localStorageCapacity: integer (MB)\n    encryptionEnabled: boolean\n    privacyMode: boolean\n    dataRetentionPeriod: integer (days)\n\n    # Security Features\n    authenticationMethod: enum[none, pin, pattern, biometric, password]\n    biometricTypes: array[enum[fingerprint, face, voice, heart_rate]]\n    secureBoot: boolean\n    trustedExecutionEnvironment: boolean\n\n  relationships:\n    # User Assignment\n    wornBy: User (many-to-1)\n    paired",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_5",
+    "text": "ypes: array[enum[fingerprint, face, voice, heart_rate]]\n    secureBoot: boolean\n    trustedExecutionEnvironment: boolean\n\n  relationships:\n    # User Assignment\n    wornBy: User (many-to-1)\n    pairedWith: MobileDevice|Smartphone (many-to-1)\n    syncsTo: CloudService (many-to-many)\n\n    # Health Monitoring\n    tracks: HealthMetric (1-to-many)\n    measures: Measurement (1-to-many)\n    detects: Event (1-to-many)\n\n    # Security\n    hasVulnerability: Vulnerability (many-to-many)\n    authenticatesUser: User (many-to-1)\n    protectedBy: EndpointSecurity (many-to-1)\n\n    # Data Management\n    stores: HealthData (1-to-many)\n    transmits: HealthData (1-to-many)\n\n    # Compliance\n    compliesWith: HealthRegulation (many-to-many)\n```\n\n#### 1.2 Health Metrics (500 nodes)\n\n**HealthMetric**\n```yaml\nsaref4wear:HealthMetric:\n  extends: saref:Property\n  properties:\n    # Metric Identity\n    metricID: string\n    metricName: string\n\n    # Metric Type\n    metricType: enum[\n      heart_rate, resting_hear",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_6",
+    "text": "ref4wear:HealthMetric:\n  extends: saref:Property\n  properties:\n    # Metric Identity\n    metricID: string\n    metricName: string\n\n    # Metric Type\n    metricType: enum[\n      heart_rate, resting_heart_rate, heart_rate_variability,\n      blood_oxygen, blood_pressure_systolic, blood_pressure_diastolic,\n      body_temperature, respiratory_rate, ecg, blood_glucose,\n      steps, distance, calories_burned, active_minutes, floors_climbed,\n      sleep_duration, sleep_quality, sleep_stages, stress_level,\n      skin_temperature, galvanic_skin_response, vo2_max, lactate_threshold\n    ]\n\n    # Measurement\n    currentValue: float\n    unit: string\n    timestamp: datetime\n    confidence: float (0-1)\n    qualityIndicator: enum[excellent, good, fair, poor, invalid]\n\n    # Context\n    activityContext: enum[rest, walking, running, cycling, swimming, sleeping, sitting, standing]\n    measurementCondition: enum[controlled, uncontrolled, clinical, field]\n\n    # Thresholds\n    normalRange: {min: float, max: ",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_7",
+    "text": "[rest, walking, running, cycling, swimming, sleeping, sitting, standing]\n    measurementCondition: enum[controlled, uncontrolled, clinical, field]\n\n    # Thresholds\n    normalRange: {min: float, max: float}\n    alertThresholdLow: float\n    alertThresholdHigh: float\n    criticalThresholdLow: float\n    criticalThresholdHigh: float\n\n    # Statistical Aggregation\n    averageValue: float\n    minimumValue: float\n    maximumValue: float\n    standardDeviation: float\n    measurementCount: integer\n\n    # Clinical Relevance\n    clinicalSignificance: enum[normal, borderline, abnormal, critical]\n    requiresAction: boolean\n    actionRecommended: string\n\n  relationships:\n    measuredBy: WearableDevice (many-to-1)\n    belongsTo: User (many-to-1)\n    triggersAlert: HealthAlert (1-to-many)\n    informsDiagnosis: HealthCondition (many-to-many)\n```\n\n**ActivityTracking**\n```yaml\nsaref4wear:ActivityTracking:\n  properties:\n    activityID: string\n    activityType: enum[\n      walking, running, cycling, swimmi",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_8",
+    "text": "osis: HealthCondition (many-to-many)\n```\n\n**ActivityTracking**\n```yaml\nsaref4wear:ActivityTracking:\n  properties:\n    activityID: string\n    activityType: enum[\n      walking, running, cycling, swimming, hiking, yoga, strength_training,\n      elliptical, rowing, dancing, sports, sleeping, resting\n    ]\n    activitySubtype: string\n\n    # Timing\n    startTime: datetime\n    endTime: datetime\n    duration: integer (seconds)\n    pausedDuration: integer (seconds)\n\n    # Intensity\n    intensity: enum[light, moderate, vigorous, very_vigorous]\n    averageIntensity: float\n    peakIntensity: float\n\n    # Metrics\n    distance: float (meters)\n    steps: integer\n    caloriesBurned: float\n    activeCalories: float\n    restingCalories: float\n\n    # Heart Rate\n    averageHeartRate: float (bpm)\n    maximumHeartRate: float (bpm)\n    minimumHeartRate: float (bpm)\n    heartRateZones: array[{zone: string, duration: integer}]\n\n    # Location (if GPS enabled)\n    route: array[geopoint]\n    elevation Gain: flo",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_9",
+    "text": "eartRate: float (bpm)\n    minimumHeartRate: float (bpm)\n    heartRateZones: array[{zone: string, duration: integer}]\n\n    # Location (if GPS enabled)\n    route: array[geopoint]\n    elevation Gain: float (meters)\n    elevationLoss: float (meters)\n\n    # Performance\n    pace: float (minutes per km)\n    speed: float (km/h)\n    cadence: integer (steps per minute)\n    strideLength: float (meters)\n\n    # Split Times\n    splits: array[{\n      distance: float,\n      time: integer,\n      pace: float\n    }]\n\n  relationships:\n    trackedBy: WearableDevice (many-to-1)\n    performedBy: User (many-to-1)\n    occursAt: Location (many-to-1)\n```\n\n**SleepAnalysis**\n```yaml\nsaref4wear:SleepAnalysis:\n  properties:\n    sleepID: string\n\n    # Timing\n    sleepStart: datetime\n    sleepEnd: datetime\n    totalDuration: integer (minutes)\n    timeInBed: integer (minutes)\n    timeAsleep: integer (minutes)\n    timeAwake: integer (minutes)\n\n    # Sleep Stages\n    deepSleep: integer (minutes)\n    lightSleep: integer (",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_10",
+    "text": "on: integer (minutes)\n    timeInBed: integer (minutes)\n    timeAsleep: integer (minutes)\n    timeAwake: integer (minutes)\n\n    # Sleep Stages\n    deepSleep: integer (minutes)\n    lightSleep: integer (minutes)\n    remSleep: integer (minutes)\n    awakeDuration: integer (minutes)\n\n    # Sleep Quality\n    sleepScore: float (0-100)\n    sleepEfficiency: float (percentage)\n    numberOfAwakenings: integer\n    timeToFallAsleep: integer (minutes)\n    restlessPeriods: integer\n\n    # Environmental Factors\n    avgHeartRate: float (bpm)\n    hrVariability: float (ms)\n    respiratoryRate: float (breaths/min)\n    avgTemperature: float (celsius)\n    avgSpO2: float (percentage)\n\n    # Disturbances\n    disturbances: array[{\n      timestamp: datetime,\n      type: enum[awakening, movement, noise, environmental],\n      duration: integer (seconds)\n    }]\n\n  relationships:\n    analyzedBy: WearableDevice (many-to-1)\n    belongsTo: User (many-to-1)\n```\n\n#### 1.3 Wearable Security (500 nodes)\n\n**WearableSecurity*",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_11",
+    "text": ",\n      duration: integer (seconds)\n    }]\n\n  relationships:\n    analyzedBy: WearableDevice (many-to-1)\n    belongsTo: User (many-to-1)\n```\n\n#### 1.3 Wearable Security (500 nodes)\n\n**WearableSecurity**\n```yaml\nsaref4wear:WearableSecurity:\n  properties:\n    # Device Security\n    secureBootEnabled: boolean\n    encryptionAtRest: boolean\n    encryptionInTransit: boolean\n    encryptionAlgorithm: string\n\n    # Authentication\n    authenticationEnabled: boolean\n    authenticationMethod: enum[pin, pattern, biometric, none]\n    biometricType: enum[fingerprint, face, heart_rate_pattern, gait]\n    multiFactorAuthentication: boolean\n\n    # Firmware Security\n    firmwareVersion: string\n    signedFirmware: boolean\n    secureUpdateMechanism: boolean\n    lastSecurityUpdate: datetime\n\n    # Network Security\n    bluetoothEncrypted: boolean\n    wifiEncryption: enum[wpa2, wpa3, none]\n    vpnCapable: boolean\n\n    # Data Protection\n    dataEncryptionKey: string (encrypted)\n    keyRotationEnabled: boolean\n   ",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_12",
+    "text": "\n    bluetoothEncrypted: boolean\n    wifiEncryption: enum[wpa2, wpa3, none]\n    vpnCapable: boolean\n\n    # Data Protection\n    dataEncryptionKey: string (encrypted)\n    keyRotationEnabled: boolean\n    lastKeyRotation: datetime\n    dataWipeCapability: boolean\n\n    # Privacy Features\n    privacyMode: boolean\n    locationTrackingDisabled: boolean\n    dataAnonymization: boolean\n    userConsentRecorded: boolean\n\n  relationships:\n    protects: WearableDevice (1-to-1)\n    hasVulnerability: Vulnerability (many-to-many)\n    compliesWith: SecurityStandard (many-to-many)\n```\n\n---\n\n### 2. SAREF4AGRI - AGRICULTURE & FOOD (~1,500 nodes)\n\n#### 2.1 Agricultural Monitoring (600 nodes)\n\n**Farm**\n```yaml\nsaref4agri:Farm:\n  properties:\n    farmID: string\n    farmName: string\n    totalArea: float (hectares)\n    farmType: enum[crop, livestock, mixed, orchard, vineyard, aquaculture]\n\n    # Location\n    boundaries: array[geopoint]\n    centerPoint: geopoint\n    elevation: float (meters)\n    slope: float (degre",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_13",
+    "text": "  farmType: enum[crop, livestock, mixed, orchard, vineyard, aquaculture]\n\n    # Location\n    boundaries: array[geopoint]\n    centerPoint: geopoint\n    elevation: float (meters)\n    slope: float (degrees)\n    aspect: float (degrees from north)\n\n    # Climate Zone\n    climateZone: enum[tropical, subtropical, temperate, continental, polar]\n    hardinessZone: string\n    averageRainfall: float (mm/year)\n    averageTemperature: float (celsius)\n\n    # Management\n    organicCertified: boolean\n    certifications: array[string]\n    irrigationAvailable: boolean\n    electricityAvailable: boolean\n\n  relationships:\n    contains: Field (1-to-many)\n    contains: Enclosure (1-to-many)\n    uses: Equipment (1-to-many)\n    monitored By: IoTDevice (many-to-many)\n```\n\n**Field**\n```yaml\nsaref4agri:Field:\n  properties:\n    fieldID: string\n    fieldName: string\n    area: float (hectares)\n    boundaries: array[geopoint]\n\n    # Soil Characteristics\n    soilType: enum[clay, silt, sand, loam, peat, chalk]\n    soil",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_14",
+    "text": "rties:\n    fieldID: string\n    fieldName: string\n    area: float (hectares)\n    boundaries: array[geopoint]\n\n    # Soil Characteristics\n    soilType: enum[clay, silt, sand, loam, peat, chalk]\n    soilpH: float\n    soilOrganicMatter: float (percentage)\n    soilTexture: string\n    drainageClass: enum[excessive, well, moderate, poor, very_poor]\n\n    # Current Crop\n    currentCrop: string\n    cropVariety: string\n    plantingDate: date\n    expectedHarvestDate: date\n    growthStage: enum[\n      seeding, germination, vegetative, flowering, fruiting,\n      ripening, harvest, fallow\n    ]\n\n    # Irrigation\n    irrigationType: enum[drip, sprinkler, flood, pivot, none]\n    irrigationSchedule: string\n    waterSource: enum[well, surface, municipal, recycled]\n\n  relationships:\n    partOfFarm: Farm (many-to-1)\n    grows: Crop (1-to-many)\n    hasSoil: SoilMeasurement (1-to-many)\n    monitored By: Sensor (many-to-many)\n```\n\n**Crop**\n```yaml\nsaref4agri:Crop:\n  properties:\n    cropID: string\n    cropName",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_15",
+    "text": "-to-1)\n    grows: Crop (1-to-many)\n    hasSoil: SoilMeasurement (1-to-many)\n    monitored By: Sensor (many-to-many)\n```\n\n**Crop**\n```yaml\nsaref4agri:Crop:\n  properties:\n    cropID: string\n    cropName: string\n    scientificName: string\n    variety: string\n    category: enum[grain, vegetable, fruit, legume, oilseed, fiber]\n\n    # Lifecycle\n    plantingDate: date\n    germinationDate: date\n    floweringDate: date\n    harvestDate: date\n    daysToMaturity: integer\n\n    # Growth Status\n    currentStage: enum[seeding, vegetative, flowering, fruiting, ripening, harvested]\n    healthStatus: enum[healthy, stressed, diseased, pest_infested, damaged]\n    growthRate: float\n    canopyCover: float (percentage)\n\n    # Yield\n    expectedYield: float (kg/ha)\n    actualYield: float (kg/ha)\n    yieldQuality: enum[premium, standard, below_standard, rejected]\n\n    # Inputs\n    seedDensity: float (seeds/m2)\n    fertilizerApplied: array[{type: string, amount: float, date: date}]\n    pesticideApplied: array[{t",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_16",
+    "text": "enum[premium, standard, below_standard, rejected]\n\n    # Inputs\n    seedDensity: float (seeds/m2)\n    fertilizerApplied: array[{type: string, amount: float, date: date}]\n    pesticideApplied: array[{type: string, amount: float, date: date}]\n    waterApplied: float (mm)\n\n    # Environmental Stress\n    droughtStress: float (0-1)\n    heatStress: float (0-1)\n    coldStress: float (0-1)\n    nutrientDeficiency: array[string]\n\n  relationships:\n    grownIn: Field (many-to-1)\n    requires: IrrigationSchedule (many-to-1)\n    affects: SoilHealth (many-to-1)\n    monitored By: Sensor (many-to-many)\n    threatenedBy: Pest|Disease (many-to-many)\n```\n\n**SoilMeasurement**\n```yaml\nsaref4agri:SoilMeasurement:\n  extends: saref:Measurement\n  properties:\n    # Physical Properties\n    moisture: float (percentage)\n    temperature: float (celsius)\n    compaction: float (psi)\n    salinity: float (dS/m)\n\n    # Chemical Properties\n    ph: float\n    electricalConductivity: float (dS/m)\n    organicMatter: float (pe",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_17",
+    "text": ")\n    temperature: float (celsius)\n    compaction: float (psi)\n    salinity: float (dS/m)\n\n    # Chemical Properties\n    ph: float\n    electricalConductivity: float (dS/m)\n    organicMatter: float (percentage)\n\n    # Nutrients (ppm or mg/kg)\n    nitrogen: float\n    phosphorus: float\n    potassium: float\n    calcium: float\n    magnesium: float\n    sulfur: float\n\n    # Micronutrients\n    iron: float\n    manganese: float\n    zinc: float\n    copper: float\n    boron: float\n\n    # Depth\n    measurementDepth: float (cm)\n\n  relationships:\n    measuredAt: Location (many-to-1)\n    measuredBy: Sensor (many-to-1)\n```\n\n#### 2.2 Livestock Management (400 nodes)\n\n**Animal**\n```yaml\nsaref4agri:Animal:\n  properties:\n    # Identity\n    animalID: string (tag/RFID/electronic ID)\n    alternativeID: string (visual tag)\n    species: enum[cattle, pig, sheep, goat, chicken, turkey, horse, fish]\n    breed: string\n\n    # Biological\n    birthDate: date\n    age: integer (days)\n    gender: enum[male, female, castra",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_18",
+    "text": "ual tag)\n    species: enum[cattle, pig, sheep, goat, chicken, turkey, horse, fish]\n    breed: string\n\n    # Biological\n    birthDate: date\n    age: integer (days)\n    gender: enum[male, female, castrated, unknown]\n    weight: float (kg)\n    bodyConditionScore: float (1-5 scale)\n\n    # Genealogy\n    sire: string (father ID)\n    dam: string (mother ID)\n    pedigree: string\n\n    # Health\n    healthStatus: enum[\n      healthy, sick, injured, quarantined, treated, recovering, deceased\n    ]\n    currentDiseases: array[string]\n    chronicConditions: array[string]\n\n    # Vaccinations\n    vaccinations: array[{\n      vaccine: string,\n      date: date,\n      nextDue: date,\n      batchNumber: string\n    }]\n\n    # Treatments\n    treatments: array[{\n      treatmentType: string,\n      medication: string,\n      dosage: string,\n      startDate: date,\n      endDate: date,\n      withdrawalPeriod: integer (days)\n    }]\n\n    # Reproduction\n    reproductiveStatus: enum[\n      not_breeding, pregnant, lactati",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_19",
+    "text": "\n      dosage: string,\n      startDate: date,\n      endDate: date,\n      withdrawalPeriod: integer (days)\n    }]\n\n    # Reproduction\n    reproductiveStatus: enum[\n      not_breeding, pregnant, lactating, dry, breeding\n    ]\n    lastCalving: date (cattle)\n    lastFarrowing: date (pigs)\n    offspring Count: integer\n\n    # Production\n    milkProduction: float (liters/day)\n    eggProduction: integer (eggs/day)\n    woolProduction: float (kg/shearing)\n\n    # Behavior\n    activityLevel: enum[low, normal, high, hyperactive]\n    feedingBehavior: enum[normal, reduced, excessive, none]\n    socialBehavior: enum[normal, aggressive, withdrawn, dominant]\n\n  relationships:\n    locatedIn: Enclosure (many-to-1)\n    monitoredBy: Sensor (many-to-many)\n    hasRecord: HealthRecord (1-to-many)\n    offspring: Animal (many-to-many)\n    produces: Product (1-to-many)\n```\n\n**Enclosure**\n```yaml\nsaref4agri:Enclosure:\n  properties:\n    enclosureID: string\n    enclosureType: enum[pen, barn, pasture, coop, stable, ta",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_20",
+    "text": "mal (many-to-many)\n    produces: Product (1-to-many)\n```\n\n**Enclosure**\n```yaml\nsaref4agri:Enclosure:\n  properties:\n    enclosureID: string\n    enclosureType: enum[pen, barn, pasture, coop, stable, tank, cage]\n    area: float (m2)\n    capacity: integer (animal count)\n    currentOccupancy: integer\n\n    # Environmental Conditions\n    temperature: float (celsius)\n    humidity: float (percentage)\n    ammonia: float (ppm)\n    carbonDioxide: float (ppm)\n    ventilationRate: float (m3/h)\n    lightLevel: float (lux)\n\n    # Facilities\n    feedingStations: integer\n    wateringPoints: integer\n    beddingType: string\n    beddingCondition: enum[fresh, good, fair, poor, needs_replacement]\n\n  relationships:\n    contains: Animal (1-to-many)\n    partOfFarm: Farm (many-to-1)\n    hasSensor: Sensor (1-to-many)\n```\n\n#### 2.3 Food Safety & Traceability (500 nodes)\n\n**FoodProduct**\n```yaml\nsaref4agri:FoodProduct:\n  properties:\n    # Identity\n    productID: string (GS1 GTIN)\n    productName: string\n    catego",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_21",
+    "text": ")\n```\n\n#### 2.3 Food Safety & Traceability (500 nodes)\n\n**FoodProduct**\n```yaml\nsaref4agri:FoodProduct:\n  properties:\n    # Identity\n    productID: string (GS1 GTIN)\n    productName: string\n    category: enum[\n      fresh_produce, meat, dairy, eggs, seafood, processed_food,\n      beverage, grain, bakery\n    ]\n\n    # Production\n    batchNumber: string\n    lotNumber: string\n    productionDate: datetime\n    productionFacility: string\n\n    # Expiry & Storage\n    expiryDate: datetime\n    bestBeforeDate: datetime\n    storageConditions: {\n      temperature: {min: float, max: float},\n      humidity: {min: float, max: float},\n      lightExposure: enum[dark, ambient, direct]\n    }\n\n    # Nutritional Information\n    servingSize: float (grams)\n    calories: float\n    protein: float (grams)\n    carbohydrates: float (grams)\n    fat: float (grams)\n    fiber: float (grams)\n    sodium: float (mg)\n\n    # Allergens\n    allergens: array[enum[\n      milk, eggs, fish, shellfish, tree_nuts, peanuts, wheat, s",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_22",
+    "text": "drates: float (grams)\n    fat: float (grams)\n    fiber: float (grams)\n    sodium: float (mg)\n\n    # Allergens\n    allergens: array[enum[\n      milk, eggs, fish, shellfish, tree_nuts, peanuts, wheat, soybeans,\n      sesame, sulfites, mustard, celery, lupin\n    ]]\n\n    # Certifications\n    organic: boolean\n    nonGMO: boolean\n    fairTrade: boolean\n    kosher: boolean\n    halal: boolean\n    certifications: array[string]\n\n    # Safety\n    microbiologicalTests: array[{\n      testType: string,\n      result: enum[pass, fail, pending],\n      date: datetime\n    }]\n    chemicalTests: array[{\n      substance: string,\n      level: float,\n      limit: float,\n      compliance: boolean\n    }]\n\n  relationships:\n    derivedFrom: Crop|Animal (many-to-many)\n    processedAt: ProcessingFacility (many-to-1)\n    trackedBy: TraceabilitySystem (many-to-1)\n    certifiedBy: CertificationBody (many-to-many)\n    hasHazard: FoodSafetyHazard (many-to-many)\n```\n\n**FoodSafetyHazard**\n```yaml\nsaref4agri:FoodSafetyHaza",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_23",
+    "text": "  trackedBy: TraceabilitySystem (many-to-1)\n    certifiedBy: CertificationBody (many-to-many)\n    hasHazard: FoodSafetyHazard (many-to-many)\n```\n\n**FoodSafetyHazard**\n```yaml\nsaref4agri:FoodSafetyHazard:\n  properties:\n    hazardID: string\n    hazardType: enum[biological, chemical, physical, allergen]\n    hazardName: string\n    severity: enum[critical, major, minor]\n    likelihood: enum[high, medium, low]\n    riskLevel: enum[critical, high, medium, low]\n\n    # Control Measures\n    controlMeasures: array[{\n      measureType: enum[preventive, monitoring, corrective],\n      description: string,\n      responsible: string\n    }]\n\n  relationships:\n    affects: FoodProduct (many-to-many)\n    mitigatedBy: ControlMeasure (many-to-many)\n```\n\n---\n\n### 3. SAREF4CITY - SMART CITIES (~1,000 nodes)\n\n#### 3.1 Urban Infrastructure (400 nodes)\n\n**StreetLight**\n```yaml\nsaref4city:StreetLight:\n  extends: saref:Device\n  properties:\n    # Identity\n    lightID: string\n    location: geopoint\n    address: strin",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_24",
+    "text": "3.1 Urban Infrastructure (400 nodes)\n\n**StreetLight**\n```yaml\nsaref4city:StreetLight:\n  extends: saref:Device\n  properties:\n    # Identity\n    lightID: string\n    location: geopoint\n    address: string\n    installationDate: date\n\n    # Configuration\n    lightType: enum[led, sodium_vapor, metal_halide, fluorescent, halogen]\n    power: float (watts)\n    luminousFlux: float (lumens)\n    colorTemperature: integer (kelvin)\n    beamAngle: float (degrees)\n\n    # Status\n    status: enum[on, off, dimmed, faulty, maintenance]\n    brightness: float (percentage)\n    operatingHours: integer\n    energyConsumed: float (kWh)\n\n    # Control\n    controlMethod: enum[\n      manual, timer, photocell, motion_sensor, adaptive, remote, smart_grid\n    ]\n    scheduledOnTime: time\n    scheduledOffTime: time\n    dimmingSchedule: array[{time: time, brightness: float}]\n\n    # Maintenance\n    lastMaintenanceDate: date\n    maintenanceInterval: integer (days)\n    lampReplacements: integer\n    expectedLifespan: integer",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_25",
+    "text": "ingSchedule: array[{time: time, brightness: float}]\n\n    # Maintenance\n    lastMaintenanceDate: date\n    maintenanceInterval: integer (days)\n    lampReplacements: integer\n    expectedLifespan: integer (hours)\n\n    # Smart Features\n    motionDetection: boolean\n    lightSensor: boolean\n    weatherSensor: boolean\n    communicationModule: enum[zigbee, lora, nb_iot, cellular, none]\n\n  relationships:\n    illuminates: Street (many-to-1)\n    partOfNetwork: LightingNetwork (many-to-1)\n    controlledBy: LightingController (many-to-1)\n    monitored By: EnergyManagementSystem (many-to-1)\n```\n\n**ParkingSpace**\n```yaml\nsaref4city:ParkingSpace:\n  properties:\n    # Identity\n    spaceID: string\n    spaceNumber: string\n    location: geopoint\n\n    # Type\n    spaceType: enum[\n      standard, compact, accessible, motorcycle, ev_charging,\n      loading_zone, reserved, carpool\n    ]\n\n    # Dimensions\n    length: float (meters)\n    width: float (meters)\n\n    # Status\n    occupancyStatus: enum[occupied, vacant",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_26",
+    "text": "le, motorcycle, ev_charging,\n      loading_zone, reserved, carpool\n    ]\n\n    # Dimensions\n    length: float (meters)\n    width: float (meters)\n\n    # Status\n    occupancyStatus: enum[occupied, vacant, reserved, out_of_service]\n    occupiedSince: datetime\n    occupiedDuration: integer (minutes)\n\n    # Restrictions\n    restrictions: array[enum[\n      time_limited, permit_required, payment_required, resident_only,\n      business_hours, loading_only\n    ]]\n    maxDuration: integer (minutes)\n\n    # Pricing\n    rate: float (currency per hour)\n    dailyMax: float\n    freeMinutes: integer\n\n    # EV Charging (if applicable)\n    chargingAvailable: boolean\n    chargerType: enum[level1, level2, dc_fast, tesla_supercharger]\n    chargingStatus: enum[available, charging, fault, maintenance]\n    powerOutput: float (kW)\n\n  relationships:\n    partOf: ParkingFacility (many-to-1)\n    detectedBy: OccupancySensor (many-to-1)\n    reservedBy: User (many-to-1)\n```\n\n**WasteContainer**\n```yaml\nsaref4city:WasteC",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_27",
+    "text": "put: float (kW)\n\n  relationships:\n    partOf: ParkingFacility (many-to-1)\n    detectedBy: OccupancySensor (many-to-1)\n    reservedBy: User (many-to-1)\n```\n\n**WasteContainer**\n```yaml\nsaref4city:WasteContainer:\n  extends: saref:Device\n  properties:\n    # Identity\n    containerID: string\n    location: geopoint\n    address: string\n\n    # Type\n    wasteType: enum[\n      general, recyclable, organic, glass, paper, plastic, metal,\n      hazardous, electronic, textile\n    ]\n\n    # Capacity\n    capacity: float (liters)\n    fillLevel: float (percentage)\n    weight: float (kg)\n\n    # Status\n    status: enum[normal, nearly_full, full, overflow, damaged, missing]\n    temperature: float (celsius)\n    odorLevel: enum[none, low, moderate, high]\n\n    # Collection\n    lastEmptied: datetime\n    emptyingFrequency: integer (days)\n    nextScheduledCollection: datetime\n    collectionsMissed: integer\n\n    # Sensor Data\n    sensorBatteryLevel: float (percentage)\n    lastSensorUpdate: datetime\n\n  relationships",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_28",
+    "text": "uency: integer (days)\n    nextScheduledCollection: datetime\n    collectionsMissed: integer\n\n    # Sensor Data\n    sensorBatteryLevel: float (percentage)\n    lastSensorUpdate: datetime\n\n  relationships:\n    monitored By: FillLevelSensor (many-to-1)\n    collectedBy: WasteCollectionVehicle (many-to-many)\n    serves: Zone (many-to-1)\n```\n\n#### 3.2 Traffic Management (300 nodes)\n\n**TrafficSensor**\n```yaml\nsaref4city:TrafficSensor:\n  extends: saref:Sensor\n  properties:\n    # Type\n    sensorType: enum[\n      inductive_loop, camera, radar, lidar, ultrasonic, magnetometer,\n      infrared, acoustic\n    ]\n\n    # Location\n    location: geopoint\n    roadSegmentID: string\n    laneNumber: integer\n    direction: enum[north, south, east, west, inbound, outbound]\n\n    # Measurements\n    vehicleCount: integer\n    vehicleSpeed: float (km/h)\n    averageSpeed: float (km/h)\n    speedLimit: float (km/h)\n    occupancy: float (percentage)\n    headway: float (seconds)\n\n    # Traffic Classification\n    vehicleTyp",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_29",
+    "text": "r\n    vehicleSpeed: float (km/h)\n    averageSpeed: float (km/h)\n    speedLimit: float (km/h)\n    occupancy: float (percentage)\n    headway: float (seconds)\n\n    # Traffic Classification\n    vehicleTypes: array[{\n      type: enum[car, truck, bus, motorcycle, bicycle, pedestrian],\n      count: integer\n    }]\n\n    # Congestion\n    congestionLevel: enum[free_flow, light, moderate, heavy, gridlock]\n    trafficDensity: float (vehicles per km)\n    queueLength: float (meters)\n\n    # Incidents\n    incidentDetected: boolean\n    incidentType: enum[accident, breakdown, congestion, road_work, weather]\n\n  relationships:\n    monitors: RoadSegment (many-to-1)\n    feedsInto: TrafficManagementSystem (many-to-1)\n    triggers: TrafficSignal (many-to-many)\n```\n\n**TrafficLight**\n```yaml\nsaref4city:TrafficLight:\n  extends: saref:Device\n  properties:\n    # Identity\n    signalID: string\n    location: geopoint\n    intersectionID: string\n\n    # Current State\n    currentPhase: enum[\n      red, yellow, green, red_",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_30",
+    "text": "\n  extends: saref:Device\n  properties:\n    # Identity\n    signalID: string\n    location: geopoint\n    intersectionID: string\n\n    # Current State\n    currentPhase: enum[\n      red, yellow, green, red_yellow, flashing_red, flashing_yellow, off\n    ]\n    phaseDuration: integer (seconds)\n    timeRemaining: integer (seconds)\n\n    # Timing\n    cycleTime: integer (seconds)\n    greenTime: integer (seconds)\n    yellowTime: integer (seconds)\n    redTime: integer (seconds)\n    pedestrianTime: integer (seconds)\n\n    # Control Mode\n    controlMode: enum[\n      fixed_time, actuated, adaptive, coordinated, manual, emergency\n    ]\n\n    # Coordination\n    offset: integer (seconds)\n    masterController: string\n\n    # Features\n    pedestrianButton: boolean\n    countdownTimer: boolean\n    audioSignal: boolean\n    emergencyPreemption: boolean\n\n  relationships:\n    controls: Intersection (many-to-1)\n    coordinatedWith: TrafficLight (many-to-many)\n    monitoredBy: TrafficManagementCenter (many-to-1)\n```\n\n#",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_31",
+    "text": "n\n    emergencyPreemption: boolean\n\n  relationships:\n    controls: Intersection (many-to-1)\n    coordinatedWith: TrafficLight (many-to-many)\n    monitoredBy: TrafficManagementCenter (many-to-1)\n```\n\n#### 3.3 Environmental Monitoring (300 nodes)\n\n**AirQualityStation**\n```yaml\nsaref4city:AirQualityStation:\n  extends: saref:Device\n  properties:\n    # Location\n    stationID: string\n    location: geopoint\n    stationType: enum[urban, suburban, rural, industrial, traffic, background]\n    elevation: float (meters)\n\n    # Pollutants (\u00b5g/m\u00b3 or ppm)\n    pm25: float\n    pm10: float\n    no2: float (nitrogen dioxide)\n    so2: float (sulfur dioxide)\n    co: float (carbon monoxide)\n    o3: float (ozone)\n    voc: float (volatile organic compounds)\n\n    # Air Quality Index\n    aqi: integer (0-500)\n    aqiCategory: enum[\n      good, moderate, unhealthy_sensitive, unhealthy,\n      very_unhealthy, hazardous\n    ]\n    dominantPollutant: enum[pm25, pm10, no2, so2, co, o3]\n\n    # Meteorological\n    temperatu",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_32",
+    "text": "ategory: enum[\n      good, moderate, unhealthy_sensitive, unhealthy,\n      very_unhealthy, hazardous\n    ]\n    dominantPollutant: enum[pm25, pm10, no2, so2, co, o3]\n\n    # Meteorological\n    temperature: float (celsius)\n    humidity: float (percentage)\n    pressure: float (hPa)\n    windSpeed: float (m/s)\n    windDirection: float (degrees)\n\n    # Data Quality\n    dataValidity: enum[valid, questionable, invalid]\n    lastCalibration: date\n    calibrationDue: date\n\n  relationships:\n    locatedIn: Zone (many-to-1)\n    monitored By: EnvironmentalAgency (many-to-1)\n    triggers: AirQualityAlert (1-to-many)\n```\n\n---\n\n## COMPLETE RELATIONSHIP SCHEMAS\n\n### IoT Security Integration\n\n```cypher\n# Wearable device to cybersecurity\n(wearable:WearableDevice)-[:HAS_VULNERABILITY]->(vuln:Vulnerability)\n(wearable)-[:AUTHENTICATES]->(user:User)\n(wearable)-[:TRANSMITS]->(data:HealthData)-[:STORED_IN]->(cloud:CloudService)\n\n# Agricultural IoT to threat intelligence\n(sensor:AgriculturalSensor)-[:MONITORS]->(f",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_33",
+    "text": "able)-[:AUTHENTICATES]->(user:User)\n(wearable)-[:TRANSMITS]->(data:HealthData)-[:STORED_IN]->(cloud:CloudService)\n\n# Agricultural IoT to threat intelligence\n(sensor:AgriculturalSensor)-[:MONITORS]->(field:Field)\n(sensor)-[:VULNERABLE_TO]->(attack:AttackPattern)\n(sensor)-[:CONTROLLED_BY]->(scada:SCADA_System)\n```\n\n### Environmental Context for Security\n\n```cypher\n# Link environmental conditions to security events\nMATCH (incident:SecurityIncident)-[:OCCURRED_AT]->(location:Location)\nMATCH (station:AirQualityStation)-[:LOCATED_IN]->(location)\nMATCH (weather:WeatherStation)-[:LOCATED_IN]->(location)\nRETURN incident, station.aqi, weather.conditions\n```\n\n---\n\n## VALIDATION CRITERIA\n\n### Schema Validation\n- [ ] All 4,000 SAREF remaining nodes defined\n- [ ] Wearable health metrics complete\n- [ ] Agricultural monitoring comprehensive\n- [ ] Smart city infrastructure mapped\n- [ ] Security relationships established\n\n### Integration Validation\n- [ ] SAREF Core extension verified\n- [ ] Cybersecurity",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_34",
+    "text": "gricultural monitoring comprehensive\n- [ ] Smart city infrastructure mapped\n- [ ] Security relationships established\n\n### Integration Validation\n- [ ] SAREF Core extension verified\n- [ ] Cybersecurity threat correlation active\n- [ ] IoT vulnerability tracking enabled\n- [ ] Environmental context enrichment working\n\n---\n\n## EXAMPLE QUERIES\n\n```cypher\n# Find vulnerable wearable devices\nMATCH (wearable:WearableDevice)-[:HAS_VULNERABILITY]->(vuln:Vulnerability)\nWHERE vuln.cvssScore > 7.0\nRETURN wearable.wearableType, vuln.cveID, vuln.cvssScore\n\n# Agricultural field health monitoring\nMATCH (field:Field)-[:GROWS]->(crop:Crop)\nMATCH (field)-[:HAS_SOIL]->(soil:SoilMeasurement)\nWHERE crop.healthStatus <> 'healthy'\nRETURN field.fieldName, crop.cropName, soil.moisture, soil.ph\n\n# Smart city traffic incidents affecting security\nMATCH (traffic:TrafficSensor)-[:DETECTS]->(incident)\nMATCH (camera:SurveillanceCamera)-[:MONITORS]->(traffic.location)\nRETURN incident.type, camera.status\n```\n\n---\n\n**Wave S",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "13_WAVE_11_SAREF_REMAINING.md_chunk_35",
+    "text": "cidents affecting security\nMATCH (traffic:TrafficSensor)-[:DETECTS]->(incident)\nMATCH (camera:SurveillanceCamera)-[:MONITORS]->(traffic.location)\nRETURN incident.type, camera.status\n```\n\n---\n\n**Wave Status:** COMPLETE\n**Nodes Defined:** ~4,000\n**Schemas Complete:** 100%\n**SAREF Domains:** WEAR, AGRI, CITY\n**Integration Ready:** YES\n",
+    "metadata": {
+      "file_name": "13_WAVE_11_SAREF_REMAINING.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/13_WAVE_11_SAREF_REMAINING.md",
+      "file_size": 28334,
+      "indexed_at": "2025-10-31T00:58:38.985686",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 334
+    }
+  }
+]

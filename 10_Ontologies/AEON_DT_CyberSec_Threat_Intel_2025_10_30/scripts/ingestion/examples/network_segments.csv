@@ -1,0 +1,7 @@
+id,name,zone,network,vlan_id,description
+SEG-001,Control Network,CONTROL,10.1.0.0/24,100,Critical signaling and traction control systems
+SEG-002,Process Network,PROCESS,10.2.0.0/24,200,Monitoring and data collection systems
+SEG-003,DMZ Network,DMZ,10.3.0.0/24,300,External interfaces and remote access
+SEG-004,Corporate Network,CORPORATE,10.4.0.0/24,400,Business and administrative systems
+SEG-005,Maintenance Network,PROCESS,10.5.0.0/24,500,Engineering and maintenance access
+SEG-006,WiFi Network,CORPORATE,10.6.0.0/24,600,Wireless access for staff

@@ -1,0 +1,954 @@
+[
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_0",
+    "text": "# Wave 7: Psychometric Analysis and Behavioral Assessment Integration\n\n**File**: 09_WAVE_7_PSYCHOMETRIC.md\n**Created**: 2025-10-30\n**Version**: v1.0.0\n**Status**: ACTIVE\n**Wave Duration**: 3 weeks\n**Target Node Count**: ~350 nodes\n**Dependencies**: Waves 1-6 (ATT&CK, Assets, CVE, ICS, UCO/STIX)\n\n## 1. Wave Overview\n\n### 1.1 Objectives\n\nWave 7 extends the AEON Digital Twin cybersecurity knowledge graph with psychometric analysis and behavioral assessment capabilities, focusing on understanding the human factors in cyber threats: insider threat psychology, social engineering susceptibility, attacker profiling, and organizational security culture measurement.\n\n**Primary Goals**:\n- Model psychological profiles of threat actors (motivations, personality traits, cognitive biases)\n- Implement insider threat risk assessment frameworks (CERT Insider Threat indicators)\n- Integrate social engineering susceptibility measurements\n- Model organizational security culture and awareness metrics\n- Conne",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_1",
+    "text": "ider threat risk assessment frameworks (CERT Insider Threat indicators)\n- Integrate social engineering susceptibility measurements\n- Model organizational security culture and awareness metrics\n- Connect psychological profiles to attack techniques and tactics\n- Enable predictive behavioral risk modeling\n- Support security awareness program effectiveness measurement\n\n**Business Value**:\n- Proactive insider threat detection based on behavioral indicators\n- Targeted security awareness training based on susceptibility profiles\n- Improved threat actor attribution through psychological profiling\n- Data-driven security culture improvement programs\n- Regulatory compliance (NIST SP 800-53 PS controls, ISO 27001 human resources security)\n- Reduced human-factor cybersecurity incidents\n\n### 1.2 Scope Definition\n\n**In Scope**:\n\n**Psychological Models**:\n- Big Five personality traits (OCEAN model)\n- Dark Triad personality traits (Machiavellianism, Narcissism, Psychopathy)\n- Cognitive biases relevant ",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_2",
+    "text": "efinition\n\n**In Scope**:\n\n**Psychological Models**:\n- Big Five personality traits (OCEAN model)\n- Dark Triad personality traits (Machiavellianism, Narcissism, Psychopathy)\n- Cognitive biases relevant to security (confirmation bias, authority bias, urgency bias)\n- Motivation frameworks (MICE: Money, Ideology, Compromise, Ego)\n\n**Insider Threat Models**:\n- CERT Insider Threat indicators (technical, behavioral, organizational)\n- Insider threat typology (malicious insider, negligent insider, compromised insider)\n- Risk scoring models (likelihood \u00d7 impact)\n\n**Social Engineering**:\n- Social engineering tactics (pretexting, phishing susceptibility, authority exploitation)\n- Susceptibility assessment metrics\n- Training effectiveness measurement\n\n**Organizational Factors**:\n- Security culture maturity models\n- Security awareness assessment\n- Organizational risk factors\n\n**Out of Scope**:\n- Clinical psychological diagnosis (not cybersecurity-focused)\n- Detailed HR performance data (privacy conce",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_3",
+    "text": "ity models\n- Security awareness assessment\n- Organizational risk factors\n\n**Out of Scope**:\n- Clinical psychological diagnosis (not cybersecurity-focused)\n- Detailed HR performance data (privacy concerns)\n- Biometric/physiological data (future consideration)\n- Real-time behavioral monitoring systems (ethical boundaries)\n\n### 1.3 Dependencies\n\n**Required Completed Waves**:\n- Wave 1: Core MITRE ATT&CK (for technique-to-psychology mapping)\n- Wave 2: Asset classification (for asset access risk modeling)\n- Wave 6: UCO/STIX (for investigation case integration)\n\n**External Frameworks**:\n- CERT Insider Threat Indicators (CMU SEI)\n- NIST SP 800-53 Personnel Security Controls\n- ISO 27001:2022 Annex A.6 (People controls)\n- MITRE ATT&CK Tactics mapped to psychological motivations\n- OCEAN Big Five personality model\n- Dark Triad personality assessment\n\n**Ethical Considerations**:\n- Privacy protection for user behavioral data\n- Anonymization of personal identifiers\n- Transparent use of psychological ",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_4",
+    "text": "onality model\n- Dark Triad personality assessment\n\n**Ethical Considerations**:\n- Privacy protection for user behavioral data\n- Anonymization of personal identifiers\n- Transparent use of psychological profiling\n- Compliance with GDPR, CCPA for behavioral data\n- Ethical AI/ML model usage for prediction\n\n### 1.4 Success Metrics\n\n**Quantitative Metrics**:\n- 5 psychological profile types (Big Five, Dark Triad, etc.)\n- 30+ insider threat indicators modeled\n- 15+ social engineering tactics with susceptibility metrics\n- 10+ security culture assessment dimensions\n- 100+ behavioral indicator to ATT&CK technique mappings\n- 50+ example psychological profiles created\n- Query performance <500ms for behavioral risk scoring\n\n**Qualitative Metrics**:\n- Integration with threat actor profiling (Wave 6 STIX Threat Actor)\n- Support for insider threat case investigations (Wave 6 UCO)\n- Actionable security awareness training recommendations\n- Organizational security culture trend analysis capabilities\n- Priv",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_5",
+    "text": "hreat Actor)\n- Support for insider threat case investigations (Wave 6 UCO)\n- Actionable security awareness training recommendations\n- Organizational security culture trend analysis capabilities\n- Privacy-preserving behavioral analysis\n\n## 2. Complete Node Schemas\n\n### 2.1 Psychological Profile Nodes\n\n#### 2.1.1 Big Five Personality Profile\n\n**Node Label**: `BigFive_Profile`\n\n**Description**: Represents an individual's Big Five (OCEAN) personality traits relevant to cybersecurity risk.\n\n**Properties**:\n```cypher\n{\n  profile_id: String,            // Unique profile identifier (anonymized)\n  profile_type: String,          // \"BIG_FIVE_PERSONALITY\"\n\n  // Big Five dimensions (0.0-1.0 scale, 0.5 = neutral)\n  openness: Float,               // Openness to Experience\n  conscientiousness: Float,      // Conscientiousness\n  extraversion: Float,           // Extraversion\n  agreeableness: Float,          // Agreeableness\n  neuroticism: Float,            // Neuroticism (Emotional Stability)\n\n  // Cy",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_6",
+    "text": "  // Conscientiousness\n  extraversion: Float,           // Extraversion\n  agreeableness: Float,          // Agreeableness\n  neuroticism: Float,            // Neuroticism (Emotional Stability)\n\n  // Cybersecurity risk indicators\n  risk_taking_tendency: Float,   // 0.0-1.0 (derived from personality)\n  rule_following_tendency: Float, // 0.0-1.0 (conscientiousness-based)\n  social_susceptibility: Float,  // 0.0-1.0 (extraversion + agreeableness)\n  stress_resilience: Float,      // 0.0-1.0 (neuroticism inverse)\n\n  // Assessment metadata\n  assessment_date: DateTime,\n  assessment_method: String,     // \"IPIP\", \"NEO-PI-R\", \"BFI\", etc.\n  assessment_confidence: Float,  // 0.0-1.0\n\n  // Privacy protection\n  is_anonymized: Boolean,        // Always true\n  data_retention_expires: DateTime,\n\n  // Context\n  organizational_role: String,   // \"Executive\", \"Engineer\", \"Administrator\", etc.\n  access_level: String,          // \"HIGH\", \"MEDIUM\", \"LOW\"\n  years_in_role: Integer,\n\n  // Metadata\n  node_id: Stri",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_7",
+    "text": "\n  organizational_role: String,   // \"Executive\", \"Engineer\", \"Administrator\", etc.\n  access_level: String,          // \"HIGH\", \"MEDIUM\", \"LOW\"\n  years_in_role: Integer,\n\n  // Metadata\n  node_id: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create Big Five Personality Profile (anonymized example)\nCREATE (p:BigFive_Profile {\n  profile_id: \"BIGFIVE-\" + randomUUID(),\n  profile_type: \"BIG_FIVE_PERSONALITY\",\n\n  // Big Five scores (example: high risk profile)\n  openness: 0.75,               // High openness (curious, experimental)\n  conscientiousness: 0.30,      // Low conscientiousness (disorganized, impulsive)\n  extraversion: 0.65,           // Moderate-high extraversion (social, talkative)\n  agreeableness: 0.40,          // Low agreeableness (skeptical, competitive)\n  neuroticism: 0.70,            // High neuroticism (emotionally reactive, stressed)\n\n  // Derived cybersecurity risk indicat",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_8",
+    "text": "greeableness: 0.40,          // Low agreeableness (skeptical, competitive)\n  neuroticism: 0.70,            // High neuroticism (emotionally reactive, stressed)\n\n  // Derived cybersecurity risk indicators\n  risk_taking_tendency: 0.72,   // High (low conscientiousness + high openness)\n  rule_following_tendency: 0.30, // Low (low conscientiousness)\n  social_susceptibility: 0.525,  // Moderate (extraversion + agreeableness / 2)\n  stress_resilience: 0.30,      // Low (high neuroticism)\n\n  assessment_date: datetime('2024-09-15T00:00:00Z'),\n  assessment_method: \"IPIP-NEO-120\",\n  assessment_confidence: 0.85,\n\n  is_anonymized: true,\n  data_retention_expires: datetime('2027-09-15T00:00:00Z'),  // 3 years\n\n  organizational_role: \"System Administrator\",\n  access_level: \"HIGH\",\n  years_in_role: 4,\n\n  node_id: randomUUID(),\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n```cypher\n// Unique constraint on profile I",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_9",
+    "text": "ode_id: randomUUID(),\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n```cypher\n// Unique constraint on profile ID\nCREATE CONSTRAINT bigfive_profile_id_unique IF NOT EXISTS\nFOR (p:BigFive_Profile) REQUIRE p.profile_id IS UNIQUE;\n\n// Index on risk indicators for risk scoring\nCREATE INDEX bigfive_risk_taking_idx IF NOT EXISTS\nFOR (p:BigFive_Profile) ON (p.risk_taking_tendency);\n\nCREATE INDEX bigfive_rule_following_idx IF NOT EXISTS\nFOR (p:BigFive_Profile) ON (p.rule_following_tendency);\n\n// Index on organizational role\nCREATE INDEX bigfive_role_idx IF NOT EXISTS\nFOR (p:BigFive_Profile) ON (p.organizational_role);\n\n// Index on access level\nCREATE INDEX bigfive_access_idx IF NOT EXISTS\nFOR (p:BigFive_Profile) ON (p.access_level);\n```\n\n#### 2.1.2 Dark Triad Personality Profile\n\n**Node Label**: `DarkTriad_Profile`\n\n**Description**: Represents Dark Triad personality traits (Machiavellianism, Narcissism, Psy",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_10",
+    "text": ") ON (p.access_level);\n```\n\n#### 2.1.2 Dark Triad Personality Profile\n\n**Node Label**: `DarkTriad_Profile`\n\n**Description**: Represents Dark Triad personality traits (Machiavellianism, Narcissism, Psychopathy) associated with malicious insider risk.\n\n**Properties**:\n```cypher\n{\n  profile_id: String,            // Unique profile identifier (anonymized)\n  profile_type: String,          // \"DARK_TRIAD_PERSONALITY\"\n\n  // Dark Triad dimensions (0.0-1.0 scale)\n  machiavellianism: Float,       // Manipulative, strategic deception\n  narcissism: Float,             // Grandiosity, entitlement, need for admiration\n  psychopathy: Float,            // Impulsivity, thrill-seeking, lack of empathy\n\n  // Composite scores\n  dark_triad_composite: Float,   // Average of three dimensions\n  malicious_insider_risk_score: Float, // 0.0-1.0 risk score\n\n  // Behavioral indicators\n  manipulative_tendency: Float,  // 0.0-1.0\n  rule_violation_tendency: Float, // 0.0-1.0\n  revenge_motivation: Float,     // 0.0-1.0",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_11",
+    "text": "isk_score: Float, // 0.0-1.0 risk score\n\n  // Behavioral indicators\n  manipulative_tendency: Float,  // 0.0-1.0\n  rule_violation_tendency: Float, // 0.0-1.0\n  revenge_motivation: Float,     // 0.0-1.0\n  entitlement_attitude: Float,   // 0.0-1.0\n\n  // Assessment metadata\n  assessment_date: DateTime,\n  assessment_method: String,     // \"SD3\", \"Dirty Dozen\", etc.\n  assessment_confidence: Float,\n\n  // Privacy protection\n  is_anonymized: Boolean,\n  data_retention_expires: DateTime,\n\n  // Context\n  organizational_role: String,\n  access_level: String,\n  years_in_role: Integer,\n\n  // Risk flags\n  requires_monitoring: Boolean,\n  requires_intervention: Boolean,\n\n  // Metadata\n  node_id: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create Dark Triad Profile (high-risk insider profile)\nCREATE (dt:DarkTriad_Profile {\n  profile_id: \"DARKTRIAD-\" + randomUUID(),\n  profile_type: \"DARK_TRIAD_PERSONALITY\"",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_12",
+    "text": "REATE Statement**:\n```cypher\n// Create Dark Triad Profile (high-risk insider profile)\nCREATE (dt:DarkTriad_Profile {\n  profile_id: \"DARKTRIAD-\" + randomUUID(),\n  profile_type: \"DARK_TRIAD_PERSONALITY\",\n\n  // Dark Triad scores (elevated risk example)\n  machiavellianism: 0.78,        // High manipulative tendency\n  narcissism: 0.65,              // Moderate-high narcissism\n  psychopathy: 0.55,             // Moderate psychopathy\n\n  dark_triad_composite: 0.66,    // (0.78 + 0.65 + 0.55) / 3\n  malicious_insider_risk_score: 0.75, // Elevated risk\n\n  // Behavioral indicators\n  manipulative_tendency: 0.78,\n  rule_violation_tendency: 0.62,\n  revenge_motivation: 0.58,\n  entitlement_attitude: 0.70,\n\n  assessment_date: datetime('2024-09-15T00:00:00Z'),\n  assessment_method: \"Short Dark Triad (SD3)\",\n  assessment_confidence: 0.80,\n\n  is_anonymized: true,\n  data_retention_expires: datetime('2027-09-15T00:00:00Z'),\n\n  organizational_role: \"Database Administrator\",\n  access_level: \"HIGH\",\n  years_in_r",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_13",
+    "text": " assessment_confidence: 0.80,\n\n  is_anonymized: true,\n  data_retention_expires: datetime('2027-09-15T00:00:00Z'),\n\n  organizational_role: \"Database Administrator\",\n  access_level: \"HIGH\",\n  years_in_role: 6,\n\n  requires_monitoring: true,\n  requires_intervention: false,  // Monitoring only, no immediate action\n\n  node_id: randomUUID(),\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n```cypher\n// Unique constraint on profile ID\nCREATE CONSTRAINT dark_triad_profile_id_unique IF NOT EXISTS\nFOR (dt:DarkTriad_Profile) REQUIRE dt.profile_id IS UNIQUE;\n\n// Index on composite score for risk queries\nCREATE INDEX dark_triad_composite_idx IF NOT EXISTS\nFOR (dt:DarkTriad_Profile) ON (dt.dark_triad_composite);\n\n// Index on malicious insider risk score\nCREATE INDEX dark_triad_risk_score_idx IF NOT EXISTS\nFOR (dt:DarkTriad_Profile) ON (dt.malicious_insider_risk_score);\n\n// Index on monitoring flag\nCREATE INDEX dark_",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_14",
+    "text": "ex on malicious insider risk score\nCREATE INDEX dark_triad_risk_score_idx IF NOT EXISTS\nFOR (dt:DarkTriad_Profile) ON (dt.malicious_insider_risk_score);\n\n// Index on monitoring flag\nCREATE INDEX dark_triad_monitoring_idx IF NOT EXISTS\nFOR (dt:DarkTriad_Profile) ON (dt.requires_monitoring);\n```\n\n#### 2.1.3 Cognitive Bias Profile\n\n**Node Label**: `CognitiveBias_Profile`\n\n**Description**: Represents susceptibility to cognitive biases that can be exploited in social engineering attacks.\n\n**Properties**:\n```cypher\n{\n  profile_id: String,            // Unique profile identifier\n  profile_type: String,          // \"COGNITIVE_BIAS_ASSESSMENT\"\n\n  // Bias susceptibility scores (0.0-1.0 scale)\n  authority_bias: Float,         // Tendency to obey authority figures\n  urgency_bias: Float,           // Susceptibility to time pressure tactics\n  social_proof_bias: Float,      // Influenced by others' actions\n  scarcity_bias: Float,          // Fear of missing out (FOMO)\n  confirmation_bias: Float,     ",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_15",
+    "text": "usceptibility to time pressure tactics\n  social_proof_bias: Float,      // Influenced by others' actions\n  scarcity_bias: Float,          // Fear of missing out (FOMO)\n  confirmation_bias: Float,      // Seeking information that confirms beliefs\n  familiarity_bias: Float,       // Trusting familiar sources/brands\n  reciprocity_bias: Float,       // Feeling obligated to return favors\n\n  // Composite social engineering susceptibility\n  social_engineering_susceptibility: Float, // 0.0-1.0 composite score\n\n  // Phishing susceptibility breakdown\n  phishing_susceptibility_email: Float,\n  phishing_susceptibility_phone: Float,  // Vishing\n  phishing_susceptibility_sms: Float,    // Smishing\n\n  // Assessment metadata\n  assessment_date: DateTime,\n  assessment_method: String,     // \"Simulated Phishing\", \"Behavioral Survey\", etc.\n  assessment_confidence: Float,\n\n  // Historical performance\n  phishing_simulations_received: Integer,\n  phishing_simulations_clicked: Integer,\n  phishing_simulations_re",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_16",
+    "text": "ng\", \"Behavioral Survey\", etc.\n  assessment_confidence: Float,\n\n  // Historical performance\n  phishing_simulations_received: Integer,\n  phishing_simulations_clicked: Integer,\n  phishing_simulations_reported: Integer,\n  last_training_date: DateTime,\n\n  // Privacy protection\n  is_anonymized: Boolean,\n  data_retention_expires: DateTime,\n\n  // Context\n  organizational_role: String,\n  department: String,\n\n  // Metadata\n  node_id: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create Cognitive Bias Profile (high susceptibility example)\nCREATE (cb:CognitiveBias_Profile {\n  profile_id: \"COGNITIVEBIAS-\" + randomUUID(),\n  profile_type: \"COGNITIVE_BIAS_ASSESSMENT\",\n\n  // Bias susceptibility scores\n  authority_bias: 0.82,          // High susceptibility to authority\n  urgency_bias: 0.75,            // High susceptibility to urgency\n  social_proof_bias: 0.68,       // Moderate-high social influence\n  ",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_17",
+    "text": "hority_bias: 0.82,          // High susceptibility to authority\n  urgency_bias: 0.75,            // High susceptibility to urgency\n  social_proof_bias: 0.68,       // Moderate-high social influence\n  scarcity_bias: 0.60,           // Moderate FOMO susceptibility\n  confirmation_bias: 0.55,       // Moderate confirmation bias\n  familiarity_bias: 0.70,        // High trust in familiar brands\n  reciprocity_bias: 0.65,        // Moderate reciprocity tendency\n\n  // Composite score (weighted average)\n  social_engineering_susceptibility: 0.68,\n\n  // Phishing susceptibility\n  phishing_susceptibility_email: 0.72,\n  phishing_susceptibility_phone: 0.65,\n  phishing_susceptibility_sms: 0.58,\n\n  assessment_date: datetime('2024-10-01T00:00:00Z'),\n  assessment_method: \"Simulated Phishing Campaign + Behavioral Survey\",\n  assessment_confidence: 0.88,\n\n  // Historical data (12-month period)\n  phishing_simulations_received: 24,\n  phishing_simulations_clicked: 8,   // 33% click rate (high risk)\n  phishing_s",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_18",
+    "text": "ral Survey\",\n  assessment_confidence: 0.88,\n\n  // Historical data (12-month period)\n  phishing_simulations_received: 24,\n  phishing_simulations_clicked: 8,   // 33% click rate (high risk)\n  phishing_simulations_reported: 2,  // Low reporting rate\n  last_training_date: datetime('2024-03-15T00:00:00Z'),  // 6 months ago\n\n  is_anonymized: true,\n  data_retention_expires: datetime('2027-10-01T00:00:00Z'),\n\n  organizational_role: \"Finance Manager\",\n  department: \"Finance\",\n\n  node_id: randomUUID(),\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n```cypher\n// Unique constraint on profile ID\nCREATE CONSTRAINT cognitive_bias_profile_id_unique IF NOT EXISTS\nFOR (cb:CognitiveBias_Profile) REQUIRE cb.profile_id IS UNIQUE;\n\n// Index on social engineering susceptibility\nCREATE INDEX cognitive_bias_susceptibility_idx IF NOT EXISTS\nFOR (cb:CognitiveBias_Profile) ON (cb.social_engineering_susceptibility);\n\n// Index o",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_19",
+    "text": "NIQUE;\n\n// Index on social engineering susceptibility\nCREATE INDEX cognitive_bias_susceptibility_idx IF NOT EXISTS\nFOR (cb:CognitiveBias_Profile) ON (cb.social_engineering_susceptibility);\n\n// Index on phishing susceptibility\nCREATE INDEX cognitive_bias_phishing_idx IF NOT EXISTS\nFOR (cb:CognitiveBias_Profile) ON (cb.phishing_susceptibility_email);\n\n// Index on department for organizational analysis\nCREATE INDEX cognitive_bias_department_idx IF NOT EXISTS\nFOR (cb:CognitiveBias_Profile) ON (cb.department);\n```\n\n### 2.2 Insider Threat Indicator Nodes\n\n#### 2.2.1 CERT Insider Threat Indicator\n\n**Node Label**: `InsiderThreat_Indicator`\n\n**Description**: Represents specific behavioral, technical, or organizational indicators of insider threat based on CERT framework.\n\n**Properties**:\n```cypher\n{\n  indicator_id: String,          // Unique indicator identifier\n  indicator_name: String,        // Indicator name\n  indicator_category: String,    // TECHNICAL, BEHAVIORAL, ORGANIZATIONAL\n\n  // Ind",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_20",
+    "text": "{\n  indicator_id: String,          // Unique indicator identifier\n  indicator_name: String,        // Indicator name\n  indicator_category: String,    // TECHNICAL, BEHAVIORAL, ORGANIZATIONAL\n\n  // Indicator details\n  description: String,           // Detailed description\n  severity: String,              // LOW, MEDIUM, HIGH, CRITICAL\n  indicator_type: String,        // Specific type within category\n\n  // Detection characteristics\n  observability: String,         // EASY, MODERATE, DIFFICULT\n  detection_methods: [String],   // How to detect this indicator\n  data_sources: [String],        // Required data sources\n\n  // Risk assessment\n  false_positive_rate: String,   // LOW, MEDIUM, HIGH\n  base_risk_score: Float,        // 0.0-1.0 intrinsic risk\n\n  // Mitigation\n  mitigation_strategies: [String],\n  response_actions: [String],\n\n  // Standards references\n  cert_indicator_id: String,     // CERT framework reference\n  nist_control_mappings: [String], // NIST SP 800-53 controls\n\n  // Examples",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_21",
+    "text": "ing],\n  response_actions: [String],\n\n  // Standards references\n  cert_indicator_id: String,     // CERT framework reference\n  nist_control_mappings: [String], // NIST SP 800-53 controls\n\n  // Examples\n  example_scenarios: [String],\n\n  // Metadata\n  node_id: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement (Example - Technical Indicator)**:\n```cypher\n// Create Insider Threat Indicator: Unauthorized Access Attempts\nCREATE (iti:InsiderThreat_Indicator {\n  indicator_id: \"CERT-IT-TECH-001\",\n  indicator_name: \"Repeated Unauthorized Access Attempts\",\n  indicator_category: \"TECHNICAL\",\n\n  description: \"Employee repeatedly attempts to access systems, files, or data beyond their authorized scope. Includes failed authentication attempts, privilege escalation attempts, and access to restricted resources.\",\n  severity: \"HIGH\",\n  indicator_type: \"Unauthorized Access Pattern\",\n\n  observability: \"EASY\",\n  detection_method",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_22",
+    "text": "ication attempts, privilege escalation attempts, and access to restricted resources.\",\n  severity: \"HIGH\",\n  indicator_type: \"Unauthorized Access Pattern\",\n\n  observability: \"EASY\",\n  detection_methods: [\n    \"SIEM correlation rules for failed access attempts\",\n    \"Access control log analysis\",\n    \"Privilege escalation detection\",\n    \"Data Loss Prevention (DLP) alerts\"\n  ],\n  data_sources: [\n    \"Authentication logs\",\n    \"Authorization logs\",\n    \"File access logs\",\n    \"Network access logs\",\n    \"Database audit logs\"\n  ],\n\n  false_positive_rate: \"MEDIUM\",\n  base_risk_score: 0.75,\n\n  mitigation_strategies: [\n    \"Implement least privilege access controls\",\n    \"Real-time alerting for unauthorized access attempts\",\n    \"Automated account lockout after threshold\",\n    \"Regular access review and recertification\",\n    \"User behavior analytics (UBA)\"\n  ],\n  response_actions: [\n    \"Immediate investigation of access pattern\",\n    \"Interview with employee\",\n    \"Review of business justifi",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_23",
+    "text": "iew and recertification\",\n    \"User behavior analytics (UBA)\"\n  ],\n  response_actions: [\n    \"Immediate investigation of access pattern\",\n    \"Interview with employee\",\n    \"Review of business justification for access\",\n    \"Temporary access restriction if warranted\",\n    \"Incident escalation if malicious intent suspected\"\n  ],\n\n  cert_indicator_id: \"CERT-Insider-Tech-Unauthorized-Access\",\n  nist_control_mappings: [\"AC-2\", \"AC-3\", \"AC-6\", \"AU-2\", \"AU-6\"],\n\n  example_scenarios: [\n    \"Database administrator attempts to access HR salary database without authorization\",\n    \"Developer tries to escalate privileges on production server\",\n    \"Employee accesses competitor customer list outside job duties\"\n  ],\n\n  node_id: randomUUID(),\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Complete Cypher CREATE Statement (Example - Behavioral Indicator)**:\n```cypher\n// Create Insider Threat Indicator: Disgruntlement\nCREATE (itib:InsiderThreat_Indi",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_24",
+    "text": "lidation_status: \"VALIDATED\"\n})\n```\n\n**Complete Cypher CREATE Statement (Example - Behavioral Indicator)**:\n```cypher\n// Create Insider Threat Indicator: Disgruntlement\nCREATE (itib:InsiderThreat_Indicator {\n  indicator_id: \"CERT-IT-BEHAV-001\",\n  indicator_name: \"Employee Disgruntlement and Grievance\",\n  indicator_category: \"BEHAVIORAL\",\n\n  description: \"Employee exhibits signs of dissatisfaction, resentment, or grievance toward the organization. May include verbal complaints, negative attitude, conflict with management, or expressions of revenge.\",\n  severity: \"MEDIUM\",\n  indicator_type: \"Disgruntlement Pattern\",\n\n  observability: \"MODERATE\",\n  detection_methods: [\n    \"HR grievance reports\",\n    \"Manager behavioral observations\",\n    \"Exit interview data\",\n    \"Performance review comments\",\n    \"Workplace conduct reports\",\n    \"Internal communication monitoring (where legal and ethical)\"\n  ],\n  data_sources: [\n    \"HR incident reports\",\n    \"Performance management system\",\n    \"Emplo",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_25",
+    "text": "s\",\n    \"Workplace conduct reports\",\n    \"Internal communication monitoring (where legal and ethical)\"\n  ],\n  data_sources: [\n    \"HR incident reports\",\n    \"Performance management system\",\n    \"Employee surveys\",\n    \"Manager reports\",\n    \"Peer feedback\"\n  ],\n\n  false_positive_rate: \"HIGH\",\n  base_risk_score: 0.55,\n\n  mitigation_strategies: [\n    \"Proactive HR engagement and conflict resolution\",\n    \"Employee assistance programs (EAP)\",\n    \"Regular one-on-one manager check-ins\",\n    \"Anonymous feedback channels\",\n    \"Fair and transparent grievance procedures\"\n  ],\n  response_actions: [\n    \"Confidential HR investigation\",\n    \"Manager coaching and mediation\",\n    \"Temporary increase in access monitoring (proportionate)\",\n    \"Address root cause of grievance if legitimate\",\n    \"Document all interactions\"\n  ],\n\n  cert_indicator_id: \"CERT-Insider-Behavioral-Disgruntlement\",\n  nist_control_mappings: [\"PS-3\", \"PS-7\", \"PS-8\"],\n\n  example_scenarios: [\n    \"Employee repeatedly complains ",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_26",
+    "text": "nt all interactions\"\n  ],\n\n  cert_indicator_id: \"CERT-Insider-Behavioral-Disgruntlement\",\n  nist_control_mappings: [\"PS-3\", \"PS-7\", \"PS-8\"],\n\n  example_scenarios: [\n    \"Employee repeatedly complains about unfair treatment after denied promotion\",\n    \"IT admin makes threats about 'showing them' after negative performance review\",\n    \"Developer expresses bitterness after being passed over for project lead\"\n  ],\n\n  node_id: randomUUID(),\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Key CERT Insider Threat Indicators (Sample Set - 15 of 30+)**:\n```cypher\n// Create comprehensive set of insider threat indicators\nUNWIND [\n  // Technical Indicators\n  {id: \"CERT-IT-TECH-001\", name: \"Repeated Unauthorized Access Attempts\", category: \"TECHNICAL\", severity: \"HIGH\"},\n  {id: \"CERT-IT-TECH-002\", name: \"Unusual Data Exfiltration\", category: \"TECHNICAL\", severity: \"CRITICAL\"},\n  {id: \"CERT-IT-TECH-003\", name: \"Excessive Data Download\", category: ",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_27",
+    "text": "\", severity: \"HIGH\"},\n  {id: \"CERT-IT-TECH-002\", name: \"Unusual Data Exfiltration\", category: \"TECHNICAL\", severity: \"CRITICAL\"},\n  {id: \"CERT-IT-TECH-003\", name: \"Excessive Data Download\", category: \"TECHNICAL\", severity: \"HIGH\"},\n  {id: \"CERT-IT-TECH-004\", name: \"Use of Unauthorized Software or Tools\", category: \"TECHNICAL\", severity: \"MEDIUM\"},\n  {id: \"CERT-IT-TECH-005\", name: \"Abnormal Network Activity\", category: \"TECHNICAL\", severity: \"MEDIUM\"},\n\n  // Behavioral Indicators\n  {id: \"CERT-IT-BEHAV-001\", name: \"Employee Disgruntlement and Grievance\", category: \"BEHAVIORAL\", severity: \"MEDIUM\"},\n  {id: \"CERT-IT-BEHAV-002\", name: \"Financial Distress\", category: \"BEHAVIORAL\", severity: \"MEDIUM\"},\n  {id: \"CERT-IT-BEHAV-003\", name: \"Violation of Policies and Procedures\", category: \"BEHAVIORAL\", severity: \"MEDIUM\"},\n  {id: \"CERT-IT-BEHAV-004\", name: \"Unauthorized External Communication\", category: \"BEHAVIORAL\", severity: \"HIGH\"},\n  {id: \"CERT-IT-BEHAV-005\", name: \"Sudden Lifestyle Changes\"",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_28",
+    "text": "\", severity: \"MEDIUM\"},\n  {id: \"CERT-IT-BEHAV-004\", name: \"Unauthorized External Communication\", category: \"BEHAVIORAL\", severity: \"HIGH\"},\n  {id: \"CERT-IT-BEHAV-005\", name: \"Sudden Lifestyle Changes\", category: \"BEHAVIORAL\", severity: \"LOW\"},\n\n  // Organizational Indicators\n  {id: \"CERT-IT-ORG-001\", name: \"Inadequate Access Controls\", category: \"ORGANIZATIONAL\", severity: \"HIGH\"},\n  {id: \"CERT-IT-ORG-002\", name: \"Poor Security Culture\", category: \"ORGANIZATIONAL\", severity: \"MEDIUM\"},\n  {id: \"CERT-IT-ORG-003\", name: \"Lack of Monitoring and Auditing\", category: \"ORGANIZATIONAL\", severity: \"HIGH\"},\n  {id: \"CERT-IT-ORG-004\", name: \"Insufficient Background Checks\", category: \"ORGANIZATIONAL\", severity: \"MEDIUM\"},\n  {id: \"CERT-IT-ORG-005\", name: \"High Employee Turnover\", category: \"ORGANIZATIONAL\", severity: \"LOW\"}\n] AS indicator\nCREATE (iti:InsiderThreat_Indicator {\n  indicator_id: indicator.id,\n  indicator_name: indicator.name,\n  indicator_category: indicator.category,\n  severity: indica",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_29",
+    "text": "NAL\", severity: \"LOW\"}\n] AS indicator\nCREATE (iti:InsiderThreat_Indicator {\n  indicator_id: indicator.id,\n  indicator_name: indicator.name,\n  indicator_category: indicator.category,\n  severity: indicator.severity,\n  observability: CASE indicator.category\n    WHEN \"TECHNICAL\" THEN \"EASY\"\n    WHEN \"BEHAVIORAL\" THEN \"MODERATE\"\n    ELSE \"DIFFICULT\"\n  END,\n  false_positive_rate: CASE indicator.category\n    WHEN \"TECHNICAL\" THEN \"LOW\"\n    WHEN \"BEHAVIORAL\" THEN \"HIGH\"\n    ELSE \"MEDIUM\"\n  END,\n  base_risk_score: CASE indicator.severity\n    WHEN \"CRITICAL\" THEN 0.9\n    WHEN \"HIGH\" THEN 0.75\n    WHEN \"MEDIUM\" THEN 0.5\n    ELSE 0.25\n  END,\n  node_id: randomUUID(),\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n```cypher\n// Unique constraint on indicator ID\nCREATE CONSTRAINT insider_threat_indicator_id_unique IF NOT EXISTS\nFOR (iti:InsiderThreat_Indicator) REQUIRE iti.indicator_id IS UNIQUE;\n\n// Index on categ",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_30",
+    "text": "`cypher\n// Unique constraint on indicator ID\nCREATE CONSTRAINT insider_threat_indicator_id_unique IF NOT EXISTS\nFOR (iti:InsiderThreat_Indicator) REQUIRE iti.indicator_id IS UNIQUE;\n\n// Index on category for filtering\nCREATE INDEX insider_threat_category_idx IF NOT EXISTS\nFOR (iti:InsiderThreat_Indicator) ON (iti.indicator_category);\n\n// Index on severity\nCREATE INDEX insider_threat_severity_idx IF NOT EXISTS\nFOR (iti:InsiderThreat_Indicator) ON (iti.severity);\n\n// Index on base risk score\nCREATE INDEX insider_threat_risk_score_idx IF NOT EXISTS\nFOR (iti:InsiderThreat_Indicator) ON (iti.base_risk_score);\n\n// Full-text search on name and description\nCREATE FULLTEXT INDEX insider_threat_fulltext IF NOT EXISTS\nFOR (iti:InsiderThreat_Indicator) ON EACH [iti.indicator_name, iti.description];\n```\n\n### 2.3 Social Engineering Tactic Nodes\n\n#### 2.3.1 Social Engineering Tactic\n\n**Node Label**: `SocialEngineering_Tactic`\n\n**Description**: Represents specific social engineering tactics used in cy",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_31",
+    "text": "`\n\n### 2.3 Social Engineering Tactic Nodes\n\n#### 2.3.1 Social Engineering Tactic\n\n**Node Label**: `SocialEngineering_Tactic`\n\n**Description**: Represents specific social engineering tactics used in cyber attacks.\n\n**Properties**:\n```cypher\n{\n  tactic_id: String,             // Unique tactic identifier\n  tactic_name: String,           // Tactic name\n  tactic_category: String,       // PHISHING, PRETEXTING, BAITING, QUID_PRO_QUO, TAILGATING\n\n  // Tactic details\n  description: String,\n  attack_vector: String,         // EMAIL, PHONE, IN_PERSON, SMS, SOCIAL_MEDIA\n  cognitive_biases_exploited: [String], // Which cognitive biases are leveraged\n\n  // Effectiveness metrics\n  success_rate_industry_avg: Float, // 0.0-1.0 (industry benchmark)\n  detection_difficulty: String,  // EASY, MODERATE, HARD\n\n  // Target characteristics\n  high_risk_roles: [String],     // Roles most susceptible\n  high_risk_departments: [String],\n\n  // Mitigation\n  training_approaches: [String],\n  technical_controls: [Strin",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_32",
+    "text": "  // Target characteristics\n  high_risk_roles: [String],     // Roles most susceptible\n  high_risk_departments: [String],\n\n  // Mitigation\n  training_approaches: [String],\n  technical_controls: [String],\n\n  // MITRE ATT&CK mapping\n  mitre_technique_ids: [String], // Related ATT&CK techniques\n\n  // Examples\n  real_world_examples: [Map],\n\n  // Metadata\n  node_id: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement (Example - Spear Phishing)**:\n```cypher\n// Create Social Engineering Tactic: Spear Phishing\nCREATE (set:SocialEngineering_Tactic {\n  tactic_id: \"SE-PHISH-001\",\n  tactic_name: \"Spear Phishing\",\n  tactic_category: \"PHISHING\",\n\n  description: \"Targeted phishing attack using personalized information to appear legitimate. Attacker researches victim to craft convincing email referencing projects, colleagues, or interests. Often impersonates authority figure or trusted contact.\",\n  attack_vector: \"EMAIL\",\n  ",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_33",
+    "text": " legitimate. Attacker researches victim to craft convincing email referencing projects, colleagues, or interests. Often impersonates authority figure or trusted contact.\",\n  attack_vector: \"EMAIL\",\n  cognitive_biases_exploited: [\n    \"Authority Bias\",\n    \"Familiarity Bias\",\n    \"Urgency Bias\",\n    \"Social Proof Bias\"\n  ],\n\n  success_rate_industry_avg: 0.45, // 45% click-through rate for spear phishing\n  detection_difficulty: \"HARD\",\n\n  high_risk_roles: [\n    \"Executive\",\n    \"Finance Manager\",\n    \"System Administrator\",\n    \"HR Personnel\",\n    \"Legal Counsel\"\n  ],\n  high_risk_departments: [\n    \"Finance\",\n    \"Executive\",\n    \"Human Resources\",\n    \"IT\"\n  ],\n\n  training_approaches: [\n    \"Simulated spear phishing campaigns with personalized scenarios\",\n    \"Email header analysis training\",\n    \"Recognition of pretexting indicators\",\n    \"Verification procedures for unusual requests\",\n    \"Role-specific targeted training\"\n  ],\n  technical_controls: [\n    \"Advanced email filtering with",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_34",
+    "text": "\",\n    \"Recognition of pretexting indicators\",\n    \"Verification procedures for unusual requests\",\n    \"Role-specific targeted training\"\n  ],\n  technical_controls: [\n    \"Advanced email filtering with AI/ML anomaly detection\",\n    \"DMARC/SPF/DKIM email authentication\",\n    \"URL rewriting and sandbox analysis\",\n    \"Banner warnings for external emails\",\n    \"Multi-factor authentication for sensitive actions\"\n  ],\n\n  mitre_technique_ids: [\"T1566.001\", \"T1598.003\"],  // Spearphishing Attachment, Spearphishing Link\n\n  real_world_examples: [\n    {\n      campaign: \"DNC 2016 Breach\",\n      description: \"Russian APT28 used spear phishing targeting DNC officials with spoofed Google security alerts\",\n      year: 2016\n    },\n    {\n      campaign: \"RSA SecurID Breach\",\n      description: \"Spear phishing emails with 'Recruitment Plan' Excel attachment delivered zero-day exploit\",\n      year: 2011\n    }\n  ],\n\n  node_id: randomUUID(),\n  created_date: datetime(),\n  last_updated: datetime(),\n  validati",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_35",
+    "text": "ng emails with 'Recruitment Plan' Excel attachment delivered zero-day exploit\",\n      year: 2011\n    }\n  ],\n\n  node_id: randomUUID(),\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Key Social Engineering Tactics (Sample Set - 10 of 15)**:\n```cypher\n// Create common social engineering tactics\nUNWIND [\n  {id: \"SE-PHISH-001\", name: \"Spear Phishing\", category: \"PHISHING\", vector: \"EMAIL\", success: 0.45},\n  {id: \"SE-PHISH-002\", name: \"Whaling (CEO Fraud)\", category: \"PHISHING\", vector: \"EMAIL\", success: 0.38},\n  {id: \"SE-PHISH-003\", name: \"Smishing\", category: \"PHISHING\", vector: \"SMS\", success: 0.35},\n  {id: \"SE-VISH-001\", name: \"Vishing (Voice Phishing)\", category: \"PHISHING\", vector: \"PHONE\", success: 0.42},\n  {id: \"SE-PRET-001\", name: \"Pretexting\", category: \"PRETEXTING\", vector: \"PHONE\", success: 0.52},\n  {id: \"SE-BAIT-001\", name: \"Baiting (USB Drop)\", category: \"BAITING\", vector: \"IN_PERSON\", success: 0.48},\n  {id: \"SE-TAIL-001\", nam",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_36",
+    "text": "texting\", category: \"PRETEXTING\", vector: \"PHONE\", success: 0.52},\n  {id: \"SE-BAIT-001\", name: \"Baiting (USB Drop)\", category: \"BAITING\", vector: \"IN_PERSON\", success: 0.48},\n  {id: \"SE-TAIL-001\", name: \"Tailgating\", category: \"TAILGATING\", vector: \"IN_PERSON\", success: 0.60},\n  {id: \"SE-QUI-001\", name: \"Quid Pro Quo\", category: \"QUID_PRO_QUO\", vector: \"PHONE\", success: 0.40},\n  {id: \"SE-SOCI-001\", name: \"Social Media Reconnaissance\", category: \"RECONNAISSANCE\", vector: \"SOCIAL_MEDIA\", success: 0.85},\n  {id: \"SE-IMP-001\", name: \"Impersonation Attack\", category: \"IMPERSONATION\", vector: \"EMAIL\", success: 0.50}\n] AS tactic\nCREATE (set:SocialEngineering_Tactic {\n  tactic_id: tactic.id,\n  tactic_name: tactic.name,\n  tactic_category: tactic.category,\n  attack_vector: tactic.vector,\n  success_rate_industry_avg: tactic.success,\n  detection_difficulty: CASE\n    WHEN tactic.success > 0.5 THEN \"HARD\"\n    WHEN tactic.success > 0.3 THEN \"MODERATE\"\n    ELSE \"EASY\"\n  END,\n  node_id: randomUUID(),\n  ",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_37",
+    "text": "te_industry_avg: tactic.success,\n  detection_difficulty: CASE\n    WHEN tactic.success > 0.5 THEN \"HARD\"\n    WHEN tactic.success > 0.3 THEN \"MODERATE\"\n    ELSE \"EASY\"\n  END,\n  node_id: randomUUID(),\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n```cypher\n// Unique constraint on tactic ID\nCREATE CONSTRAINT social_engineering_tactic_id_unique IF NOT EXISTS\nFOR (set:SocialEngineering_Tactic) REQUIRE set.tactic_id IS UNIQUE;\n\n// Index on category\nCREATE INDEX social_engineering_category_idx IF NOT EXISTS\nFOR (set:SocialEngineering_Tactic) ON (set.tactic_category);\n\n// Index on attack vector\nCREATE INDEX social_engineering_vector_idx IF NOT EXISTS\nFOR (set:SocialEngineering_Tactic) ON (set.attack_vector);\n\n// Full-text search\nCREATE FULLTEXT INDEX social_engineering_fulltext IF NOT EXISTS\nFOR (set:SocialEngineering_Tactic) ON EACH [set.tactic_name, set.description];\n```\n\n### 2.4 Security Culture Assessme",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_38",
+    "text": "/ Full-text search\nCREATE FULLTEXT INDEX social_engineering_fulltext IF NOT EXISTS\nFOR (set:SocialEngineering_Tactic) ON EACH [set.tactic_name, set.description];\n```\n\n### 2.4 Security Culture Assessment Nodes\n\n#### 2.4.1 Organizational Security Culture\n\n**Node Label**: `Security_Culture`\n\n**Description**: Represents organizational security culture maturity and awareness metrics.\n\n**Properties**:\n```cypher\n{\n  assessment_id: String,         // Unique assessment identifier\n  organization_unit: String,     // Department or division assessed\n  assessment_date: DateTime,\n\n  // Culture maturity dimensions (0.0-1.0 scale)\n  security_awareness_level: Float,\n  policy_compliance_level: Float,\n  incident_reporting_culture: Float,\n  security_training_effectiveness: Float,\n  leadership_commitment: Float,\n  employee_engagement: Float,\n\n  // Composite maturity score\n  security_culture_maturity: String, // \"INITIAL\", \"DEVELOPING\", \"DEFINED\", \"MANAGED\", \"OPTIMIZING\"\n  overall_maturity_score: Float,    ",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_39",
+    "text": "t,\n  employee_engagement: Float,\n\n  // Composite maturity score\n  security_culture_maturity: String, // \"INITIAL\", \"DEVELOPING\", \"DEFINED\", \"MANAGED\", \"OPTIMIZING\"\n  overall_maturity_score: Float,     // 0.0-1.0\n\n  // Risk indicators\n  security_culture_risk_score: Float, // 0.0-1.0 (inverse of maturity)\n  high_risk_areas: [String],\n\n  // Assessment details\n  assessment_method: String,     // Survey, audit, observation\n  sample_size: Integer,\n  response_rate: Float,\n\n  // Trends\n  previous_assessment_date: DateTime,\n  previous_maturity_score: Float,\n  trend: String,                 // \"IMPROVING\", \"STABLE\", \"DECLINING\"\n\n  // Recommendations\n  improvement_priorities: [String],\n  action_plan: [Map],\n\n  // Metadata\n  node_id: String,\n  created_by: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create Security Culture Assessment\nCREATE (sc:Security_Culture {\n  assessment_id: \"SEC-CULTURE-2024-",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_40",
+    "text": "ed: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create Security Culture Assessment\nCREATE (sc:Security_Culture {\n  assessment_id: \"SEC-CULTURE-2024-Q3\",\n  organization_unit: \"Engineering Department\",\n  assessment_date: datetime('2024-09-30T00:00:00Z'),\n\n  // Culture maturity dimensions\n  security_awareness_level: 0.68,\n  policy_compliance_level: 0.72,\n  incident_reporting_culture: 0.55,  // Low - needs improvement\n  security_training_effectiveness: 0.65,\n  leadership_commitment: 0.78,\n  employee_engagement: 0.60,\n\n  // Composite maturity\n  security_culture_maturity: \"DEVELOPING\",  // Level 2 of 5\n  overall_maturity_score: 0.66,  // Average of dimensions\n\n  security_culture_risk_score: 0.34,  // 1.0 - maturity_score\n  high_risk_areas: [\n    \"Incident Reporting Culture\",\n    \"Employee Engagement\",\n    \"Security Training Effectiveness\"\n  ],\n\n  assessment_method: \"Anonymous Survey + Policy Audit + Incident Analysis\",\n  sample_size: 150,\n ",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 40,
+      "start_char": 32000,
+      "end_char": 33000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_41",
+    "text": "  \"Incident Reporting Culture\",\n    \"Employee Engagement\",\n    \"Security Training Effectiveness\"\n  ],\n\n  assessment_method: \"Anonymous Survey + Policy Audit + Incident Analysis\",\n  sample_size: 150,\n  response_rate: 0.82,  // 82% response rate\n\n  previous_assessment_date: datetime('2024-06-30T00:00:00Z'),\n  previous_maturity_score: 0.62,\n  trend: \"IMPROVING\",  // +0.04 improvement\n\n  improvement_priorities: [\n    \"Implement 'no blame' incident reporting culture campaign\",\n    \"Redesign security training with interactive scenarios\",\n    \"Increase frequency of security awareness communications\",\n    \"Establish security champion program for peer engagement\"\n  ],\n  action_plan: [\n    {\n      priority: 1,\n      action: \"Launch incident reporting culture initiative\",\n      owner: \"CISO\",\n      target_date: datetime('2024-11-01T00:00:00Z'),\n      budget: 25000\n    },\n    {\n      priority: 2,\n      action: \"Develop role-based security training modules\",\n      owner: \"Security Awareness Manager",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 41,
+      "start_char": 32800,
+      "end_char": 33800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_42",
+    "text": "arget_date: datetime('2024-11-01T00:00:00Z'),\n      budget: 25000\n    },\n    {\n      priority: 2,\n      action: \"Develop role-based security training modules\",\n      owner: \"Security Awareness Manager\",\n      target_date: datetime('2024-12-15T00:00:00Z'),\n      budget: 50000\n    }\n  ],\n\n  node_id: randomUUID(),\n  created_by: \"Security Culture Assessment Team\",\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n```cypher\n// Unique constraint on assessment ID\nCREATE CONSTRAINT security_culture_id_unique IF NOT EXISTS\nFOR (sc:Security_Culture) REQUIRE sc.assessment_id IS UNIQUE;\n\n// Index on organization unit\nCREATE INDEX security_culture_unit_idx IF NOT EXISTS\nFOR (sc:Security_Culture) ON (sc.organization_unit);\n\n// Index on maturity level\nCREATE INDEX security_culture_maturity_idx IF NOT EXISTS\nFOR (sc:Security_Culture) ON (sc.security_culture_maturity);\n\n// Index on assessment date for time-series analy",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 42,
+      "start_char": 33600,
+      "end_char": 34600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_43",
+    "text": "t);\n\n// Index on maturity level\nCREATE INDEX security_culture_maturity_idx IF NOT EXISTS\nFOR (sc:Security_Culture) ON (sc.security_culture_maturity);\n\n// Index on assessment date for time-series analysis\nCREATE INDEX security_culture_date_idx IF NOT EXISTS\nFOR (sc:Security_Culture) ON (sc.assessment_date);\n```\n\n## 3. Complete Relationship Schemas\n\n### 3.1 Psychological Profile to Insider Threat Indicator\n\n**Relationship Type**: `EXHIBITS_INDICATOR`\n\n**Description**: Links psychological profiles to insider threat indicators they exhibit.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  indicator_presence: String,    // \"OBSERVED\", \"SUSPECTED\", \"ABSENT\"\n  confidence: Float,             // 0.0-1.0\n  observation_date: DateTime,\n  severity_context: String,      // Contextual severity assessment\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link Dark Triad profile to insider threat indicators\nMATCH (dt:DarkTriad_Profile {profile_id: \"DARKTRIAD-...\"})\nMATC",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 43,
+      "start_char": 34400,
+      "end_char": 35400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_44",
+    "text": "ssessment\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link Dark Triad profile to insider threat indicators\nMATCH (dt:DarkTriad_Profile {profile_id: \"DARKTRIAD-...\"})\nMATCH (iti:InsiderThreat_Indicator {indicator_id: \"CERT-IT-TECH-001\"})  // Unauthorized Access\nCREATE (dt)-[r:EXHIBITS_INDICATOR {\n  relationship_id: randomUUID(),\n  indicator_presence: \"OBSERVED\",\n  confidence: 0.85,\n  observation_date: datetime('2024-10-15T00:00:00Z'),\n  severity_context: \"Multiple unauthorized access attempts to financial databases\",\n  created_date: datetime()\n}]->(iti)\n```\n\n### 3.2 Cognitive Bias to Social Engineering Tactic\n\n**Relationship Type**: `SUSCEPTIBLE_TO_TACTIC`\n\n**Description**: Links cognitive bias profiles to social engineering tactics they are vulnerable to.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  susceptibility_score: Float,   // 0.0-1.0\n  primary_bias_exploited: String,\n  historical_failure_count: Integer, // Number of times fallen for thi",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 44,
+      "start_char": 35200,
+      "end_char": 36200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_45",
+    "text": "roperties**:\n```cypher\n{\n  relationship_id: String,\n  susceptibility_score: Float,   // 0.0-1.0\n  primary_bias_exploited: String,\n  historical_failure_count: Integer, // Number of times fallen for this tactic\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link cognitive bias profile to spear phishing susceptibility\nMATCH (cb:CognitiveBias_Profile {profile_id: \"COGNITIVEBIAS-...\"})\nMATCH (set:SocialEngineering_Tactic {tactic_id: \"SE-PHISH-001\"})  // Spear Phishing\nCREATE (cb)-[r:SUSCEPTIBLE_TO_TACTIC {\n  relationship_id: randomUUID(),\n  susceptibility_score: 0.78,\n  primary_bias_exploited: \"Authority Bias\",\n  historical_failure_count: 3,  // Clicked on 3 simulated phishing emails\n  created_date: datetime()\n}]->(set)\n```\n\n### 3.3 Psychological Profile to ATT&CK Technique\n\n**Relationship Type**: `PSYCHOLOGICALLY_MOTIVATED_FOR`\n\n**Description**: Links psychological profiles to ATT&CK techniques they are psychologically predisposed to execute.\n\n**Properties**:\n```",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 45,
+      "start_char": 36000,
+      "end_char": 37000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_46",
+    "text": "hnique\n\n**Relationship Type**: `PSYCHOLOGICALLY_MOTIVATED_FOR`\n\n**Description**: Links psychological profiles to ATT&CK techniques they are psychologically predisposed to execute.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  motivation_strength: Float,    // 0.0-1.0\n  psychological_drivers: [String],\n  likelihood_multiplier: Float,  // Risk score multiplier\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link Dark Triad profile to Data Exfiltration technique\nMATCH (dt:DarkTriad_Profile {profile_id: \"DARKTRIAD-...\"})\nMATCH (tech:Technique {technique_id: \"T1048\"})  // Exfiltration Over Alternative Protocol\nCREATE (dt)-[r:PSYCHOLOGICALLY_MOTIVATED_FOR {\n  relationship_id: randomUUID(),\n  motivation_strength: 0.82,\n  psychological_drivers: [\n    \"Revenge motivation (disgruntlement)\",\n    \"Financial gain (opportunistic)\",\n    \"Entitlement attitude (deserving)\"\n  ],\n  likelihood_multiplier: 2.5,  // 2.5x higher risk than baseline\n  created_date: datetim",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 46,
+      "start_char": 36800,
+      "end_char": 37800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_47",
+    "text": "motivation (disgruntlement)\",\n    \"Financial gain (opportunistic)\",\n    \"Entitlement attitude (deserving)\"\n  ],\n  likelihood_multiplier: 2.5,  // 2.5x higher risk than baseline\n  created_date: datetime()\n}]->(tech)\n```\n\n### 3.4 Security Culture to Insider Threat Indicator\n\n**Relationship Type**: `ORGANIZATIONAL_RISK_FOR`\n\n**Description**: Links organizational security culture assessment to insider threat indicators it creates vulnerability for.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  risk_contribution: Float,      // 0.0-1.0 (how much culture increases risk)\n  root_cause_analysis: String,\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link poor security culture to lack of monitoring indicator\nMATCH (sc:Security_Culture {assessment_id: \"SEC-CULTURE-2024-Q3\"})\nMATCH (iti:InsiderThreat_Indicator {indicator_id: \"CERT-IT-ORG-003\"})  // Lack of Monitoring\nCREATE (sc)-[r:ORGANIZATIONAL_RISK_FOR {\n  relationship_id: randomUUID(),\n  risk_contribution",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 47,
+      "start_char": 37600,
+      "end_char": 38600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_48",
+    "text": "RE-2024-Q3\"})\nMATCH (iti:InsiderThreat_Indicator {indicator_id: \"CERT-IT-ORG-003\"})  // Lack of Monitoring\nCREATE (sc)-[r:ORGANIZATIONAL_RISK_FOR {\n  relationship_id: randomUUID(),\n  risk_contribution: 0.65,\n  root_cause_analysis: \"Low security culture maturity (DEVELOPING level) creates environment where monitoring and auditing are deprioritized, enabling insider threat activity to go undetected\",\n  created_date: datetime()\n}]->(iti)\n```\n\n### 3.5 Social Engineering Tactic to ATT&CK Technique\n\n**Relationship Type**: `ENABLES_TECHNIQUE`\n\n**Description**: Links social engineering tactics to ATT&CK techniques they enable.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  enablement_type: String,       // \"INITIAL_ACCESS\", \"CREDENTIAL_THEFT\", etc.\n  success_probability: Float,    // 0.0-1.0\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link spear phishing to credential access technique\nMATCH (set:SocialEngineering_Tactic {tactic_id: \"SE-PHISH-001\"})\nMATC",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 48,
+      "start_char": 38400,
+      "end_char": 39400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_49",
+    "text": "0-1.0\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link spear phishing to credential access technique\nMATCH (set:SocialEngineering_Tactic {tactic_id: \"SE-PHISH-001\"})\nMATCH (tech:Technique {technique_id: \"T1078\"})  // Valid Accounts\nCREATE (set)-[r:ENABLES_TECHNIQUE {\n  relationship_id: randomUUID(),\n  enablement_type: \"CREDENTIAL_THEFT\",\n  success_probability: 0.42,  // 42% of spear phishing leads to credential compromise\n  created_date: datetime()\n}]->(tech)\n```\n\n### 3.6 Psychological Profile to UCO Investigation Case\n\n**Relationship Type**: `SUBJECT_OF_INVESTIGATION`\n\n**Description**: Links psychological profiles to investigation cases (privacy-preserving, anonymized).\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  investigation_role: String,    // \"SUSPECT\", \"VICTIM\", \"WITNESS\"\n  profile_relevance: String,     // Why profile is relevant\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link Dark Triad profile to inside",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 49,
+      "start_char": 39200,
+      "end_char": 40200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_50",
+    "text": "/ \"SUSPECT\", \"VICTIM\", \"WITNESS\"\n  profile_relevance: String,     // Why profile is relevant\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link Dark Triad profile to insider threat investigation\nMATCH (dt:DarkTriad_Profile {profile_id: \"DARKTRIAD-...\"})\nMATCH (case:UCO_InvestigationCase {case_id: \"CASE-2024-002\"})\nCREATE (dt)-[r:SUBJECT_OF_INVESTIGATION {\n  relationship_id: randomUUID(),\n  investigation_role: \"SUSPECT\",\n  profile_relevance: \"High malicious insider risk score (0.75) combined with observed unauthorized access indicators led to investigation initiation\",\n  created_date: datetime()\n}]->(case)\n```\n\n## 4. Integration Patterns\n\n### 4.1 Risk Scoring: Composite Insider Threat Risk\n\n**Objective**: Calculate comprehensive insider threat risk score combining psychological, behavioral, and technical factors.\n\n**Risk Scoring Query**:\n```cypher\n// Calculate composite insider threat risk score for individual\nMATCH (bigfive:BigFive_Profile {profile_id: \"BIGF",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 50,
+      "start_char": 40000,
+      "end_char": 41000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_51",
+    "text": "g psychological, behavioral, and technical factors.\n\n**Risk Scoring Query**:\n```cypher\n// Calculate composite insider threat risk score for individual\nMATCH (bigfive:BigFive_Profile {profile_id: \"BIGFIVE-...\"})\nOPTIONAL MATCH (darktriad:DarkTriad_Profile {profile_id: \"DARKTRIAD-...\"})\nWHERE darktriad.profile_id = bigfive.profile_id  // Same individual\n\nOPTIONAL MATCH (bigfive)-[exhibits:EXHIBITS_INDICATOR]->(indicator:InsiderThreat_Indicator)\nWHERE exhibits.indicator_presence = \"OBSERVED\"\n\nOPTIONAL MATCH (bigfive)-[motivated:PSYCHOLOGICALLY_MOTIVATED_FOR]->(tech:Technique)\n\nWITH\n  bigfive,\n  darktriad,\n  // Personality risk contribution (40% weight)\n  (COALESCE(bigfive.risk_taking_tendency, 0.5) * 0.15 +\n   (1.0 - COALESCE(bigfive.rule_following_tendency, 0.5)) * 0.15 +\n   COALESCE(darktriad.malicious_insider_risk_score, 0.0) * 0.10) AS personality_risk,\n\n  // Behavioral indicators (40% weight)\n  (count(DISTINCT indicator) * 0.05) AS indicator_count_risk,  // 0.05 per indicator, cap at",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 51,
+      "start_char": 40800,
+      "end_char": 41800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_52",
+    "text": "ad.malicious_insider_risk_score, 0.0) * 0.10) AS personality_risk,\n\n  // Behavioral indicators (40% weight)\n  (count(DISTINCT indicator) * 0.05) AS indicator_count_risk,  // 0.05 per indicator, cap at 0.4\n  (avg(COALESCE(exhibits.confidence, 0.5)) * 0.35) AS indicator_confidence_risk,\n\n  // Technical motivation (20% weight)\n  (count(DISTINCT motivated) * 0.02) AS motivation_count_risk,  // 0.02 per technique, cap at 0.2\n\n  collect(DISTINCT indicator.indicator_name) AS observed_indicators,\n  collect(DISTINCT tech.technique_id) AS motivated_techniques\n\nWITH\n  bigfive.profile_id AS profile_id,\n  bigfive.organizational_role AS role,\n  bigfive.access_level AS access_level,\n  personality_risk + indicator_count_risk + indicator_confidence_risk + motivation_count_risk AS composite_risk_score,\n  observed_indicators,\n  motivated_techniques\n\nRETURN\n  profile_id,\n  role,\n  access_level,\n  round(composite_risk_score, 3) AS insider_threat_risk_score,\n  CASE\n    WHEN composite_risk_score >= 0.75 THEN",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 52,
+      "start_char": 41600,
+      "end_char": 42600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_53",
+    "text": "served_indicators,\n  motivated_techniques\n\nRETURN\n  profile_id,\n  role,\n  access_level,\n  round(composite_risk_score, 3) AS insider_threat_risk_score,\n  CASE\n    WHEN composite_risk_score >= 0.75 THEN \"CRITICAL\"\n    WHEN composite_risk_score >= 0.60 THEN \"HIGH\"\n    WHEN composite_risk_score >= 0.40 THEN \"MEDIUM\"\n    ELSE \"LOW\"\n  END AS risk_level,\n  observed_indicators,\n  motivated_techniques\n```\n\n### 4.2 Social Engineering Vulnerability Assessment\n\n**Objective**: Assess organizational vulnerability to specific social engineering tactics.\n\n**Vulnerability Query**:\n```cypher\n// Assess department vulnerability to spear phishing\nMATCH (cb:CognitiveBias_Profile)\nWHERE cb.department = \"Finance\"\n\nMATCH (cb)-[susceptible:SUSCEPTIBLE_TO_TACTIC]->(set:SocialEngineering_Tactic {tactic_id: \"SE-PHISH-001\"})\n\nWITH\n  cb.department AS department,\n  count(cb) AS total_employees,\n  avg(cb.social_engineering_susceptibility) AS avg_susceptibility,\n  avg(cb.phishing_susceptibility_email) AS avg_phishing_s",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 53,
+      "start_char": 42400,
+      "end_char": 43400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_54",
+    "text": "001\"})\n\nWITH\n  cb.department AS department,\n  count(cb) AS total_employees,\n  avg(cb.social_engineering_susceptibility) AS avg_susceptibility,\n  avg(cb.phishing_susceptibility_email) AS avg_phishing_susceptibility,\n  sum(CASE WHEN cb.phishing_simulations_clicked > 3 THEN 1 ELSE 0 END) AS high_risk_individuals,\n  avg(cb.phishing_simulations_clicked * 1.0 / cb.phishing_simulations_received) AS avg_click_rate\n\nRETURN\n  department,\n  total_employees,\n  round(avg_susceptibility, 3) AS department_avg_susceptibility,\n  round(avg_phishing_susceptibility, 3) AS phishing_vulnerability,\n  high_risk_individuals,\n  round(avg_click_rate, 3) AS actual_click_rate,\n  CASE\n    WHEN avg_susceptibility >= 0.7 THEN \"CRITICAL\"\n    WHEN avg_susceptibility >= 0.55 THEN \"HIGH\"\n    WHEN avg_susceptibility >= 0.40 THEN \"MEDIUM\"\n    ELSE \"LOW\"\n  END AS department_risk_level\n```\n\n### 4.3 Security Culture Impact Analysis\n\n**Objective**: Correlate security culture metrics with actual incident rates.\n\n**Culture-Incid",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 54,
+      "start_char": 43200,
+      "end_char": 44200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_55",
+    "text": "HEN \"MEDIUM\"\n    ELSE \"LOW\"\n  END AS department_risk_level\n```\n\n### 4.3 Security Culture Impact Analysis\n\n**Objective**: Correlate security culture metrics with actual incident rates.\n\n**Culture-Incident Correlation Query**:\n```cypher\n// Correlate security culture with insider threat incidents\nMATCH (sc:Security_Culture {organization_unit: \"Engineering Department\"})\nMATCH (case:UCO_InvestigationCase)\nWHERE case.incident_start_time > sc.previous_assessment_date\n  AND case.incident_start_time < sc.assessment_date\n  AND case.case_classification CONTAINS \"Insider\"\n\nWITH\n  sc.organization_unit AS unit,\n  sc.overall_maturity_score AS culture_maturity,\n  sc.security_culture_maturity AS maturity_level,\n  sc.incident_reporting_culture AS reporting_culture,\n  count(case) AS incident_count,\n  collect(case.case_name) AS incidents\n\nRETURN\n  unit,\n  maturity_level,\n  round(culture_maturity, 3) AS maturity_score,\n  round(reporting_culture, 3) AS reporting_culture_score,\n  incident_count,\n  incidents,",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 55,
+      "start_char": 44000,
+      "end_char": 45000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_56",
+    "text": "(case.case_name) AS incidents\n\nRETURN\n  unit,\n  maturity_level,\n  round(culture_maturity, 3) AS maturity_score,\n  round(reporting_culture, 3) AS reporting_culture_score,\n  incident_count,\n  incidents,\n  CASE\n    WHEN incident_count = 0 THEN \"Insufficient data (or excellent culture)\"\n    ELSE round((1.0 - culture_maturity) * incident_count, 2)\n  END AS culture_risk_indicator\n```\n\n## 5. Validation Criteria\n\n### 5.1 Data Completeness Validation\n\n**Node Count Validation**:\n```cypher\n// Verify target node counts achieved\nMATCH (bf:BigFive_Profile) WITH count(bf) AS bigfive_count\nMATCH (dt:DarkTriad_Profile) WITH bigfive_count, count(dt) AS darktriad_count\nMATCH (cb:CognitiveBias_Profile) WITH bigfive_count, darktriad_count, count(cb) AS cognitive_count\nMATCH (iti:InsiderThreat_Indicator) WITH bigfive_count, darktriad_count, cognitive_count, count(iti) AS indicator_count\nMATCH (set:SocialEngineering_Tactic) WITH bigfive_count, darktriad_count, cognitive_count, indicator_count, count(set) AS ",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 56,
+      "start_char": 44800,
+      "end_char": 45800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_57",
+    "text": "igfive_count, darktriad_count, cognitive_count, count(iti) AS indicator_count\nMATCH (set:SocialEngineering_Tactic) WITH bigfive_count, darktriad_count, cognitive_count, indicator_count, count(set) AS tactic_count\nMATCH (sc:Security_Culture)\nRETURN\n  bigfive_count AS big_five_profiles,\n  darktriad_count AS dark_triad_profiles,\n  cognitive_count AS cognitive_bias_profiles,\n  indicator_count AS insider_threat_indicators,\n  tactic_count AS social_engineering_tactics,\n  count(sc) AS security_culture_assessments,\n  CASE\n    WHEN indicator_count >= 30 AND\n         tactic_count >= 15 AND\n         bigfive_count >= 10 AND\n         darktriad_count >= 10 AND\n         cognitive_count >= 10\n    THEN \"PASS\"\n    ELSE \"FAIL\"\n  END AS validation_status\n```\n\n### 5.2 Privacy and Ethics Validation\n\n**Anonymization Validation**:\n```cypher\n// Verify all psychological profiles are anonymized\nMATCH (profile)\nWHERE profile:BigFive_Profile OR profile:DarkTriad_Profile OR profile:CognitiveBias_Profile\nAND (profil",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 57,
+      "start_char": 45600,
+      "end_char": 46600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_58",
+    "text": "tion Validation**:\n```cypher\n// Verify all psychological profiles are anonymized\nMATCH (profile)\nWHERE profile:BigFive_Profile OR profile:DarkTriad_Profile OR profile:CognitiveBias_Profile\nAND (profile.is_anonymized IS NULL OR profile.is_anonymized = false)\nRETURN count(profile) AS non_anonymized_profiles\n// Expected: 0\n```\n\n### 5.3 Integration Validation\n\n**Mapping Coverage**:\n```cypher\n// Verify psychological indicators map to ATT&CK techniques\nMATCH (iti:InsiderThreat_Indicator)\nWITH count(iti) AS total_indicators\nMATCH (iti:InsiderThreat_Indicator)-[:INDICATES_TECHNIQUE]->(tech:Technique)\nRETURN\n  total_indicators,\n  count(DISTINCT iti) AS mapped_indicators,\n  (count(DISTINCT iti) * 100.0 / total_indicators) AS mapping_percentage\n// Expected: mapping_percentage >= 70%\n```\n\n## 6. Example Queries\n\n### 6.1 High-Risk Insider Identification\n\n**Query**: Identify employees with highest insider threat risk scores.\n\n```cypher\n// Identify top 10 highest-risk insiders\nMATCH (bigfive:BigFive_P",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 58,
+      "start_char": 46400,
+      "end_char": 47400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_59",
+    "text": "e Queries\n\n### 6.1 High-Risk Insider Identification\n\n**Query**: Identify employees with highest insider threat risk scores.\n\n```cypher\n// Identify top 10 highest-risk insiders\nMATCH (bigfive:BigFive_Profile)\nOPTIONAL MATCH (darktriad:DarkTriad_Profile {profile_id: bigfive.profile_id})\nOPTIONAL MATCH (bigfive)-[exhibits:EXHIBITS_INDICATOR]->(indicator:InsiderThreat_Indicator)\nWHERE exhibits.indicator_presence = \"OBSERVED\"\n\nWITH\n  bigfive,\n  darktriad,\n  count(DISTINCT indicator) AS indicator_count,\n  collect(DISTINCT indicator.indicator_name) AS indicators,\n  (COALESCE(bigfive.risk_taking_tendency, 0.5) * 0.15 +\n   (1.0 - COALESCE(bigfive.rule_following_tendency, 0.5)) * 0.15 +\n   COALESCE(darktriad.malicious_insider_risk_score, 0.0) * 0.10 +\n   count(DISTINCT indicator) * 0.05) AS composite_risk\n\nRETURN\n  bigfive.profile_id AS profile_id,\n  bigfive.organizational_role AS role,\n  bigfive.access_level AS access_level,\n  round(composite_risk, 3) AS risk_score,\n  indicator_count AS observe",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 59,
+      "start_char": 47200,
+      "end_char": 48200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_60",
+    "text": "e_risk\n\nRETURN\n  bigfive.profile_id AS profile_id,\n  bigfive.organizational_role AS role,\n  bigfive.access_level AS access_level,\n  round(composite_risk, 3) AS risk_score,\n  indicator_count AS observed_indicators_count,\n  indicators AS observed_indicators,\n  CASE\n    WHEN composite_risk >= 0.75 THEN \"CRITICAL - Immediate Review Required\"\n    WHEN composite_risk >= 0.60 THEN \"HIGH - Enhanced Monitoring\"\n    WHEN composite_risk >= 0.40 THEN \"MEDIUM - Routine Monitoring\"\n    ELSE \"LOW - Standard Monitoring\"\n  END AS risk_classification\nORDER BY composite_risk DESC\nLIMIT 10\n```\n\n### 6.2 Targeted Security Awareness Training Recommendations\n\n**Query**: Generate personalized training recommendations based on psychological profiles.\n\n```cypher\n// Generate targeted training recommendations\nMATCH (cb:CognitiveBias_Profile {department: \"Finance\"})\nMATCH (cb)-[susceptible:SUSCEPTIBLE_TO_TACTIC]->(set:SocialEngineering_Tactic)\nWHERE susceptible.susceptibility_score > 0.6\n\nWITH\n  cb.profile_id AS pr",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 60,
+      "start_char": 48000,
+      "end_char": 49000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_61",
+    "text": "b:CognitiveBias_Profile {department: \"Finance\"})\nMATCH (cb)-[susceptible:SUSCEPTIBLE_TO_TACTIC]->(set:SocialEngineering_Tactic)\nWHERE susceptible.susceptibility_score > 0.6\n\nWITH\n  cb.profile_id AS profile_id,\n  cb.organizational_role AS role,\n  collect({\n    tactic: set.tactic_name,\n    susceptibility: round(susceptible.susceptibility_score, 2),\n    primary_bias: susceptible.primary_bias_exploited,\n    training_approach: set.training_approaches[0]\n  }) AS high_risk_tactics,\n  cb.phishing_simulations_clicked * 1.0 / cb.phishing_simulations_received AS click_rate\n\nRETURN\n  profile_id,\n  role,\n  round(click_rate, 3) AS historical_click_rate,\n  high_risk_tactics,\n  CASE\n    WHEN size(high_risk_tactics) >= 5 THEN \"Comprehensive social engineering resilience training\"\n    WHEN size(high_risk_tactics) >= 3 THEN \"Targeted phishing and pretexting training\"\n    WHEN size(high_risk_tactics) >= 1 THEN \"Focused training on identified weaknesses\"\n    ELSE \"Maintenance training - refresher course\"\n ",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 61,
+      "start_char": 48800,
+      "end_char": 49800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_62",
+    "text": "ctics) >= 3 THEN \"Targeted phishing and pretexting training\"\n    WHEN size(high_risk_tactics) >= 1 THEN \"Focused training on identified weaknesses\"\n    ELSE \"Maintenance training - refresher course\"\n  END AS training_recommendation\nORDER BY size(high_risk_tactics) DESC, click_rate DESC\nLIMIT 20\n```\n\n### 6.3 Security Culture Trend Analysis\n\n**Query**: Analyze security culture improvement over time.\n\n```cypher\n// Security culture trend analysis by department\nMATCH (sc:Security_Culture)\nWHERE sc.assessment_date >= datetime('2024-01-01T00:00:00Z')\nORDER BY sc.organization_unit, sc.assessment_date ASC\n\nWITH\n  sc.organization_unit AS unit,\n  collect({\n    date: sc.assessment_date,\n    maturity: sc.overall_maturity_score,\n    maturity_level: sc.security_culture_maturity,\n    incident_reporting: sc.incident_reporting_culture,\n    training_effectiveness: sc.security_training_effectiveness\n  }) AS assessments\n\nWITH\n  unit,\n  assessments,\n  assessments[0] AS first_assessment,\n  assessments[size(a",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 62,
+      "start_char": 49600,
+      "end_char": 50600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_63",
+    "text": "c.incident_reporting_culture,\n    training_effectiveness: sc.security_training_effectiveness\n  }) AS assessments\n\nWITH\n  unit,\n  assessments,\n  assessments[0] AS first_assessment,\n  assessments[size(assessments)-1] AS latest_assessment,\n  latest_assessment.maturity - first_assessment.maturity AS maturity_change\n\nRETURN\n  unit AS department,\n  first_assessment.date AS first_assessment_date,\n  first_assessment.maturity_level AS starting_maturity,\n  latest_assessment.date AS latest_assessment_date,\n  latest_assessment.maturity_level AS current_maturity,\n  round(maturity_change, 3) AS maturity_improvement,\n  CASE\n    WHEN maturity_change > 0.1 THEN \"SIGNIFICANT IMPROVEMENT\"\n    WHEN maturity_change > 0.05 THEN \"MODERATE IMPROVEMENT\"\n    WHEN maturity_change > -0.05 THEN \"STABLE\"\n    WHEN maturity_change > -0.1 THEN \"MODERATE DECLINE\"\n    ELSE \"SIGNIFICANT DECLINE\"\n  END AS trend_assessment,\n  latest_assessment.incident_reporting AS current_incident_reporting\nORDER BY maturity_change DESC\n`",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 63,
+      "start_char": 50400,
+      "end_char": 51400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_64",
+    "text": "ity_change > -0.1 THEN \"MODERATE DECLINE\"\n    ELSE \"SIGNIFICANT DECLINE\"\n  END AS trend_assessment,\n  latest_assessment.incident_reporting AS current_incident_reporting\nORDER BY maturity_change DESC\n```\n\n## 7. Wave 7 Implementation Checklist\n\n### 7.1 Pre-Implementation\n\n- [ ] Complete Waves 1-6 validation\n- [ ] Backup Neo4j database\n- [ ] Review ethical guidelines for behavioral data\n- [ ] Consult legal/HR on privacy requirements\n- [ ] Establish anonymization procedures\n- [ ] Review CERT Insider Threat framework\n- [ ] Review Big Five and Dark Triad assessment tools\n\n### 7.2 Implementation Phase 1: Psychological Profiles (Week 1)\n\n- [ ] Create BigFive_Profile nodes with full properties\n- [ ] Create DarkTriad_Profile nodes\n- [ ] Create CognitiveBias_Profile nodes\n- [ ] Create all indexes and constraints\n- [ ] Validate privacy protection (all anonymized)\n- [ ] Create 50+ example profiles (anonymized test data)\n\n### 7.3 Implementation Phase 2: Insider Threat & Social Engineering (Week 2)\n\n",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 64,
+      "start_char": 51200,
+      "end_char": 52200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_65",
+    "text": " constraints\n- [ ] Validate privacy protection (all anonymized)\n- [ ] Create 50+ example profiles (anonymized test data)\n\n### 7.3 Implementation Phase 2: Insider Threat & Social Engineering (Week 2)\n\n- [ ] Create InsiderThreat_Indicator nodes (30+ indicators)\n- [ ] Create SocialEngineering_Tactic nodes (15+ tactics)\n- [ ] Create Security_Culture nodes (10+ assessments)\n- [ ] Create all indexes and constraints\n- [ ] Validate indicator completeness\n\n### 7.4 Implementation Phase 3: Integration & Validation (Week 3)\n\n- [ ] Create EXHIBITS_INDICATOR relationships (profile \u2192 indicator)\n- [ ] Create SUSCEPTIBLE_TO_TACTIC relationships (bias \u2192 tactic)\n- [ ] Create PSYCHOLOGICALLY_MOTIVATED_FOR relationships (profile \u2192 ATT&CK)\n- [ ] Create ORGANIZATIONAL_RISK_FOR relationships (culture \u2192 indicator)\n- [ ] Create ENABLES_TECHNIQUE relationships (tactic \u2192 ATT&CK)\n- [ ] Test all example queries\n- [ ] Run privacy validation (100% anonymized)\n- [ ] Performance benchmarks (<500ms risk scoring)\n- [ ] G",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 65,
+      "start_char": 52000,
+      "end_char": 53000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_66",
+    "text": "\n- [ ] Create ENABLES_TECHNIQUE relationships (tactic \u2192 ATT&CK)\n- [ ] Test all example queries\n- [ ] Run privacy validation (100% anonymized)\n- [ ] Performance benchmarks (<500ms risk scoring)\n- [ ] Generate Wave 7 completion report\n\n## 8. Wave 7 Success Criteria Summary\n\n**Quantitative Targets**:\n- \u2705 5 psychological profile types implemented\n- \u2705 30+ insider threat indicators modeled\n- \u2705 15+ social engineering tactics created\n- \u2705 10+ security culture assessments\n- \u2705 100+ behavioral indicator to ATT&CK technique mappings\n- \u2705 50+ example psychological profiles (anonymized)\n- \u2705 Query performance <500ms for risk scoring\n\n**Qualitative Targets**:\n- \u2705 Integration with threat actor profiling (STIX Threat Actor)\n- \u2705 Support for insider threat investigations (UCO)\n- \u2705 Actionable security awareness training recommendations\n- \u2705 Organizational security culture trend analysis\n- \u2705 100% privacy-preserving behavioral analysis (all anonymized)\n- \u2705 Ethical AI/ML model compliance\n\n---\n\n**Wave 7 Status**:",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 66,
+      "start_char": 52800,
+      "end_char": 53800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "09_WAVE_7_PSYCHOMETRIC.md_chunk_67",
+    "text": "training recommendations\n- \u2705 Organizational security culture trend analysis\n- \u2705 100% privacy-preserving behavioral analysis (all anonymized)\n- \u2705 Ethical AI/ML model compliance\n\n---\n\n**Wave 7 Status**: Ready for implementation\n**Dependencies**: Waves 1-6 completed\n**Next Wave**: Wave 8 - IT Infrastructure & Physical Security Integration\n**Document Version**: v1.0.0\n**Last Updated**: 2025-10-30\n",
+    "metadata": {
+      "file_name": "09_WAVE_7_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/09_WAVE_7_PSYCHOMETRIC.md",
+      "file_size": 53996,
+      "indexed_at": "2025-10-31T01:04:13.968906",
+      "chunk_id": 67,
+      "start_char": 53600,
+      "end_char": 54600,
+      "chunk_size": 396
+    }
+  }
+]

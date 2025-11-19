@@ -1,0 +1,730 @@
+[
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_0",
+    "text": "# IT Infrastructure Research Findings\n\n**File:** 22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md\n**Created:** 2025-10-30 00:00:00 UTC\n**Modified:** 2025-10-30 00:00:00 UTC\n**Version:** v1.0.0\n**Author:** Research Analysis Agent\n**Purpose:** Comprehensive documentation of IT infrastructure ontology research including devops-infra and Schema.org\n**Status:** ACTIVE\n\n## Executive Summary\n\nThis document presents comprehensive research findings from IT infrastructure ontologies and schemas:\n\n1. **devops-infra**: DevOps infrastructure ontology for servers, networks, databases, and deployment\n2. **Schema.org**: Broad vocabulary including IT infrastructure, organizations, and technical artifacts\n\n**Key Findings:**\n- devops-infra provides comprehensive server, network, database, and container modeling\n- Schema.org offers organizational context and general IT infrastructure vocabulary\n- Both ontologies complement OT/ICS modeling for complete IT/OT integration\n- Strong alignment with enterprise infrastr",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_1",
+    "text": "chema.org offers organizational context and general IT infrastructure vocabulary\n- Both ontologies complement OT/ICS modeling for complete IT/OT integration\n- Strong alignment with enterprise infrastructure management\n- Integration points with cybersecurity and asset management ontologies\n\n**Critical Integration Points:**\n- IT infrastructure as context for OT/ICS environments\n- Network topology bridging IT and OT networks\n- Server and database systems supporting SCADA/HMI\n- Container and cloud infrastructure for modern ICS\n- Organizational structure and personnel modeling\n\n## 1. devops-infra Ontology Analysis\n\n### 1.1 Overview\n\n**Source**: DevOps community ontology\n**Format**: OWL/RDF ontology\n**Domain**: IT infrastructure, servers, networks, databases, deployment\n**Coverage**: Physical and virtual infrastructure, configuration management, deployment\n\n**Primary Objectives:**\n- Model servers, networks, storage, and databases\n- Represent infrastructure-as-code concepts\n- Enable configura",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_2",
+    "text": "d virtual infrastructure, configuration management, deployment\n\n**Primary Objectives:**\n- Model servers, networks, storage, and databases\n- Represent infrastructure-as-code concepts\n- Enable configuration management\n- Support deployment automation\n- Integrate with monitoring and observability\n\n### 1.2 Core Architecture\n\n**Main Class Hierarchy:**\n```turtle\ndevops:Infrastructure\n  \u251c\u2500\u2500 devops:ComputeResource\n  \u2502   \u251c\u2500\u2500 devops:PhysicalServer\n  \u2502   \u251c\u2500\u2500 devops:VirtualMachine\n  \u2502   \u251c\u2500\u2500 devops:Container\n  \u2502   \u2514\u2500\u2500 devops:ServerlessFunction\n  \u251c\u2500\u2500 devops:NetworkResource\n  \u2502   \u251c\u2500\u2500 devops:Network\n  \u2502   \u251c\u2500\u2500 devops:Subnet\n  \u2502   \u251c\u2500\u2500 devops:Router\n  \u2502   \u251c\u2500\u2500 devops:Switch\n  \u2502   \u251c\u2500\u2500 devops:Firewall\n  \u2502   \u251c\u2500\u2500 devops:LoadBalancer\n  \u2502   \u2514\u2500\u2500 devops:VPN\n  \u251c\u2500\u2500 devops:StorageResource\n  \u2502   \u251c\u2500\u2500 devops:BlockStorage\n  \u2502   \u251c\u2500\u2500 devops:ObjectStorage\n  \u2502   \u251c\u2500\u2500 devops:FileStorage\n  \u2502   \u2514\u2500\u2500 devops:DatabaseStorage\n  \u251c\u2500\u2500 devops:DatabaseResource\n  \u2502   \u251c\u2500\u2500 devops:RelationalDatabase\n  \u2502   \u251c\u2500\u2500 devops:NoSQLDatabase\n  \u2502   \u251c\u2500\u2500 de",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_3",
+    "text": "\u2502   \u251c\u2500\u2500 devops:ObjectStorage\n  \u2502   \u251c\u2500\u2500 devops:FileStorage\n  \u2502   \u2514\u2500\u2500 devops:DatabaseStorage\n  \u251c\u2500\u2500 devops:DatabaseResource\n  \u2502   \u251c\u2500\u2500 devops:RelationalDatabase\n  \u2502   \u251c\u2500\u2500 devops:NoSQLDatabase\n  \u2502   \u251c\u2500\u2500 devops:TimeSeriesDatabase\n  \u2502   \u2514\u2500\u2500 devops:GraphDatabase\n  \u2514\u2500\u2500 devops:CloudResource\n      \u251c\u2500\u2500 devops:CloudInstance\n      \u251c\u2500\u2500 devops:CloudService\n      \u2514\u2500\u2500 devops:CloudFunction\n```\n\n### 1.3 Compute Resources\n\n#### Physical Server\n```turtle\ndevops:PhysicalServer a owl:Class ;\n  rdfs:subClassOf devops:ComputeResource ;\n  rdfs:label \"Physical Server\" ;\n  rdfs:comment \"Physical hardware server\" .\n\n:PhysicalServer_001 a devops:PhysicalServer ;\n  devops:hostname \"scada-server-01\" ;\n  devops:ipAddress \"192.168.10.50\" ;\n  devops:macAddress \"00:1A:2B:3C:4D:5E\" ;\n  devops:manufacturer \"Dell\" ;\n  devops:model \"PowerEdge R740\" ;\n  devops:serialNumber \"SN123456789\" ;\n  devops:cpu [\n    devops:cpuModel \"Intel Xeon Gold 6140\" ;\n    devops:cpuCores \"18\"^^xsd:integer ;\n    devops:cpuThreads \"36\"^^xsd:integer ",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_4",
+    "text": "el \"PowerEdge R740\" ;\n  devops:serialNumber \"SN123456789\" ;\n  devops:cpu [\n    devops:cpuModel \"Intel Xeon Gold 6140\" ;\n    devops:cpuCores \"18\"^^xsd:integer ;\n    devops:cpuThreads \"36\"^^xsd:integer ;\n    devops:cpuSpeed \"2.3 GHz\"\n  ] ;\n  devops:memory [\n    devops:totalRAM \"256\"^^xsd:integer ;  # GB\n    devops:memoryType \"DDR4\"\n  ] ;\n  devops:storage :Storage_RAID_001 ;\n  devops:operatingSystem :OS_Windows_Server_2019 ;\n  devops:location :DataCenter_RackA_U10 ;\n  devops:role \"SCADA Server\" ;\n  devops:environment \"Production\" ;\n  devops:managementIP \"192.168.0.50\" ;\n  devops:hasMonitoringAgent :Monitoring_Agent_001 .\n```\n\n#### Virtual Machine\n```turtle\ndevops:VirtualMachine a owl:Class ;\n  rdfs:subClassOf devops:ComputeResource ;\n  rdfs:label \"Virtual Machine\" ;\n  rdfs:comment \"Virtualized compute instance\" .\n\n:VM_HMI_001 a devops:VirtualMachine ;\n  devops:vmName \"hmi-app-01\" ;\n  devops:vmID \"vm-12345\" ;\n  devops:ipAddress \"192.168.20.100\" ;\n  devops:hypervisor :VMware_ESXi_Host_01 ;\n",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_5",
+    "text": "d compute instance\" .\n\n:VM_HMI_001 a devops:VirtualMachine ;\n  devops:vmName \"hmi-app-01\" ;\n  devops:vmID \"vm-12345\" ;\n  devops:ipAddress \"192.168.20.100\" ;\n  devops:hypervisor :VMware_ESXi_Host_01 ;\n  devops:vCPU \"4\"^^xsd:integer ;\n  devops:vRAM \"16\"^^xsd:integer ;  # GB\n  devops:vDisk \"200\"^^xsd:integer ;  # GB\n  devops:operatingSystem :OS_Windows_10_Enterprise ;\n  devops:runningOn :PhysicalServer_Hypervisor_01 ;\n  devops:network :VLAN_OT_Network ;\n  devops:role \"HMI Application Server\" ;\n  devops:applicationStack [\n    devops:application \"FactoryTalk View\" ;\n    devops:version \"12.0\"\n  ] ;\n  devops:snapshot :VM_Snapshot_20231030 ;\n  devops:backupPolicy :Daily_Backup_Policy .\n```\n\n#### Container\n```turtle\ndevops:Container a owl:Class ;\n  rdfs:subClassOf devops:ComputeResource ;\n  rdfs:label \"Container\" ;\n  rdfs:comment \"Container instance\" .\n\n:Container_SCADA_API a devops:Container ;\n  devops:containerName \"scada-api\" ;\n  devops:containerID \"abc123def456\" ;\n  devops:image \"scada-api:",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_6",
+    "text": "bel \"Container\" ;\n  rdfs:comment \"Container instance\" .\n\n:Container_SCADA_API a devops:Container ;\n  devops:containerName \"scada-api\" ;\n  devops:containerID \"abc123def456\" ;\n  devops:image \"scada-api:v2.3.1\" ;\n  devops:registry \"registry.company.com\" ;\n  devops:orchestrator :Kubernetes_Cluster_Prod ;\n  devops:namespace \"industrial-systems\" ;\n  devops:cpuLimit \"2\"^^xsd:float ;\n  devops:memoryLimit \"4096\"^^xsd:integer ;  # MB\n  devops:exposedPort \"8080\"^^xsd:integer ;\n  devops:environmentVariables [\n    devops:variable \"DB_HOST\" ;\n    devops:value \"postgres.industrial.svc.cluster.local\"\n  ] ;\n  devops:volumeMount :PersistentVolume_SCADA_Data ;\n  devops:healthCheck \"/health\" ;\n  devops:restartPolicy \"Always\" .\n```\n\n### 1.4 Network Resources\n\n#### Network\n```turtle\ndevops:Network a owl:Class ;\n  rdfs:subClassOf devops:NetworkResource ;\n  rdfs:label \"Network\" ;\n  rdfs:comment \"Network segment or VLAN\" .\n\n:OT_Network a devops:Network ;\n  devops:networkName \"OT Production Network\" ;\n  devops:",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_7",
+    "text": "\n  rdfs:subClassOf devops:NetworkResource ;\n  rdfs:label \"Network\" ;\n  rdfs:comment \"Network segment or VLAN\" .\n\n:OT_Network a devops:Network ;\n  devops:networkName \"OT Production Network\" ;\n  devops:networkType \"OT\" ;\n  devops:vlanID \"100\"^^xsd:integer ;\n  devops:cidr \"192.168.100.0/24\" ;\n  devops:gateway \"192.168.100.1\" ;\n  devops:dhcpEnabled false ;\n  devops:dnsServers [ \"192.168.100.10\" \"192.168.100.11\" ] ;\n  devops:accessControlList :ACL_OT_Strict ;\n  devops:monitoredBy :Network_IDS_OT ;\n  devops:connectedDevices [\n    :PLC_001\n    :PLC_002\n    :HMI_001\n    :SCADA_Server_001\n  ] ;\n  devops:isolatedFrom :Corporate_IT_Network ;\n  devops:firewallRules :Firewall_Policy_OT .\n```\n\n#### Router\n```turtle\ndevops:Router a owl:Class ;\n  rdfs:subClassOf devops:NetworkResource ;\n  rdfs:label \"Router\" ;\n  rdfs:comment \"Network router device\" .\n\n:Border_Router_OT a devops:Router ;\n  devops:hostname \"rtr-ot-border-01\" ;\n  devops:ipAddress \"192.168.100.1\" ;\n  devops:manufacturer \"Cisco\" ;\n  devops",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_8",
+    "text": "er\" ;\n  rdfs:comment \"Network router device\" .\n\n:Border_Router_OT a devops:Router ;\n  devops:hostname \"rtr-ot-border-01\" ;\n  devops:ipAddress \"192.168.100.1\" ;\n  devops:manufacturer \"Cisco\" ;\n  devops:model \"ISR 4451\" ;\n  devops:firmwareVersion \"16.9.5\" ;\n  devops:interfaces [\n    devops:interface [\n      devops:interfaceName \"GigabitEthernet0/0/0\" ;\n      devops:ipAddress \"192.168.100.1\" ;\n      devops:subnet \"255.255.255.0\" ;\n      devops:connectedTo :OT_Network\n    ] ;\n    devops:interface [\n      devops:interfaceName \"GigabitEthernet0/0/1\" ;\n      devops:ipAddress \"10.10.10.1\" ;\n      devops:subnet \"255.255.255.0\" ;\n      devops:connectedTo :DMZ_Network\n    ]\n  ] ;\n  devops:routingProtocol [ \"OSPF\" \"BGP\" ] ;\n  devops:accessControlList :ACL_Border_Router ;\n  devops:managementIP \"192.168.0.100\" .\n```\n\n#### Firewall\n```turtle\ndevops:Firewall a owl:Class ;\n  rdfs:subClassOf devops:NetworkResource ;\n  rdfs:label \"Firewall\" ;\n  rdfs:comment \"Network firewall appliance\" .\n\n:Firewall_OT_IT",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_9",
+    "text": ".0.100\" .\n```\n\n#### Firewall\n```turtle\ndevops:Firewall a owl:Class ;\n  rdfs:subClassOf devops:NetworkResource ;\n  rdfs:label \"Firewall\" ;\n  rdfs:comment \"Network firewall appliance\" .\n\n:Firewall_OT_IT_Boundary a devops:Firewall ;\n  devops:hostname \"fw-ot-it-01\" ;\n  devops:ipAddress \"192.168.10.1\" ;\n  devops:manufacturer \"Palo Alto Networks\" ;\n  devops:model \"PA-5220\" ;\n  devops:firmwareVersion \"10.1.3\" ;\n  devops:interfaces [\n    devops:interface [\n      devops:interfaceName \"ethernet1/1\" ;\n      devops:zone \"OT-Zone\" ;\n      devops:ipAddress \"192.168.100.254\"\n    ] ;\n    devops:interface [\n      devops:interfaceName \"ethernet1/2\" ;\n      devops:zone \"IT-Zone\" ;\n      devops:ipAddress \"10.20.30.254\"\n    ]\n  ] ;\n  devops:securityPolicy :Security_Policy_OT_IT ;\n  devops:natPolicy :NAT_Policy_OT_IT ;\n  devops:threatPrevention [\n    devops:antivirus true ;\n    devops:antiSpyware true ;\n    devops:vulnerabilityProtection true ;\n    devops:urlFiltering true\n  ] ;\n  devops:logForwarding :SIEM",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_10",
+    "text": "_OT_IT ;\n  devops:threatPrevention [\n    devops:antivirus true ;\n    devops:antiSpyware true ;\n    devops:vulnerabilityProtection true ;\n    devops:urlFiltering true\n  ] ;\n  devops:logForwarding :SIEM_Server .\n```\n\n#### Load Balancer\n```turtle\ndevops:LoadBalancer a owl:Class ;\n  rdfs:subClassOf devops:NetworkResource ;\n  rdfs:label \"Load Balancer\" ;\n  rdfs:comment \"Load balancing appliance or service\" .\n\n:LoadBalancer_SCADA_API a devops:LoadBalancer ;\n  devops:name \"scada-api-lb\" ;\n  devops:type \"Application Load Balancer\" ;\n  devops:virtualIP \"192.168.20.50\" ;\n  devops:port \"443\"^^xsd:integer ;\n  devops:protocol \"HTTPS\" ;\n  devops:algorithm \"Round Robin\" ;\n  devops:sslCertificate :SSL_Cert_WildCard ;\n  devops:backendPool [\n    devops:backend [\n      devops:server :SCADA_API_Server_01 ;\n      devops:port \"8080\"^^xsd:integer ;\n      devops:weight \"1\"^^xsd:integer ;\n      devops:healthCheck \"/health\"\n    ] ;\n    devops:backend [\n      devops:server :SCADA_API_Server_02 ;\n      devops:por",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_11",
+    "text": "    devops:port \"8080\"^^xsd:integer ;\n      devops:weight \"1\"^^xsd:integer ;\n      devops:healthCheck \"/health\"\n    ] ;\n    devops:backend [\n      devops:server :SCADA_API_Server_02 ;\n      devops:port \"8080\"^^xsd:integer ;\n      devops:weight \"1\"^^xsd:integer ;\n      devops:healthCheck \"/health\"\n    ]\n  ] ;\n  devops:sessionPersistence \"Source IP\" ;\n  devops:timeout \"300\"^^xsd:integer .  # seconds\n```\n\n### 1.5 Storage Resources\n\n#### Block Storage\n```turtle\ndevops:BlockStorage a owl:Class ;\n  rdfs:subClassOf devops:StorageResource ;\n  rdfs:label \"Block Storage\" ;\n  rdfs:comment \"Block-level storage volume\" .\n\n:Storage_RAID_001 a devops:BlockStorage ;\n  devops:storageName \"RAID10-Vol-01\" ;\n  devops:storageType \"RAID 10\" ;\n  devops:capacity \"8\"^^xsd:integer ;  # TB\n  devops:usedSpace \"4.5\"^^xsd:float ;  # TB\n  devops:diskCount \"8\"^^xsd:integer ;\n  devops:diskType \"SSD\" ;\n  devops:controller \"Dell PERC H740P\" ;\n  devops:attachedTo :PhysicalServer_001 ;\n  devops:mountPoint \"/data\" ;\n  devo",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_12",
+    "text": "xsd:float ;  # TB\n  devops:diskCount \"8\"^^xsd:integer ;\n  devops:diskType \"SSD\" ;\n  devops:controller \"Dell PERC H740P\" ;\n  devops:attachedTo :PhysicalServer_001 ;\n  devops:mountPoint \"/data\" ;\n  devops:fileSystem \"NTFS\" ;\n  devops:snapshotEnabled true ;\n  devops:encryptionEnabled true .\n```\n\n#### Object Storage\n```turtle\ndevops:ObjectStorage a owl:Class ;\n  rdfs:subClassOf devops:StorageResource ;\n  rdfs:label \"Object Storage\" ;\n  rdfs:comment \"Object-based storage service\" .\n\n:S3_Bucket_SCADA_Logs a devops:ObjectStorage ;\n  devops:bucketName \"scada-logs-prod\" ;\n  devops:provider \"AWS S3\" ;\n  devops:region \"us-east-1\" ;\n  devops:storageClass \"Standard\" ;\n  devops:capacity \"500\"^^xsd:integer ;  # GB\n  devops:objectCount \"1500000\"^^xsd:integer ;\n  devops:versioning true ;\n  devops:encryption \"AES-256\" ;\n  devops:accessPolicy :S3_Policy_SCADA_Logs ;\n  devops:lifecycle [\n    devops:transitionToGlacier \"90 days\" ;\n    devops:expiration \"365 days\"\n  ] ;\n  devops:replication :S3_Bucket_SCADA",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_13",
+    "text": "n \"AES-256\" ;\n  devops:accessPolicy :S3_Policy_SCADA_Logs ;\n  devops:lifecycle [\n    devops:transitionToGlacier \"90 days\" ;\n    devops:expiration \"365 days\"\n  ] ;\n  devops:replication :S3_Bucket_SCADA_Logs_DR .\n```\n\n### 1.6 Database Resources\n\n#### Relational Database\n```turtle\ndevops:RelationalDatabase a owl:Class ;\n  rdfs:subClassOf devops:DatabaseResource ;\n  rdfs:label \"Relational Database\" ;\n  rdfs:comment \"SQL-based relational database\" .\n\n:PostgreSQL_SCADA_DB a devops:RelationalDatabase ;\n  devops:databaseName \"scada_production\" ;\n  devops:databaseType \"PostgreSQL\" ;\n  devops:version \"14.5\" ;\n  devops:host \"db-scada-prod-01.company.local\" ;\n  devops:port \"5432\"^^xsd:integer ;\n  devops:schema [\n    devops:schemaName \"process_data\" ;\n    devops:tables [\n      \"sensor_readings\"\n      \"alarm_history\"\n      \"operator_actions\"\n      \"equipment_status\"\n    ]\n  ] ;\n  devops:storage :Storage_DB_Volume_001 ;\n  devops:size \"2048\"^^xsd:integer ;  # GB\n  devops:connectionPool [\n    devops:ma",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_14",
+    "text": "alarm_history\"\n      \"operator_actions\"\n      \"equipment_status\"\n    ]\n  ] ;\n  devops:storage :Storage_DB_Volume_001 ;\n  devops:size \"2048\"^^xsd:integer ;  # GB\n  devops:connectionPool [\n    devops:maxConnections \"200\"^^xsd:integer ;\n    devops:idleConnections \"50\"^^xsd:integer\n  ] ;\n  devops:replication [\n    devops:replicationType \"Streaming Replication\" ;\n    devops:standbyServer :PostgreSQL_SCADA_DB_Standby ;\n    devops:lagMonitoring true\n  ] ;\n  devops:backup [\n    devops:backupType \"Full + Incremental\" ;\n    devops:schedule \"Daily at 02:00 UTC\" ;\n    devops:retention \"30 days\" ;\n    devops:backupLocation :S3_Bucket_DB_Backups\n  ] ;\n  devops:monitoring :DB_Monitoring_Agent .\n```\n\n#### Time-Series Database\n```turtle\ndevops:TimeSeriesDatabase a owl:Class ;\n  rdfs:subClassOf devops:DatabaseResource ;\n  rdfs:label \"Time-Series Database\" ;\n  rdfs:comment \"Database optimized for time-series data\" .\n\n:InfluxDB_Historian a devops:TimeSeriesDatabase ;\n  devops:databaseName \"ics_historian\" ",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_15",
+    "text": "aseResource ;\n  rdfs:label \"Time-Series Database\" ;\n  rdfs:comment \"Database optimized for time-series data\" .\n\n:InfluxDB_Historian a devops:TimeSeriesDatabase ;\n  devops:databaseName \"ics_historian\" ;\n  devops:databaseType \"InfluxDB\" ;\n  devops:version \"2.7.1\" ;\n  devops:host \"historian-01.company.local\" ;\n  devops:port \"8086\"^^xsd:integer ;\n  devops:bucket [\n    devops:bucketName \"sensor_data\" ;\n    devops:retention \"90d\" ;\n    devops:shardDuration \"1d\"\n  ] ;\n  devops:dataPoints \"50000000000\"^^xsd:integer ;  # 50 billion\n  devops:ingestRate \"500000\"^^xsd:integer ;  # points per second\n  devops:queryLatency \"< 100ms\" ;\n  devops:storageEngine \"TSM\" ;\n  devops:compression \"Snappy\" ;\n  devops:retention [\n    devops:rawData \"90 days\" ;\n    devops:downsampled_1h \"1 year\" ;\n    devops:downsampled_1d \"5 years\"\n  ] ;\n  devops:clustering [\n    devops:clusterSize \"3\"^^xsd:integer ;\n    devops:replicationFactor \"2\"^^xsd:integer\n  ] .\n```\n\n### 1.7 Operating Systems\n\n#### Operating System Classifi",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_16",
+    "text": "ed_1d \"5 years\"\n  ] ;\n  devops:clustering [\n    devops:clusterSize \"3\"^^xsd:integer ;\n    devops:replicationFactor \"2\"^^xsd:integer\n  ] .\n```\n\n### 1.7 Operating Systems\n\n#### Operating System Classification\n```turtle\ndevops:OperatingSystem a owl:Class ;\n  rdfs:label \"Operating System\" .\n\ndevops:WindowsServer a owl:Class ;\n  rdfs:subClassOf devops:OperatingSystem ;\n  rdfs:label \"Windows Server\" .\n\ndevops:LinuxDistribution a owl:Class ;\n  rdfs:subClassOf devops:OperatingSystem ;\n  rdfs:label \"Linux Distribution\" .\n\ndevops:UnixSystem a owl:Class ;\n  rdfs:subClassOf devops:OperatingSystem ;\n  rdfs:label \"Unix System\" .\n```\n\n#### Operating System Instances\n```turtle\n:OS_Windows_Server_2019 a devops:WindowsServer ;\n  devops:osName \"Windows Server 2019\" ;\n  devops:osVersion \"10.0.17763\" ;\n  devops:osEdition \"Datacenter\" ;\n  devops:architecture \"x64\" ;\n  devops:patchLevel \"2023-10 Cumulative Update\" ;\n  devops:lastPatchDate \"2023-10-15\"^^xsd:date ;\n  devops:licensingMode \"Core-based\" ;\n  devop",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_17",
+    "text": "s:osEdition \"Datacenter\" ;\n  devops:architecture \"x64\" ;\n  devops:patchLevel \"2023-10 Cumulative Update\" ;\n  devops:lastPatchDate \"2023-10-15\"^^xsd:date ;\n  devops:licensingMode \"Core-based\" ;\n  devops:activationStatus \"Activated\" .\n\n:OS_RHEL_8 a devops:LinuxDistribution ;\n  devops:osName \"Red Hat Enterprise Linux\" ;\n  devops:osVersion \"8.6\" ;\n  devops:kernel \"4.18.0-372.9.1.el8.x86_64\" ;\n  devops:architecture \"x86_64\" ;\n  devops:packageManager \"dnf\" ;\n  devops:subscriptionStatus \"Active\" ;\n  devops:lastUpdate \"2023-10-20\"^^xsd:date ;\n  devops:securityEnhanced \"SELinux Enforcing\" .\n```\n\n### 1.8 Configuration Management\n\n#### Configuration Item\n```turtle\ndevops:ConfigurationItem a owl:Class ;\n  rdfs:label \"Configuration Item\" ;\n  rdfs:comment \"Managed configuration element\" .\n\n:Config_SCADA_Server a devops:ConfigurationItem ;\n  devops:ciName \"SCADA Server Configuration\" ;\n  devops:ciType \"Server Configuration\" ;\n  devops:appliesTo :PhysicalServer_001 ;\n  devops:configurationFile \"/etc/s",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_18",
+    "text": "_Server a devops:ConfigurationItem ;\n  devops:ciName \"SCADA Server Configuration\" ;\n  devops:ciType \"Server Configuration\" ;\n  devops:appliesTo :PhysicalServer_001 ;\n  devops:configurationFile \"/etc/scada/server.conf\" ;\n  devops:parameters [\n    devops:parameter [\n      devops:key \"max_connections\" ;\n      devops:value \"500\" ;\n      devops:type \"integer\"\n    ] ;\n    devops:parameter [\n      devops:key \"log_level\" ;\n      devops:value \"INFO\" ;\n      devops:type \"string\"\n    ] ;\n    devops:parameter [\n      devops:key \"enable_ssl\" ;\n      devops:value \"true\" ;\n      devops:type \"boolean\"\n    ]\n  ] ;\n  devops:managedBy :Ansible_Controller ;\n  devops:lastModified \"2023-10-25T14:30:00Z\"^^xsd:dateTime ;\n  devops:modifiedBy :Admin_User_Smith ;\n  devops:versionControlled true ;\n  devops:repository \"git@github.com:company/scada-config.git\" ;\n  devops:branch \"production\" ;\n  devops:commitHash \"abc123def456\" .\n```\n\n#### Infrastructure as Code\n```turtle\ndevops:InfrastructureAsCode a owl:Class ;\n  ",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_19",
+    "text": " \"git@github.com:company/scada-config.git\" ;\n  devops:branch \"production\" ;\n  devops:commitHash \"abc123def456\" .\n```\n\n#### Infrastructure as Code\n```turtle\ndevops:InfrastructureAsCode a owl:Class ;\n  rdfs:label \"Infrastructure as Code\" ;\n  rdfs:comment \"Infrastructure defined in code\" .\n\n:Terraform_OT_Infrastructure a devops:InfrastructureAsCode ;\n  devops:iacTool \"Terraform\" ;\n  devops:version \"1.5.7\" ;\n  devops:codeRepository \"git@github.com:company/ot-infrastructure.git\" ;\n  devops:mainFile \"main.tf\" ;\n  devops:provider [ \"AWS\" \"VMware vSphere\" ] ;\n  devops:modules [\n    devops:module [\n      devops:moduleName \"ot_network\" ;\n      devops:description \"OT network infrastructure\" ;\n      devops:source \"./modules/network\"\n    ] ;\n    devops:module [\n      devops:moduleName \"scada_servers\" ;\n      devops:description \"SCADA server provisioning\" ;\n      devops:source \"./modules/compute\"\n    ]\n  ] ;\n  devops:stateBackend \"S3\" ;\n  devops:stateFile \"s3://terraform-state/ot-infrastructure.tfst",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_20",
+    "text": "\n      devops:description \"SCADA server provisioning\" ;\n      devops:source \"./modules/compute\"\n    ]\n  ] ;\n  devops:stateBackend \"S3\" ;\n  devops:stateFile \"s3://terraform-state/ot-infrastructure.tfstate\" ;\n  devops:stateLocking true ;\n  devops:lastApplied \"2023-10-28T10:00:00Z\"^^xsd:dateTime ;\n  devops:appliedBy :DevOps_Engineer_Jones .\n```\n\n### 1.9 Monitoring and Observability\n\n#### Monitoring Agent\n```turtle\ndevops:MonitoringAgent a owl:Class ;\n  rdfs:label \"Monitoring Agent\" ;\n  rdfs:comment \"Monitoring and metrics collection agent\" .\n\n:Monitoring_Agent_001 a devops:MonitoringAgent ;\n  devops:agentName \"Prometheus Node Exporter\" ;\n  devops:version \"1.6.1\" ;\n  devops:installedOn :PhysicalServer_001 ;\n  devops:port \"9100\"^^xsd:integer ;\n  devops:metrics [\n    \"cpu_usage\"\n    \"memory_usage\"\n    \"disk_io\"\n    \"network_traffic\"\n    \"process_count\"\n    \"system_load\"\n  ] ;\n  devops:scrapedBy :Prometheus_Server ;\n  devops:scrapeInterval \"15s\" ;\n  devops:metricsEndpoint \"http://192.168.10.5",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_21",
+    "text": "e\"\n    \"disk_io\"\n    \"network_traffic\"\n    \"process_count\"\n    \"system_load\"\n  ] ;\n  devops:scrapedBy :Prometheus_Server ;\n  devops:scrapeInterval \"15s\" ;\n  devops:metricsEndpoint \"http://192.168.10.50:9100/metrics\" .\n```\n\n#### Monitoring Server\n```turtle\n:Prometheus_Server a devops:MonitoringServer ;\n  devops:serverName \"prometheus-prod-01\" ;\n  devops:version \"2.45.0\" ;\n  devops:host \"monitoring-01.company.local\" ;\n  devops:port \"9090\"^^xsd:integer ;\n  devops:scrapeTargets [\n    :Monitoring_Agent_001\n    :Monitoring_Agent_002\n    :Monitoring_Agent_003\n  ] ;\n  devops:retentionPeriod \"90d\" ;\n  devops:alertManager :AlertManager_Server ;\n  devops:grafanaDashboard :Grafana_Dashboard_OT ;\n  devops:alertRules [\n    devops:rule [\n      devops:ruleName \"High CPU Usage\" ;\n      devops:expression \"cpu_usage > 90\" ;\n      devops:duration \"5m\" ;\n      devops:severity \"warning\"\n    ] ;\n    devops:rule [\n      devops:ruleName \"SCADA Server Down\" ;\n      devops:expression \"up{job='scada-server'} == 0",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_22",
+    "text": "pu_usage > 90\" ;\n      devops:duration \"5m\" ;\n      devops:severity \"warning\"\n    ] ;\n    devops:rule [\n      devops:ruleName \"SCADA Server Down\" ;\n      devops:expression \"up{job='scada-server'} == 0\" ;\n      devops:duration \"1m\" ;\n      devops:severity \"critical\"\n    ]\n  ] .\n```\n\n### 1.10 Deployment and Orchestration\n\n#### Deployment\n```turtle\ndevops:Deployment a owl:Class ;\n  rdfs:label \"Deployment\" ;\n  rdfs:comment \"Software deployment instance\" .\n\n:Deployment_SCADA_API_v2_3_1 a devops:Deployment ;\n  devops:deploymentName \"scada-api-v2.3.1\" ;\n  devops:application \"SCADA API Service\" ;\n  devops:version \"2.3.1\" ;\n  devops:deploymentDate \"2023-10-30T08:00:00Z\"^^xsd:dateTime ;\n  devops:deployedBy :CI_CD_Pipeline ;\n  devops:environment \"Production\" ;\n  devops:targetInfrastructure :Kubernetes_Cluster_Prod ;\n  devops:replicas \"3\"^^xsd:integer ;\n  devops:deploymentStrategy \"Rolling Update\" ;\n  devops:maxUnavailable \"1\"^^xsd:integer ;\n  devops:maxSurge \"1\"^^xsd:integer ;\n  devops:healthChec",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_23",
+    "text": "s_Cluster_Prod ;\n  devops:replicas \"3\"^^xsd:integer ;\n  devops:deploymentStrategy \"Rolling Update\" ;\n  devops:maxUnavailable \"1\"^^xsd:integer ;\n  devops:maxSurge \"1\"^^xsd:integer ;\n  devops:healthCheck [\n    devops:httpGet \"/health\" ;\n    devops:port \"8080\"^^xsd:integer ;\n    devops:initialDelay \"30s\" ;\n    devops:period \"10s\"\n  ] ;\n  devops:rollbackAvailable true ;\n  devops:previousVersion :Deployment_SCADA_API_v2_3_0 .\n```\n\n#### Container Orchestration\n```turtle\ndevops:ContainerOrchestrator a owl:Class ;\n  rdfs:label \"Container Orchestrator\" ;\n  rdfs:comment \"Container orchestration platform\" .\n\n:Kubernetes_Cluster_Prod a devops:ContainerOrchestrator ;\n  devops:orchestratorType \"Kubernetes\" ;\n  devops:version \"1.27.3\" ;\n  devops:clusterName \"ot-kubernetes-prod\" ;\n  devops:masterNodes [\n    :K8s_Master_01\n    :K8s_Master_02\n    :K8s_Master_03\n  ] ;\n  devops:workerNodes [\n    :K8s_Worker_01\n    :K8s_Worker_02\n    :K8s_Worker_03\n    :K8s_Worker_04\n  ] ;\n  devops:namespaces [\n    \"indust",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_24",
+    "text": "   :K8s_Master_01\n    :K8s_Master_02\n    :K8s_Master_03\n  ] ;\n  devops:workerNodes [\n    :K8s_Worker_01\n    :K8s_Worker_02\n    :K8s_Worker_03\n    :K8s_Worker_04\n  ] ;\n  devops:namespaces [\n    \"industrial-systems\"\n    \"monitoring\"\n    \"logging\"\n  ] ;\n  devops:networking [\n    devops:cni \"Calico\" ;\n    devops:podCIDR \"10.244.0.0/16\" ;\n    devops:serviceCIDR \"10.96.0.0/12\"\n  ] ;\n  devops:storage [\n    devops:storageClass \"fast-ssd\" ;\n    devops:provisioner \"kubernetes.io/aws-ebs\"\n  ] ;\n  devops:ingress :Nginx_Ingress_Controller ;\n  devops:monitoring :Prometheus_K8s_Stack .\n```\n\n### 1.11 Security and Access Control\n\n#### Security Group\n```turtle\ndevops:SecurityGroup a owl:Class ;\n  rdfs:label \"Security Group\" ;\n  rdfs:comment \"Network security group or ACL\" .\n\n:Security_Group_OT_Network a devops:SecurityGroup ;\n  devops:groupName \"sg-ot-production\" ;\n  devops:description \"Security group for OT production network\" ;\n  devops:appliesTo :OT_Network ;\n  devops:inboundRules [\n    devops:rule [",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_25",
+    "text": "ops:SecurityGroup ;\n  devops:groupName \"sg-ot-production\" ;\n  devops:description \"Security group for OT production network\" ;\n  devops:appliesTo :OT_Network ;\n  devops:inboundRules [\n    devops:rule [\n      devops:protocol \"TCP\" ;\n      devops:port \"502\"^^xsd:integer ;  # Modbus\n      devops:source \"192.168.100.0/24\" ;\n      devops:action \"ALLOW\"\n    ] ;\n    devops:rule [\n      devops:protocol \"TCP\" ;\n      devops:port \"20000\"^^xsd:integer ;  # DNP3\n      devops:source \"192.168.100.0/24\" ;\n      devops:action \"ALLOW\"\n    ] ;\n    devops:rule [\n      devops:protocol \"ANY\" ;\n      devops:source \"0.0.0.0/0\" ;\n      devops:action \"DENY\"\n    ]\n  ] ;\n  devops:outboundRules [\n    devops:rule [\n      devops:protocol \"TCP\" ;\n      devops:destination \"192.168.20.0/24\" ;  # To SCADA servers\n      devops:action \"ALLOW\"\n    ] ;\n    devops:rule [\n      devops:protocol \"ANY\" ;\n      devops:destination \"0.0.0.0/0\" ;\n      devops:action \"DENY\"\n    ]\n  ] ;\n  devops:logging true ;\n  devops:logDestination ",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_26",
+    "text": "ps:action \"ALLOW\"\n    ] ;\n    devops:rule [\n      devops:protocol \"ANY\" ;\n      devops:destination \"0.0.0.0/0\" ;\n      devops:action \"DENY\"\n    ]\n  ] ;\n  devops:logging true ;\n  devops:logDestination :SIEM_Server .\n```\n\n#### Access Control\n```turtle\ndevops:AccessControl a owl:Class ;\n  rdfs:label \"Access Control\" ;\n  rdfs:comment \"Access control policy or rule\" .\n\n:Access_Control_SCADA_Servers a devops:AccessControl ;\n  devops:policyName \"SCADA Server Access Policy\" ;\n  devops:appliesTo :SCADA_Server_Group ;\n  devops:allowedUsers [\n    :User_Group_SCADA_Operators\n    :User_Group_SCADA_Engineers\n  ] ;\n  devops:allowedActions [\n    \"READ\"\n    \"WRITE\"\n    \"EXECUTE\"\n  ] ;\n  devops:mfaRequired true ;\n  devops:accessHours \"24/7\" ;\n  devops:accessLocation [\n    \"On-premises only\"\n    \"VPN from approved IPs\"\n  ] ;\n  devops:sessionTimeout \"30 minutes\" ;\n  devops:auditLogging true .\n```\n\n### 1.12 Backup and Disaster Recovery\n\n#### Backup Policy\n```turtle\ndevops:BackupPolicy a owl:Class ;\n  rdfs:",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_27",
+    "text": "proved IPs\"\n  ] ;\n  devops:sessionTimeout \"30 minutes\" ;\n  devops:auditLogging true .\n```\n\n### 1.12 Backup and Disaster Recovery\n\n#### Backup Policy\n```turtle\ndevops:BackupPolicy a owl:Class ;\n  rdfs:label \"Backup Policy\" ;\n  rdfs:comment \"Data backup policy configuration\" .\n\n:Backup_Policy_SCADA_Critical a devops:BackupPolicy ;\n  devops:policyName \"SCADA Critical Systems Backup\" ;\n  devops:appliesTo [\n    :SCADA_Server_001\n    :PostgreSQL_SCADA_DB\n    :InfluxDB_Historian\n  ] ;\n  devops:backupType \"Full + Incremental\" ;\n  devops:schedule [\n    devops:fullBackup \"Sunday at 00:00 UTC\" ;\n    devops:incrementalBackup \"Daily at 02:00 UTC\" ;\n    devops:transactionLogBackup \"Every 15 minutes\"\n  ] ;\n  devops:retention [\n    devops:daily \"30 days\" ;\n    devops:weekly \"12 weeks\" ;\n    devops:monthly \"12 months\" ;\n    devops:yearly \"7 years\"\n  ] ;\n  devops:backupDestination [\n    devops:primary :Local_Backup_Storage ;\n    devops:secondary :Cloud_Backup_S3\n  ] ;\n  devops:encryption \"AES-256\" ;\n  d",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_28",
+    "text": " \"12 months\" ;\n    devops:yearly \"7 years\"\n  ] ;\n  devops:backupDestination [\n    devops:primary :Local_Backup_Storage ;\n    devops:secondary :Cloud_Backup_S3\n  ] ;\n  devops:encryption \"AES-256\" ;\n  devops:compression true ;\n  devops:verification [\n    devops:integrityCheck true ;\n    devops:restoreTest \"Monthly\"\n  ] .\n```\n\n#### Disaster Recovery Plan\n```turtle\ndevops:DisasterRecoveryPlan a owl:Class ;\n  rdfs:label \"Disaster Recovery Plan\" ;\n  rdfs:comment \"Disaster recovery configuration and procedures\" .\n\n:DR_Plan_SCADA_Systems a devops:DisasterRecoveryPlan ;\n  devops:planName \"SCADA Systems DR Plan\" ;\n  devops:rto \"4 hours\"^^xsd:duration ;  # Recovery Time Objective\n  devops:rpo \"15 minutes\"^^xsd:duration ;  # Recovery Point Objective\n  devops:primarySite :DataCenter_Primary ;\n  devops:drSite :DataCenter_DR ;\n  devops:replicationMethod \"Asynchronous Replication\" ;\n  devops:replicatedSystems [\n    :SCADA_Server_001\n    :PostgreSQL_SCADA_DB\n    :InfluxDB_Historian\n  ] ;\n  devops:failo",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_29",
+    "text": "drSite :DataCenter_DR ;\n  devops:replicationMethod \"Asynchronous Replication\" ;\n  devops:replicatedSystems [\n    :SCADA_Server_001\n    :PostgreSQL_SCADA_DB\n    :InfluxDB_Historian\n  ] ;\n  devops:failoverProcedure :DR_Runbook_001 ;\n  devops:lastTest \"2023-09-15\"^^xsd:date ;\n  devops:testFrequency \"Quarterly\" ;\n  devops:testResult \"Successful - RTO met\" .\n```\n\n## 2. Schema.org Analysis\n\n### 2.1 Overview\n\n**Source**: Schema.org vocabulary project\n**Format**: RDF/JSON-LD vocabulary\n**Coverage**: Broad semantic web vocabulary including organizations, people, places, products, events\n**Relevance**: Organizational context, IT infrastructure, personnel, locations\n\n### 2.2 Organization and Place\n\n#### Organization\n```turtle\nschema:Organization a rdfs:Class ;\n  rdfs:label \"Organization\" ;\n  rdfs:comment \"An organization such as a company or institution\" .\n\n:ACME_Manufacturing a schema:Organization ;\n  schema:name \"ACME Manufacturing Corporation\" ;\n  schema:legalName \"ACME Manufacturing Corp.\" ;\n",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_30",
+    "text": "ment \"An organization such as a company or institution\" .\n\n:ACME_Manufacturing a schema:Organization ;\n  schema:name \"ACME Manufacturing Corporation\" ;\n  schema:legalName \"ACME Manufacturing Corp.\" ;\n  schema:organizationType \"Manufacturing Company\" ;\n  schema:foundingDate \"1985-03-15\"^^xsd:date ;\n  schema:address [\n    schema:streetAddress \"123 Industrial Parkway\" ;\n    schema:addressLocality \"Detroit\" ;\n    schema:addressRegion \"MI\" ;\n    schema:postalCode \"48201\" ;\n    schema:addressCountry \"US\"\n  ] ;\n  schema:telephone \"+1-313-555-0100\" ;\n  schema:email \"info@acme-mfg.com\" ;\n  schema:url \"https://www.acme-mfg.com\" ;\n  schema:numberOfEmployees \"5000\"^^xsd:integer ;\n  schema:industry \"Automotive Manufacturing\" ;\n  schema:parentOrganization :ACME_Global_Holdings ;\n  schema:department [\n    :Department_IT\n    :Department_OT\n    :Department_Operations\n  ] .\n```\n\n#### Department\n```turtle\nschema:OrganizationalUnit a rdfs:Class ;\n  rdfs:subClassOf schema:Organization .\n\n:Department_OT a s",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_31",
+    "text": "  :Department_IT\n    :Department_OT\n    :Department_Operations\n  ] .\n```\n\n#### Department\n```turtle\nschema:OrganizationalUnit a rdfs:Class ;\n  rdfs:subClassOf schema:Organization .\n\n:Department_OT a schema:OrganizationalUnit ;\n  schema:name \"Operational Technology Department\" ;\n  schema:alternateName \"OT Department\" ;\n  schema:description \"Manages industrial control systems and automation\" ;\n  schema:parentOrganization :ACME_Manufacturing ;\n  schema:employee [\n    :Person_OT_Manager\n    :Person_Control_Engineer_1\n    :Person_Control_Engineer_2\n    :Person_SCADA_Operator_1\n  ] ;\n  schema:telephone \"+1-313-555-0150\" ;\n  schema:email \"ot@acme-mfg.com\" .\n```\n\n#### Place (Facility)\n```turtle\nschema:Place a rdfs:Class ;\n  rdfs:label \"Place\" ;\n  rdfs:comment \"A physical location\" .\n\n:Manufacturing_Facility a schema:Place ;\n  schema:name \"ACME Detroit Manufacturing Plant\" ;\n  schema:address [\n    schema:streetAddress \"123 Industrial Parkway\" ;\n    schema:addressLocality \"Detroit\" ;\n    schema:",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_32",
+    "text": "g_Facility a schema:Place ;\n  schema:name \"ACME Detroit Manufacturing Plant\" ;\n  schema:address [\n    schema:streetAddress \"123 Industrial Parkway\" ;\n    schema:addressLocality \"Detroit\" ;\n    schema:addressRegion \"MI\" ;\n    schema:postalCode \"48201\" ;\n    schema:addressCountry \"US\"\n  ] ;\n  schema:geo [\n    schema:latitude \"42.3314\"^^xsd:float ;\n    schema:longitude \"-83.0458\"^^xsd:float\n  ] ;\n  schema:containedInPlace :Site_Detroit_Campus ;\n  schema:containsPlace [\n    :Building_Production_A\n    :Building_Production_B\n    :Building_Warehouse\n    :Building_Administration\n  ] ;\n  schema:openingHours \"24/7 Production\" .\n```\n\n### 2.3 Person (Personnel)\n\n#### Person\n```turtle\nschema:Person a rdfs:Class ;\n  rdfs:label \"Person\" ;\n  rdfs:comment \"A person (alive, dead, undead, or fictional)\" .\n\n:Person_OT_Manager a schema:Person ;\n  schema:givenName \"John\" ;\n  schema:familyName \"Smith\" ;\n  schema:jobTitle \"OT Manager\" ;\n  schema:email \"john.smith@acme-mfg.com\" ;\n  schema:telephone \"+1-313-555",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_33",
+    "text": "Person_OT_Manager a schema:Person ;\n  schema:givenName \"John\" ;\n  schema:familyName \"Smith\" ;\n  schema:jobTitle \"OT Manager\" ;\n  schema:email \"john.smith@acme-mfg.com\" ;\n  schema:telephone \"+1-313-555-0151\" ;\n  schema:worksFor :ACME_Manufacturing ;\n  schema:memberOf :Department_OT ;\n  schema:hasOccupation :Occupation_OT_Manager ;\n  schema:hasCredential [\n    :Certification_GICSP\n    :Certification_CISSP\n  ] ;\n  schema:alumniOf \"University of Michigan\" .\n\n:Person_SCADA_Operator_1 a schema:Person ;\n  schema:givenName \"Jane\" ;\n  schema:familyName \"Doe\" ;\n  schema:jobTitle \"SCADA Operator\" ;\n  schema:email \"jane.doe@acme-mfg.com\" ;\n  schema:telephone \"+1-313-555-0152\" ;\n  schema:worksFor :ACME_Manufacturing ;\n  schema:memberOf :Department_OT ;\n  schema:workLocation :Control_Room_A .\n```\n\n#### Occupation\n```turtle\nschema:Occupation a rdfs:Class ;\n  rdfs:label \"Occupation\" ;\n  rdfs:comment \"A profession or job type\" .\n\n:Occupation_OT_Manager a schema:Occupation ;\n  schema:name \"Operational T",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_34",
+    "text": "Occupation\n```turtle\nschema:Occupation a rdfs:Class ;\n  rdfs:label \"Occupation\" ;\n  rdfs:comment \"A profession or job type\" .\n\n:Occupation_OT_Manager a schema:Occupation ;\n  schema:name \"Operational Technology Manager\" ;\n  schema:description \"Manages ICS/SCADA systems and OT infrastructure\" ;\n  schema:responsibilities [\n    \"ICS security management\"\n    \"SCADA system oversight\"\n    \"OT network administration\"\n    \"Vendor coordination\"\n    \"Budget management\"\n  ] ;\n  schema:skills [\n    \"Industrial Control Systems\"\n    \"SCADA Systems\"\n    \"PLC Programming\"\n    \"Cybersecurity\"\n    \"Network Architecture\"\n  ] ;\n  schema:educationRequirements \"Bachelor's degree in Engineering or Computer Science\" ;\n  schema:experienceRequirements \"5+ years in OT/ICS environment\" .\n```\n\n### 2.4 Product and Equipment\n\n#### Product (Software/Hardware)\n```turtle\nschema:Product a rdfs:Class ;\n  rdfs:label \"Product\" ;\n  rdfs:comment \"Any offered product or service\" .\n\nschema:SoftwareApplication a rdfs:Class ;\n  r",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_35",
+    "text": "ment\n\n#### Product (Software/Hardware)\n```turtle\nschema:Product a rdfs:Class ;\n  rdfs:label \"Product\" ;\n  rdfs:comment \"Any offered product or service\" .\n\nschema:SoftwareApplication a rdfs:Class ;\n  rdfs:subClassOf schema:Product .\n\n:Product_FactoryTalk_View a schema:SoftwareApplication ;\n  schema:name \"FactoryTalk View\" ;\n  schema:manufacturer :Rockwell_Automation ;\n  schema:version \"12.0\" ;\n  schema:applicationCategory \"HMI Software\" ;\n  schema:operatingSystem \"Windows 10\" ;\n  schema:softwareRequirements \"FactoryTalk Services Platform\" ;\n  schema:releaseDate \"2022-06-15\"^^xsd:date ;\n  schema:license \"Commercial License\" ;\n  schema:supportedProtocol [ \"EtherNet/IP\" \"Modbus\" \"OPC-UA\" ] .\n\nschema:HardwareDevice a rdfs:Class ;\n  rdfs:subClassOf schema:Product .\n\n:Product_Siemens_S7_1200 a schema:HardwareDevice ;\n  schema:name \"Siemens SIMATIC S7-1200\" ;\n  schema:manufacturer :Siemens_AG ;\n  schema:model \"CPU 1214C\" ;\n  schema:productID \"6ES7214-1AG40-0XB0\" ;\n  schema:category \"Programmab",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_36",
+    "text": "hema:HardwareDevice ;\n  schema:name \"Siemens SIMATIC S7-1200\" ;\n  schema:manufacturer :Siemens_AG ;\n  schema:model \"CPU 1214C\" ;\n  schema:productID \"6ES7214-1AG40-0XB0\" ;\n  schema:category \"Programmable Logic Controller\" ;\n  schema:releaseDate \"2015-01-01\"^^xsd:date ;\n  schema:specifications [\n    \"CPU: 100 MHz\"\n    \"Work Memory: 125 KB\"\n    \"Digital I/O: 14 inputs / 10 outputs\"\n    \"Analog I/O: 2 inputs\"\n    \"Communication: PROFINET, Modbus TCP\"\n  ] .\n```\n\n### 2.5 Event (Incidents and Operations)\n\n#### Event\n```turtle\nschema:Event a rdfs:Class ;\n  rdfs:label \"Event\" ;\n  rdfs:comment \"An event happening at a certain time and location\" .\n\n:Event_Security_Incident_2023_06 a schema:Event ;\n  schema:name \"SCADA Security Incident - June 2023\" ;\n  schema:description \"Unauthorized access to SCADA network\" ;\n  schema:eventStatus \"Resolved\" ;\n  schema:startDate \"2023-06-10T14:28:00Z\"^^xsd:dateTime ;\n  schema:endDate \"2023-06-20T17:00:00Z\"^^xsd:dateTime ;\n  schema:location :Manufacturing_Facilit",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_37",
+    "text": " network\" ;\n  schema:eventStatus \"Resolved\" ;\n  schema:startDate \"2023-06-10T14:28:00Z\"^^xsd:dateTime ;\n  schema:endDate \"2023-06-20T17:00:00Z\"^^xsd:dateTime ;\n  schema:location :Manufacturing_Facility ;\n  schema:organizer :Department_IT_Security ;\n  schema:attendee [\n    :Person_OT_Manager\n    :Person_CISO\n    :Person_Forensic_Analyst\n  ] ;\n  schema:about \"Malware infection of OT network\" ;\n  schema:recordedIn :Incident_Report_2023_ICS_001 .\n```\n\n### 2.6 CreativeWork (Documentation)\n\n#### CreativeWork (Technical Documentation)\n```turtle\nschema:CreativeWork a rdfs:Class ;\n  rdfs:label \"Creative Work\" ;\n  rdfs:comment \"The most generic kind of creative work\" .\n\nschema:TechArticle a rdfs:Class ;\n  rdfs:subClassOf schema:CreativeWork .\n\n:Document_SCADA_Security_Policy a schema:TechArticle ;\n  schema:name \"SCADA Systems Security Policy\" ;\n  schema:headline \"Security policies and procedures for SCADA infrastructure\" ;\n  schema:author :Department_IT_Security ;\n  schema:datePublished \"2023-01",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_38",
+    "text": " schema:name \"SCADA Systems Security Policy\" ;\n  schema:headline \"Security policies and procedures for SCADA infrastructure\" ;\n  schema:author :Department_IT_Security ;\n  schema:datePublished \"2023-01-15\"^^xsd:date ;\n  schema:dateModified \"2023-09-20\"^^xsd:date ;\n  schema:version \"3.2\" ;\n  schema:inLanguage \"en-US\" ;\n  schema:accessMode \"textual\" ;\n  schema:audience :Audience_OT_Personnel ;\n  schema:keywords [ \"SCADA\" \"Security\" \"ICS\" \"Policy\" \"Procedures\" ] ;\n  schema:license \"Internal Use Only\" ;\n  schema:about [\n    \"Access control procedures\"\n    \"Network segmentation requirements\"\n    \"Patch management processes\"\n    \"Incident response procedures\"\n    \"Backup and recovery\"\n  ] .\n```\n\n### 2.7 Action (Operations)\n\n#### Action\n```turtle\nschema:Action a rdfs:Class ;\n  rdfs:label \"Action\" ;\n  rdfs:comment \"An action performed by a direct agent\" .\n\n:Action_System_Maintenance_2023_10_30 a schema:Action ;\n  schema:name \"SCADA Server Maintenance\" ;\n  schema:description \"Scheduled maintenan",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_39",
+    "text": ";\n  rdfs:comment \"An action performed by a direct agent\" .\n\n:Action_System_Maintenance_2023_10_30 a schema:Action ;\n  schema:name \"SCADA Server Maintenance\" ;\n  schema:description \"Scheduled maintenance and patching of SCADA servers\" ;\n  schema:agent :Person_Control_Engineer_1 ;\n  schema:actionStatus \"Completed\" ;\n  schema:startTime \"2023-10-30T02:00:00Z\"^^xsd:dateTime ;\n  schema:endTime \"2023-10-30T06:00:00Z\"^^xsd:dateTime ;\n  schema:location :Server_Room_A ;\n  schema:object :SCADA_Server_001 ;\n  schema:result \"Successfully patched and rebooted\" ;\n  schema:instrument :Patch_Management_Tool .\n```\n\n### 2.8 Rating and Review\n\n#### Rating (System Performance)\n```turtle\nschema:Rating a rdfs:Class ;\n  rdfs:label \"Rating\" ;\n  rdfs:comment \"A rating value or review\" .\n\n:Rating_SCADA_System_Performance a schema:Rating ;\n  schema:name \"SCADA System Performance Rating\" ;\n  schema:ratingValue \"4.5\"^^xsd:float ;\n  schema:bestRating \"5\"^^xsd:float ;\n  schema:worstRating \"1\"^^xsd:float ;\n  schema:ra",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_40",
+    "text": "mance a schema:Rating ;\n  schema:name \"SCADA System Performance Rating\" ;\n  schema:ratingValue \"4.5\"^^xsd:float ;\n  schema:bestRating \"5\"^^xsd:float ;\n  schema:worstRating \"1\"^^xsd:float ;\n  schema:ratingExplanation \"System performs well with occasional latency\" ;\n  schema:author :Person_OT_Manager ;\n  schema:dateCreated \"2023-10-01\"^^xsd:date ;\n  schema:about :SCADA_System_Production .\n```\n\n## 3. Integration with OT/ICS Environment\n\n### 3.1 IT/OT Network Topology\n\n```turtle\n# Complete network topology combining devops-infra and ICS-SEC-KG\n\n:Complete_Network_Topology a devops:NetworkArchitecture ;\n  devops:hasZone [\n    :Enterprise_IT_Zone\n    :DMZ_Zone\n    :OT_Zone_Level_3\n    :OT_Zone_Level_2\n    :OT_Zone_Level_1\n    :OT_Zone_Level_0\n  ] .\n\n# Enterprise IT Zone (Purdue Level 5)\n:Enterprise_IT_Zone a devops:Network ;\n  devops:networkName \"Enterprise IT Network\" ;\n  devops:purdueLevel \"5\" ;\n  devops:cidr \"10.0.0.0/16\" ;\n  devops:contains [\n    :Active_Directory_Servers\n    :Email_Serve",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 40,
+      "start_char": 32000,
+      "end_char": 33000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_41",
+    "text": "se_IT_Zone a devops:Network ;\n  devops:networkName \"Enterprise IT Network\" ;\n  devops:purdueLevel \"5\" ;\n  devops:cidr \"10.0.0.0/16\" ;\n  devops:contains [\n    :Active_Directory_Servers\n    :Email_Servers\n    :File_Servers\n    :Workstations\n  ] ;\n  devops:connectedTo :DMZ_Zone ;\n  devops:firewall :Firewall_IT_DMZ .\n\n# DMZ Zone (Purdue Level 3.5)\n:DMZ_Zone a devops:Network ;\n  devops:networkName \"IT/OT DMZ\" ;\n  devops:purdueLevel \"3.5\" ;\n  devops:cidr \"172.16.0.0/24\" ;\n  devops:purpose \"Data exchange between IT and OT\" ;\n  devops:contains [\n    :Data_Historian_External\n    :Application_Servers\n    :Jump_Servers\n  ] ;\n  devops:connectedTo :Enterprise_IT_Zone ;\n  devops:connectedTo :OT_Zone_Level_3 ;\n  devops:firewall_IT_Side :Firewall_IT_DMZ ;\n  devops:firewall_OT_Side :Firewall_DMZ_OT .\n\n# OT Zone Level 3 (Purdue Level 3)\n:OT_Zone_Level_3 a devops:Network, ics:NetworkZone ;\n  devops:networkName \"OT Operations Network\" ;\n  devops:purdueLevel \"3\" ;\n  ics:purdueLevel :Purdue_Level_3 ;\n  devo",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 41,
+      "start_char": 32800,
+      "end_char": 33800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_42",
+    "text": " Zone Level 3 (Purdue Level 3)\n:OT_Zone_Level_3 a devops:Network, ics:NetworkZone ;\n  devops:networkName \"OT Operations Network\" ;\n  devops:purdueLevel \"3\" ;\n  ics:purdueLevel :Purdue_Level_3 ;\n  devops:cidr \"192.168.30.0/24\" ;\n  devops:contains [\n    :Engineering_Workstations\n    :Data_Historian_Internal\n    :MES_Servers\n  ] ;\n  devops:connectedTo :DMZ_Zone ;\n  devops:connectedTo :OT_Zone_Level_2 ;\n  devops:firewall :Firewall_L3_L2 .\n\n# OT Zone Level 2 (Purdue Level 2)\n:OT_Zone_Level_2 a devops:Network, ics:NetworkZone ;\n  devops:networkName \"Supervisory Control Network\" ;\n  devops:purdueLevel \"2\" ;\n  ics:purdueLevel :Purdue_Level_2 ;\n  devops:cidr \"192.168.20.0/24\" ;\n  devops:contains [\n    :SCADA_Servers\n    :HMI_Systems\n  ] ;\n  devops:connectedTo :OT_Zone_Level_3 ;\n  devops:connectedTo :OT_Zone_Level_1 ;\n  devops:firewall :Firewall_L2_L1 .\n\n# OT Zone Level 1 (Purdue Level 1)\n:OT_Zone_Level_1 a devops:Network, ics:NetworkZone ;\n  devops:networkName \"Basic Control Network\" ;\n  devops",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 42,
+      "start_char": 33600,
+      "end_char": 34600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_43",
+    "text": " :OT_Zone_Level_1 ;\n  devops:firewall :Firewall_L2_L1 .\n\n# OT Zone Level 1 (Purdue Level 1)\n:OT_Zone_Level_1 a devops:Network, ics:NetworkZone ;\n  devops:networkName \"Basic Control Network\" ;\n  devops:purdueLevel \"1\" ;\n  ics:purdueLevel :Purdue_Level_1 ;\n  devops:cidr \"192.168.10.0/24\" ;\n  devops:contains [\n    :PLCs\n    :RTUs\n    :Safety_Systems\n  ] ;\n  devops:connectedTo :OT_Zone_Level_2 ;\n  devops:connectedTo :OT_Zone_Level_0 ;\n  devops:firewall :Firewall_L1_L0 .\n\n# OT Zone Level 0 (Purdue Level 0)\n:OT_Zone_Level_0 a ics:NetworkZone ;\n  ics:levelName \"Physical Process\" ;\n  ics:purdueLevel :Purdue_Level_0 ;\n  ics:contains [\n    :Sensors\n    :Actuators\n    :Field_Devices\n  ] ;\n  ics:connectsTo :OT_Zone_Level_1 .\n```\n\n### 3.2 Server-to-ICS-Component Mapping\n\n```turtle\n# SCADA Server hosting HMI applications\n\n:SCADA_Server_001 a devops:PhysicalServer, ics:SCADA ;\n  # devops-infra properties\n  devops:hostname \"scada-prod-01\" ;\n  devops:ipAddress \"192.168.20.10\" ;\n  devops:manufacturer \"D",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 43,
+      "start_char": 34400,
+      "end_char": 35400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_44",
+    "text": "g HMI applications\n\n:SCADA_Server_001 a devops:PhysicalServer, ics:SCADA ;\n  # devops-infra properties\n  devops:hostname \"scada-prod-01\" ;\n  devops:ipAddress \"192.168.20.10\" ;\n  devops:manufacturer \"Dell\" ;\n  devops:model \"PowerEdge R740\" ;\n  devops:operatingSystem :OS_Windows_Server_2019 ;\n  devops:role \"SCADA Server\" ;\n  devops:network :OT_Zone_Level_2 ;\n  # ics properties\n  ics:partOfSystem :SCADA_System ;\n  ics:monitorsDevice [\n    :PLC_001\n    :PLC_002\n    :RTU_001\n  ] ;\n  ics:communicatesUsing [ ics:Modbus ics:OPCUA ] ;\n  # Security properties\n  ics:hasVulnerability :CVE_Windows_RCE ;\n  devops:securityHardened true ;\n  devops:antivirusInstalled :McAfee_EPP ;\n  devops:patchLevel \"Current\" .\n\n# Engineering Workstation\n\n:Engineering_Workstation_001 a devops:VirtualMachine, ics:EngineeringWorkstation ;\n  devops:vmName \"eng-ws-01\" ;\n  devops:ipAddress \"192.168.30.50\" ;\n  devops:operatingSystem :OS_Windows_10_Enterprise ;\n  devops:network :OT_Zone_Level_3 ;\n  ics:usedByEngineer :Person",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 44,
+      "start_char": 35200,
+      "end_char": 36200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_45",
+    "text": "ngWorkstation ;\n  devops:vmName \"eng-ws-01\" ;\n  devops:ipAddress \"192.168.30.50\" ;\n  devops:operatingSystem :OS_Windows_10_Enterprise ;\n  devops:network :OT_Zone_Level_3 ;\n  ics:usedByEngineer :Person_Control_Engineer_1 ;\n  ics:programmesDevice [\n    :PLC_001\n    :PLC_002\n  ] ;\n  ics:hasEngineeringSoftware [\n    :Product_RSLogix_5000\n    :Product_TIA_Portal\n  ] ;\n  devops:applicationWhitelisting true ;\n  devops:usbRestricted true .\n```\n\n### 3.3 Database-to-Historian Mapping\n\n```turtle\n# Time-series database as ICS historian\n\n:InfluxDB_Historian a devops:TimeSeriesDatabase, ics:Historian ;\n  # devops properties\n  devops:databaseName \"ics_historian\" ;\n  devops:databaseType \"InfluxDB\" ;\n  devops:host \"historian-01.company.local\" ;\n  devops:port \"8086\"^^xsd:integer ;\n  devops:retention \"90 days\" ;\n  devops:dataPoints \"50000000000\"^^xsd:integer ;\n  # ics properties\n  ics:storesData \"Process data from field devices\" ;\n  ics:dataSource [\n    :PLC_001\n    :PLC_002\n    :RTU_001\n    :Flow_Meter_",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 45,
+      "start_char": 36000,
+      "end_char": 37000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_46",
+    "text": "s\" ;\n  devops:dataPoints \"50000000000\"^^xsd:integer ;\n  # ics properties\n  ics:storesData \"Process data from field devices\" ;\n  ics:dataSource [\n    :PLC_001\n    :PLC_002\n    :RTU_001\n    :Flow_Meter_001\n    :Temperature_Sensor_001\n  ] ;\n  ics:queryableBy [\n    :HMI_001\n    :SCADA_Server_001\n    :Reporting_System\n  ] ;\n  # integration\n  devops:backup :Backup_Policy_Historian ;\n  devops:replication :InfluxDB_Historian_DR ;\n  devops:monitoring :Prometheus_Server .\n```\n\n### 3.4 Personnel-to-System Access\n\n```turtle\n# Complete personnel access mapping\n\n:Person_Control_Engineer_1 a schema:Person ;\n  schema:givenName \"Robert\" ;\n  schema:familyName \"Johnson\" ;\n  schema:jobTitle \"Control Systems Engineer\" ;\n  schema:email \"robert.johnson@acme-mfg.com\" ;\n  schema:worksFor :ACME_Manufacturing ;\n  schema:memberOf :Department_OT ;\n  # Access rights\n  devops:hasAccessTo [\n    :Engineering_Workstation_001\n    :SCADA_Server_001\n  ] ;\n  devops:canModify [\n    :PLC_001\n    :PLC_002\n  ] ;\n  devops:role ",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 46,
+      "start_char": 36800,
+      "end_char": 37800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_47",
+    "text": "hema:memberOf :Department_OT ;\n  # Access rights\n  devops:hasAccessTo [\n    :Engineering_Workstation_001\n    :SCADA_Server_001\n  ] ;\n  devops:canModify [\n    :PLC_001\n    :PLC_002\n  ] ;\n  devops:role \"Engineer\" ;\n  devops:accessLevel \"Administrator\" ;\n  devops:mfaEnabled true ;\n  devops:lastLogin \"2023-10-30T08:15:00Z\"^^xsd:dateTime ;\n  # Certifications\n  schema:hasCredential [\n    :Certification_Rockwell_Certified\n    :Certification_Siemens_S7\n  ] .\n\n:Person_SCADA_Operator_1 a schema:Person ;\n  schema:givenName \"Maria\" ;\n  schema:familyName \"Garcia\" ;\n  schema:jobTitle \"SCADA Operator\" ;\n  schema:email \"maria.garcia@acme-mfg.com\" ;\n  schema:worksFor :ACME_Manufacturing ;\n  schema:memberOf :Department_Operations ;\n  # Access rights\n  devops:hasAccessTo [\n    :HMI_001\n    :HMI_002\n  ] ;\n  devops:canView [\n    :SCADA_Server_001\n    :Data_Historian_Internal\n  ] ;\n  devops:cannotModify :PLC_001 ;\n  devops:role \"Operator\" ;\n  devops:accessLevel \"View and Control\" ;\n  devops:shift \"Day Shift",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 47,
+      "start_char": 37600,
+      "end_char": 38600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_48",
+    "text": "evops:canView [\n    :SCADA_Server_001\n    :Data_Historian_Internal\n  ] ;\n  devops:cannotModify :PLC_001 ;\n  devops:role \"Operator\" ;\n  devops:accessLevel \"View and Control\" ;\n  devops:shift \"Day Shift\" ;\n  devops:workLocation :Control_Room_A .\n```\n\n## 4. Summary and Integration Recommendations\n\n### 4.1 Ontology Strengths Summary\n\n**devops-infra:**\n- Strengths: Comprehensive IT infrastructure modeling, deployment automation, configuration management\n- Use Case: IT systems supporting OT, network topology, server/database management\n- Integration Priority: HIGH for IT/OT integration\n\n**Schema.org:**\n- Strengths: Organizational context, personnel, documentation, broad vocabulary\n- Use Case: Organizational structure, personnel access, facility management\n- Integration Priority: MEDIUM for contextual information\n\n### 4.2 Key Integration Points with OT/ICS\n\n1. **Network Infrastructure**: devops network classes + ICS Purdue model\n2. **Server Systems**: devops servers hosting SCADA/HMI applicat",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 48,
+      "start_char": 38400,
+      "end_char": 39400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_49",
+    "text": "xtual information\n\n### 4.2 Key Integration Points with OT/ICS\n\n1. **Network Infrastructure**: devops network classes + ICS Purdue model\n2. **Server Systems**: devops servers hosting SCADA/HMI applications\n3. **Database Systems**: devops databases as ICS historians\n4. **Personnel**: Schema.org persons with devops access control\n5. **Organizations**: Schema.org organizations managing OT/IT infrastructure\n\n### 4.3 Recommended AEON-DT Integration\n\n**Layer 1: Physical Infrastructure**\n- devops:PhysicalServer for IT hardware\n- ics:ICSComponent for OT hardware\n- schema:Place for facility locations\n\n**Layer 2: Network Architecture**\n- devops:Network for IT/DMZ/OT networks\n- ics:NetworkZone for Purdue model\n- devops:Firewall for security boundaries\n\n**Layer 3: Software and Applications**\n- devops:Application for IT software\n- schema:SoftwareApplication for HMI/SCADA software\n- devops:Container for modern ICS deployments\n\n**Layer 4: Data Management**\n- devops:Database for relational data\n- devop",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 49,
+      "start_char": 39200,
+      "end_char": 40200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_50",
+    "text": "pplication for IT software\n- schema:SoftwareApplication for HMI/SCADA software\n- devops:Container for modern ICS deployments\n\n**Layer 4: Data Management**\n- devops:Database for relational data\n- devops:TimeSeriesDatabase for process historians\n- devops:ObjectStorage for logs and backups\n\n**Layer 5: Personnel and Organization**\n- schema:Person for personnel\n- schema:Organization for departments\n- devops:AccessControl for authorization\n\n**Layer 6: Operations and Events**\n- schema:Action for operations\n- schema:Event for incidents\n- devops:Deployment for changes\n\n## Version History\n\n- v1.0.0 (2025-10-30): Initial IT infrastructure research findings\n\n## References\n\n1. devops-infra ontology documentation and specifications\n2. Schema.org vocabulary: https://schema.org/\n3. Infrastructure as Code best practices\n4. Kubernetes and container orchestration patterns\n5. IT/OT convergence architecture references\n\n---\n\n*Document Complete - IT Infrastructure Ontologies Analyzed*\n",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 50,
+      "start_char": 40000,
+      "end_char": 41000,
+      "chunk_size": 977
+    }
+  },
+  {
+    "id": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md_chunk_51",
+    "text": "best practices\n4. Kubernetes and container orchestration patterns\n5. IT/OT convergence architecture references\n\n---\n\n*Document Complete - IT Infrastructure Ontologies Analyzed*\n",
+    "metadata": {
+      "file_name": "22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/22_RESEARCH_FINDINGS_IT_INFRASTRUCTURE.md",
+      "file_size": 40977,
+      "indexed_at": "2025-10-31T01:04:30.155688",
+      "chunk_id": 51,
+      "start_char": 40800,
+      "end_char": 41800,
+      "chunk_size": 177
+    }
+  }
+]

@@ -1,0 +1,982 @@
+[
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_0",
+    "text": "# SAREF Ontology Research Findings\n\n**File:** 20_RESEARCH_FINDINGS_SAREF.md\n**Created:** 2025-10-30 00:00:00 UTC\n**Modified:** 2025-10-30 00:00:00 UTC\n**Version:** v1.0.0\n**Author:** Research Analysis Agent\n**Purpose:** Comprehensive documentation of SAREF ontology ecosystem research findings\n**Status:** ACTIVE\n\n## Executive Summary\n\nThis document presents comprehensive research findings from the analysis of the Smart Applications REFerence (SAREF) ontology ecosystem, covering 13 specialized extensions. SAREF provides a standardized reference model for smart applications across multiple domains, developed by ETSI (European Telecommunications Standards Institute) and maintained as an official standard.\n\nThe research encompasses:\n- SAREF Core ontology foundational concepts\n- 12 domain-specific SAREF extensions\n- Cross-domain integration patterns\n- IoT device modeling approaches\n- Property and measurement frameworks\n- Service and function abstractions\n\n**Key Findings:**\n- SAREF provides c",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_1",
+    "text": "ic SAREF extensions\n- Cross-domain integration patterns\n- IoT device modeling approaches\n- Property and measurement frameworks\n- Service and function abstractions\n\n**Key Findings:**\n- SAREF provides comprehensive IoT device modeling applicable to OT/ICS environments\n- Strong alignment with Building Management Systems (BMS) and smart infrastructure\n- Extensive property and measurement schema supporting sensor integration\n- Service-oriented architecture enabling function abstraction\n- Cross-domain patterns applicable to cybersecurity monitoring\n\n## 1. SAREF Core Ontology Analysis\n\n### 1.1 Foundation Architecture\n\n**Namespace:** `https://saref.etsi.org/core/`\n**Version Analyzed:** SAREF v3.2.1 (2023)\n**Primary Specification:** ETSI TS 103 264\n\n#### Core Design Principles\n\n1. **Device-Centric Modeling**: Focus on physical devices and their capabilities\n2. **Function Abstraction**: Separation of what a device does from how it does it\n3. **Interoperability**: Standardized vocabulary for cros",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_2",
+    "text": "Modeling**: Focus on physical devices and their capabilities\n2. **Function Abstraction**: Separation of what a device does from how it does it\n3. **Interoperability**: Standardized vocabulary for cross-domain communication\n4. **Modularity**: Extension mechanism for domain-specific vocabularies\n5. **Measurement Focus**: Rich property and unit of measurement framework\n\n### 1.2 Core Class Hierarchy\n\n```turtle\nsaref:Device\n  \u251c\u2500\u2500 saref:Actuator\n  \u251c\u2500\u2500 saref:Sensor\n  \u251c\u2500\u2500 saref:Appliance\n  \u251c\u2500\u2500 saref:HVAC\n  \u251c\u2500\u2500 saref:LightingDevice\n  \u251c\u2500\u2500 saref:Meter\n  \u251c\u2500\u2500 saref:Multimedia\n  \u251c\u2500\u2500 saref:Network\n  \u2514\u2500\u2500 saref:SmartDevice\n\nsaref:Function\n  \u251c\u2500\u2500 saref:ActuatingFunction\n  \u251c\u2500\u2500 saref:SensingFunction\n  \u251c\u2500\u2500 saref:MeteringFunction\n  \u251c\u2500\u2500 saref:EventFunction\n  \u2514\u2500\u2500 saref:LevelControlFunction\n\nsaref:Service\n  \u251c\u2500\u2500 saref:GetCommand\n  \u251c\u2500\u2500 saref:SetCommand\n  \u251c\u2500\u2500 saref:NotifyService\n  \u2514\u2500\u2500 saref:ToggleCommand\n\nsaref:Property\n  \u251c\u2500\u2500 saref:Energy\n  \u251c\u2500\u2500 saref:Power\n  \u251c\u2500\u2500 saref:Temperature\n  \u251c\u2500\u2500 saref:Humidity\n  \u251c\u2500\u2500 saref:L",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_3",
+    "text": "ef:GetCommand\n  \u251c\u2500\u2500 saref:SetCommand\n  \u251c\u2500\u2500 saref:NotifyService\n  \u2514\u2500\u2500 saref:ToggleCommand\n\nsaref:Property\n  \u251c\u2500\u2500 saref:Energy\n  \u251c\u2500\u2500 saref:Power\n  \u251c\u2500\u2500 saref:Temperature\n  \u251c\u2500\u2500 saref:Humidity\n  \u251c\u2500\u2500 saref:Light\n  \u251c\u2500\u2500 saref:Motion\n  \u251c\u2500\u2500 saref:Occupancy\n  \u251c\u2500\u2500 saref:Pressure\n  \u2514\u2500\u2500 saref:Smoke\n\nsaref:State\n  \u251c\u2500\u2500 saref:OnState\n  \u251c\u2500\u2500 saref:OffState\n  \u251c\u2500\u2500 saref:OpenState\n  \u251c\u2500\u2500 saref:CloseState\n  \u251c\u2500\u2500 saref:StartState\n  \u2514\u2500\u2500 saref:StopState\n```\n\n### 1.3 Core Object Properties\n\n#### Device Relationships\n\n```turtle\nsaref:consistsOf\n  rdfs:domain saref:Device\n  rdfs:range saref:Device\n  rdfs:comment \"Relationship to represent device composition\"\n\nsaref:hasFunction\n  rdfs:domain saref:Device\n  rdfs:range saref:Function\n  rdfs:comment \"Links device to its capabilities\"\n\nsaref:hasState\n  rdfs:domain saref:Device\n  rdfs:range saref:State\n  rdfs:comment \"Current operational state of device\"\n\nsaref:hasProfile\n  rdfs:domain saref:Device\n  rdfs:range saref:Profile\n  rdfs:comment \"Device operational profile\"\n\nsar",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_4",
+    "text": "e\n  rdfs:range saref:State\n  rdfs:comment \"Current operational state of device\"\n\nsaref:hasProfile\n  rdfs:domain saref:Device\n  rdfs:range saref:Profile\n  rdfs:comment \"Device operational profile\"\n\nsaref:controlsProperty\n  rdfs:domain saref:Device\n  rdfs:range saref:Property\n  rdfs:comment \"Property controlled by actuator\"\n\nsaref:measuresProperty\n  rdfs:domain saref:Device\n  rdfs:range saref:Property\n  rdfs:comment \"Property measured by sensor\"\n\nsaref:isUsedFor\n  rdfs:domain saref:Device\n  rdfs:range saref:Commodity\n  rdfs:comment \"Resource consumed or produced\"\n```\n\n#### Function and Service Relationships\n\n```turtle\nsaref:hasCommand\n  rdfs:domain saref:Function\n  rdfs:range saref:Command\n  rdfs:comment \"Command that triggers function\"\n\nsaref:isCommandOf\n  rdfs:domain saref:Command\n  rdfs:range saref:Function\n  rdfs:comment \"Inverse of hasCommand\"\n\nsaref:actsUpon\n  rdfs:domain saref:Command\n  rdfs:range saref:State\n  rdfs:comment \"State affected by command\"\n\nsaref:hasDescription\n  rdfs:",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_5",
+    "text": "ange saref:Function\n  rdfs:comment \"Inverse of hasCommand\"\n\nsaref:actsUpon\n  rdfs:domain saref:Command\n  rdfs:range saref:State\n  rdfs:comment \"State affected by command\"\n\nsaref:hasDescription\n  rdfs:domain saref:Service\n  rdfs:range xsd:string\n  rdfs:comment \"Human-readable service description\"\n\nsaref:hasInput\n  rdfs:domain saref:Service\n  rdfs:range saref:Property\n  rdfs:comment \"Required input parameters\"\n\nsaref:hasOutput\n  rdfs:domain saref:Service\n  rdfs:range saref:Property\n  rdfs:comment \"Service output values\"\n```\n\n#### Measurement and Property Relationships\n\n```turtle\nsaref:hasProperty\n  rdfs:domain saref:FeatureOfInterest\n  rdfs:range saref:Property\n  rdfs:comment \"Observable property of feature\"\n\nsaref:relatesToProperty\n  rdfs:domain saref:Measurement\n  rdfs:range saref:Property\n  rdfs:comment \"Property being measured\"\n\nsaref:isMeasuredIn\n  rdfs:domain saref:Property\n  rdfs:range saref:UnitOfMeasure\n  rdfs:comment \"Measurement unit for property\"\n\nsaref:hasTimestamp\n  rdfs:do",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_6",
+    "text": "\n  rdfs:comment \"Property being measured\"\n\nsaref:isMeasuredIn\n  rdfs:domain saref:Property\n  rdfs:range saref:UnitOfMeasure\n  rdfs:comment \"Measurement unit for property\"\n\nsaref:hasTimestamp\n  rdfs:domain saref:Measurement\n  rdfs:range xsd:dateTime\n  rdfs:comment \"When measurement was taken\"\n\nsaref:hasValue\n  rdfs:domain saref:Measurement\n  rdfs:range xsd:float\n  rdfs:comment \"Measured value\"\n\nsaref:isMeasuredByDevice\n  rdfs:domain saref:Property\n  rdfs:range saref:Device\n  rdfs:comment \"Device performing measurement\"\n```\n\n### 1.4 Core Data Properties\n\n```turtle\nsaref:hasManufacturer\n  rdfs:domain saref:Device\n  rdfs:range xsd:string\n\nsaref:hasModel\n  rdfs:domain saref:Device\n  rdfs:range xsd:string\n\nsaref:hasDescription\n  rdfs:domain owl:Thing\n  rdfs:range xsd:string\n\nsaref:hasDeviceID\n  rdfs:domain saref:Device\n  rdfs:range xsd:string\n\nsaref:hasFirmwareVersion\n  rdfs:domain saref:Device\n  rdfs:range xsd:string\n\nsaref:hasProtocol\n  rdfs:domain saref:Device\n  rdfs:range xsd:string\n\nsar",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_7",
+    "text": "rdfs:domain saref:Device\n  rdfs:range xsd:string\n\nsaref:hasFirmwareVersion\n  rdfs:domain saref:Device\n  rdfs:range xsd:string\n\nsaref:hasProtocol\n  rdfs:domain saref:Device\n  rdfs:range xsd:string\n\nsaref:hasPowerConsumption\n  rdfs:domain saref:Device\n  rdfs:range xsd:float\n\nsaref:hasLocation\n  rdfs:domain saref:Device\n  rdfs:range xsd:string\n```\n\n### 1.5 Measurement and Units Framework\n\n#### Unit of Measure Hierarchy\n\n```turtle\nsaref:UnitOfMeasure\n  \u251c\u2500\u2500 saref:TemperatureUnit\n  \u2502   \u251c\u2500\u2500 saref:Celsius\n  \u2502   \u251c\u2500\u2500 saref:Fahrenheit\n  \u2502   \u2514\u2500\u2500 saref:Kelvin\n  \u251c\u2500\u2500 saref:EnergyUnit\n  \u2502   \u251c\u2500\u2500 saref:KilowattHour\n  \u2502   \u251c\u2500\u2500 saref:Joule\n  \u2502   \u2514\u2500\u2500 saref:WattHour\n  \u251c\u2500\u2500 saref:PowerUnit\n  \u2502   \u251c\u2500\u2500 saref:Watt\n  \u2502   \u251c\u2500\u2500 saref:Kilowatt\n  \u2502   \u2514\u2500\u2500 saref:Megawatt\n  \u251c\u2500\u2500 saref:PressureUnit\n  \u2502   \u251c\u2500\u2500 saref:Pascal\n  \u2502   \u251c\u2500\u2500 saref:Bar\n  \u2502   \u2514\u2500\u2500 saref:PSI\n  \u2514\u2500\u2500 saref:TimeUnit\n      \u251c\u2500\u2500 saref:Second\n      \u251c\u2500\u2500 saref:Minute\n      \u251c\u2500\u2500 saref:Hour\n      \u2514\u2500\u2500 saref:Day\n```\n\n## 2. SAREF4WATR - Water Management Extension\n\n### 2.1",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_8",
+    "text": "\u2500\u2500 saref:Bar\n  \u2502   \u2514\u2500\u2500 saref:PSI\n  \u2514\u2500\u2500 saref:TimeUnit\n      \u251c\u2500\u2500 saref:Second\n      \u251c\u2500\u2500 saref:Minute\n      \u251c\u2500\u2500 saref:Hour\n      \u2514\u2500\u2500 saref:Day\n```\n\n## 2. SAREF4WATR - Water Management Extension\n\n### 2.1 Overview\n\n**Namespace:** `https://saref.etsi.org/saref4watr/`\n**Version:** v1.1.1\n**Domain:** Water supply, distribution, and quality monitoring\n\n#### Key Objectives\n- Model water distribution networks\n- Monitor water quality parameters\n- Track consumption and leakage\n- Integrate with smart meters\n- Support water resource management\n\n### 2.2 Water-Specific Classes\n\n```turtle\ns4watr:WaterDevice\n  rdfs:subClassOf saref:Device\n  \u251c\u2500\u2500 s4watr:WaterMeter\n  \u251c\u2500\u2500 s4watr:WaterQualitySensor\n  \u251c\u2500\u2500 s4watr:FlowSensor\n  \u251c\u2500\u2500 s4watr:PressureSensor\n  \u251c\u2500\u2500 s4watr:LeakageDetector\n  \u251c\u2500\u2500 s4watr:Valve\n  \u251c\u2500\u2500 s4watr:Pump\n  \u2514\u2500\u2500 s4watr:Tank\n\ns4watr:WaterProperty\n  rdfs:subClassOf saref:Property\n  \u251c\u2500\u2500 s4watr:WaterQuality\n  \u251c\u2500\u2500 s4watr:FlowRate\n  \u251c\u2500\u2500 s4watr:WaterPressure\n  \u251c\u2500\u2500 s4watr:WaterLevel\n  \u251c\u2500\u2500 s4watr:pH\n  \u251c\u2500\u2500 s4w",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_9",
+    "text": "mp\n  \u2514\u2500\u2500 s4watr:Tank\n\ns4watr:WaterProperty\n  rdfs:subClassOf saref:Property\n  \u251c\u2500\u2500 s4watr:WaterQuality\n  \u251c\u2500\u2500 s4watr:FlowRate\n  \u251c\u2500\u2500 s4watr:WaterPressure\n  \u251c\u2500\u2500 s4watr:WaterLevel\n  \u251c\u2500\u2500 s4watr:pH\n  \u251c\u2500\u2500 s4watr:Turbidity\n  \u251c\u2500\u2500 s4watr:Chlorine\n  \u251c\u2500\u2500 s4watr:Conductivity\n  \u2514\u2500\u2500 s4watr:DissolvedOxygen\n\ns4watr:WaterNetwork\n  \u251c\u2500\u2500 s4watr:DistributionNetwork\n  \u251c\u2500\u2500 s4watr:SewerNetwork\n  \u2514\u2500\u2500 s4watr:IrrigationNetwork\n\ns4watr:WaterAsset\n  \u251c\u2500\u2500 s4watr:Pipeline\n  \u251c\u2500\u2500 s4watr:Junction\n  \u251c\u2500\u2500 s4watr:Reservoir\n  \u251c\u2500\u2500 s4watr:TreatmentPlant\n  \u2514\u2500\u2500 s4watr:PumpingStation\n```\n\n### 2.3 Water Quality Monitoring\n\n```turtle\ns4watr:WaterQualityMeasurement\n  rdfs:subClassOf saref:Measurement\n  saref:relatesToProperty s4watr:WaterQuality\n  s4watr:hasQualityIndicator [\n    s4watr:pH\n    s4watr:turbidity\n    s4watr:chlorineLevel\n    s4watr:bacteriaCount\n    s4watr:dissolvedOxygen\n    s4watr:temperature\n  ]\n  s4watr:hasQualityStatus [\n    s4watr:Safe\n    s4watr:Acceptable\n    s4watr:Warning\n    s4watr:Critical\n  ]\n```\n\n### 2.4 Fl",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_10",
+    "text": " s4watr:bacteriaCount\n    s4watr:dissolvedOxygen\n    s4watr:temperature\n  ]\n  s4watr:hasQualityStatus [\n    s4watr:Safe\n    s4watr:Acceptable\n    s4watr:Warning\n    s4watr:Critical\n  ]\n```\n\n### 2.4 Flow and Pressure Monitoring\n\n```turtle\ns4watr:FlowMeasurement\n  rdfs:subClassOf saref:Measurement\n  saref:relatesToProperty s4watr:FlowRate\n  saref:isMeasuredIn s4watr:LitersPerSecond\n  s4watr:hasFlowDirection [\n    s4watr:Inbound\n    s4watr:Outbound\n  ]\n\ns4watr:PressureMeasurement\n  rdfs:subClassOf saref:Measurement\n  saref:relatesToProperty s4watr:WaterPressure\n  saref:isMeasuredIn s4watr:Bar\n```\n\n### 2.5 Leakage Detection Patterns\n\n```turtle\ns4watr:LeakageEvent\n  rdfs:subClassOf s4watr:WaterEvent\n  s4watr:hasLeakageRate xsd:float\n  s4watr:hasLocation geo:Point\n  s4watr:hasSeverity [\n    s4watr:Minor\n    s4watr:Moderate\n    s4watr:Major\n    s4watr:Critical\n  ]\n  s4watr:detectedBy s4watr:LeakageDetector\n  s4watr:affectsPipeline s4watr:Pipeline\n```\n\n### 2.6 OT/Cybersecurity Integration Poin",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_11",
+    "text": "tr:Minor\n    s4watr:Moderate\n    s4watr:Major\n    s4watr:Critical\n  ]\n  s4watr:detectedBy s4watr:LeakageDetector\n  s4watr:affectsPipeline s4watr:Pipeline\n```\n\n### 2.6 OT/Cybersecurity Integration Points\n\n**Application to AEON-DT:**\n1. **Network Infrastructure**: Water distribution as critical infrastructure monitoring model\n2. **Sensor Networks**: Large-scale sensor deployment patterns\n3. **SCADA Integration**: Industrial control system monitoring\n4. **Anomaly Detection**: Flow and pressure anomaly patterns\n5. **Asset Management**: Physical asset tracking and lifecycle\n\n**Cybersecurity Relevance:**\n- Critical infrastructure protection patterns\n- SCADA system vulnerability modeling\n- Sensor tampering detection\n- Network segmentation requirements\n- Access control for industrial devices\n\n## 3. SAREF4ENER - Energy Management Extension\n\n### 3.1 Overview\n\n**Namespace:** `https://saref.etsi.org/saref4ener/`\n**Version:** v1.1.2\n**Domain:** Energy management, smart grid, demand response\n\n#### K",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_12",
+    "text": ". SAREF4ENER - Energy Management Extension\n\n### 3.1 Overview\n\n**Namespace:** `https://saref.etsi.org/saref4ener/`\n**Version:** v1.1.2\n**Domain:** Energy management, smart grid, demand response\n\n#### Key Objectives\n- Model energy generation and consumption\n- Support demand response programs\n- Enable load management\n- Track renewable energy sources\n- Integrate with smart grid infrastructure\n\n### 3.2 Energy Device Classes\n\n```turtle\ns4ener:Device\n  rdfs:subClassOf saref:Device\n  \u251c\u2500\u2500 s4ener:Generator\n  \u2502   \u251c\u2500\u2500 s4ener:SolarPanel\n  \u2502   \u251c\u2500\u2500 s4ener:WindTurbine\n  \u2502   \u251c\u2500\u2500 s4ener:BatteryStorage\n  \u2502   \u2514\u2500\u2500 s4ener:FuelCell\n  \u251c\u2500\u2500 s4ener:Load\n  \u2502   \u251c\u2500\u2500 s4ener:FlexibleLoad\n  \u2502   \u251c\u2500\u2500 s4ener:CriticalLoad\n  \u2502   \u2514\u2500\u2500 s4ener:ControllableLoad\n  \u251c\u2500\u2500 s4ener:EnergyMeter\n  \u2502   \u251c\u2500\u2500 s4ener:SmartMeter\n  \u2502   \u251c\u2500\u2500 s4ener:SubMeter\n  \u2502   \u2514\u2500\u2500 s4ener:ProductionMeter\n  \u2514\u2500\u2500 s4ener:PowerManagementSystem\n```\n\n### 3.3 Energy Properties and Measurements\n\n```turtle\ns4ener:EnergyProperty\n  rdfs:subClassOf saref:Property\n  \u251c\u2500\u2500 s4en",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_13",
+    "text": "ubMeter\n  \u2502   \u2514\u2500\u2500 s4ener:ProductionMeter\n  \u2514\u2500\u2500 s4ener:PowerManagementSystem\n```\n\n### 3.3 Energy Properties and Measurements\n\n```turtle\ns4ener:EnergyProperty\n  rdfs:subClassOf saref:Property\n  \u251c\u2500\u2500 s4ener:ActivePower\n  \u251c\u2500\u2500 s4ener:ReactivePower\n  \u251c\u2500\u2500 s4ener:ApparentPower\n  \u251c\u2500\u2500 s4ener:PowerFactor\n  \u251c\u2500\u2500 s4ener:Voltage\n  \u251c\u2500\u2500 s4ener:Current\n  \u251c\u2500\u2500 s4ener:Frequency\n  \u251c\u2500\u2500 s4ener:EnergyConsumption\n  \u2514\u2500\u2500 s4ener:EnergyProduction\n\ns4ener:PowerProfile\n  s4ener:hasAlternatives s4ener:Alternative\n  s4ener:hasSlot s4ener:Slot\n  s4ener:isExpectedBy s4ener:Device\n\ns4ener:Slot\n  s4ener:hasTimestamp xsd:dateTime\n  s4ener:hasDuration xsd:duration\n  s4ener:hasPower xsd:float\n  s4ener:hasEnergy xsd:float\n```\n\n### 3.4 Demand Response Framework\n\n```turtle\ns4ener:DemandResponseEvent\n  s4ener:hasEventType [\n    s4ener:LoadShedding\n    s4ener:LoadShifting\n    s4ener:LoadIncrease\n    s4ener:PeakShaving\n  ]\n  s4ener:hasStartTime xsd:dateTime\n  s4ener:hasEndTime xsd:dateTime\n  s4ener:hasTargetPower xsd:float\n  s4ener:",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_14",
+    "text": ":LoadShedding\n    s4ener:LoadShifting\n    s4ener:LoadIncrease\n    s4ener:PeakShaving\n  ]\n  s4ener:hasStartTime xsd:dateTime\n  s4ener:hasEndTime xsd:dateTime\n  s4ener:hasTargetPower xsd:float\n  s4ener:hasIncentive xsd:float\n  s4ener:affects s4ener:Device\n\ns4ener:LoadControlCommand\n  rdfs:subClassOf saref:Command\n  s4ener:targetsPowerLevel xsd:float\n  s4ener:hasTimeConstraint s4ener:TimeConstraint\n```\n\n### 3.5 Renewable Energy Integration\n\n```turtle\ns4ener:RenewableGeneration\n  s4ener:hasGenerationType [\n    s4ener:Solar\n    s4ener:Wind\n    s4ener:Hydro\n    s4ener:Geothermal\n    s4ener:Biomass\n  ]\n  s4ener:hasCapacity xsd:float\n  s4ener:hasCurrentProduction xsd:float\n  s4ener:hasForecast s4ener:GenerationForecast\n\ns4ener:GenerationForecast\n  s4ener:hasTimeHorizon xsd:duration\n  s4ener:hasConfidenceLevel xsd:float\n  s4ener:hasExpectedProduction xsd:float\n```\n\n### 3.6 Power Quality Monitoring\n\n```turtle\ns4ener:PowerQualityEvent\n  \u251c\u2500\u2500 s4ener:VoltageSag\n  \u251c\u2500\u2500 s4ener:VoltageSwell\n  \u251c\u2500\u2500 s4ener",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_15",
+    "text": "fidenceLevel xsd:float\n  s4ener:hasExpectedProduction xsd:float\n```\n\n### 3.6 Power Quality Monitoring\n\n```turtle\ns4ener:PowerQualityEvent\n  \u251c\u2500\u2500 s4ener:VoltageSag\n  \u251c\u2500\u2500 s4ener:VoltageSwell\n  \u251c\u2500\u2500 s4ener:Interruption\n  \u251c\u2500\u2500 s4ener:HarmonicDistortion\n  \u251c\u2500\u2500 s4ener:FrequencyDeviation\n  \u2514\u2500\u2500 s4ener:Imbalance\n\ns4ener:PowerQualityMeasurement\n  s4ener:hasVoltageLevel xsd:float\n  s4ener:hasTHD xsd:float  # Total Harmonic Distortion\n  s4ener:hasFrequency xsd:float\n  s4ener:hasPowerFactor xsd:float\n```\n\n### 3.7 OT/Cybersecurity Integration\n\n**Application to AEON-DT:**\n1. **Smart Grid Monitoring**: Power grid as cyber-physical system\n2. **Energy SCADA**: Industrial control system patterns\n3. **Metering Infrastructure**: AMI security modeling\n4. **Distributed Energy Resources**: Edge device security\n5. **Demand Response**: Command and control security\n\n**Cybersecurity Relevance:**\n- Smart meter tampering detection\n- False data injection attacks\n- Grid stability cyber threats\n- DER communication securit",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_16",
+    "text": "emand Response**: Command and control security\n\n**Cybersecurity Relevance:**\n- Smart meter tampering detection\n- False data injection attacks\n- Grid stability cyber threats\n- DER communication security\n- SCADA protocol vulnerabilities\n\n## 4. SAREF4GRID - Smart Grid Extension\n\n### 4.1 Overview\n\n**Namespace:** `https://saref.etsi.org/saref4grid/`\n**Version:** v1.0.0\n**Domain:** Electrical grid infrastructure, transmission, distribution\n\n### 4.2 Grid Infrastructure Classes\n\n```turtle\ns4grid:GridDevice\n  rdfs:subClassOf saref:Device\n  \u251c\u2500\u2500 s4grid:Transformer\n  \u2502   \u251c\u2500\u2500 s4grid:PowerTransformer\n  \u2502   \u251c\u2500\u2500 s4grid:DistributionTransformer\n  \u2502   \u2514\u2500\u2500 s4grid:MeasurementTransformer\n  \u251c\u2500\u2500 s4grid:CircuitBreaker\n  \u251c\u2500\u2500 s4grid:Disconnector\n  \u251c\u2500\u2500 s4grid:Recloser\n  \u251c\u2500\u2500 s4grid:Capacitor\n  \u251c\u2500\u2500 s4grid:Reactor\n  \u2514\u2500\u2500 s4grid:FaultIndicator\n\ns4grid:GridSegment\n  \u251c\u2500\u2500 s4grid:TransmissionLine\n  \u251c\u2500\u2500 s4grid:DistributionLine\n  \u251c\u2500\u2500 s4grid:Substation\n  \u251c\u2500\u2500 s4grid:Feeder\n  \u2514\u2500\u2500 s4grid:Bay\n\ns4grid:ProtectionDevice\n  \u251c\u2500\u2500 s4gri",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_17",
+    "text": " s4grid:FaultIndicator\n\ns4grid:GridSegment\n  \u251c\u2500\u2500 s4grid:TransmissionLine\n  \u251c\u2500\u2500 s4grid:DistributionLine\n  \u251c\u2500\u2500 s4grid:Substation\n  \u251c\u2500\u2500 s4grid:Feeder\n  \u2514\u2500\u2500 s4grid:Bay\n\ns4grid:ProtectionDevice\n  \u251c\u2500\u2500 s4grid:OvercurrentRelay\n  \u251c\u2500\u2500 s4grid:DifferentialRelay\n  \u251c\u2500\u2500 s4grid:DistanceRelay\n  \u2514\u2500\u2500 s4grid:FrequencyRelay\n```\n\n### 4.3 Grid Topology Modeling\n\n```turtle\ns4grid:ConnectivityNode\n  s4grid:connectsTo s4grid:Terminal\n  s4grid:hasVoltageLevel xsd:float\n  s4grid:isPartOf s4grid:GridSegment\n\ns4grid:Terminal\n  s4grid:belongsTo s4grid:GridDevice\n  s4grid:hasPhase [\n    s4grid:PhaseA\n    s4grid:PhaseB\n    s4grid:PhaseC\n    s4grid:Neutral\n  ]\n```\n\n### 4.4 Grid Operations and Control\n\n```turtle\ns4grid:OperationalState\n  \u251c\u2500\u2500 s4grid:Energized\n  \u251c\u2500\u2500 s4grid:DeEnergized\n  \u251c\u2500\u2500 s4grid:Isolated\n  \u251c\u2500\u2500 s4grid:MaintenanceMode\n  \u2514\u2500\u2500 s4grid:Faulty\n\ns4grid:ControlCommand\n  rdfs:subClassOf saref:Command\n  \u251c\u2500\u2500 s4grid:SwitchingCommand\n  \u251c\u2500\u2500 s4grid:LoadControlCommand\n  \u251c\u2500\u2500 s4grid:VoltageControlCommand\n  \u2514\u2500\u2500 s4grid:Prote",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_18",
+    "text": "nanceMode\n  \u2514\u2500\u2500 s4grid:Faulty\n\ns4grid:ControlCommand\n  rdfs:subClassOf saref:Command\n  \u251c\u2500\u2500 s4grid:SwitchingCommand\n  \u251c\u2500\u2500 s4grid:LoadControlCommand\n  \u251c\u2500\u2500 s4grid:VoltageControlCommand\n  \u2514\u2500\u2500 s4grid:ProtectionCommand\n```\n\n### 4.5 OT/Cybersecurity Relevance\n\n**Critical Infrastructure Modeling:**\n- Substation automation systems\n- IED (Intelligent Electronic Device) networks\n- SCADA command sequences\n- Protection relay coordination\n- Grid topology for attack surface analysis\n\n## 5. SAREF4INMA - Manufacturing Extension\n\n### 5.1 Overview\n\n**Namespace:** `https://saref.etsi.org/saref4inma/`\n**Version:** v1.2.0\n**Domain:** Industrial manufacturing, Industry 4.0, production systems\n\n### 5.2 Manufacturing Device Classes\n\n```turtle\ns4inma:ManufacturingDevice\n  rdfs:subClassOf saref:Device\n  \u251c\u2500\u2500 s4inma:Machine\n  \u2502   \u251c\u2500\u2500 s4inma:CNCMachine\n  \u2502   \u251c\u2500\u2500 s4inma:Robot\n  \u2502   \u251c\u2500\u2500 s4inma:AssemblyStation\n  \u2502   \u251c\u2500\u2500 s4inma:PackagingMachine\n  \u2502   \u2514\u2500\u2500 s4inma:QualityInspection\n  \u251c\u2500\u2500 s4inma:ProductionLine\n  \u251c\u2500\u2500 s4inma",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_19",
+    "text": "achine\n  \u2502   \u251c\u2500\u2500 s4inma:CNCMachine\n  \u2502   \u251c\u2500\u2500 s4inma:Robot\n  \u2502   \u251c\u2500\u2500 s4inma:AssemblyStation\n  \u2502   \u251c\u2500\u2500 s4inma:PackagingMachine\n  \u2502   \u2514\u2500\u2500 s4inma:QualityInspection\n  \u251c\u2500\u2500 s4inma:ProductionLine\n  \u251c\u2500\u2500 s4inma:Warehouse\n  \u251c\u2500\u2500 s4inma:ConveyorSystem\n  \u2514\u2500\u2500 s4inma:MaterialHandler\n\ns4inma:Sensor\n  rdfs:subClassOf saref:Sensor\n  \u251c\u2500\u2500 s4inma:VibrationSensor\n  \u251c\u2500\u2500 s4inma:TemperatureSensor\n  \u251c\u2500\u2500 s4inma:PressureSensor\n  \u251c\u2500\u2500 s4inma:ProximitySensor\n  \u251c\u2500\u2500 s4inma:VisionSensor\n  \u2514\u2500\u2500 s4inma:ForceSensor\n```\n\n### 5.3 Production Process Modeling\n\n```turtle\ns4inma:ProductionProcess\n  s4inma:hasStep s4inma:ProcessStep\n  s4inma:requiresMaterial s4inma:Material\n  s4inma:producesProduct s4inma:Product\n  s4inma:hasKPI s4inma:PerformanceIndicator\n\ns4inma:ProcessStep\n  s4inma:hasSequenceNumber xsd:integer\n  s4inma:usesMachine s4inma:Machine\n  s4inma:hasDuration xsd:duration\n  s4inma:hasParameter s4inma:ProcessParameter\n\ns4inma:ProcessParameter\n  \u251c\u2500\u2500 s4inma:Speed\n  \u251c\u2500\u2500 s4inma:Temperature\n  \u251c\u2500\u2500 s4inma:Pressure\n  \u251c\u2500\u2500 s4inma:",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_20",
+    "text": " s4inma:Machine\n  s4inma:hasDuration xsd:duration\n  s4inma:hasParameter s4inma:ProcessParameter\n\ns4inma:ProcessParameter\n  \u251c\u2500\u2500 s4inma:Speed\n  \u251c\u2500\u2500 s4inma:Temperature\n  \u251c\u2500\u2500 s4inma:Pressure\n  \u251c\u2500\u2500 s4inma:FeedRate\n  \u2514\u2500\u2500 s4inma:ToolPosition\n```\n\n### 5.4 Manufacturing KPIs\n\n```turtle\ns4inma:PerformanceIndicator\n  \u251c\u2500\u2500 s4inma:OEE  # Overall Equipment Effectiveness\n  \u251c\u2500\u2500 s4inma:Availability\n  \u251c\u2500\u2500 s4inma:Performance\n  \u251c\u2500\u2500 s4inma:Quality\n  \u251c\u2500\u2500 s4inma:MTBF  # Mean Time Between Failures\n  \u251c\u2500\u2500 s4inma:MTTR  # Mean Time To Repair\n  \u251c\u2500\u2500 s4inma:Throughput\n  \u2514\u2500\u2500 s4inma:CycleTime\n\ns4inma:OEEMeasurement\n  s4inma:hasAvailability xsd:float\n  s4inma:hasPerformance xsd:float\n  s4inma:hasQuality xsd:float\n  s4inma:calculatedOEE xsd:float\n```\n\n### 5.5 Predictive Maintenance\n\n```turtle\ns4inma:MaintenanceEvent\n  \u251c\u2500\u2500 s4inma:PreventiveMaintenance\n  \u251c\u2500\u2500 s4inma:PredictiveMaintenance\n  \u251c\u2500\u2500 s4inma:CorrectiveMaintenance\n  \u2514\u2500\u2500 s4inma:EmergencyMaintenance\n\ns4inma:HealthStatus\n  s4inma:hasHealthScore xsd:float\n  s4inma:hasRe",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_21",
+    "text": "inma:PreventiveMaintenance\n  \u251c\u2500\u2500 s4inma:PredictiveMaintenance\n  \u251c\u2500\u2500 s4inma:CorrectiveMaintenance\n  \u2514\u2500\u2500 s4inma:EmergencyMaintenance\n\ns4inma:HealthStatus\n  s4inma:hasHealthScore xsd:float\n  s4inma:hasRemainingUsefulLife xsd:duration\n  s4inma:hasAnomalyScore xsd:float\n  s4inma:requiresMaintenance xsd:boolean\n```\n\n### 5.6 OT/Cybersecurity Integration\n\n**Industrial Control Systems:**\n- PLC and DCS device modeling\n- Industrial protocol patterns (Modbus, OPC-UA, PROFINET)\n- Machine-to-machine communication\n- Production network segmentation\n- Safety system integration (SIS)\n\n**Cybersecurity Applications:**\n- ICS network topology mapping\n- Anomaly detection in manufacturing\n- Ransomware impact on production\n- Supply chain cyber risks\n- Industrial IoT device security\n\n## 6. SAREF4AGRI - Agriculture Extension\n\n### 6.1 Overview\n\n**Namespace:** `https://saref.etsi.org/saref4agri/`\n**Version:** v1.1.2\n**Domain:** Precision agriculture, smart farming, livestock management\n\n### 6.2 Agricultural Device",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_22",
+    "text": "Extension\n\n### 6.1 Overview\n\n**Namespace:** `https://saref.etsi.org/saref4agri/`\n**Version:** v1.1.2\n**Domain:** Precision agriculture, smart farming, livestock management\n\n### 6.2 Agricultural Device Classes\n\n```turtle\ns4agri:FarmDevice\n  rdfs:subClassOf saref:Device\n  \u251c\u2500\u2500 s4agri:Tractor\n  \u251c\u2500\u2500 s4agri:Harvester\n  \u251c\u2500\u2500 s4agri:Seeder\n  \u251c\u2500\u2500 s4agri:Sprayer\n  \u251c\u2500\u2500 s4agri:IrrigationSystem\n  \u251c\u2500\u2500 s4agri:WeatherStation\n  \u251c\u2500\u2500 s4agri:SoilSensor\n  \u2514\u2500\u2500 s4agri:AnimalTracker\n\ns4agri:Sensor\n  \u251c\u2500\u2500 s4agri:SoilMoistureSensor\n  \u251c\u2500\u2500 s4agri:SoilpHSensor\n  \u251c\u2500\u2500 s4agri:WeatherSensor\n  \u251c\u2500\u2500 s4agri:CropHealthSensor\n  \u2514\u2500\u2500 s4agri:LivestockMonitor\n```\n\n### 6.3 Crop and Field Management\n\n```turtle\ns4agri:Farm\n  s4agri:hasField s4agri:Field\n  s4agri:hasCrop s4agri:Crop\n  s4agri:hasBuilding s4agri:Building\n\ns4agri:Field\n  s4agri:hasArea xsd:float\n  s4agri:hasSoilType s4agri:SoilType\n  s4agri:hasIrrigationSystem s4agri:IrrigationSystem\n  s4agri:hasCrop s4agri:Crop\n\ns4agri:Crop\n  s4agri:hasCropType xsd:string\n  s4agri:hasP",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_23",
+    "text": "agri:hasArea xsd:float\n  s4agri:hasSoilType s4agri:SoilType\n  s4agri:hasIrrigationSystem s4agri:IrrigationSystem\n  s4agri:hasCrop s4agri:Crop\n\ns4agri:Crop\n  s4agri:hasCropType xsd:string\n  s4agri:hasPlantingDate xsd:date\n  s4agri:hasExpectedHarvestDate xsd:date\n  s4agri:hasGrowthStage s4agri:GrowthStage\n```\n\n### 6.4 Livestock Management\n\n```turtle\ns4agri:Animal\n  s4agri:hasAnimalID xsd:string\n  s4agri:hasSpecies xsd:string\n  s4agri:hasBreed xsd:string\n  s4agri:hasBirthDate xsd:date\n  s4agri:hasWeight xsd:float\n  s4agri:hasHealthStatus s4agri:HealthStatus\n  s4agri:hasLocation geo:Point\n\ns4agri:LivestockMonitoring\n  s4agri:tracksAnimal s4agri:Animal\n  s4agri:measuresActivity xsd:float\n  s4agri:measuresTemperature xsd:float\n  s4agri:detectsAnomaly xsd:boolean\n```\n\n### 6.5 Environmental Monitoring\n\n```turtle\ns4agri:WeatherMeasurement\n  s4agri:hasTemperature xsd:float\n  s4agri:hasHumidity xsd:float\n  s4agri:hasPrecipitation xsd:float\n  s4agri:hasWindSpeed xsd:float\n  s4agri:hasSolarRadiatio",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_24",
+    "text": "ring\n\n```turtle\ns4agri:WeatherMeasurement\n  s4agri:hasTemperature xsd:float\n  s4agri:hasHumidity xsd:float\n  s4agri:hasPrecipitation xsd:float\n  s4agri:hasWindSpeed xsd:float\n  s4agri:hasSolarRadiation xsd:float\n\ns4agri:SoilMeasurement\n  s4agri:hasMoisture xsd:float\n  s4agri:hasTemperature xsd:float\n  s4agri:haspH xsd:float\n  s4agri:hasNutrientLevel s4agri:NutrientLevel\n```\n\n### 6.6 OT/Cybersecurity Relevance\n\n**Agricultural Technology:**\n- Autonomous vehicle control systems\n- Precision agriculture networks\n- Remote farm management systems\n- Livestock tracking and monitoring\n- Supply chain integration\n\n**Security Considerations:**\n- GPS spoofing risks\n- Autonomous equipment hijacking\n- Data integrity for compliance\n- Remote access vulnerabilities\n- Supply chain contamination\n\n## 7. SAREF4CITY - Smart City Extension\n\n### 7.1 Overview\n\n**Namespace:** `https://saref.etsi.org/saref4city/`\n**Version:** v1.1.1\n**Domain:** Urban infrastructure, smart cities, municipal services\n\n### 7.2 City I",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_25",
+    "text": "ITY - Smart City Extension\n\n### 7.1 Overview\n\n**Namespace:** `https://saref.etsi.org/saref4city/`\n**Version:** v1.1.1\n**Domain:** Urban infrastructure, smart cities, municipal services\n\n### 7.2 City Infrastructure Classes\n\n```turtle\ns4city:CityDevice\n  rdfs:subClassOf saref:Device\n  \u251c\u2500\u2500 s4city:StreetLight\n  \u251c\u2500\u2500 s4city:ParkingSensor\n  \u251c\u2500\u2500 s4city:TrafficLight\n  \u251c\u2500\u2500 s4city:TrafficSensor\n  \u251c\u2500\u2500 s4city:AirQualitySensor\n  \u251c\u2500\u2500 s4city:NoiseSensor\n  \u251c\u2500\u2500 s4city:WasteContainer\n  \u251c\u2500\u2500 s4city:PublicTransportVehicle\n  \u2514\u2500\u2500 s4city:ChargingStation\n\ns4city:PublicFacility\n  \u251c\u2500\u2500 s4city:Park\n  \u251c\u2500\u2500 s4city:ParkingLot\n  \u251c\u2500\u2500 s4city:PublicBuilding\n  \u251c\u2500\u2500 s4city:TransportStation\n  \u2514\u2500\u2500 s4city:ServicePoint\n```\n\n### 7.3 Transportation Management\n\n```turtle\ns4city:TransportationSystem\n  s4city:hasVehicle s4city:Vehicle\n  s4city:hasRoute s4city:Route\n  s4city:hasStop s4city:TransportStop\n\ns4city:TrafficManagement\n  s4city:measuresTrafficFlow xsd:float\n  s4city:measuresOccupancy xsd:float\n  s4city:detectsCongestion xsd:b",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_26",
+    "text": "4city:hasRoute s4city:Route\n  s4city:hasStop s4city:TransportStop\n\ns4city:TrafficManagement\n  s4city:measuresTrafficFlow xsd:float\n  s4city:measuresOccupancy xsd:float\n  s4city:detectsCongestion xsd:boolean\n  s4city:hasIncident s4city:TrafficIncident\n\ns4city:ParkingManagement\n  s4city:hasCapacity xsd:integer\n  s4city:hasOccupancy xsd:integer\n  s4city:hasAvailableSpaces xsd:integer\n  s4city:hasParkingRate xsd:float\n```\n\n### 7.4 Environmental Monitoring\n\n```turtle\ns4city:AirQuality\n  s4city:measuresPM25 xsd:float\n  s4city:measuresPM10 xsd:float\n  s4city:measuresNO2 xsd:float\n  s4city:measuresO3 xsd:float\n  s4city:measuresCO xsd:float\n  s4city:hasAQI xsd:integer  # Air Quality Index\n\ns4city:NoiseLevel\n  s4city:measuresDecibels xsd:float\n  s4city:hasNoiseType [\n    s4city:Traffic\n    s4city:Construction\n    s4city:Industrial\n    s4city:Recreation\n  ]\n```\n\n### 7.5 Waste Management\n\n```turtle\ns4city:WasteManagement\n  s4city:hasContainer s4city:WasteContainer\n  s4city:hasCollectionRoute s4cit",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_27",
+    "text": "nstruction\n    s4city:Industrial\n    s4city:Recreation\n  ]\n```\n\n### 7.5 Waste Management\n\n```turtle\ns4city:WasteManagement\n  s4city:hasContainer s4city:WasteContainer\n  s4city:hasCollectionRoute s4city:Route\n  s4city:hasSchedule s4city:Schedule\n\ns4city:WasteContainer\n  s4city:hasFillLevel xsd:float\n  s4city:hasCapacity xsd:float\n  s4city:hasWasteType [\n    s4city:General\n    s4city:Recyclable\n    s4city:Organic\n    s4city:Hazardous\n  ]\n  s4city:requiresCollection xsd:boolean\n```\n\n### 7.6 OT/Cybersecurity Integration\n\n**Smart City Infrastructure:**\n- Traffic management systems\n- Intelligent transportation systems (ITS)\n- Street lighting SCADA\n- Environmental monitoring networks\n- Public safety systems\n\n**Cybersecurity Applications:**\n- Critical infrastructure interdependencies\n- Traffic signal tampering\n- Surveillance system security\n- Public Wi-Fi network risks\n- IoT device proliferation risks\n\n## 8. SAREF4BLDG - Building Management Extension\n\n### 8.1 Overview\n\n**Namespace:** `https://",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_28",
+    "text": "nal tampering\n- Surveillance system security\n- Public Wi-Fi network risks\n- IoT device proliferation risks\n\n## 8. SAREF4BLDG - Building Management Extension\n\n### 8.1 Overview\n\n**Namespace:** `https://saref.etsi.org/saref4bldg/`\n**Version:** v1.1.2\n**Domain:** Building automation, HVAC, lighting, access control\n\n**Key Standards Alignment:**\n- IFC (Industry Foundation Classes)\n- BACnet protocol\n- LON (LonWorks) protocol\n- KNX building automation\n\n### 8.2 Building Device Hierarchy\n\n```turtle\ns4bldg:BuildingDevice\n  rdfs:subClassOf saref:Device\n  \u251c\u2500\u2500 s4bldg:HVAC\n  \u2502   \u251c\u2500\u2500 s4bldg:AirConditioner\n  \u2502   \u251c\u2500\u2500 s4bldg:Boiler\n  \u2502   \u251c\u2500\u2500 s4bldg:Chiller\n  \u2502   \u251c\u2500\u2500 s4bldg:FanCoil\n  \u2502   \u251c\u2500\u2500 s4bldg:HeatPump\n  \u2502   \u251c\u2500\u2500 s4bldg:VentilationUnit\n  \u2502   \u2514\u2500\u2500 s4bldg:Thermostat\n  \u251c\u2500\u2500 s4bldg:LightingDevice\n  \u2502   \u251c\u2500\u2500 s4bldg:Lamp\n  \u2502   \u251c\u2500\u2500 s4bldg:LightController\n  \u2502   \u2514\u2500\u2500 s4bldg:OccupancySensor\n  \u251c\u2500\u2500 s4bldg:SecurityDevice\n  \u2502   \u251c\u2500\u2500 s4bldg:AccessController\n  \u2502   \u251c\u2500\u2500 s4bldg:AlarmSystem\n  \u2502   \u251c\u2500\u2500 s4bldg:Camera\n  \u2502   \u2514\u2500\u2500 s",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_29",
+    "text": "dg:Lamp\n  \u2502   \u251c\u2500\u2500 s4bldg:LightController\n  \u2502   \u2514\u2500\u2500 s4bldg:OccupancySensor\n  \u251c\u2500\u2500 s4bldg:SecurityDevice\n  \u2502   \u251c\u2500\u2500 s4bldg:AccessController\n  \u2502   \u251c\u2500\u2500 s4bldg:AlarmSystem\n  \u2502   \u251c\u2500\u2500 s4bldg:Camera\n  \u2502   \u2514\u2500\u2500 s4bldg:MotionDetector\n  \u251c\u2500\u2500 s4bldg:EnergyDevice\n  \u2502   \u251c\u2500\u2500 s4bldg:EnergyMeter\n  \u2502   \u251c\u2500\u2500 s4bldg:SubMeter\n  \u2502   \u2514\u2500\u2500 s4bldg:LoadController\n  \u2514\u2500\u2500 s4bldg:Actuator\n      \u251c\u2500\u2500 s4bldg:Damper\n      \u251c\u2500\u2500 s4bldg:Valve\n      \u2514\u2500\u2500 s4bldg:Switch\n```\n\n### 8.3 Building Spaces and Zones\n\n```turtle\ns4bldg:Building\n  s4bldg:hasStorey s4bldg:BuildingStorey\n  s4bldg:hasSpace s4bldg:BuildingSpace\n  s4bldg:hasZone s4bldg:Zone\n\ns4bldg:BuildingSpace\n  s4bldg:hasSpaceType [\n    s4bldg:Office\n    s4bldg:MeetingRoom\n    s4bldg:Corridor\n    s4bldg:Lobby\n    s4bldg:TechnicalRoom\n  ]\n  s4bldg:hasArea xsd:float\n  s4bldg:hasOccupancy xsd:integer\n  s4bldg:hasDevice s4bldg:BuildingDevice\n\ns4bldg:Zone\n  s4bldg:includesSpace s4bldg:BuildingSpace\n  s4bldg:hasZoneType [\n    s4bldg:ThermalZone\n    s4bldg:LightingZone\n    s4bldg:Secur",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_30",
+    "text": "ncy xsd:integer\n  s4bldg:hasDevice s4bldg:BuildingDevice\n\ns4bldg:Zone\n  s4bldg:includesSpace s4bldg:BuildingSpace\n  s4bldg:hasZoneType [\n    s4bldg:ThermalZone\n    s4bldg:LightingZone\n    s4bldg:SecurityZone\n    s4bldg:FireZone\n  ]\n```\n\n### 8.4 HVAC System Modeling\n\n```turtle\ns4bldg:HVACSystem\n  s4bldg:hasComponent s4bldg:HVAC\n  s4bldg:servesZone s4bldg:ThermalZone\n  s4bldg:hasSetpoint s4bldg:Setpoint\n  s4bldg:hasSchedule s4bldg:OperatingSchedule\n\ns4bldg:ThermalZone\n  s4bldg:hasTemperature xsd:float\n  s4bldg:hasHumidity xsd:float\n  s4bldg:hasTargetTemperature xsd:float\n  s4bldg:hasOccupancy xsd:integer\n  s4bldg:hasComfortLevel xsd:float\n\ns4bldg:AirFlowMeasurement\n  s4bldg:hasFlowRate xsd:float\n  s4bldg:hasTemperature xsd:float\n  s4bldg:hasPressure xsd:float\n  s4bldg:hasHumidity xsd:float\n  s4bldg:hasCO2Level xsd:float\n```\n\n### 8.5 Lighting Control Systems\n\n```turtle\ns4bldg:LightingSystem\n  s4bldg:hasLightingDevice s4bldg:LightingDevice\n  s4bldg:servesZone s4bldg:LightingZone\n  s4bldg:h",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_31",
+    "text": " s4bldg:hasCO2Level xsd:float\n```\n\n### 8.5 Lighting Control Systems\n\n```turtle\ns4bldg:LightingSystem\n  s4bldg:hasLightingDevice s4bldg:LightingDevice\n  s4bldg:servesZone s4bldg:LightingZone\n  s4bldg:hasLightingMode [\n    s4bldg:Automatic\n    s4bldg:Manual\n    s4bldg:PresenceBased\n    s4bldg:DaylightHarvesting\n    s4bldg:SceneMode\n  ]\n\ns4bldg:IlluminanceMeasurement\n  s4bldg:hasLightLevel xsd:float\n  s4bldg:measuredIn s4bldg:Lux\n  s4bldg:hasLocation geo:Point\n```\n\n### 8.6 Access Control and Security\n\n```turtle\ns4bldg:AccessControlSystem\n  s4bldg:hasAccessPoint s4bldg:AccessController\n  s4bldg:managesZone s4bldg:SecurityZone\n  s4bldg:hasAccessPolicy s4bldg:AccessPolicy\n\ns4bldg:AccessEvent\n  s4bldg:hasTimestamp xsd:dateTime\n  s4bldg:hasUser s4bldg:User\n  s4bldg:hasAccessPoint s4bldg:AccessController\n  s4bldg:hasResult [\n    s4bldg:Granted\n    s4bldg:Denied\n    s4bldg:Alarm\n  ]\n  s4bldg:hasCredentialType [\n    s4bldg:Card\n    s4bldg:PIN\n    s4bldg:Biometric\n    s4bldg:Mobile\n  ]\n```\n\n### 8.",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_32",
+    "text": "roller\n  s4bldg:hasResult [\n    s4bldg:Granted\n    s4bldg:Denied\n    s4bldg:Alarm\n  ]\n  s4bldg:hasCredentialType [\n    s4bldg:Card\n    s4bldg:PIN\n    s4bldg:Biometric\n    s4bldg:Mobile\n  ]\n```\n\n### 8.7 Energy Management in Buildings\n\n```turtle\ns4bldg:EnergyManagementSystem\n  s4bldg:monitorsMeter s4bldg:EnergyMeter\n  s4bldg:controlsLoad s4bldg:LoadController\n  s4bldg:hasEnergyStrategy [\n    s4bldg:LoadShedding\n    s4bldg:DemandResponse\n    s4bldg:PeakShaving\n    s4bldg:OptimalStart\n  ]\n\ns4bldg:EnergyConsumption\n  s4bldg:hasConsumptionType [\n    s4bldg:Heating\n    s4bldg:Cooling\n    s4bldg:Lighting\n    s4bldg:Equipment\n    s4bldg:Total\n  ]\n  s4bldg:hasValue xsd:float\n  s4bldg:hasPeriod xsd:duration\n```\n\n### 8.8 OT/Cybersecurity Integration\n\n**Building Management Systems (BMS):**\n- BACnet protocol security\n- Building network segmentation\n- Integration with IT networks\n- Cloud-connected building systems\n- Physical-cyber convergence\n\n**Critical Cybersecurity Applications:**\n- HVAC as networ",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_33",
+    "text": "tocol security\n- Building network segmentation\n- Integration with IT networks\n- Cloud-connected building systems\n- Physical-cyber convergence\n\n**Critical Cybersecurity Applications:**\n- HVAC as network pivot point\n- Access control system vulnerabilities\n- Video surveillance security\n- Fire and life safety systems\n- Remote building management risks\n\n**High Relevance to AEON-DT:**\nBuilding automation systems represent significant cyber-physical integration with:\n- Multiple network protocols (BACnet, Modbus, LON)\n- Legacy system integration\n- Physical security integration\n- Energy infrastructure connection\n- Cloud service integration\n\n## 9. SAREF4AUTO - Automotive Extension\n\n### 9.1 Overview\n\n**Namespace:** `https://saref.etsi.org/saref4auto/`\n**Version:** v1.0.1\n**Domain:** Connected vehicles, automotive systems, V2X communication\n\n### 9.2 Vehicle Device Classes\n\n```turtle\ns4auto:Vehicle\n  rdfs:subClassOf saref:Device\n  s4auto:hasVehicleType [\n    s4auto:PassengerCar\n    s4auto:Truck\n   ",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_34",
+    "text": "s, automotive systems, V2X communication\n\n### 9.2 Vehicle Device Classes\n\n```turtle\ns4auto:Vehicle\n  rdfs:subClassOf saref:Device\n  s4auto:hasVehicleType [\n    s4auto:PassengerCar\n    s4auto:Truck\n    s4auto:Bus\n    s4auto:Motorcycle\n  ]\n  s4auto:hasSystem s4auto:VehicleSystem\n  s4auto:hasComponent s4auto:VehicleComponent\n\ns4auto:VehicleSystem\n  \u251c\u2500\u2500 s4auto:Powertrain\n  \u2502   \u251c\u2500\u2500 s4auto:Engine\n  \u2502   \u251c\u2500\u2500 s4auto:Transmission\n  \u2502   \u2514\u2500\u2500 s4auto:Battery\n  \u251c\u2500\u2500 s4auto:Chassis\n  \u2502   \u251c\u2500\u2500 s4auto:Suspension\n  \u2502   \u251c\u2500\u2500 s4auto:Braking\n  \u2502   \u2514\u2500\u2500 s4auto:Steering\n  \u251c\u2500\u2500 s4auto:Body\n  \u2502   \u251c\u2500\u2500 s4auto:Doors\n  \u2502   \u251c\u2500\u2500 s4auto:Windows\n  \u2502   \u2514\u2500\u2500 s4auto:Lighting\n  \u2514\u2500\u2500 s4auto:Electronics\n      \u251c\u2500\u2500 s4auto:ECU\n      \u251c\u2500\u2500 s4auto:Infotainment\n      \u2514\u2500\u2500 s4auto:ADAS\n```\n\n### 9.3 Vehicle-to-Everything (V2X) Communication\n\n```turtle\ns4auto:V2XCommunication\n  \u251c\u2500\u2500 s4auto:V2V  # Vehicle-to-Vehicle\n  \u251c\u2500\u2500 s4auto:V2I  # Vehicle-to-Infrastructure\n  \u251c\u2500\u2500 s4auto:V2P  # Vehicle-to-Pedestrian\n  \u2514\u2500\u2500 s4auto:V2N  # Vehicle-to-Network\n\ns4au",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_35",
+    "text": "rtle\ns4auto:V2XCommunication\n  \u251c\u2500\u2500 s4auto:V2V  # Vehicle-to-Vehicle\n  \u251c\u2500\u2500 s4auto:V2I  # Vehicle-to-Infrastructure\n  \u251c\u2500\u2500 s4auto:V2P  # Vehicle-to-Pedestrian\n  \u2514\u2500\u2500 s4auto:V2N  # Vehicle-to-Network\n\ns4auto:V2XMessage\n  s4auto:hasMessageType [\n    s4auto:CAM  # Cooperative Awareness Message\n    s4auto:DENM  # Decentralized Environmental Notification\n    s4auto:BSM  # Basic Safety Message\n    s4auto:SPaT  # Signal Phase and Timing\n  ]\n  s4auto:hasPosition geo:Point\n  s4auto:hasVelocity xsd:float\n  s4auto:hasHeading xsd:float\n```\n\n### 9.4 Advanced Driver Assistance Systems (ADAS)\n\n```turtle\ns4auto:ADAS\n  \u251c\u2500\u2500 s4auto:AdaptiveCruiseControl\n  \u251c\u2500\u2500 s4auto:LaneKeepingAssist\n  \u251c\u2500\u2500 s4auto:AutomaticEmergencyBraking\n  \u251c\u2500\u2500 s4auto:BlindSpotDetection\n  \u251c\u2500\u2500 s4auto:ParkingAssist\n  \u2514\u2500\u2500 s4auto:TrafficSignRecognition\n\ns4auto:ADASEvent\n  s4auto:hasEventType [\n    s4auto:Warning\n    s4auto:Intervention\n    s4auto:Override\n  ]\n  s4auto:hasSeverity xsd:integer\n  s4auto:hasTimestamp xsd:dateTime\n```\n\n### 9.5 Vehicl",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_36",
+    "text": "ion\n\ns4auto:ADASEvent\n  s4auto:hasEventType [\n    s4auto:Warning\n    s4auto:Intervention\n    s4auto:Override\n  ]\n  s4auto:hasSeverity xsd:integer\n  s4auto:hasTimestamp xsd:dateTime\n```\n\n### 9.5 Vehicle Diagnostics\n\n```turtle\ns4auto:DiagnosticTroubleCode\n  s4auto:hasDTCCode xsd:string\n  s4auto:hasDescription xsd:string\n  s4auto:affectsSystem s4auto:VehicleSystem\n  s4auto:hasSeverity [\n    s4auto:Critical\n    s4auto:Major\n    s4auto:Minor\n    s4auto:Informational\n  ]\n\ns4auto:VehicleHealth\n  s4auto:hasOdometerReading xsd:float\n  s4auto:hasFuelLevel xsd:float\n  s4auto:hasBatteryStatus xsd:float\n  s4auto:hasMaintenanceStatus s4auto:MaintenanceStatus\n```\n\n### 9.6 OT/Cybersecurity Relevance\n\n**Automotive Cybersecurity:**\n- CAN bus vulnerabilities\n- Telematics system security\n- Over-the-air (OTA) updates\n- ECU network segmentation\n- V2X communication security\n\n**Connected Vehicle Risks:**\n- Remote vehicle hijacking\n- Infotainment system attacks\n- GPS spoofing\n- Keyless entry vulnerabilities\n- ",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_37",
+    "text": "updates\n- ECU network segmentation\n- V2X communication security\n\n**Connected Vehicle Risks:**\n- Remote vehicle hijacking\n- Infotainment system attacks\n- GPS spoofing\n- Keyless entry vulnerabilities\n- Supply chain attacks on components\n\n## 10. SAREF4ENVI - Environment Extension\n\n### 10.1 Overview\n\n**Namespace:** `https://saref.etsi.org/saref4envi/`\n**Version:** v1.0.0\n**Domain:** Environmental monitoring, air/water quality, weather\n\n### 10.2 Environmental Monitoring Classes\n\n```turtle\ns4envi:EnvironmentalSensor\n  rdfs:subClassOf saref:Sensor\n  \u251c\u2500\u2500 s4envi:AirQualitySensor\n  \u251c\u2500\u2500 s4envi:WaterQualitySensor\n  \u251c\u2500\u2500 s4envi:SoilSensor\n  \u251c\u2500\u2500 s4envi:NoiseSensor\n  \u251c\u2500\u2500 s4envi:RadiationSensor\n  \u2514\u2500\u2500 s4envi:WeatherSensor\n\ns4envi:EnvironmentalProperty\n  rdfs:subClassOf saref:Property\n  \u251c\u2500\u2500 s4envi:AirQuality\n  \u251c\u2500\u2500 s4envi:WaterQuality\n  \u251c\u2500\u2500 s4envi:NoiseLevel\n  \u251c\u2500\u2500 s4envi:Temperature\n  \u251c\u2500\u2500 s4envi:Humidity\n  \u251c\u2500\u2500 s4envi:AtmosphericPressure\n  \u2514\u2500\u2500 s4envi:WindSpeed\n```\n\n### 10.3 Air Quality Monitoring\n\n```turtl",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_38",
+    "text": "\n  \u251c\u2500\u2500 s4envi:WaterQuality\n  \u251c\u2500\u2500 s4envi:NoiseLevel\n  \u251c\u2500\u2500 s4envi:Temperature\n  \u251c\u2500\u2500 s4envi:Humidity\n  \u251c\u2500\u2500 s4envi:AtmosphericPressure\n  \u2514\u2500\u2500 s4envi:WindSpeed\n```\n\n### 10.3 Air Quality Monitoring\n\n```turtle\ns4envi:AirQualityMeasurement\n  s4envi:measuresPollutant [\n    s4envi:PM25\n    s4envi:PM10\n    s4envi:NO2\n    s4envi:SO2\n    s4envi:CO\n    s4envi:O3\n    s4envi:VOC\n  ]\n  s4envi:hasConcentration xsd:float\n  s4envi:hasAQI xsd:integer\n  s4envi:hasHealthImpact [\n    s4envi:Good\n    s4envi:Moderate\n    s4envi:UnhealthyForSensitive\n    s4envi:Unhealthy\n    s4envi:VeryUnhealthy\n    s4envi:Hazardous\n  ]\n```\n\n### 10.4 Weather and Climate Monitoring\n\n```turtle\ns4envi:WeatherMeasurement\n  s4envi:hasTemperature xsd:float\n  s4envi:hasHumidity xsd:float\n  s4envi:hasPressure xsd:float\n  s4envi:hasWindSpeed xsd:float\n  s4envi:hasWindDirection xsd:float\n  s4envi:hasPrecipitation xsd:float\n  s4envi:hasVisibility xsd:float\n  s4envi:hasSolarRadiation xsd:float\n```\n\n### 10.5 OT/Cybersecurity Applications\n\n**E",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_39",
+    "text": "xsd:float\n  s4envi:hasWindDirection xsd:float\n  s4envi:hasPrecipitation xsd:float\n  s4envi:hasVisibility xsd:float\n  s4envi:hasSolarRadiation xsd:float\n```\n\n### 10.5 OT/Cybersecurity Applications\n\n**Environmental Monitoring Networks:**\n- Large-scale sensor deployments\n- Remote station security\n- Data integrity for compliance\n- Early warning systems\n- Industrial emission monitoring\n\n## 11. SAREF4HEALTH - Healthcare Extension\n\n### 11.1 Overview\n\n**Namespace:** `https://saref.etsi.org/saref4health/`\n**Version:** v1.0.0\n**Domain:** Healthcare devices, patient monitoring, medical systems\n\n### 11.2 Medical Device Classes\n\n```turtle\ns4health:MedicalDevice\n  rdfs:subClassOf saref:Device\n  \u251c\u2500\u2500 s4health:DiagnosticDevice\n  \u2502   \u251c\u2500\u2500 s4health:BloodPressureMonitor\n  \u2502   \u251c\u2500\u2500 s4health:Thermometer\n  \u2502   \u251c\u2500\u2500 s4health:PulseOximeter\n  \u2502   \u251c\u2500\u2500 s4health:ECG\n  \u2502   \u2514\u2500\u2500 s4health:GlucoseMeter\n  \u251c\u2500\u2500 s4health:TherapeuticDevice\n  \u2502   \u251c\u2500\u2500 s4health:InfusionPump\n  \u2502   \u251c\u2500\u2500 s4health:Ventilator\n  \u2502   \u251c\u2500\u2500 s4health:Defibri",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_40",
+    "text": " s4health:PulseOximeter\n  \u2502   \u251c\u2500\u2500 s4health:ECG\n  \u2502   \u2514\u2500\u2500 s4health:GlucoseMeter\n  \u251c\u2500\u2500 s4health:TherapeuticDevice\n  \u2502   \u251c\u2500\u2500 s4health:InfusionPump\n  \u2502   \u251c\u2500\u2500 s4health:Ventilator\n  \u2502   \u251c\u2500\u2500 s4health:Defibrillator\n  \u2502   \u2514\u2500\u2500 s4health:PaceMaker\n  \u2514\u2500\u2500 s4health:MonitoringDevice\n      \u251c\u2500\u2500 s4health:PatientMonitor\n      \u251c\u2500\u2500 s4health:WearableDevice\n      \u2514\u2500\u2500 s4health:ActivityTracker\n```\n\n### 11.3 Health Measurements\n\n```turtle\ns4health:VitalSign\n  \u251c\u2500\u2500 s4health:HeartRate\n  \u251c\u2500\u2500 s4health:BloodPressure\n  \u251c\u2500\u2500 s4health:BodyTemperature\n  \u251c\u2500\u2500 s4health:RespiratoryRate\n  \u251c\u2500\u2500 s4health:OxygenSaturation\n  \u2514\u2500\u2500 s4health:BloodGlucose\n\ns4health:HealthMeasurement\n  s4health:measuresVitalSign s4health:VitalSign\n  s4health:hasValue xsd:float\n  s4health:hasUnit saref:UnitOfMeasure\n  s4health:hasTimestamp xsd:dateTime\n  s4health:relatesTo s4health:Patient\n```\n\n### 11.4 Patient Monitoring\n\n```turtle\ns4health:Patient\n  s4health:hasPatientID xsd:string\n  s4health:hasAge xsd:integer\n  s4health:hasCondition s4health:MedicalCon",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 40,
+      "start_char": 32000,
+      "end_char": 33000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_41",
+    "text": "lth:relatesTo s4health:Patient\n```\n\n### 11.4 Patient Monitoring\n\n```turtle\ns4health:Patient\n  s4health:hasPatientID xsd:string\n  s4health:hasAge xsd:integer\n  s4health:hasCondition s4health:MedicalCondition\n  s4health:isMonitoredBy s4health:MonitoringDevice\n  s4health:hasAlert s4health:HealthAlert\n\ns4health:HealthAlert\n  s4health:hasAlertType [\n    s4health:Critical\n    s4health:Warning\n    s4health:Information\n  ]\n  s4health:hasParameter s4health:VitalSign\n  s4health:hasThreshold xsd:float\n  s4health:triggeredAt xsd:dateTime\n```\n\n### 11.5 OT/Cybersecurity in Healthcare\n\n**Medical Device Security:**\n- Infusion pump vulnerabilities\n- Pacemaker/ICD remote access\n- Hospital network segmentation\n- DICOM protocol security\n- HL7 FHIR integration security\n\n**Critical Vulnerabilities:**\n- Life-safety system attacks\n- Patient data integrity\n- Remote medical device control\n- Pharmaceutical manufacturing systems\n- Hospital building automation\n\n## 12. SAREF4LIFT - Elevator Extension\n\n### 12.1 Over",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 41,
+      "start_char": 32800,
+      "end_char": 33800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_42",
+    "text": "ety system attacks\n- Patient data integrity\n- Remote medical device control\n- Pharmaceutical manufacturing systems\n- Hospital building automation\n\n## 12. SAREF4LIFT - Elevator Extension\n\n### 12.1 Overview\n\n**Namespace:** `https://saref.etsi.org/saref4lift/`\n**Version:** v1.0.0\n**Domain:** Elevator systems, vertical transportation\n\n### 12.2 Elevator System Classes\n\n```turtle\ns4lift:Elevator\n  rdfs:subClassOf saref:Device\n  s4lift:hasLiftType [\n    s4lift:Passenger\n    s4lift:Freight\n    s4lift:Service\n    s4lift:Hydraulic\n    s4lift:Traction\n  ]\n  s4lift:servesFloor s4lift:Floor\n  s4lift:hasCapacity xsd:integer\n  s4lift:hasMaxLoad xsd:float\n\ns4lift:ElevatorComponent\n  \u251c\u2500\u2500 s4lift:Car\n  \u251c\u2500\u2500 s4lift:Door\n  \u251c\u2500\u2500 s4lift:Motor\n  \u251c\u2500\u2500 s4lift:Controller\n  \u251c\u2500\u2500 s4lift:SafetySystem\n  \u2514\u2500\u2500 s4lift:CallPanel\n```\n\n### 12.3 Elevator Operations\n\n```turtle\ns4lift:ElevatorState\n  \u251c\u2500\u2500 s4lift:Idle\n  \u251c\u2500\u2500 s4lift:Moving\n  \u251c\u2500\u2500 s4lift:Loading\n  \u251c\u2500\u2500 s4lift:Maintenance\n  \u2514\u2500\u2500 s4lift:Emergency\n\ns4lift:ElevatorEvent\n  s4",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 42,
+      "start_char": 33600,
+      "end_char": 34600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_43",
+    "text": "\n```\n\n### 12.3 Elevator Operations\n\n```turtle\ns4lift:ElevatorState\n  \u251c\u2500\u2500 s4lift:Idle\n  \u251c\u2500\u2500 s4lift:Moving\n  \u251c\u2500\u2500 s4lift:Loading\n  \u251c\u2500\u2500 s4lift:Maintenance\n  \u2514\u2500\u2500 s4lift:Emergency\n\ns4lift:ElevatorEvent\n  s4lift:hasEventType [\n    s4lift:CallRegistered\n    s4lift:DoorOpened\n    s4lift:DoorClosed\n    s4lift:FloorReached\n    s4lift:EmergencyStop\n    s4lift:Overload\n  ]\n  s4lift:atFloor s4lift:Floor\n  s4lift:hasTimestamp xsd:dateTime\n```\n\n### 12.4 Safety and Monitoring\n\n```turtle\ns4lift:SafetySystem\n  s4lift:hasOverloadDetection xsd:boolean\n  s4lift:hasEmergencyBrake xsd:boolean\n  s4lift:hasFireService xsd:boolean\n  s4lift:hasEarthquakeMode xsd:boolean\n\ns4lift:MaintenanceMonitoring\n  s4lift:hasDoorCycles xsd:integer\n  s4lift:hasTripCount xsd:integer\n  s4lift:hasOperatingHours xsd:float\n  s4lift:requiresMaintenance xsd:boolean\n```\n\n### 12.5 OT/Cybersecurity Relevance\n\n**Elevator Control Systems:**\n- Building integration vulnerabilities\n- Remote monitoring systems\n- Emergency override security\n- P",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 43,
+      "start_char": 34400,
+      "end_char": 35400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_44",
+    "text": "iresMaintenance xsd:boolean\n```\n\n### 12.5 OT/Cybersecurity Relevance\n\n**Elevator Control Systems:**\n- Building integration vulnerabilities\n- Remote monitoring systems\n- Emergency override security\n- Physical safety implications\n- Access control integration\n\n## 13. SAREF4WEAR - Wearables Extension\n\n### 13.1 Overview\n\n**Namespace:** `https://saref.etsi.org/saref4wear/`\n**Version:** v1.0.0\n**Domain:** Wearable devices, personal health tracking\n\n### 13.2 Wearable Device Classes\n\n```turtle\ns4wear:WearableDevice\n  rdfs:subClassOf saref:Device\n  \u251c\u2500\u2500 s4wear:Smartwatch\n  \u251c\u2500\u2500 s4wear:FitnessTracker\n  \u251c\u2500\u2500 s4wear:SmartGlasses\n  \u251c\u2500\u2500 s4wear:HeartRateMonitor\n  \u251c\u2500\u2500 s4wear:SmartClothing\n  \u2514\u2500\u2500 s4wear:HealthPatch\n\ns4wear:WearableProperty\n  rdfs:subClassOf saref:Property\n  \u251c\u2500\u2500 s4wear:StepCount\n  \u251c\u2500\u2500 s4wear:HeartRate\n  \u251c\u2500\u2500 s4wear:CaloriesBurned\n  \u251c\u2500\u2500 s4wear:SleepQuality\n  \u251c\u2500\u2500 s4wear:StressLevel\n  \u2514\u2500\u2500 s4wear:ActivityLevel\n```\n\n### 13.3 Activity Tracking\n\n```turtle\ns4wear:ActivityMeasurement\n  s4wear:hasActiv",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 44,
+      "start_char": 35200,
+      "end_char": 36200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_45",
+    "text": "rtRate\n  \u251c\u2500\u2500 s4wear:CaloriesBurned\n  \u251c\u2500\u2500 s4wear:SleepQuality\n  \u251c\u2500\u2500 s4wear:StressLevel\n  \u2514\u2500\u2500 s4wear:ActivityLevel\n```\n\n### 13.3 Activity Tracking\n\n```turtle\ns4wear:ActivityMeasurement\n  s4wear:hasActivityType [\n    s4wear:Walking\n    s4wear:Running\n    s4wear:Cycling\n    s4wear:Swimming\n    s4wear:Sleeping\n  ]\n  s4wear:hasDuration xsd:duration\n  s4wear:hasIntensity xsd:float\n  s4wear:hasDistance xsd:float\n```\n\n### 13.4 OT/Cybersecurity Context\n\n**Wearable Security:**\n- Personal data privacy\n- Bluetooth vulnerabilities\n- Location tracking risks\n- Health data integrity\n- Integration with medical devices\n\n## 14. Cross-Domain Integration Patterns\n\n### 14.1 Common Integration Approaches\n\n**Pattern 1: Device Composition**\n```turtle\n# Complex device made of multiple SAREF devices\n:IndustrialFacility a saref:Device ;\n  saref:consistsOf :HVACSystem ;\n  saref:consistsOf :LightingSystem ;\n  saref:consistsOf :AccessControlSystem ;\n  saref:consistsOf :EnergyManagementSystem .\n\n:HVACSystem a s4bldg:H",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 45,
+      "start_char": 36000,
+      "end_char": 37000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_46",
+    "text": "ty a saref:Device ;\n  saref:consistsOf :HVACSystem ;\n  saref:consistsOf :LightingSystem ;\n  saref:consistsOf :AccessControlSystem ;\n  saref:consistsOf :EnergyManagementSystem .\n\n:HVACSystem a s4bldg:HVACSystem ;\n  s4bldg:hasComponent :Boiler1 ;\n  s4bldg:hasComponent :Chiller1 .\n\n:Boiler1 a s4bldg:Boiler ;\n  saref:measuresProperty :Temperature ;\n  saref:consumesEnergy :NaturalGas .\n```\n\n**Pattern 2: Property Sharing**\n```turtle\n# Same property measured by different domain devices\n:Temperature a saref:Property ;\n  saref:isMeasuredByDevice :ThermostatBldg ;\n  saref:isMeasuredByDevice :WeatherStationCity ;\n  saref:isMeasuredByDevice :SoilSensorAgri .\n\n:ThermostatBldg a s4bldg:Thermostat .\n:WeatherStationCity a s4city:WeatherStation .\n:SoilSensorAgri a s4agri:SoilSensor .\n```\n\n**Pattern 3: Unified Measurement Framework**\n```turtle\n# Consistent measurement approach across domains\n:TempMeasurement1 a saref:Measurement ;\n  saref:relatesToProperty :Temperature ;\n  saref:hasValue \"22.5\"^^xsd:flo",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 46,
+      "start_char": 36800,
+      "end_char": 37800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_47",
+    "text": "ied Measurement Framework**\n```turtle\n# Consistent measurement approach across domains\n:TempMeasurement1 a saref:Measurement ;\n  saref:relatesToProperty :Temperature ;\n  saref:hasValue \"22.5\"^^xsd:float ;\n  saref:isMeasuredIn :DegreeCelsius ;\n  saref:hasTimestamp \"2025-10-30T12:00:00Z\"^^xsd:dateTime .\n```\n\n### 14.2 Multi-Domain Facility Modeling\n\n**Smart Building + Energy + Water Integration:**\n```turtle\n:CorporateHeadquarters a s4bldg:Building ;\n  saref:consistsOf :FloorSystem ;\n  s4ener:hasEnergyManagement :EMSystem ;\n  s4watr:hasWaterManagement :WaterSystem .\n\n:EMSystem a s4ener:PowerManagementSystem ;\n  s4ener:monitors :MainMeter ;\n  s4ener:controls :HVACLoads ;\n  s4ener:participatesIn :DemandResponseProgram .\n\n:WaterSystem a s4watr:WaterManagement ;\n  s4watr:monitors :WaterMeter ;\n  s4watr:detectsLeakage :LeakageDetector1 ;\n  s4watr:measuresQuality :WaterQualitySensor1 .\n```\n\n### 14.3 Industrial Facility Integration\n\n**Manufacturing + Energy + Building:**\n```turtle\n:ManufacturingP",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 47,
+      "start_char": 37600,
+      "end_char": 38600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_48",
+    "text": "4watr:detectsLeakage :LeakageDetector1 ;\n  s4watr:measuresQuality :WaterQualitySensor1 .\n```\n\n### 14.3 Industrial Facility Integration\n\n**Manufacturing + Energy + Building:**\n```turtle\n:ManufacturingPlant a s4inma:Factory ;\n  saref:consistsOf :ProductionLine1 ;\n  saref:consistsOf :WarehouseArea ;\n  s4bldg:hasHVACSystem :IndustrialHVAC ;\n  s4ener:hasEnergyManagement :PlantEMS .\n\n:ProductionLine1 a s4inma:ProductionLine ;\n  s4inma:hasStep :AssemblyStep ;\n  s4inma:hasStep :TestingStep ;\n  s4inma:hasStep :PackagingStep .\n\n:AssemblyStep a s4inma:ProcessStep ;\n  s4inma:usesMachine :Robot1 ;\n  s4inma:hasEnergyConsumption :EnergyProfile1 .\n\n:Robot1 a s4inma:Robot ;\n  saref:hasState :OperatingState ;\n  s4inma:hasHealthStatus :HealthMonitor1 .\n```\n\n### 14.4 Smart City Infrastructure Integration\n\n**City + Transportation + Energy + Environment:**\n```turtle\n:SmartCity a s4city:City ;\n  s4city:hasDistrict :DowntownDistrict ;\n  s4city:hasTransportSystem :PublicTransit ;\n  s4grid:hasElectricalGrid :Ci",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 48,
+      "start_char": 38400,
+      "end_char": 39400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_49",
+    "text": "ity + Transportation + Energy + Environment:**\n```turtle\n:SmartCity a s4city:City ;\n  s4city:hasDistrict :DowntownDistrict ;\n  s4city:hasTransportSystem :PublicTransit ;\n  s4grid:hasElectricalGrid :CityGrid ;\n  s4envi:hasEnvironmentalMonitoring :AirQualityNetwork .\n\n:DowntownDistrict a s4city:District ;\n  s4city:hasStreetLighting :LEDSystem ;\n  s4city:hasParking :SmartParkingSystem ;\n  s4city:hasTrafficManagement :TrafficControlCenter .\n\n:LEDSystem a s4city:StreetLightingSystem ;\n  s4bldg:hasLightingDevice :StreetLight001 ;\n  s4ener:hasEnergyConsumption :LightingEnergy ;\n  s4city:adaptsToDaylight true .\n```\n\n## 15. OT/ICS Cybersecurity Application Framework\n\n### 15.1 SAREF Device Security Modeling\n\n**Extending SAREF for Cybersecurity:**\n```turtle\n# Proposed SAREF extensions for security\nsaref:hasSecurityProfile\n  rdfs:domain saref:Device\n  rdfs:range cyber:SecurityProfile\n\nsaref:hasCommunicationProtocol\n  rdfs:domain saref:Device\n  rdfs:range cyber:Protocol\n\nsaref:hasVulnerability\n  rd",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 49,
+      "start_char": 39200,
+      "end_char": 40200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_50",
+    "text": "ref:hasSecurityProfile\n  rdfs:domain saref:Device\n  rdfs:range cyber:SecurityProfile\n\nsaref:hasCommunicationProtocol\n  rdfs:domain saref:Device\n  rdfs:range cyber:Protocol\n\nsaref:hasVulnerability\n  rdfs:domain saref:Device\n  rdfs:range cyber:Vulnerability\n\nsaref:hasNetworkInterface\n  rdfs:domain saref:Device\n  rdfs:range cyber:NetworkInterface\n```\n\n### 15.2 Critical Infrastructure Device Mapping\n\n**Building Devices to ICS Components:**\n```turtle\n:HVACController a s4bldg:Thermostat ;\n  saref:hasManufacturer \"Siemens\" ;\n  saref:hasModel \"RDF600\" ;\n  saref:hasFirmwareVersion \"3.2.1\" ;\n  saref:hasCommunicationProtocol cyber:BACnet ;\n  cyber:hasIPAddress \"192.168.10.50\" ;\n  cyber:exposedToNetwork cyber:BuildingNetwork ;\n  cyber:hasVulnerability cyber:CVE-2023-12345 .\n```\n\n**Manufacturing Devices to ICS:**\n```turtle\n:PLC1 a s4inma:Machine ;\n  saref:hasManufacturer \"Allen-Bradley\" ;\n  saref:hasModel \"ControlLogix 5580\" ;\n  saref:hasFirmwareVersion \"32.011\" ;\n  saref:hasCommunicationProtocol c",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 50,
+      "start_char": 40000,
+      "end_char": 41000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_51",
+    "text": "s to ICS:**\n```turtle\n:PLC1 a s4inma:Machine ;\n  saref:hasManufacturer \"Allen-Bradley\" ;\n  saref:hasModel \"ControlLogix 5580\" ;\n  saref:hasFirmwareVersion \"32.011\" ;\n  saref:hasCommunicationProtocol cyber:EtherNetIP ;\n  cyber:hasIPAddress \"192.168.100.10\" ;\n  cyber:connectedTo :SCADA_Server ;\n  cyber:hasVulnerability cyber:CVE-2024-54321 .\n```\n\n### 15.3 Network Segmentation Modeling\n\n**SAREF Devices in Network Zones:**\n```turtle\n:ProductionZone a cyber:NetworkZone ;\n  cyber:hasSecurityLevel cyber:Level3_ICS ;\n  cyber:containsDevice :PLC1 ;\n  cyber:containsDevice :Robot1 ;\n  cyber:containsDevice :VisionSystem1 ;\n  cyber:isolatedFrom :EnterpriseZone .\n\n:BuildingZone a cyber:NetworkZone ;\n  cyber:hasSecurityLevel cyber:Level2_BMS ;\n  cyber:containsDevice :HVACController ;\n  cyber:containsDevice :LightingController ;\n  cyber:containsDevice :AccessControlPanel ;\n  cyber:bridgedTo :EnterpriseZone .\n```\n\n### 15.4 Anomaly Detection Patterns\n\n**SAREF Measurement Anomalies:**\n```turtle\n:Temperat",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 51,
+      "start_char": 40800,
+      "end_char": 41800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_52",
+    "text": "ce :LightingController ;\n  cyber:containsDevice :AccessControlPanel ;\n  cyber:bridgedTo :EnterpriseZone .\n```\n\n### 15.4 Anomaly Detection Patterns\n\n**SAREF Measurement Anomalies:**\n```turtle\n:TemperatureAnomaly a cyber:Anomaly ;\n  cyber:affectsDevice :Boiler1 ;\n  cyber:affectsProperty saref:Temperature ;\n  cyber:expectedRange \"70-90\"^^xsd:string ;\n  cyber:observedValue \"150.0\"^^xsd:float ;\n  cyber:anomalyType cyber:OutOfRange ;\n  cyber:severity cyber:High ;\n  cyber:timestamp \"2025-10-30T14:23:11Z\"^^xsd:dateTime .\n\n:FlowRateAnomaly a cyber:Anomaly ;\n  cyber:affectsDevice :WaterMeter1 ;\n  cyber:affectsProperty s4watr:FlowRate ;\n  cyber:expectedPattern cyber:NormalDiurnal ;\n  cyber:observedPattern cyber:ContinuousHighFlow ;\n  cyber:anomalyType cyber:PossibleLeakage ;\n  cyber:severity cyber:Medium .\n```\n\n### 15.5 State-Based Security Monitoring\n\n**Device State Transitions:**\n```turtle\n:UnauthorizedStateChange a cyber:SecurityEvent ;\n  cyber:affectsDevice :AccessControlPanel ;\n  cyber:previ",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 52,
+      "start_char": 41600,
+      "end_char": 42600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_53",
+    "text": "dium .\n```\n\n### 15.5 State-Based Security Monitoring\n\n**Device State Transitions:**\n```turtle\n:UnauthorizedStateChange a cyber:SecurityEvent ;\n  cyber:affectsDevice :AccessControlPanel ;\n  cyber:previousState saref:LockedState ;\n  cyber:newState saref:UnlockedState ;\n  cyber:triggeredBy cyber:UnknownSource ;\n  cyber:lacksAuthorization true ;\n  cyber:timestamp \"2025-10-30T02:15:33Z\"^^xsd:dateTime .\n\n:SuspiciousCommand a cyber:SecurityEvent ;\n  cyber:affectsDevice :IndustrialValve ;\n  cyber:commandType saref:SetCommand ;\n  cyber:commandSource cyber:UnauthorizedIP ;\n  cyber:violatesPolicy true ;\n  cyber:blocked true .\n```\n\n## 16. SAREF-Based Threat Intelligence Integration\n\n### 16.1 Device Vulnerability Tracking\n\n**CVE Mapping to SAREF Devices:**\n```turtle\n:CVE-2023-12345 a cyber:Vulnerability ;\n  cyber:affectsManufacturer \"Siemens\" ;\n  cyber:affectsModel \"RDF600\" ;\n  cyber:affectsFirmwareVersion \"3.2.1\" ;\n  cyber:cvssScore \"7.5\"^^xsd:float ;\n  cyber:exploitAvailable true .\n\n# Query vulne",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 53,
+      "start_char": 42400,
+      "end_char": 43400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_54",
+    "text": "y ;\n  cyber:affectsManufacturer \"Siemens\" ;\n  cyber:affectsModel \"RDF600\" ;\n  cyber:affectsFirmwareVersion \"3.2.1\" ;\n  cyber:cvssScore \"7.5\"^^xsd:float ;\n  cyber:exploitAvailable true .\n\n# Query vulnerable devices\nSELECT ?device WHERE {\n  ?device a s4bldg:Thermostat ;\n          saref:hasManufacturer \"Siemens\" ;\n          saref:hasModel \"RDF600\" ;\n          saref:hasFirmwareVersion \"3.2.1\" .\n}\n```\n\n### 16.2 Threat Actor TTPs Mapping\n\n**ATT&CK Techniques on SAREF Devices:**\n```turtle\n:T0836_ModifyParameter a attack:Technique ;\n  attack:appliesToDeviceType s4bldg:HVAC ;\n  attack:appliesToDeviceType s4inma:Machine ;\n  attack:modifiesProperty saref:SetPoint ;\n  attack:potentialImpact [\n    cyber:PhysicalDamage\n    cyber:ProcessDisruption\n    cyber:SafetyHazard\n  ] .\n\n:AttackScenario1 a cyber:AttackScenario ;\n  cyber:usesTool attack:Metasploit ;\n  cyber:targetsTechnique :T0836_ModifyParameter ;\n  cyber:targetsDevice :HVACController ;\n  cyber:impactScore \"8.0\"^^xsd:float .\n```\n\n### 16.3 Senso",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 54,
+      "start_char": 43200,
+      "end_char": 44200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_55",
+    "text": "tackScenario ;\n  cyber:usesTool attack:Metasploit ;\n  cyber:targetsTechnique :T0836_ModifyParameter ;\n  cyber:targetsDevice :HVACController ;\n  cyber:impactScore \"8.0\"^^xsd:float .\n```\n\n### 16.3 Sensor Data Integrity Monitoring\n\n**SAREF Measurement Validation:**\n```turtle\n:DataIntegrityCheck a cyber:IntegrityValidation ;\n  cyber:validatesDevice :FlowSensor1 ;\n  cyber:validatesProperty s4watr:FlowRate ;\n  cyber:checksForAnomaly [\n    cyber:OutOfRangeValue\n    cyber:ImpossibleRate\n    cyber:SensorDrift\n    cyber:DataInjection\n  ] ;\n  cyber:hasBaselineModel :FlowNormalBehavior .\n\n:FlowNormalBehavior a cyber:BehavioralModel ;\n  cyber:learnedFromHistorical true ;\n  cyber:hasConfidenceInterval \"95%\"^^xsd:string ;\n  cyber:validityPeriod \"P30D\"^^xsd:duration .\n```\n\n## 17. Implementation Recommendations for AEON-DT\n\n### 17.1 Priority SAREF Extensions\n\n**High Priority (Direct OT/ICS Relevance):**\n1. **SAREF4BLDG**: Building automation = BMS/BAS cybersecurity\n2. **SAREF4INMA**: Manufacturing = IC",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 55,
+      "start_char": 44000,
+      "end_char": 45000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_56",
+    "text": "tions for AEON-DT\n\n### 17.1 Priority SAREF Extensions\n\n**High Priority (Direct OT/ICS Relevance):**\n1. **SAREF4BLDG**: Building automation = BMS/BAS cybersecurity\n2. **SAREF4INMA**: Manufacturing = ICS/SCADA core domain\n3. **SAREF4ENER**: Energy management = critical infrastructure\n4. **SAREF4GRID**: Electrical grid = power system security\n\n**Medium Priority (Infrastructure Context):**\n5. **SAREF4WATR**: Water systems = critical infrastructure\n6. **SAREF4CITY**: Smart city = integrated infrastructure\n7. **SAREF Core**: Foundational device/property modeling\n\n**Lower Priority (Specialized Domains):**\n8. SAREF4AGRI, SAREF4AUTO, SAREF4ENVI, SAREF4HEALTH, SAREF4LIFT, SAREF4WEAR\n\n### 17.2 Integration Architecture\n\n**Layered Approach:**\n```\nLayer 1: SAREF Core\n  \u251c\u2500\u2500 Device, Function, Property, Measurement foundation\n\nLayer 2: Domain Extensions\n  \u251c\u2500\u2500 SAREF4BLDG (Building automation)\n  \u251c\u2500\u2500 SAREF4INMA (Manufacturing)\n  \u251c\u2500\u2500 SAREF4ENER (Energy management)\n  \u2514\u2500\u2500 SAREF4GRID (Electrical grid)\n\nLayer ",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 56,
+      "start_char": 44800,
+      "end_char": 45800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_57",
+    "text": "asurement foundation\n\nLayer 2: Domain Extensions\n  \u251c\u2500\u2500 SAREF4BLDG (Building automation)\n  \u251c\u2500\u2500 SAREF4INMA (Manufacturing)\n  \u251c\u2500\u2500 SAREF4ENER (Energy management)\n  \u2514\u2500\u2500 SAREF4GRID (Electrical grid)\n\nLayer 3: Cybersecurity Extensions (Custom)\n  \u251c\u2500\u2500 Vulnerability mapping\n  \u251c\u2500\u2500 Threat intelligence\n  \u251c\u2500\u2500 Network topology\n  \u251c\u2500\u2500 Security events\n  \u2514\u2500\u2500 Anomaly detection\n\nLayer 4: Integration with Existing Ontologies\n  \u251c\u2500\u2500 UCO (forensics)\n  \u251c\u2500\u2500 MITRE ATT&CK (tactics/techniques)\n  \u251c\u2500\u2500 STIX (threat intelligence)\n  \u2514\u2500\u2500 ICS-SEC-KG (ICS security)\n```\n\n### 17.3 Device Modeling Strategy\n\n**SAREF as Device Registry:**\n```turtle\n# Use SAREF for comprehensive device inventory\n:DeviceInventory a owl:Ontology ;\n  imports <https://saref.etsi.org/core/> ;\n  imports <https://saref.etsi.org/saref4bldg/> ;\n  imports <https://saref.etsi.org/saref4inma/> .\n\n# Each physical device instance\n:Device_001 a s4bldg:Thermostat ;\n  saref:hasManufacturer \"Honeywell\" ;\n  saref:hasModel \"T6 Pro\" ;\n  saref:hasDeviceID \"THM-001\" ;",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 57,
+      "start_char": 45600,
+      "end_char": 46600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_58",
+    "text": "tps://saref.etsi.org/saref4inma/> .\n\n# Each physical device instance\n:Device_001 a s4bldg:Thermostat ;\n  saref:hasManufacturer \"Honeywell\" ;\n  saref:hasModel \"T6 Pro\" ;\n  saref:hasDeviceID \"THM-001\" ;\n  saref:hasFirmwareVersion \"2.1.3\" ;\n  saref:hasLocation :Room_205 ;\n  saref:controlsProperty :RoomTemperature ;\n  # Cybersecurity extensions\n  cyber:hasIPAddress \"192.168.20.15\" ;\n  cyber:hasNetworkSegment :BMS_VLAN ;\n  cyber:lastScanned \"2025-10-30T08:00:00Z\"^^xsd:dateTime ;\n  cyber:vulnerabilityStatus cyber:Patched .\n```\n\n### 17.4 Property-Based Monitoring\n\n**Unified Sensor/Actuator Monitoring:**\n```turtle\n# All measurements follow same pattern\n:Measurement_12345 a saref:Measurement ;\n  saref:relatesToProperty :RoomTemperature ;\n  saref:hasValue \"22.3\"^^xsd:float ;\n  saref:isMeasuredIn :DegreeCelsius ;\n  saref:hasTimestamp \"2025-10-30T12:34:56Z\"^^xsd:dateTime ;\n  saref:isMeasuredByDevice :Device_001 ;\n  # Anomaly detection\n  cyber:withinExpectedRange true ;\n  cyber:anomalyScore \"0.05\"^",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 58,
+      "start_char": 46400,
+      "end_char": 47400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_59",
+    "text": "greeCelsius ;\n  saref:hasTimestamp \"2025-10-30T12:34:56Z\"^^xsd:dateTime ;\n  saref:isMeasuredByDevice :Device_001 ;\n  # Anomaly detection\n  cyber:withinExpectedRange true ;\n  cyber:anomalyScore \"0.05\"^^xsd:float .\n```\n\n### 17.5 Function and Command Security\n\n**Securing Device Functions:**\n```turtle\n:ThermostatFunction a saref:Function ;\n  saref:hasCommand :SetTemperatureCommand ;\n  # Security controls\n  cyber:requiresAuthentication true ;\n  cyber:requiresAuthorization :HVAC_Operator_Role ;\n  cyber:loggedAction true ;\n  cyber:rateLimit \"5/minute\"^^xsd:string .\n\n:SetTemperatureCommand a saref:SetCommand ;\n  saref:actsUpon :TargetTemperature ;\n  saref:hasInput :TemperatureValue ;\n  # Command validation\n  cyber:validRange \"15-30\"^^xsd:string ;\n  cyber:requiresApproval :Supervisor_Role .\n```\n\n## 18. SAREF Gaps and Custom Extensions Needed\n\n### 18.1 Missing Cybersecurity Concepts\n\n**Required Extensions:**\n1. **Network Security**: IP addresses, protocols, ports, firewalls\n2. **Authentication**",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 59,
+      "start_char": 47200,
+      "end_char": 48200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_60",
+    "text": " 18. SAREF Gaps and Custom Extensions Needed\n\n### 18.1 Missing Cybersecurity Concepts\n\n**Required Extensions:**\n1. **Network Security**: IP addresses, protocols, ports, firewalls\n2. **Authentication**: User credentials, access control, authorization\n3. **Vulnerabilities**: CVEs, patches, security updates\n4. **Incidents**: Security events, alerts, forensics\n5. **Threats**: Threat actors, campaigns, TTPs\n6. **Risk**: Risk scores, impact assessment, mitigation\n\n### 18.2 Proposed SAREF4SECURITY Extension\n\n**Core Security Classes:**\n```turtle\ns4sec:SecurityDevice\n  rdfs:subClassOf saref:Device\n  \u251c\u2500\u2500 s4sec:Firewall\n  \u251c\u2500\u2500 s4sec:IDS\n  \u251c\u2500\u2500 s4sec:IPS\n  \u251c\u2500\u2500 s4sec:SIEM\n  \u2514\u2500\u2500 s4sec:SecurityGateway\n\ns4sec:SecurityProperty\n  rdfs:subClassOf saref:Property\n  \u251c\u2500\u2500 s4sec:ThreatLevel\n  \u251c\u2500\u2500 s4sec:RiskScore\n  \u251c\u2500\u2500 s4sec:VulnerabilityCount\n  \u2514\u2500\u2500 s4sec:SecurityPosture\n\ns4sec:SecurityEvent\n  \u251c\u2500\u2500 s4sec:IntrusionAttempt\n  \u251c\u2500\u2500 s4sec:MalwareDetection\n  \u251c\u2500\u2500 s4sec:AnomalousBehavior\n  \u251c\u2500\u2500 s4sec:UnauthorizedAccess\n  \u2514\u2500",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 60,
+      "start_char": 48000,
+      "end_char": 49000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_61",
+    "text": "\u2500\u2500 s4sec:VulnerabilityCount\n  \u2514\u2500\u2500 s4sec:SecurityPosture\n\ns4sec:SecurityEvent\n  \u251c\u2500\u2500 s4sec:IntrusionAttempt\n  \u251c\u2500\u2500 s4sec:MalwareDetection\n  \u251c\u2500\u2500 s4sec:AnomalousBehavior\n  \u251c\u2500\u2500 s4sec:UnauthorizedAccess\n  \u2514\u2500\u2500 s4sec:DataExfiltration\n\ns4sec:SecurityControl\n  \u251c\u2500\u2500 s4sec:AccessControl\n  \u251c\u2500\u2500 s4sec:Encryption\n  \u251c\u2500\u2500 s4sec:NetworkSegmentation\n  \u251c\u2500\u2500 s4sec:Monitoring\n  \u2514\u2500\u2500 s4sec:IncidentResponse\n```\n\n### 18.3 ICS-Specific Extensions\n\n**SAREF4ICS Proposal:**\n```turtle\ns4ics:ICSDevice\n  rdfs:subClassOf saref:Device\n  \u251c\u2500\u2500 s4ics:PLC\n  \u251c\u2500\u2500 s4ics:DCS\n  \u251c\u2500\u2500 s4ics:RTU\n  \u251c\u2500\u2500 s4ics:HMI\n  \u251c\u2500\u2500 s4ics:Historian\n  \u2514\u2500\u2500 s4ics:EngineeringWorkstation\n\ns4ics:IndustrialProtocol\n  \u251c\u2500\u2500 s4ics:Modbus\n  \u251c\u2500\u2500 s4ics:OPCUA\n  \u251c\u2500\u2500 s4ics:DNP3\n  \u251c\u2500\u2500 s4ics:IEC61850\n  \u251c\u2500\u2500 s4ics:BACnet\n  \u2514\u2500\u2500 s4ics:PROFINET\n\ns4ics:SafetySystem\n  rdfs:subClassOf s4ics:ICSDevice\n  \u251c\u2500\u2500 s4ics:EmergencyShutdown\n  \u251c\u2500\u2500 s4ics:SafetyPLC\n  \u251c\u2500\u2500 s4ics:FireSuppression\n  \u2514\u2500\u2500 s4ics:SafetyInterlock\n```\n\n## 19. SPARQL Query Patterns for Cybersecurity\n\n### 19.1 Device Invent",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 61,
+      "start_char": 48800,
+      "end_char": 49800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_62",
+    "text": " s4ics:ICSDevice\n  \u251c\u2500\u2500 s4ics:EmergencyShutdown\n  \u251c\u2500\u2500 s4ics:SafetyPLC\n  \u251c\u2500\u2500 s4ics:FireSuppression\n  \u2514\u2500\u2500 s4ics:SafetyInterlock\n```\n\n## 19. SPARQL Query Patterns for Cybersecurity\n\n### 19.1 Device Inventory Queries\n\n**Find All Critical Devices:**\n```sparql\nPREFIX saref: <https://saref.etsi.org/core/>\nPREFIX s4bldg: <https://saref.etsi.org/saref4bldg/>\nPREFIX s4inma: <https://saref.etsi.org/saref4inma/>\nPREFIX cyber: <http://aeon-dt.org/cybersecurity#>\n\nSELECT ?device ?type ?manufacturer ?model ?ipAddress WHERE {\n  ?device a ?type ;\n          saref:hasManufacturer ?manufacturer ;\n          saref:hasModel ?model ;\n          cyber:hasIPAddress ?ipAddress .\n\n  FILTER (?type IN (s4bldg:HVAC, s4inma:PLC, s4bldg:AccessController))\n}\n```\n\n**Find Vulnerable Devices:**\n```sparql\nPREFIX saref: <https://saref.etsi.org/core/>\nPREFIX cyber: <http://aeon-dt.org/cybersecurity#>\n\nSELECT ?device ?vulnerability ?cvssScore WHERE {\n  ?device a saref:Device ;\n          saref:hasManufacturer ?mfr ;\n          sa",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 62,
+      "start_char": 49600,
+      "end_char": 50600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_63",
+    "text": "saref.etsi.org/core/>\nPREFIX cyber: <http://aeon-dt.org/cybersecurity#>\n\nSELECT ?device ?vulnerability ?cvssScore WHERE {\n  ?device a saref:Device ;\n          saref:hasManufacturer ?mfr ;\n          saref:hasModel ?model ;\n          saref:hasFirmwareVersion ?firmware .\n\n  ?vulnerability a cyber:CVE ;\n                 cyber:affectsManufacturer ?mfr ;\n                 cyber:affectsModel ?model ;\n                 cyber:affectsFirmwareVersion ?firmware ;\n                 cyber:cvssScore ?cvssScore .\n\n  FILTER (?cvssScore >= 7.0)\n}\nORDER BY DESC(?cvssScore)\n```\n\n### 19.2 Anomaly Detection Queries\n\n**Detect Abnormal Measurements:**\n```sparql\nPREFIX saref: <https://saref.etsi.org/core/>\nPREFIX cyber: <http://aeon-dt.org/cybersecurity#>\n\nSELECT ?measurement ?device ?property ?value ?anomalyScore WHERE {\n  ?measurement a saref:Measurement ;\n               saref:relatesToProperty ?property ;\n               saref:hasValue ?value ;\n               saref:hasTimestamp ?time ;\n               saref:isMe",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 63,
+      "start_char": 50400,
+      "end_char": 51400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_64",
+    "text": "ERE {\n  ?measurement a saref:Measurement ;\n               saref:relatesToProperty ?property ;\n               saref:hasValue ?value ;\n               saref:hasTimestamp ?time ;\n               saref:isMeasuredByDevice ?device ;\n               cyber:anomalyScore ?anomalyScore .\n\n  FILTER (?anomalyScore > 0.8)\n  FILTER (?time > \"2025-10-30T00:00:00Z\"^^xsd:dateTime)\n}\nORDER BY DESC(?anomalyScore)\n```\n\n### 19.3 Network Topology Queries\n\n**Find Device Communication Paths:**\n```sparql\nPREFIX saref: <https://saref.etsi.org/core/>\nPREFIX cyber: <http://aeon-dt.org/cybersecurity#>\n\nSELECT ?sourceDevice ?targetDevice ?protocol WHERE {\n  ?sourceDevice a saref:Device ;\n                cyber:communicatesWith ?targetDevice ;\n                cyber:usesProtocol ?protocol .\n\n  ?targetDevice a saref:Device .\n}\n```\n\n### 19.4 Command Authorization Queries\n\n**Find Unauthorized Commands:**\n```sparql\nPREFIX saref: <https://saref.etsi.org/core/>\nPREFIX cyber: <http://aeon-dt.org/cybersecurity#>\n\nSELECT ?command ",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 64,
+      "start_char": 51200,
+      "end_char": 52200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_65",
+    "text": "\n```\n\n### 19.4 Command Authorization Queries\n\n**Find Unauthorized Commands:**\n```sparql\nPREFIX saref: <https://saref.etsi.org/core/>\nPREFIX cyber: <http://aeon-dt.org/cybersecurity#>\n\nSELECT ?command ?device ?user ?timestamp WHERE {\n  ?command a saref:Command ;\n           cyber:executedOn ?device ;\n           cyber:executedBy ?user ;\n           cyber:timestamp ?timestamp ;\n           cyber:authorized false .\n}\nORDER BY DESC(?timestamp)\n```\n\n## 20. Summary and Key Takeaways\n\n### 20.1 SAREF Strengths for AEON-DT\n\n**Excellent Foundation:**\n1. **Standardized Vocabulary**: ETSI-maintained, widely adopted\n2. **Device-Centric**: Perfect for OT/ICS device modeling\n3. **Extensible**: Clear extension mechanism for custom domains\n4. **Multi-Domain**: Covers building, manufacturing, energy, water, city infrastructure\n5. **Property Framework**: Unified measurement and sensing approach\n6. **Function Abstraction**: Separates capabilities from implementation\n\n### 20.2 Direct Applications\n\n**High-Value",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 65,
+      "start_char": 52000,
+      "end_char": 53000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_66",
+    "text": "y infrastructure\n5. **Property Framework**: Unified measurement and sensing approach\n6. **Function Abstraction**: Separates capabilities from implementation\n\n### 20.2 Direct Applications\n\n**High-Value Use Cases:**\n1. **Device Inventory**: Comprehensive OT/ICS asset management\n2. **Network Mapping**: Physical device network topology\n3. **Anomaly Detection**: Property measurement baselines\n4. **Vulnerability Management**: Device-CVE mapping\n5. **Access Control**: Function-based authorization\n6. **Incident Investigation**: Device state forensics\n\n### 20.3 Integration Requirements\n\n**Must Integrate With:**\n1. **UCO**: Forensic investigation of device incidents\n2. **MITRE ATT&CK**: Threat techniques on devices\n3. **STIX**: Threat intelligence about device vulnerabilities\n4. **ICS-SEC-KG**: ICS-specific security knowledge\n5. **Schema.org**: IT infrastructure context\n\n### 20.4 Custom Extensions Needed\n\n**Priority Gaps:**\n1. **SAREF4SECURITY**: Security device and property classes\n2. **SAREF4I",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 66,
+      "start_char": 52800,
+      "end_char": 53800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_67",
+    "text": "specific security knowledge\n5. **Schema.org**: IT infrastructure context\n\n### 20.4 Custom Extensions Needed\n\n**Priority Gaps:**\n1. **SAREF4SECURITY**: Security device and property classes\n2. **SAREF4ICS**: Industrial control system specifics\n3. **Network Integration**: IP, protocols, communication patterns\n4. **Security Events**: Incidents, alerts, forensics\n5. **Threat Intelligence**: Vulnerabilities, exploits, TTPs\n\n### 20.5 Implementation Strategy\n\n**Phased Approach:**\n\n**Phase 1: Core Integration**\n- Import SAREF Core, SAREF4BLDG, SAREF4INMA\n- Create device inventory\n- Model basic properties and measurements\n\n**Phase 2: Cybersecurity Extensions**\n- Define SAREF4SECURITY concepts\n- Map vulnerabilities to devices\n- Implement anomaly detection\n\n**Phase 3: Threat Intelligence**\n- Integrate with MITRE ATT&CK\n- Map CVEs to device models\n- Create attack scenario models\n\n**Phase 4: Operational Integration**\n- Connect to live SIEM/IDS systems\n- Implement real-time monitoring\n- Deploy forens",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 67,
+      "start_char": 53600,
+      "end_char": 54600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_68",
+    "text": " with MITRE ATT&CK\n- Map CVEs to device models\n- Create attack scenario models\n\n**Phase 4: Operational Integration**\n- Connect to live SIEM/IDS systems\n- Implement real-time monitoring\n- Deploy forensic investigation tools\n\n### 20.6 Technical Debt Considerations\n\n**Challenges:**\n1. **Complexity**: 13 extensions = large vocabulary\n2. **Overlap**: Some concepts duplicated across extensions\n3. **Gaps**: Missing cybersecurity primitives\n4. **Maintenance**: ETSI update cycle coordination\n5. **Tool Support**: Limited reasoner performance with full stack\n\n**Mitigation:**\n- Use only relevant extensions (BLDG, INMA, ENER, GRID)\n- Create custom SAREF4SECURITY extension\n- Document mappings clearly\n- Implement modular import structure\n\n## Version History\n\n- v1.0.0 (2025-10-30): Initial comprehensive research findings\n\n## References\n\n1. ETSI TS 103 264 - SAREF Core Specification\n2. SAREF Portal: https://saref.etsi.org/\n3. SAREF4BLDG Specification v1.1.2\n4. SAREF4INMA Specification v1.2.0\n5. SAREF4E",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 68,
+      "start_char": 54400,
+      "end_char": 55400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "20_RESEARCH_FINDINGS_SAREF.md_chunk_69",
+    "text": "esearch findings\n\n## References\n\n1. ETSI TS 103 264 - SAREF Core Specification\n2. SAREF Portal: https://saref.etsi.org/\n3. SAREF4BLDG Specification v1.1.2\n4. SAREF4INMA Specification v1.2.0\n5. SAREF4ENER Specification v1.1.2\n6. SAREF4GRID Specification v1.0.0\n7. Individual SAREF extension specifications (all versions as noted)\n\n---\n\n*Document Complete - 13 SAREF Extensions Analyzed*\n",
+    "metadata": {
+      "file_name": "20_RESEARCH_FINDINGS_SAREF.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/20_RESEARCH_FINDINGS_SAREF.md",
+      "file_size": 55586,
+      "indexed_at": "2025-10-31T00:56:54.965446",
+      "chunk_id": 69,
+      "start_char": 55200,
+      "end_char": 56200,
+      "chunk_size": 386
+    }
+  }
+]

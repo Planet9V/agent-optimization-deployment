@@ -1,0 +1,1262 @@
+[
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_0",
+    "text": "# Wave 5: MITRE ATT&CK ICS Framework Integration\n\n**File**: 07_WAVE_5_MITRE_ATTACK_ICS.md\n**Created**: 2025-10-30\n**Version**: v1.0.0\n**Status**: ACTIVE\n**Wave Duration**: 3 weeks\n**Target Node Count**: ~450 nodes\n**Dependencies**: Waves 1-4 (Core MITRE ATT&CK, Asset Classification)\n\n## 1. Wave Overview\n\n### 1.1 Objectives\n\nWave 5 extends the AEON Digital Twin cybersecurity knowledge graph with specialized Industrial Control Systems (ICS) and Operational Technology (OT) threat intelligence from MITRE ATT&CK for ICS framework.\n\n**Primary Goals**:\n- Integrate complete MITRE ATT&CK for ICS matrix (tactics, techniques, procedures)\n- Model ICS-specific assets (PLCs, SCADA systems, HMIs, RTUs, DCS components)\n- Establish relationships between ICS techniques and industrial assets\n- Connect ICS attack patterns to critical infrastructure sectors\n- Preserve existing CVE relationships and general ATT&CK framework\n- Enable OT/IT threat modeling and attack surface analysis\n\n**Business Value**:\n- Co",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_1",
+    "text": "tack patterns to critical infrastructure sectors\n- Preserve existing CVE relationships and general ATT&CK framework\n- Enable OT/IT threat modeling and attack surface analysis\n\n**Business Value**:\n- Comprehensive critical infrastructure threat modeling\n- OT-specific vulnerability assessment capabilities\n- Industrial cyber-physical attack simulation\n- Supply chain risk analysis for industrial environments\n- Regulatory compliance support (NERC CIP, IEC 62443, NIST CSF)\n\n### 1.2 Scope Definition\n\n**In Scope**:\n- 12 MITRE ATT&CK ICS tactics\n- 78 ICS-specific techniques and sub-techniques\n- ICS asset types (PLCs, SCADA, HMI, RTU, DCS, Safety Systems)\n- ICS network zones (Control Network, Field Network, DMZ)\n- Critical infrastructure sectors (Energy, Water, Manufacturing, Transportation)\n- ICS protocols (Modbus, DNP3, OPC, Profinet, EtherNet/IP)\n- Industrial vulnerability patterns\n- OT-specific threat actor profiles\n\n**Out of Scope**:\n- Building automation systems (BAS) detailed modeling\n- Ma",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_2",
+    "text": "otocols (Modbus, DNP3, OPC, Profinet, EtherNet/IP)\n- Industrial vulnerability patterns\n- OT-specific threat actor profiles\n\n**Out of Scope**:\n- Building automation systems (BAS) detailed modeling\n- Maritime-specific systems (separate wave consideration)\n- Medical device networks (separate domain)\n- Detailed PLC programming logic analysis\n\n### 1.3 Dependencies\n\n**Required Completed Waves**:\n- Wave 1: Core MITRE ATT&CK framework (tactics, techniques, enterprise TTPs)\n- Wave 2: Asset classification and inventory schema\n- Wave 4: CVE integration (for ICS vulnerabilities)\n\n**Data Sources**:\n- MITRE ATT&CK for ICS matrix (https://attack.mitre.org/matrices/ics/)\n- ICS-CERT advisories\n- CISA ICS vulnerability database\n- ICS protocol specifications\n- Critical infrastructure sector frameworks\n\n### 1.4 Success Metrics\n\n**Quantitative Metrics**:\n- 12 ICS tactics fully modeled\n- 78+ ICS techniques with complete property data\n- 150+ ICS asset type nodes created\n- 200+ technique-to-asset relationship",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_3",
+    "text": ".4 Success Metrics\n\n**Quantitative Metrics**:\n- 12 ICS tactics fully modeled\n- 78+ ICS techniques with complete property data\n- 150+ ICS asset type nodes created\n- 200+ technique-to-asset relationships established\n- 50+ ICS protocol nodes with specifications\n- 16 critical infrastructure sectors mapped\n- 100% CVE preservation validation\n\n**Qualitative Metrics**:\n- Query performance <500ms for ICS attack path enumeration\n- Complete OT kill chain modeling capability\n- Integration with existing enterprise ATT&CK techniques\n- Support for ICS-specific threat hunting queries\n\n## 2. Complete Node Schemas\n\n### 2.1 ICS Tactic Nodes\n\n**Node Label**: `ICS_Tactic`\n\n**Description**: Tactical objectives in MITRE ATT&CK for ICS framework representing adversary goals in industrial control system environments.\n\n**Properties**:\n```cypher\n// Complete property list with descriptions and constraints\n{\n  tactic_id: String,              // MITRE ICS tactic ID (e.g., \"TA0108\")\n  name: String,                  ",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_4",
+    "text": "ts.\n\n**Properties**:\n```cypher\n// Complete property list with descriptions and constraints\n{\n  tactic_id: String,              // MITRE ICS tactic ID (e.g., \"TA0108\")\n  name: String,                   // Tactic name (e.g., \"Initial Access\")\n  description: String,            // Detailed tactical objective description\n  mitre_url: String,             // Official MITRE page URL\n  created_date: DateTime,         // Tactic creation timestamp\n  modified_date: DateTime,        // Last modification timestamp\n  version: String,                // ATT&CK version (e.g., \"v13\")\n  order_position: Integer,        // Position in ICS kill chain (1-12)\n  attack_domain: String,          // Always \"ics\" for ICS tactics\n  applicable_sectors: [String],   // Critical infrastructure sectors\n  external_references: [Map],     // Citations and source materials\n\n  // Classification metadata\n  classification: String,         // \"MITRE_ICS_TACTIC\"\n  confidence_score: Float,        // Data quality confidence (0.0-1.",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_5",
+    "text": " [Map],     // Citations and source materials\n\n  // Classification metadata\n  classification: String,         // \"MITRE_ICS_TACTIC\"\n  confidence_score: Float,        // Data quality confidence (0.0-1.0)\n  data_source: String,            // \"MITRE ATT&CK ICS v13\"\n\n  // Integration metadata\n  node_id: String,               // UUID for node identity\n  created_by: String,            // System/user who created node\n  last_updated: DateTime,        // Node last update timestamp\n  validation_status: String      // \"VALIDATED\" | \"PENDING\" | \"NEEDS_REVIEW\"\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create ICS Tactic node with full property set\nCREATE (t:ICS_Tactic {\n  tactic_id: \"TA0108\",\n  name: \"Initial Access\",\n  description: \"The adversary is trying to get into your ICS environment. Initial Access consists of techniques that use various entry vectors to gain their initial foothold within ICS networks. Techniques used to gain a foothold include targeted spearphishing and explo",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_6",
+    "text": "nt. Initial Access consists of techniques that use various entry vectors to gain their initial foothold within ICS networks. Techniques used to gain a foothold include targeted spearphishing and exploiting weaknesses on public-facing web servers and operational interfaces.\",\n  mitre_url: \"https://attack.mitre.org/tactics/TA0108\",\n  created_date: datetime('2020-10-28T00:00:00Z'),\n  modified_date: datetime('2023-10-01T00:00:00Z'),\n  version: \"v13\",\n  order_position: 1,\n  attack_domain: \"ics\",\n  applicable_sectors: [\"Energy\", \"Water\", \"Manufacturing\", \"Transportation\", \"Chemical\"],\n  external_references: [\n    {source: \"MITRE\", url: \"https://attack.mitre.org/tactics/TA0108\", description: \"Initial Access ICS\"}\n  ],\n  classification: \"MITRE_ICS_TACTIC\",\n  confidence_score: 1.0,\n  data_source: \"MITRE ATT&CK ICS v13\",\n  node_id: randomUUID(),\n  created_by: \"AEON_INTEGRATION_WAVE5\",\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n```cy",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_7",
+    "text": "MITRE ATT&CK ICS v13\",\n  node_id: randomUUID(),\n  created_by: \"AEON_INTEGRATION_WAVE5\",\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n```cypher\n// Unique constraint on MITRE tactic ID\nCREATE CONSTRAINT ics_tactic_id_unique IF NOT EXISTS\nFOR (t:ICS_Tactic) REQUIRE t.tactic_id IS UNIQUE;\n\n// Index on tactic name for fast lookup\nCREATE INDEX ics_tactic_name_idx IF NOT EXISTS\nFOR (t:ICS_Tactic) ON (t.name);\n\n// Index on order position for kill chain queries\nCREATE INDEX ics_tactic_order_idx IF NOT EXISTS\nFOR (t:ICS_Tactic) ON (t.order_position);\n\n// Full-text search index for descriptions\nCREATE FULLTEXT INDEX ics_tactic_fulltext IF NOT EXISTS\nFOR (t:ICS_Tactic) ON EACH [t.description, t.name];\n```\n\n**Complete List of 12 ICS Tactics**:\n```cypher\n// Batch create all 12 MITRE ATT&CK ICS tactics\nUNWIND [\n  {tactic_id: \"TA0108\", name: \"Initial Access\", order: 1, desc: \"Gain initial foothold in ICS environment\"},\n  {tactic_id: \"TA0109",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_8",
+    "text": "*:\n```cypher\n// Batch create all 12 MITRE ATT&CK ICS tactics\nUNWIND [\n  {tactic_id: \"TA0108\", name: \"Initial Access\", order: 1, desc: \"Gain initial foothold in ICS environment\"},\n  {tactic_id: \"TA0109\", name: \"Execution\", order: 2, desc: \"Execute adversary-controlled code in ICS\"},\n  {tactic_id: \"TA0110\", name: \"Persistence\", order: 3, desc: \"Maintain presence in ICS environment\"},\n  {tactic_id: \"TA0111\", name: \"Privilege Escalation\", order: 4, desc: \"Gain higher-level permissions in ICS\"},\n  {tactic_id: \"TA0112\", name: \"Evasion\", order: 5, desc: \"Avoid detection in ICS environment\"},\n  {tactic_id: \"TA0100\", name: \"Impair Process Control\", order: 6, desc: \"Manipulate or disable industrial process control\"},\n  {tactic_id: \"TA0101\", name: \"Inhibit Response Function\", order: 7, desc: \"Prevent safety systems and response\"},\n  {tactic_id: \"TA0102\", name: \"Collection\", order: 8, desc: \"Gather ICS process data and intelligence\"},\n  {tactic_id: \"TA0103\", name: \"Command and Control\", order: 9, ",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_9",
+    "text": " safety systems and response\"},\n  {tactic_id: \"TA0102\", name: \"Collection\", order: 8, desc: \"Gather ICS process data and intelligence\"},\n  {tactic_id: \"TA0103\", name: \"Command and Control\", order: 9, desc: \"Communicate with compromised ICS systems\"},\n  {tactic_id: \"TA0104\", name: \"Lateral Movement\", order: 10, desc: \"Move through ICS network zones\"},\n  {tactic_id: \"TA0105\", name: \"Discovery\", order: 11, desc: \"Gain knowledge of ICS environment\"},\n  {tactic_id: \"TA0106\", name: \"Impact\", order: 12, desc: \"Disrupt, manipulate, or destroy ICS processes\"}\n] AS tactic\nCREATE (t:ICS_Tactic {\n  tactic_id: tactic.tactic_id,\n  name: tactic.name,\n  description: tactic.desc,\n  order_position: tactic.order,\n  attack_domain: \"ics\",\n  version: \"v13\",\n  mitre_url: \"https://attack.mitre.org/tactics/\" + tactic.tactic_id,\n  created_date: datetime('2020-10-28T00:00:00Z'),\n  modified_date: datetime('2023-10-01T00:00:00Z'),\n  classification: \"MITRE_ICS_TACTIC\",\n  confidence_score: 1.0,\n  data_source: \"MITRE",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_10",
+    "text": "tic.tactic_id,\n  created_date: datetime('2020-10-28T00:00:00Z'),\n  modified_date: datetime('2023-10-01T00:00:00Z'),\n  classification: \"MITRE_ICS_TACTIC\",\n  confidence_score: 1.0,\n  data_source: \"MITRE ATT&CK ICS v13\",\n  node_id: randomUUID(),\n  created_by: \"AEON_INTEGRATION_WAVE5\",\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n});\n```\n\n### 2.2 ICS Technique Nodes\n\n**Node Label**: `ICS_Technique`\n\n**Description**: Specific technical methods adversaries use to achieve tactical objectives in ICS environments.\n\n**Properties**:\n```cypher\n{\n  technique_id: String,           // MITRE ICS technique ID (e.g., \"T0883\")\n  name: String,                   // Technique name\n  description: String,            // Detailed technique description\n  parent_technique_id: String,    // Parent if this is sub-technique\n  is_subtechnique: Boolean,       // True if sub-technique\n  mitre_url: String,             // Official MITRE page URL\n\n  // Tactical associations\n  tactics: [String],            ",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_11",
+    "text": "his is sub-technique\n  is_subtechnique: Boolean,       // True if sub-technique\n  mitre_url: String,             // Official MITRE page URL\n\n  // Tactical associations\n  tactics: [String],             // Associated tactic IDs\n\n  // Technical details\n  detection_methods: [String],   // Detection approaches\n  data_sources: [String],        // Required data sources for detection\n  affected_assets: [String],     // ICS asset types impacted\n  ics_protocols: [String],       // Relevant ICS protocols\n\n  // Threat intelligence\n  procedure_examples: [Map],     // Real-world attack examples\n  mitigation_strategies: [String], // Defensive measures\n  platforms: [String],           // Target platforms (e.g., \"Windows\", \"Engineering Workstation\")\n\n  // Sector-specific data\n  critical_sectors: [String],    // Most affected sectors\n  severity_rating: String,       // Impact severity (LOW/MEDIUM/HIGH/CRITICAL)\n\n  // Standards references\n  iec_62443_references: [String], // IEC 62443 standard mappings\n ",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_12",
+    "text": "   // Most affected sectors\n  severity_rating: String,       // Impact severity (LOW/MEDIUM/HIGH/CRITICAL)\n\n  // Standards references\n  iec_62443_references: [String], // IEC 62443 standard mappings\n  nerc_cip_references: [String],  // NERC CIP requirement mappings\n  nist_csf_references: [String],  // NIST CSF function mappings\n\n  // Metadata\n  created_date: DateTime,\n  modified_date: DateTime,\n  version: String,\n  classification: String,\n  confidence_score: Float,\n  data_source: String,\n  node_id: String,\n  created_by: String,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement (Example)**:\n```cypher\n// Create ICS Technique: Modify Controller Tasking\nCREATE (t:ICS_Technique {\n  technique_id: \"T0821\",\n  name: \"Modify Controller Tasking\",\n  description: \"Adversaries may modify the tasking of a controller to allow for the execution of their own programs. This can allow an adversary to manipulate the execution flow and behavior of a device, and ",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_13",
+    "text": "ption: \"Adversaries may modify the tasking of a controller to allow for the execution of their own programs. This can allow an adversary to manipulate the execution flow and behavior of a device, and may be used to achieve Execution or to cause a permanent loss of control through Damage to Device.\",\n  parent_technique_id: null,\n  is_subtechnique: false,\n  mitre_url: \"https://attack.mitre.org/techniques/T0821\",\n\n  tactics: [\"TA0100\", \"TA0109\", \"TA0110\"], // Impair Process Control, Execution, Persistence\n\n  detection_methods: [\n    \"Monitor controller program changes and versions\",\n    \"Baseline controller memory and compare for anomalies\",\n    \"Monitor controller ladder logic modifications\",\n    \"Audit engineering workstation access and activities\"\n  ],\n  data_sources: [\n    \"Controller Configuration Changes\",\n    \"Network Traffic: ICS Protocol\",\n    \"Application Log: Engineering Workstation\",\n    \"File: File Modification\"\n  ],\n  affected_assets: [\n    \"Programmable Logic Controller (PL",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_14",
+    "text": "figuration Changes\",\n    \"Network Traffic: ICS Protocol\",\n    \"Application Log: Engineering Workstation\",\n    \"File: File Modification\"\n  ],\n  affected_assets: [\n    \"Programmable Logic Controller (PLC)\",\n    \"Distributed Control System (DCS)\",\n    \"Safety Instrumented System (SIS)\",\n    \"Remote Terminal Unit (RTU)\"\n  ],\n  ics_protocols: [\"Modbus\", \"OPC\", \"Profinet\", \"EtherNet/IP\", \"CIP\"],\n\n  procedure_examples: [\n    {\n      campaign: \"TRITON/TRISIS\",\n      description: \"Modified Schneider Electric Triconex safety controllers to execute malicious ladder logic\",\n      year: 2017,\n      sector: \"Energy\"\n    },\n    {\n      campaign: \"Industroyer/CRASHOVERRIDE\",\n      description: \"Modified substation controller configurations to open circuit breakers\",\n      year: 2016,\n      sector: \"Energy\"\n    }\n  ],\n\n  mitigation_strategies: [\n    \"Implement code signing for controller programs\",\n    \"Restrict engineering workstation access with MFA\",\n    \"Network segmentation between IT and OT\",\n   ",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_15",
+    "text": "\"\n    }\n  ],\n\n  mitigation_strategies: [\n    \"Implement code signing for controller programs\",\n    \"Restrict engineering workstation access with MFA\",\n    \"Network segmentation between IT and OT\",\n    \"Version control for all controller programs\",\n    \"Implement change management procedures\",\n    \"Monitor and log all controller modifications\"\n  ],\n\n  platforms: [\"Windows\", \"Engineering Workstation\", \"PLC\", \"DCS\"],\n  critical_sectors: [\"Energy\", \"Water\", \"Chemical\", \"Manufacturing\"],\n  severity_rating: \"CRITICAL\",\n\n  iec_62443_references: [\"SR 3.4\", \"SR 7.6\", \"SR 3.1\"],\n  nerc_cip_references: [\"CIP-007-6 R4\", \"CIP-010-3\"],\n  nist_csf_references: [\"PR.DS-6\", \"PR.IP-1\", \"DE.CM-7\"],\n\n  created_date: datetime('2020-10-28T00:00:00Z'),\n  modified_date: datetime('2023-10-01T00:00:00Z'),\n  version: \"v13\",\n  classification: \"MITRE_ICS_TECHNIQUE\",\n  confidence_score: 0.95,\n  data_source: \"MITRE ATT&CK ICS v13\",\n  node_id: randomUUID(),\n  created_by: \"AEON_INTEGRATION_WAVE5\",\n  last_updated: datet",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_16",
+    "text": " \"v13\",\n  classification: \"MITRE_ICS_TECHNIQUE\",\n  confidence_score: 0.95,\n  data_source: \"MITRE ATT&CK ICS v13\",\n  node_id: randomUUID(),\n  created_by: \"AEON_INTEGRATION_WAVE5\",\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n```cypher\n// Unique constraint on technique ID\nCREATE CONSTRAINT ics_technique_id_unique IF NOT EXISTS\nFOR (t:ICS_Technique) REQUIRE t.technique_id IS UNIQUE;\n\n// Index on technique name\nCREATE INDEX ics_technique_name_idx IF NOT EXISTS\nFOR (t:ICS_Technique) ON (t.name);\n\n// Index on severity rating for risk queries\nCREATE INDEX ics_technique_severity_idx IF NOT EXISTS\nFOR (t:ICS_Technique) ON (t.severity_rating);\n\n// Index on affected assets for asset-based queries\nCREATE INDEX ics_technique_assets_idx IF NOT EXISTS\nFOR (t:ICS_Technique) ON (t.affected_assets);\n\n// Full-text search\nCREATE FULLTEXT INDEX ics_technique_fulltext IF NOT EXISTS\nFOR (t:ICS_Technique) ON EACH [t.name, t.description, t.detection",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_17",
+    "text": "T EXISTS\nFOR (t:ICS_Technique) ON (t.affected_assets);\n\n// Full-text search\nCREATE FULLTEXT INDEX ics_technique_fulltext IF NOT EXISTS\nFOR (t:ICS_Technique) ON EACH [t.name, t.description, t.detection_methods];\n```\n\n**Key ICS Techniques (Sample Set - 20 of 78)**:\n```cypher\n// Create critical ICS techniques\nUNWIND [\n  {id: \"T0800\", name: \"Activate Firmware Update Mode\", severity: \"HIGH\", tactics: [\"TA0110\"]},\n  {id: \"T0801\", name: \"Monitor Process State\", severity: \"MEDIUM\", tactics: [\"TA0102\"]},\n  {id: \"T0802\", name: \"Automated Collection\", severity: \"MEDIUM\", tactics: [\"TA0102\"]},\n  {id: \"T0803\", name: \"Block Command Message\", severity: \"HIGH\", tactics: [\"TA0101\"]},\n  {id: \"T0804\", name: \"Block Reporting Message\", severity: \"HIGH\", tactics: [\"TA0101\"]},\n  {id: \"T0805\", name: \"Block Serial COM\", severity: \"HIGH\", tactics: [\"TA0101\"]},\n  {id: \"T0806\", name: \"Brute Force I/O\", severity: \"CRITICAL\", tactics: [\"TA0100\"]},\n  {id: \"T0807\", name: \"Command-Line Interface\", severity: \"MEDIUM\", ",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_18",
+    "text": " COM\", severity: \"HIGH\", tactics: [\"TA0101\"]},\n  {id: \"T0806\", name: \"Brute Force I/O\", severity: \"CRITICAL\", tactics: [\"TA0100\"]},\n  {id: \"T0807\", name: \"Command-Line Interface\", severity: \"MEDIUM\", tactics: [\"TA0109\"]},\n  {id: \"T0808\", name: \"Control Device Identification\", severity: \"MEDIUM\", tactics: [\"TA0105\"]},\n  {id: \"T0809\", name: \"Data Destruction\", severity: \"CRITICAL\", tactics: [\"TA0106\"]},\n  {id: \"T0810\", name: \"Data Historian Compromise\", severity: \"HIGH\", tactics: [\"TA0102\"]},\n  {id: \"T0811\", name: \"Data from Information Repositories\", severity: \"MEDIUM\", tactics: [\"TA0102\"]},\n  {id: \"T0812\", name: \"Default Credentials\", severity: \"HIGH\", tactics: [\"TA0108\"]},\n  {id: \"T0813\", name: \"Denial of Control\", severity: \"CRITICAL\", tactics: [\"TA0106\"]},\n  {id: \"T0814\", name: \"Denial of View\", severity: \"HIGH\", tactics: [\"TA0106\"]},\n  {id: \"T0815\", name: \"Denial of Service\", severity: \"HIGH\", tactics: [\"TA0101\", \"TA0106\"]},\n  {id: \"T0816\", name: \"Device Restart/Shutdown\", severity",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_19",
+    "text": "of View\", severity: \"HIGH\", tactics: [\"TA0106\"]},\n  {id: \"T0815\", name: \"Denial of Service\", severity: \"HIGH\", tactics: [\"TA0101\", \"TA0106\"]},\n  {id: \"T0816\", name: \"Device Restart/Shutdown\", severity: \"HIGH\", tactics: [\"TA0101\"]},\n  {id: \"T0817\", name: \"Drive-by Compromise\", severity: \"MEDIUM\", tactics: [\"TA0108\"]},\n  {id: \"T0818\", name: \"Engineering Workstation Compromise\", severity: \"CRITICAL\", tactics: [\"TA0108\"]},\n  {id: \"T0819\", name: \"Exploit Public-Facing Application\", severity: \"HIGH\", tactics: [\"TA0108\"]}\n] AS tech\nCREATE (t:ICS_Technique {\n  technique_id: tech.id,\n  name: tech.name,\n  severity_rating: tech.severity,\n  tactics: tech.tactics,\n  is_subtechnique: false,\n  mitre_url: \"https://attack.mitre.org/techniques/\" + tech.id,\n  version: \"v13\",\n  attack_domain: \"ics\",\n  classification: \"MITRE_ICS_TECHNIQUE\",\n  confidence_score: 0.9,\n  data_source: \"MITRE ATT&CK ICS v13\",\n  node_id: randomUUID(),\n  created_by: \"AEON_INTEGRATION_WAVE5\",\n  created_date: datetime(),\n  last_upda",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_20",
+    "text": "ication: \"MITRE_ICS_TECHNIQUE\",\n  confidence_score: 0.9,\n  data_source: \"MITRE ATT&CK ICS v13\",\n  node_id: randomUUID(),\n  created_by: \"AEON_INTEGRATION_WAVE5\",\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n});\n```\n\n### 2.3 ICS Asset Nodes\n\n**Node Label**: `ICS_Asset`\n\n**Description**: Industrial control system components and equipment targeted by ICS-specific techniques.\n\n**Properties**:\n```cypher\n{\n  asset_id: String,              // Unique asset identifier\n  asset_type: String,            // Asset category (PLC, SCADA, HMI, etc.)\n  asset_name: String,            // Common name/model designation\n  manufacturer: String,          // Vendor/manufacturer\n  model: String,                 // Specific model identifier\n  firmware_version: String,      // Current firmware version\n\n  // Classification\n  asset_category: String,        // Field Device, Control System, Network Device\n  purdue_level: Integer,         // ISA-95 Purdue Model level (0-5)\n  c",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_21",
+    "text": "/ Current firmware version\n\n  // Classification\n  asset_category: String,        // Field Device, Control System, Network Device\n  purdue_level: Integer,         // ISA-95 Purdue Model level (0-5)\n  criticality: String,           // LOW/MEDIUM/HIGH/CRITICAL\n\n  // Network properties\n  network_zone: String,          // Control, Field, Enterprise, DMZ\n  ip_addresses: [String],        // Assigned IP addresses\n  mac_address: String,           // Physical address\n  protocols_supported: [String], // ICS protocols (Modbus, DNP3, etc.)\n  network_ports: [Integer],      // Open TCP/UDP ports\n\n  // Operational properties\n  process_functions: [String],   // Industrial process functions\n  physical_location: String,     // Plant location/zone\n  operational_state: String,     // RUNNING, STOPPED, MAINTENANCE\n  last_maintenance: DateTime,    // Last maintenance date\n\n  // Security properties\n  authentication_enabled: Boolean,\n  encryption_supported: Boolean,\n  patch_level: String,\n  known_vulnerabiliti",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_22",
+    "text": "NCE\n  last_maintenance: DateTime,    // Last maintenance date\n\n  // Security properties\n  authentication_enabled: Boolean,\n  encryption_supported: Boolean,\n  patch_level: String,\n  known_vulnerabilities: [String], // CVE IDs\n  security_controls: [String],\n\n  // Standards compliance\n  iec_62443_level: String,      // Security level (SL1-SL4)\n  nerc_cip_classification: String,\n\n  // Integration metadata\n  sector: String,               // Critical infrastructure sector\n  sub_sector: String,           // Specific industry sub-sector\n  vendor_support_status: String, // ACTIVE, EOL, DEPRECATED\n\n  // Metadata\n  node_id: String,\n  created_by: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement (Example)**:\n```cypher\n// Create ICS Asset: Siemens S7-1500 PLC\nCREATE (a:ICS_Asset {\n  asset_id: \"PLC-S7-1500-001\",\n  asset_type: \"Programmable Logic Controller (PLC)\",\n  asset_name: \"Siemens S7-1500\",\n  manufacturer: \"Siemens",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_23",
+    "text": "reate ICS Asset: Siemens S7-1500 PLC\nCREATE (a:ICS_Asset {\n  asset_id: \"PLC-S7-1500-001\",\n  asset_type: \"Programmable Logic Controller (PLC)\",\n  asset_name: \"Siemens S7-1500\",\n  manufacturer: \"Siemens\",\n  model: \"6ES7515-2AM01-0AB0\",\n  firmware_version: \"V2.9\",\n\n  asset_category: \"Control System\",\n  purdue_level: 1,\n  criticality: \"CRITICAL\",\n\n  network_zone: \"Control Network\",\n  ip_addresses: [\"10.10.10.50\"],\n  mac_address: \"00:1B:1B:5A:3F:2C\",\n  protocols_supported: [\"Profinet\", \"S7comm\", \"OPC UA\", \"Modbus TCP\"],\n  network_ports: [102, 4840, 502, 34962],\n\n  process_functions: [\n    \"Reactor Temperature Control\",\n    \"Pressure Regulation\",\n    \"Safety Interlock Management\"\n  ],\n  physical_location: \"Production Line A - Control Room\",\n  operational_state: \"RUNNING\",\n  last_maintenance: datetime('2024-09-15T00:00:00Z'),\n\n  authentication_enabled: true,\n  encryption_supported: true,\n  patch_level: \"CURRENT\",\n  known_vulnerabilities: [],\n  security_controls: [\n    \"Role-Based Access Contr",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_24",
+    "text": "etime('2024-09-15T00:00:00Z'),\n\n  authentication_enabled: true,\n  encryption_supported: true,\n  patch_level: \"CURRENT\",\n  known_vulnerabilities: [],\n  security_controls: [\n    \"Role-Based Access Control\",\n    \"Program Block Protection\",\n    \"Integrity Monitoring\"\n  ],\n\n  iec_62443_level: \"SL2\",\n  nerc_cip_classification: \"BES Cyber Asset\",\n\n  sector: \"Energy\",\n  sub_sector: \"Electric Power Generation\",\n  vendor_support_status: \"ACTIVE\",\n\n  node_id: randomUUID(),\n  created_by: \"AEON_INTEGRATION_WAVE5\",\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n```cypher\n// Unique constraint on asset ID\nCREATE CONSTRAINT ics_asset_id_unique IF NOT EXISTS\nFOR (a:ICS_Asset) REQUIRE a.asset_id IS UNIQUE;\n\n// Index on asset type for category queries\nCREATE INDEX ics_asset_type_idx IF NOT EXISTS\nFOR (a:ICS_Asset) ON (a.asset_type);\n\n// Index on criticality for risk assessment\nCREATE INDEX ics_asset_criticality_idx IF ",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_25",
+    "text": "set type for category queries\nCREATE INDEX ics_asset_type_idx IF NOT EXISTS\nFOR (a:ICS_Asset) ON (a.asset_type);\n\n// Index on criticality for risk assessment\nCREATE INDEX ics_asset_criticality_idx IF NOT EXISTS\nFOR (a:ICS_Asset) ON (a.criticality);\n\n// Index on Purdue level for architecture queries\nCREATE INDEX ics_asset_purdue_idx IF NOT EXISTS\nFOR (a:ICS_Asset) ON (a.purdue_level);\n\n// Index on network zone\nCREATE INDEX ics_asset_zone_idx IF NOT EXISTS\nFOR (a:ICS_Asset) ON (a.network_zone);\n\n// Full-text search\nCREATE FULLTEXT INDEX ics_asset_fulltext IF NOT EXISTS\nFOR (a:ICS_Asset) ON EACH [a.asset_name, a.manufacturer, a.model];\n```\n\n**Common ICS Asset Types**:\n```cypher\n// Create representative ICS assets across categories\nUNWIND [\n  // Field Devices (Purdue Level 0-1)\n  {type: \"Programmable Logic Controller (PLC)\", level: 1, criticality: \"CRITICAL\", zone: \"Control Network\"},\n  {type: \"Remote Terminal Unit (RTU)\", level: 1, criticality: \"HIGH\", zone: \"Field Network\"},\n  {type: \"In",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_26",
+    "text": "ammable Logic Controller (PLC)\", level: 1, criticality: \"CRITICAL\", zone: \"Control Network\"},\n  {type: \"Remote Terminal Unit (RTU)\", level: 1, criticality: \"HIGH\", zone: \"Field Network\"},\n  {type: \"Intelligent Electronic Device (IED)\", level: 1, criticality: \"HIGH\", zone: \"Field Network\"},\n  {type: \"Variable Frequency Drive (VFD)\", level: 0, criticality: \"MEDIUM\", zone: \"Field Network\"},\n  {type: \"Industrial Sensor\", level: 0, criticality: \"MEDIUM\", zone: \"Field Network\"},\n  {type: \"Industrial Actuator\", level: 0, criticality: \"MEDIUM\", zone: \"Field Network\"},\n\n  // Control Systems (Purdue Level 2)\n  {type: \"SCADA Server\", level: 2, criticality: \"CRITICAL\", zone: \"Control Network\"},\n  {type: \"Distributed Control System (DCS)\", level: 2, criticality: \"CRITICAL\", zone: \"Control Network\"},\n  {type: \"Human-Machine Interface (HMI)\", level: 2, criticality: \"HIGH\", zone: \"Control Network\"},\n  {type: \"Engineering Workstation\", level: 2, criticality: \"HIGH\", zone: \"Control Network\"},\n  {type: \"",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_27",
+    "text": "{type: \"Human-Machine Interface (HMI)\", level: 2, criticality: \"HIGH\", zone: \"Control Network\"},\n  {type: \"Engineering Workstation\", level: 2, criticality: \"HIGH\", zone: \"Control Network\"},\n  {type: \"Historian Server\", level: 2, criticality: \"HIGH\", zone: \"Control Network\"},\n\n  // Safety Systems\n  {type: \"Safety Instrumented System (SIS)\", level: 1, criticality: \"CRITICAL\", zone: \"Safety Network\"},\n  {type: \"Emergency Shutdown System (ESD)\", level: 1, criticality: \"CRITICAL\", zone: \"Safety Network\"},\n\n  // Network Infrastructure\n  {type: \"Industrial Ethernet Switch\", level: 2, criticality: \"HIGH\", zone: \"Control Network\"},\n  {type: \"Industrial Firewall\", level: 3, criticality: \"HIGH\", zone: \"DMZ\"},\n  {type: \"Data Diode\", level: 3, criticality: \"MEDIUM\", zone: \"DMZ\"}\n] AS asset\nCREATE (a:ICS_Asset {\n  asset_type: asset.type,\n  purdue_level: asset.level,\n  criticality: asset.criticality,\n  network_zone: asset.zone,\n  asset_category: CASE\n    WHEN asset.level IN [0, 1] THEN \"Field Device\"",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_28",
+    "text": "S_Asset {\n  asset_type: asset.type,\n  purdue_level: asset.level,\n  criticality: asset.criticality,\n  network_zone: asset.zone,\n  asset_category: CASE\n    WHEN asset.level IN [0, 1] THEN \"Field Device\"\n    WHEN asset.level = 2 THEN \"Control System\"\n    ELSE \"Network Device\"\n  END,\n  authentication_enabled: asset.level >= 2,\n  encryption_supported: asset.level >= 2,\n  iec_62443_level: CASE\n    WHEN asset.criticality = \"CRITICAL\" THEN \"SL3\"\n    WHEN asset.criticality = \"HIGH\" THEN \"SL2\"\n    ELSE \"SL1\"\n  END,\n  node_id: randomUUID(),\n  created_by: \"AEON_INTEGRATION_WAVE5\",\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n});\n```\n\n### 2.4 ICS Protocol Nodes\n\n**Node Label**: `ICS_Protocol`\n\n**Description**: Industrial communication protocols used in OT/ICS environments.\n\n**Properties**:\n```cypher\n{\n  protocol_id: String,           // Unique protocol identifier\n  protocol_name: String,         // Common protocol name\n  protocol_family: String,       // ",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_29",
+    "text": " environments.\n\n**Properties**:\n```cypher\n{\n  protocol_id: String,           // Unique protocol identifier\n  protocol_name: String,         // Common protocol name\n  protocol_family: String,       // Protocol category (Fieldbus, Ethernet-based, etc.)\n  osi_layer: Integer,           // Primary OSI layer (1-7)\n\n  // Technical specifications\n  standard_reference: String,    // IEEE, IEC, or vendor standard\n  port_numbers: [Integer],       // Default TCP/UDP ports\n  transport_protocol: String,    // TCP, UDP, Serial\n  data_format: String,           // Binary, ASCII, XML\n\n  // Security characteristics\n  authentication_support: Boolean,\n  encryption_support: Boolean,\n  known_vulnerabilities: [String], // Common security weaknesses\n  security_extensions: [String],   // Security protocol additions\n\n  // Operational properties\n  deterministic: Boolean,        // Real-time determinism\n  max_devices: Integer,          // Maximum supported devices\n  max_distance: String,          // Maximum commun",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_30",
+    "text": "\n\n  // Operational properties\n  deterministic: Boolean,        // Real-time determinism\n  max_devices: Integer,          // Maximum supported devices\n  max_distance: String,          // Maximum communication distance\n  bandwidth: String,             // Typical bandwidth\n\n  // Industry usage\n  common_sectors: [String],      // Where protocol is used\n  vendor_support: [String],      // Major vendor implementations\n  adoption_level: String,        // WIDESPREAD, COMMON, NICHE, LEGACY\n\n  // Attack surface\n  exploitable_features: [String],\n  mitigation_approaches: [String],\n  monitoring_methods: [String],\n\n  // Metadata\n  node_id: String,\n  created_by: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement (Example)**:\n```cypher\n// Create ICS Protocol: Modbus TCP\nCREATE (p:ICS_Protocol {\n  protocol_id: \"MODBUS-TCP\",\n  protocol_name: \"Modbus TCP/IP\",\n  protocol_family: \"Ethernet-based Industrial Protocol\",\n  osi_layer",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_31",
+    "text": "``cypher\n// Create ICS Protocol: Modbus TCP\nCREATE (p:ICS_Protocol {\n  protocol_id: \"MODBUS-TCP\",\n  protocol_name: \"Modbus TCP/IP\",\n  protocol_family: \"Ethernet-based Industrial Protocol\",\n  osi_layer: 7,\n\n  standard_reference: \"MODBUS Application Protocol Specification V1.1b3\",\n  port_numbers: [502],\n  transport_protocol: \"TCP\",\n  data_format: \"Binary\",\n\n  authentication_support: false,\n  encryption_support: false,\n  known_vulnerabilities: [\n    \"No authentication mechanism\",\n    \"No encryption by default\",\n    \"Susceptible to man-in-the-middle attacks\",\n    \"Command injection possible\",\n    \"Easily spoofed\"\n  ],\n  security_extensions: [\"Modbus Security\", \"TLS wrapper\"],\n\n  deterministic: false,\n  max_devices: 247,\n  max_distance: \"100 meters (standard Ethernet)\",\n  bandwidth: \"10-100 Mbps\",\n\n  common_sectors: [\"Energy\", \"Water\", \"Manufacturing\", \"Building Automation\"],\n  vendor_support: [\"Schneider Electric\", \"Siemens\", \"ABB\", \"Rockwell Automation\"],\n  adoption_level: \"WIDESPREAD\",\n\n",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_32",
+    "text": "s\",\n\n  common_sectors: [\"Energy\", \"Water\", \"Manufacturing\", \"Building Automation\"],\n  vendor_support: [\"Schneider Electric\", \"Siemens\", \"ABB\", \"Rockwell Automation\"],\n  adoption_level: \"WIDESPREAD\",\n\n  exploitable_features: [\n    \"Unauthenticated read/write operations\",\n    \"Predictable transaction IDs\",\n    \"No message integrity verification\",\n    \"Broadcast capabilities\"\n  ],\n  mitigation_approaches: [\n    \"Network segmentation\",\n    \"Industrial firewall with protocol inspection\",\n    \"VPN or TLS tunneling\",\n    \"Whitelist allowed function codes\",\n    \"Monitor for anomalous traffic patterns\"\n  ],\n  monitoring_methods: [\n    \"Deep packet inspection\",\n    \"Baseline normal traffic patterns\",\n    \"Anomaly detection on function codes\",\n    \"Monitor unauthorized read/write operations\"\n  ],\n\n  node_id: randomUUID(),\n  created_by: \"AEON_INTEGRATION_WAVE5\",\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n``",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_33",
+    "text": "node_id: randomUUID(),\n  created_by: \"AEON_INTEGRATION_WAVE5\",\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n```cypher\n// Unique constraint on protocol ID\nCREATE CONSTRAINT ics_protocol_id_unique IF NOT EXISTS\nFOR (p:ICS_Protocol) REQUIRE p.protocol_id IS UNIQUE;\n\n// Index on protocol name\nCREATE INDEX ics_protocol_name_idx IF NOT EXISTS\nFOR (p:ICS_Protocol) ON (p.protocol_name);\n\n// Index on port numbers for network analysis\nCREATE INDEX ics_protocol_ports_idx IF NOT EXISTS\nFOR (p:ICS_Protocol) ON (p.port_numbers);\n\n// Full-text search\nCREATE FULLTEXT INDEX ics_protocol_fulltext IF NOT EXISTS\nFOR (p:ICS_Protocol) ON EACH [p.protocol_name, p.standard_reference];\n```\n\n**Major ICS Protocols**:\n```cypher\n// Create common ICS protocols\nUNWIND [\n  {id: \"MODBUS-TCP\", name: \"Modbus TCP/IP\", port: 502, auth: false, encrypt: false, level: \"WIDESPREAD\"},\n  {id: \"MODBUS-RTU\", name: \"Modbus RTU\", port: null, a",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_34",
+    "text": "// Create common ICS protocols\nUNWIND [\n  {id: \"MODBUS-TCP\", name: \"Modbus TCP/IP\", port: 502, auth: false, encrypt: false, level: \"WIDESPREAD\"},\n  {id: \"MODBUS-RTU\", name: \"Modbus RTU\", port: null, auth: false, encrypt: false, level: \"WIDESPREAD\"},\n  {id: \"DNP3\", name: \"DNP3 (Distributed Network Protocol)\", port: 20000, auth: true, encrypt: true, level: \"COMMON\"},\n  {id: \"OPC-UA\", name: \"OPC Unified Architecture\", port: 4840, auth: true, encrypt: true, level: \"WIDESPREAD\"},\n  {id: \"PROFINET\", name: \"Profinet IO\", port: 34962, auth: false, encrypt: false, level: \"WIDESPREAD\"},\n  {id: \"ETHERNETIP\", name: \"EtherNet/IP\", port: 44818, auth: false, encrypt: false, level: \"WIDESPREAD\"},\n  {id: \"BACnet\", name: \"BACnet/IP\", port: 47808, auth: false, encrypt: false, level: \"COMMON\"},\n  {id: \"IEC-61850\", name: \"IEC 61850 (Substation Automation)\", port: 102, auth: false, encrypt: false, level: \"COMMON\"},\n  {id: \"IEC-60870-5-104\", name: \"IEC 60870-5-104\", port: 2404, auth: false, encrypt: false, l",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_35",
+    "text": "850\", name: \"IEC 61850 (Substation Automation)\", port: 102, auth: false, encrypt: false, level: \"COMMON\"},\n  {id: \"IEC-60870-5-104\", name: \"IEC 60870-5-104\", port: 2404, auth: false, encrypt: false, level: \"COMMON\"},\n  {id: \"S7COMM\", name: \"Siemens S7 Communication\", port: 102, auth: false, encrypt: false, level: \"COMMON\"}\n] AS proto\nCREATE (p:ICS_Protocol {\n  protocol_id: proto.id,\n  protocol_name: proto.name,\n  port_numbers: CASE WHEN proto.port IS NOT NULL THEN [proto.port] ELSE [] END,\n  authentication_support: proto.auth,\n  encryption_support: proto.encrypt,\n  adoption_level: proto.level,\n  transport_protocol: \"TCP\",\n  osi_layer: 7,\n  node_id: randomUUID(),\n  created_by: \"AEON_INTEGRATION_WAVE5\",\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n});\n```\n\n### 2.5 Critical Infrastructure Sector Nodes\n\n**Node Label**: `Critical_Infrastructure_Sector`\n\n**Description**: CISA-defined critical infrastructure sectors for ICS threat modeling.\n\n**Prope",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_36",
+    "text": "});\n```\n\n### 2.5 Critical Infrastructure Sector Nodes\n\n**Node Label**: `Critical_Infrastructure_Sector`\n\n**Description**: CISA-defined critical infrastructure sectors for ICS threat modeling.\n\n**Properties**:\n```cypher\n{\n  sector_id: String,             // Unique sector identifier\n  sector_name: String,           // Official sector name\n  sector_abbreviation: String,   // Common abbreviation\n\n  // Sector details\n  description: String,           // Sector description\n  cisa_designation: String,      // Official CISA designation\n  regulatory_framework: [String], // Applicable regulations\n\n  // Threat landscape\n  primary_threats: [String],     // Top threat types\n  high_risk_techniques: [String], // Most relevant ICS techniques\n  notable_incidents: [Map],       // Historical attacks\n\n  // Asset characteristics\n  common_asset_types: [String],  // Typical ICS assets\n  common_protocols: [String],    // Common ICS protocols\n  typical_purdue_levels: [Integer], // Relevant Purdue levels\n\n  // S",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_37",
+    "text": "et characteristics\n  common_asset_types: [String],  // Typical ICS assets\n  common_protocols: [String],    // Common ICS protocols\n  typical_purdue_levels: [Integer], // Relevant Purdue levels\n\n  // Standards and compliance\n  sector_specific_standards: [String],\n  security_frameworks: [String],\n\n  // Metadata\n  node_id: String,\n  created_by: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement (Example)**:\n```cypher\n// Create Critical Infrastructure Sector: Energy\nCREATE (s:Critical_Infrastructure_Sector {\n  sector_id: \"CISA-SECTOR-ENERGY\",\n  sector_name: \"Energy Sector\",\n  sector_abbreviation: \"ENERGY\",\n\n  description: \"Electric power generation, transmission, distribution, and petroleum refining and storage\",\n  cisa_designation: \"Critical Infrastructure Sector - Energy\",\n  regulatory_framework: [\n    \"NERC CIP (Critical Infrastructure Protection)\",\n    \"TSA Pipeline Security Guidelines\",\n    \"FERC Security S",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_38",
+    "text": "cisa_designation: \"Critical Infrastructure Sector - Energy\",\n  regulatory_framework: [\n    \"NERC CIP (Critical Infrastructure Protection)\",\n    \"TSA Pipeline Security Guidelines\",\n    \"FERC Security Standards\"\n  ],\n\n  primary_threats: [\n    \"State-sponsored APT groups\",\n    \"Ransomware targeting OT systems\",\n    \"Supply chain attacks\",\n    \"Insider threats\",\n    \"Physical-cyber attacks\"\n  ],\n  high_risk_techniques: [\n    \"T0821 - Modify Controller Tasking\",\n    \"T0813 - Denial of Control\",\n    \"T0806 - Brute Force I/O\",\n    \"T0836 - Modify Parameter\",\n    \"T0882 - Theft of Operational Information\"\n  ],\n  notable_incidents: [\n    {\n      name: \"Ukraine Power Grid Attack\",\n      year: 2015,\n      description: \"CRASHOVERRIDE malware caused blackouts affecting 225,000 customers\",\n      techniques: [\"T0813\", \"T0814\", \"T0816\"]\n    },\n    {\n      name: \"TRITON/TRISIS\",\n      year: 2017,\n      description: \"Targeted safety instrumented systems in petrochemical plant\",\n      techniques: [\"T0821",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_39",
+    "text": "ues: [\"T0813\", \"T0814\", \"T0816\"]\n    },\n    {\n      name: \"TRITON/TRISIS\",\n      year: 2017,\n      description: \"Targeted safety instrumented systems in petrochemical plant\",\n      techniques: [\"T0821\", \"T0800\", \"T0873\"]\n    }\n  ],\n\n  common_asset_types: [\n    \"SCADA Server\",\n    \"Substation IED\",\n    \"Generator Protection Relay\",\n    \"Energy Management System (EMS)\",\n    \"RTU\",\n    \"PLC\"\n  ],\n  common_protocols: [\n    \"DNP3\",\n    \"IEC 61850\",\n    \"Modbus\",\n    \"IEC 60870-5-104\",\n    \"OPC UA\"\n  ],\n  typical_purdue_levels: [0, 1, 2, 3],\n\n  sector_specific_standards: [\n    \"NERC CIP-002 through CIP-014\",\n    \"IEC 62351 (Power System Security)\",\n    \"IEEE 1686 (Substation IED Security)\"\n  ],\n  security_frameworks: [\n    \"NIST Cybersecurity Framework\",\n    \"IEC 62443\",\n    \"C2M2 (Cybersecurity Capability Maturity Model)\"\n  ],\n\n  node_id: randomUUID(),\n  created_by: \"AEON_INTEGRATION_WAVE5\",\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**I",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_40",
+    "text": " Capability Maturity Model)\"\n  ],\n\n  node_id: randomUUID(),\n  created_by: \"AEON_INTEGRATION_WAVE5\",\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n})\n```\n\n**Index and Constraint Definitions**:\n```cypher\n// Unique constraint on sector ID\nCREATE CONSTRAINT sector_id_unique IF NOT EXISTS\nFOR (s:Critical_Infrastructure_Sector) REQUIRE s.sector_id IS UNIQUE;\n\n// Index on sector name\nCREATE INDEX sector_name_idx IF NOT EXISTS\nFOR (s:Critical_Infrastructure_Sector) ON (s.sector_name);\n\n// Full-text search\nCREATE FULLTEXT INDEX sector_fulltext IF NOT EXISTS\nFOR (s:Critical_Infrastructure_Sector) ON EACH [s.sector_name, s.description];\n```\n\n**CISA Critical Infrastructure Sectors**:\n```cypher\n// Create all 16 CISA critical infrastructure sectors\nUNWIND [\n  {id: \"CISA-SECTOR-CHEMICAL\", name: \"Chemical Sector\", abbr: \"CHEMICAL\"},\n  {id: \"CISA-SECTOR-COMMERCIAL\", name: \"Commercial Facilities Sector\", abbr: \"COMMERCIAL\"},\n  {id: \"CISA-SECTOR-COMMUNICATIONS\",",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 40,
+      "start_char": 32000,
+      "end_char": 33000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_41",
+    "text": "id: \"CISA-SECTOR-CHEMICAL\", name: \"Chemical Sector\", abbr: \"CHEMICAL\"},\n  {id: \"CISA-SECTOR-COMMERCIAL\", name: \"Commercial Facilities Sector\", abbr: \"COMMERCIAL\"},\n  {id: \"CISA-SECTOR-COMMUNICATIONS\", name: \"Communications Sector\", abbr: \"COMMUNICATIONS\"},\n  {id: \"CISA-SECTOR-CRITICAL-MANUFACTURING\", name: \"Critical Manufacturing Sector\", abbr: \"MANUFACTURING\"},\n  {id: \"CISA-SECTOR-DAMS\", name: \"Dams Sector\", abbr: \"DAMS\"},\n  {id: \"CISA-SECTOR-DEFENSE\", name: \"Defense Industrial Base Sector\", abbr: \"DEFENSE\"},\n  {id: \"CISA-SECTOR-EMERGENCY\", name: \"Emergency Services Sector\", abbr: \"EMERGENCY\"},\n  {id: \"CISA-SECTOR-ENERGY\", name: \"Energy Sector\", abbr: \"ENERGY\"},\n  {id: \"CISA-SECTOR-FINANCIAL\", name: \"Financial Services Sector\", abbr: \"FINANCIAL\"},\n  {id: \"CISA-SECTOR-FOOD-AG\", name: \"Food and Agriculture Sector\", abbr: \"FOOD-AG\"},\n  {id: \"CISA-SECTOR-GOV-FACILITIES\", name: \"Government Facilities Sector\", abbr: \"GOVERNMENT\"},\n  {id: \"CISA-SECTOR-HEALTHCARE\", name: \"Healthcare and Publi",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 41,
+      "start_char": 32800,
+      "end_char": 33800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_42",
+    "text": " and Agriculture Sector\", abbr: \"FOOD-AG\"},\n  {id: \"CISA-SECTOR-GOV-FACILITIES\", name: \"Government Facilities Sector\", abbr: \"GOVERNMENT\"},\n  {id: \"CISA-SECTOR-HEALTHCARE\", name: \"Healthcare and Public Health Sector\", abbr: \"HEALTHCARE\"},\n  {id: \"CISA-SECTOR-IT\", name: \"Information Technology Sector\", abbr: \"IT\"},\n  {id: \"CISA-SECTOR-NUCLEAR\", name: \"Nuclear Reactors, Materials, and Waste Sector\", abbr: \"NUCLEAR\"},\n  {id: \"CISA-SECTOR-TRANSPORTATION\", name: \"Transportation Systems Sector\", abbr: \"TRANSPORTATION\"},\n  {id: \"CISA-SECTOR-WATER\", name: \"Water and Wastewater Systems Sector\", abbr: \"WATER\"}\n] AS sector\nCREATE (s:Critical_Infrastructure_Sector {\n  sector_id: sector.id,\n  sector_name: sector.name,\n  sector_abbreviation: sector.abbr,\n  cisa_designation: \"Critical Infrastructure Sector\",\n  security_frameworks: [\"NIST CSF\", \"IEC 62443\", \"ISO 27001\"],\n  node_id: randomUUID(),\n  created_by: \"AEON_INTEGRATION_WAVE5\",\n  created_date: datetime(),\n  last_updated: datetime(),\n  validatio",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 42,
+      "start_char": 33600,
+      "end_char": 34600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_43",
+    "text": "or\",\n  security_frameworks: [\"NIST CSF\", \"IEC 62443\", \"ISO 27001\"],\n  node_id: randomUUID(),\n  created_by: \"AEON_INTEGRATION_WAVE5\",\n  created_date: datetime(),\n  last_updated: datetime(),\n  validation_status: \"VALIDATED\"\n});\n```\n\n## 3. Complete Relationship Schemas\n\n### 3.1 ICS Tactic to Technique Relationships\n\n**Relationship Type**: `CONTAINS_ICS_TECHNIQUE`\n\n**Description**: Links ICS tactics to the techniques that achieve the tactical objective.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,       // Unique relationship identifier\n  technique_applicability: String, // PRIMARY, SECONDARY\n  confidence_score: Float,       // Relationship confidence (0.0-1.0)\n  mitre_validated: Boolean,      // Official MITRE mapping\n  created_date: DateTime,\n  last_updated: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link ICS tactics to techniques\nMATCH (tactic:ICS_Tactic {tactic_id: \"TA0100\"}) // Impair Process Control\nMATCH (technique:ICS_Technique {technique_id: \"T0821\"}) // ",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 43,
+      "start_char": 34400,
+      "end_char": 35400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_44",
+    "text": "er CREATE Statement**:\n```cypher\n// Link ICS tactics to techniques\nMATCH (tactic:ICS_Tactic {tactic_id: \"TA0100\"}) // Impair Process Control\nMATCH (technique:ICS_Technique {technique_id: \"T0821\"}) // Modify Controller Tasking\nCREATE (tactic)-[r:CONTAINS_ICS_TECHNIQUE {\n  relationship_id: randomUUID(),\n  technique_applicability: \"PRIMARY\",\n  confidence_score: 1.0,\n  mitre_validated: true,\n  created_date: datetime(),\n  last_updated: datetime()\n}]->(technique)\n```\n\n**Batch Relationship Creation**:\n```cypher\n// Create tactic-technique relationships for Wave 5\nUNWIND [\n  // Initial Access (TA0108)\n  {tactic: \"TA0108\", technique: \"T0812\", applicability: \"PRIMARY\"},  // Default Credentials\n  {tactic: \"TA0108\", technique: \"T0817\", applicability: \"PRIMARY\"},  // Drive-by Compromise\n  {tactic: \"TA0108\", technique: \"T0818\", applicability: \"PRIMARY\"},  // Engineering Workstation Compromise\n  {tactic: \"TA0108\", technique: \"T0819\", applicability: \"PRIMARY\"},  // Exploit Public-Facing Application\n  {",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 44,
+      "start_char": 35200,
+      "end_char": 36200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_45",
+    "text": "08\", technique: \"T0818\", applicability: \"PRIMARY\"},  // Engineering Workstation Compromise\n  {tactic: \"TA0108\", technique: \"T0819\", applicability: \"PRIMARY\"},  // Exploit Public-Facing Application\n  {tactic: \"TA0108\", technique: \"T0866\", applicability: \"SECONDARY\"}, // Exploitation of Remote Services\n\n  // Execution (TA0109)\n  {tactic: \"TA0109\", technique: \"T0807\", applicability: \"PRIMARY\"},  // Command-Line Interface\n  {tactic: \"TA0109\", technique: \"T0821\", applicability: \"PRIMARY\"},  // Modify Controller Tasking\n  {tactic: \"TA0109\", technique: \"T0871\", applicability: \"PRIMARY\"},  // Execution through API\n  {tactic: \"TA0109\", technique: \"T0874\", applicability: \"SECONDARY\"}, // User Execution\n\n  // Impair Process Control (TA0100)\n  {tactic: \"TA0100\", technique: \"T0806\", applicability: \"PRIMARY\"},  // Brute Force I/O\n  {tactic: \"TA0100\", technique: \"T0821\", applicability: \"PRIMARY\"},  // Modify Controller Tasking\n  {tactic: \"TA0100\", technique: \"T0836\", applicability: \"PRIMARY\"},  // Mo",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 45,
+      "start_char": 36000,
+      "end_char": 37000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_46",
+    "text": "MARY\"},  // Brute Force I/O\n  {tactic: \"TA0100\", technique: \"T0821\", applicability: \"PRIMARY\"},  // Modify Controller Tasking\n  {tactic: \"TA0100\", technique: \"T0836\", applicability: \"PRIMARY\"},  // Modify Parameter\n  {tactic: \"TA0100\", technique: \"T0855\", applicability: \"PRIMARY\"},  // Unauthorized Command Message\n  {tactic: \"TA0100\", technique: \"T0856\", applicability: \"SECONDARY\"}, // Spoof Reporting Message\n\n  // Inhibit Response Function (TA0101)\n  {tactic: \"TA0101\", technique: \"T0803\", applicability: \"PRIMARY\"},  // Block Command Message\n  {tactic: \"TA0101\", technique: \"T0804\", applicability: \"PRIMARY\"},  // Block Reporting Message\n  {tactic: \"TA0101\", technique: \"T0805\", applicability: \"PRIMARY\"},  // Block Serial COM\n  {tactic: \"TA0101\", technique: \"T0815\", applicability: \"PRIMARY\"},  // Denial of Service\n  {tactic: \"TA0101\", technique: \"T0816\", applicability: \"PRIMARY\"},  // Device Restart/Shutdown\n\n  // Impact (TA0106)\n  {tactic: \"TA0106\", technique: \"T0809\", applicability: \"PR",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 46,
+      "start_char": 36800,
+      "end_char": 37800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_47",
+    "text": "  // Denial of Service\n  {tactic: \"TA0101\", technique: \"T0816\", applicability: \"PRIMARY\"},  // Device Restart/Shutdown\n\n  // Impact (TA0106)\n  {tactic: \"TA0106\", technique: \"T0809\", applicability: \"PRIMARY\"},  // Data Destruction\n  {tactic: \"TA0106\", technique: \"T0813\", applicability: \"PRIMARY\"},  // Denial of Control\n  {tactic: \"TA0106\", technique: \"T0814\", applicability: \"PRIMARY\"},  // Denial of View\n  {tactic: \"TA0106\", technique: \"T0815\", applicability: \"PRIMARY\"},  // Denial of Service\n  {tactic: \"TA0106\", technique: \"T0826\", applicability: \"PRIMARY\"},  // Loss of Availability\n  {tactic: \"TA0106\", technique: \"T0827\", applicability: \"PRIMARY\"},  // Loss of Control\n  {tactic: \"TA0106\", technique: \"T0828\", applicability: \"PRIMARY\"},  // Loss of Productivity and Revenue\n  {tactic: \"TA0106\", technique: \"T0837\", applicability: \"PRIMARY\"}   // Loss of Protection\n] AS rel\nMATCH (tactic:ICS_Tactic {tactic_id: rel.tactic})\nMATCH (technique:ICS_Technique {technique_id: rel.technique})\nCREAT",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 47,
+      "start_char": 37600,
+      "end_char": 38600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_48",
+    "text": "6\", technique: \"T0837\", applicability: \"PRIMARY\"}   // Loss of Protection\n] AS rel\nMATCH (tactic:ICS_Tactic {tactic_id: rel.tactic})\nMATCH (technique:ICS_Technique {technique_id: rel.technique})\nCREATE (tactic)-[r:CONTAINS_ICS_TECHNIQUE {\n  relationship_id: randomUUID(),\n  technique_applicability: rel.applicability,\n  confidence_score: 1.0,\n  mitre_validated: true,\n  created_date: datetime(),\n  last_updated: datetime()\n}]->(technique)\n```\n\n### 3.2 Technique to Asset Relationships\n\n**Relationship Type**: `TARGETS_ICS_ASSET`\n\n**Description**: Links ICS techniques to the asset types they specifically target or affect.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  impact_severity: String,       // LOW, MEDIUM, HIGH, CRITICAL\n  attack_vector: String,         // Network, Physical, Local\n  required_access_level: String, // NONE, USER, ADMIN, SYSTEM\n  observable_indicators: [String],\n  confidence_score: Float,\n  created_date: DateTime,\n  last_updated: DateTime\n}\n```\n\n**Cypher CREAT",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 48,
+      "start_char": 38400,
+      "end_char": 39400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_49",
+    "text": "cal\n  required_access_level: String, // NONE, USER, ADMIN, SYSTEM\n  observable_indicators: [String],\n  confidence_score: Float,\n  created_date: DateTime,\n  last_updated: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link technique to targeted asset\nMATCH (technique:ICS_Technique {technique_id: \"T0821\"}) // Modify Controller Tasking\nMATCH (asset:ICS_Asset {asset_type: \"Programmable Logic Controller (PLC)\"})\nCREATE (technique)-[r:TARGETS_ICS_ASSET {\n  relationship_id: randomUUID(),\n  impact_severity: \"CRITICAL\",\n  attack_vector: \"Network\",\n  required_access_level: \"ADMIN\",\n  observable_indicators: [\n    \"Controller program changes\",\n    \"Unexpected ladder logic modifications\",\n    \"Engineering workstation connections\",\n    \"Abnormal memory usage patterns\"\n  ],\n  confidence_score: 0.95,\n  created_date: datetime(),\n  last_updated: datetime()\n}]->(asset)\n```\n\n**Batch Creation**:\n```cypher\n// Create technique-to-asset targeting relationships\nUNWIND [\n  // Modify Controller Taskin",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 49,
+      "start_char": 39200,
+      "end_char": 40200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_50",
+    "text": " 0.95,\n  created_date: datetime(),\n  last_updated: datetime()\n}]->(asset)\n```\n\n**Batch Creation**:\n```cypher\n// Create technique-to-asset targeting relationships\nUNWIND [\n  // Modify Controller Tasking targets multiple assets\n  {tech: \"T0821\", asset: \"Programmable Logic Controller (PLC)\", severity: \"CRITICAL\", vector: \"Network\"},\n  {tech: \"T0821\", asset: \"Distributed Control System (DCS)\", severity: \"CRITICAL\", vector: \"Network\"},\n  {tech: \"T0821\", asset: \"Safety Instrumented System (SIS)\", severity: \"CRITICAL\", vector: \"Network\"},\n  {tech: \"T0821\", asset: \"Remote Terminal Unit (RTU)\", severity: \"HIGH\", vector: \"Network\"},\n\n  // Engineering Workstation Compromise\n  {tech: \"T0818\", asset: \"Engineering Workstation\", severity: \"CRITICAL\", vector: \"Network\"},\n  {tech: \"T0818\", asset: \"Human-Machine Interface (HMI)\", severity: \"HIGH\", vector: \"Network\"},\n\n  // Data Historian Compromise\n  {tech: \"T0810\", asset: \"Historian Server\", severity: \"HIGH\", vector: \"Network\"},\n  {tech: \"T0810\", asset",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 50,
+      "start_char": 40000,
+      "end_char": 41000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_51",
+    "text": "chine Interface (HMI)\", severity: \"HIGH\", vector: \"Network\"},\n\n  // Data Historian Compromise\n  {tech: \"T0810\", asset: \"Historian Server\", severity: \"HIGH\", vector: \"Network\"},\n  {tech: \"T0810\", asset: \"SCADA Server\", severity: \"HIGH\", vector: \"Network\"},\n\n  // Block Command Message\n  {tech: \"T0803\", asset: \"Programmable Logic Controller (PLC)\", severity: \"HIGH\", vector: \"Network\"},\n  {tech: \"T0803\", asset: \"Remote Terminal Unit (RTU)\", severity: \"HIGH\", vector: \"Network\"},\n  {tech: \"T0803\", asset: \"Intelligent Electronic Device (IED)\", severity: \"HIGH\", vector: \"Network\"},\n\n  // Denial of Service\n  {tech: \"T0815\", asset: \"SCADA Server\", severity: \"CRITICAL\", vector: \"Network\"},\n  {tech: \"T0815\", asset: \"Human-Machine Interface (HMI)\", severity: \"HIGH\", vector: \"Network\"},\n  {tech: \"T0815\", asset: \"Industrial Ethernet Switch\", severity: \"HIGH\", vector: \"Network\"}\n] AS rel\nMATCH (technique:ICS_Technique {technique_id: rel.tech})\nMATCH (asset:ICS_Asset {asset_type: rel.asset})\nCREATE (te",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 51,
+      "start_char": 40800,
+      "end_char": 41800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_52",
+    "text": ", asset: \"Industrial Ethernet Switch\", severity: \"HIGH\", vector: \"Network\"}\n] AS rel\nMATCH (technique:ICS_Technique {technique_id: rel.tech})\nMATCH (asset:ICS_Asset {asset_type: rel.asset})\nCREATE (technique)-[r:TARGETS_ICS_ASSET {\n  relationship_id: randomUUID(),\n  impact_severity: rel.severity,\n  attack_vector: rel.vector,\n  required_access_level: \"ADMIN\",\n  confidence_score: 0.9,\n  created_date: datetime(),\n  last_updated: datetime()\n}]->(asset)\n```\n\n### 3.3 Asset to Protocol Relationships\n\n**Relationship Type**: `USES_PROTOCOL`\n\n**Description**: Links ICS assets to the communication protocols they support or use.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  usage_type: String,            // PRIMARY, SECONDARY, OPTIONAL\n  protocol_role: String,         // SERVER, CLIENT, BOTH\n  security_enabled: Boolean,\n  created_date: DateTime,\n  last_updated: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link asset to protocol\nMATCH (asset:ICS_Asset {asset_type: \"Programm",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 52,
+      "start_char": 41600,
+      "end_char": 42600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_53",
+    "text": "TH\n  security_enabled: Boolean,\n  created_date: DateTime,\n  last_updated: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link asset to protocol\nMATCH (asset:ICS_Asset {asset_type: \"Programmable Logic Controller (PLC)\"})\nMATCH (protocol:ICS_Protocol {protocol_id: \"MODBUS-TCP\"})\nCREATE (asset)-[r:USES_PROTOCOL {\n  relationship_id: randomUUID(),\n  usage_type: \"PRIMARY\",\n  protocol_role: \"SERVER\",\n  security_enabled: false,\n  created_date: datetime(),\n  last_updated: datetime()\n}]->(protocol)\n```\n\n**Batch Creation**:\n```cypher\n// Create asset-protocol relationships\nUNWIND [\n  // PLCs\n  {asset: \"Programmable Logic Controller (PLC)\", protocol: \"MODBUS-TCP\", usage: \"PRIMARY\", role: \"SERVER\"},\n  {asset: \"Programmable Logic Controller (PLC)\", protocol: \"PROFINET\", usage: \"PRIMARY\", role: \"BOTH\"},\n  {asset: \"Programmable Logic Controller (PLC)\", protocol: \"ETHERNETIP\", usage: \"SECONDARY\", role: \"BOTH\"},\n  {asset: \"Programmable Logic Controller (PLC)\", protocol: \"OPC-UA\", usage: \"SECON",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 53,
+      "start_char": 42400,
+      "end_char": 43400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_54",
+    "text": " \"BOTH\"},\n  {asset: \"Programmable Logic Controller (PLC)\", protocol: \"ETHERNETIP\", usage: \"SECONDARY\", role: \"BOTH\"},\n  {asset: \"Programmable Logic Controller (PLC)\", protocol: \"OPC-UA\", usage: \"SECONDARY\", role: \"SERVER\"},\n\n  // SCADA Server\n  {asset: \"SCADA Server\", protocol: \"DNP3\", usage: \"PRIMARY\", role: \"CLIENT\"},\n  {asset: \"SCADA Server\", protocol: \"MODBUS-TCP\", usage: \"PRIMARY\", role: \"CLIENT\"},\n  {asset: \"SCADA Server\", protocol: \"IEC-60870-5-104\", usage: \"PRIMARY\", role: \"CLIENT\"},\n  {asset: \"SCADA Server\", protocol: \"OPC-UA\", usage: \"SECONDARY\", role: \"CLIENT\"},\n\n  // RTU\n  {asset: \"Remote Terminal Unit (RTU)\", protocol: \"DNP3\", usage: \"PRIMARY\", role: \"SERVER\"},\n  {asset: \"Remote Terminal Unit (RTU)\", protocol: \"MODBUS-RTU\", usage: \"PRIMARY\", role: \"SERVER\"},\n  {asset: \"Remote Terminal Unit (RTU)\", protocol: \"IEC-60870-5-104\", usage: \"SECONDARY\", role: \"SERVER\"},\n\n  // IED\n  {asset: \"Intelligent Electronic Device (IED)\", protocol: \"IEC-61850\", usage: \"PRIMARY\", role: \"SERVE",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 54,
+      "start_char": 43200,
+      "end_char": 44200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_55",
+    "text": "Terminal Unit (RTU)\", protocol: \"IEC-60870-5-104\", usage: \"SECONDARY\", role: \"SERVER\"},\n\n  // IED\n  {asset: \"Intelligent Electronic Device (IED)\", protocol: \"IEC-61850\", usage: \"PRIMARY\", role: \"SERVER\"},\n  {asset: \"Intelligent Electronic Device (IED)\", protocol: \"DNP3\", usage: \"SECONDARY\", role: \"SERVER\"},\n\n  // HMI\n  {asset: \"Human-Machine Interface (HMI)\", protocol: \"OPC-UA\", usage: \"PRIMARY\", role: \"CLIENT\"},\n  {asset: \"Human-Machine Interface (HMI)\", protocol: \"MODBUS-TCP\", usage: \"SECONDARY\", role: \"CLIENT\"}\n] AS rel\nMATCH (asset:ICS_Asset {asset_type: rel.asset})\nMATCH (protocol:ICS_Protocol {protocol_id: rel.protocol})\nCREATE (asset)-[r:USES_PROTOCOL {\n  relationship_id: randomUUID(),\n  usage_type: rel.usage,\n  protocol_role: rel.role,\n  security_enabled: false,\n  created_date: datetime(),\n  last_updated: datetime()\n}]->(protocol)\n```\n\n### 3.4 Sector to Asset Relationships\n\n**Relationship Type**: `DEPLOYS_ASSET`\n\n**Description**: Links critical infrastructure sectors to common ",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 55,
+      "start_char": 44000,
+      "end_char": 45000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_56",
+    "text": "etime(),\n  last_updated: datetime()\n}]->(protocol)\n```\n\n### 3.4 Sector to Asset Relationships\n\n**Relationship Type**: `DEPLOYS_ASSET`\n\n**Description**: Links critical infrastructure sectors to common asset types deployed in those sectors.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  deployment_prevalence: String, // UBIQUITOUS, COMMON, RARE\n  criticality_in_sector: String, // CRITICAL, HIGH, MEDIUM, LOW\n  regulatory_requirements: [String],\n  created_date: DateTime,\n  last_updated: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link sector to deployed assets\nMATCH (sector:Critical_Infrastructure_Sector {sector_id: \"CISA-SECTOR-ENERGY\"})\nMATCH (asset:ICS_Asset {asset_type: \"SCADA Server\"})\nCREATE (sector)-[r:DEPLOYS_ASSET {\n  relationship_id: randomUUID(),\n  deployment_prevalence: \"UBIQUITOUS\",\n  criticality_in_sector: \"CRITICAL\",\n  regulatory_requirements: [\"NERC CIP-005\", \"NERC CIP-007\"],\n  created_date: datetime(),\n  last_updated: datetime()\n}]->(asset)\n```\n\n##",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 56,
+      "start_char": 44800,
+      "end_char": 45800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_57",
+    "text": "t_prevalence: \"UBIQUITOUS\",\n  criticality_in_sector: \"CRITICAL\",\n  regulatory_requirements: [\"NERC CIP-005\", \"NERC CIP-007\"],\n  created_date: datetime(),\n  last_updated: datetime()\n}]->(asset)\n```\n\n### 3.5 Technique to Protocol Relationships\n\n**Relationship Type**: `EXPLOITS_PROTOCOL`\n\n**Description**: Links ICS techniques to protocols they exploit or leverage.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  exploitation_method: String,\n  protocol_weakness_exploited: String,\n  detection_difficulty: String,  // EASY, MODERATE, HARD, VERY_HARD\n  created_date: DateTime,\n  last_updated: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link technique to exploited protocol\nMATCH (technique:ICS_Technique {technique_id: \"T0855\"}) // Unauthorized Command Message\nMATCH (protocol:ICS_Protocol {protocol_id: \"MODBUS-TCP\"})\nCREATE (technique)-[r:EXPLOITS_PROTOCOL {\n  relationship_id: randomUUID(),\n  exploitation_method: \"Unauthenticated command injection\",\n  protocol_weakness_expl",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 57,
+      "start_char": 45600,
+      "end_char": 46600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_58",
+    "text": "CS_Protocol {protocol_id: \"MODBUS-TCP\"})\nCREATE (technique)-[r:EXPLOITS_PROTOCOL {\n  relationship_id: randomUUID(),\n  exploitation_method: \"Unauthenticated command injection\",\n  protocol_weakness_exploited: \"No authentication mechanism\",\n  detection_difficulty: \"MODERATE\",\n  created_date: datetime(),\n  last_updated: datetime()\n}]->(protocol)\n```\n\n### 3.6 CVE to ICS Technique Relationships (CVE Preservation)\n\n**Relationship Type**: `ENABLES_ICS_TECHNIQUE`\n\n**Description**: Links existing CVE nodes to ICS techniques they enable, preserving Wave 4 CVE data.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  enablement_type: String,       // DIRECT, INDIRECT, FACILITATES\n  exploitation_complexity: String, // LOW, MEDIUM, HIGH\n  requires_additional_conditions: Boolean,\n  attack_chain_position: String,  // INITIAL_ACCESS, LATERAL_MOVEMENT, EXECUTION, etc.\n  real_world_usage: Boolean,\n  created_date: DateTime,\n  last_updated: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Li",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 58,
+      "start_char": 46400,
+      "end_char": 47400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_59",
+    "text": "ition: String,  // INITIAL_ACCESS, LATERAL_MOVEMENT, EXECUTION, etc.\n  real_world_usage: Boolean,\n  created_date: DateTime,\n  last_updated: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link CVE to ICS technique it enables\nMATCH (cve:CVE {cve_id: \"CVE-2015-5374\"}) // Schneider Electric vulnerability\nMATCH (technique:ICS_Technique {technique_id: \"T0821\"}) // Modify Controller Tasking\nCREATE (cve)-[r:ENABLES_ICS_TECHNIQUE {\n  relationship_id: randomUUID(),\n  enablement_type: \"DIRECT\",\n  exploitation_complexity: \"MEDIUM\",\n  requires_additional_conditions: false,\n  attack_chain_position: \"EXECUTION\",\n  real_world_usage: true,\n  created_date: datetime(),\n  last_updated: datetime()\n}]->(technique)\n```\n\n**CVE Preservation Validation Query**:\n```cypher\n// Verify CVE nodes are preserved and connected to ICS techniques\nMATCH (cve:CVE)-[r:ENABLES_ICS_TECHNIQUE]->(technique:ICS_Technique)\nRETURN\n  count(DISTINCT cve) AS preserved_cves,\n  count(DISTINCT technique) AS connected_technique",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 59,
+      "start_char": 47200,
+      "end_char": 48200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_60",
+    "text": " and connected to ICS techniques\nMATCH (cve:CVE)-[r:ENABLES_ICS_TECHNIQUE]->(technique:ICS_Technique)\nRETURN\n  count(DISTINCT cve) AS preserved_cves,\n  count(DISTINCT technique) AS connected_techniques,\n  count(r) AS total_relationships\n```\n\n### 3.7 Integration with Enterprise ATT&CK\n\n**Relationship Type**: `EXTENDS_ENTERPRISE_TECHNIQUE`\n\n**Description**: Links ICS techniques to related enterprise ATT&CK techniques they extend or specialize.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  extension_type: String,        // SPECIALIZATION, ADAPTATION, VARIANT\n  shared_characteristics: [String],\n  ics_specific_adaptations: [String],\n  created_date: DateTime,\n  last_updated: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link ICS technique to enterprise technique\nMATCH (ics_tech:ICS_Technique {technique_id: \"T0807\"}) // Command-Line Interface (ICS)\nMATCH (ent_tech:Technique {technique_id: \"T1059\"})     // Command and Scripting Interpreter (Enterprise)\nCREATE (ics_tech)",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 60,
+      "start_char": 48000,
+      "end_char": 49000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_61",
+    "text": "s_tech:ICS_Technique {technique_id: \"T0807\"}) // Command-Line Interface (ICS)\nMATCH (ent_tech:Technique {technique_id: \"T1059\"})     // Command and Scripting Interpreter (Enterprise)\nCREATE (ics_tech)-[r:EXTENDS_ENTERPRISE_TECHNIQUE {\n  relationship_id: randomUUID(),\n  extension_type: \"ADAPTATION\",\n  shared_characteristics: [\"Command execution\", \"Shell access\", \"Script execution\"],\n  ics_specific_adaptations: [\n    \"PLC programming interfaces\",\n    \"Engineering workstation access\",\n    \"SCADA scripting environments\"\n  ],\n  created_date: datetime(),\n  last_updated: datetime()\n}]->(ent_tech)\n```\n\n## 4. Integration Patterns\n\n### 4.1 Integration with Wave 1 (Core ATT&CK)\n\n**Objective**: Seamlessly connect ICS framework with existing enterprise ATT&CK data.\n\n**Integration Points**:\n1. Link ICS techniques to related enterprise techniques\n2. Connect ICS tactics to enterprise tactics where applicable\n3. Share common mitigation strategies\n4. Unified threat actor attribution\n\n**Integration Query",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 61,
+      "start_char": 48800,
+      "end_char": 49800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_62",
+    "text": "techniques to related enterprise techniques\n2. Connect ICS tactics to enterprise tactics where applicable\n3. Share common mitigation strategies\n4. Unified threat actor attribution\n\n**Integration Query Pattern**:\n```cypher\n// Find enterprise techniques related to ICS technique\nMATCH (ics_tech:ICS_Technique {technique_id: \"T0818\"})-[:EXTENDS_ENTERPRISE_TECHNIQUE]->(ent_tech:Technique)\nMATCH (ent_tech)<-[:USES]-(threat_actor:ThreatActor)\nRETURN\n  ics_tech.name AS ics_technique,\n  ent_tech.name AS related_enterprise_technique,\n  collect(threat_actor.name) AS threat_actors_using_related_technique\n```\n\n**Cross-Domain Attack Path**:\n```cypher\n// Find attack paths from IT to OT\nMATCH path = (it_asset:Asset)-[:CONNECTS_TO*1..3]->(ics_asset:ICS_Asset)\nWHERE it_asset.asset_category = \"IT\"\n  AND ics_asset.network_zone = \"Control Network\"\nMATCH (technique:Technique)-[:TARGETS_ASSET]->(it_asset)\nMATCH (ics_tech:ICS_Technique)-[:TARGETS_ICS_ASSET]->(ics_asset)\nRETURN\n  path,\n  technique.name AS it_te",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 62,
+      "start_char": 49600,
+      "end_char": 50600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_63",
+    "text": "sset.network_zone = \"Control Network\"\nMATCH (technique:Technique)-[:TARGETS_ASSET]->(it_asset)\nMATCH (ics_tech:ICS_Technique)-[:TARGETS_ICS_ASSET]->(ics_asset)\nRETURN\n  path,\n  technique.name AS it_technique,\n  ics_tech.name AS ot_technique,\n  ics_asset.criticality AS target_criticality\nLIMIT 10\n```\n\n### 4.2 Integration with Wave 2 (Asset Classification)\n\n**Objective**: Extend asset classification with ICS-specific asset types and properties.\n\n**Integration Pattern**:\n```cypher\n// Connect ICS assets to general asset classification\nMATCH (ics_asset:ICS_Asset)\nMATCH (asset_class:AssetClass)\nWHERE asset_class.name IN [\"Control System\", \"Industrial Device\", \"OT Network Equipment\"]\nCREATE (ics_asset)-[:CLASSIFIED_AS {\n  classification_confidence: 1.0,\n  purdue_level: ics_asset.purdue_level,\n  ot_specific: true,\n  created_date: datetime()\n}]->(asset_class)\n```\n\n### 4.3 Integration with Wave 4 (CVE Data)\n\n**Objective**: Preserve all existing CVE relationships while adding ICS-specific CVE con",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 63,
+      "start_char": 50400,
+      "end_char": 51400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_64",
+    "text": "t_specific: true,\n  created_date: datetime()\n}]->(asset_class)\n```\n\n### 4.3 Integration with Wave 4 (CVE Data)\n\n**Objective**: Preserve all existing CVE relationships while adding ICS-specific CVE connections.\n\n**CVE Preservation Pattern**:\n```cypher\n// Find ICS-relevant CVEs and connect to ICS techniques\nMATCH (cve:CVE)\nWHERE\n  cve.description CONTAINS \"SCADA\" OR\n  cve.description CONTAINS \"PLC\" OR\n  cve.description CONTAINS \"industrial control\" OR\n  cve.description CONTAINS \"ICS\" OR\n  cve.affected_product IN [\"Siemens SIMATIC\", \"Schneider Electric\", \"Rockwell Automation\"]\nWITH cve\nMATCH (technique:ICS_Technique)\nWHERE ANY(asset IN technique.affected_assets WHERE cve.description CONTAINS asset)\nCREATE (cve)-[:ENABLES_ICS_TECHNIQUE {\n  relationship_id: randomUUID(),\n  enablement_type: \"DIRECT\",\n  auto_detected: true,\n  requires_validation: true,\n  created_date: datetime()\n}]->(technique)\n```\n\n**CVE Validation Query**:\n```cypher\n// Verify no CVE nodes were deleted or modified\nMATCH (cve",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 64,
+      "start_char": 51200,
+      "end_char": 52200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_65",
+    "text": "ECT\",\n  auto_detected: true,\n  requires_validation: true,\n  created_date: datetime()\n}]->(technique)\n```\n\n**CVE Validation Query**:\n```cypher\n// Verify no CVE nodes were deleted or modified\nMATCH (cve:CVE)\nWITH count(cve) AS total_cves\nMATCH (cve:CVE)-[:ENABLES_ICS_TECHNIQUE]->(:ICS_Technique)\nWITH total_cves, count(DISTINCT cve) AS ics_connected_cves\nRETURN\n  total_cves,\n  ics_connected_cves,\n  (ics_connected_cves * 100.0 / total_cves) AS percentage_connected\n```\n\n### 4.4 Purdue Model Integration\n\n**Objective**: Model ISA-95 Purdue Reference Architecture for OT network segmentation.\n\n**Purdue Level Hierarchy**:\n```cypher\n// Create Purdue Model levels\nUNWIND [\n  {level: 0, name: \"Physical Process\", description: \"Sensors, actuators, physical equipment\"},\n  {level: 1, name: \"Basic Control\", description: \"PLCs, RTUs, DCS controllers\"},\n  {level: 2, name: \"Area Supervisory Control\", description: \"HMI, SCADA, engineering workstations\"},\n  {level: 3, name: \"Site Operations\", description: \"Ma",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 65,
+      "start_char": 52000,
+      "end_char": 53000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_66",
+    "text": "description: \"PLCs, RTUs, DCS controllers\"},\n  {level: 2, name: \"Area Supervisory Control\", description: \"HMI, SCADA, engineering workstations\"},\n  {level: 3, name: \"Site Operations\", description: \"Manufacturing operations management\"},\n  {level: 4, name: \"Enterprise Network\", description: \"Business planning and logistics\"},\n  {level: 5, name: \"Enterprise\", description: \"Corporate network\"}\n] AS purdue\nCREATE (p:PurdueLevel {\n  level: purdue.level,\n  name: purdue.name,\n  description: purdue.description,\n  node_id: randomUUID(),\n  created_date: datetime()\n})\n```\n\n**Asset-to-Purdue Mapping**:\n```cypher\n// Map ICS assets to Purdue levels\nMATCH (asset:ICS_Asset)\nMATCH (purdue:PurdueLevel {level: asset.purdue_level})\nCREATE (asset)-[:OPERATES_AT_LEVEL {\n  primary_level: true,\n  can_communicate_with_levels: [asset.purdue_level - 1, asset.purdue_level + 1],\n  created_date: datetime()\n}]->(purdue)\n```\n\n## 5. Validation Criteria\n\n### 5.1 Data Completeness Validation\n\n**Node Count Validation**:\n",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 66,
+      "start_char": 52800,
+      "end_char": 53800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_67",
+    "text": "with_levels: [asset.purdue_level - 1, asset.purdue_level + 1],\n  created_date: datetime()\n}]->(purdue)\n```\n\n## 5. Validation Criteria\n\n### 5.1 Data Completeness Validation\n\n**Node Count Validation**:\n```cypher\n// Verify target node counts achieved\nMATCH (t:ICS_Tactic) WITH count(t) AS tactic_count\nMATCH (tech:ICS_Technique) WITH tactic_count, count(tech) AS technique_count\nMATCH (a:ICS_Asset) WITH tactic_count, technique_count, count(a) AS asset_count\nMATCH (p:ICS_Protocol) WITH tactic_count, technique_count, asset_count, count(p) AS protocol_count\nMATCH (s:Critical_Infrastructure_Sector)\nRETURN\n  tactic_count AS tactics,\n  technique_count AS techniques,\n  asset_count AS assets,\n  protocol_count AS protocols,\n  count(s) AS sectors,\n  CASE\n    WHEN tactic_count >= 12 AND\n         technique_count >= 78 AND\n         asset_count >= 150 AND\n         protocol_count >= 10 AND\n         count(s) >= 16\n    THEN \"PASS\"\n    ELSE \"FAIL\"\n  END AS validation_status\n```\n\n**Relationship Completeness**:",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 67,
+      "start_char": 53600,
+      "end_char": 54600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_68",
+    "text": "count >= 78 AND\n         asset_count >= 150 AND\n         protocol_count >= 10 AND\n         count(s) >= 16\n    THEN \"PASS\"\n    ELSE \"FAIL\"\n  END AS validation_status\n```\n\n**Relationship Completeness**:\n```cypher\n// Verify relationship coverage\nMATCH (t:ICS_Tactic)-[r1:CONTAINS_ICS_TECHNIQUE]->(tech:ICS_Technique)\nWITH count(r1) AS tactic_tech_rels\nMATCH (tech:ICS_Technique)-[r2:TARGETS_ICS_ASSET]->(a:ICS_Asset)\nWITH tactic_tech_rels, count(r2) AS tech_asset_rels\nMATCH (a:ICS_Asset)-[r3:USES_PROTOCOL]->(p:ICS_Protocol)\nWITH tactic_tech_rels, tech_asset_rels, count(r3) AS asset_protocol_rels\nMATCH (cve:CVE)-[r4:ENABLES_ICS_TECHNIQUE]->(tech:ICS_Technique)\nRETURN\n  tactic_tech_rels,\n  tech_asset_rels,\n  asset_protocol_rels,\n  count(r4) AS cve_technique_rels,\n  CASE\n    WHEN tactic_tech_rels >= 100 AND\n         tech_asset_rels >= 200 AND\n         asset_protocol_rels >= 50 AND\n         count(r4) >= 20\n    THEN \"PASS\"\n    ELSE \"FAIL\"\n  END AS relationship_validation\n```\n\n### 5.2 CVE Preservat",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 68,
+      "start_char": 54400,
+      "end_char": 55400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_69",
+    "text": " 100 AND\n         tech_asset_rels >= 200 AND\n         asset_protocol_rels >= 50 AND\n         count(r4) >= 20\n    THEN \"PASS\"\n    ELSE \"FAIL\"\n  END AS relationship_validation\n```\n\n### 5.2 CVE Preservation Validation\n\n**Critical Validation**: Ensure Wave 4 CVE data remains intact.\n\n```cypher\n// Comprehensive CVE preservation check\nMATCH (cve:CVE)\nWITH count(cve) AS total_cves_before\nCALL {\n  MATCH (cve:CVE)-[r]->()\n  RETURN count(DISTINCT r) AS cve_relationships_before\n}\nWITH total_cves_before, cve_relationships_before\nMATCH (cve:CVE)-[:ENABLES_ICS_TECHNIQUE]->(:ICS_Technique)\nWITH total_cves_before, cve_relationships_before, count(cve) AS ics_connected_cves\nRETURN\n  total_cves_before AS original_cve_count,\n  cve_relationships_before AS original_relationships,\n  ics_connected_cves AS cves_with_ics_links,\n  CASE\n    WHEN total_cves_before > 0 AND cve_relationships_before > 0\n    THEN \"CVE_DATA_PRESERVED\"\n    ELSE \"CVE_DATA_MISSING\"\n  END AS preservation_status\n```\n\n### 5.3 Data Quality Va",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 69,
+      "start_char": 55200,
+      "end_char": 56200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_70",
+    "text": "th_ics_links,\n  CASE\n    WHEN total_cves_before > 0 AND cve_relationships_before > 0\n    THEN \"CVE_DATA_PRESERVED\"\n    ELSE \"CVE_DATA_MISSING\"\n  END AS preservation_status\n```\n\n### 5.3 Data Quality Validation\n\n**Property Completeness**:\n```cypher\n// Check required properties are populated\nMATCH (t:ICS_Technique)\nWHERE t.technique_id IS NULL OR\n      t.name IS NULL OR\n      t.description IS NULL OR\n      size(t.tactics) = 0 OR\n      size(t.affected_assets) = 0\nRETURN count(t) AS techniques_missing_required_properties\n// Expected: 0\n\nMATCH (a:ICS_Asset)\nWHERE a.asset_type IS NULL OR\n      a.purdue_level IS NULL OR\n      a.criticality IS NULL OR\n      a.network_zone IS NULL\nRETURN count(a) AS assets_missing_required_properties\n// Expected: 0\n```\n\n**Relationship Integrity**:\n```cypher\n// Verify no orphaned nodes\nMATCH (t:ICS_Technique)\nWHERE NOT (t)<-[:CONTAINS_ICS_TECHNIQUE]-(:ICS_Tactic)\nRETURN count(t) AS orphaned_techniques\n// Expected: 0\n\nMATCH (a:ICS_Asset)\nWHERE NOT (a)<-[:TARGETS_I",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 70,
+      "start_char": 56000,
+      "end_char": 57000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_71",
+    "text": "y no orphaned nodes\nMATCH (t:ICS_Technique)\nWHERE NOT (t)<-[:CONTAINS_ICS_TECHNIQUE]-(:ICS_Tactic)\nRETURN count(t) AS orphaned_techniques\n// Expected: 0\n\nMATCH (a:ICS_Asset)\nWHERE NOT (a)<-[:TARGETS_ICS_ASSET]-(:ICS_Technique) AND\n      NOT (a)-[:USES_PROTOCOL]->(:ICS_Protocol)\nRETURN count(a) AS orphaned_assets\n// Expected: 0\n```\n\n### 5.4 Performance Benchmarks\n\n**Query Performance Standards**:\n```cypher\n// Test: ICS attack path enumeration (<500ms)\nPROFILE\nMATCH path = (technique:ICS_Technique)-[:TARGETS_ICS_ASSET]->(asset:ICS_Asset)-[:USES_PROTOCOL]->(protocol:ICS_Protocol)\nWHERE asset.criticality = \"CRITICAL\" AND protocol.authentication_support = false\nRETURN\n  technique.name,\n  asset.asset_type,\n  protocol.protocol_name,\n  length(path) AS path_length\nLIMIT 100\n```\n\n**Index Effectiveness**:\n```cypher\n// Verify indexes are being used\nEXPLAIN\nMATCH (t:ICS_Technique {technique_id: \"T0821\"})\nRETURN t\n// Should show index usage on technique_id\n\nEXPLAIN\nMATCH (a:ICS_Asset)\nWHERE a.critic",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 71,
+      "start_char": 56800,
+      "end_char": 57800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_72",
+    "text": "ss**:\n```cypher\n// Verify indexes are being used\nEXPLAIN\nMATCH (t:ICS_Technique {technique_id: \"T0821\"})\nRETURN t\n// Should show index usage on technique_id\n\nEXPLAIN\nMATCH (a:ICS_Asset)\nWHERE a.criticality = \"CRITICAL\"\nRETURN a\n// Should show index usage on criticality\n```\n\n## 6. Example Queries\n\n### 6.1 ICS Kill Chain Analysis\n\n**Query: Complete ICS attack chain from initial access to impact**\n```cypher\n// Find complete attack paths through ICS environment\nMATCH path =\n  (init:ICS_Tactic {name: \"Initial Access\"})-[:CONTAINS_ICS_TECHNIQUE]->(init_tech:ICS_Technique)-[:TARGETS_ICS_ASSET]->(entry_asset:ICS_Asset),\n  (entry_asset)-[:CONNECTS_TO*1..3]->(critical_asset:ICS_Asset),\n  (impact_tech:ICS_Technique)-[:TARGETS_ICS_ASSET]->(critical_asset),\n  (impact:ICS_Tactic {name: \"Impact\"})-[:CONTAINS_ICS_TECHNIQUE]->(impact_tech)\nWHERE\n  critical_asset.criticality = \"CRITICAL\" AND\n  critical_asset.purdue_level <= 1\nRETURN\n  init_tech.name AS initial_access_technique,\n  entry_asset.asset_type ",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 72,
+      "start_char": 57600,
+      "end_char": 58600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_73",
+    "text": "AINS_ICS_TECHNIQUE]->(impact_tech)\nWHERE\n  critical_asset.criticality = \"CRITICAL\" AND\n  critical_asset.purdue_level <= 1\nRETURN\n  init_tech.name AS initial_access_technique,\n  entry_asset.asset_type AS entry_point,\n  [node IN nodes(path) WHERE node:ICS_Asset | node.asset_type] AS attack_path_assets,\n  critical_asset.asset_type AS target_asset,\n  impact_tech.name AS impact_technique,\n  critical_asset.process_functions AS affected_processes\nLIMIT 10\n```\n\n**Expected Result**:\n```\ninitial_access_technique       | entry_point            | attack_path_assets                          | target_asset | impact_technique    | affected_processes\n-------------------------------|------------------------|---------------------------------------------|--------------|---------------------|-------------------\n\"Engineering Workstation       | \"Engineering           | [\"Engineering Workstation\",                 | \"Safety      | \"Modify Controller  | [\"Emergency Shutdown\",\nCompromise\"                    | ",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 73,
+      "start_char": 58400,
+      "end_char": 59400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_74",
+    "text": "--\n\"Engineering Workstation       | \"Engineering           | [\"Engineering Workstation\",                 | \"Safety      | \"Modify Controller  | [\"Emergency Shutdown\",\nCompromise\"                    | Workstation\"           |  \"SCADA Server\", \"Safety Instrumented       | Instrumented | Tasking\"            |  \"Pressure Relief\"]\n                               |                        |  System (SIS)\"]                             | System (SIS)\"|                     |\n```\n\n### 6.2 Sector-Specific Threat Assessment\n\n**Query: Energy sector critical vulnerabilities**\n```cypher\n// Identify high-risk techniques for Energy sector\nMATCH (sector:Critical_Infrastructure_Sector {sector_abbreviation: \"ENERGY\"})-[:DEPLOYS_ASSET]->(asset:ICS_Asset)\nMATCH (technique:ICS_Technique)-[r:TARGETS_ICS_ASSET]->(asset)\nWHERE r.impact_severity IN [\"CRITICAL\", \"HIGH\"]\nOPTIONAL MATCH (cve:CVE)-[:ENABLES_ICS_TECHNIQUE]->(technique)\nOPTIONAL MATCH (protocol:ICS_Protocol)<-[:USES_PROTOCOL]-(asset)\nWHERE protocol.auth",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 74,
+      "start_char": 59200,
+      "end_char": 60200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_75",
+    "text": "set)\nWHERE r.impact_severity IN [\"CRITICAL\", \"HIGH\"]\nOPTIONAL MATCH (cve:CVE)-[:ENABLES_ICS_TECHNIQUE]->(technique)\nOPTIONAL MATCH (protocol:ICS_Protocol)<-[:USES_PROTOCOL]-(asset)\nWHERE protocol.authentication_support = false\nRETURN\n  technique.name AS threat_technique,\n  technique.severity_rating AS severity,\n  collect(DISTINCT asset.asset_type) AS vulnerable_assets,\n  count(DISTINCT cve) AS known_cves_enabling_technique,\n  collect(DISTINCT protocol.protocol_name) AS exploitable_protocols,\n  technique.detection_methods AS detection_approaches\nORDER BY\n  CASE technique.severity_rating\n    WHEN \"CRITICAL\" THEN 1\n    WHEN \"HIGH\" THEN 2\n    ELSE 3\n  END,\n  count(DISTINCT cve) DESC\nLIMIT 20\n```\n\n**Expected Result**:\n```\nthreat_technique           | severity  | vulnerable_assets                    | known_cves_enabling_technique | exploitable_protocols      | detection_approaches\n---------------------------|-----------|--------------------------------------|-------------------------------|",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 75,
+      "start_char": 60000,
+      "end_char": 61000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_76",
+    "text": "     | known_cves_enabling_technique | exploitable_protocols      | detection_approaches\n---------------------------|-----------|--------------------------------------|-------------------------------|----------------------------|---------------------\n\"Modify Controller Tasking\"| CRITICAL  | [\"PLC\", \"DCS\", \"SIS\", \"RTU\"]        | 12                            | [\"Modbus TCP\", \"Profinet\"] | [\"Monitor controller...\"]\n\"Denial of Control\"        | CRITICAL  | [\"SCADA Server\", \"HMI\"]             | 8                             | [\"DNP3\", \"IEC 61850\"]      | [\"Baseline normal...\"]\n```\n\n### 6.3 Protocol Vulnerability Analysis\n\n**Query: Unauthenticated protocol attack surface**\n```cypher\n// Find assets using unauthenticated protocols with critical functions\nMATCH (asset:ICS_Asset)-[:USES_PROTOCOL]->(protocol:ICS_Protocol)\nWHERE\n  protocol.authentication_support = false AND\n  asset.criticality IN [\"CRITICAL\", \"HIGH\"] AND\n  asset.purdue_level <= 2\nMATCH (technique:ICS_Technique)-[:EXPLOITS_PROTOCO",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 76,
+      "start_char": 60800,
+      "end_char": 61800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_77",
+    "text": "(protocol:ICS_Protocol)\nWHERE\n  protocol.authentication_support = false AND\n  asset.criticality IN [\"CRITICAL\", \"HIGH\"] AND\n  asset.purdue_level <= 2\nMATCH (technique:ICS_Technique)-[:EXPLOITS_PROTOCOL]->(protocol)\nMATCH (technique)-[:TARGETS_ICS_ASSET]->(asset)\nRETURN\n  asset.asset_type AS asset,\n  asset.criticality AS criticality,\n  asset.purdue_level AS purdue_level,\n  asset.network_zone AS network_zone,\n  protocol.protocol_name AS vulnerable_protocol,\n  collect(DISTINCT technique.name) AS applicable_attack_techniques,\n  protocol.mitigation_approaches AS recommended_mitigations\nORDER BY asset.criticality DESC, asset.purdue_level ASC\n```\n\n### 6.4 Cross-Domain Attack Path (IT to OT)\n\n**Query: Find attack paths from IT network to critical OT assets**\n```cypher\n// Enterprise to ICS attack path simulation\nMATCH (it_asset:Asset {asset_category: \"IT\"})-[:CONNECTS_TO*1..5]->(ics_asset:ICS_Asset)\nWHERE\n  ics_asset.network_zone = \"Control Network\" AND\n  ics_asset.criticality = \"CRITICAL\"\nMATC",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 77,
+      "start_char": 61600,
+      "end_char": 62600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_78",
+    "text": "ath simulation\nMATCH (it_asset:Asset {asset_category: \"IT\"})-[:CONNECTS_TO*1..5]->(ics_asset:ICS_Asset)\nWHERE\n  ics_asset.network_zone = \"Control Network\" AND\n  ics_asset.criticality = \"CRITICAL\"\nMATCH (enterprise_tech:Technique)-[:TARGETS_ASSET]->(it_asset)\nMATCH (ics_tech:ICS_Technique)-[:TARGETS_ICS_ASSET]->(ics_asset)\nOPTIONAL MATCH (ics_tech)-[:EXTENDS_ENTERPRISE_TECHNIQUE]->(enterprise_tech)\nRETURN\n  it_asset.hostname AS it_entry_point,\n  enterprise_tech.name AS it_technique,\n  [node IN nodes(path) WHERE node:Asset OR node:ICS_Asset |\n    CASE\n      WHEN node:Asset THEN node.hostname\n      ELSE node.asset_type\n    END\n  ] AS lateral_movement_path,\n  ics_asset.asset_type AS ot_target,\n  ics_tech.name AS ot_technique,\n  CASE WHEN ics_tech IS NOT NULL AND enterprise_tech IS NOT NULL\n    THEN \"TECHNIQUE_CHAINING\"\n    ELSE \"SEPARATE_TECHNIQUES\"\n  END AS attack_pattern\nLIMIT 15\n```\n\n### 6.5 ICS Threat Actor Attribution\n\n**Query: Threat actors with ICS capabilities**\n```cypher\n// Find t",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 78,
+      "start_char": 62400,
+      "end_char": 63400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_79",
+    "text": " THEN \"TECHNIQUE_CHAINING\"\n    ELSE \"SEPARATE_TECHNIQUES\"\n  END AS attack_pattern\nLIMIT 15\n```\n\n### 6.5 ICS Threat Actor Attribution\n\n**Query: Threat actors with ICS capabilities**\n```cypher\n// Find threat actors using ICS techniques\nMATCH (actor:ThreatActor)-[:USES]->(enterprise_tech:Technique)\nMATCH (ics_tech:ICS_Technique)-[:EXTENDS_ENTERPRISE_TECHNIQUE]->(enterprise_tech)\nOPTIONAL MATCH (ics_tech)-[:TARGETS_ICS_ASSET]->(asset:ICS_Asset)\nOPTIONAL MATCH (asset)<-[:DEPLOYS_ASSET]-(sector:Critical_Infrastructure_Sector)\nRETURN\n  actor.name AS threat_actor,\n  actor.country AS nation_state,\n  collect(DISTINCT ics_tech.name) AS ics_techniques_available,\n  collect(DISTINCT asset.asset_type) AS targetable_assets,\n  collect(DISTINCT sector.sector_abbreviation) AS threatened_sectors,\n  actor.sophistication_level AS sophistication\nORDER BY size(collect(DISTINCT ics_tech.name)) DESC\nLIMIT 10\n```\n\n### 6.6 Safety System Impact Assessment\n\n**Query: Techniques that can affect safety systems**\n```cy",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 79,
+      "start_char": 63200,
+      "end_char": 64200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_80",
+    "text": "istication_level AS sophistication\nORDER BY size(collect(DISTINCT ics_tech.name)) DESC\nLIMIT 10\n```\n\n### 6.6 Safety System Impact Assessment\n\n**Query: Techniques that can affect safety systems**\n```cypher\n// Identify threats to safety-critical systems\nMATCH (technique:ICS_Technique)-[:TARGETS_ICS_ASSET]->(asset:ICS_Asset)\nWHERE\n  asset.asset_type IN [\"Safety Instrumented System (SIS)\", \"Emergency Shutdown System (ESD)\"] OR\n  ANY(func IN asset.process_functions WHERE func CONTAINS \"Safety\" OR func CONTAINS \"Emergency\")\nMATCH (tactic:ICS_Tactic)-[:CONTAINS_ICS_TECHNIQUE]->(technique)\nOPTIONAL MATCH (cve:CVE)-[:ENABLES_ICS_TECHNIQUE]->(technique)\nWHERE cve.cvss_base_score > 7.0\nRETURN\n  asset.asset_type AS safety_system,\n  asset.process_functions AS safety_functions,\n  asset.iec_62443_level AS current_security_level,\n  tactic.name AS attack_tactic,\n  technique.name AS attack_technique,\n  technique.severity_rating AS threat_severity,\n  collect(cve.cve_id) AS high_severity_cves,\n  technique",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 80,
+      "start_char": 64000,
+      "end_char": 65000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_81",
+    "text": "S current_security_level,\n  tactic.name AS attack_tactic,\n  technique.name AS attack_technique,\n  technique.severity_rating AS threat_severity,\n  collect(cve.cve_id) AS high_severity_cves,\n  technique.mitigation_strategies AS mitigation_recommendations\nORDER BY\n  CASE technique.severity_rating\n    WHEN \"CRITICAL\" THEN 1\n    WHEN \"HIGH\" THEN 2\n    ELSE 3\n  END\n```\n\n### 6.7 Compliance Mapping\n\n**Query: Map ICS techniques to compliance requirements**\n```cypher\n// NERC CIP compliance gap analysis\nMATCH (technique:ICS_Technique)-[:TARGETS_ICS_ASSET]->(asset:ICS_Asset)\nWHERE\n  asset.sector = \"Energy\" AND\n  asset.nerc_cip_classification = \"BES Cyber Asset\"\nWITH\n  technique,\n  asset,\n  technique.nerc_cip_references AS nerc_requirements\nUNWIND nerc_requirements AS requirement\nRETURN\n  requirement AS nerc_cip_requirement,\n  collect(DISTINCT technique.name) AS relevant_threat_techniques,\n  count(DISTINCT asset) AS affected_assets,\n  collect(DISTINCT technique.mitigation_strategies) AS mitigation_",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 81,
+      "start_char": 64800,
+      "end_char": 65800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_82",
+    "text": "S nerc_cip_requirement,\n  collect(DISTINCT technique.name) AS relevant_threat_techniques,\n  count(DISTINCT asset) AS affected_assets,\n  collect(DISTINCT technique.mitigation_strategies) AS mitigation_strategies\nORDER BY count(DISTINCT asset) DESC\n```\n\n### 6.8 Network Segmentation Validation\n\n**Query: Verify Purdue model segmentation enforcement**\n```cypher\n// Identify potential segmentation violations\nMATCH (asset1:ICS_Asset)-[:CONNECTS_TO]->(asset2:ICS_Asset)\nWHERE abs(asset1.purdue_level - asset2.purdue_level) > 1\nRETURN\n  asset1.asset_type AS source_asset,\n  asset1.purdue_level AS source_level,\n  asset1.network_zone AS source_zone,\n  asset2.asset_type AS destination_asset,\n  asset2.purdue_level AS destination_level,\n  asset2.network_zone AS destination_zone,\n  \"SEGMENTATION_VIOLATION\" AS issue_type,\n  \"Direct connection violates Purdue model adjacent-level rule\" AS description\nORDER BY asset2.purdue_level ASC\n```\n\n### 6.9 ICS Incident Response Prioritization\n\n**Query: Generate incid",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 82,
+      "start_char": 65600,
+      "end_char": 66600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_83",
+    "text": "S issue_type,\n  \"Direct connection violates Purdue model adjacent-level rule\" AS description\nORDER BY asset2.purdue_level ASC\n```\n\n### 6.9 ICS Incident Response Prioritization\n\n**Query: Generate incident response priority matrix**\n```cypher\n// Prioritize ICS security incidents\nMATCH (technique:ICS_Technique)-[:TARGETS_ICS_ASSET]->(asset:ICS_Asset)\nOPTIONAL MATCH (cve:CVE)-[:ENABLES_ICS_TECHNIQUE]->(technique)\nWHERE asset.operational_state = \"RUNNING\"\nWITH\n  technique,\n  asset,\n  count(DISTINCT cve) AS exploitable_cves,\n  CASE asset.criticality\n    WHEN \"CRITICAL\" THEN 4\n    WHEN \"HIGH\" THEN 3\n    WHEN \"MEDIUM\" THEN 2\n    ELSE 1\n  END AS criticality_score,\n  CASE technique.severity_rating\n    WHEN \"CRITICAL\" THEN 4\n    WHEN \"HIGH\" THEN 3\n    WHEN \"MEDIUM\" THEN 2\n    ELSE 1\n  END AS technique_severity_score\nWITH\n  technique,\n  asset,\n  exploitable_cves,\n  (criticality_score * technique_severity_score * (1 + exploitable_cves * 0.1)) AS risk_score\nRETURN\n  asset.asset_type AS asset,\n  asse",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 83,
+      "start_char": 66400,
+      "end_char": 67400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_84",
+    "text": "e_severity_score\nWITH\n  technique,\n  asset,\n  exploitable_cves,\n  (criticality_score * technique_severity_score * (1 + exploitable_cves * 0.1)) AS risk_score\nRETURN\n  asset.asset_type AS asset,\n  asset.asset_id AS asset_identifier,\n  asset.physical_location AS location,\n  technique.name AS threat_technique,\n  exploitable_cves AS known_exploits,\n  round(risk_score, 2) AS priority_score,\n  technique.detection_methods[0] AS primary_detection_method\nORDER BY risk_score DESC\nLIMIT 20\n```\n\n### 6.10 ICS Honeypot Planning\n\n**Query: Identify high-value honeypot configurations**\n```cypher\n// Recommend ICS honeypot deployments based on threat intelligence\nMATCH (technique:ICS_Technique)-[:TARGETS_ICS_ASSET]->(asset:ICS_Asset)\nMATCH (technique)-[:EXPLOITS_PROTOCOL]->(protocol:ICS_Protocol)\nWHERE\n  protocol.authentication_support = false AND\n  technique.severity_rating IN [\"CRITICAL\", \"HIGH\"]\nWITH\n  asset.asset_type AS honeypot_type,\n  protocol.protocol_name AS protocol,\n  collect(DISTINCT techniqu",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 84,
+      "start_char": 67200,
+      "end_char": 68200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_85",
+    "text": "tocol.authentication_support = false AND\n  technique.severity_rating IN [\"CRITICAL\", \"HIGH\"]\nWITH\n  asset.asset_type AS honeypot_type,\n  protocol.protocol_name AS protocol,\n  collect(DISTINCT technique.name) AS detectable_techniques,\n  count(DISTINCT technique) AS technique_count\nORDER BY technique_count DESC\nRETURN\n  honeypot_type AS recommended_honeypot,\n  protocol AS protocol_to_emulate,\n  detectable_techniques AS techniques_detected,\n  technique_count AS threat_coverage_score\nLIMIT 10\n```\n\n## 7. Wave 5 Implementation Checklist\n\n### 7.1 Pre-Implementation\n\n- [ ] Complete Wave 1-4 validation\n- [ ] Backup existing graph database\n- [ ] Verify CVE node count and relationships (baseline)\n- [ ] Review MITRE ATT&CK ICS v13 documentation\n- [ ] Prepare ICS asset inventory template\n- [ ] Review critical infrastructure sector definitions\n\n### 7.2 Implementation Phase 1: Schema Creation (Week 1)\n\n- [ ] Create ICS_Tactic nodes (12 tactics)\n- [ ] Create ICS_Technique nodes (78+ techniques)\n- [ ] ",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 85,
+      "start_char": 68000,
+      "end_char": 69000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_86",
+    "text": "ritical infrastructure sector definitions\n\n### 7.2 Implementation Phase 1: Schema Creation (Week 1)\n\n- [ ] Create ICS_Tactic nodes (12 tactics)\n- [ ] Create ICS_Technique nodes (78+ techniques)\n- [ ] Create ICS_Asset nodes (150+ assets)\n- [ ] Create ICS_Protocol nodes (10+ protocols)\n- [ ] Create Critical_Infrastructure_Sector nodes (16 sectors)\n- [ ] Create all indexes and constraints\n- [ ] Validate node creation counts\n\n### 7.3 Implementation Phase 2: Relationships (Week 2)\n\n- [ ] Create CONTAINS_ICS_TECHNIQUE relationships (100+ relationships)\n- [ ] Create TARGETS_ICS_ASSET relationships (200+ relationships)\n- [ ] Create USES_PROTOCOL relationships (50+ relationships)\n- [ ] Create DEPLOYS_ASSET relationships (100+ relationships)\n- [ ] Create EXPLOITS_PROTOCOL relationships (30+ relationships)\n- [ ] Create ENABLES_ICS_TECHNIQUE relationships (CVE integration, 20+ relationships)\n- [ ] Create EXTENDS_ENTERPRISE_TECHNIQUE relationships (15+ relationships)\n- [ ] Validate relationship cou",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 86,
+      "start_char": 68800,
+      "end_char": 69800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_87",
+    "text": "ships)\n- [ ] Create ENABLES_ICS_TECHNIQUE relationships (CVE integration, 20+ relationships)\n- [ ] Create EXTENDS_ENTERPRISE_TECHNIQUE relationships (15+ relationships)\n- [ ] Validate relationship counts\n\n### 7.4 Implementation Phase 3: Integration & Validation (Week 3)\n\n- [ ] Run CVE preservation validation query\n- [ ] Verify no CVE nodes deleted or modified\n- [ ] Test cross-domain (IT-OT) attack path queries\n- [ ] Validate Purdue model integration\n- [ ] Test all example queries\n- [ ] Run performance benchmarks (<500ms target)\n- [ ] Check property completeness (no null required fields)\n- [ ] Verify orphaned node detection (0 expected)\n- [ ] Generate validation report\n- [ ] Create Wave 5 documentation\n\n### 7.5 Post-Implementation\n\n- [ ] Update graph statistics\n- [ ] Document any schema deviations\n- [ ] Create user training materials for ICS queries\n- [ ] Establish ongoing MITRE ATT&CK ICS update process\n- [ ] Plan Wave 6 integration points\n\n## 8. Wave 5 Success Criteria Summary\n\n**Quan",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 87,
+      "start_char": 69600,
+      "end_char": 70600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_88",
+    "text": "iations\n- [ ] Create user training materials for ICS queries\n- [ ] Establish ongoing MITRE ATT&CK ICS update process\n- [ ] Plan Wave 6 integration points\n\n## 8. Wave 5 Success Criteria Summary\n\n**Quantitative Targets**:\n- \u2705 12 ICS tactics created\n- \u2705 78+ ICS techniques with complete properties\n- \u2705 150+ ICS asset types modeled\n- \u2705 10+ ICS protocols with security characteristics\n- \u2705 16 critical infrastructure sectors\n- \u2705 100+ tactic-technique relationships\n- \u2705 200+ technique-asset relationships\n- \u2705 20+ CVE-technique relationships\n- \u2705 100% CVE preservation validation passed\n\n**Qualitative Targets**:\n- \u2705 Query performance <500ms for ICS attack path queries\n- \u2705 Complete OT kill chain modeling capability\n- \u2705 Seamless integration with enterprise ATT&CK (Wave 1)\n- \u2705 No CVE data loss or corruption\n- \u2705 Support for compliance mapping (NERC CIP, IEC 62443)\n- \u2705 Purdue model architecture validated\n\n---\n\n**Wave 5 Status**: Ready for implementation\n**Dependencies**: Waves 1, 2, 4 completed\n**Next Wave",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 88,
+      "start_char": 70400,
+      "end_char": 71400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "07_WAVE_5_MITRE_ATTACK_ICS.md_chunk_89",
+    "text": "- \u2705 Support for compliance mapping (NERC CIP, IEC 62443)\n- \u2705 Purdue model architecture validated\n\n---\n\n**Wave 5 Status**: Ready for implementation\n**Dependencies**: Waves 1, 2, 4 completed\n**Next Wave**: Wave 6 - UCO/STIX Integration\n**Document Version**: v1.0.0\n**Last Updated**: 2025-10-30\n",
+    "metadata": {
+      "file_name": "07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/07_WAVE_5_MITRE_ATTACK_ICS.md",
+      "file_size": 71492,
+      "indexed_at": "2025-10-31T01:01:02.729804",
+      "chunk_id": 89,
+      "start_char": 71200,
+      "end_char": 72200,
+      "chunk_size": 292
+    }
+  }
+]

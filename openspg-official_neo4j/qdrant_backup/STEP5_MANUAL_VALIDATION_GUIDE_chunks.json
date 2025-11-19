@@ -1,0 +1,184 @@
+[
+  {
+    "id": "STEP5_MANUAL_VALIDATION_GUIDE.md_chunk_0",
+    "text": "# STEP 5 MANUAL VALIDATION GUIDE\n**File:** STEP5_MANUAL_VALIDATION_GUIDE.md\n**Created:** 2025-10-30 23:14:00\n**Version:** v1.0.0\n**Purpose:** Manual validation instructions for Neo4j Browser\n**Status:** READY FOR USER EXECUTION\n\n---\n\n## \ud83d\udea8 CRITICAL: Execute These Queries in Neo4j Browser\n\n**Instructions:**\n1. Open Neo4j Browser: http://localhost:7474\n2. Log in with your credentials\n3. Copy and execute each query below **in order**\n4. Record the results for each validation\n5. Compare results to expected values\n\n---\n\n## VALIDATION 1: CVE Count Verification \u26a0\ufe0f CRITICAL\n\n**Expected Result:** 147,923 CVEs\n**Purpose:** Verify all CVE nodes are preserved\n\n```cypher\n// Count all CVE nodes\nMATCH (cve:CVE)\nRETURN count(cve) AS cve_count;\n```\n\n### \u2705 Success Criteria:\n- `cve_count` = **147,923**\n\n### \u274c Failure Actions:\n- If `cve_count` \u2260 147,923:\n  - **STOP ALL WORK IMMEDIATELY**\n  - Verify you are connected to the correct database\n  - Check if this is production vs development database\n  - Report ",
+    "metadata": {
+      "file_name": "STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_size": 9632,
+      "indexed_at": "2025-10-31T01:00:12.299346",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "STEP5_MANUAL_VALIDATION_GUIDE.md_chunk_1",
+    "text": " Failure Actions:\n- If `cve_count` \u2260 147,923:\n  - **STOP ALL WORK IMMEDIATELY**\n  - Verify you are connected to the correct database\n  - Check if this is production vs development database\n  - Report actual count to implementation team\n\n**Record Your Result:**\n```\ncve_count = ___________\nStatus: [ ] PASS  [ ] FAIL\n```\n\n---\n\n## VALIDATION 2: CVE Modification Check \u26a0\ufe0f CRITICAL\n\n**Expected Result:** 0 CVEs with customer properties\n**Purpose:** Ensure CVE nodes were not incorrectly modified\n\n```cypher\n// Check if any CVE nodes have customer properties\nMATCH (cve:CVE)\nWHERE EXISTS(cve.customer_id)\n   OR EXISTS(cve.organization_id)\n   OR EXISTS(cve.asset_owner)\nRETURN count(cve) AS incorrectly_modified_cves;\n```\n\n### \u2705 Success Criteria:\n- `incorrectly_modified_cves` = **0**\n\n### \u274c Failure Actions:\n- If `incorrectly_modified_cves` > 0:\n  - **EXECUTE ROLLBACK IMMEDIATELY** (see Section 7 below)\n  - CVEs should NEVER have customer properties\n  - This indicates Step 3 queries were too broad\n\n**R",
+    "metadata": {
+      "file_name": "STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_size": 9632,
+      "indexed_at": "2025-10-31T01:00:12.299346",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "STEP5_MANUAL_VALIDATION_GUIDE.md_chunk_2",
+    "text": "s:\n- If `incorrectly_modified_cves` > 0:\n  - **EXECUTE ROLLBACK IMMEDIATELY** (see Section 7 below)\n  - CVEs should NEVER have customer properties\n  - This indicates Step 3 queries were too broad\n\n**Record Your Result:**\n```\nincorrectly_modified_cves = ___________\nStatus: [ ] PASS  [ ] FAIL\n```\n\n---\n\n## VALIDATION 3: Customer Filtering Test\n\n**Purpose:** Verify customer ownership filtering works correctly\n\n```cypher\n// Test Customer 1 equipment filtering\nMATCH (c:Customer {customer_id: 'CUST-001-ENERGY'})-[:OWNS_EQUIPMENT]->(asset)\nRETURN\n  labels(asset)[0] AS asset_type,\n  count(asset) AS my_equipment_count\nORDER BY my_equipment_count DESC;\n```\n\n### \u2705 Success Criteria:\n- Returns at least 1 row with `my_equipment_count` > 0\n- Asset types should be: Server, NetworkDevice, ICS_Asset, or saref_Device\n\n### \u26a0\ufe0f Warning Signs:\n- No results: Customer has no assigned equipment (incomplete Step 3)\n- Wrong asset types: CVE or other non-asset nodes assigned\n\n**Record Your Result:**\n```\nasset_type ",
+    "metadata": {
+      "file_name": "STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_size": 9632,
+      "indexed_at": "2025-10-31T01:00:12.299346",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "STEP5_MANUAL_VALIDATION_GUIDE.md_chunk_3",
+    "text": "f_Device\n\n### \u26a0\ufe0f Warning Signs:\n- No results: Customer has no assigned equipment (incomplete Step 3)\n- Wrong asset types: CVE or other non-asset nodes assigned\n\n**Record Your Result:**\n```\nasset_type          | my_equipment_count\n--------------------|--------------------\n___________________ | ___________\n___________________ | ___________\n\nStatus: [ ] PASS  [ ] FAIL  [ ] WARNING\n```\n\n---\n\n## VALIDATION 4: CVE Impact Query Test (Question 1)\n\n**Purpose:** Verify \"my equipment\" vulnerability queries work\n\n```cypher\n// Find CVEs impacting Customer 1's equipment\nMATCH (customer:Customer {customer_id: 'CUST-001-ENERGY'})-[:OWNS_EQUIPMENT]->(server:Server)\nMATCH (server)-[:RUNS]->(app:Application)\n      -[:CONTAINS]->(comp:SoftwareComponent)\n      -[:HAS_VULNERABILITY]->(cve:CVE)\nWHERE cve.cvss_base_score >= 7.0\nRETURN\n  server.hostname AS my_equipment,\n  comp.name AS vulnerable_component,\n  cve.cve_id AS cve_id,\n  cve.cvss_base_score AS severity\nORDER BY cve.cvss_base_score DESC\nLIMIT 5;\n```\n",
+    "metadata": {
+      "file_name": "STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_size": 9632,
+      "indexed_at": "2025-10-31T01:00:12.299346",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "STEP5_MANUAL_VALIDATION_GUIDE.md_chunk_4",
+    "text": "se_score >= 7.0\nRETURN\n  server.hostname AS my_equipment,\n  comp.name AS vulnerable_component,\n  cve.cve_id AS cve_id,\n  cve.cvss_base_score AS severity\nORDER BY cve.cvss_base_score DESC\nLIMIT 5;\n```\n\n### \u2705 Success Criteria:\n- Query executes in < 1 second\n- Returns results (if customer has vulnerable equipment)\n- Shows only CUST-001-ENERGY equipment, not other customers'\n\n### \u2139\ufe0f Note:\n- Zero results is acceptable if customer equipment is well-maintained\n- What matters is the query works and filters correctly\n\n**Record Your Result:**\n```\nNumber of results: ___________\nExecution time: ___________ ms\nStatus: [ ] PASS  [ ] INFO (no vulnerabilities)\n```\n\n---\n\n## VALIDATION 5: Multi-Customer Isolation Test \u26a0\ufe0f CRITICAL\n\n**Expected Result:** 0 incorrectly shared assets\n**Purpose:** Ensure customers cannot see each other's equipment\n\n```cypher\n// Verify no assets are assigned to multiple customers (unless marked shared)\nMATCH (c1:Customer {customer_id: 'CUST-001-ENERGY'})-[:OWNS_EQUIPMENT]->(as",
+    "metadata": {
+      "file_name": "STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_size": 9632,
+      "indexed_at": "2025-10-31T01:00:12.299346",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "STEP5_MANUAL_VALIDATION_GUIDE.md_chunk_5",
+    "text": "s cannot see each other's equipment\n\n```cypher\n// Verify no assets are assigned to multiple customers (unless marked shared)\nMATCH (c1:Customer {customer_id: 'CUST-001-ENERGY'})-[:OWNS_EQUIPMENT]->(asset1)\nMATCH (c2:Customer {customer_id: 'CUST-002-WATER'})-[:OWNS_EQUIPMENT]->(asset2)\nWHERE asset1 = asset2 AND asset1.shared_asset <> true\nRETURN count(asset1) AS incorrectly_shared_assets;\n```\n\n### \u2705 Success Criteria:\n- `incorrectly_shared_assets` = **0**\n\n### \u274c Failure Actions:\n- If `incorrectly_shared_assets` > 0:\n  - **CRITICAL ISOLATION BREACH**\n  - Review Step 3 asset assignment logic\n  - Identify and fix incorrectly shared assets\n  - Do not proceed to production\n\n**Record Your Result:**\n```\nincorrectly_shared_assets = ___________\nStatus: [ ] PASS  [ ] FAIL\n```\n\n---\n\n## VALIDATION 6: Comprehensive Validation Report\n\n**Purpose:** Complete implementation summary\n\n```cypher\n// Generate complete validation report\nCALL {\n  MATCH (cve:CVE) RETURN count(cve) AS cve_count\n}\nCALL {\n  MATCH (",
+    "metadata": {
+      "file_name": "STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_size": 9632,
+      "indexed_at": "2025-10-31T01:00:12.299346",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "STEP5_MANUAL_VALIDATION_GUIDE.md_chunk_6",
+    "text": "mprehensive Validation Report\n\n**Purpose:** Complete implementation summary\n\n```cypher\n// Generate complete validation report\nCALL {\n  MATCH (cve:CVE) RETURN count(cve) AS cve_count\n}\nCALL {\n  MATCH (c:Customer) RETURN count(c) AS customer_count\n}\nCALL {\n  MATCH (o:Organization) RETURN count(o) AS organization_count\n}\nCALL {\n  MATCH (asset)\n  WHERE (asset:Server OR asset:NetworkDevice OR asset:ICS_Asset OR asset:saref_Device)\n    AND asset.customer_id IS NOT NULL\n  RETURN count(asset) AS assigned_assets\n}\nCALL {\n  MATCH (:Customer)-[r:OWNS_EQUIPMENT]->()\n  RETURN count(r) AS ownership_relationships\n}\nRETURN\n  cve_count,\n  customer_count,\n  organization_count,\n  assigned_assets,\n  ownership_relationships,\n  CASE WHEN cve_count = 147923 THEN '\u2705 PASS' ELSE '\u274c FAIL' END AS cve_preservation_check;\n```\n\n### \u2705 Success Criteria:\n- `cve_count` = 147,923\n- `customer_count` = 3\n- `organization_count` = 3\n- `assigned_assets` > 0 (ideally ~2,500)\n- `ownership_relationships` = assigned_assets\n- `cve",
+    "metadata": {
+      "file_name": "STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_size": 9632,
+      "indexed_at": "2025-10-31T01:00:12.299346",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "STEP5_MANUAL_VALIDATION_GUIDE.md_chunk_7",
+    "text": "ck;\n```\n\n### \u2705 Success Criteria:\n- `cve_count` = 147,923\n- `customer_count` = 3\n- `organization_count` = 3\n- `assigned_assets` > 0 (ideally ~2,500)\n- `ownership_relationships` = assigned_assets\n- `cve_preservation_check` = \"\u2705 PASS\"\n\n**Record Your Result:**\n```\ncve_count:                 ___________\ncustomer_count:            ___________\norganization_count:        ___________\nassigned_assets:           ___________\nownership_relationships:   ___________\ncve_preservation_check:    ___________\n\nStatus: [ ] PASS  [ ] FAIL\n```\n\n---\n\n## \ud83c\udfaf FINAL GO/NO-GO DECISION\n\n### \u2705 GO Criteria (ALL must be true):\n- [ ] Validation 1: CVE count = 147,923\n- [ ] Validation 2: Zero CVEs with customer properties\n- [ ] Validation 3: Customer filtering returns equipment\n- [ ] Validation 5: Zero incorrectly shared assets\n- [ ] Validation 6: Comprehensive report shows \"\u2705 PASS\"\n\n### \u274c NO-GO Triggers (ANY is critical):\n- [ ] CVE count \u2260 147,923\n- [ ] CVEs have customer properties\n- [ ] Assets incorrectly shared betwe",
+    "metadata": {
+      "file_name": "STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_size": 9632,
+      "indexed_at": "2025-10-31T01:00:12.299346",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "STEP5_MANUAL_VALIDATION_GUIDE.md_chunk_8",
+    "text": "ets\n- [ ] Validation 6: Comprehensive report shows \"\u2705 PASS\"\n\n### \u274c NO-GO Triggers (ANY is critical):\n- [ ] CVE count \u2260 147,923\n- [ ] CVEs have customer properties\n- [ ] Assets incorrectly shared between customers\n\n---\n\n## \ud83d\udea8 ROLLBACK PROCEDURE (If Validations Fail)\n\n### Execute if Validation 2 fails (CVEs have customer properties):\n\n```cypher\n// Remove customer properties from CVE nodes\nMATCH (cve:CVE)\nWHERE EXISTS(cve.customer_id)\n   OR EXISTS(cve.organization_id)\n   OR EXISTS(cve.asset_owner)\nREMOVE cve.customer_id,\n       cve.organization_id,\n       cve.asset_owner,\n       cve.ownership_status,\n       cve.shared_asset,\n       cve.last_customer_update;\n```\n\n### Verify rollback success:\n\n```cypher\n// Verify cleanup\nMATCH (cve:CVE)\nWHERE EXISTS(cve.customer_id)\nRETURN count(cve) AS remaining_contaminated_cves;\n```\n\n**Expected:** `remaining_contaminated_cves` = 0\n\n---\n\n## \ud83d\udccb VALIDATION RESULTS SUMMARY\n\n**Date:** _____________\n**Executed By:** _____________\n**Database:** _____________\n\n###",
+    "metadata": {
+      "file_name": "STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_size": 9632,
+      "indexed_at": "2025-10-31T01:00:12.299346",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "STEP5_MANUAL_VALIDATION_GUIDE.md_chunk_9",
+    "text": "g_contaminated_cves;\n```\n\n**Expected:** `remaining_contaminated_cves` = 0\n\n---\n\n## \ud83d\udccb VALIDATION RESULTS SUMMARY\n\n**Date:** _____________\n**Executed By:** _____________\n**Database:** _____________\n\n### Validation Results:\n\n| Validation | Expected | Actual | Status |\n|------------|----------|--------|--------|\n| 1. CVE Count | 147,923 | _______ | \u2610 PASS \u2610 FAIL |\n| 2. CVE Modification | 0 | _______ | \u2610 PASS \u2610 FAIL |\n| 3. Customer Filtering | > 0 | _______ | \u2610 PASS \u2610 WARNING |\n| 4. CVE Impact Query | Works | _______ | \u2610 PASS \u2610 INFO |\n| 5. Multi-Customer Isolation | 0 | _______ | \u2610 PASS \u2610 FAIL |\n| 6. Comprehensive Report | PASS | _______ | \u2610 PASS \u2610 FAIL |\n\n### **FINAL DECISION:**\n\n\u2610 **GO** - All critical validations passed, ready for production\n\u2610 **NO-GO** - Critical failures detected, execute rollback\n\n### Reason (if NO-GO):\n```\n_________________________________________________________________\n_________________________________________________________________\n_______________________________",
+    "metadata": {
+      "file_name": "STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_size": 9632,
+      "indexed_at": "2025-10-31T01:00:12.299346",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "STEP5_MANUAL_VALIDATION_GUIDE.md_chunk_10",
+    "text": "rollback\n\n### Reason (if NO-GO):\n```\n_________________________________________________________________\n_________________________________________________________________\n_________________________________________________________________\n```\n\n### Next Actions:\n```\n_________________________________________________________________\n_________________________________________________________________\n_________________________________________________________________\n```\n\n---\n\n## \ud83d\udcde Support & Troubleshooting\n\n### Common Issues:\n\n**Issue 1: Zero equipment for customer**\n- **Cause:** Step 3 not executed or incomplete\n- **Solution:** Execute Step 3 asset assignment queries\n\n**Issue 2: CVEs have customer properties**\n- **Cause:** Step 3 queries were too broad\n- **Solution:** Execute rollback, add label filtering to Step 3 queries\n\n**Issue 3: Assets shared between customers**\n- **Cause:** Incorrect assignment logic in Step 3\n- **Solution:** Review and fix asset ownership assignments\n\n**Issue 4: CVE coun",
+    "metadata": {
+      "file_name": "STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_size": 9632,
+      "indexed_at": "2025-10-31T01:00:12.299346",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "STEP5_MANUAL_VALIDATION_GUIDE.md_chunk_11",
+    "text": "tering to Step 3 queries\n\n**Issue 3: Assets shared between customers**\n- **Cause:** Incorrect assignment logic in Step 3\n- **Solution:** Review and fix asset ownership assignments\n\n**Issue 4: CVE count wrong**\n- **Cause:** Wrong database or data loss\n- **Solution:** Verify database connection, locate production database\n\n---\n\n## \u2705 Completion Checklist\n\nAfter completing all validations:\n\n- [ ] All 6 validation queries executed\n- [ ] Results recorded in summary table\n- [ ] GO/NO-GO decision made\n- [ ] If NO-GO: Rollback executed and verified\n- [ ] Results documented for implementation team\n- [ ] Next steps identified and scheduled\n\n---\n\n**Status:** AWAITING USER EXECUTION\n**Priority:** CRITICAL\n**Estimated Time:** 10-15 minutes\n**Dependencies:** Neo4j Browser access, proper authentication\n\n---\n\n**END OF VALIDATION GUIDE**\n",
+    "metadata": {
+      "file_name": "STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_size": 9632,
+      "indexed_at": "2025-10-31T01:00:12.299346",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 832
+    }
+  },
+  {
+    "id": "STEP5_MANUAL_VALIDATION_GUIDE.md_chunk_12",
+    "text": "--\n\n**END OF VALIDATION GUIDE**\n",
+    "metadata": {
+      "file_name": "STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/STEP5_MANUAL_VALIDATION_GUIDE.md",
+      "file_size": 9632,
+      "indexed_at": "2025-10-31T01:00:12.299346",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 32
+    }
+  }
+]

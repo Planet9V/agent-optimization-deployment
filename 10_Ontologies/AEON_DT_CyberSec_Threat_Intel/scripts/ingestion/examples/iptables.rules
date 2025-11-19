@@ -1,0 +1,58 @@
+# IPTables firewall rules for AEON Digital Twin Railway Network
+# Generated: 2025-01-15
+
+*filter
+:INPUT DROP [0:0]
+:FORWARD DROP [0:0]
+:OUTPUT ACCEPT [0:0]
+
+# Allow loopback
+-A INPUT -i lo -j ACCEPT
+
+# Allow established connections
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+
+# Control Network (10.1.0.0/24) Rules
+# Allow SSH from maintenance network to control network
+-A FORWARD -s 10.5.0.0/24 -d 10.1.0.0/24 -p tcp --dport 22 -j ACCEPT
+
+# Allow Modbus TCP from SCADA to PLCs
+-A FORWARD -s 10.2.0.0/24 -d 10.1.0.0/24 -p tcp --dport 502 -j ACCEPT
+
+# Allow OPC UA from HMI to PLCs
+-A FORWARD -s 10.2.0.0/24 -d 10.1.0.0/24 -p tcp --dport 4840 -j ACCEPT
+
+# Process Network (10.2.0.0/24) Rules
+# Allow HTTPS from DMZ to process network
+-A FORWARD -s 10.3.0.0/24 -d 10.2.0.0/24 -p tcp --dport 443 -j ACCEPT
+
+# Allow SNMP from corporate to process network
+-A FORWARD -s 10.4.0.0/24 -d 10.2.0.0/24 -p udp --dport 161 -j ACCEPT
+
+# DMZ Network (10.3.0.0/24) Rules
+# Allow HTTPS from corporate to DMZ
+-A FORWARD -s 10.4.0.0/24 -d 10.3.0.0/24 -p tcp --dport 443 -j ACCEPT
+
+# Allow SSH from maintenance to DMZ
+-A FORWARD -s 10.5.0.0/24 -d 10.3.0.0/24 -p tcp --dport 22 -j ACCEPT
+
+# Corporate Network (10.4.0.0/24) Rules
+# Allow HTTP/HTTPS outbound
+-A FORWARD -s 10.4.0.0/24 -p tcp --dport 80 -j ACCEPT
+-A FORWARD -s 10.4.0.0/24 -p tcp --dport 443 -j ACCEPT
+
+# Allow DNS
+-A FORWARD -s 10.4.0.0/24 -p udp --dport 53 -j ACCEPT
+
+# Maintenance Network (10.5.0.0/24) Rules
+# Allow RDP to control network workstations
+-A FORWARD -s 10.5.0.0/24 -d 10.1.0.0/24 -p tcp --dport 3389 -j ACCEPT
+
+# Block all other traffic
+-A FORWARD -j DROP
+
+# Log dropped packets
+-A INPUT -j LOG --log-prefix "IPT-INPUT-DROP: " --log-level 4
+-A FORWARD -j LOG --log-prefix "IPT-FORWARD-DROP: " --log-level 4
+
+COMMIT

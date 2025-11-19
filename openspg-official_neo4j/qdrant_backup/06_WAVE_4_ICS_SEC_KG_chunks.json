@@ -1,0 +1,1052 @@
+[
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_0",
+    "text": "# Wave 4: ICS Security Knowledge Graph\n\n**File:** 06_WAVE_4_ICS_SEC_KG.md\n**Created:** 2025-10-30 00:00:00 UTC\n**Version:** v1.0.0\n**Status:** ACTIVE\n**Purpose:** Complete implementation specification for Wave 4 ICS Security Knowledge Graph integrating cyber threat intelligence, attack patterns, TTPs, and cross-sector security analytics across SAREF, Water, and Energy domains\n\n---\n\n## 1. Wave Overview\n\n### 1.1 Objectives\n\nWave 4 represents the culmination of the comprehensive schema enhancement plan, integrating ICS-specific security intelligence with the cyber-physical infrastructure built in Waves 1-3. This wave creates a unified ICS Security Knowledge Graph enabling:\n\n1. **Threat Actor Profiling**: Model APT groups, nation-state actors, cybercriminals targeting ICS/SCADA systems with historical campaign data\n2. **Attack Pattern Modeling**: Represent ICS-specific attack patterns (MITRE ATT&CK for ICS, CAPEC) with technical implementation details\n3. **TTP Integration**: Tactics, Techn",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_1",
+    "text": "storical campaign data\n2. **Attack Pattern Modeling**: Represent ICS-specific attack patterns (MITRE ATT&CK for ICS, CAPEC) with technical implementation details\n3. **TTP Integration**: Tactics, Techniques, and Procedures mapped to specific ICS vulnerabilities, devices, and attack surfaces\n4. **Cross-Sector Attack Correlation**: Analyze attack patterns spanning water, energy, and other critical infrastructure sectors\n5. **Threat Intelligence Integration**: Incorporate STIX/TAXII threat intelligence feeds, ICS-CERT advisories, and vendor security bulletins\n6. **Attack Path Analysis**: Model attack graphs showing exploitation paths from initial access to cyber-physical impact\n7. **Detection & Mitigation**: Link attack patterns to detection signatures, defensive measures, and incident response playbooks\n8. **Predictive Security Analytics**: Enable ML-based threat prediction using historical attack patterns and current vulnerability landscapes\n\n### 1.2 Duration & Resources\n\n- **Estimated D",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_2",
+    "text": "e playbooks\n8. **Predictive Security Analytics**: Enable ML-based threat prediction using historical attack patterns and current vulnerability landscapes\n\n### 1.2 Duration & Resources\n\n- **Estimated Duration**: 10-14 weeks\n- **Target Node Count**: 25,000-35,000 new nodes\n- **Relationship Count**: 80,000-150,000 new relationships\n- **Integration Points**: 30+ connection types (integrating all previous waves + external threat intelligence)\n- **Rollback Complexity**: High (complex interdependencies across all waves, external data feeds)\n\n### 1.3 Dependencies\n\n**Prerequisites:**\n- Waves 1-3 completed and validated\n- Existing AEON graph with 183K nodes + Wave 1-3 additions (~250K total nodes)\n- MITRE ATT&CK for ICS framework data\n- STIX/TAXII threat intelligence infrastructure\n- ICS-CERT advisory database access\n\n**External Dependencies:**\n- MITRE ATT&CK for ICS (v14+)\n- CAPEC (Common Attack Pattern Enumeration and Classification)\n- STIX 2.1 threat intelligence feeds\n- ICS-CERT advisories a",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_3",
+    "text": "ry database access\n\n**External Dependencies:**\n- MITRE ATT&CK for ICS (v14+)\n- CAPEC (Common Attack Pattern Enumeration and Classification)\n- STIX 2.1 threat intelligence feeds\n- ICS-CERT advisories and alerts\n- Vendor security bulletins (Siemens, Rockwell, Schneider, ABB)\n- Threat actor databases (Mandiant, CrowdStrike, FireEye)\n- NIST NVD with ICS-specific metadata\n\n**Internal Dependencies:**\n- All previous waves (SAREF, Water, Energy) provide device/system context\n- Existing CVE/CWE data enriched with ICS-specific intelligence\n- Cross-sector attack correlation requires Waves 2-3 infrastructure models\n\n---\n\n## 2. Complete Node Schemas\n\n### 2.1 ICS:ThreatActor Node\n\n**Purpose:** Represents threat actors (APT groups, nation-states, cybercriminals) targeting ICS/SCADA systems with attribution and capability assessment.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| actorId | String | Yes | Unique threat a",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_4",
+    "text": "on and capability assessment.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| actorId | String | Yes | Unique threat actor identifier | `ics:actor:apt33-shamoon` |\n| actorName | String | Yes | Primary threat actor name | `APT33 (Elfin)` |\n| aliases | String[] | No | Known aliases | `[\"Refined Kitten\", \"Holmium\"]` |\n| actorType | String | Yes | Actor classification | `Nation-State`, `APT`, `Cybercriminal`, `Hacktivist`, `Insider` |\n| attribution | String | No | Attributed nation/organization | `Iran` |\n| attributionConfidence | String | Yes | Attribution confidence level | `High`, `Medium`, `Low`, `Suspected` |\n| firstSeen | DateTime | No | First observed activity | `2013-08-01T00:00:00Z` |\n| lastSeen | DateTime | No | Most recent observed activity | `2024-09-15T00:00:00Z` |\n| icsSectors | String[] | Yes | Targeted ICS sectors | `[\"Energy\", \"Water\", \"Chemical\"]` |\n| geographicTargets | String[] | No | Geog",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_5",
+    "text": "me | No | Most recent observed activity | `2024-09-15T00:00:00Z` |\n| icsSectors | String[] | Yes | Targeted ICS sectors | `[\"Energy\", \"Water\", \"Chemical\"]` |\n| geographicTargets | String[] | No | Geographic targeting | `[\"Middle East\", \"North America\"]` |\n| motivation | String[] | Yes | Actor motivations | `[\"Espionage\", \"Sabotage\", \"Financial\"]` |\n| sophisticationLevel | String | Yes | Technical sophistication | `Advanced`, `Intermediate`, `Basic` |\n| resources | String | Yes | Resource level | `Government-Backed`, `Well-Funded`, `Limited` |\n| knownMalware | String[] | No | Associated malware families | `[\"Shamoon\", \"Disttrack\", \"StoneDrill\"]` |\n| icsCapabilities | String[] | Yes | ICS-specific capabilities | `[\"SCADA Manipulation\", \"Safety System Override\", \"HMI Compromise\"]` |\n| ttps | String[] | No | Primary TTPs | `[\"Spear Phishing\", \"Watering Hole\", \"Supply Chain\"]` |\n| references | String[] | No | Threat intelligence references | `[\"https://attack.mitre.org/groups/G0064/\"]` |\n\n*",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_6",
+    "text": "String[] | No | Primary TTPs | `[\"Spear Phishing\", \"Watering Hole\", \"Supply Chain\"]` |\n| references | String[] | No | Threat intelligence references | `[\"https://attack.mitre.org/groups/G0064/\"]` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (ta:ICS:ThreatActor {\n    actorId: 'ics:actor:apt33-shamoon',\n    actorName: 'APT33 (Elfin)',\n    aliases: ['Refined Kitten', 'Holmium', 'Magnallium'],\n    actorType: 'Nation-State',\n    attribution: 'Iran',\n    attributionConfidence: 'High',\n    firstSeen: datetime('2013-08-01T00:00:00Z'),\n    lastSeen: datetime('2024-09-15T00:00:00Z'),\n    icsSectors: ['Energy', 'Water', 'Chemical', 'Manufacturing'],\n    geographicTargets: ['Middle East', 'North America', 'Europe'],\n    motivation: ['Espionage', 'Sabotage', 'Intellectual Property Theft'],\n    sophisticationLevel: 'Advanced',\n    resources: 'Government-Backed',\n    knownMalware: ['Shamoon', 'Disttrack', 'StoneDrill', 'Turnedup', 'Nanocore'],\n    icsCapabilities: ['SCADA Manipulation', 'Safety ",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_7",
+    "text": "histicationLevel: 'Advanced',\n    resources: 'Government-Backed',\n    knownMalware: ['Shamoon', 'Disttrack', 'StoneDrill', 'Turnedup', 'Nanocore'],\n    icsCapabilities: ['SCADA Manipulation', 'Safety System Override', 'HMI Compromise', 'Historian Data Exfiltration'],\n    ttps: ['Spear Phishing', 'Watering Hole', 'Supply Chain Compromise', 'Living Off The Land'],\n    references: ['https://attack.mitre.org/groups/G0064/', 'https://www.fireeye.com/blog/threat-research/2017/09/apt33-insights-into-iranian-cyber-espionage.html']\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT threat_actor_id_unique IF NOT EXISTS\nFOR (ta:ThreatActor) REQUIRE ta.actorId IS UNIQUE;\n\nCREATE INDEX threat_actor_type_idx IF NOT EXISTS\nFOR (ta:ThreatActor) ON (ta.actorType);\n\nCREATE INDEX threat_actor_attribution_idx IF NOT EXISTS\nFOR (ta:ThreatActor) ON (ta.attribution);\n\nCREATE INDEX threat_actor_sectors_idx IF NOT EXISTS\nFOR (ta:ThreatActor) ON (ta.icsSectors);\n\nCREATE INDEX threat_actor_sophist",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_8",
+    "text": "attribution_idx IF NOT EXISTS\nFOR (ta:ThreatActor) ON (ta.attribution);\n\nCREATE INDEX threat_actor_sectors_idx IF NOT EXISTS\nFOR (ta:ThreatActor) ON (ta.icsSectors);\n\nCREATE INDEX threat_actor_sophistication_idx IF NOT EXISTS\nFOR (ta:ThreatActor) ON (ta.sophisticationLevel);\n```\n\n---\n\n### 2.2 ICS:AttackPattern Node\n\n**Purpose:** Represents ICS-specific attack patterns from MITRE ATT&CK for ICS and CAPEC with technical implementation details.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| attackPatternId | String | Yes | Unique attack pattern identifier | `ics:attack:T0885-modify-control-logic` |\n| patternName | String | Yes | Attack pattern name | `Modify Control Logic` |\n| mitreId | String | No | MITRE ATT&CK ICS ID | `T0885` |\n| capecId | String | No | CAPEC ID | `CAPEC-440` |\n| description | String | Yes | Attack pattern description | `Adversaries may modify control logic to cause physical damage` |\n|",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_9",
+    "text": "CK ICS ID | `T0885` |\n| capecId | String | No | CAPEC ID | `CAPEC-440` |\n| description | String | Yes | Attack pattern description | `Adversaries may modify control logic to cause physical damage` |\n| tactics | String[] | Yes | MITRE ICS tactics | `[\"Impair Process Control\", \"Inhibit Response Function\"]` |\n| dataSourcesRequired | String[] | No | Data sources for detection | `[\"Process Monitoring\", \"Network Traffic\", \"File Monitoring\"]` |\n| targetAssets | String[] | Yes | Targeted asset types | `[\"PLC\", \"RTU\", \"DCS\", \"Safety Systems\"]` |\n| targetProtocols | String[] | No | Targeted protocols | `[\"Modbus\", \"DNP3\", \"IEC-61850\"]` |\n| prerequisiteKnowledge | String[] | No | Required attacker knowledge | `[\"PLC Programming\", \"Ladder Logic\", \"Process Understanding\"]` |\n| technicalDifficulty | String | Yes | Implementation difficulty | `High`, `Medium`, `Low` |\n| detectionDifficulty | String | Yes | Detection difficulty | `Very Difficult`, `Difficult`, `Moderate`, `Easy` |\n| physicalImpact | S",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_10",
+    "text": "ing | Yes | Implementation difficulty | `High`, `Medium`, `Low` |\n| detectionDifficulty | String | Yes | Detection difficulty | `Very Difficult`, `Difficult`, `Moderate`, `Easy` |\n| physicalImpact | String[] | Yes | Potential physical impacts | `[\"Equipment Damage\", \"Process Disruption\", \"Safety System Failure\"]` |\n| mitigations | String[] | No | Mitigation strategies | `[\"Code Signing\", \"Application Whitelisting\", \"Network Segmentation\"]` |\n| realWorldExamples | String[] | No | Known real-world uses | `[\"Stuxnet\", \"Triton/Trisis\", \"Industroyer\"]` |\n| killChainPhase | String[] | No | Cyber kill chain phases | `[\"Execution\", \"Persistence\", \"Impact\"]` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (ap:ICS:AttackPattern {\n    attackPatternId: 'ics:attack:T0885-modify-control-logic',\n    patternName: 'Modify Control Logic',\n    mitreId: 'T0885',\n    capecId: 'CAPEC-440',\n    description: 'Adversaries may modify control logic to cause malfunctions, produce unexpected results, or cause ph",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_11",
+    "text": "tternName: 'Modify Control Logic',\n    mitreId: 'T0885',\n    capecId: 'CAPEC-440',\n    description: 'Adversaries may modify control logic to cause malfunctions, produce unexpected results, or cause physical damage to industrial control systems',\n    tactics: ['Impair Process Control', 'Inhibit Response Function', 'Execution'],\n    dataSourcesRequired: ['Process Monitoring', 'Network Traffic Analysis', 'File Integrity Monitoring', 'Controller Program Changes'],\n    targetAssets: ['PLC', 'RTU', 'DCS', 'Safety Instrumented Systems', 'PAC'],\n    targetProtocols: ['Modbus', 'DNP3', 'IEC-61850', 'Profinet', 'EtherNet/IP'],\n    prerequisiteKnowledge: ['PLC Programming', 'Ladder Logic', 'Process Understanding', 'Control System Architecture'],\n    technicalDifficulty: 'High',\n    detectionDifficulty: 'Very Difficult',\n    physicalImpact: ['Equipment Damage', 'Process Disruption', 'Safety System Failure', 'Environmental Contamination'],\n    mitigations: ['Code Signing', 'Application Whitelisting",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_12",
+    "text": "y: 'Very Difficult',\n    physicalImpact: ['Equipment Damage', 'Process Disruption', 'Safety System Failure', 'Environmental Contamination'],\n    mitigations: ['Code Signing', 'Application Whitelisting', 'Network Segmentation', 'Change Control Procedures', 'Behavioral Anomaly Detection'],\n    realWorldExamples: ['Stuxnet (2010)', 'Triton/Trisis (2017)', 'Industroyer (2016)'],\n    killChainPhase: ['Weaponization', 'Execution', 'Persistence', 'Impact']\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT attack_pattern_id_unique IF NOT EXISTS\nFOR (ap:AttackPattern) REQUIRE ap.attackPatternId IS UNIQUE;\n\nCREATE INDEX attack_pattern_mitre_idx IF NOT EXISTS\nFOR (ap:AttackPattern) ON (ap.mitreId);\n\nCREATE INDEX attack_pattern_tactics_idx IF NOT EXISTS\nFOR (ap:AttackPattern) ON (ap.tactics);\n\nCREATE INDEX attack_pattern_target_assets_idx IF NOT EXISTS\nFOR (ap:AttackPattern) ON (ap.targetAssets);\n\nCREATE INDEX attack_pattern_difficulty_idx IF NOT EXISTS\nFOR (ap:AttackPattern) ON (a",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_13",
+    "text": "ctics);\n\nCREATE INDEX attack_pattern_target_assets_idx IF NOT EXISTS\nFOR (ap:AttackPattern) ON (ap.targetAssets);\n\nCREATE INDEX attack_pattern_difficulty_idx IF NOT EXISTS\nFOR (ap:AttackPattern) ON (ap.technicalDifficulty, ap.detectionDifficulty);\n```\n\n---\n\n### 2.3 ICS:TTP Node\n\n**Purpose:** Represents specific Tactics, Techniques, and Procedures used in ICS attacks with implementation details.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| ttpId | String | Yes | Unique TTP identifier | `ics:ttp:spear-phishing-ics-vendor` |\n| ttpName | String | Yes | TTP name | `Spear Phishing Targeting ICS Vendors` |\n| ttpType | String | Yes | TTP classification | `InitialAccess`, `Execution`, `Persistence`, `Evasion`, `Impact` |\n| description | String | Yes | TTP description | `Targeted email attacks against ICS equipment vendors to gain supply chain access` |\n| technicalDetails | String | No | Technical implementation",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_14",
+    "text": "act` |\n| description | String | Yes | TTP description | `Targeted email attacks against ICS equipment vendors to gain supply chain access` |\n| technicalDetails | String | No | Technical implementation | `Crafted emails with malicious attachments exploiting CVE-2024-XXXXX` |\n| indicators | String[] | No | IoCs and detection indicators | `[\"email header patterns\", \"C2 domains\", \"file hashes\"]` |\n| observables | String[] | No | Observable artifacts | `[\"malicious_attachment.exe\", \"192.168.1.100:8080\"]` |\n| procedureExample | String | No | Real procedure example | `APT33 2023 campaign against Siemens partners` |\n| frequency | String | Yes | Observed frequency | `High`, `Medium`, `Low`, `Rare` |\n| successRate | Float | No | Estimated success rate | `0.37` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (ttp:ICS:TTP {\n    ttpId: 'ics:ttp:spear-phishing-ics-vendor',\n    ttpName: 'Spear Phishing Targeting ICS Vendors',\n    ttpType: 'InitialAccess',\n    description: 'Targeted spear phishing c",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_15",
+    "text": "her\nCREATE (ttp:ICS:TTP {\n    ttpId: 'ics:ttp:spear-phishing-ics-vendor',\n    ttpName: 'Spear Phishing Targeting ICS Vendors',\n    ttpType: 'InitialAccess',\n    description: 'Targeted spear phishing campaigns against ICS equipment vendors and system integrators to gain supply chain access to end-user industrial networks',\n    technicalDetails: 'Emails containing malicious PDF attachments with embedded exploits (CVE-2023-21608) or macro-enabled documents downloading second-stage payloads',\n    indicators: ['Sender email domain spoofing', 'Unusual attachment file extensions', 'C2 beaconing to known APT infrastructure', 'Process injection patterns'],\n    observables: ['SHA256:7f8a9b3c...', 'Domain:ics-vendor-portal[.]com', 'IP:185.220.101.45'],\n    procedureExample: 'APT33 2023 campaign targeting Siemens and Rockwell Automation partners with weaponized project files',\n    frequency: 'High',\n    successRate: 0.37\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT ttp_id_uniq",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_16",
+    "text": "ting Siemens and Rockwell Automation partners with weaponized project files',\n    frequency: 'High',\n    successRate: 0.37\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT ttp_id_unique IF NOT EXISTS\nFOR (ttp:TTP) REQUIRE ttp.ttpId IS UNIQUE;\n\nCREATE INDEX ttp_type_idx IF NOT EXISTS\nFOR (ttp:TTP) ON (ttp.ttpType);\n\nCREATE INDEX ttp_frequency_idx IF NOT EXISTS\nFOR (ttp:TTP) ON (ttp.frequency);\n```\n\n---\n\n### 2.4 ICS:Campaign Node\n\n**Purpose:** Represents coordinated threat actor campaigns targeting ICS infrastructure with timeline and objectives.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| campaignId | String | Yes | Unique campaign identifier | `ics:campaign:shamoon-2-energy-2024` |\n| campaignName | String | Yes | Campaign name | `Shamoon 2 Energy Sector Campaign 2024` |\n| startDate | DateTime | Yes | Campaign start date | `2024-03-15T00:00:00Z` |\n| endDate | DateTime | No | Campaign e",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_17",
+    "text": "aignName | String | Yes | Campaign name | `Shamoon 2 Energy Sector Campaign 2024` |\n| startDate | DateTime | Yes | Campaign start date | `2024-03-15T00:00:00Z` |\n| endDate | DateTime | No | Campaign end date (if concluded) | `2024-08-20T00:00:00Z` |\n| status | String | Yes | Campaign status | `Active`, `Concluded`, `Suspected`, `Ongoing` |\n| objectives | String[] | Yes | Campaign objectives | `[\"Data Destruction\", \"Operational Disruption\"]` |\n| targetSectors | String[] | Yes | Targeted sectors | `[\"Energy\", \"Oil & Gas\"]` |\n| targetGeography | String[] | No | Geographic targets | `[\"Middle East\", \"North Africa\"]` |\n| victimCount | Integer | No | Known victim count | `14` |\n| estimatedImpact | String | Yes | Estimated impact level | `Critical`, `High`, `Medium`, `Low` |\n| attribution | String | No | Attributed threat actor | `APT33` |\n| attributionConfidence | String | Yes | Attribution confidence | `High`, `Medium`, `Low` |\n| description | String | Yes | Campaign description | `Coordina",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_18",
+    "text": "g | No | Attributed threat actor | `APT33` |\n| attributionConfidence | String | Yes | Attribution confidence | `High`, `Medium`, `Low` |\n| description | String | Yes | Campaign description | `Coordinated wiping attacks against energy sector SCADA systems` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (camp:ICS:Campaign {\n    campaignId: 'ics:campaign:shamoon-2-energy-2024',\n    campaignName: 'Shamoon 2 Energy Sector Campaign 2024',\n    startDate: datetime('2024-03-15T00:00:00Z'),\n    endDate: datetime('2024-08-20T00:00:00Z'),\n    status: 'Concluded',\n    objectives: ['Data Destruction', 'Operational Disruption', 'Psychological Impact'],\n    targetSectors: ['Energy', 'Oil & Gas', 'Petrochemical'],\n    targetGeography: ['Middle East', 'North Africa', 'Persian Gulf'],\n    victimCount: 14,\n    estimatedImpact: 'Critical',\n    attribution: 'APT33',\n    attributionConfidence: 'High',\n    description: 'Coordinated destructive attacks using Shamoon 2 malware variant targeting energy sector",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_19",
+    "text": "\n    estimatedImpact: 'Critical',\n    attribution: 'APT33',\n    attributionConfidence: 'High',\n    description: 'Coordinated destructive attacks using Shamoon 2 malware variant targeting energy sector SCADA historian systems and engineering workstations'\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT campaign_id_unique IF NOT EXISTS\nFOR (camp:Campaign) REQUIRE camp.campaignId IS UNIQUE;\n\nCREATE INDEX campaign_status_idx IF NOT EXISTS\nFOR (camp:Campaign) ON (camp.status);\n\nCREATE INDEX campaign_sectors_idx IF NOT EXISTS\nFOR (camp:Campaign) ON (camp.targetSectors);\n\nCREATE INDEX campaign_timeline_idx IF NOT EXISTS\nFOR (camp:Campaign) ON (camp.startDate, camp.endDate);\n```\n\n---\n\n### 2.5 ICS:DetectionSignature Node\n\n**Purpose:** Represents detection signatures (SIEM rules, IDS signatures, anomaly patterns) for identifying ICS attacks.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| signatur",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_20",
+    "text": "DS signatures, anomaly patterns) for identifying ICS attacks.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| signatureId | String | Yes | Unique signature identifier | `ics:sig:modbus-function-code-anomaly` |\n| signatureName | String | Yes | Signature name | `Modbus Unauthorized Function Code Execution` |\n| signatureType | String | Yes | Signature type | `NetworkIDS`, `SIEM-Rule`, `AnomalyBehavior`, `FileIntegrity` |\n| detectionLogic | String | Yes | Detection logic/rule | `alert tcp any any -> any 502 (msg:\"Modbus Write Function\"; content:\"|10|\"; depth:1;)` |\n| format | String | Yes | Signature format | `Snort`, `Suricata`, `Splunk-SPL`, `Sigma`, `YARA` |\n| targetAttackPatterns | String[] | Yes | Detected attack patterns | `[\"T0885\", \"T0836\"]` |\n| falsePositiveRate | String | No | Expected FP rate | `Low`, `Medium`, `High` |\n| tuningRequired | Boolean | Yes | Requires environment tuning | `true` |\n| dat",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_21",
+    "text": "ttack patterns | `[\"T0885\", \"T0836\"]` |\n| falsePositiveRate | String | No | Expected FP rate | `Low`, `Medium`, `High` |\n| tuningRequired | Boolean | Yes | Requires environment tuning | `true` |\n| dataSource | String | Yes | Required data source | `Network Traffic`, `System Logs`, `Process Monitoring` |\n| severity | String | Yes | Alert severity | `Critical`, `High`, `Medium`, `Low` |\n| validatedEffectiveness | Boolean | Yes | Validated in production | `true` |\n| references | String[] | No | Reference documentation | `[\"https://github.com/digitalbond/Quickdraw-Snort\"]` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (ds:ICS:DetectionSignature {\n    signatureId: 'ics:sig:modbus-function-code-anomaly',\n    signatureName: 'Modbus Unauthorized Function Code Execution',\n    signatureType: 'NetworkIDS',\n    detectionLogic: 'alert tcp any any -> any 502 (msg:\"Modbus Write Multiple Registers to Unauthorized Device\"; content:\"|10|\"; depth:1; pcre:\"/^.{6}(\\\\x00[\\\\x00-\\\\x64]|\\\\x01[\\\\x00-\\\\x00])",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_22",
+    "text": "tworkIDS',\n    detectionLogic: 'alert tcp any any -> any 502 (msg:\"Modbus Write Multiple Registers to Unauthorized Device\"; content:\"|10|\"; depth:1; pcre:\"/^.{6}(\\\\x00[\\\\x00-\\\\x64]|\\\\x01[\\\\x00-\\\\x00])/\"; sid:1000001; rev:1;)',\n    format: 'Snort',\n    targetAttackPatterns: ['T0885', 'T0836', 'T0855'],\n    falsePositiveRate: 'Low',\n    tuningRequired: true,\n    dataSource: 'Network Traffic',\n    severity: 'Critical',\n    validatedEffectiveness: true,\n    references: ['https://github.com/digitalbond/Quickdraw-Snort', 'https://attack.mitre.org/techniques/T0885/']\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT detection_signature_id_unique IF NOT EXISTS\nFOR (ds:DetectionSignature) REQUIRE ds.signatureId IS UNIQUE;\n\nCREATE INDEX detection_signature_type_idx IF NOT EXISTS\nFOR (ds:DetectionSignature) ON (ds.signatureType);\n\nCREATE INDEX detection_severity_idx IF NOT EXISTS\nFOR (ds:DetectionSignature) ON (ds.severity);\n\nCREATE INDEX detection_attack_patterns_idx IF NOT EXIST",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_23",
+    "text": "(ds:DetectionSignature) ON (ds.signatureType);\n\nCREATE INDEX detection_severity_idx IF NOT EXISTS\nFOR (ds:DetectionSignature) ON (ds.severity);\n\nCREATE INDEX detection_attack_patterns_idx IF NOT EXISTS\nFOR (ds:DetectionSignature) ON (ds.targetAttackPatterns);\n```\n\n---\n\n### 2.6 ICS:Mitigation Node\n\n**Purpose:** Represents defensive measures, compensating controls, and mitigation strategies for ICS security.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| mitigationId | String | Yes | Unique mitigation identifier | `ics:mitigation:network-segmentation-scada` |\n| mitigationName | String | Yes | Mitigation name | `SCADA Network Segmentation with DMZ` |\n| mitigationType | String | Yes | Mitigation category | `NetworkSecurity`, `AccessControl`, `ApplicationHardening`, `Monitoring` |\n| description | String | Yes | Mitigation description | `Implement network segmentation separating SCADA from corporate networks w",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_24",
+    "text": "orkSecurity`, `AccessControl`, `ApplicationHardening`, `Monitoring` |\n| description | String | Yes | Mitigation description | `Implement network segmentation separating SCADA from corporate networks with DMZ` |\n| implementationCost | String | Yes | Implementation cost | `High`, `Medium`, `Low` |\n| implementationComplexity | String | Yes | Implementation complexity | `High`, `Medium`, `Low` |\n| effectiveness | String | Yes | Mitigation effectiveness | `High`, `Medium`, `Low` |\n| standardsReferences | String[] | No | Referenced standards | `[\"NIST-800-82\", \"IEC-62443\", \"NERC-CIP-005\"]` |\n| prerequisiteConditions | String[] | No | Implementation prerequisites | `[\"Asset Inventory Complete\", \"Network Topology Documented\"]` |\n| operationalImpact | String | Yes | Impact on operations | `Minimal`, `Moderate`, `Significant` |\n| maintenanceRequired | Boolean | Yes | Ongoing maintenance needed | `true` |\n| targetedThreats | String[] | Yes | Threats mitigated | `[\"T0885\", \"T0867\", \"T0822\"]` |\n\n**",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_25",
+    "text": ", `Moderate`, `Significant` |\n| maintenanceRequired | Boolean | Yes | Ongoing maintenance needed | `true` |\n| targetedThreats | String[] | Yes | Threats mitigated | `[\"T0885\", \"T0867\", \"T0822\"]` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (mit:ICS:Mitigation {\n    mitigationId: 'ics:mitigation:network-segmentation-scada',\n    mitigationName: 'SCADA Network Segmentation with Industrial DMZ',\n    mitigationType: 'NetworkSecurity',\n    description: 'Implement defense-in-depth network segmentation separating SCADA/ICS networks from corporate IT networks using industrial DMZ architecture with firewalls, unidirectional gateways, and data diodes',\n    implementationCost: 'High',\n    implementationComplexity: 'High',\n    effectiveness: 'High',\n    standardsReferences: ['NIST SP 800-82r3', 'IEC 62443-3-3', 'NERC CIP-005-7', 'ISA-99'],\n    prerequisiteConditions: ['Complete Asset Inventory', 'Network Topology Documentation', 'Data Flow Mapping', 'Purdue Model Understanding'],\n    operation",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_26",
+    "text": "EC 62443-3-3', 'NERC CIP-005-7', 'ISA-99'],\n    prerequisiteConditions: ['Complete Asset Inventory', 'Network Topology Documentation', 'Data Flow Mapping', 'Purdue Model Understanding'],\n    operationalImpact: 'Moderate',\n    maintenanceRequired: true,\n    targetedThreats: ['T0885', 'T0867', 'T0822', 'T0886', 'T0800']\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT mitigation_id_unique IF NOT EXISTS\nFOR (mit:Mitigation) REQUIRE mit.mitigationId IS UNIQUE;\n\nCREATE INDEX mitigation_type_idx IF NOT EXISTS\nFOR (mit:Mitigation) ON (mit.mitigationType);\n\nCREATE INDEX mitigation_effectiveness_idx IF NOT EXISTS\nFOR (mit:Mitigation) ON (mit.effectiveness);\n\nCREATE INDEX mitigation_threats_idx IF NOT EXISTS\nFOR (mit:Mitigation) ON (mit.targetedThreats);\n```\n\n---\n\n### 2.7 ICS:IncidentResponsePlaybook Node\n\n**Purpose:** Represents structured incident response playbooks for specific ICS attack scenarios.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|---",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_27",
+    "text": "ntResponsePlaybook Node\n\n**Purpose:** Represents structured incident response playbooks for specific ICS attack scenarios.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| playbookId | String | Yes | Unique playbook identifier | `ics:playbook:plc-logic-modification` |\n| playbookName | String | Yes | Playbook name | `PLC Logic Modification Incident Response` |\n| triggerConditions | String[] | Yes | Conditions triggering playbook | `[\"Unauthorized PLC Program Change\", \"Controller Mode Change\"]` |\n| severity | String | Yes | Incident severity level | `Critical`, `High`, `Medium`, `Low` |\n| responseSteps | String[] | Yes | Ordered response steps | `[\"Isolate Controller\", \"Backup Current Logic\", \"Forensic Capture\"]` |\n| estimatedResponseTime | Integer | No | Estimated response time (minutes) | `45` |\n| requiredRoles | String[] | Yes | Required response roles | `[\"ICS Security Analyst\", \"Control Engineer\", \"CISO",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_28",
+    "text": "` |\n| estimatedResponseTime | Integer | No | Estimated response time (minutes) | `45` |\n| requiredRoles | String[] | Yes | Required response roles | `[\"ICS Security Analyst\", \"Control Engineer\", \"CISO\"]` |\n| requiredTools | String[] | No | Required tools/systems | `[\"Network Packet Capture\", \"PLC Programming Software\", \"SIEM\"]` |\n| successCriteria | String[] | Yes | Success criteria | `[\"Controller Restored to Known-Good State\", \"Root Cause Identified\"]` |\n| lessons LearnedTemplate | String | No | Lessons learned template | `Link to template document` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (irp:ICS:IncidentResponsePlaybook {\n    playbookId: 'ics:playbook:plc-logic-modification',\n    playbookName: 'PLC Logic Modification Incident Response',\n    triggerConditions: ['Unauthorized PLC Program Change Detected', 'Controller Entered Programming Mode Unexpectedly', 'Control Logic Checksum Mismatch'],\n    severity: 'Critical',\n    responseSteps: [\n        '1. Isolate affected control",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_29",
+    "text": "LC Program Change Detected', 'Controller Entered Programming Mode Unexpectedly', 'Control Logic Checksum Mismatch'],\n    severity: 'Critical',\n    responseSteps: [\n        '1. Isolate affected controller from network',\n        '2. Switch to manual control mode if safe',\n        '3. Backup current controller logic state',\n        '4. Capture network traffic forensics',\n        '5. Compare logic against known-good baseline',\n        '6. Identify unauthorized changes',\n        '7. Restore from verified backup',\n        '8. Validate process behavior',\n        '9. Re-establish network connectivity under monitoring',\n        '10. Document incident timeline and indicators'\n    ],\n    estimatedResponseTime: 45,\n    requiredRoles: ['ICS Security Analyst', 'Control System Engineer', 'Process Engineer', 'CISO', 'Legal Counsel'],\n    requiredTools: ['Network Packet Capture (Wireshark)', 'PLC Programming Software (TIA Portal/RSLogix)', 'SIEM Platform', 'Forensic Workstation'],\n    successCriteria: ",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_30",
+    "text": "r', 'CISO', 'Legal Counsel'],\n    requiredTools: ['Network Packet Capture (Wireshark)', 'PLC Programming Software (TIA Portal/RSLogix)', 'SIEM Platform', 'Forensic Workstation'],\n    successCriteria: ['Controller restored to verified known-good logic', 'Process operating within normal parameters', 'Root cause identified', 'IoCs documented'],\n    lessonsLearnedTemplate: 'https://company.sharepoint.com/ics-ir-lessons-learned-template'\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT playbook_id_unique IF NOT EXISTS\nFOR (irp:IncidentResponsePlaybook) REQUIRE irp.playbookId IS UNIQUE;\n\nCREATE INDEX playbook_severity_idx IF NOT EXISTS\nFOR (irp:IncidentResponsePlaybook) ON (irp.severity);\n\nCREATE INDEX playbook_triggers_idx IF NOT EXISTS\nFOR (irp:IncidentResponsePlaybook) ON (irp.triggerConditions);\n```\n\n---\n\n### 2.8 ICS:AttackPath Node\n\n**Purpose:** Represents multi-step attack paths showing exploitation chains from initial access to cyber-physical impact.\n\n**Properties:**\n",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_31",
+    "text": "p.triggerConditions);\n```\n\n---\n\n### 2.8 ICS:AttackPath Node\n\n**Purpose:** Represents multi-step attack paths showing exploitation chains from initial access to cyber-physical impact.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| attackPathId | String | Yes | Unique attack path identifier | `ics:path:phishing-to-plc-sabotage` |\n| pathName | String | Yes | Attack path name | `Spear Phishing to PLC Sabotage` |\n| startingPoint | String | Yes | Initial attack vector | `Spear Phishing Email` |\n| targetAsset | String | Yes | Final target asset | `Safety PLC` |\n| pathLength | Integer | Yes | Number of steps in path | `7` |\n| complexity | String | Yes | Path complexity | `High`, `Medium`, `Low` |\n| likelihood | String | Yes | Path likelihood | `High`, `Medium`, `Low` |\n| impact | String | Yes | Potential impact | `Critical`, `High`, `Medium`, `Low` |\n| detectionPoints | Integer | No | Detection opportunities in ",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_32",
+    "text": "ng | Yes | Path likelihood | `High`, `Medium`, `Low` |\n| impact | String | Yes | Potential impact | `Critical`, `High`, `Medium`, `Low` |\n| detectionPoints | Integer | No | Detection opportunities in path | `4` |\n| defenseGaps | String[] | No | Identified defense gaps | `[\"No email attachment scanning\", \"Flat network\"]` |\n| mitigationPriority | String | Yes | Mitigation priority | `P1-Critical`, `P2-High`, `P3-Medium` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (apath:ICS:AttackPath {\n    attackPathId: 'ics:path:phishing-to-plc-sabotage',\n    pathName: 'Spear Phishing to Safety PLC Logic Modification',\n    startingPoint: 'Spear Phishing Email to Engineering Workstation User',\n    targetAsset: 'Safety Instrumented System PLC',\n    pathLength: 7,\n    complexity: 'High',\n    likelihood: 'Medium',\n    impact: 'Critical',\n    detectionPoints: 4,\n    defenseGaps: ['No email attachment sandboxing', 'Flat OT network architecture', 'No PLC program change monitoring', 'Lack of behavioral a",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_33",
+    "text": " 'Medium',\n    impact: 'Critical',\n    detectionPoints: 4,\n    defenseGaps: ['No email attachment sandboxing', 'Flat OT network architecture', 'No PLC program change monitoring', 'Lack of behavioral anomaly detection'],\n    mitigationPriority: 'P1-Critical'\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT attack_path_id_unique IF NOT EXISTS\nFOR (apath:AttackPath) REQUIRE apath.attackPathId IS UNIQUE;\n\nCREATE INDEX attack_path_complexity_idx IF NOT EXISTS\nFOR (apath:AttackPath) ON (apath.complexity);\n\nCREATE INDEX attack_path_impact_idx IF NOT EXISTS\nFOR (apath:AttackPath) ON (apath.impact, apath.likelihood);\n```\n\n---\n\n## 3. Complete Relationship Schemas\n\n### 3.1 ATTRIBUTED_TO Relationship\n\n**Purpose:** Links campaigns or attack instances to threat actors.\n\n**Source:** `ICS:Campaign` OR specific attack instances\n**Target:** `ICS:ThreatActor`\n**Cardinality:** Many-to-One (many campaigns attributed to one actor)\n\n**Properties:**\n\n| Property | Type | Required | Description",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_34",
+    "text": ":Campaign` OR specific attack instances\n**Target:** `ICS:ThreatActor`\n**Cardinality:** Many-to-One (many campaigns attributed to one actor)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| confidenceLevel | String | Yes | Attribution confidence | `High`, `Medium`, `Low` |\n| attributionDate | DateTime | Yes | When attribution was made | `2024-09-01T00:00:00Z` |\n| attributionSource | String | Yes | Attribution source | `CrowdStrike`, `Mandiant`, `Internal Analysis` |\n| evidence | String[] | No | Supporting evidence | `[\"Malware code reuse\", \"TTP overlap\", \"Infrastructure overlap\"]` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (camp:Campaign {campaignId: 'ics:campaign:shamoon-2-energy-2024'})\nMATCH (ta:ThreatActor {actorId: 'ics:actor:apt33-shamoon'})\nCREATE (camp)-[r:ATTRIBUTED_TO {\n    confidenceLevel: 'High',\n    attributionDate: datetime('2024-09-01T00:00:00Z'),\n    attributionSource: 'Mandiant Threat",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_35",
+    "text": "Actor {actorId: 'ics:actor:apt33-shamoon'})\nCREATE (camp)-[r:ATTRIBUTED_TO {\n    confidenceLevel: 'High',\n    attributionDate: datetime('2024-09-01T00:00:00Z'),\n    attributionSource: 'Mandiant Threat Intelligence',\n    evidence: ['Shamoon 2 malware code overlap', 'C2 infrastructure reuse', 'TTP consistency with historical APT33 campaigns', 'Targeting pattern match']\n}]->(ta)\n```\n\n---\n\n### 3.2 USES_TTP Relationship\n\n**Purpose:** Links threat actors or campaigns to specific TTPs.\n\n**Source:** `ICS:ThreatActor` OR `ICS:Campaign`\n**Target:** `ICS:TTP`\n**Cardinality:** Many-to-Many\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| frequency | String | Yes | Usage frequency | `Always`, `Frequent`, `Occasional`, `Rare` |\n| firstObserved | DateTime | No | First observed usage | `2023-03-15T00:00:00Z` |\n| lastObserved | DateTime | No | Most recent usage | `2024-09-15T00:00:00Z` |\n| effectiveness | String | No | TTP",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_36",
+    "text": "e` |\n| firstObserved | DateTime | No | First observed usage | `2023-03-15T00:00:00Z` |\n| lastObserved | DateTime | No | Most recent usage | `2024-09-15T00:00:00Z` |\n| effectiveness | String | No | TTP effectiveness for actor | `High`, `Medium`, `Low` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (ta:ThreatActor {actorId: 'ics:actor:apt33-shamoon'})\nMATCH (ttp:TTP {ttpId: 'ics:ttp:spear-phishing-ics-vendor'})\nCREATE (ta)-[r:USES_TTP {\n    frequency: 'Frequent',\n    firstObserved: datetime('2023-03-15T00:00:00Z'),\n    lastObserved: datetime('2024-09-15T00:00:00Z'),\n    effectiveness: 'High'\n}]->(ttp)\n```\n\n---\n\n### 3.3 IMPLEMENTS_ATTACK_PATTERN Relationship\n\n**Purpose:** Links TTPs to attack patterns they implement.\n\n**Source:** `ICS:TTP`\n**Target:** `ICS:AttackPattern`\n**Cardinality:** Many-to-Many (one TTP can implement multiple patterns, one pattern can have multiple TTP implementations)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_37",
+    "text": "ny-to-Many (one TTP can implement multiple patterns, one pattern can have multiple TTP implementations)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| implementationVariant | String | No | Specific implementation variant | `Variant A: Direct PLC access` |\n| technicalDetails | String | No | Technical implementation notes | `Uses CVE-2024-12345 for initial access` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (ttp:TTP {ttpId: 'ics:ttp:spear-phishing-ics-vendor'})\nMATCH (ap:AttackPattern {attackPatternId: 'ics:attack:T0885-modify-control-logic'})\nCREATE (ttp)-[r:IMPLEMENTS_ATTACK_PATTERN {\n    implementationVariant: 'Supply chain compromise leading to engineering workstation access',\n    technicalDetails: 'Phishing provides initial access, lateral movement to engineering segment, then PLC reprogramming'\n}]->(ap)\n```\n\n---\n\n### 3.4 TARGETS_DEVICE Relationship\n\n**Purpose:** Links attack patterns to specific",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_38",
+    "text": "hishing provides initial access, lateral movement to engineering segment, then PLC reprogramming'\n}]->(ap)\n```\n\n---\n\n### 3.4 TARGETS_DEVICE Relationship\n\n**Purpose:** Links attack patterns to specific device types they target (integration with Waves 1-3).\n\n**Source:** `ICS:AttackPattern`\n**Target:** `SAREF:Device` OR `Energy:EnergyDevice` OR `Water:WaterDevice`\n**Cardinality:** Many-to-Many\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| exploitedVulnerability | String | No | CVE exploited | `CVE-2024-12345` |\n| attackVector | String | Yes | Primary attack vector | `Network`, `Local`, `Physical` |\n| successLikelihood | String | Yes | Success likelihood | `High`, `Medium`, `Low` |\n| detectability | String | Yes | Attack detectability | `Easy`, `Moderate`, `Difficult`, `Very Difficult` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (ap:AttackPattern {attackPatternId: 'ics:attack:T0885-modify-control-logic",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_39",
+    "text": "s | Attack detectability | `Easy`, `Moderate`, `Difficult`, `Very Difficult` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (ap:AttackPattern {attackPatternId: 'ics:attack:T0885-modify-control-logic'})\nMATCH (ed:EnergyDevice {energyDeviceType: 'PLC'})\nWHERE ed.nercCIPCategory = 'BES-Cyber-Asset'\nCREATE (ap)-[r:TARGETS_DEVICE {\n    exploitedVulnerability: 'CVE-2024-12345',\n    attackVector: 'Network',\n    successLikelihood: 'High',\n    detectability: 'Very Difficult'\n}]->(ed)\nRETURN count(r) as devicesLinked\n```\n\n---\n\n### 3.5 DETECTS_ATTACK Relationship\n\n**Purpose:** Links detection signatures to attack patterns they detect.\n\n**Source:** `ICS:DetectionSignature`\n**Target:** `ICS:AttackPattern`\n**Cardinality:** Many-to-Many (one signature can detect multiple patterns, one pattern detected by multiple signatures)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| detectionCoverage | String | Yes | Coverage le",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_40",
+    "text": "by multiple signatures)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| detectionCoverage | String | Yes | Coverage level | `Complete`, `Partial`, `Minimal` |\n| falsePositiveRate | Float | No | Expected false positive rate | `0.05` |\n| validatedInProduction | Boolean | Yes | Production validation status | `true` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (ds:DetectionSignature {signatureId: 'ics:sig:modbus-function-code-anomaly'})\nMATCH (ap:AttackPattern {attackPatternId: 'ics:attack:T0885-modify-control-logic'})\nCREATE (ds)-[r:DETECTS_ATTACK {\n    detectionCoverage: 'Partial',\n    falsePositiveRate: 0.05,\n    validatedInProduction: true\n}]->(ap)\n```\n\n---\n\n### 3.6 MITIGATES_THREAT Relationship\n\n**Purpose:** Links mitigations to attack patterns or vulnerabilities they address.\n\n**Source:** `ICS:Mitigation`\n**Target:** `ICS:AttackPattern` OR `CVE`\n**Cardinality:** Many-to-Many\n\n**Properties:**\n\n| Prop",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 40,
+      "start_char": 32000,
+      "end_char": 33000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_41",
+    "text": "e:** Links mitigations to attack patterns or vulnerabilities they address.\n\n**Source:** `ICS:Mitigation`\n**Target:** `ICS:AttackPattern` OR `CVE`\n**Cardinality:** Many-to-Many\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| mitigationEffectiveness | String | Yes | Effectiveness against threat | `High`, `Medium`, `Low` |\n| fullMitigation | Boolean | Yes | Completely mitigates threat | `false` |\n| residualRisk | String | No | Remaining risk level | `Low`, `Medium`, `High` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (mit:Mitigation {mitigationId: 'ics:mitigation:network-segmentation-scada'})\nMATCH (ap:AttackPattern {attackPatternId: 'ics:attack:T0885-modify-control-logic'})\nCREATE (mit)-[r:MITIGATES_THREAT {\n    mitigationEffectiveness: 'High',\n    fullMitigation: false,\n    residualRisk: 'Low'\n}]->(ap)\n```\n\n---\n\n### 3.7 EXPLOITS_CVE Relationship\n\n**Purpose:** Links attack patterns or campaigns to CVEs ",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 41,
+      "start_char": 32800,
+      "end_char": 33800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_42",
+    "text": "{\n    mitigationEffectiveness: 'High',\n    fullMitigation: false,\n    residualRisk: 'Low'\n}]->(ap)\n```\n\n---\n\n### 3.7 EXPLOITS_CVE Relationship\n\n**Purpose:** Links attack patterns or campaigns to CVEs they exploit (integration with existing CVE data).\n\n**Source:** `ICS:AttackPattern` OR `ICS:Campaign`\n**Target:** `CVE` (existing node)\n**Cardinality:** Many-to-Many\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| exploitAvailability | String | Yes | Public exploit availability | `Public`, `Private`, `None` |\n| exploitReliability | String | Yes | Exploit reliability | `High`, `Medium`, `Low` |\n| firstExploitedInWild | DateTime | No | First observed exploitation | `2024-06-15T00:00:00Z` |\n| exploitComplexity | String | Yes | Exploitation complexity | `Low`, `Medium`, `High` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (ap:AttackPattern {attackPatternId: 'ics:attack:T0885-modify-control-logic'})\nMATCH (cve:",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 42,
+      "start_char": 33600,
+      "end_char": 34600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_43",
+    "text": "ing | Yes | Exploitation complexity | `Low`, `Medium`, `High` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (ap:AttackPattern {attackPatternId: 'ics:attack:T0885-modify-control-logic'})\nMATCH (cve:CVE {cveId: 'CVE-2024-12345'})\nCREATE (ap)-[r:EXPLOITS_CVE {\n    exploitAvailability: 'Public',\n    exploitReliability: 'High',\n    firstExploitedInWild: datetime('2024-06-15T00:00:00Z'),\n    exploitComplexity: 'Medium'\n}]->(cve)\n```\n\n---\n\n### 3.8 TRIGGERS_PLAYBOOK Relationship\n\n**Purpose:** Links attack patterns or incidents to incident response playbooks.\n\n**Source:** `ICS:AttackPattern` OR specific incident nodes\n**Target:** `ICS:IncidentResponsePlaybook`\n**Cardinality:** Many-to-Many\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| automaticTrigger | Boolean | Yes | Automatically triggered | `true` |\n| priority | String | Yes | Playbook invocation priority | `P1`, `P2`, `P3` |\n\n**Cypher CREATE Statement:**",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 43,
+      "start_char": 34400,
+      "end_char": 35400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_44",
+    "text": "---------|---------|\n| automaticTrigger | Boolean | Yes | Automatically triggered | `true` |\n| priority | String | Yes | Playbook invocation priority | `P1`, `P2`, `P3` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (ap:AttackPattern {attackPatternId: 'ics:attack:T0885-modify-control-logic'})\nMATCH (irp:IncidentResponsePlaybook {playbookId: 'ics:playbook:plc-logic-modification'})\nCREATE (ap)-[r:TRIGGERS_PLAYBOOK {\n    automaticTrigger: true,\n    priority: 'P1'\n}]->(irp)\n```\n\n---\n\n### 3.9 STEP_IN_PATH Relationship\n\n**Purpose:** Links attack steps to attack paths with ordering.\n\n**Source:** `ICS:AttackPath`\n**Target:** `ICS:AttackPattern` OR `ICS:TTP` OR `CVE`\n**Cardinality:** One-to-Many (ordered)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| stepNumber | Integer | Yes | Step order in path | `3` |\n| description | String | Yes | Step description | `Lateral movement to engineering segment` |\n| detectionO",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 44,
+      "start_char": 35200,
+      "end_char": 36200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_45",
+    "text": "----------|-------------|---------|\n| stepNumber | Integer | Yes | Step order in path | `3` |\n| description | String | Yes | Step description | `Lateral movement to engineering segment` |\n| detectionOpportunity | Boolean | Yes | Detection opportunity at this step | `true` |\n| requiredCapability | String | No | Capability required for step | `Network reconnaissance` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (apath:AttackPath {attackPathId: 'ics:path:phishing-to-plc-sabotage'})\nMATCH (ttp:TTP {ttpId: 'ics:ttp:spear-phishing-ics-vendor'})\nCREATE (apath)-[r:STEP_IN_PATH {\n    stepNumber: 1,\n    description: 'Initial access via spear phishing targeting engineering staff',\n    detectionOpportunity: true,\n    requiredCapability: 'Social Engineering'\n}]->(ttp)\n\n// Additional steps would be created similarly with stepNumber 2, 3, 4, etc.\n```\n\n---\n\n### 3.10 CROSS_SECTOR_IMPACT Relationship\n\n**Purpose:** Models attack propagation across critical infrastructure sectors (water\u2192energy, energy",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 45,
+      "start_char": 36000,
+      "end_char": 37000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_46",
+    "text": "created similarly with stepNumber 2, 3, 4, etc.\n```\n\n---\n\n### 3.10 CROSS_SECTOR_IMPACT Relationship\n\n**Purpose:** Models attack propagation across critical infrastructure sectors (water\u2192energy, energy\u2192water).\n\n**Source:** `ICS:AttackPattern` OR `ICS:Campaign`\n**Target:** `Energy:Substation` OR `Water:TreatmentProcess` (representing sector entry points)\n**Cardinality:** Many-to-Many\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| cascadeType | String | Yes | Cascade mechanism | `PowerOutage`, `WaterSupplyDisruption`, `CommunicationFailure` |\n| cascadeLikelihood | String | Yes | Cascade likelihood | `High`, `Medium`, `Low` |\n| timeToPropagate | Integer | No | Propagation time (minutes) | `15` |\n| secondaryImpact | String | Yes | Secondary sector impact | `WaterTreatmentFailure`, `GridInstability` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (ap:AttackPattern {attackPatternId: 'ics:attack:T0885-modify-co",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 46,
+      "start_char": 36800,
+      "end_char": 37800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_47",
+    "text": "t | String | Yes | Secondary sector impact | `WaterTreatmentFailure`, `GridInstability` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (ap:AttackPattern {attackPatternId: 'ics:attack:T0885-modify-control-logic'})\nMATCH (sub:Substation {substationName: 'North Substation'})\nMATCH (tp:TreatmentProcess)<-[:PART_OF_PROCESS]-(wd:WaterDevice)-[:DEPENDS_ON_ENERGY]->(sub)\n\nCREATE (ap)-[r:CROSS_SECTOR_IMPACT {\n    cascadeType: 'PowerOutage',\n    cascadeLikelihood: 'High',\n    timeToPropagate: 15,\n    secondaryImpact: 'WaterTreatmentFailure'\n}]->(tp)\n\n// Models: Energy attack \u2192 Substation compromise \u2192 Water treatment failure\n```\n\n---\n\n## 4. Integration Patterns\n\n### 4.1 Integration with Waves 1-3\n\nWave 4 creates a comprehensive security intelligence layer over all previous waves:\n\n#### Integration Point 1: Threat Actor to Device Targeting\n\n```cypher\n// Map threat actors to specific device types they target across all sectors\nMATCH (ta:ThreatActor {actorId: 'ics:actor:apt33-shamoon'})\nMATCH (ta)",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 47,
+      "start_char": 37600,
+      "end_char": 38600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_48",
+    "text": "Point 1: Threat Actor to Device Targeting\n\n```cypher\n// Map threat actors to specific device types they target across all sectors\nMATCH (ta:ThreatActor {actorId: 'ics:actor:apt33-shamoon'})\nMATCH (ta)-[:USES_TTP]->(ttp:TTP)\nMATCH (ttp)-[:IMPLEMENTS_ATTACK_PATTERN]->(ap:AttackPattern)\nMATCH (ap)-[:TARGETS_DEVICE]->(d:Device)\n\n// Count targeting by device type across sectors\nWITH ta, d,\n     CASE\n       WHEN d:WaterDevice THEN 'Water'\n       WHEN d:EnergyDevice THEN 'Energy'\n       ELSE 'Other'\n     END as sector,\n     d.deviceCategory as deviceCategory\n\nRETURN ta.actorName,\n       sector,\n       deviceCategory,\n       count(DISTINCT d) as targetedDeviceCount,\n       collect(DISTINCT d.model)[..5] as topTargetedModels\nORDER BY targetedDeviceCount DESC\n```\n\n**Expected Results:** Threat actor targeting profile across sectors\n\n**Use Case:** Prioritize defensive measures based on threat actor targeting patterns\n\n---\n\n#### Integration Point 2: Attack Path Analysis Across Infrastructure\n\n```cy",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 48,
+      "start_char": 38400,
+      "end_char": 39400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_49",
+    "text": "targeting profile across sectors\n\n**Use Case:** Prioritize defensive measures based on threat actor targeting patterns\n\n---\n\n#### Integration Point 2: Attack Path Analysis Across Infrastructure\n\n```cypher\n// Analyze complete attack path from initial access to cyber-physical impact\nMATCH (apath:AttackPath {attackPathId: 'ics:path:phishing-to-plc-sabotage'})\nMATCH (apath)-[s:STEP_IN_PATH]->(step)\nWHERE step:TTP OR step:AttackPattern\n\n// Order by step number\nWITH apath, step, s\nORDER BY s.stepNumber\n\n// For each step, find vulnerable devices\nOPTIONAL MATCH (step)-[:TARGETS_DEVICE]->(d:Device)\nWHERE d:EnergyDevice OR d:WaterDevice\n\n// Find CVEs exploited in this step\nOPTIONAL MATCH (step)-[:EXPLOITS_CVE]->(cve:CVE)\n\n// Find detection opportunities\nOPTIONAL MATCH (ds:DetectionSignature)-[:DETECTS_ATTACK]->(step)\n\n// Find mitigations\nOPTIONAL MATCH (mit:Mitigation)-[:MITIGATES_THREAT]->(step)\n\nRETURN s.stepNumber as step,\n       s.description as description,\n       collect(DISTINCT d.deviceI",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 49,
+      "start_char": 39200,
+      "end_char": 40200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_50",
+    "text": "TS_ATTACK]->(step)\n\n// Find mitigations\nOPTIONAL MATCH (mit:Mitigation)-[:MITIGATES_THREAT]->(step)\n\nRETURN s.stepNumber as step,\n       s.description as description,\n       collect(DISTINCT d.deviceId)[..3] as vulnerableDevices,\n       collect(DISTINCT cve.cveId)[..3] as exploitedCVEs,\n       collect(DISTINCT ds.signatureName)[..2] as detectionSignatures,\n       collect(DISTINCT mit.mitigationName)[..2] as applicableMitigations,\n       s.detectionOpportunity as detectionOpportunity\nORDER BY step\n```\n\n**Expected Results:** Step-by-step attack path with defensive gaps analysis\n\n**Use Case:** Identify and prioritize defensive control gaps in attack paths\n\n---\n\n#### Integration Point 3: Cross-Sector Cascading Failure Analysis\n\n```cypher\n// Analyze cascading failures between energy and water sectors\nMATCH (ap:AttackPattern)\nWHERE ap.physicalImpact CONTAINS 'Equipment Damage'\n   OR ap.physicalImpact CONTAINS 'Safety System Failure'\n\n// Find energy devices targeted by this attack\nMATCH (ap)-",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 50,
+      "start_char": 40000,
+      "end_char": 41000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_51",
+    "text": "ectors\nMATCH (ap:AttackPattern)\nWHERE ap.physicalImpact CONTAINS 'Equipment Damage'\n   OR ap.physicalImpact CONTAINS 'Safety System Failure'\n\n// Find energy devices targeted by this attack\nMATCH (ap)-[:TARGETS_DEVICE]->(ed:EnergyDevice)\nWHERE ed:EnergyDevice AND ed.gridImpactLevel = 'Critical'\n\n// Find substations containing these devices\nMATCH (ed)-[:INSTALLED_AT_SUBSTATION]->(sub:Substation)\n\n// Find water infrastructure dependent on these substations\nMATCH (wd:WaterDevice)-[dep:DEPENDS_ON_ENERGY]->(sub)\nWHERE dep.criticalityLevel = 'Critical'\n\n// Find water treatment processes affected\nMATCH (wd)-[:PART_OF_PROCESS]->(tp:TreatmentProcess)\n\n// Calculate total population impact\nMATCH (tp)<-[:PART_OF_PROCESS]-(allWD:WaterDevice)-[:LOCATED_IN_ZONE]->(dz:DistributionZone)\n\nWITH ap, sub,\n     count(DISTINCT ed) as compromisedEnergyDevices,\n     count(DISTINCT wd) as affectedWaterDevices,\n     count(DISTINCT tp) as affectedTreatmentProcesses,\n     sum(DISTINCT dz.population) as totalPopulat",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 51,
+      "start_char": 40800,
+      "end_char": 41800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_52",
+    "text": "count(DISTINCT ed) as compromisedEnergyDevices,\n     count(DISTINCT wd) as affectedWaterDevices,\n     count(DISTINCT tp) as affectedTreatmentProcesses,\n     sum(DISTINCT dz.population) as totalPopulationImpact\n\nRETURN ap.patternName as attackPattern,\n       sub.substationName as criticalSubstation,\n       compromisedEnergyDevices,\n       affectedWaterDevices,\n       affectedTreatmentProcesses,\n       totalPopulationImpact,\n       CASE\n         WHEN totalPopulationImpact > 100000 THEN 'Catastrophic'\n         WHEN totalPopulationImpact > 50000 THEN 'Critical'\n         ELSE 'High'\n       END as cascadeImpactLevel\nORDER BY totalPopulationImpact DESC\nLIMIT 10\n```\n\n**Expected Results:** Top 10 attack patterns with highest cross-sector cascade risk\n\n**Use Case:** Prioritize cross-sector resilience investments\n\n---\n\n### 4.2 Integration with Existing CVE/CWE Data\n\n#### Integration Point 4: CVE to Attack Pattern Mapping\n\n```cypher\n// Enrich existing CVEs with attack pattern context\nMATCH (cve:CV",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 52,
+      "start_char": 41600,
+      "end_char": 42600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_53",
+    "text": "e investments\n\n---\n\n### 4.2 Integration with Existing CVE/CWE Data\n\n#### Integration Point 4: CVE to Attack Pattern Mapping\n\n```cypher\n// Enrich existing CVEs with attack pattern context\nMATCH (cve:CVE)\nWHERE cve.cvssScore >= 7.0\n  AND (\n    cve.description CONTAINS 'SCADA'\n    OR cve.description CONTAINS 'PLC'\n    OR cve.description CONTAINS 'ICS'\n  )\n\n// Find attack patterns exploiting this CVE\nMATCH (ap:AttackPattern)-[e:EXPLOITS_CVE]->(cve)\n\n// Find threat actors using these attack patterns\nMATCH (ta:ThreatActor)-[:USES_TTP]->(ttp:TTP)-[:IMPLEMENTS_ATTACK_PATTERN]->(ap)\n\n// Find devices vulnerable to this CVE\nMATCH (d:Device)-[v:VULNERABLE_TO]->(cve)\nWHERE (d:EnergyDevice OR d:WaterDevice)\n  AND v.mitigationStatus = 'Unpatched'\n\n// Find available mitigations\nMATCH (mit:Mitigation)-[:MITIGATES_THREAT]->(cve)\n\n// Find detection signatures\nMATCH (ds:DetectionSignature)-[:DETECTS_ATTACK]->(ap)\n\nRETURN cve.cveId,\n       cve.cvssScore,\n       cve.description,\n       count(DISTINCT ap) as",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 53,
+      "start_char": 42400,
+      "end_char": 43400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_54",
+    "text": "TIGATES_THREAT]->(cve)\n\n// Find detection signatures\nMATCH (ds:DetectionSignature)-[:DETECTS_ATTACK]->(ap)\n\nRETURN cve.cveId,\n       cve.cvssScore,\n       cve.description,\n       count(DISTINCT ap) as attackPatternsUsing,\n       count(DISTINCT ta) as threatActorsExploiting,\n       count(DISTINCT d) as vulnerableDevices,\n       e.exploitAvailability as exploitStatus,\n       e.firstExploitedInWild as firstExploitation,\n       collect(DISTINCT mit.mitigationName)[..3] as topMitigations,\n       collect(DISTINCT ds.signatureName)[..2] as detectionMethods\nORDER BY cve.cvssScore DESC, count(d) DESC\nLIMIT 20\n```\n\n**Expected Results:** Top 20 CVEs enriched with attack intelligence context\n\n**Use Case:** Prioritize vulnerability remediation based on active exploitation and device exposure\n\n---\n\n## 5. Validation Criteria\n\n### 5.1 Acceptance Tests\n\n#### Test 1: Node Creation Completeness\n\n```cypher\nCALL {\n    MATCH (ta:ThreatActor) RETURN 'ThreatActor' as nodeType, count(ta) as nodeCount\n    UNION",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 54,
+      "start_char": 43200,
+      "end_char": 44200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_55",
+    "text": ". Validation Criteria\n\n### 5.1 Acceptance Tests\n\n#### Test 1: Node Creation Completeness\n\n```cypher\nCALL {\n    MATCH (ta:ThreatActor) RETURN 'ThreatActor' as nodeType, count(ta) as nodeCount\n    UNION\n    MATCH (ap:AttackPattern) RETURN 'AttackPattern' as nodeType, count(ap) as nodeCount\n    UNION\n    MATCH (ttp:TTP) RETURN 'TTP' as nodeType, count(ttp) as nodeCount\n    UNION\n    MATCH (camp:Campaign) RETURN 'Campaign' as nodeType, count(camp) as nodeCount\n    UNION\n    MATCH (ds:DetectionSignature) RETURN 'DetectionSignature' as nodeType, count(ds) as nodeCount\n    UNION\n    MATCH (mit:Mitigation) RETURN 'Mitigation' as nodeType, count(mit) as nodeCount\n    UNION\n    MATCH (irp:IncidentResponsePlaybook) RETURN 'IncidentResponsePlaybook' as nodeType, count(irp) as nodeCount\n    UNION\n    MATCH (apath:AttackPath) RETURN 'AttackPath' as nodeType, count(apath) as nodeCount\n}\nRETURN nodeType, nodeCount\nORDER BY nodeType\n```\n\n**Acceptance Criteria:**\n- ThreatActor: 100-200 nodes (major APT ",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 55,
+      "start_char": 44000,
+      "end_char": 45000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_56",
+    "text": "ATCH (apath:AttackPath) RETURN 'AttackPath' as nodeType, count(apath) as nodeCount\n}\nRETURN nodeType, nodeCount\nORDER BY nodeType\n```\n\n**Acceptance Criteria:**\n- ThreatActor: 100-200 nodes (major APT groups and cybercriminal organizations)\n- AttackPattern: 300-500 nodes (MITRE ATT&CK ICS techniques)\n- TTP: 800-1,500 nodes (specific technique implementations)\n- Campaign: 200-400 nodes (historical and active campaigns)\n- DetectionSignature: 2,000-3,000 nodes (Snort/Suricata/SIEM rules)\n- Mitigation: 400-600 nodes (defensive measures)\n- IncidentResponsePlaybook: 80-150 nodes (scenario-specific playbooks)\n- AttackPath: 500-1,000 nodes (multi-step attack sequences)\n\n**Total Target:** 4,380-7,350 core security intelligence nodes\n\n**Plus:** Integration relationships to 250K+ existing nodes from Waves 1-3\n\n---\n\n#### Test 2: Attack Pattern to Device Coverage\n\n```cypher\n// Verify attack patterns are linked to vulnerable devices across all sectors\nMATCH (ap:AttackPattern)\nOPTIONAL MATCH (ap)-[:TA",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 56,
+      "start_char": 44800,
+      "end_char": 45800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_57",
+    "text": "aves 1-3\n\n---\n\n#### Test 2: Attack Pattern to Device Coverage\n\n```cypher\n// Verify attack patterns are linked to vulnerable devices across all sectors\nMATCH (ap:AttackPattern)\nOPTIONAL MATCH (ap)-[:TARGETS_DEVICE]->(d:Device)\n\nWITH ap,\n     count(DISTINCT d) as linkedDevices,\n     count(DISTINCT CASE WHEN d:WaterDevice THEN d END) as waterDevices,\n     count(DISTINCT CASE WHEN d:EnergyDevice THEN d END) as energyDevices\n\nRETURN ap.patternName,\n       linkedDevices,\n       waterDevices,\n       energyDevices,\n       CASE\n         WHEN linkedDevices = 0 THEN 'FAIL - No Devices Linked'\n         WHEN linkedDevices > 0 THEN 'PASS'\n       END as coverageStatus\nORDER BY linkedDevices ASC\n```\n\n**Acceptance Criteria:**\n- 100% of attack patterns linked to at least 1 device type\n- Average 50-200 device links per attack pattern\n- Attack patterns targeting multiple sectors properly linked to both water and energy devices\n\n---\n\n#### Test 3: Detection Signature Coverage\n\n```cypher\n// Verify critical a",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 57,
+      "start_char": 45600,
+      "end_char": 46600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_58",
+    "text": "e links per attack pattern\n- Attack patterns targeting multiple sectors properly linked to both water and energy devices\n\n---\n\n#### Test 3: Detection Signature Coverage\n\n```cypher\n// Verify critical attack patterns have detection signatures\nMATCH (ap:AttackPattern)\nWHERE ap.physicalImpact CONTAINS 'Equipment Damage'\n   OR ap.physicalImpact CONTAINS 'Safety System Failure'\n\nOPTIONAL MATCH (ds:DetectionSignature)-[:DETECTS_ATTACK]->(ap)\n\nWITH ap,\n     count(DISTINCT ds) as detectionSignatureCount,\n     collect(DISTINCT ds.signatureType) as signatureTypes\n\nRETURN ap.patternName,\n       ap.detectionDifficulty,\n       detectionSignatureCount,\n       signatureTypes,\n       CASE\n         WHEN detectionSignatureCount = 0 THEN 'FAIL - No Detection Signatures'\n         WHEN detectionSignatureCount >= 2 THEN 'PASS - Multiple Detection Methods'\n         ELSE 'WARNING - Single Detection Method'\n       END as detectionCoverageStatus\nORDER BY detectionSignatureCount ASC\n```\n\n**Acceptance Criteria:**\n",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 58,
+      "start_char": 46400,
+      "end_char": 47400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_59",
+    "text": "= 2 THEN 'PASS - Multiple Detection Methods'\n         ELSE 'WARNING - Single Detection Method'\n       END as detectionCoverageStatus\nORDER BY detectionSignatureCount ASC\n```\n\n**Acceptance Criteria:**\n- 100% of critical physical impact attack patterns have at least 1 detection signature\n- 80% have multiple detection signatures (defense in depth)\n- Mix of detection types (network IDS, SIEM, anomaly behavior)\n\n---\n\n### 5.2 Performance Benchmarks\n\n#### Benchmark 1: Cross-Sector Attack Path Analysis\n\n```cypher\n// Performance test: Complex cross-sector attack path analysis (\u2264 5000ms)\nPROFILE\nMATCH (ta:ThreatActor {actorType: 'Nation-State'})\nMATCH (ta)-[:USES_TTP]->(ttp:TTP)\nMATCH (ttp)-[:IMPLEMENTS_ATTACK_PATTERN]->(ap:AttackPattern)\nMATCH (ap)-[:TARGETS_DEVICE]->(ed:EnergyDevice)\nWHERE ed.nercCIPCategory = 'BES-Cyber-Asset'\nMATCH (ed)-[:INSTALLED_AT_SUBSTATION]->(sub:Substation)\nMATCH (wd:WaterDevice)-[:DEPENDS_ON_ENERGY]->(sub)\nMATCH (wd)-[:PART_OF_PROCESS]->(tp:TreatmentProcess)\nWHERE tp",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 59,
+      "start_char": 47200,
+      "end_char": 48200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_60",
+    "text": "CIPCategory = 'BES-Cyber-Asset'\nMATCH (ed)-[:INSTALLED_AT_SUBSTATION]->(sub:Substation)\nMATCH (wd:WaterDevice)-[:DEPENDS_ON_ENERGY]->(sub)\nMATCH (wd)-[:PART_OF_PROCESS]->(tp:TreatmentProcess)\nWHERE tp.criticalityRating = 'Critical'\nMATCH (wd)-[:LOCATED_IN_ZONE]->(dz:DistributionZone)\n\nWITH ta, ap, sub, tp, dz,\n     count(DISTINCT ed) as compromisedEnergyDevices,\n     count(DISTINCT wd) as affectedWaterDevices,\n     sum(DISTINCT dz.population) as totalPopulationImpact\n\nRETURN ta.actorName,\n       ap.patternName,\n       sub.substationName,\n       compromisedEnergyDevices,\n       affectedWaterDevices,\n       totalPopulationImpact\nORDER BY totalPopulationImpact DESC\nLIMIT 10\n\n// Performance target: \u2264 5000ms\n```\n\n**Acceptance Criteria:**\n- Query completes in \u2264 5 seconds\n- Returns top 10 highest-impact cross-sector attack scenarios\n- Index hit rate > 85%\n\n---\n\n## 6. Example Queries\n\n### 6.1 Threat Intelligence Queries\n\n#### Query 1: Threat Actor Capability Assessment\n\n```cypher\nMATCH (ta:Thr",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 60,
+      "start_char": 48000,
+      "end_char": 49000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_61",
+    "text": "-impact cross-sector attack scenarios\n- Index hit rate > 85%\n\n---\n\n## 6. Example Queries\n\n### 6.1 Threat Intelligence Queries\n\n#### Query 1: Threat Actor Capability Assessment\n\n```cypher\nMATCH (ta:ThreatActor)\nWHERE ta.icsSectors CONTAINS 'Energy'\n  AND ta.sophisticationLevel IN ['Advanced', 'Intermediate']\n\nMATCH (ta)-[:USES_TTP]->(ttp:TTP)\nMATCH (ttp)-[:IMPLEMENTS_ATTACK_PATTERN]->(ap:AttackPattern)\n\nOPTIONAL MATCH (ap)-[:TARGETS_DEVICE]->(ed:EnergyDevice)\nWHERE ed.nercCIPCategory = 'BES-Cyber-Asset'\n\nOPTIONAL MATCH (ap)-[:EXPLOITS_CVE]->(cve:CVE)\nWHERE cve.exploitedInWild = true\n\nWITH ta,\n     count(DISTINCT ttp) as ttpCount,\n     count(DISTINCT ap) as attackPatternCount,\n     count(DISTINCT ed) as targetedBESDevices,\n     count(DISTINCT cve) as exploitedCVEs,\n     ta.firstSeen as firstSeen,\n     ta.lastSeen as lastSeen\n\nRETURN ta.actorName,\n       ta.attribution,\n       ta.attributionConfidence,\n       ttpCount,\n       attackPatternCount,\n       targetedBESDevices,\n       exploited",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 61,
+      "start_char": 48800,
+      "end_char": 49800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_62",
+    "text": "Seen,\n     ta.lastSeen as lastSeen\n\nRETURN ta.actorName,\n       ta.attribution,\n       ta.attributionConfidence,\n       ttpCount,\n       attackPatternCount,\n       targetedBESDevices,\n       exploitedCVEs,\n       firstSeen,\n       lastSeen,\n       duration.between(firstSeen, lastSeen).years as yearsActive,\n       CASE\n         WHEN targetedBESDevices > 100 AND exploitedCVEs > 10 THEN 'HighThreat'\n         WHEN targetedBESDevices > 50 THEN 'MediumThreat'\n         ELSE 'LowThreat'\n       END as threatLevel\nORDER BY threatLevel, targetedBESDevices DESC\n```\n\n**Expected Results:** Threat actors ranked by capability and targeting\n\n**Performance:** \u2264 2000ms\n\n**Use Case:** Strategic threat briefing for executive leadership\n\n---\n\n#### Query 2: Active Campaign Detection\n\n```cypher\nMATCH (camp:Campaign)\nWHERE camp.status IN ['Active', 'Ongoing']\n  AND camp.targetSectors CONTAINS 'Energy'\n\nMATCH (camp)-[:ATTRIBUTED_TO]->(ta:ThreatActor)\nMATCH (ta)-[:USES_TTP]->(ttp:TTP)\nMATCH (ttp)-[:IMPLEMENTS_AT",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 62,
+      "start_char": 49600,
+      "end_char": 50600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_63",
+    "text": "gn)\nWHERE camp.status IN ['Active', 'Ongoing']\n  AND camp.targetSectors CONTAINS 'Energy'\n\nMATCH (camp)-[:ATTRIBUTED_TO]->(ta:ThreatActor)\nMATCH (ta)-[:USES_TTP]->(ttp:TTP)\nMATCH (ttp)-[:IMPLEMENTS_ATTACK_PATTERN]->(ap:AttackPattern)\n\nOPTIONAL MATCH (ap)-[:TARGETS_DEVICE]->(ed:EnergyDevice)\nOPTIONAL MATCH (ed)-[v:THREATENS_GRID_STABILITY]->(cve:CVE)\nWHERE v.mitigationStatus = 'Unpatched'\n\nOPTIONAL MATCH (ds:DetectionSignature)-[:DETECTS_ATTACK]->(ap)\n\nWITH camp, ta,\n     count(DISTINCT ap) as attackPatternsUsed,\n     count(DISTINCT ed) as vulnerableDevices,\n     count(DISTINCT cve) as unpatchedCVEs,\n     count(DISTINCT ds) as detectionSignaturesAvailable,\n     camp.estimatedImpact as impact\n\nRETURN camp.campaignName,\n       camp.startDate,\n       ta.actorName,\n       ta.attribution,\n       attackPatternsUsed,\n       vulnerableDevices,\n       unpatchedCVEs,\n       detectionSignaturesAvailable,\n       impact,\n       CASE\n         WHEN unpatchedCVEs > 0 AND detectionSignaturesAvailable = ",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 63,
+      "start_char": 50400,
+      "end_char": 51400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_64",
+    "text": " attackPatternsUsed,\n       vulnerableDevices,\n       unpatchedCVEs,\n       detectionSignaturesAvailable,\n       impact,\n       CASE\n         WHEN unpatchedCVEs > 0 AND detectionSignaturesAvailable = 0 THEN 'Critical-NoDetection'\n         WHEN unpatchedCVEs > 0 THEN 'High-VulnerableDevices'\n         ELSE 'Medium-MonitorContinue'\n       END as responseUrgency\nORDER BY responseUrgency, unpatchedCVEs DESC\n```\n\n**Expected Results:** Active campaigns with response urgency assessment\n\n**Performance:** \u2264 2500ms\n\n**Use Case:** Daily SOC threat briefing and tasking\n\n---\n\n### 6.2 Defensive Posture Queries\n\n#### Query 3: Defense Gap Analysis\n\n```cypher\n// Identify attack patterns with inadequate defensive coverage\nMATCH (ap:AttackPattern)\nWHERE ap.detectionDifficulty IN ['Very Difficult', 'Difficult']\n  AND ap.physicalImpact CONTAINS 'Equipment Damage'\n\nOPTIONAL MATCH (ds:DetectionSignature)-[d:DETECTS_ATTACK]->(ap)\nOPTIONAL MATCH (mit:Mitigation)-[m:MITIGATES_THREAT]->(ap)\nWHERE m.mitigationEffe",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 64,
+      "start_char": 51200,
+      "end_char": 52200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_65",
+    "text": "]\n  AND ap.physicalImpact CONTAINS 'Equipment Damage'\n\nOPTIONAL MATCH (ds:DetectionSignature)-[d:DETECTS_ATTACK]->(ap)\nOPTIONAL MATCH (mit:Mitigation)-[m:MITIGATES_THREAT]->(ap)\nWHERE m.mitigationEffectiveness IN ['High', 'Medium']\n\nOPTIONAL MATCH (ap)-[:TARGETS_DEVICE]->(device:Device)\nWHERE (device:EnergyDevice OR device:WaterDevice)\n  AND device.criticality = 'Critical'\n\nWITH ap,\n     count(DISTINCT ds) as detectionMethods,\n     count(DISTINCT mit) as mitigations,\n     count(DISTINCT device) as criticalDevicesAtRisk,\n     collect(DISTINCT ds.signatureType) as detectionTypes,\n     collect(DISTINCT mit.mitigationType) as mitigationTypes\n\nRETURN ap.patternName,\n       ap.detectionDifficulty,\n       ap.physicalImpact,\n       detectionMethods,\n       mitigations,\n       criticalDevicesAtRisk,\n       detectionTypes,\n       mitigationTypes,\n       CASE\n         WHEN detectionMethods = 0 AND mitigations < 2 THEN 'CriticalGap'\n         WHEN detectionMethods < 2 OR mitigations < 2 THEN 'Signi",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 65,
+      "start_char": 52000,
+      "end_char": 53000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_66",
+    "text": ",\n       detectionTypes,\n       mitigationTypes,\n       CASE\n         WHEN detectionMethods = 0 AND mitigations < 2 THEN 'CriticalGap'\n         WHEN detectionMethods < 2 OR mitigations < 2 THEN 'SignificantGap'\n         ELSE 'AdequateCoverage'\n       END as defenseGapStatus\nORDER BY defenseGapStatus, criticalDevicesAtRisk DESC\nLIMIT 20\n```\n\n**Expected Results:** Top 20 attack patterns with defensive gaps\n\n**Performance:** \u2264 1800ms\n\n**Use Case:** Security investment prioritization and roadmap planning\n\n---\n\n## 7. Implementation Roadmap\n\n### Week 1-3: Threat Actor & Campaign Data Ingestion\n- Ingest MITRE ATT&CK for ICS data\n- Create ThreatActor, Campaign, AttackPattern nodes\n- Establish attribution relationships\n- Validate against public threat intelligence\n\n### Week 4-6: TTP & Attack Pattern Integration\n- Create TTP nodes from historical campaigns\n- Link TTPs to attack patterns\n- Map attack patterns to device types (Waves 1-3 integration)\n- Create TARGETS_DEVICE relationships\n\n### Week ",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 66,
+      "start_char": 52800,
+      "end_char": 53800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_67",
+    "text": "n Integration\n- Create TTP nodes from historical campaigns\n- Link TTPs to attack patterns\n- Map attack patterns to device types (Waves 1-3 integration)\n- Create TARGETS_DEVICE relationships\n\n### Week 7-8: Detection & Mitigation Layer\n- Create DetectionSignature nodes (Snort, Suricata, SIEM rules)\n- Create Mitigation nodes from NIST/IEC standards\n- Link signatures to attack patterns (DETECTS_ATTACK)\n- Link mitigations to threats (MITIGATES_THREAT)\n\n### Week 9-10: Incident Response & Attack Paths\n- Create IncidentResponsePlaybook nodes\n- Create AttackPath nodes with multi-step sequences\n- Link playbooks to attack triggers\n- Model attack path steps with STEP_IN_PATH\n\n### Week 11-12: CVE Integration & Cross-Sector Analysis\n- Link attack patterns to CVEs (EXPLOITS_CVE)\n- Create CROSS_SECTOR_IMPACT relationships\n- Model energy-water cascading failures\n- Validate attack path analysis queries\n\n### Week 13-14: Testing, Validation & Production Deployment\n- Execute all acceptance tests\n- Performa",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 67,
+      "start_char": 53600,
+      "end_char": 54600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_68",
+    "text": "ACT relationships\n- Model energy-water cascading failures\n- Validate attack path analysis queries\n\n### Week 13-14: Testing, Validation & Production Deployment\n- Execute all acceptance tests\n- Performance benchmarking\n- Defense gap analysis validation\n- Threat intelligence feed integration testing\n- Production deployment\n- Documentation finalization\n- Security team training\n\n---\n\n## 8. Rollback Verification\n\n```cypher\n// Phase 1: Delete Wave 4 relationships (in order to respect dependencies)\nMATCH ()-[r:ATTRIBUTED_TO]->() DELETE r;\nMATCH ()-[r:USES_TTP]->() DELETE r;\nMATCH ()-[r:IMPLEMENTS_ATTACK_PATTERN]->() DELETE r;\nMATCH ()-[r:TARGETS_DEVICE]->() DELETE r;\nMATCH ()-[r:DETECTS_ATTACK]->() DELETE r;\nMATCH ()-[r:MITIGATES_THREAT]->() DELETE r;\nMATCH ()-[r:EXPLOITS_CVE]->() DELETE r;\nMATCH ()-[r:TRIGGERS_PLAYBOOK]->() DELETE r;\nMATCH ()-[r:STEP_IN_PATH]->() DELETE r;\nMATCH ()-[r:CROSS_SECTOR_IMPACT]->() DELETE r;\n\n// Phase 2: Delete Wave 4 nodes\nMATCH (ta:ThreatActor) DELETE ta;\nMATCH (",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 68,
+      "start_char": 54400,
+      "end_char": 55400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_69",
+    "text": "()-[r:TRIGGERS_PLAYBOOK]->() DELETE r;\nMATCH ()-[r:STEP_IN_PATH]->() DELETE r;\nMATCH ()-[r:CROSS_SECTOR_IMPACT]->() DELETE r;\n\n// Phase 2: Delete Wave 4 nodes\nMATCH (ta:ThreatActor) DELETE ta;\nMATCH (ap:AttackPattern) DELETE ap;\nMATCH (ttp:TTP) DELETE ttp;\nMATCH (camp:Campaign) DELETE camp;\nMATCH (ds:DetectionSignature) DELETE ds;\nMATCH (mit:Mitigation) DELETE mit;\nMATCH (irp:IncidentResponsePlaybook) DELETE irp;\nMATCH (apath:AttackPath) DELETE apath;\n\n// Phase 3: Verify Waves 1-3 intact\nMATCH (d:Device) RETURN count(d) as devicesRemaining;\nMATCH (cve:CVE) RETURN count(cve) as cveRemaining;\nMATCH (sub:Substation) RETURN count(sub) as substationsRemaining;\nMATCH (tp:TreatmentProcess) RETURN count(tp) as treatmentProcessesRemaining;\n\n// Expected: All Wave 1-3 nodes intact, CVE data unchanged\n```\n\n**Acceptance Criteria:**\n- 100% of Wave 4 additions removed\n- 100% of Waves 1-3 data preserved\n- CVE data unchanged from pre-Wave 4 state\n- Rollback completes in \u2264 20 minutes\n\n---\n\n## 9. Advance",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 69,
+      "start_char": 55200,
+      "end_char": 56200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_70",
+    "text": "\n```\n\n**Acceptance Criteria:**\n- 100% of Wave 4 additions removed\n- 100% of Waves 1-3 data preserved\n- CVE data unchanged from pre-Wave 4 state\n- Rollback completes in \u2264 20 minutes\n\n---\n\n## 9. Advanced Analytics Use Cases\n\n### 9.1 Predictive Threat Modeling\n\n```cypher\n// ML Feature Engineering: Historical attack pattern success rates by device type\nMATCH (ta:ThreatActor)-[:USES_TTP]->(ttp:TTP)-[:IMPLEMENTS_ATTACK_PATTERN]->(ap:AttackPattern)\nMATCH (ap)-[t:TARGETS_DEVICE]->(d:Device)\nMATCH (d)-[v:VULNERABLE_TO]->(cve:CVE)\n\nWITH ap, d.energyDeviceType as deviceType,\n     count(DISTINCT ta) as actorCount,\n     avg(ttp.successRate) as avgSuccessRate,\n     count(DISTINCT cve) as vulnCount,\n     avg(cve.cvssScore) as avgCVSS,\n     count(DISTINCT CASE WHEN v.mitigationStatus = 'Unpatched' THEN cve END) as unpatchedVulns\n\nRETURN deviceType,\n       count(DISTINCT ap) as attackPatternsTargeting,\n       actorCount,\n       avgSuccessRate,\n       vulnCount,\n       unpatchedVulns,\n       avgCVSS,\n  ",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 70,
+      "start_char": 56000,
+      "end_char": 57000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_71",
+    "text": "e END) as unpatchedVulns\n\nRETURN deviceType,\n       count(DISTINCT ap) as attackPatternsTargeting,\n       actorCount,\n       avgSuccessRate,\n       vulnCount,\n       unpatchedVulns,\n       avgCVSS,\n       (avgSuccessRate * unpatchedVulns * avgCVSS / 10) as threatScore\nORDER BY threatScore DESC\n```\n\n**Use Case:** Train ML models to predict next likely attack targets\n\n---\n\n### 9.2 Supply Chain Risk Assessment\n\n```cypher\n// Identify high-risk vendors based on CVE history and threat actor targeting\nMATCH (d:Device)\nWHERE d:EnergyDevice OR d:WaterDevice\n\nWITH d.manufacturer as vendor,\n     count(DISTINCT d) as deviceCount\n\nMATCH (d2:Device {manufacturer: vendor})\nMATCH (d2)-[v:VULNERABLE_TO]->(cve:CVE)\n\nOPTIONAL MATCH (ap:AttackPattern)-[:EXPLOITS_CVE]->(cve)\nOPTIONAL MATCH (ta:ThreatActor)-[:USES_TTP]->(:TTP)-[:IMPLEMENTS_ATTACK_PATTERN]->(ap)\n\nWITH vendor, deviceCount,\n     count(DISTINCT cve) as totalCVEs,\n     count(DISTINCT CASE WHEN cve.cvssScore >= 9.0 THEN cve END) as criticalCVEs,\n",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 71,
+      "start_char": 56800,
+      "end_char": 57800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_72",
+    "text": "SES_TTP]->(:TTP)-[:IMPLEMENTS_ATTACK_PATTERN]->(ap)\n\nWITH vendor, deviceCount,\n     count(DISTINCT cve) as totalCVEs,\n     count(DISTINCT CASE WHEN cve.cvssScore >= 9.0 THEN cve END) as criticalCVEs,\n     count(DISTINCT CASE WHEN v.mitigationStatus = 'Unpatched' THEN cve END) as unpatchedCVEs,\n     count(DISTINCT ap) as attackPatternsExploiting,\n     count(DISTINCT ta) as threatActorsTargeting\n\nRETURN vendor,\n       deviceCount,\n       totalCVEs,\n       criticalCVEs,\n       unpatchedCVEs,\n       attackPatternsExploiting,\n       threatActorsTargeting,\n       (criticalCVEs * 3 + unpatchedCVEs * 2 + threatActorsTargeting * 5) as supplChainRiskScore\nORDER BY supplyChainRiskScore DESC\nLIMIT 10\n```\n\n**Use Case:** Strategic vendor risk management and procurement decisions\n\n---\n\n## 10. Conclusion\n\nWave 4 completes the comprehensive ICS Security Knowledge Graph, creating a unified cyber threat intelligence platform that:\n\n1. **Integrates 250K+ nodes** spanning SAREF devices, water infrastructur",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 72,
+      "start_char": 57600,
+      "end_char": 58600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_73",
+    "text": "\nWave 4 completes the comprehensive ICS Security Knowledge Graph, creating a unified cyber threat intelligence platform that:\n\n1. **Integrates 250K+ nodes** spanning SAREF devices, water infrastructure, energy grids, CVEs, threat actors, and attack patterns\n2. **Models real-world attack scenarios** with multi-step attack paths and cross-sector cascading failures\n3. **Enables proactive defense** through detection signature mapping and defense gap analysis\n4. **Supports strategic decision-making** with threat actor capability assessment and supply chain risk scoring\n5. **Facilitates incident response** with automated playbook triggering and structured response procedures\n\n**Final Graph Statistics (Estimated):**\n- **Total Nodes:** 270,000-320,000 (183K baseline + 25K Wave 1 + 18K Wave 2 + 22K Wave 3 + 30K Wave 4)\n- **Total Relationships:** 850,000-1,200,000\n- **Query Performance:** Complex cross-sector analysis in \u22645 seconds\n- **Data Freshness:** Automated STIX/TAXII feed integration for ",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 73,
+      "start_char": 58400,
+      "end_char": 59400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "06_WAVE_4_ICS_SEC_KG.md_chunk_74",
+    "text": " Wave 3 + 30K Wave 4)\n- **Total Relationships:** 850,000-1,200,000\n- **Query Performance:** Complex cross-sector analysis in \u22645 seconds\n- **Data Freshness:** Automated STIX/TAXII feed integration for continuous threat intelligence updates\n\n---\n\n**Wave 4 Status:** SPECIFICATION COMPLETE\n**Overall Project Status:** ALL WAVES COMPLETE\n**Integration Status:** Full cross-wave integration validated\n**Production Readiness:** Ready for phased deployment following Waves 1\u21922\u21923\u21924 sequence\n\n",
+    "metadata": {
+      "file_name": "06_WAVE_4_ICS_SEC_KG.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/06_WAVE_4_ICS_SEC_KG.md",
+      "file_size": 59684,
+      "indexed_at": "2025-10-31T01:03:53.204902",
+      "chunk_id": 74,
+      "start_char": 59200,
+      "end_char": 60200,
+      "chunk_size": 484
+    }
+  }
+]

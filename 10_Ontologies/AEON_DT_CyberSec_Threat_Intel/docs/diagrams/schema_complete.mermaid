@@ -1,0 +1,106 @@
+---
+config:
+    layout: elk
+    look: handDrawn
+    layout:
+        algorithm: elk.force
+        elk.spacing.nodeNode: 50
+---
+graph TD
+    %% Asset Domain (Blue)
+    Org["<b>Organization</b><br/>id, name, type<br/>founded_date"]:::asset
+    Site["<b>Site</b><br/>id, name, location<br/>classification"]:::asset
+    Train["<b>Train</b><br/>id, name, description<br/>ics_category"]:::asset
+    Comp["<b>Component</b><br/>id, name, type<br/>manufacturer, model"]:::asset
+    SoftInst["<b>SoftwareInstance</b><br/>id, version, install_date<br/>patch_level"]:::asset
+    Soft["<b>Software</b><br/>id, name, vendor<br/>release_date"]:::asset
+
+    %% Network Domain (Green)
+    NetZone["<b>NetworkZone</b><br/>id, name, cidr<br/>security_level"]:::network
+    Device["<b>Device</b><br/>id, hostname, ip_address<br/>mac_address, device_type"]:::network
+    Interface["<b>NetworkInterface</b><br/>id, name, ip_address<br/>port, protocol"]:::network
+    Service["<b>Service</b><br/>id, name, port<br/>protocol, version"]:::network
+
+    %% Security Domain (Red)
+    Vuln["<b>Vulnerability</b><br/>cve_id, cvss_score<br/>published_date, cwes"]:::security
+    Weak["<b>Weakness</b><br/>cwe_id, name<br/>description, severity"]:::security
+    Config["<b>Configuration</b><br/>id, name, value<br/>security_impact"]:::security
+    Control["<b>SecurityControl</b><br/>id, name, type<br/>status, effectiveness"]:::security
+
+    %% Threat Domain (Orange)
+    ThreatActor["<b>ThreatActor</b><br/>id, name, country<br/>capability_level"]:::threat
+    Campaign["<b>Campaign</b><br/>id, name, start_date<br/>target_industry"]:::threat
+    Technique["<b>Technique</b><br/>id, name, tactic<br/>platform, mitre_id"]:::threat
+    Malware["<b>Malware</b><br/>id, name, type<br/>hash_values, first_seen"]:::threat
+    Artifact["<b>Artifact</b><br/>id, type, hash<br/>file_name, size"]:::threat
+
+    %% Document Domain (Purple)
+    Doc["<b>Document</b><br/>id, title, doc_type<br/>published_date, source"]:::document
+    Advisory["<b>Advisory</b><br/>id, advisory_id, issued_date<br/>affected_products"]:::document
+    Report["<b>Report</b><br/>id, report_type, title<br/>author, publish_date"]:::document
+
+    %% Asset Relationships
+    Org -->|OPERATES| Site
+    Site -->|HOSTS| Train
+    Train -->|HAS_COMPONENT| Comp
+    Comp -->|RUNS_SOFTWARE| SoftInst
+    SoftInst -->|INSTANCE_OF| Soft
+
+    %% Network Relationships
+    Site -->|CONTAINS| NetZone
+    NetZone -->|HAS_DEVICE| Device
+    Device -->|HAS_INTERFACE| Interface
+    Device -->|RUNS_SERVICE| Service
+    Service -->|ON_INTERFACE| Interface
+
+    %% Software to Security
+    Soft -->|HAS_VULNERABILITY| Vuln
+    Soft -->|HAS_WEAKNESS| Weak
+    Comp -->|HAS_CONFIGURATION| Config
+
+    %% Weakness to Vulnerability
+    Weak -->|MANIFESTS_AS| Vuln
+
+    %% Vulnerability to Threat
+    Vuln -->|EXPLOITED_BY| Technique
+    Vuln -->|EXPLOITED_BY| Malware
+
+    %% Threat Actor Relationships
+    ThreatActor -->|EXECUTES| Campaign
+    Campaign -->|USES_TECHNIQUE| Technique
+    Campaign -->|DEPLOYS_MALWARE| Malware
+    Technique -->|USES_ARTIFACT| Artifact
+    Malware -->|CREATES_ARTIFACT| Artifact
+
+    %% Security Control Relationships
+    Control -->|MITIGATES_VULNERABILITY| Vuln
+    Control -->|MITIGATES_WEAKNESS| Weak
+    Control -->|MITIGATES_TECHNIQUE| Technique
+    Device -->|HAS_CONTROL| Control
+
+    %% Document Relationships
+    Vuln -->|REFERENCED_IN| Advisory
+    Vuln -->|REFERENCED_IN| Report
+    Malware -->|REFERENCED_IN| Report
+    ThreatActor -->|REFERENCED_IN| Report
+    Campaign -->|REFERENCED_IN| Report
+    Advisory -->|ABOUT_PRODUCT| Soft
+    Doc -->|CONTAINS_REFERENCE| Technique
+
+    %% Attack Path Relationships
+    ThreatActor -->|TARGETS| Org
+    Campaign -->|TARGETS_INDUSTRY| Soft
+    Malware -->|AFFECTS| Device
+    Technique -->|AFFECTS_ASSET| Soft
+    Artifact -->|FOUND_ON| Device
+
+    %% Indicator Relationships
+    Malware -->|HAS_IOC| Artifact
+    Campaign -->|HAS_IOC| Artifact
+
+    %% Color Definitions
+    classDef asset fill:#4A90E2,stroke:#2E5C8A,stroke-width:2px,color:#fff
+    classDef network fill:#50C878,stroke:#2E7D4E,stroke-width:2px,color:#fff
+    classDef security fill:#E74C3C,stroke:#8B2E1F,stroke-width:2px,color:#fff
+    classDef threat fill:#F39C12,stroke:#985F0D,stroke-width:2px,color:#fff
+    classDef document fill:#9B59B6,stroke:#5D3A8C,stroke-width:2px,color:#fff

@@ -1,0 +1,41 @@
+# AEON Web Interface - Python Dependencies
+# Updated: 2025-11-03 (November 2025 Latest Versions)
+# Phase 1: Streamlit Prototype + AI Assistant + Diagnostics
+
+# Web Framework (Latest Stable - Nov 2025)
+streamlit>=1.51.0
+
+# Database Drivers (Latest - Nov 2025)
+neo4j>=6.0.2
+
+# Data Processing (Latest - Nov 2025)
+pandas>=2.3.3
+numpy>=2.0.0
+
+# Visualizations (Latest - Nov 2025)
+plotly>=6.3.1
+
+# Configuration
+pyyaml>=6.0.0
+python-dotenv>=1.0.0
+
+# Utilities
+python-dateutil>=2.9.0
+requests>=2.32.0
+psutil>=5.9.0
+
+# AI/ML Stack (Latest Nov 2025)
+qdrant-client>=1.15.1
+sentence-transformers>=5.1.2
+scikit-learn>=1.6.0
+
+# Terminal Formatting (CRITICAL - required by parent AEON utils)
+rich>=13.9.0
+
+# AEON Integration
+# Note: Inherits spaCy and other dependencies from parent AEON project
+
+# Optional: Custom Component Development (via npm)
+# For future Tailwind custom components:
+# - @tailwindcss/browser@4 (Tailwind v4 via CDN)
+# - vite@7.0+ (Build tool for custom React components)

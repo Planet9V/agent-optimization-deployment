@@ -1,0 +1,100 @@
+{
+  "timestamp": "2025-11-05T07:25:27.961872",
+  "configuration": {
+    "num_documents": 3,
+    "num_workers": 3,
+    "architecture": "multi-threaded worker pool"
+  },
+  "sequential": {
+    "mode": "sequential",
+    "num_docs": 3,
+    "total_time": 19.502943754196167,
+    "avg_per_doc": 6.500981251398723,
+    "results": [
+      {
+        "doc_id": 1,
+        "duration": 6.5017993450164795,
+        "stages": {
+          "conversion": 0.5,
+          "classification": 2.0,
+          "ner": 2.0,
+          "ingestion": 2.0
+        }
+      },
+      {
+        "doc_id": 2,
+        "duration": 6.500588893890381,
+        "stages": {
+          "conversion": 0.5,
+          "classification": 2.0,
+          "ner": 2.0,
+          "ingestion": 2.0
+        }
+      },
+      {
+        "doc_id": 3,
+        "duration": 6.500433444976807,
+        "stages": {
+          "conversion": 0.5,
+          "classification": 2.0,
+          "ner": 2.0,
+          "ingestion": 2.0
+        }
+      }
+    ]
+  },
+  "parallel": {
+    "mode": "parallel",
+    "num_docs": 3,
+    "workers": 3,
+    "total_time": 6.60106897354126,
+    "avg_per_doc": 2.2003563245137534,
+    "results": [
+      {
+        "doc_id": 2,
+        "duration": 6.5003883838653564,
+        "stages": {
+          "conversion": 0.5,
+          "classification": 2.0,
+          "ner": 2.0,
+          "ingestion": 2.0
+        }
+      },
+      {
+        "doc_id": 1,
+        "duration": 6.500577211380005,
+        "stages": {
+          "conversion": 0.5,
+          "classification": 2.0,
+          "ner": 2.0,
+          "ingestion": 2.0
+        }
+      },
+      {
+        "doc_id": 3,
+        "duration": 6.500413656234741,
+        "stages": {
+          "conversion": 0.5,
+          "classification": 2.0,
+          "ner": 2.0,
+          "ingestion": 2.0
+        }
+      }
+    ]
+  },
+  "speedup": {
+    "sequential_time": 19.502943754196167,
+    "parallel_time": 6.60106897354126,
+    "time_saved": 12.901874780654907,
+    "speedup_percent": 66.1534737692047,
+    "speedup_ratio": 2.9545129481859465,
+    "theoretical_speedup": 200.0,
+    "efficiency": 33.07673688460235,
+    "target_met": true
+  },
+  "validation": {
+    "target_met": true,
+    "speedup_percent": 66.1534737692047,
+    "efficiency": 33.07673688460235
+  }
+}

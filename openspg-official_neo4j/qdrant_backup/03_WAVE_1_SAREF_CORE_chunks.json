@@ -1,0 +1,996 @@
+[
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_0",
+    "text": "# Wave 1: SAREF Core Foundation Integration\n\n**File:** 03_WAVE_1_SAREF_CORE.md\n**Created:** 2025-10-30 00:00:00 UTC\n**Version:** v1.0.0\n**Status:** ACTIVE\n**Purpose:** Complete implementation specification for Wave 1 SAREF core ontology integration into AEON Digital Twin cybersecurity knowledge graph\n\n---\n\n## 1. Wave Overview\n\n### 1.1 Objectives\n\nWave 1 establishes the foundational SAREF (Smart Applications REFerence) ontology integration, creating the semantic backbone for industrial IoT device representation and their cyber-physical security relationships. This wave focuses on:\n\n1. **Core Device Ontology**: Implement SAREF core concepts for device representation, capabilities, and states\n2. **Property Integration**: Model device properties, measurements, and units following SAREF standards\n3. **Service Architecture**: Define device services, functions, and commands using SAREF service model\n4. **Cybersecurity Foundation**: Connect SAREF devices to existing CVE/vulnerability data thro",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_1",
+    "text": "ds\n3. **Service Architecture**: Define device services, functions, and commands using SAREF service model\n4. **Cybersecurity Foundation**: Connect SAREF devices to existing CVE/vulnerability data through cyber-physical relationships\n5. **Backward Compatibility**: Ensure zero disruption to existing 183,000 nodes while adding semantic richness\n\n### 1.2 Duration & Resources\n\n- **Estimated Duration**: 6-8 weeks\n- **Target Node Count**: 15,000-20,000 new nodes\n- **Relationship Count**: 45,000-60,000 new relationships\n- **Integration Points**: 8 primary connection types to existing graph\n- **Rollback Complexity**: Low (additive only)\n\n### 1.3 Dependencies\n\n**Prerequisites:**\n- Existing AEON graph with 183,000 nodes operational\n- CVE data layer complete and validated\n- Neo4j 5.x with APOC and GDS libraries\n- SAREF 3.1.1 ontology specification\n\n**External Dependencies:**\n- SAREF ontology RDF/OWL files\n- IoT device manufacturer documentation\n- ICS device catalogs (Siemens, Rockwell, Schneider E",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_2",
+    "text": " libraries\n- SAREF 3.1.1 ontology specification\n\n**External Dependencies:**\n- SAREF ontology RDF/OWL files\n- IoT device manufacturer documentation\n- ICS device catalogs (Siemens, Rockwell, Schneider Electric)\n\n**Internal Dependencies:**\n- Wave 2 (Water Infrastructure) builds on SAREF core\n- Wave 3 (Energy Grid) extends SAREF device models\n- Wave 4 (ICS Security) leverages SAREF service architecture\n\n---\n\n## 2. Complete Node Schemas\n\n### 2.1 SAREF:Device Node\n\n**Purpose:** Represents any physical or virtual device in the cyber-physical system that can be monitored, controlled, or analyzed for security vulnerabilities.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| deviceId | String | Yes | Unique SAREF device identifier | `saref:device:PLC-001` |\n| name | String | Yes | Human-readable device name | `Siemens S7-1500 PLC` |\n| model | String | Yes | Manufacturer model number | `6ES7515-2AM01-0AB0` |\n| manufa",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_3",
+    "text": " identifier | `saref:device:PLC-001` |\n| name | String | Yes | Human-readable device name | `Siemens S7-1500 PLC` |\n| model | String | Yes | Manufacturer model number | `6ES7515-2AM01-0AB0` |\n| manufacturer | String | Yes | Device manufacturer | `Siemens AG` |\n| firmwareVersion | String | No | Current firmware version | `V2.9.3` |\n| serialNumber | String | No | Physical device serial number | `SN-2023-47291` |\n| deviceCategory | String | Yes | SAREF device category | `Actuator`, `Sensor`, `Controller` |\n| deploymentLocation | String | No | Physical installation location | `Building 3, Floor 2, Zone A` |\n| commissionDate | DateTime | No | Date device was commissioned | `2023-01-15T10:30:00Z` |\n| operationalStatus | String | Yes | Current operational state | `Active`, `Standby`, `Maintenance`, `Fault` |\n| ipAddress | String | No | Network IP address | `192.168.1.100` |\n| macAddress | String | No | Physical MAC address | `00:1A:2B:3C:4D:5E` |\n| protocol | String[] | No | Supported communi",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_4",
+    "text": "`, `Fault` |\n| ipAddress | String | No | Network IP address | `192.168.1.100` |\n| macAddress | String | No | Physical MAC address | `00:1A:2B:3C:4D:5E` |\n| protocol | String[] | No | Supported communication protocols | `[\"Modbus/TCP\", \"OPC-UA\"]` |\n| criticality | String | Yes | Security criticality level | `Critical`, `High`, `Medium`, `Low` |\n| lastUpdated | DateTime | Yes | Last schema update timestamp | `2025-10-30T00:00:00Z` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (d:SAREF:Device {\n    deviceId: 'saref:device:PLC-001',\n    name: 'Siemens S7-1500 PLC',\n    model: '6ES7515-2AM01-0AB0',\n    manufacturer: 'Siemens AG',\n    firmwareVersion: 'V2.9.3',\n    serialNumber: 'SN-2023-47291',\n    deviceCategory: 'Controller',\n    deploymentLocation: 'Building 3, Floor 2, Zone A',\n    commissionDate: datetime('2023-01-15T10:30:00Z'),\n    operationalStatus: 'Active',\n    ipAddress: '192.168.1.100',\n    macAddress: '00:1A:2B:3C:4D:5E',\n    protocol: ['Modbus/TCP', 'OPC-UA', 'Profinet'],\n",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_5",
+    "text": "issionDate: datetime('2023-01-15T10:30:00Z'),\n    operationalStatus: 'Active',\n    ipAddress: '192.168.1.100',\n    macAddress: '00:1A:2B:3C:4D:5E',\n    protocol: ['Modbus/TCP', 'OPC-UA', 'Profinet'],\n    criticality: 'Critical',\n    lastUpdated: datetime()\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\n// Unique constraint on deviceId\nCREATE CONSTRAINT device_id_unique IF NOT EXISTS\nFOR (d:Device) REQUIRE d.deviceId IS UNIQUE;\n\n// Index on manufacturer for query performance\nCREATE INDEX device_manufacturer_idx IF NOT EXISTS\nFOR (d:Device) ON (d.manufacturer);\n\n// Index on model for vulnerability correlation\nCREATE INDEX device_model_idx IF NOT EXISTS\nFOR (d:Device) ON (d.model);\n\n// Index on operational status for monitoring\nCREATE INDEX device_status_idx IF NOT EXISTS\nFOR (d:Device) ON (d.operationalStatus);\n\n// Composite index for location-based queries\nCREATE INDEX device_location_idx IF NOT EXISTS\nFOR (d:Device) ON (d.deploymentLocation, d.criticality);\n```\n\n---\n\n### 2.2 SAREF:Pro",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_6",
+    "text": "d.operationalStatus);\n\n// Composite index for location-based queries\nCREATE INDEX device_location_idx IF NOT EXISTS\nFOR (d:Device) ON (d.deploymentLocation, d.criticality);\n```\n\n---\n\n### 2.2 SAREF:Property Node\n\n**Purpose:** Represents measurable or observable characteristics of devices (temperature, pressure, voltage) that can indicate normal operation or security anomalies.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| propertyId | String | Yes | Unique property identifier | `saref:property:temp-001` |\n| propertyType | String | Yes | SAREF property type | `Temperature`, `Pressure`, `Voltage` |\n| unitOfMeasure | String | Yes | Measurement unit | `Celsius`, `Pascal`, `Volt` |\n| minValue | Float | No | Minimum expected value | `-40.0` |\n| maxValue | Float | No | Maximum expected value | `125.0` |\n| normalRangeMin | Float | No | Normal operating range min | `15.0` |\n| normalRangeMax | Float | No | Normal ",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_7",
+    "text": "um expected value | `-40.0` |\n| maxValue | Float | No | Maximum expected value | `125.0` |\n| normalRangeMin | Float | No | Normal operating range min | `15.0` |\n| normalRangeMax | Float | No | Normal operating range max | `35.0` |\n| criticalThresholdMin | Float | No | Critical alarm threshold min | `5.0` |\n| criticalThresholdMax | Float | No | Critical alarm threshold max | `50.0` |\n| measurementAccuracy | Float | No | Sensor accuracy percentage | `0.5` |\n| description | String | No | Human-readable description | `Coolant temperature sensor` |\n| lastCalibration | DateTime | No | Last calibration date | `2024-06-15T09:00:00Z` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (p:SAREF:Property {\n    propertyId: 'saref:property:temp-001',\n    propertyType: 'Temperature',\n    unitOfMeasure: 'Celsius',\n    minValue: -40.0,\n    maxValue: 125.0,\n    normalRangeMin: 15.0,\n    normalRangeMax: 35.0,\n    criticalThresholdMin: 5.0,\n    criticalThresholdMax: 50.0,\n    measurementAccuracy: 0.5,\n    ",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_8",
+    "text": "elsius',\n    minValue: -40.0,\n    maxValue: 125.0,\n    normalRangeMin: 15.0,\n    normalRangeMax: 35.0,\n    criticalThresholdMin: 5.0,\n    criticalThresholdMax: 50.0,\n    measurementAccuracy: 0.5,\n    description: 'Coolant temperature sensor for hydraulic system',\n    lastCalibration: datetime('2024-06-15T09:00:00Z')\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT property_id_unique IF NOT EXISTS\nFOR (p:Property) REQUIRE p.propertyId IS UNIQUE;\n\nCREATE INDEX property_type_idx IF NOT EXISTS\nFOR (p:Property) ON (p.propertyType);\n\nCREATE INDEX property_unit_idx IF NOT EXISTS\nFOR (p:Property) ON (p.unitOfMeasure);\n```\n\n---\n\n### 2.3 SAREF:Measurement Node\n\n**Purpose:** Represents specific measurement instances with timestamps, enabling anomaly detection and security event correlation.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| measurementId | String | Yes | Unique measurement identifier |",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_9",
+    "text": "lation.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| measurementId | String | Yes | Unique measurement identifier | `saref:meas:20251030-001` |\n| timestamp | DateTime | Yes | Measurement timestamp | `2025-10-30T14:23:15Z` |\n| value | Float | Yes | Measured value | `28.7` |\n| quality | String | Yes | Data quality indicator | `Good`, `Uncertain`, `Bad` |\n| anomalyScore | Float | No | ML-based anomaly score (0-1) | `0.03` |\n| isAnomaly | Boolean | Yes | Boolean anomaly flag | `false` |\n| confidenceLevel | Float | No | Measurement confidence (0-1) | `0.98` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (m:SAREF:Measurement {\n    measurementId: 'saref:meas:20251030-001',\n    timestamp: datetime('2025-10-30T14:23:15Z'),\n    value: 28.7,\n    quality: 'Good',\n    anomalyScore: 0.03,\n    isAnomaly: false,\n    confidenceLevel: 0.98\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT measurement_",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_10",
+    "text": "4:23:15Z'),\n    value: 28.7,\n    quality: 'Good',\n    anomalyScore: 0.03,\n    isAnomaly: false,\n    confidenceLevel: 0.98\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT measurement_id_unique IF NOT EXISTS\nFOR (m:Measurement) REQUIRE m.measurementId IS UNIQUE;\n\nCREATE INDEX measurement_timestamp_idx IF NOT EXISTS\nFOR (m:Measurement) ON (m.timestamp);\n\nCREATE INDEX measurement_anomaly_idx IF NOT EXISTS\nFOR (m:Measurement) ON (m.isAnomaly);\n```\n\n---\n\n### 2.4 SAREF:Service Node\n\n**Purpose:** Represents device services (data collection, control commands, diagnostics) that can be exploited or monitored for security purposes.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| serviceId | String | Yes | Unique service identifier | `saref:service:modbus-read` |\n| serviceName | String | Yes | Human-readable service name | `Modbus Register Read` |\n| serviceType | String | Yes | SAREF service type | `",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_11",
+    "text": " | Unique service identifier | `saref:service:modbus-read` |\n| serviceName | String | Yes | Human-readable service name | `Modbus Register Read` |\n| serviceType | String | Yes | SAREF service type | `DataCollection`, `Control`, `Diagnostic` |\n| protocol | String | Yes | Communication protocol | `Modbus/TCP` |\n| port | Integer | No | Network port | `502` |\n| authenticationRequired | Boolean | Yes | Requires authentication | `false` |\n| encryptionEnabled | Boolean | Yes | Encrypted communication | `false` |\n| accessLevel | String | Yes | Required access level | `Read`, `Write`, `Admin` |\n| description | String | No | Service description | `Read holding registers` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (s:SAREF:Service {\n    serviceId: 'saref:service:modbus-read',\n    serviceName: 'Modbus Register Read',\n    serviceType: 'DataCollection',\n    protocol: 'Modbus/TCP',\n    port: 502,\n    authenticationRequired: false,\n    encryptionEnabled: false,\n    accessLevel: 'Read',\n    desc",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_12",
+    "text": "'Modbus Register Read',\n    serviceType: 'DataCollection',\n    protocol: 'Modbus/TCP',\n    port: 502,\n    authenticationRequired: false,\n    encryptionEnabled: false,\n    accessLevel: 'Read',\n    description: 'Read holding registers 40001-49999'\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT service_id_unique IF NOT EXISTS\nFOR (s:Service) REQUIRE s.serviceId IS UNIQUE;\n\nCREATE INDEX service_protocol_idx IF NOT EXISTS\nFOR (s:Service) ON (s.protocol);\n\nCREATE INDEX service_auth_idx IF NOT EXISTS\nFOR (s:Service) ON (s.authenticationRequired, s.encryptionEnabled);\n```\n\n---\n\n### 2.5 SAREF:Function Node\n\n**Purpose:** Represents device capabilities and functions (sensing, actuating, metering) that define attack surfaces and security requirements.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| functionId | String | Yes | Unique function identifier | `saref:func:sense-temp` |\n| functionType | S",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_13",
+    "text": "Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| functionId | String | Yes | Unique function identifier | `saref:func:sense-temp` |\n| functionType | String | Yes | SAREF function type | `SensingFunction`, `ActuatingFunction` |\n| description | String | No | Function description | `Temperature sensing capability` |\n| executionFrequency | String | No | Execution frequency | `Continuous`, `OnDemand`, `Periodic` |\n| periodicInterval | Integer | No | Interval in seconds (if periodic) | `60` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (f:SAREF:Function {\n    functionId: 'saref:func:sense-temp',\n    functionType: 'SensingFunction',\n    description: 'Temperature sensing capability for process monitoring',\n    executionFrequency: 'Periodic',\n    periodicInterval: 60\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT function_id_unique IF NOT EXISTS\nFOR (f:Function) REQUIRE f.functionId IS UNIQUE;\n\nCREATE INDEX function_type_i",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_14",
+    "text": "  periodicInterval: 60\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT function_id_unique IF NOT EXISTS\nFOR (f:Function) REQUIRE f.functionId IS UNIQUE;\n\nCREATE INDEX function_type_idx IF NOT EXISTS\nFOR (f:Function) ON (f.functionType);\n```\n\n---\n\n### 2.6 SAREF:Command Node\n\n**Purpose:** Represents executable commands that can be issued to devices, critical for modeling attack vectors and access control.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| commandId | String | Yes | Unique command identifier | `saref:cmd:set-temp-001` |\n| commandName | String | Yes | Human-readable command name | `Set Temperature Setpoint` |\n| commandType | String | Yes | Command category | `Configuration`, `Control`, `Diagnostic` |\n| parameters | String[] | No | Required parameters | `[\"targetTemp\", \"rampRate\"]` |\n| authorizationRequired | Boolean | Yes | Requires authorization | `true` |\n| auditLogged | Bool",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_15",
+    "text": "ol`, `Diagnostic` |\n| parameters | String[] | No | Required parameters | `[\"targetTemp\", \"rampRate\"]` |\n| authorizationRequired | Boolean | Yes | Requires authorization | `true` |\n| auditLogged | Boolean | Yes | Command execution logged | `true` |\n| criticalityLevel | String | Yes | Security criticality | `Critical`, `High`, `Medium`, `Low` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (c:SAREF:Command {\n    commandId: 'saref:cmd:set-temp-001',\n    commandName: 'Set Temperature Setpoint',\n    commandType: 'Control',\n    parameters: ['targetTemp', 'rampRate', 'priority'],\n    authorizationRequired: true,\n    auditLogged: true,\n    criticalityLevel: 'High'\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT command_id_unique IF NOT EXISTS\nFOR (c:Command) REQUIRE c.commandId IS UNIQUE;\n\nCREATE INDEX command_criticality_idx IF NOT EXISTS\nFOR (c:Command) ON (c.criticalityLevel);\n```\n\n---\n\n### 2.7 SAREF:State Node\n\n**Purpose:** Represents device operational states, essentia",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_16",
+    "text": " IS UNIQUE;\n\nCREATE INDEX command_criticality_idx IF NOT EXISTS\nFOR (c:Command) ON (c.criticalityLevel);\n```\n\n---\n\n### 2.7 SAREF:State Node\n\n**Purpose:** Represents device operational states, essential for detecting state-based attacks and unauthorized state transitions.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| stateId | String | Yes | Unique state identifier | `saref:state:running` |\n| stateName | String | Yes | Human-readable state name | `Running` |\n| stateCategory | String | Yes | State category | `Operational`, `Fault`, `Maintenance` |\n| description | String | No | State description | `Device operating normally` |\n| isNormalState | Boolean | Yes | Indicates normal operation | `true` |\n| securityImplication | String | No | Security impact | `None`, `Elevated`, `Critical` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (st:SAREF:State {\n    stateId: 'saref:state:running',\n    stateName: 'Runni",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_17",
+    "text": "plication | String | No | Security impact | `None`, `Elevated`, `Critical` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (st:SAREF:State {\n    stateId: 'saref:state:running',\n    stateName: 'Running',\n    stateCategory: 'Operational',\n    description: 'Device operating within normal parameters',\n    isNormalState: true,\n    securityImplication: 'None'\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT state_id_unique IF NOT EXISTS\nFOR (st:State) REQUIRE st.stateId IS UNIQUE;\n\nCREATE INDEX state_category_idx IF NOT EXISTS\nFOR (st:State) ON (st.stateCategory);\n```\n\n---\n\n### 2.8 SAREF:UnitOfMeasure Node\n\n**Purpose:** Standardizes measurement units across the graph, enabling consistent data analysis and anomaly detection.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| unitId | String | Yes | Unique unit identifier | `saref:unit:celsius` |\n| symbol | String | Yes | Unit symbol | `\u00b0C` |\n| de",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_18",
+    "text": "ription | Example |\n|----------|------|----------|-------------|---------|\n| unitId | String | Yes | Unique unit identifier | `saref:unit:celsius` |\n| symbol | String | Yes | Unit symbol | `\u00b0C` |\n| description | String | Yes | Unit description | `Degree Celsius` |\n| quantityKind | String | Yes | Physical quantity type | `Temperature` |\n| conversionFactor | Float | No | Conversion to SI base unit | `1.0` |\n| conversionOffset | Float | No | Offset for conversion | `273.15` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (u:SAREF:UnitOfMeasure {\n    unitId: 'saref:unit:celsius',\n    symbol: '\u00b0C',\n    description: 'Degree Celsius - Temperature unit',\n    quantityKind: 'Temperature',\n    conversionFactor: 1.0,\n    conversionOffset: 273.15\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT unit_id_unique IF NOT EXISTS\nFOR (u:UnitOfMeasure) REQUIRE u.unitId IS UNIQUE;\n\nCREATE INDEX unit_quantity_idx IF NOT EXISTS\nFOR (u:UnitOfMeasure) ON (u.quantityKind);\n```\n\n---\n\n## 3. Comp",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_19",
+    "text": " CONSTRAINT unit_id_unique IF NOT EXISTS\nFOR (u:UnitOfMeasure) REQUIRE u.unitId IS UNIQUE;\n\nCREATE INDEX unit_quantity_idx IF NOT EXISTS\nFOR (u:UnitOfMeasure) ON (u.quantityKind);\n```\n\n---\n\n## 3. Complete Relationship Schemas\n\n### 3.1 HAS_PROPERTY Relationship\n\n**Purpose:** Connects devices to their measurable properties.\n\n**Source:** `SAREF:Device`\n**Target:** `SAREF:Property`\n**Cardinality:** Many-to-Many (1 device can have multiple properties, 1 property type can belong to multiple devices)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| assignedDate | DateTime | Yes | When property was assigned | `2023-01-15T10:30:00Z` |\n| isActive | Boolean | Yes | Property currently active | `true` |\n| monitoringPriority | String | No | Monitoring importance | `Critical`, `High`, `Medium`, `Low` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (d:Device {deviceId: 'saref:device:PLC-001'})\nMATCH (p:Property {property",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_20",
+    "text": "y | String | No | Monitoring importance | `Critical`, `High`, `Medium`, `Low` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (d:Device {deviceId: 'saref:device:PLC-001'})\nMATCH (p:Property {propertyId: 'saref:property:temp-001'})\nCREATE (d)-[r:HAS_PROPERTY {\n    assignedDate: datetime('2023-01-15T10:30:00Z'),\n    isActive: true,\n    monitoringPriority: 'Critical'\n}]->(p)\n```\n\n---\n\n### 3.2 GENERATES_MEASUREMENT Relationship\n\n**Purpose:** Links properties to their measurement instances.\n\n**Source:** `SAREF:Property`\n**Target:** `SAREF:Measurement`\n**Cardinality:** One-to-Many (1 property generates many measurements over time)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| createdAt | DateTime | Yes | Relationship creation timestamp | `2025-10-30T14:23:15Z` |\n| validatedBy | String | No | Validation method | `ML-Model-v2.3`, `Manual` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (p:Property {propertyId",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_21",
+    "text": "nship creation timestamp | `2025-10-30T14:23:15Z` |\n| validatedBy | String | No | Validation method | `ML-Model-v2.3`, `Manual` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (p:Property {propertyId: 'saref:property:temp-001'})\nMATCH (m:Measurement {measurementId: 'saref:meas:20251030-001'})\nCREATE (p)-[r:GENERATES_MEASUREMENT {\n    createdAt: datetime(),\n    validatedBy: 'ML-Model-v2.3'\n}]->(m)\n```\n\n---\n\n### 3.3 OFFERS_SERVICE Relationship\n\n**Purpose:** Connects devices to services they provide.\n\n**Source:** `SAREF:Device`\n**Target:** `SAREF:Service`\n**Cardinality:** Many-to-Many (1 device can offer multiple services, 1 service can be offered by multiple devices)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| enabledDate | DateTime | Yes | When service was enabled | `2023-01-15T10:30:00Z` |\n| isEnabled | Boolean | Yes | Service currently enabled | `true` |\n| lastAccessed | DateTime | No | Last service",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_22",
+    "text": "-|\n| enabledDate | DateTime | Yes | When service was enabled | `2023-01-15T10:30:00Z` |\n| isEnabled | Boolean | Yes | Service currently enabled | `true` |\n| lastAccessed | DateTime | No | Last service access | `2025-10-30T14:00:00Z` |\n| accessCount | Integer | No | Total access count | `1247` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (d:Device {deviceId: 'saref:device:PLC-001'})\nMATCH (s:Service {serviceId: 'saref:service:modbus-read'})\nCREATE (d)-[r:OFFERS_SERVICE {\n    enabledDate: datetime('2023-01-15T10:30:00Z'),\n    isEnabled: true,\n    lastAccessed: datetime('2025-10-30T14:00:00Z'),\n    accessCount: 1247\n}]->(s)\n```\n\n---\n\n### 3.4 HAS_FUNCTION Relationship\n\n**Purpose:** Links devices to their functional capabilities.\n\n**Source:** `SAREF:Device`\n**Target:** `SAREF:Function`\n**Cardinality:** Many-to-Many (1 device can have multiple functions, 1 function type can belong to multiple devices)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|--",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_23",
+    "text": "rdinality:** Many-to-Many (1 device can have multiple functions, 1 function type can belong to multiple devices)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| implementedDate | DateTime | Yes | When function was implemented | `2023-01-15T10:30:00Z` |\n| isActive | Boolean | Yes | Function currently active | `true` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (d:Device {deviceId: 'saref:device:PLC-001'})\nMATCH (f:Function {functionId: 'saref:func:sense-temp'})\nCREATE (d)-[r:HAS_FUNCTION {\n    implementedDate: datetime('2023-01-15T10:30:00Z'),\n    isActive: true\n}]->(f)\n```\n\n---\n\n### 3.5 EXECUTES_COMMAND Relationship\n\n**Purpose:** Connects services to commands they can execute.\n\n**Source:** `SAREF:Service`\n**Target:** `SAREF:Command`\n**Cardinality:** Many-to-Many (1 service can execute multiple commands, 1 command can be executed by multiple services)\n\n**Properties:**\n\n| Property | Type | Required | De",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_24",
+    "text": "\n**Target:** `SAREF:Command`\n**Cardinality:** Many-to-Many (1 service can execute multiple commands, 1 command can be executed by multiple services)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| configuredDate | DateTime | Yes | When command was configured | `2023-01-15T10:30:00Z` |\n| isEnabled | Boolean | Yes | Command currently enabled | `true` |\n| executionCount | Integer | No | Total execution count | `87` |\n| lastExecution | DateTime | No | Last execution timestamp | `2025-10-25T09:15:00Z` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (s:Service {serviceId: 'saref:service:modbus-write'})\nMATCH (c:Command {commandId: 'saref:cmd:set-temp-001'})\nCREATE (s)-[r:EXECUTES_COMMAND {\n    configuredDate: datetime('2023-01-15T10:30:00Z'),\n    isEnabled: true,\n    executionCount: 87,\n    lastExecution: datetime('2025-10-25T09:15:00Z')\n}]->(c)\n```\n\n---\n\n### 3.6 HAS_STATE Relationship\n\n**Purpose:** Connects d",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_25",
+    "text": "time('2023-01-15T10:30:00Z'),\n    isEnabled: true,\n    executionCount: 87,\n    lastExecution: datetime('2025-10-25T09:15:00Z')\n}]->(c)\n```\n\n---\n\n### 3.6 HAS_STATE Relationship\n\n**Purpose:** Connects devices to their current operational state.\n\n**Source:** `SAREF:Device`\n**Target:** `SAREF:State`\n**Cardinality:** Many-to-One at any given time (1 device has 1 current state, but historical states create many-to-many over time)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| enteredStateAt | DateTime | Yes | When device entered this state | `2025-10-30T08:00:00Z` |\n| isCurrent | Boolean | Yes | Current state indicator | `true` |\n| triggeredBy | String | No | State transition trigger | `AutomaticSchedule`, `ManualCommand` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (d:Device {deviceId: 'saref:device:PLC-001'})\nMATCH (st:State {stateId: 'saref:state:running'})\nCREATE (d)-[r:HAS_STATE {\n    enteredStateAt: ",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_26",
+    "text": "Command` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (d:Device {deviceId: 'saref:device:PLC-001'})\nMATCH (st:State {stateId: 'saref:state:running'})\nCREATE (d)-[r:HAS_STATE {\n    enteredStateAt: datetime('2025-10-30T08:00:00Z'),\n    isCurrent: true,\n    triggeredBy: 'AutomaticSchedule'\n}]->(st)\n```\n\n---\n\n### 3.7 MEASURED_IN Relationship\n\n**Purpose:** Connects properties to their units of measure.\n\n**Source:** `SAREF:Property`\n**Target:** `SAREF:UnitOfMeasure`\n**Cardinality:** Many-to-One (many properties can use the same unit)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| assignedDate | DateTime | Yes | When unit was assigned | `2023-01-15T10:30:00Z` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (p:Property {propertyId: 'saref:property:temp-001'})\nMATCH (u:UnitOfMeasure {unitId: 'saref:unit:celsius'})\nCREATE (p)-[r:MEASURED_IN {\n    assignedDate: datetime('2023-01-15T10:30:00Z')\n}]->(u)\n```\n\n---",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_27",
+    "text": "Property {propertyId: 'saref:property:temp-001'})\nMATCH (u:UnitOfMeasure {unitId: 'saref:unit:celsius'})\nCREATE (p)-[r:MEASURED_IN {\n    assignedDate: datetime('2023-01-15T10:30:00Z')\n}]->(u)\n```\n\n---\n\n### 3.8 VULNERABLE_TO Relationship (Integration with Existing CVE Data)\n\n**Purpose:** Connects SAREF devices to CVE vulnerabilities from existing graph.\n\n**Source:** `SAREF:Device`\n**Target:** `CVE` (existing node type)\n**Cardinality:** Many-to-Many (1 device can have multiple vulnerabilities, 1 CVE can affect multiple devices)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| discoveredDate | DateTime | Yes | When vulnerability was discovered | `2024-03-15T00:00:00Z` |\n| affectedFirmwareVersions | String[] | Yes | Firmware versions affected | `[\"V2.8.0\", \"V2.9.0\", \"V2.9.3\"]` |\n| patchAvailable | Boolean | Yes | Patch availability status | `true` |\n| patchVersion | String | No | Version that patches vulnerabi",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_28",
+    "text": " | Firmware versions affected | `[\"V2.8.0\", \"V2.9.0\", \"V2.9.3\"]` |\n| patchAvailable | Boolean | Yes | Patch availability status | `true` |\n| patchVersion | String | No | Version that patches vulnerability | `V2.10.1` |\n| exploitabilityScore | Float | Yes | CVSS exploitability score | `3.9` |\n| impactScore | Float | Yes | CVSS impact score | `5.9` |\n| isExploited | Boolean | Yes | Known exploitation in wild | `false` |\n| mitigationStatus | String | Yes | Current mitigation status | `Unpatched`, `Patched`, `Mitigated` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (d:Device {deviceId: 'saref:device:PLC-001'})\nMATCH (cve:CVE {cveId: 'CVE-2023-12345'})\nCREATE (d)-[r:VULNERABLE_TO {\n    discoveredDate: datetime('2024-03-15T00:00:00Z'),\n    affectedFirmwareVersions: ['V2.8.0', 'V2.9.0', 'V2.9.3'],\n    patchAvailable: true,\n    patchVersion: 'V2.10.1',\n    exploitabilityScore: 3.9,\n    impactScore: 5.9,\n    isExploited: false,\n    mitigationStatus: 'Unpatched'\n}]->(cve)\n```\n\n---\n\n## 4. Inte",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_29",
+    "text": "3'],\n    patchAvailable: true,\n    patchVersion: 'V2.10.1',\n    exploitabilityScore: 3.9,\n    impactScore: 5.9,\n    isExploited: false,\n    mitigationStatus: 'Unpatched'\n}]->(cve)\n```\n\n---\n\n## 4. Integration Patterns\n\n### 4.1 Connection to Existing 183K Nodes\n\nWave 1 creates 8 primary integration points with the existing AEON graph structure:\n\n#### Integration Point 1: Device-to-CVE Vulnerability Mapping\n\n**Objective:** Link SAREF devices to existing CVE vulnerability data\n\n**Existing Nodes:** `CVE`, `CWE`, `CAPEC`\n**New Nodes:** `SAREF:Device`\n**New Relationships:** `VULNERABLE_TO`, `EXPLOITS_WEAKNESS`\n\n**Integration Query:**\n\n```cypher\n// Match existing CVE nodes affecting industrial control systems\nMATCH (cve:CVE)\nWHERE cve.cveDescription CONTAINS 'Siemens'\n   OR cve.cveDescription CONTAINS 'PLC'\n   OR cve.cveDescription CONTAINS 'SCADA'\n\n// Match SAREF devices by manufacturer and model\nMATCH (d:Device)\nWHERE d.manufacturer = 'Siemens AG'\n  AND cve.affectedProducts CONTAINS d.model\n",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_30",
+    "text": "AINS 'PLC'\n   OR cve.cveDescription CONTAINS 'SCADA'\n\n// Match SAREF devices by manufacturer and model\nMATCH (d:Device)\nWHERE d.manufacturer = 'Siemens AG'\n  AND cve.affectedProducts CONTAINS d.model\n\n// Create vulnerability relationship\nCREATE (d)-[r:VULNERABLE_TO {\n    discoveredDate: cve.publishedDate,\n    affectedFirmwareVersions: [d.firmwareVersion],\n    patchAvailable: CASE WHEN cve.patchStatus = 'Available' THEN true ELSE false END,\n    exploitabilityScore: cve.exploitabilityScore,\n    impactScore: cve.impactScore,\n    isExploited: cve.exploitedInWild,\n    mitigationStatus: 'Unpatched'\n}]->(cve)\n\nRETURN count(r) as vulnerabilitiesLinked\n```\n\n**Expected Results:** 2,500-3,500 new VULNERABLE_TO relationships\n\n---\n\n#### Integration Point 2: Device Service to Network Protocol Mapping\n\n**Objective:** Connect SAREF services to existing network protocol and attack pattern data\n\n**Existing Nodes:** `Protocol`, `AttackPattern`, `TTP`\n**New Nodes:** `SAREF:Service`\n**New Relationships:** ",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_31",
+    "text": "*Objective:** Connect SAREF services to existing network protocol and attack pattern data\n\n**Existing Nodes:** `Protocol`, `AttackPattern`, `TTP`\n**New Nodes:** `SAREF:Service`\n**New Relationships:** `USES_PROTOCOL`, `EXPOSED_TO_ATTACK`\n\n**Integration Query:**\n\n```cypher\n// Match SAREF services using industrial protocols\nMATCH (s:Service)\nWHERE s.protocol IN ['Modbus/TCP', 'OPC-UA', 'Profinet', 'EtherNet/IP']\n\n// Match existing protocol nodes\nMATCH (p:Protocol)\nWHERE p.name = s.protocol\n\n// Create protocol usage relationship\nMERGE (s)-[r1:USES_PROTOCOL {\n    configuredDate: s.enabledDate,\n    port: s.port,\n    authEnabled: s.authenticationRequired,\n    encryptionEnabled: s.encryptionEnabled\n}]->(p)\n\n// Match attack patterns targeting this protocol\nMATCH (attack:AttackPattern)\nWHERE attack.targetProtocol = p.name\n\n// Create attack exposure relationship\nCREATE (s)-[r2:EXPOSED_TO_ATTACK {\n    identifiedDate: datetime(),\n    likelihood: CASE\n        WHEN s.authenticationRequired = false TH",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_32",
+    "text": "targetProtocol = p.name\n\n// Create attack exposure relationship\nCREATE (s)-[r2:EXPOSED_TO_ATTACK {\n    identifiedDate: datetime(),\n    likelihood: CASE\n        WHEN s.authenticationRequired = false THEN 'High'\n        WHEN s.encryptionEnabled = false THEN 'Medium'\n        ELSE 'Low'\n    END,\n    severity: attack.severity\n}]->(attack)\n\nRETURN count(r1) as protocolLinks, count(r2) as attackExposures\n```\n\n**Expected Results:** 5,000-7,000 protocol links, 3,000-4,500 attack exposures\n\n---\n\n#### Integration Point 3: Property Measurement to Anomaly Detection\n\n**Objective:** Link SAREF measurements to existing anomaly detection and threat intelligence\n\n**Existing Nodes:** `Anomaly`, `ThreatIndicator`, `SecurityEvent`\n**New Nodes:** `SAREF:Measurement`, `SAREF:Property`\n**New Relationships:** `INDICATES_ANOMALY`, `TRIGGERS_ALERT`\n\n**Integration Query:**\n\n```cypher\n// Find anomalous measurements\nMATCH (m:Measurement)\nWHERE m.isAnomaly = true AND m.anomalyScore > 0.7\n\n// Match the property gener",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_33",
+    "text": "ICATES_ANOMALY`, `TRIGGERS_ALERT`\n\n**Integration Query:**\n\n```cypher\n// Find anomalous measurements\nMATCH (m:Measurement)\nWHERE m.isAnomaly = true AND m.anomalyScore > 0.7\n\n// Match the property generating the measurement\nMATCH (p:Property)-[:GENERATES_MEASUREMENT]->(m)\n\n// Match the device with this property\nMATCH (d:Device)-[:HAS_PROPERTY]->(p)\n\n// Create anomaly indicator if threshold exceeded\nCREATE (anomaly:Anomaly {\n    anomalyId: 'anom-' + m.measurementId,\n    detectedAt: m.timestamp,\n    anomalyType: 'MeasurementAnomaly',\n    severity: CASE\n        WHEN m.value > p.criticalThresholdMax OR m.value < p.criticalThresholdMin THEN 'Critical'\n        WHEN m.value > p.normalRangeMax OR m.value < p.normalRangeMin THEN 'Medium'\n        ELSE 'Low'\n    END,\n    description: 'Anomalous ' + p.propertyType + ' measurement: ' + toString(m.value) + ' ' + p.unitOfMeasure,\n    affectedDevice: d.deviceId\n})\n\n// Link measurement to anomaly\nCREATE (m)-[r1:INDICATES_ANOMALY]->(anomaly)\n\n// Link devi",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_34",
+    "text": "ropertyType + ' measurement: ' + toString(m.value) + ' ' + p.unitOfMeasure,\n    affectedDevice: d.deviceId\n})\n\n// Link measurement to anomaly\nCREATE (m)-[r1:INDICATES_ANOMALY]->(anomaly)\n\n// Link device to anomaly\nCREATE (d)-[r2:EXPERIENCED_ANOMALY {\n    detectedAt: m.timestamp,\n    resolved: false\n}]->(anomaly)\n\nRETURN count(anomaly) as anomaliesCreated\n```\n\n**Expected Results:** 500-1,200 anomaly detections\n\n---\n\n#### Integration Point 4: Device Command to Access Control\n\n**Objective:** Link SAREF commands to existing access control and authorization systems\n\n**Existing Nodes:** `User`, `Role`, `Permission`, `AccessPolicy`\n**New Nodes:** `SAREF:Command`\n**New Relationships:** `REQUIRES_PERMISSION`, `AUTHORIZED_FOR`\n\n**Integration Query:**\n\n```cypher\n// Match critical commands requiring authorization\nMATCH (c:Command)\nWHERE c.authorizationRequired = true\n  AND c.criticalityLevel IN ['Critical', 'High']\n\n// Create permission nodes for command execution\nCREATE (perm:Permission {\n    per",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_35",
+    "text": "uthorization\nMATCH (c:Command)\nWHERE c.authorizationRequired = true\n  AND c.criticalityLevel IN ['Critical', 'High']\n\n// Create permission nodes for command execution\nCREATE (perm:Permission {\n    permissionId: 'perm-' + c.commandId,\n    permissionType: 'CommandExecution',\n    resourceType: 'SAREF:Command',\n    resourceId: c.commandId,\n    action: 'Execute',\n    requiredRole: CASE c.criticalityLevel\n        WHEN 'Critical' THEN 'Administrator'\n        WHEN 'High' THEN 'Operator'\n        ELSE 'Viewer'\n    END\n})\n\n// Link command to permission\nCREATE (c)-[r:REQUIRES_PERMISSION {\n    createdAt: datetime(),\n    enforcementLevel: 'Mandatory'\n}]->(perm)\n\n// Link to existing access policies\nMATCH (policy:AccessPolicy)\nWHERE policy.scope = 'IndustrialControl'\n\nCREATE (perm)-[:GOVERNED_BY]->(policy)\n\nRETURN count(perm) as permissionsCreated\n```\n\n**Expected Results:** 800-1,200 permissions created\n\n---\n\n### 4.2 Additive Enhancement Examples\n\nWave 1 is strictly additive - no existing nodes or rel",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_36",
+    "text": ")\n\nRETURN count(perm) as permissionsCreated\n```\n\n**Expected Results:** 800-1,200 permissions created\n\n---\n\n### 4.2 Additive Enhancement Examples\n\nWave 1 is strictly additive - no existing nodes or relationships are modified. Here are examples demonstrating backward compatibility:\n\n#### Example 1: Enriching Existing CVE with SAREF Context\n\n**Before Wave 1:**\n```cypher\n// Existing CVE node with basic information\n(cve:CVE {\n    cveId: 'CVE-2023-12345',\n    description: 'Buffer overflow in Siemens S7-1500 PLC',\n    cvssScore: 7.5,\n    publishedDate: '2023-06-15'\n})\n```\n\n**After Wave 1:**\n```cypher\n// Same CVE node unchanged, but now enriched with SAREF device context\nMATCH (cve:CVE {cveId: 'CVE-2023-12345'})\nMATCH (d:Device)-[v:VULNERABLE_TO]->(cve)\nRETURN cve.cveId,\n       cve.cvssScore,\n       count(d) as affectedDevices,\n       collect(d.deploymentLocation) as locations,\n       collect(d.criticality) as criticalityLevels\n\n// Results show CVE now has operational context:\n// cveId: 'CVE-2",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_37",
+    "text": "   count(d) as affectedDevices,\n       collect(d.deploymentLocation) as locations,\n       collect(d.criticality) as criticalityLevels\n\n// Results show CVE now has operational context:\n// cveId: 'CVE-2023-12345'\n// cvssScore: 7.5\n// affectedDevices: 12\n// locations: ['Building 3, Floor 2', 'Building 7, Floor 1', ...]\n// criticalityLevels: ['Critical', 'Critical', 'High', ...]\n```\n\n**Verification Query:**\n```cypher\n// Verify existing CVE data unchanged\nMATCH (cve:CVE {cveId: 'CVE-2023-12345'})\nRETURN cve.cveId, cve.description, cve.cvssScore, cve.publishedDate\n// Should return exact same values as before Wave 1\n```\n\n---\n\n#### Example 2: Adding SAREF Device Semantics to Existing Asset Inventory\n\n**Before Wave 1:**\n```cypher\n// Generic asset node (existing)\n(asset:Asset {\n    assetId: 'ASSET-PLC-001',\n    type: 'IndustrialController',\n    location: 'Building 3'\n})\n```\n\n**After Wave 1:**\n```cypher\n// Asset node unchanged, but parallel SAREF device created with semantic richness\nMATCH (asset",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_38",
+    "text": "LC-001',\n    type: 'IndustrialController',\n    location: 'Building 3'\n})\n```\n\n**After Wave 1:**\n```cypher\n// Asset node unchanged, but parallel SAREF device created with semantic richness\nMATCH (asset:Asset {assetId: 'ASSET-PLC-001'})\n\n// New SAREF device linked to existing asset\nCREATE (d:Device {\n    deviceId: 'saref:device:PLC-001',\n    name: 'Siemens S7-1500 PLC',\n    model: '6ES7515-2AM01-0AB0',\n    manufacturer: 'Siemens AG',\n    deploymentLocation: asset.location,\n    criticality: 'Critical'\n})\n\n// Link SAREF device to existing asset (new relationship type)\nCREATE (d)-[:REPRESENTS_ASSET]->(asset)\n\n// Now asset has both legacy and semantic representations\nMATCH (asset:Asset {assetId: 'ASSET-PLC-001'})\nOPTIONAL MATCH (d:Device)-[:REPRESENTS_ASSET]->(asset)\nOPTIONAL MATCH (d)-[:VULNERABLE_TO]->(cve:CVE)\nRETURN asset, d, count(cve) as vulnerabilityCount\n```\n\n**Verification Query:**\n```cypher\n// Verify existing asset unchanged\nMATCH (asset:Asset {assetId: 'ASSET-PLC-001'})\nRETURN pro",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_39",
+    "text": "BLE_TO]->(cve:CVE)\nRETURN asset, d, count(cve) as vulnerabilityCount\n```\n\n**Verification Query:**\n```cypher\n// Verify existing asset unchanged\nMATCH (asset:Asset {assetId: 'ASSET-PLC-001'})\nRETURN properties(asset)\n// Should return exact same properties as before Wave 1\n```\n\n---\n\n### 4.3 CVE Preservation Verification\n\nCritical verification queries to ensure existing CVE data integrity:\n\n#### Verification Query 1: CVE Node Count Unchanged\n\n```cypher\n// Count CVE nodes before and after Wave 1\nCALL {\n    MATCH (cve:CVE)\n    RETURN count(cve) as totalCVEs\n}\nRETURN totalCVEs\n\n// Expected: Same count as before Wave 1 (no CVEs added/removed)\n// If baseline was 45,672 CVEs, should still be 45,672\n```\n\n#### Verification Query 2: CVE Properties Unchanged\n\n```cypher\n// Sample random CVEs and verify all properties intact\nMATCH (cve:CVE)\nWHERE rand() < 0.01 // Sample 1% of CVEs\nWITH cve, properties(cve) as props\nRETURN cve.cveId,\n       size(keys(props)) as propertyCount,\n       keys(props) as prop",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_40",
+    "text": "ll properties intact\nMATCH (cve:CVE)\nWHERE rand() < 0.01 // Sample 1% of CVEs\nWITH cve, properties(cve) as props\nRETURN cve.cveId,\n       size(keys(props)) as propertyCount,\n       keys(props) as propertyNames\nORDER BY cve.cveId\nLIMIT 100\n\n// Verify property counts and names match pre-Wave 1 baseline\n```\n\n#### Verification Query 3: CVE Relationships Preserved\n\n```cypher\n// Verify existing CVE relationships unchanged\nMATCH (cve:CVE)-[r]->(target)\nWHERE type(r) <> 'VULNERABLE_TO' // Exclude new Wave 1 relationships\nWITH type(r) as relType, count(r) as relCount\nRETURN relType, relCount\nORDER BY relType\n\n// Compare to pre-Wave 1 baseline - should match exactly\n// Example expected results:\n// relType: 'HAS_WEAKNESS', relCount: 38,421\n// relType: 'EXPLOITED_BY', relCount: 12,389\n// etc.\n```\n\n#### Verification Query 4: CVE Data Rollback Test\n\n```cypher\n// Test rollback scenario - delete all Wave 1 additions\nMATCH (d:Device)-[r:VULNERABLE_TO]->(cve:CVE)\nDELETE r\n\n// Verify CVEs still intact\nMA",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 40,
+      "start_char": 32000,
+      "end_char": 33000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_41",
+    "text": "# Verification Query 4: CVE Data Rollback Test\n\n```cypher\n// Test rollback scenario - delete all Wave 1 additions\nMATCH (d:Device)-[r:VULNERABLE_TO]->(cve:CVE)\nDELETE r\n\n// Verify CVEs still intact\nMATCH (cve:CVE {cveId: 'CVE-2023-12345'})\nRETURN cve.cveId, cve.description, cve.cvssScore\n// Should return complete CVE data even after relationship deletion\n```\n\n---\n\n## 5. Validation Criteria\n\n### 5.1 Acceptance Tests\n\n#### Test 1: Node Creation Completeness\n\n**Objective:** Verify all required node types created with correct counts\n\n**Test Query:**\n```cypher\nCALL {\n    MATCH (d:Device) RETURN 'Device' as nodeType, count(d) as nodeCount\n    UNION\n    MATCH (p:Property) RETURN 'Property' as nodeType, count(p) as nodeCount\n    UNION\n    MATCH (m:Measurement) RETURN 'Measurement' as nodeType, count(m) as nodeCount\n    UNION\n    MATCH (s:Service) RETURN 'Service' as nodeType, count(s) as nodeCount\n    UNION\n    MATCH (f:Function) RETURN 'Function' as nodeType, count(f) as nodeCount\n    UNION\n ",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 41,
+      "start_char": 32800,
+      "end_char": 33800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_42",
+    "text": "nt(m) as nodeCount\n    UNION\n    MATCH (s:Service) RETURN 'Service' as nodeType, count(s) as nodeCount\n    UNION\n    MATCH (f:Function) RETURN 'Function' as nodeType, count(f) as nodeCount\n    UNION\n    MATCH (c:Command) RETURN 'Command' as nodeType, count(c) as nodeCount\n    UNION\n    MATCH (st:State) RETURN 'State' as nodeType, count(st) as nodeCount\n    UNION\n    MATCH (u:UnitOfMeasure) RETURN 'UnitOfMeasure' as nodeType, count(u) as nodeCount\n}\nRETURN nodeType, nodeCount\nORDER BY nodeType\n```\n\n**Acceptance Criteria:**\n- Device: 1,500-2,000 nodes\n- Property: 8,000-10,000 nodes\n- Measurement: 50,000-75,000 nodes (historical data)\n- Service: 3,000-4,000 nodes\n- Function: 1,200-1,500 nodes\n- Command: 2,500-3,000 nodes\n- State: 50-100 nodes\n- UnitOfMeasure: 100-150 nodes\n\n**Total Target:** 66,350-95,750 new nodes (within 15,000-20,000 core target plus historical measurements)\n\n---\n\n#### Test 2: Relationship Integrity\n\n**Objective:** Verify all relationships created with correct cardinal",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 42,
+      "start_char": 33600,
+      "end_char": 34600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_43",
+    "text": "66,350-95,750 new nodes (within 15,000-20,000 core target plus historical measurements)\n\n---\n\n#### Test 2: Relationship Integrity\n\n**Objective:** Verify all relationships created with correct cardinality\n\n**Test Query:**\n```cypher\nCALL {\n    MATCH ()-[r:HAS_PROPERTY]->() RETURN 'HAS_PROPERTY' as relType, count(r) as relCount\n    UNION\n    MATCH ()-[r:GENERATES_MEASUREMENT]->() RETURN 'GENERATES_MEASUREMENT' as relType, count(r) as relCount\n    UNION\n    MATCH ()-[r:OFFERS_SERVICE]->() RETURN 'OFFERS_SERVICE' as relType, count(r) as relCount\n    UNION\n    MATCH ()-[r:HAS_FUNCTION]->() RETURN 'HAS_FUNCTION' as relType, count(r) as relCount\n    UNION\n    MATCH ()-[r:EXECUTES_COMMAND]->() RETURN 'EXECUTES_COMMAND' as relType, count(r) as relCount\n    UNION\n    MATCH ()-[r:HAS_STATE]->() RETURN 'HAS_STATE' as relType, count(r) as relCount\n    UNION\n    MATCH ()-[r:MEASURED_IN]->() RETURN 'MEASURED_IN' as relType, count(r) as relCount\n    UNION\n    MATCH ()-[r:VULNERABLE_TO]->() RETURN 'VULN",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 43,
+      "start_char": 34400,
+      "end_char": 35400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_44",
+    "text": " 'HAS_STATE' as relType, count(r) as relCount\n    UNION\n    MATCH ()-[r:MEASURED_IN]->() RETURN 'MEASURED_IN' as relType, count(r) as relCount\n    UNION\n    MATCH ()-[r:VULNERABLE_TO]->() RETURN 'VULNERABLE_TO' as relType, count(r) as relCount\n}\nRETURN relType, relCount\nORDER BY relType\n```\n\n**Acceptance Criteria:**\n- HAS_PROPERTY: 10,000-15,000\n- GENERATES_MEASUREMENT: 50,000-75,000\n- OFFERS_SERVICE: 5,000-7,000\n- HAS_FUNCTION: 3,000-4,000\n- EXECUTES_COMMAND: 6,000-8,000\n- HAS_STATE: 2,000-3,000 (includes historical states)\n- MEASURED_IN: 8,000-10,000\n- VULNERABLE_TO: 2,500-3,500\n\n**Total Target:** 86,500-125,500 new relationships\n\n---\n\n#### Test 3: Integration Point Validation\n\n**Objective:** Verify Wave 1 successfully integrated with existing graph\n\n**Test Query:**\n```cypher\n// Test integration with existing CVE data\nMATCH (d:Device)-[v:VULNERABLE_TO]->(cve:CVE)\nWITH count(DISTINCT d) as devicesWithVulns,\n     count(DISTINCT cve) as linkedCVEs,\n     count(v) as totalVulnLinks\nRETURN",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 44,
+      "start_char": 35200,
+      "end_char": 36200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_45",
+    "text": "egration with existing CVE data\nMATCH (d:Device)-[v:VULNERABLE_TO]->(cve:CVE)\nWITH count(DISTINCT d) as devicesWithVulns,\n     count(DISTINCT cve) as linkedCVEs,\n     count(v) as totalVulnLinks\nRETURN devicesWithVulns, linkedCVEs, totalVulnLinks\n\n// Expected results:\n// devicesWithVulns: 800-1,200 (40-60% of devices have known vulnerabilities)\n// linkedCVEs: 1,500-2,500 (subset of total CVE database)\n// totalVulnLinks: 2,500-3,500\n```\n\n**Acceptance Criteria:**\n- At least 40% of SAREF devices linked to CVE data\n- No orphaned VULNERABLE_TO relationships (all point to valid CVE nodes)\n- All linked CVEs preserve original properties\n\n---\n\n#### Test 4: Data Quality Validation\n\n**Objective:** Ensure data quality meets minimum standards\n\n**Test Query:**\n```cypher\n// Check for required properties on critical nodes\nMATCH (d:Device)\nWHERE d.deviceId IS NULL\n   OR d.name IS NULL\n   OR d.manufacturer IS NULL\n   OR d.criticality IS NULL\nRETURN count(d) as devicesWithMissingRequiredProps\n\n// Acceptan",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 45,
+      "start_char": 36000,
+      "end_char": 37000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_46",
+    "text": "n critical nodes\nMATCH (d:Device)\nWHERE d.deviceId IS NULL\n   OR d.name IS NULL\n   OR d.manufacturer IS NULL\n   OR d.criticality IS NULL\nRETURN count(d) as devicesWithMissingRequiredProps\n\n// Acceptance: 0 devices with missing required properties\n\nMATCH (p:Property)\nWHERE p.propertyId IS NULL\n   OR p.propertyType IS NULL\n   OR p.unitOfMeasure IS NULL\nRETURN count(p) as propertiesWithMissingRequiredProps\n\n// Acceptance: 0 properties with missing required properties\n\nMATCH (m:Measurement)\nWHERE m.measurementId IS NULL\n   OR m.timestamp IS NULL\n   OR m.value IS NULL\nRETURN count(m) as measurementsWithMissingRequiredProps\n\n// Acceptance: 0 measurements with missing required properties\n```\n\n**Acceptance Criteria:**\n- 0% of nodes missing required properties\n- All timestamps in valid ISO 8601 format\n- All criticality/severity fields using standard vocabulary\n\n---\n\n### 5.2 Performance Benchmarks\n\n#### Benchmark 1: Query Response Time\n\n**Objective:** Ensure Wave 1 additions don't degrade query ",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 46,
+      "start_char": 36800,
+      "end_char": 37800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_47",
+    "text": "mat\n- All criticality/severity fields using standard vocabulary\n\n---\n\n### 5.2 Performance Benchmarks\n\n#### Benchmark 1: Query Response Time\n\n**Objective:** Ensure Wave 1 additions don't degrade query performance\n\n**Test Queries with Performance Targets:**\n\n```cypher\n// Query 1: Find all vulnerable devices in critical locations (\u2264 500ms)\nPROFILE\nMATCH (d:Device)-[v:VULNERABLE_TO]->(cve:CVE)\nWHERE d.criticality = 'Critical'\n  AND d.deploymentLocation CONTAINS 'Building 3'\n  AND cve.cvssScore >= 7.0\nRETURN d.deviceId, d.name, cve.cveId, cve.cvssScore, v.mitigationStatus\nORDER BY cve.cvssScore DESC\nLIMIT 20\n\n// Performance target: \u2264 500ms\n// Expected result count: 5-15 devices\n\n\n// Query 2: Anomaly detection across all temperature sensors (\u2264 1000ms)\nPROFILE\nMATCH (d:Device)-[:HAS_PROPERTY]->(p:Property)-[:GENERATES_MEASUREMENT]->(m:Measurement)\nWHERE p.propertyType = 'Temperature'\n  AND m.isAnomaly = true\n  AND m.timestamp > datetime() - duration({days: 7})\nRETURN d.deviceId, p.propertyTyp",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 47,
+      "start_char": 37600,
+      "end_char": 38600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_48",
+    "text": ":Property)-[:GENERATES_MEASUREMENT]->(m:Measurement)\nWHERE p.propertyType = 'Temperature'\n  AND m.isAnomaly = true\n  AND m.timestamp > datetime() - duration({days: 7})\nRETURN d.deviceId, p.propertyType, m.timestamp, m.value, m.anomalyScore\nORDER BY m.anomalyScore DESC\nLIMIT 50\n\n// Performance target: \u2264 1000ms\n// Expected result count: 10-50 anomalies\n\n\n// Query 3: Device service security audit (\u2264 750ms)\nPROFILE\nMATCH (d:Device)-[:OFFERS_SERVICE]->(s:Service)\nWHERE s.authenticationRequired = false\n   OR s.encryptionEnabled = false\nOPTIONAL MATCH (d)-[:VULNERABLE_TO]->(cve:CVE)\nRETURN d.deviceId, d.manufacturer, s.serviceName, s.protocol,\n       s.authenticationRequired, s.encryptionEnabled,\n       count(cve) as vulnerabilityCount\nORDER BY vulnerabilityCount DESC\n\n// Performance target: \u2264 750ms\n// Expected result count: 50-150 insecure services\n```\n\n**Acceptance Criteria:**\n- All benchmark queries complete within target time on 100K+ node graph\n- Query performance degradation \u2264 10% compa",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 48,
+      "start_char": 38400,
+      "end_char": 39400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_49",
+    "text": "0ms\n// Expected result count: 50-150 insecure services\n```\n\n**Acceptance Criteria:**\n- All benchmark queries complete within target time on 100K+ node graph\n- Query performance degradation \u2264 10% compared to pre-Wave 1 baseline\n- Index hit rate > 95% for primary queries\n\n---\n\n#### Benchmark 2: Write Performance\n\n**Objective:** Validate bulk data ingestion performance\n\n**Test Scenario:** Ingest 1000 new measurements\n\n```cypher\n// Timed bulk measurement ingestion\nUNWIND range(1, 1000) as i\nMATCH (p:Property {propertyId: 'saref:property:temp-001'})\nCREATE (m:Measurement {\n    measurementId: 'saref:meas:bulk-' + toString(i),\n    timestamp: datetime() - duration({seconds: i}),\n    value: 20.0 + (rand() * 10),\n    quality: 'Good',\n    anomalyScore: rand() * 0.1,\n    isAnomaly: false,\n    confidenceLevel: 0.95 + (rand() * 0.05)\n})\nCREATE (p)-[:GENERATES_MEASUREMENT {\n    createdAt: datetime(),\n    validatedBy: 'BenchmarkTest'\n}]->(m)\n```\n\n**Acceptance Criteria:**\n- 1000 measurement ingestion: ",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 49,
+      "start_char": 39200,
+      "end_char": 40200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_50",
+    "text": "ceLevel: 0.95 + (rand() * 0.05)\n})\nCREATE (p)-[:GENERATES_MEASUREMENT {\n    createdAt: datetime(),\n    validatedBy: 'BenchmarkTest'\n}]->(m)\n```\n\n**Acceptance Criteria:**\n- 1000 measurement ingestion: \u2264 3 seconds\n- Throughput: \u2265 300 measurements/second\n- No lock contention or deadlocks\n\n---\n\n### 5.3 Data Integrity Checks\n\n#### Integrity Check 1: Referential Integrity\n\n**Objective:** Ensure no dangling relationships\n\n**Test Query:**\n```cypher\n// Check for relationships pointing to non-existent nodes\nMATCH (source)-[r:VULNERABLE_TO]->(target)\nWHERE NOT EXISTS((target))\nRETURN count(r) as danglingVulnerabilityLinks\n\nMATCH (source)-[r:HAS_PROPERTY]->(target)\nWHERE NOT EXISTS((target))\nRETURN count(r) as danglingPropertyLinks\n\n// Acceptance: 0 dangling relationships for all relationship types\n```\n\n**Acceptance Criteria:**\n- 0 dangling relationships across all 8 relationship types\n- All source and target nodes exist and have correct labels\n\n---\n\n#### Integrity Check 2: Constraint Validation\n\n",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 50,
+      "start_char": 40000,
+      "end_char": 41000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_51",
+    "text": "`\n\n**Acceptance Criteria:**\n- 0 dangling relationships across all 8 relationship types\n- All source and target nodes exist and have correct labels\n\n---\n\n#### Integrity Check 2: Constraint Validation\n\n**Objective:** Verify all unique constraints enforced\n\n**Test Query:**\n```cypher\n// Attempt to create duplicate device (should fail)\nCREATE (d:Device {\n    deviceId: 'saref:device:PLC-001',  // Duplicate ID\n    name: 'Duplicate Test Device',\n    manufacturer: 'Test Inc.',\n    criticality: 'Low'\n})\n\n// Expected: Constraint violation error\n\n// Verify constraint enforcement\nSHOW CONSTRAINTS\nYIELD name, type, labelsOrTypes, properties, entityType\nWHERE entityType = 'NODE'\nRETURN name, labelsOrTypes, properties\nORDER BY name\n```\n\n**Acceptance Criteria:**\n- All 8 unique constraints active (one per node type)\n- Duplicate ID insertion fails with constraint violation\n- All indexes operational and used by query planner\n\n---\n\n#### Integrity Check 3: Cardinality Validation\n\n**Objective:** Verify relat",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 51,
+      "start_char": 40800,
+      "end_char": 41800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_52",
+    "text": "ode type)\n- Duplicate ID insertion fails with constraint violation\n- All indexes operational and used by query planner\n\n---\n\n#### Integrity Check 3: Cardinality Validation\n\n**Objective:** Verify relationship cardinality matches schema\n\n**Test Query:**\n```cypher\n// Verify many-to-one cardinality for MEASURED_IN\nMATCH (p:Property)-[r:MEASURED_IN]->(u:UnitOfMeasure)\nWITH p, count(u) as unitCount\nWHERE unitCount > 1\nRETURN count(p) as propertiesWithMultipleUnits\n\n// Acceptance: 0 properties with multiple units (violates many-to-one)\n\n// Verify current state cardinality for HAS_STATE\nMATCH (d:Device)-[r:HAS_STATE {isCurrent: true}]->(st:State)\nWITH d, count(st) as currentStateCount\nWHERE currentStateCount > 1\nRETURN count(d) as devicesWithMultipleCurrentStates\n\n// Acceptance: 0 devices with multiple current states\n```\n\n**Acceptance Criteria:**\n- All many-to-one relationships have cardinality = 1 on target side\n- No cardinality violations for any relationship type\n- Current state uniqueness ",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 52,
+      "start_char": 41600,
+      "end_char": 42600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_53",
+    "text": "tiple current states\n```\n\n**Acceptance Criteria:**\n- All many-to-one relationships have cardinality = 1 on target side\n- No cardinality violations for any relationship type\n- Current state uniqueness enforced (1 current state per device)\n\n---\n\n### 5.4 Rollback Verification\n\n#### Rollback Test 1: Clean Removal\n\n**Objective:** Verify Wave 1 can be completely removed without affecting existing data\n\n**Rollback Script:**\n```cypher\n// Phase 1: Delete Wave 1 relationships\nMATCH ()-[r:HAS_PROPERTY]->() DELETE r;\nMATCH ()-[r:GENERATES_MEASUREMENT]->() DELETE r;\nMATCH ()-[r:OFFERS_SERVICE]->() DELETE r;\nMATCH ()-[r:HAS_FUNCTION]->() DELETE r;\nMATCH ()-[r:EXECUTES_COMMAND]->() DELETE r;\nMATCH ()-[r:HAS_STATE]->() DELETE r;\nMATCH ()-[r:MEASURED_IN]->() DELETE r;\nMATCH ()-[r:VULNERABLE_TO]->() DELETE r;\n\n// Phase 2: Delete Wave 1 nodes\nMATCH (d:Device) DELETE d;\nMATCH (p:Property) DELETE p;\nMATCH (m:Measurement) DELETE m;\nMATCH (s:Service) DELETE s;\nMATCH (f:Function) DELETE f;\nMATCH (c:Command) D",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 53,
+      "start_char": 42400,
+      "end_char": 43400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_54",
+    "text": "r;\n\n// Phase 2: Delete Wave 1 nodes\nMATCH (d:Device) DELETE d;\nMATCH (p:Property) DELETE p;\nMATCH (m:Measurement) DELETE m;\nMATCH (s:Service) DELETE s;\nMATCH (f:Function) DELETE f;\nMATCH (c:Command) DELETE c;\nMATCH (st:State) DELETE st;\nMATCH (u:UnitOfMeasure) DELETE u;\n\n// Phase 3: Drop Wave 1 constraints and indexes\nDROP CONSTRAINT device_id_unique IF EXISTS;\nDROP CONSTRAINT property_id_unique IF EXISTS;\nDROP CONSTRAINT measurement_id_unique IF EXISTS;\nDROP CONSTRAINT service_id_unique IF EXISTS;\nDROP CONSTRAINT function_id_unique IF EXISTS;\nDROP CONSTRAINT command_id_unique IF EXISTS;\nDROP CONSTRAINT state_id_unique IF EXISTS;\nDROP CONSTRAINT unit_id_unique IF EXISTS;\n\nDROP INDEX device_manufacturer_idx IF EXISTS;\nDROP INDEX device_model_idx IF EXISTS;\nDROP INDEX device_status_idx IF EXISTS;\nDROP INDEX device_location_idx IF EXISTS;\nDROP INDEX property_type_idx IF EXISTS;\nDROP INDEX measurement_timestamp_idx IF EXISTS;\nDROP INDEX service_protocol_idx IF EXISTS;\n// ... (drop all Wave",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 54,
+      "start_char": 43200,
+      "end_char": 44200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_55",
+    "text": "ISTS;\nDROP INDEX device_location_idx IF EXISTS;\nDROP INDEX property_type_idx IF EXISTS;\nDROP INDEX measurement_timestamp_idx IF EXISTS;\nDROP INDEX service_protocol_idx IF EXISTS;\n// ... (drop all Wave 1 indexes)\n```\n\n**Post-Rollback Verification:**\n```cypher\n// Verify no Wave 1 nodes remain\nMATCH (n)\nWHERE n:Device OR n:Property OR n:Measurement OR n:Service\n   OR n:Function OR n:Command OR n:State OR n:UnitOfMeasure\nRETURN count(n) as wave1NodesRemaining\n\n// Acceptance: 0 nodes\n\n// Verify existing CVE data intact\nMATCH (cve:CVE)\nWITH count(cve) as cveCount, count(cve.cveId) as cveWithId\nRETURN cveCount, cveWithId,\n       CASE WHEN cveCount = cveWithId THEN 'PASS' ELSE 'FAIL' END as integrityCheck\n\n// Acceptance: cveCount matches pre-Wave 1 baseline (e.g., 45,672)\n\n// Verify existing relationships intact\nMATCH (cve:CVE)-[r]-()\nWHERE type(r) <> 'VULNERABLE_TO'\nWITH type(r) as relType, count(r) as relCount\nRETURN relType, relCount\nORDER BY relType\n\n// Acceptance: All relationship counts ",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 55,
+      "start_char": 44000,
+      "end_char": 45000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_56",
+    "text": "ionships intact\nMATCH (cve:CVE)-[r]-()\nWHERE type(r) <> 'VULNERABLE_TO'\nWITH type(r) as relType, count(r) as relCount\nRETURN relType, relCount\nORDER BY relType\n\n// Acceptance: All relationship counts match pre-Wave 1 baseline\n```\n\n**Acceptance Criteria:**\n- 100% of Wave 1 additions removed (0 orphaned nodes/relationships)\n- 100% of pre-existing data preserved (node count, property values, relationships)\n- Graph returns to exact pre-Wave 1 state\n- Rollback completes in \u2264 10 minutes for full Wave 1 dataset\n\n---\n\n## 6. Example Queries\n\n### 6.1 Security-Focused Queries\n\n#### Query 1: Critical Vulnerabilities in Production Devices\n\n**Objective:** Identify critical vulnerabilities affecting production devices that lack patches\n\n**Cypher Query:**\n```cypher\nMATCH (d:Device)-[v:VULNERABLE_TO]->(cve:CVE)\nWHERE d.operationalStatus = 'Active'\n  AND d.criticality IN ['Critical', 'High']\n  AND cve.cvssScore >= 7.0\n  AND v.patchAvailable = false\nOPTIONAL MATCH (cve)-[:HAS_WEAKNESS]->(cwe:CWE)\nRETURN ",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 56,
+      "start_char": 44800,
+      "end_char": 45800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_57",
+    "text": ":CVE)\nWHERE d.operationalStatus = 'Active'\n  AND d.criticality IN ['Critical', 'High']\n  AND cve.cvssScore >= 7.0\n  AND v.patchAvailable = false\nOPTIONAL MATCH (cve)-[:HAS_WEAKNESS]->(cwe:CWE)\nRETURN d.deviceId,\n       d.name,\n       d.manufacturer,\n       d.model,\n       d.firmwareVersion,\n       d.deploymentLocation,\n       cve.cveId,\n       cve.cvssScore,\n       cve.description,\n       v.exploitabilityScore,\n       v.impactScore,\n       v.isExploited,\n       collect(DISTINCT cwe.cweId) as underlyingWeaknesses\nORDER BY cve.cvssScore DESC, v.exploitabilityScore DESC\nLIMIT 20\n```\n\n**Expected Results:**\n```\ndeviceId: 'saref:device:PLC-001'\nname: 'Siemens S7-1500 PLC'\nmanufacturer: 'Siemens AG'\nmodel: '6ES7515-2AM01-0AB0'\nfirmwareVersion: 'V2.9.3'\ndeploymentLocation: 'Building 3, Floor 2, Zone A'\ncveId: 'CVE-2023-12345'\ncvssScore: 9.8\ndescription: 'Buffer overflow in web server module allows remote code execution'\nexploitabilityScore: 3.9\nimpactScore: 5.9\nisExploited: false\nunderlyingWea",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 57,
+      "start_char": 45600,
+      "end_char": 46600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_58",
+    "text": "ne A'\ncveId: 'CVE-2023-12345'\ncvssScore: 9.8\ndescription: 'Buffer overflow in web server module allows remote code execution'\nexploitabilityScore: 3.9\nimpactScore: 5.9\nisExploited: false\nunderlyingWeaknesses: ['CWE-120', 'CWE-787']\n```\n\n**Performance Expectation:** \u2264 500ms on 100K node graph\n\n**Use Case:** Security teams prioritize patching efforts based on vulnerability severity and device criticality\n\n---\n\n#### Query 2: Insecure Services Exposed to Network\n\n**Objective:** Audit all network-accessible services lacking authentication or encryption\n\n**Cypher Query:**\n```cypher\nMATCH (d:Device)-[o:OFFERS_SERVICE]->(s:Service)\nWHERE (s.authenticationRequired = false OR s.encryptionEnabled = false)\n  AND d.ipAddress IS NOT NULL  // Device is network-accessible\n  AND s.protocol IN ['Modbus/TCP', 'HTTP', 'Telnet', 'FTP']  // Insecure protocols\nOPTIONAL MATCH (d)-[v:VULNERABLE_TO]->(cve:CVE)\nOPTIONAL MATCH (s)-[:EXPOSED_TO_ATTACK]->(attack:AttackPattern)\nWITH d, s,\n     count(DISTINCT cve) as",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 58,
+      "start_char": 46400,
+      "end_char": 47400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_59",
+    "text": ", 'HTTP', 'Telnet', 'FTP']  // Insecure protocols\nOPTIONAL MATCH (d)-[v:VULNERABLE_TO]->(cve:CVE)\nOPTIONAL MATCH (s)-[:EXPOSED_TO_ATTACK]->(attack:AttackPattern)\nWITH d, s,\n     count(DISTINCT cve) as vulnerabilityCount,\n     collect(DISTINCT attack.name)[..3] as topAttackPatterns\nRETURN d.deviceId,\n       d.name,\n       d.ipAddress,\n       d.deploymentLocation,\n       d.criticality,\n       s.serviceName,\n       s.protocol,\n       s.port,\n       s.authenticationRequired,\n       s.encryptionEnabled,\n       vulnerabilityCount,\n       topAttackPatterns,\n       CASE\n         WHEN s.authenticationRequired = false AND s.encryptionEnabled = false THEN 'Critical'\n         WHEN s.authenticationRequired = false OR s.encryptionEnabled = false THEN 'High'\n         ELSE 'Medium'\n       END as riskLevel\nORDER BY riskLevel DESC, vulnerabilityCount DESC\n```\n\n**Expected Results:**\n```\ndeviceId: 'saref:device:HMI-007'\nname: 'Schneider Electric HMI Panel'\nipAddress: '192.168.1.105'\ndeploymentLocation: 'B",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 59,
+      "start_char": 47200,
+      "end_char": 48200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_60",
+    "text": "\nORDER BY riskLevel DESC, vulnerabilityCount DESC\n```\n\n**Expected Results:**\n```\ndeviceId: 'saref:device:HMI-007'\nname: 'Schneider Electric HMI Panel'\nipAddress: '192.168.1.105'\ndeploymentLocation: 'Building 7, Control Room'\ncriticality: 'High'\nserviceName: 'Modbus Register Read/Write'\nprotocol: 'Modbus/TCP'\nport: 502\nauthenticationRequired: false\nencryptionEnabled: false\nvulnerabilityCount: 3\ntopAttackPatterns: ['Man-in-the-Middle', 'Command Injection', 'Replay Attack']\nriskLevel: 'Critical'\n```\n\n**Performance Expectation:** \u2264 750ms\n\n**Use Case:** Network security teams identify and remediate insecure service configurations\n\n---\n\n#### Query 3: Anomalous Device Behavior Correlation\n\n**Objective:** Correlate anomalous measurements with potential security events\n\n**Cypher Query:**\n```cypher\nMATCH (d:Device)-[:HAS_PROPERTY]->(p:Property)-[:GENERATES_MEASUREMENT]->(m:Measurement)\nWHERE m.isAnomaly = true\n  AND m.timestamp > datetime() - duration({hours: 24})\n  AND m.anomalyScore > 0.7\nWITH",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 60,
+      "start_char": 48000,
+      "end_char": 49000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_61",
+    "text": "MATCH (d:Device)-[:HAS_PROPERTY]->(p:Property)-[:GENERATES_MEASUREMENT]->(m:Measurement)\nWHERE m.isAnomaly = true\n  AND m.timestamp > datetime() - duration({hours: 24})\n  AND m.anomalyScore > 0.7\nWITH d, p, m\nORDER BY m.anomalyScore DESC\nWITH d,\n     collect({\n       propertyType: p.propertyType,\n       timestamp: m.timestamp,\n       value: m.value,\n       anomalyScore: m.anomalyScore\n     }) as anomalies\nWHERE size(anomalies) >= 3  // Multiple anomalies suggest coordinated attack\nOPTIONAL MATCH (d)-[:VULNERABLE_TO]->(cve:CVE)\nWHERE cve.cvssScore >= 7.0\nOPTIONAL MATCH (d)-[:HAS_STATE]->(st:State {isCurrent: true})\nRETURN d.deviceId,\n       d.name,\n       d.deploymentLocation,\n       d.criticality,\n       st.stateName as currentState,\n       size(anomalies) as anomalyCount,\n       anomalies[..5] as topAnomalies,\n       count(DISTINCT cve) as knownVulnerabilities,\n       CASE\n         WHEN size(anomalies) >= 5 THEN 'Potential Attack'\n         WHEN size(anomalies) >= 3 THEN 'Suspicious Ac",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 61,
+      "start_char": 48800,
+      "end_char": 49800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_62",
+    "text": "[..5] as topAnomalies,\n       count(DISTINCT cve) as knownVulnerabilities,\n       CASE\n         WHEN size(anomalies) >= 5 THEN 'Potential Attack'\n         WHEN size(anomalies) >= 3 THEN 'Suspicious Activity'\n         ELSE 'Monitor'\n       END as threatLevel\nORDER BY threatLevel, anomalyCount DESC\nLIMIT 10\n```\n\n**Expected Results:**\n```\ndeviceId: 'saref:device:RTU-042'\nname: 'Remote Terminal Unit - Pump Station 3'\ndeploymentLocation: 'Pump Station 3, Sector 12'\ncriticality: 'Critical'\ncurrentState: 'Running'\nanomalyCount: 7\ntopAnomalies: [\n  {propertyType: 'FlowRate', timestamp: '2025-10-30T14:23:15Z', value: 0.0, anomalyScore: 0.95},\n  {propertyType: 'Pressure', timestamp: '2025-10-30T14:23:18Z', value: 85.2, anomalyScore: 0.92},\n  {propertyType: 'Temperature', timestamp: '2025-10-30T14:23:21Z', value: 78.3, anomalyScore: 0.88},\n  ...\n]\nknownVulnerabilities: 2\nthreatLevel: 'Potential Attack'\n```\n\n**Performance Expectation:** \u2264 1200ms\n\n**Use Case:** SOC analysts investigate coordinated ",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 62,
+      "start_char": 49600,
+      "end_char": 50600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_63",
+    "text": ":21Z', value: 78.3, anomalyScore: 0.88},\n  ...\n]\nknownVulnerabilities: 2\nthreatLevel: 'Potential Attack'\n```\n\n**Performance Expectation:** \u2264 1200ms\n\n**Use Case:** SOC analysts investigate coordinated anomalies potentially indicating cyber-physical attacks\n\n---\n\n### 6.2 Operational Queries\n\n#### Query 4: Device Inventory with Security Posture\n\n**Objective:** Generate comprehensive device inventory with security status\n\n**Cypher Query:**\n```cypher\nMATCH (d:Device)\nOPTIONAL MATCH (d)-[v:VULNERABLE_TO]->(cve:CVE)\nWHERE cve.cvssScore >= 7.0\nOPTIONAL MATCH (d)-[:OFFERS_SERVICE]->(s:Service)\nWHERE s.authenticationRequired = false OR s.encryptionEnabled = false\nOPTIONAL MATCH (d)-[:HAS_PROPERTY]->(p:Property)-[:GENERATES_MEASUREMENT]->(m:Measurement)\nWHERE m.isAnomaly = true\n  AND m.timestamp > datetime() - duration({days: 7})\nWITH d,\n     count(DISTINCT cve) as criticalVulnerabilities,\n     count(DISTINCT s) as insecureServices,\n     count(DISTINCT m) as recentAnomalies\nRETURN d.deviceId,\n   ",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 63,
+      "start_char": 50400,
+      "end_char": 51400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_64",
+    "text": "tetime() - duration({days: 7})\nWITH d,\n     count(DISTINCT cve) as criticalVulnerabilities,\n     count(DISTINCT s) as insecureServices,\n     count(DISTINCT m) as recentAnomalies\nRETURN d.deviceId,\n       d.name,\n       d.manufacturer,\n       d.model,\n       d.firmwareVersion,\n       d.deploymentLocation,\n       d.operationalStatus,\n       d.criticality,\n       d.commissionDate,\n       criticalVulnerabilities,\n       insecureServices,\n       recentAnomalies,\n       CASE\n         WHEN criticalVulnerabilities > 0 AND insecureServices > 0 THEN 'Poor'\n         WHEN criticalVulnerabilities > 0 OR insecureServices > 0 THEN 'Fair'\n         WHEN recentAnomalies > 5 THEN 'Fair'\n         ELSE 'Good'\n       END as securityPosture\nORDER BY\n  CASE securityPosture\n    WHEN 'Poor' THEN 1\n    WHEN 'Fair' THEN 2\n    WHEN 'Good' THEN 3\n  END,\n  d.criticality\n```\n\n**Expected Results:** Tabular device inventory with 20-50 rows\n\n**Performance Expectation:** \u2264 2000ms\n\n**Use Case:** Management reporting and a",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 64,
+      "start_char": 51200,
+      "end_char": 52200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_65",
+    "text": "HEN 2\n    WHEN 'Good' THEN 3\n  END,\n  d.criticality\n```\n\n**Expected Results:** Tabular device inventory with 20-50 rows\n\n**Performance Expectation:** \u2264 2000ms\n\n**Use Case:** Management reporting and asset inventory audits\n\n---\n\n#### Query 5: Device Communication Topology\n\n**Objective:** Map device-to-device communication for network segmentation analysis\n\n**Cypher Query:**\n```cypher\nMATCH (source:Device)-[:OFFERS_SERVICE]->(s:Service)\nWHERE s.protocol IN ['Modbus/TCP', 'OPC-UA', 'Profinet', 'EtherNet/IP']\nMATCH (target:Device)-[:OFFERS_SERVICE]->(ts:Service)\nWHERE ts.protocol = s.protocol\n  AND source <> target\n  AND source.deploymentLocation <> target.deploymentLocation\nRETURN source.deviceId as sourceDevice,\n       source.deploymentLocation as sourceLocation,\n       source.ipAddress as sourceIP,\n       target.deviceId as targetDevice,\n       target.deploymentLocation as targetLocation,\n       target.ipAddress as targetIP,\n       s.protocol as communicationProtocol,\n       CASE\n      ",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 65,
+      "start_char": 52000,
+      "end_char": 53000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_66",
+    "text": "ourceIP,\n       target.deviceId as targetDevice,\n       target.deploymentLocation as targetLocation,\n       target.ipAddress as targetIP,\n       s.protocol as communicationProtocol,\n       CASE\n         WHEN (source.criticality = 'Critical' OR target.criticality = 'Critical')\n              AND (s.encryptionEnabled = false) THEN 'High Risk'\n         WHEN s.encryptionEnabled = false THEN 'Medium Risk'\n         ELSE 'Low Risk'\n       END as segmentationRisk\nORDER BY segmentationRisk, sourceDevice\n```\n\n**Expected Results:** Network communication pairs showing cross-zone traffic\n\n**Performance Expectation:** \u2264 1500ms\n\n**Use Case:** Network architects design secure segmentation boundaries\n\n---\n\n### 6.3 Analytics Queries\n\n#### Query 6: Vulnerability Distribution by Manufacturer\n\n**Objective:** Analyze vulnerability patterns across device manufacturers\n\n**Cypher Query:**\n```cypher\nMATCH (d:Device)-[v:VULNERABLE_TO]->(cve:CVE)\nWITH d.manufacturer as manufacturer,\n     count(DISTINCT d) as devic",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 66,
+      "start_char": 52800,
+      "end_char": 53800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_67",
+    "text": "alyze vulnerability patterns across device manufacturers\n\n**Cypher Query:**\n```cypher\nMATCH (d:Device)-[v:VULNERABLE_TO]->(cve:CVE)\nWITH d.manufacturer as manufacturer,\n     count(DISTINCT d) as deviceCount,\n     count(DISTINCT cve) as uniqueVulnerabilities,\n     avg(cve.cvssScore) as avgCVSSScore,\n     max(cve.cvssScore) as maxCVSSScore,\n     sum(CASE WHEN v.mitigationStatus = 'Unpatched' THEN 1 ELSE 0 END) as unpatchedCount,\n     sum(CASE WHEN v.isExploited = true THEN 1 ELSE 0 END) as exploitedCount\nRETURN manufacturer,\n       deviceCount,\n       uniqueVulnerabilities,\n       round(avgCVSSScore * 10) / 10 as avgCVSSScore,\n       maxCVSSScore,\n       unpatchedCount,\n       exploitedCount,\n       round((toFloat(unpatchedCount) / uniqueVulnerabilities) * 100) as unpatchedPercentage\nORDER BY unpatchedCount DESC, avgCVSSScore DESC\n```\n\n**Expected Results:**\n```\nmanufacturer: 'Siemens AG'\ndeviceCount: 342\nuniqueVulnerabilities: 47\navgCVSSScore: 6.8\nmaxCVSSScore: 9.8\nunpatchedCount: 28\nexp",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 67,
+      "start_char": 53600,
+      "end_char": 54600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_68",
+    "text": "Y unpatchedCount DESC, avgCVSSScore DESC\n```\n\n**Expected Results:**\n```\nmanufacturer: 'Siemens AG'\ndeviceCount: 342\nuniqueVulnerabilities: 47\navgCVSSScore: 6.8\nmaxCVSSScore: 9.8\nunpatchedCount: 28\nexploitedCount: 3\nunpatchedPercentage: 59.6\n```\n\n**Performance Expectation:** \u2264 800ms\n\n**Use Case:** Strategic vulnerability management and vendor risk assessment\n\n---\n\n## 7. Implementation Roadmap\n\n### Week 1-2: Schema Creation & Validation\n- Create all node and relationship schemas\n- Implement constraints and indexes\n- Validate schema against SAREF 3.1.1 specification\n- **Deliverable:** Complete schema in Neo4j test environment\n\n### Week 3-4: Data Ingestion & Integration\n- Develop ETL pipelines for device data import\n- Create integration mappings to existing CVE data\n- Implement measurement data ingestion\n- **Deliverable:** 15,000-20,000 nodes loaded with relationships\n\n### Week 5: Testing & Validation\n- Execute all acceptance tests\n- Run performance benchmarks\n- Validate data integrity\n- *",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 68,
+      "start_char": 54400,
+      "end_char": 55400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_69",
+    "text": "a ingestion\n- **Deliverable:** 15,000-20,000 nodes loaded with relationships\n\n### Week 5: Testing & Validation\n- Execute all acceptance tests\n- Run performance benchmarks\n- Validate data integrity\n- **Deliverable:** Test report with pass/fail results\n\n### Week 6: Documentation & Deployment\n- Finalize Wave 1 documentation\n- Create runbooks for operations\n- Deploy to production environment\n- **Deliverable:** Production-ready Wave 1 implementation\n\n### Week 7-8: Monitoring & Optimization\n- Monitor query performance\n- Optimize indexes based on usage patterns\n- Address any issues discovered in production\n- **Deliverable:** Stable Wave 1 in production, ready for Wave 2\n\n---\n\n## 8. Dependencies for Wave 2\n\nWave 2 (Water Infrastructure) will build upon Wave 1 foundations:\n\n1. **SAREF Device Base**: Water devices inherit from `SAREF:Device`\n2. **Property Extensions**: Water-specific properties (FlowRate, Pressure, ChemicalConcentration)\n3. **Service Architecture**: Water control services use SA",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 69,
+      "start_char": 55200,
+      "end_char": 56200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "03_WAVE_1_SAREF_CORE.md_chunk_70",
+    "text": ": Water devices inherit from `SAREF:Device`\n2. **Property Extensions**: Water-specific properties (FlowRate, Pressure, ChemicalConcentration)\n3. **Service Architecture**: Water control services use SAREF service model\n4. **Measurement Framework**: Water measurements leverage SAREF measurement structure\n\n**Critical Handoff:** Wave 1 must be complete and validated before Wave 2 development begins. Wave 2 implementation guide will reference Wave 1 schemas as base classes.\n\n---\n\n**Wave 1 Status:** SPECIFICATION COMPLETE\n**Next Wave:** Wave 2 - Water Infrastructure Domain Extensions\n**Integration Status:** Additive enhancement preserving all 183,000 existing nodes\n**Rollback Safety:** Complete rollback script provided, tested, and validated\n\n",
+    "metadata": {
+      "file_name": "03_WAVE_1_SAREF_CORE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/03_WAVE_1_SAREF_CORE.md",
+      "file_size": 56747,
+      "indexed_at": "2025-10-31T01:00:16.606065",
+      "chunk_id": 70,
+      "start_char": 56000,
+      "end_char": 57000,
+      "chunk_size": 747
+    }
+  }
+]

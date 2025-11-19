@@ -1,0 +1,224 @@
+# OpenSPG Production Docker Compose Configuration
+# Created: 2025-01-26
+# Neo4j Version: 5.26-community (LTS)
+# Includes: OpenSPG Server, MySQL, Neo4j, MinIO with data persistence
+
+version: "3.8"
+
+services:
+  # ============================================
+  # OpenSPG Main Application Server
+  # ============================================
+  openspg-server:
+    image: spg-registry.cn-hangzhou.cr.aliyuncs.com/spg/openspg-server:latest
+    container_name: openspg-server
+    restart: unless-stopped
+    ports:
+      - "8887:8887"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      neo4j:
+        condition: service_healthy
+      minio:
+        condition: service_started
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - openspg-logs:/app/logs
+      - shared-data:/shared
+    environment:
+      TZ: Asia/Shanghai
+      LANG: C.UTF-8
+      JAVA_OPTS: "-Xms2048m -Xmx8192m -Dfile.encoding=UTF-8"
+    command: [
+      "java",
+      "-Dfile.encoding=UTF-8",
+      "-Xms2048m",
+      "-Xmx8192m",
+      "-jar",
+      "arks-sofaboot-0.0.1-SNAPSHOT-executable.jar",
+      "--server.repository.impl.jdbc.host=mysql",
+      "--server.repository.impl.jdbc.password=openspg",
+      "--builder.model.execute.num=20",
+      "--cloudext.graphstore.url=neo4j://openspg-neo4j:7687?user=neo4j&password=neo4j@openspg&database=neo4j",
+      "--cloudext.searchengine.url=neo4j://openspg-neo4j:7687?user=neo4j&password=neo4j@openspg&database=neo4j",
+      "--cloudext.graphstore.multi-database=false",
+      "--neo4j.edition=community"
+    ]
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8887/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    networks:
+      - openspg-network
+
+  # ============================================
+  # MySQL - Metadata & Schema Storage
+  # Using OpenSPG-specific image with pre-loaded schema
+  # ============================================
+  mysql:
+    image: spg-registry.cn-hangzhou.cr.aliyuncs.com/spg/openspg-mysql:latest
+    container_name: openspg-mysql
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - mysql-data:/var/lib/mysql
+      - mysql-logs:/var/log/mysql
+      - shared-data:/shared
+    environment:
+      TZ: Asia/Shanghai
+      LANG: C.UTF-8
+      MYSQL_ROOT_PASSWORD: openspg
+      MYSQL_DATABASE: openspg
+      MYSQL_ROOT_HOST: "%"
+    command: [
+      "--character-set-server=utf8mb4",
+      "--collation-server=utf8mb4_general_ci",
+      "--default-authentication-plugin=mysql_native_password",
+      "--max_connections=1000",
+      "--innodb_buffer_pool_size=2G"
+    ]
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-popenspg"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    networks:
+      - openspg-network
+
+  # ============================================
+  # Neo4j - Graph Database (Latest Community LTS)
+  # Named: openspg-neo4j (as requested)
+  # ============================================
+  neo4j:
+    image: neo4j:5.26-community
+    container_name: openspg-neo4j
+    restart: unless-stopped
+    ports:
+      - "7474:7474"  # HTTP
+      - "7687:7687"  # Bolt
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - neo4j-data:/data
+      - neo4j-logs:/logs
+      - neo4j-import:/var/lib/neo4j/import
+      - neo4j-plugins:/plugins
+      - shared-data:/shared
+    environment:
+      # Authentication
+      - NEO4J_AUTH=neo4j/neo4j@openspg
+
+      # Timezone
+      - TZ=Asia/Shanghai
+
+      # Memory Configuration (Optimized for 16GB+ RAM systems)
+      - NEO4J_server_memory_heap_initial__size=2G
+      - NEO4J_server_memory_heap_max__size=4G
+      - NEO4J_server_memory_pagecache_size=2G
+
+      # APOC Plugin Configuration
+      - NEO4J_PLUGINS=["apoc"]
+      - NEO4J_apoc_export_file_enabled=true
+      - NEO4J_apoc_import_file_enabled=true
+      - NEO4J_apoc_import_file_use__neo4j__config=true
+      - NEO4J_dbms_security_procedures_unrestricted=apoc.*
+      - NEO4J_dbms_security_procedures_allowlist=apoc.*
+
+      # Performance Settings
+      - NEO4J_dbms_memory_transaction_total_max=2G
+      - NEO4J_db_tx__log_rotation_retention__policy=2G size
+
+      # Connection Settings
+      - NEO4J_server_bolt_listen__address=0.0.0.0:7687
+      - NEO4J_server_http_listen__address=0.0.0.0:7474
+
+      # Security Settings
+      - NEO4J_dbms_connector_bolt_enabled=true
+      - NEO4J_dbms_connector_http_enabled=true
+
+      # Default Database
+      - NEO4J_initial_dbms_default__database=neo4j
+    healthcheck:
+      test: ["CMD", "cypher-shell", "-u", "neo4j", "-p", "neo4j@openspg", "RETURN 1"]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+    networks:
+      - openspg-network
+
+  # ============================================
+  # MinIO - S3-Compatible Object Storage
+  # ============================================
+  minio:
+    image: minio/minio:latest
+    container_name: openspg-minio
+    restart: unless-stopped
+    ports:
+      - "9000:9000"  # API
+      - "9001:9001"  # Console
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - minio-data:/data
+      - shared-data:/shared
+    environment:
+      MINIO_ROOT_USER: minio
+      MINIO_ROOT_PASSWORD: minio@openspg
+      TZ: Asia/Shanghai
+    command: server /data --console-address ":9001"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - openspg-network
+
+# ============================================
+# Named Volumes for Data Persistence
+# ============================================
+volumes:
+  # Shared volume accessible by ALL containers for data exchange
+  shared-data:
+    driver: local
+    name: openspg-shared-data
+
+  # Service-specific volumes (persistent across restarts)
+  mysql-data:
+    driver: local
+    name: openspg-mysql-data
+  mysql-logs:
+    driver: local
+    name: openspg-mysql-logs
+  neo4j-data:
+    driver: local
+    name: openspg-neo4j-data
+  neo4j-logs:
+    driver: local
+    name: openspg-neo4j-logs
+  neo4j-import:
+    driver: local
+    name: openspg-neo4j-import
+  neo4j-plugins:
+    driver: local
+    name: openspg-neo4j-plugins
+  minio-data:
+    driver: local
+    name: openspg-minio-data
+  openspg-logs:
+    driver: local
+    name: openspg-server-logs
+
+# ============================================
+# Custom Network for Service Communication
+# ============================================
+networks:
+  openspg-network:
+    driver: bridge
+    name: openspg-network

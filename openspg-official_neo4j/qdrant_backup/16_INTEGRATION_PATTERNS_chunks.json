@@ -1,0 +1,912 @@
+[
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_0",
+    "text": "# Integration Patterns\n**File:** 16_INTEGRATION_PATTERNS.md\n**Created:** 2025-10-30 00:00:00 UTC\n**Modified:** 2025-10-30 00:00:00 UTC\n**Version:** v1.0.0\n**Author:** AEON FORGE Implementation Team\n**Purpose:** Complete integration patterns for cross-domain entity linking with Cypher implementations\n**Status:** ACTIVE\n\n## Executive Summary\n\nThis document provides comprehensive integration patterns for linking CVE, ThreatActor, ATT&CK, SAREF, ICS, UCO, and SBOM entities within the AEON Digital Twin Cybersecurity Threat Intelligence schema. Each pattern includes complete Cypher query examples, relationship semantics, property mappings, and validation queries.\n\n### Integration Architecture\n\nThe AEON schema enhancement creates a **multi-layer knowledge graph** with cross-domain integration:\n\n1. **Vulnerability Layer**: CVE nodes enhanced with SAREF, ICS, SBOM, and UCO context\n2. **Threat Intelligence Layer**: ThreatActor nodes enhanced with psychometrics, STIX, and ICS targeting\n3. **Attac",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_1",
+    "text": ". **Vulnerability Layer**: CVE nodes enhanced with SAREF, ICS, SBOM, and UCO context\n2. **Threat Intelligence Layer**: ThreatActor nodes enhanced with psychometrics, STIX, and ICS targeting\n3. **Attack Pattern Layer**: ATT&CK techniques linked to CVEs, ICS components, and UCO observables\n4. **Asset Layer**: SAREF devices, ICS components, and SBOM packages linked to vulnerabilities\n5. **Forensics Layer**: UCO observables linked to CVEs, threat actors, and attack patterns\n\n## 1. CVE Enhancement Patterns\n\n### 1.1 CVE \u2192 SAREF Device Integration\n\n**Pattern:** Link CVE vulnerabilities to SAREF IoT device types and functions they affect.\n\n**Complete Cypher Implementation:**\n\n```cypher\n// ===============================================\n// CVE \u2192 SAREF Device Integration Pattern\n// ===============================================\n\n// Step 1: Create SAREF Device Categories if not exist\nMERGE (sensor:SAREFDevice {\n  id: 'saref:Sensor',\n  name: 'Sensor Device',\n  device_category: 'sensor',\n  descrip",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_2",
+    "text": "==============================\n\n// Step 1: Create SAREF Device Categories if not exist\nMERGE (sensor:SAREFDevice {\n  id: 'saref:Sensor',\n  name: 'Sensor Device',\n  device_category: 'sensor',\n  description: 'Device that measures physical properties'\n})\n\nMERGE (actuator:SAREFDevice {\n  id: 'saref:Actuator',\n  name: 'Actuator Device',\n  device_category: 'actuator',\n  description: 'Device that performs physical actions'\n})\n\nMERGE (appliance:SAREFDevice {\n  id: 'saref:Appliance',\n  name: 'Smart Appliance',\n  device_category: 'appliance',\n  description: 'Household or industrial appliance with smart capabilities'\n})\n\nMERGE (meter:SAREFDevice {\n  id: 'saref:Meter',\n  name: 'Metering Device',\n  device_category: 'meter',\n  description: 'Device that measures consumption or usage'\n});\n\n// Step 2: Link CVEs to SAREF Devices based on description patterns\n// Example: Sensor vulnerabilities\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(sensor|temperature|humidity|pressure|motion|proximity).*'\n  OR c.",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_3",
+    "text": " CVEs to SAREF Devices based on description patterns\n// Example: Sensor vulnerabilities\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(sensor|temperature|humidity|pressure|motion|proximity).*'\n  OR c.description =~ '(?i).*(IoT|internet of things).*sensor.*'\n  OR c.vulnerability_type IN ['sensor_spoofing', 'measurement_tampering']\nWITH c\nMATCH (saref:SAREFDevice {device_category: 'sensor'})\nMERGE (c)-[r:AFFECTS_SAREF_DEVICE]->(saref)\nSET\n  r.device_category = 'sensor',\n  r.vulnerability_context = CASE\n    WHEN c.description =~ '(?i).*firmware.*' THEN 'firmware'\n    WHEN c.description =~ '(?i).*protocol.*' THEN 'protocol'\n    WHEN c.description =~ '(?i).*authentication.*' THEN 'authentication'\n    ELSE 'configuration'\n  END,\n  r.exposure_level = CASE\n    WHEN c.cvss_score >= 9.0 THEN 'direct'\n    WHEN c.cvss_score >= 7.0 THEN 'indirect'\n    ELSE 'transitive'\n  END,\n  r.remediation_priority = CASE\n    WHEN c.severity = 'CRITICAL' AND c.cvss_score >= 9.0 THEN 'critical'\n    WHEN c.severity",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_4",
+    "text": "'\n    WHEN c.cvss_score >= 7.0 THEN 'indirect'\n    ELSE 'transitive'\n  END,\n  r.remediation_priority = CASE\n    WHEN c.severity = 'CRITICAL' AND c.cvss_score >= 9.0 THEN 'critical'\n    WHEN c.severity IN ['CRITICAL', 'HIGH'] THEN 'high'\n    WHEN c.severity = 'MEDIUM' THEN 'medium'\n    ELSE 'low'\n  END,\n  r.created_at = datetime(),\n  r.confidence_score = 0.85;\n\n// Example: Actuator vulnerabilities\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(actuator|motor|valve|switch|relay|controller).*'\n  OR c.description =~ '(?i).*(industrial control|SCADA).*actuator.*'\nWITH c\nMATCH (saref:SAREFDevice {device_category: 'actuator'})\nMERGE (c)-[r:AFFECTS_SAREF_DEVICE]->(saref)\nSET\n  r.device_category = 'actuator',\n  r.vulnerability_context = CASE\n    WHEN c.description =~ '(?i).*command injection.*' THEN 'command_injection'\n    WHEN c.description =~ '(?i).*unauthorized control.*' THEN 'access_control'\n    ELSE 'configuration'\n  END,\n  r.exposure_level = 'direct',  // Actuator vulnerabilities typical",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_5",
+    "text": "N 'command_injection'\n    WHEN c.description =~ '(?i).*unauthorized control.*' THEN 'access_control'\n    ELSE 'configuration'\n  END,\n  r.exposure_level = 'direct',  // Actuator vulnerabilities typically direct\n  r.remediation_priority = CASE\n    WHEN c.cvss_score >= 9.0 THEN 'critical'\n    WHEN c.cvss_score >= 7.0 THEN 'high'\n    ELSE 'medium'\n  END,\n  r.created_at = datetime(),\n  r.confidence_score = 0.90;\n\n// Example: Smart Appliance vulnerabilities\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(smart home|appliance|thermostat|refrigerator|washing machine|oven).*'\n  OR c.description =~ '(?i).*(HomeKit|Google Home|Alexa|smart speaker).*'\nWITH c\nMATCH (saref:SAREFDevice {device_category: 'appliance'})\nMERGE (c)-[r:AFFECTS_SAREF_DEVICE]->(saref)\nSET\n  r.device_category = 'appliance',\n  r.vulnerability_context = 'consumer_iot',\n  r.exposure_level = CASE\n    WHEN c.description =~ '(?i).*remote.*' THEN 'direct'\n    ELSE 'indirect'\n  END,\n  r.remediation_priority = CASE\n    WHEN c.cvss_scor",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_6",
+    "text": "lnerability_context = 'consumer_iot',\n  r.exposure_level = CASE\n    WHEN c.description =~ '(?i).*remote.*' THEN 'direct'\n    ELSE 'indirect'\n  END,\n  r.remediation_priority = CASE\n    WHEN c.cvss_score >= 8.0 THEN 'high'\n    ELSE 'medium'\n  END,\n  r.created_at = datetime(),\n  r.confidence_score = 0.80;\n\n// Step 3: Add SAREF-specific properties to CVE nodes\nMATCH (c:CVE)-[r:AFFECTS_SAREF_DEVICE]->()\nWITH c, collect(DISTINCT r.device_category) AS device_types\nSET\n  c.saref_device_types = device_types,\n  c.iot_exploitation_vector = CASE\n    WHEN 'sensor' IN device_types THEN 'measurement_spoofing'\n    WHEN 'actuator' IN device_types THEN 'unauthorized_control'\n    WHEN 'appliance' IN device_types THEN 'remote_access'\n    ELSE 'general_iot'\n  END;\n\n// Step 4: Validation query\nMATCH (c:CVE)-[r:AFFECTS_SAREF_DEVICE]->(saref:SAREFDevice)\nRETURN\n  saref.device_category AS device_category,\n  count(c) AS affected_cves,\n  avg(c.cvss_score) AS avg_cvss,\n  collect(DISTINCT r.vulnerability_context)[",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_7",
+    "text": "AFFECTS_SAREF_DEVICE]->(saref:SAREFDevice)\nRETURN\n  saref.device_category AS device_category,\n  count(c) AS affected_cves,\n  avg(c.cvss_score) AS avg_cvss,\n  collect(DISTINCT r.vulnerability_context)[0..5] AS sample_contexts\nORDER BY affected_cves DESC;\n```\n\n### 1.2 CVE \u2192 SAREF Function Integration\n\n**Pattern:** Link CVE vulnerabilities to specific SAREF function types (sensing, actuating, metering).\n\n**Complete Cypher Implementation:**\n\n```cypher\n// ===============================================\n// CVE \u2192 SAREF Function Integration Pattern\n// ===============================================\n\n// Step 1: Create SAREF Function nodes\nMERGE (sensing:SAREFFunction {\n  id: 'saref:SensingFunction',\n  name: 'Sensing Function',\n  function_category: 'sensing',\n  description: 'Function for measuring physical properties'\n})\n\nMERGE (actuating:SAREFFunction {\n  id: 'saref:ActuatingFunction',\n  name: 'Actuating Function',\n  function_category: 'actuating',\n  description: 'Function for performing physic",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_8",
+    "text": "hysical properties'\n})\n\nMERGE (actuating:SAREFFunction {\n  id: 'saref:ActuatingFunction',\n  name: 'Actuating Function',\n  function_category: 'actuating',\n  description: 'Function for performing physical actions'\n})\n\nMERGE (metering:SAREFFunction {\n  id: 'saref:MeteringFunction',\n  name: 'Metering Function',\n  function_category: 'metering',\n  description: 'Function for measuring consumption or usage'\n});\n\n// Step 2: Link CVEs to SAREF Functions with impact assessment\n// Sensing Function vulnerabilities\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(sensor|sensing|measurement|detection|monitoring).*'\n  AND (c.description =~ '(?i).*(tamper|spoof|manipulate|falsify|corrupt).*'\n       OR c.vulnerability_type IN ['measurement_tampering', 'sensor_spoofing'])\nWITH c\nMATCH (func:SAREFFunction {function_category: 'sensing'})\nMERGE (c)-[r:IMPACTS_SAREF_FUNCTION]->(func)\nSET\n  r.function_category = 'sensing',\n  r.impact_severity = CASE\n    WHEN c.description =~ '(?i).*complete.*loss.*' THEN 'compl",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_9",
+    "text": "tion_category: 'sensing'})\nMERGE (c)-[r:IMPACTS_SAREF_FUNCTION]->(func)\nSET\n  r.function_category = 'sensing',\n  r.impact_severity = CASE\n    WHEN c.description =~ '(?i).*complete.*loss.*' THEN 'complete_loss'\n    WHEN c.description =~ '(?i).*(degrade|intermittent).*' THEN 'degradation'\n    ELSE 'intermittent'\n  END,\n  r.affected_properties = CASE\n    WHEN c.description =~ '(?i).*temperature.*' THEN ['saref:Temperature']\n    WHEN c.description =~ '(?i).*humidity.*' THEN ['saref:Humidity']\n    WHEN c.description =~ '(?i).*pressure.*' THEN ['saref:Pressure']\n    WHEN c.description =~ '(?i).*motion.*' THEN ['saref:Motion']\n    ELSE ['saref:Measurement']\n  END,\n  r.detection_difficulty = CASE\n    WHEN c.cvss_score >= 9.0 THEN 'trivial'\n    WHEN c.cvss_score >= 7.0 THEN 'moderate'\n    ELSE 'sophisticated'\n  END,\n  r.created_at = datetime();\n\n// Actuating Function vulnerabilities\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(actuate|actuator|control|command|execute|operate).*'\n  AND (c.desc",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_10",
+    "text": "histicated'\n  END,\n  r.created_at = datetime();\n\n// Actuating Function vulnerabilities\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(actuate|actuator|control|command|execute|operate).*'\n  AND (c.description =~ '(?i).*(unauthorized|injection|bypass|escalation).*'\n       OR c.vulnerability_type IN ['command_injection', 'access_control_bypass'])\nWITH c\nMATCH (func:SAREFFunction {function_category: 'actuating'})\nMERGE (c)-[r:IMPACTS_SAREF_FUNCTION]->(func)\nSET\n  r.function_category = 'actuating',\n  r.impact_severity = CASE\n    WHEN c.severity = 'CRITICAL' THEN 'complete_loss'\n    WHEN c.severity = 'HIGH' THEN 'degradation'\n    ELSE 'intermittent'\n  END,\n  r.affected_properties = ['saref:OnOffState', 'saref:OpenCloseState'],\n  r.safety_concern = c.cvss_score >= 8.0,\n  r.created_at = datetime();\n\n// Metering Function vulnerabilities\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(meter|metering|consumption|usage|billing|energy).*'\n  AND (c.description =~ '(?i).*(tamper|manipulate|fraud|bypas",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_11",
+    "text": ";\n\n// Metering Function vulnerabilities\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(meter|metering|consumption|usage|billing|energy).*'\n  AND (c.description =~ '(?i).*(tamper|manipulate|fraud|bypass).*'\n       OR c.vulnerability_type IN ['metering_fraud', 'consumption_tampering'])\nWITH c\nMATCH (func:SAREFFunction {function_category: 'metering'})\nMERGE (c)-[r:IMPACTS_SAREF_FUNCTION]->(func)\nSET\n  r.function_category = 'metering',\n  r.impact_severity = 'complete_loss',  // Metering fraud is always severe\n  r.affected_properties = ['saref:Power', 'saref:Energy', 'saref:Consumption'],\n  r.financial_impact = true,\n  r.created_at = datetime();\n\n// Step 3: Add function impact properties to CVE nodes\nMATCH (c:CVE)-[r:IMPACTS_SAREF_FUNCTION]->()\nWITH c, collect(DISTINCT r.function_category) AS function_impacts\nSET c.saref_function_impact = function_impacts;\n\n// Step 4: Create SAREF Measurement corruption relationships\nMATCH (c:CVE)-[:IMPACTS_SAREF_FUNCTION]->(func:SAREFFunction {function_cat",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_12",
+    "text": "unction_impacts\nSET c.saref_function_impact = function_impacts;\n\n// Step 4: Create SAREF Measurement corruption relationships\nMATCH (c:CVE)-[:IMPACTS_SAREF_FUNCTION]->(func:SAREFFunction {function_category: 'sensing'})\nMERGE (measurement:SAREFMeasurement {\n  id: 'saref:Measurement',\n  name: 'Generic Measurement',\n  measurement_type: 'generic'\n})\nMERGE (c)-[r:CORRUPTS_MEASUREMENT]->(measurement)\nSET\n  r.manipulation_type = CASE\n    WHEN c.description =~ '(?i).*spoof.*' THEN 'spoofing'\n    WHEN c.description =~ '(?i).*tamper.*' THEN 'tampering'\n    WHEN c.description =~ '(?i).*replay.*' THEN 'replay'\n    ELSE 'injection'\n  END,\n  r.detection_difficulty = CASE\n    WHEN c.cvss_score < 5.0 THEN 'sophisticated'\n    WHEN c.cvss_score < 7.0 THEN 'moderate'\n    ELSE 'trivial'\n  END,\n  r.created_at = datetime();\n\n// Step 5: Validation query\nMATCH (c:CVE)-[r:IMPACTS_SAREF_FUNCTION]->(func:SAREFFunction)\nRETURN\n  func.function_category AS function,\n  count(c) AS affected_cves,\n  collect(DISTINCT r",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_13",
+    "text": "= datetime();\n\n// Step 5: Validation query\nMATCH (c:CVE)-[r:IMPACTS_SAREF_FUNCTION]->(func:SAREFFunction)\nRETURN\n  func.function_category AS function,\n  count(c) AS affected_cves,\n  collect(DISTINCT r.impact_severity) AS impact_levels,\n  avg(c.cvss_score) AS avg_cvss\nORDER BY affected_cves DESC;\n```\n\n### 1.3 CVE \u2192 ICS Component Integration\n\n**Pattern:** Link CVE vulnerabilities to ICS/OT component types (PLC, HMI, SCADA, DCS, RTU) with Purdue Model levels.\n\n**Complete Cypher Implementation:**\n\n```cypher\n// ===============================================\n// CVE \u2192 ICS Component Integration Pattern\n// ===============================================\n\n// Step 1: Create ICS Component Type nodes\nMERGE (plc:ICSComponent {\n  id: 'ics:PLC',\n  name: 'Programmable Logic Controller',\n  component_type: 'PLC',\n  purdue_level: 1,  // Field Controller\n  description: 'Industrial automation controller'\n})\n\nMERGE (hmi:ICSComponent {\n  id: 'ics:HMI',\n  name: 'Human-Machine Interface',\n  component_type: 'HM",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_14",
+    "text": "'PLC',\n  purdue_level: 1,  // Field Controller\n  description: 'Industrial automation controller'\n})\n\nMERGE (hmi:ICSComponent {\n  id: 'ics:HMI',\n  name: 'Human-Machine Interface',\n  component_type: 'HMI',\n  purdue_level: 2,  // Supervisory Control\n  description: 'Operator interface for industrial processes'\n})\n\nMERGE (scada:ICSComponent {\n  id: 'ics:SCADA',\n  name: 'SCADA System',\n  component_type: 'SCADA',\n  purdue_level: 3,  // Site Operations\n  description: 'Supervisory Control and Data Acquisition system'\n})\n\nMERGE (dcs:ICSComponent {\n  id: 'ics:DCS',\n  name: 'Distributed Control System',\n  component_type: 'DCS',\n  purdue_level: 2,  // Supervisory Control\n  description: 'Distributed process control system'\n})\n\nMERGE (rtu:ICSComponent {\n  id: 'ics:RTU',\n  name: 'Remote Terminal Unit',\n  component_type: 'RTU',\n  purdue_level: 1,  // Field Controller\n  description: 'Remote data acquisition and control unit'\n});\n\n// Step 2: Link CVEs to ICS Components with criticality assessment\n// PLC ",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_15",
+    "text": "component_type: 'RTU',\n  purdue_level: 1,  // Field Controller\n  description: 'Remote data acquisition and control unit'\n});\n\n// Step 2: Link CVEs to ICS Components with criticality assessment\n// PLC vulnerabilities\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(PLC|programmable logic controller|ladder logic|control logic).*'\n  OR EXISTS(c.cwe_id) AND c.cwe_id IN ['CWE-94', 'CWE-502', 'CWE-306']  // Code injection, deserialization, authentication\nWITH c\nMATCH (ics:ICSComponent {component_type: 'PLC'})\nMERGE (c)-[r:AFFECTS_ICS_COMPONENT]->(ics)\nSET\n  r.component_type = 'PLC',\n  r.criticality_level = CASE\n    WHEN c.description =~ '(?i).*(safety|emergency shutdown|ESD|SIS).*' THEN 'safety_critical'\n    WHEN c.cvss_score >= 9.0 THEN 'production_critical'\n    ELSE 'monitoring'\n  END,\n  r.ics_impact = CASE\n    WHEN c.description =~ '(?i).*(shutdown|halt|stop production).*' THEN 'process_disruption'\n    WHEN c.description =~ '(?i).*(safety|hazard|dangerous).*' THEN 'safety_hazard'\n    ELSE '",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_16",
+    "text": "mpact = CASE\n    WHEN c.description =~ '(?i).*(shutdown|halt|stop production).*' THEN 'process_disruption'\n    WHEN c.description =~ '(?i).*(safety|hazard|dangerous).*' THEN 'safety_hazard'\n    ELSE 'data_corruption'\n  END,\n  r.purdue_level = [1],  // PLCs at Level 1\n  r.exploit_complexity = CASE\n    WHEN c.cvss_vector =~ '.*AV:N.*' THEN 'network_accessible'  // Network attack vector\n    WHEN c.cvss_vector =~ '.*AV:A.*' THEN 'adjacent_network'\n    ELSE 'local_access'\n  END,\n  r.created_at = datetime(),\n  r.confidence_score = 0.95;\n\n// HMI vulnerabilities\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(HMI|human machine interface|operator interface|SCADA client).*'\n  OR c.description =~ '(?i).*(Wonderware|Ignition|FactoryTalk|WinCC).*'  // Common HMI platforms\nWITH c\nMATCH (ics:ICSComponent {component_type: 'HMI'})\nMERGE (c)-[r:AFFECTS_ICS_COMPONENT]->(ics)\nSET\n  r.component_type = 'HMI',\n  r.criticality_level = CASE\n    WHEN c.cvss_score >= 9.0 THEN 'production_critical'\n    ELSE 'monit",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_17",
+    "text": "{component_type: 'HMI'})\nMERGE (c)-[r:AFFECTS_ICS_COMPONENT]->(ics)\nSET\n  r.component_type = 'HMI',\n  r.criticality_level = CASE\n    WHEN c.cvss_score >= 9.0 THEN 'production_critical'\n    ELSE 'monitoring'\n  END,\n  r.ics_impact = CASE\n    WHEN c.description =~ '(?i).*(unauthorized control|command injection).*' THEN 'process_disruption'\n    WHEN c.description =~ '(?i).*(display|visualization|data integrity).*' THEN 'data_corruption'\n    ELSE 'monitoring'\n  END,\n  r.purdue_level = [2],  // HMIs at Level 2\n  r.created_at = datetime(),\n  r.confidence_score = 0.90;\n\n// SCADA vulnerabilities\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(SCADA|supervisory control|data acquisition).*'\n  OR c.description =~ '(?i).*(OSIsoft|PI System|ClearSCADA).*'\nWITH c\nMATCH (ics:ICSComponent {component_type: 'SCADA'})\nMERGE (c)-[r:AFFECTS_ICS_COMPONENT]->(ics)\nSET\n  r.component_type = 'SCADA',\n  r.criticality_level = 'production_critical',  // SCADA always critical\n  r.ics_impact = 'process_disruption',\n  ",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_18",
+    "text": "SCADA'})\nMERGE (c)-[r:AFFECTS_ICS_COMPONENT]->(ics)\nSET\n  r.component_type = 'SCADA',\n  r.criticality_level = 'production_critical',  // SCADA always critical\n  r.ics_impact = 'process_disruption',\n  r.purdue_level = [2, 3],  // SCADA spans Levels 2-3\n  r.created_at = datetime(),\n  r.confidence_score = 0.95;\n\n// DCS vulnerabilities\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(DCS|distributed control system|process control).*'\n  OR c.description =~ '(?i).*(Honeywell|Emerson DeltaV|ABB).*'\nWITH c\nMATCH (ics:ICSComponent {component_type: 'DCS'})\nMERGE (c)-[r:AFFECTS_ICS_COMPONENT]->(ics)\nSET\n  r.component_type = 'DCS',\n  r.criticality_level = 'production_critical',\n  r.ics_impact = CASE\n    WHEN c.description =~ '(?i).*safety.*' THEN 'safety_hazard'\n    ELSE 'process_disruption'\n  END,\n  r.purdue_level = [1, 2],  // DCS spans Levels 1-2\n  r.created_at = datetime(),\n  r.confidence_score = 0.90;\n\n// RTU vulnerabilities\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(RTU|remote terminal uni",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_19",
+    "text": "purdue_level = [1, 2],  // DCS spans Levels 1-2\n  r.created_at = datetime(),\n  r.confidence_score = 0.90;\n\n// RTU vulnerabilities\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(RTU|remote terminal unit|field device).*'\n  OR c.description =~ '(?i).*(Modbus RTU|DNP3 outstation).*'\nWITH c\nMATCH (ics:ICSComponent {component_type: 'RTU'})\nMERGE (c)-[r:AFFECTS_ICS_COMPONENT]->(ics)\nSET\n  r.component_type = 'RTU',\n  r.criticality_level = CASE\n    WHEN c.cvss_score >= 9.0 THEN 'production_critical'\n    ELSE 'monitoring'\n  END,\n  r.ics_impact = 'data_corruption',\n  r.purdue_level = [0, 1],  // RTUs at Levels 0-1 (field level)\n  r.created_at = datetime(),\n  r.confidence_score = 0.85;\n\n// Step 3: Add ICS-specific properties to CVE nodes\nMATCH (c:CVE)-[r:AFFECTS_ICS_COMPONENT]->()\nWITH c,\n  collect(DISTINCT r.component_type) AS component_types,\n  collect(DISTINCT r.criticality_level) AS criticality_levels,\n  apoc.coll.flatten(collect(r.purdue_level)) AS purdue_levels\nSET\n  c.ics_applicable = true,",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_20",
+    "text": "STINCT r.component_type) AS component_types,\n  collect(DISTINCT r.criticality_level) AS criticality_levels,\n  apoc.coll.flatten(collect(r.purdue_level)) AS purdue_levels\nSET\n  c.ics_applicable = true,\n  c.ics_component_types = component_types,\n  c.purdue_levels = apoc.coll.toSet(purdue_levels),\n  c.safety_impact = CASE\n    WHEN ANY(level IN criticality_levels WHERE level = 'safety_critical') THEN 'CRITICAL'\n    WHEN ANY(level IN criticality_levels WHERE level = 'production_critical') THEN 'HIGH'\n    ELSE 'LOW'\n  END,\n  c.process_impact = CASE\n    WHEN 'PLC' IN component_types OR 'DCS' IN component_types THEN 'direct_control'\n    WHEN 'SCADA' IN component_types OR 'HMI' IN component_types THEN 'supervisory'\n    ELSE 'monitoring'\n  END;\n\n// Step 4: Validation query\nMATCH (c:CVE)-[r:AFFECTS_ICS_COMPONENT]->(ics:ICSComponent)\nRETURN\n  ics.component_type AS component,\n  count(c) AS affected_cves,\n  collect(DISTINCT r.criticality_level) AS criticality_levels,\n  apoc.coll.flatten(collect(r.pu",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_21",
+    "text": "CS_COMPONENT]->(ics:ICSComponent)\nRETURN\n  ics.component_type AS component,\n  count(c) AS affected_cves,\n  collect(DISTINCT r.criticality_level) AS criticality_levels,\n  apoc.coll.flatten(collect(r.purdue_level)) AS purdue_levels,\n  avg(c.cvss_score) AS avg_cvss\nORDER BY affected_cves DESC;\n```\n\n### 1.4 CVE \u2192 Industrial Protocol Integration\n\n**Pattern:** Link CVE vulnerabilities to industrial communication protocols.\n\n**Complete Cypher Implementation:**\n\n```cypher\n// ===============================================\n// CVE \u2192 Industrial Protocol Integration Pattern\n// ===============================================\n\n// Step 1: Create Industrial Protocol nodes\nMERGE (modbus:IndustrialProtocol {\n  id: 'protocol:Modbus',\n  name: 'Modbus',\n  protocol_name: 'Modbus',\n  protocol_type: 'fieldbus',\n  osi_layer: 'application',\n  common_ports: [502],\n  description: 'Legacy industrial communication protocol'\n})\n\nMERGE (dnp3:IndustrialProtocol {\n  id: 'protocol:DNP3',\n  name: 'DNP3',\n  protocol_name:",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_22",
+    "text": " osi_layer: 'application',\n  common_ports: [502],\n  description: 'Legacy industrial communication protocol'\n})\n\nMERGE (dnp3:IndustrialProtocol {\n  id: 'protocol:DNP3',\n  name: 'DNP3',\n  protocol_name: 'DNP3',\n  protocol_type: 'SCADA',\n  osi_layer: 'application',\n  common_ports: [20000],\n  description: 'Distributed Network Protocol for SCADA'\n})\n\nMERGE (opcua:IndustrialProtocol {\n  id: 'protocol:OPC-UA',\n  name: 'OPC Unified Architecture',\n  protocol_name: 'OPC-UA',\n  protocol_type: 'industrial_iot',\n  osi_layer: 'application',\n  common_ports: [4840],\n  security_features: ['encryption', 'authentication', 'authorization'],\n  description: 'Modern secure industrial communication protocol'\n})\n\nMERGE (ethernetip:IndustrialProtocol {\n  id: 'protocol:EtherNetIP',\n  name: 'EtherNet/IP',\n  protocol_name: 'EtherNet/IP',\n  protocol_type: 'industrial_ethernet',\n  osi_layer: 'application',\n  common_ports: [44818, 2222],\n  description: 'Industrial Protocol for Ethernet networks'\n})\n\nMERGE (profinet:I",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_23",
+    "text": "name: 'EtherNet/IP',\n  protocol_type: 'industrial_ethernet',\n  osi_layer: 'application',\n  common_ports: [44818, 2222],\n  description: 'Industrial Protocol for Ethernet networks'\n})\n\nMERGE (profinet:IndustrialProtocol {\n  id: 'protocol:PROFINET',\n  name: 'PROFINET',\n  protocol_name: 'PROFINET',\n  protocol_type: 'industrial_ethernet',\n  osi_layer: 'data_link',\n  description: 'Siemens industrial Ethernet protocol'\n})\n\nMERGE (bacnet:IndustrialProtocol {\n  id: 'protocol:BACnet',\n  name: 'BACnet',\n  protocol_name: 'BACnet',\n  protocol_type: 'building_automation',\n  osi_layer: 'application',\n  common_ports: [47808],\n  description: 'Building Automation and Control networks protocol'\n});\n\n// Step 2: Link CVEs to Industrial Protocols\n// Modbus vulnerabilities\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(modbus|modbus tcp|modbus rtu).*'\n  OR c.cwe_id IN ['CWE-306', 'CWE-319']  // Missing authentication, cleartext\nWITH c\nMATCH (proto:IndustrialProtocol {protocol_name: 'Modbus'})\nMERGE (c)-[r:EX",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_24",
+    "text": "'(?i).*(modbus|modbus tcp|modbus rtu).*'\n  OR c.cwe_id IN ['CWE-306', 'CWE-319']  // Missing authentication, cleartext\nWITH c\nMATCH (proto:IndustrialProtocol {protocol_name: 'Modbus'})\nMERGE (c)-[r:EXPLOITS_PROTOCOL]->(proto)\nSET\n  r.protocol_name = 'Modbus',\n  r.attack_vector = CASE\n    WHEN c.cvss_vector =~ '.*AV:N.*' THEN 'network'\n    WHEN c.cvss_vector =~ '.*AV:A.*' THEN 'adjacent'\n    ELSE 'local'\n  END,\n  r.exploit_complexity = CASE\n    WHEN c.cvss_vector =~ '.*AC:L.*' THEN 'low'\n    WHEN c.cvss_vector =~ '.*AC:H.*' THEN 'high'\n    ELSE 'medium'\n  END,\n  r.authentication_required = false,  // Modbus lacks authentication\n  r.encryption_available = false,  // Modbus lacks encryption\n  r.created_at = datetime(),\n  r.confidence_score = 0.95;\n\n// DNP3 vulnerabilities\nMATCH (c:CVE)\nWHERE c.description =~ '(?i).*(dnp3|distributed network protocol).*'\nWITH c\nMATCH (proto:IndustrialProtocol {protocol_name: 'DNP3'})\nMERGE (c)-[r:EXPLOITS_PROTOCOL]->(proto)\nSET\n  r.protocol_name = 'DNP3',\n",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_25",
+    "text": "c.description =~ '(?i).*(dnp3|distributed network protocol).*'\nWITH c\nMATCH (proto:IndustrialProtocol {protocol_name: 'DNP3'})\nMERGE (c)-[r:EXPLOITS_PROTOCOL]->(proto)\nSET\n  r.protocol_name = 'DNP3',\n  r.attack_vector = 'network',\n  r.exploit_complexity = 'medium',\n  r.created_at = datetime(),\n  r.confidence_score = 0.90;\n\n// OPC-UA vulnerabilities\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(OPC UA|OPC-UA|OPC unified architecture).*'\nWITH c\nMATCH (proto:IndustrialProtocol {protocol_name: 'OPC-UA'})\nMERGE (c)-[r:EXPLOITS_PROTOCOL]->(proto)\nSET\n  r.protocol_name = 'OPC-UA',\n  r.attack_vector = CASE\n    WHEN c.cvss_vector =~ '.*AV:N.*' THEN 'network'\n    ELSE 'local'\n  END,\n  r.exploit_complexity = CASE\n    WHEN c.description =~ '(?i).*(encryption|certificate|authentication).*' THEN 'high'\n    ELSE 'medium'\n  END,\n  r.authentication_required = true,  // OPC-UA has authentication\n  r.encryption_available = true,  // OPC-UA has encryption\n  r.security_feature_bypassed = c.description =~ ",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_26",
+    "text": "\n    ELSE 'medium'\n  END,\n  r.authentication_required = true,  // OPC-UA has authentication\n  r.encryption_available = true,  // OPC-UA has encryption\n  r.security_feature_bypassed = c.description =~ '(?i).*(bypass|circumvent|disable).*',\n  r.created_at = datetime(),\n  r.confidence_score = 0.92;\n\n// EtherNet/IP vulnerabilities\nMATCH (c:CVE)\nWHERE c.description =~ '(?i).*(ethernet/ip|ethernetip|CIP).*'\nWITH c\nMATCH (proto:IndustrialProtocol {protocol_name: 'EtherNet/IP'})\nMERGE (c)-[r:EXPLOITS_PROTOCOL]->(proto)\nSET\n  r.protocol_name = 'EtherNet/IP',\n  r.attack_vector = 'network',\n  r.exploit_complexity = 'low',\n  r.created_at = datetime(),\n  r.confidence_score = 0.88;\n\n// PROFINET vulnerabilities\nMATCH (c:CVE)\nWHERE c.description =~ '(?i).*(profinet|profibus).*'\nWITH c\nMATCH (proto:IndustrialProtocol {protocol_name: 'PROFINET'})\nMERGE (c)-[r:EXPLOITS_PROTOCOL]->(proto)\nSET\n  r.protocol_name = 'PROFINET',\n  r.attack_vector = 'adjacent',  // Usually adjacent network\n  r.exploit_complexit",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_27",
+    "text": "ialProtocol {protocol_name: 'PROFINET'})\nMERGE (c)-[r:EXPLOITS_PROTOCOL]->(proto)\nSET\n  r.protocol_name = 'PROFINET',\n  r.attack_vector = 'adjacent',  // Usually adjacent network\n  r.exploit_complexity = 'medium',\n  r.created_at = datetime(),\n  r.confidence_score = 0.85;\n\n// BACnet vulnerabilities\nMATCH (c:CVE)\nWHERE c.description =~ '(?i).*(bacnet|building automation).*'\nWITH c\nMATCH (proto:IndustrialProtocol {protocol_name: 'BACnet'})\nMERGE (c)-[r:EXPLOITS_PROTOCOL]->(proto)\nSET\n  r.protocol_name = 'BACnet',\n  r.attack_vector = 'network',\n  r.exploit_complexity = 'low',\n  r.created_at = datetime(),\n  r.confidence_score = 0.87;\n\n// Step 3: Add protocol properties to CVE nodes\nMATCH (c:CVE)-[r:EXPLOITS_PROTOCOL]->()\nWITH c, collect(DISTINCT r.protocol_name) AS protocols\nSET c.industrial_protocols = protocols;\n\n// Step 4: Validation query\nMATCH (c:CVE)-[r:EXPLOITS_PROTOCOL]->(proto:IndustrialProtocol)\nRETURN\n  proto.protocol_name AS protocol,\n  count(c) AS affected_cves,\n  collect(DISTI",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_28",
+    "text": "otocols = protocols;\n\n// Step 4: Validation query\nMATCH (c:CVE)-[r:EXPLOITS_PROTOCOL]->(proto:IndustrialProtocol)\nRETURN\n  proto.protocol_name AS protocol,\n  count(c) AS affected_cves,\n  collect(DISTINCT r.attack_vector) AS attack_vectors,\n  avg(c.cvss_score) AS avg_cvss\nORDER BY affected_cves DESC;\n```\n\n### 1.5 CVE \u2192 SBOM Component Integration\n\n**Pattern:** Link CVE vulnerabilities to Software Bill of Materials (SBOM) components and packages.\n\n**Complete Cypher Implementation:**\n\n```cypher\n// ===============================================\n// CVE \u2192 SBOM Component Integration Pattern\n// ===============================================\n\n// Step 1: Create or match SBOM Component nodes from existing package data\n// (Assumes SBOM components already exist or are created from CPE data)\n\n// Example: Link CVEs to npm packages\nMATCH (c:CVE)\nWHERE c.description =~ '(?i).*(npm|node.js package|javascript package).*'\n  OR EXISTS((c)-[:AFFECTS]->(:Product)) AND ANY(p IN [(c)-[:AFFECTS]->(prod:Product",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_29",
+    "text": "e: Link CVEs to npm packages\nMATCH (c:CVE)\nWHERE c.description =~ '(?i).*(npm|node.js package|javascript package).*'\n  OR EXISTS((c)-[:AFFECTS]->(:Product)) AND ANY(p IN [(c)-[:AFFECTS]->(prod:Product) | prod.name] WHERE p =~ '(?i).*node.*')\nWITH c\n// Create or match SBOM component\nMERGE (sbom:SBOMComponent {\n  id: 'sbom:npm:' + toLower(split(c.description, ' ')[0]),\n  component_type: 'library',\n  package_manager: 'npm',\n  ecosystem: 'npm'\n})\nON CREATE SET\n  sbom.name = split(c.description, ' ')[0],\n  sbom.created_at = datetime()\nMERGE (c)-[r:AFFECTS_SBOM_COMPONENT]->(sbom)\nSET\n  r.component_name = sbom.name,\n  r.package_manager = 'npm',\n  r.ecosystem = 'npm',\n  r.scope = CASE\n    WHEN c.description =~ '(?i).*(development|dev dependency).*' THEN 'development'\n    ELSE 'required'\n  END,\n  r.direct_dependency = true,  // Assume direct unless specified\n  r.created_at = datetime();\n\n// Example: Link CVEs to Maven packages\nMATCH (c:CVE)\nWHERE c.description =~ '(?i).*(maven|java package|arti",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_30",
+    "text": ".direct_dependency = true,  // Assume direct unless specified\n  r.created_at = datetime();\n\n// Example: Link CVEs to Maven packages\nMATCH (c:CVE)\nWHERE c.description =~ '(?i).*(maven|java package|artifact).*'\nWITH c\nMERGE (sbom:SBOMComponent {\n  id: 'sbom:maven:' + toLower(split(c.description, ' ')[0]),\n  component_type: 'library',\n  package_manager: 'maven',\n  ecosystem: 'maven'\n})\nON CREATE SET\n  sbom.name = split(c.description, ' ')[0],\n  sbom.created_at = datetime()\nMERGE (c)-[r:AFFECTS_SBOM_COMPONENT]->(sbom)\nSET\n  r.component_name = sbom.name,\n  r.package_manager = 'maven',\n  r.ecosystem = 'maven',\n  r.scope = 'required',\n  r.created_at = datetime();\n\n// Step 2: Link CVEs to Software Packages with version information\nMATCH (c:CVE)-[:AFFECTS]->(prod:Product)\nWHERE prod.name IS NOT NULL\nWITH c, prod\nMERGE (pkg:SoftwarePackage {\n  name: prod.name,\n  package_type: 'software_product'\n})\nON CREATE SET\n  pkg.created_at = datetime()\nMERGE (c)-[r:IMPACTS_PACKAGE]->(pkg)\nSET\n  r.package_na",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_31",
+    "text": "L\nWITH c, prod\nMERGE (pkg:SoftwarePackage {\n  name: prod.name,\n  package_type: 'software_product'\n})\nON CREATE SET\n  pkg.created_at = datetime()\nMERGE (c)-[r:IMPACTS_PACKAGE]->(pkg)\nSET\n  r.package_name = prod.name,\n  r.affected_versions = CASE\n    WHEN EXISTS((c)-[:AFFECTS]->(:Product)) THEN\n      [(c)-[:AFFECTS]->(p:Product) | p.version]\n    ELSE []\n  END,\n  r.patch_available = EXISTS((c)-[:FIXED_BY]->(:Patch)),\n  r.created_at = datetime();\n\n// Step 3: Create dependency chain tracking\n// (Requires existing dependency data)\nMATCH (c:CVE)-[:AFFECTS_SBOM_COMPONENT]->(sbom:SBOMComponent)\nOPTIONAL MATCH (sbom)-[:DEPENDS_ON*1..5]->(dep:SBOMComponent)\nWITH c, sbom, collect(DISTINCT dep) AS dependencies, count(dep) AS dep_depth\nWHERE dep_depth > 0\nMERGE (chain:DependencyChain {\n  id: 'depchain:' + c.id + ':' + sbom.id,\n  source_cve: c.id,\n  root_component: sbom.id\n})\nON CREATE SET\n  chain.chain_depth = dep_depth,\n  chain.created_at = datetime()\nMERGE (c)-[r:PROPAGATES_THROUGH]->(chain)\nSET\n ",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_32",
+    "text": " + c.id + ':' + sbom.id,\n  source_cve: c.id,\n  root_component: sbom.id\n})\nON CREATE SET\n  chain.chain_depth = dep_depth,\n  chain.created_at = datetime()\nMERGE (c)-[r:PROPAGATES_THROUGH]->(chain)\nSET\n  r.chain_depth = dep_depth,\n  r.direct_dependency = (dep_depth = 1),\n  r.transitive_impact = CASE\n    WHEN dep_depth = 1 THEN 'high'\n    WHEN dep_depth <= 3 THEN 'medium'\n    ELSE 'low'\n  END,\n  r.created_at = datetime();\n\n// Step 4: Add SBOM-specific properties to CVE nodes\nMATCH (c:CVE)-[r:AFFECTS_SBOM_COMPONENT]->()\nWITH c,\n  collect(DISTINCT r.package_manager) AS package_managers,\n  count(DISTINCT r) AS component_count\nSET\n  c.sbom_component_count = component_count,\n  c.package_ecosystems = package_managers,\n  c.supply_chain_risk = CASE\n    WHEN component_count >= 10 THEN 'high'\n    WHEN component_count >= 5 THEN 'medium'\n    ELSE 'low'\n  END;\n\n// Optional: Link to Package URLs (PURL)\nMATCH (c:CVE)-[r:AFFECTS_SBOM_COMPONENT]->(sbom:SBOMComponent)\nWHERE sbom.package_manager IS NOT NULL ",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_33",
+    "text": "omponent_count >= 5 THEN 'medium'\n    ELSE 'low'\n  END;\n\n// Optional: Link to Package URLs (PURL)\nMATCH (c:CVE)-[r:AFFECTS_SBOM_COMPONENT]->(sbom:SBOMComponent)\nWHERE sbom.package_manager IS NOT NULL AND sbom.name IS NOT NULL\nSET\n  r.purl = 'pkg:' + sbom.package_manager + '/' + sbom.name,\n  sbom.purl = 'pkg:' + sbom.package_manager + '/' + sbom.name;\n\n// Step 5: Validation query\nMATCH (c:CVE)-[r:AFFECTS_SBOM_COMPONENT]->(sbom:SBOMComponent)\nRETURN\n  sbom.package_manager AS ecosystem,\n  count(DISTINCT c) AS affected_cves,\n  count(DISTINCT sbom) AS affected_components,\n  avg(c.cvss_score) AS avg_cvss\nORDER BY affected_cves DESC;\n```\n\n### 1.6 CVE \u2192 UCO Cyber-Observable Integration\n\n**Pattern:** Link CVE vulnerabilities to UCO (Unified Cyber Ontology) observables for forensic analysis.\n\n**Complete Cypher Implementation:**\n\n```cypher\n// ===============================================\n// CVE \u2192 UCO Observable Integration Pattern\n// ===============================================\n\n// Step 1: C",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_34",
+    "text": "lete Cypher Implementation:**\n\n```cypher\n// ===============================================\n// CVE \u2192 UCO Observable Integration Pattern\n// ===============================================\n\n// Step 1: Create UCO Observable types\nMERGE (fileObs:UCOObservable {\n  id: 'uco:FileObservable',\n  name: 'File Observable',\n  observable_type: 'file',\n  description: 'File system artifacts'\n})\n\nMERGE (processObs:UCOObservable {\n  id: 'uco:ProcessObservable',\n  name: 'Process Observable',\n  observable_type: 'process',\n  description: 'Process execution artifacts'\n})\n\nMERGE (networkObs:UCOObservable {\n  id: 'uco:NetworkObservable',\n  name: 'Network Observable',\n  observable_type: 'network',\n  description: 'Network communication artifacts'\n})\n\nMERGE (registryObs:UCOObservable {\n  id: 'uco:RegistryObservable',\n  name: 'Registry Observable',\n  observable_type: 'registry',\n  description: 'Windows registry artifacts'\n});\n\n// Step 2: Link CVEs to UCO Observables based on exploitation artifacts\n// File observa",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_35",
+    "text": ",\n  name: 'Registry Observable',\n  observable_type: 'registry',\n  description: 'Windows registry artifacts'\n});\n\n// Step 2: Link CVEs to UCO Observables based on exploitation artifacts\n// File observables\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(file|malicious file|uploaded file|path traversal|arbitrary file).*'\n  OR c.cwe_id IN ['CWE-22', 'CWE-434', 'CWE-73']  // Path traversal, file upload, external file control\nWITH c\nMATCH (obs:UCOObservable {observable_type: 'file'})\nMERGE (c)-[r:CREATES_OBSERVABLE]->(obs)\nSET\n  r.observable_type = 'file',\n  r.exploitation_artifact = true,\n  r.detection_relevance = CASE\n    WHEN c.cvss_score >= 9.0 THEN 'high'\n    WHEN c.cvss_score >= 7.0 THEN 'medium'\n    ELSE 'low'\n  END,\n  r.artifact_patterns = CASE\n    WHEN c.description =~ '(?i).*malicious.*' THEN ['malicious_file_creation', 'file_hash_analysis']\n    WHEN c.description =~ '(?i).*upload.*' THEN ['uploaded_file_location', 'file_permission_analysis']\n    ELSE ['file_modification', 'timesta",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_36",
+    "text": "*' THEN ['malicious_file_creation', 'file_hash_analysis']\n    WHEN c.description =~ '(?i).*upload.*' THEN ['uploaded_file_location', 'file_permission_analysis']\n    ELSE ['file_modification', 'timestamp_analysis']\n  END,\n  r.forensic_value = 'critical',\n  r.created_at = datetime();\n\n// Process observables\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(command execution|code execution|remote code|process injection|arbitrary commands).*'\n  OR c.cwe_id IN ['CWE-78', 'CWE-94', 'CWE-502']  // OS command injection, code injection, deserialization\nWITH c\nMATCH (obs:UCOObservable {observable_type: 'process'})\nMERGE (c)-[r:CREATES_OBSERVABLE]->(obs)\nSET\n  r.observable_type = 'process',\n  r.exploitation_artifact = true,\n  r.detection_relevance = 'high',\n  r.artifact_patterns = ['process_creation', 'parent_child_relationships', 'command_line_arguments'],\n  r.forensic_value = 'critical',\n  r.created_at = datetime();\n\n// Network observables\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(network|rem",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_37",
+    "text": "parent_child_relationships', 'command_line_arguments'],\n  r.forensic_value = 'critical',\n  r.created_at = datetime();\n\n// Network observables\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(network|remote|external connection|data exfiltration|C2|command and control).*'\n  OR c.cvss_vector =~ '.*AV:N.*'  // Network attack vector\nWITH c\nMATCH (obs:UCOObservable {observable_type: 'network'})\nMERGE (c)-[r:CREATES_OBSERVABLE]->(obs)\nSET\n  r.observable_type = 'network',\n  r.exploitation_artifact = true,\n  r.detection_relevance = CASE\n    WHEN c.description =~ '(?i).*(exfiltration|C2|backdoor).*' THEN 'high'\n    ELSE 'medium'\n  END,\n  r.artifact_patterns = ['network_connections', 'dns_queries', 'http_requests', 'packet_analysis'],\n  r.forensic_value = 'important',\n  r.created_at = datetime();\n\n// Registry observables (Windows-specific)\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(registry|regedit|HKEY|persistence mechanism).*'\n  OR c.cwe_id IN ['CWE-732']  // Incorrect permission assignment\nW",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_38",
+    "text": "egistry observables (Windows-specific)\nMATCH (c:CVE)\nWHERE\n  c.description =~ '(?i).*(registry|regedit|HKEY|persistence mechanism).*'\n  OR c.cwe_id IN ['CWE-732']  // Incorrect permission assignment\nWITH c\nMATCH (obs:UCOObservable {observable_type: 'registry'})\nMERGE (c)-[r:CREATES_OBSERVABLE]->(obs)\nSET\n  r.observable_type = 'registry',\n  r.exploitation_artifact = true,\n  r.detection_relevance = 'high',\n  r.artifact_patterns = ['registry_key_creation', 'registry_value_modification', 'autorun_entries'],\n  r.forensic_value = 'important',\n  r.created_at = datetime();\n\n// Step 3: Create UCO Action relationships\nMATCH (c:CVE)-[:CREATES_OBSERVABLE]->(obs:UCOObservable)\nWITH c, obs\nMERGE (action:UCOAction {\n  id: 'uco:action:' + obs.observable_type,\n  action_type: CASE obs.observable_type\n    WHEN 'file' THEN 'create'\n    WHEN 'process' THEN 'execute'\n    WHEN 'network' THEN 'communicate'\n    WHEN 'registry' THEN 'modify'\n    ELSE 'unknown'\n  END,\n  observable_type: obs.observable_type\n})\nON",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_39",
+    "text": "EN 'file' THEN 'create'\n    WHEN 'process' THEN 'execute'\n    WHEN 'network' THEN 'communicate'\n    WHEN 'registry' THEN 'modify'\n    ELSE 'unknown'\n  END,\n  observable_type: obs.observable_type\n})\nON CREATE SET action.created_at = datetime()\nMERGE (c)-[r:TRIGGERS_ACTION]->(action)\nSET\n  r.action_type = action.action_type,\n  r.forensic_value = CASE\n    WHEN action.action_type IN ['execute', 'create'] THEN 'critical'\n    ELSE 'important'\n  END,\n  r.created_at = datetime();\n\n// Step 4: Add UCO properties to CVE nodes\nMATCH (c:CVE)-[r:CREATES_OBSERVABLE]->()\nWITH c, collect(DISTINCT r.observable_type) AS observable_types\nSET\n  c.uco_observable_types = observable_types,\n  c.forensic_artifacts = CASE\n    WHEN 'process' IN observable_types THEN ['process_tree', 'command_line']\n    WHEN 'file' IN observable_types THEN ['file_hashes', 'file_metadata']\n    WHEN 'network' IN observable_types THEN ['network_flows', 'connection_logs']\n    ELSE ['generic_artifacts']\n  END,\n  c.investigation_priorit",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_40",
+    "text": " observable_types THEN ['file_hashes', 'file_metadata']\n    WHEN 'network' IN observable_types THEN ['network_flows', 'connection_logs']\n    ELSE ['generic_artifacts']\n  END,\n  c.investigation_priority = CASE\n    WHEN size(observable_types) >= 3 THEN 'high'\n    WHEN size(observable_types) >= 2 THEN 'medium'\n    ELSE 'low'\n  END;\n\n// Step 5: Validation query\nMATCH (c:CVE)-[r:CREATES_OBSERVABLE]->(obs:UCOObservable)\nRETURN\n  obs.observable_type AS observable,\n  count(DISTINCT c) AS affected_cves,\n  collect(DISTINCT r.forensic_value)[0..5] AS forensic_values,\n  avg(c.cvss_score) AS avg_cvss\nORDER BY affected_cves DESC;\n```\n\n## 2. ThreatActor Enhancement Patterns\n\n### 2.1 ThreatActor \u2192 Psychometric Profile Integration\n\n**Pattern:** Enhance ThreatActor nodes with psychological and behavioral profiles.\n\n**Complete Cypher Implementation:**\n\n```cypher\n// ===============================================\n// ThreatActor \u2192 Psychometric Profile Pattern\n// ============================================",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 40,
+      "start_char": 32000,
+      "end_char": 33000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_41",
+    "text": "ofiles.\n\n**Complete Cypher Implementation:**\n\n```cypher\n// ===============================================\n// ThreatActor \u2192 Psychometric Profile Pattern\n// ===============================================\n\n// Step 1: Add psychometric properties to existing ThreatActor nodes\nMATCH (ta:ThreatActor)\nSET\n  ta.psychometric_profile = CASE ta.motivation\n    WHEN 'financial' THEN 'opportunistic_pragmatist'\n    WHEN 'espionage' THEN 'strategic_collector'\n    WHEN 'ideology' THEN 'mission_driven_activist'\n    WHEN 'destruction' THEN 'nihilistic_disruptor'\n    ELSE 'unclassified'\n  END,\n  ta.risk_tolerance = CASE ta.sophistication\n    WHEN 'high' THEN 'calculated_risk_taker'\n    WHEN 'medium' THEN 'moderate_risk_taker'\n    ELSE 'high_risk_taker'\n  END,\n  ta.operational_tempo = CASE\n    WHEN EXISTS((ta)-[:CONDUCTS]->(:Campaign)) THEN\n      CASE size([(ta)-[:CONDUCTS]->(c:Campaign) | c])\n        WHEN 1 THEN 'slow_methodical'\n        WHEN 2 THEN 'moderate_pace'\n        ELSE 'high_tempo'\n      END\n   ",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 41,
+      "start_char": 32800,
+      "end_char": 33800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_42",
+    "text": ")-[:CONDUCTS]->(:Campaign)) THEN\n      CASE size([(ta)-[:CONDUCTS]->(c:Campaign) | c])\n        WHEN 1 THEN 'slow_methodical'\n        WHEN 2 THEN 'moderate_pace'\n        ELSE 'high_tempo'\n      END\n    ELSE 'unknown'\n  END,\n  ta.target_selection = CASE\n    WHEN EXISTS((ta)-[:TARGETS]->(:Sector)) THEN\n      CASE size([(ta)-[:TARGETS]->(s:Sector) | s])\n        WHEN 1 THEN 'focused_specialist'\n        ELSE 'opportunistic_generalist'\n      END\n    ELSE 'unknown'\n  END;\n\n// Step 2: Create capability assessment based on techniques used\nMATCH (ta:ThreatActor)-[:USES_TECHNIQUE]->(tech:AttackTechnique)\nWITH ta, collect(tech) AS techniques\nSET\n  ta.technical_capability = CASE\n    WHEN size(techniques) >= 20 THEN 'advanced_persistent'\n    WHEN size(techniques) >= 10 THEN 'intermediate'\n    ELSE 'basic'\n  END,\n  ta.ttp_diversity_score = size(techniques) * 1.0 / 50.0;  // Normalized to 50 max techniques\n\n// Step 3: Enhance CVE \u2192 ThreatActor relationships with psychometric context\nMATCH (c:CVE)<-[r:E",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 42,
+      "start_char": 33600,
+      "end_char": 34600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_43",
+    "text": "'\n  END,\n  ta.ttp_diversity_score = size(techniques) * 1.0 / 50.0;  // Normalized to 50 max techniques\n\n// Step 3: Enhance CVE \u2192 ThreatActor relationships with psychometric context\nMATCH (c:CVE)<-[r:EXPLOITED_BY_ACTOR]-(ta:ThreatActor)\nSET\n  r.exploitation_motivation = ta.motivation,\n  r.actor_capability_match = CASE\n    WHEN c.cvss_score >= 9.0 AND ta.sophistication = 'high' THEN 0.95\n    WHEN c.cvss_score >= 7.0 AND ta.sophistication IN ['high', 'medium'] THEN 0.85\n    WHEN c.cvss_score < 5.0 AND ta.sophistication = 'low' THEN 0.80\n    ELSE 0.70\n  END,\n  r.typical_campaign_phase = CASE ta.psychometric_profile\n    WHEN 'strategic_collector' THEN 'reconnaissance'\n    WHEN 'opportunistic_pragmatist' THEN 'exploitation'\n    WHEN 'mission_driven_activist' THEN 'impact'\n    ELSE 'weaponization'\n  END,\n  r.attribution_confidence = CASE\n    WHEN EXISTS((ta)-[:ASSOCIATED_WITH]->(:Campaign)-[:USES_CVE]->(c)) THEN 0.90\n    WHEN ta.sophistication = 'high' AND c.cvss_score >= 9.0 THEN 0.75\n    EL",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 43,
+      "start_char": 34400,
+      "end_char": 35400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_44",
+    "text": "'\n  END,\n  r.attribution_confidence = CASE\n    WHEN EXISTS((ta)-[:ASSOCIATED_WITH]->(:Campaign)-[:USES_CVE]->(c)) THEN 0.90\n    WHEN ta.sophistication = 'high' AND c.cvss_score >= 9.0 THEN 0.75\n    ELSE 0.60\n  END;\n\n// Step 4: Validation query\nMATCH (ta:ThreatActor)\nRETURN\n  ta.psychometric_profile AS profile,\n  count(ta) AS actor_count,\n  collect(ta.motivation)[0..5] AS sample_motivations,\n  avg(ta.ttp_diversity_score) AS avg_ttp_diversity\nORDER BY actor_count DESC;\n```\n\n### 2.2 ThreatActor \u2192 STIX Indicator Integration\n\n**Pattern:** Link ThreatActor nodes to STIX (Structured Threat Information Expression) indicators.\n\n**Complete Cypher Implementation:**\n\n```cypher\n// ===============================================\n// ThreatActor \u2192 STIX Indicator Pattern\n// ===============================================\n\n// Step 1: Create STIX Indicator nodes\nMERGE (stix:STIXIndicator {\n  id: 'stix:indicator:generic',\n  indicator_type: 'vulnerability-signature',\n  stix_version: '2.1'\n})\nON CREATE SET\n",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 44,
+      "start_char": 35200,
+      "end_char": 36200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_45",
+    "text": "===============\n\n// Step 1: Create STIX Indicator nodes\nMERGE (stix:STIXIndicator {\n  id: 'stix:indicator:generic',\n  indicator_type: 'vulnerability-signature',\n  stix_version: '2.1'\n})\nON CREATE SET\n  stix.name = 'Generic Vulnerability Indicator',\n  stix.created_at = datetime();\n\n// Step 2: Link CVEs to STIX Indicators\nMATCH (c:CVE)\nWHERE c.cvss_score >= 7.0  // High/Critical CVEs get STIX indicators\nWITH c\nMERGE (stix:STIXIndicator {\n  id: 'stix:indicator:' + c.id,\n  indicator_type: 'vulnerability-signature',\n  stix_version: '2.1'\n})\nON CREATE SET\n  stix.name = 'CVE Indicator: ' + c.id,\n  stix.description = c.description,\n  stix.pattern = '(software:cve = \"' + c.id + '\")',\n  stix.valid_from = c.published_date,\n  stix.created_at = datetime()\nMERGE (c)-[r:HAS_STIX_INDICATOR]->(stix)\nSET\n  r.indicator_type = 'vulnerability-signature',\n  r.detection_pattern = stix.pattern,\n  r.valid_from = c.published_date,\n  r.confidence = CASE\n    WHEN c.status = 'PUBLISHED' THEN 0.95\n    ELSE 0.75\n  E",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 45,
+      "start_char": 36000,
+      "end_char": 37000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_46",
+    "text": "r.indicator_type = 'vulnerability-signature',\n  r.detection_pattern = stix.pattern,\n  r.valid_from = c.published_date,\n  r.confidence = CASE\n    WHEN c.status = 'PUBLISHED' THEN 0.95\n    ELSE 0.75\n  END,\n  r.created_at = datetime();\n\n// Step 3: Link ThreatActors to STIX Indicators via CVEs\nMATCH (ta:ThreatActor)-[:EXPLOITED_BY_ACTOR]->(c:CVE)-[:HAS_STIX_INDICATOR]->(stix:STIXIndicator)\nMERGE (ta)-[r:ASSOCIATED_WITH_STIX]->(stix)\nSET\n  r.association_type = 'exploitation',\n  r.confidence = 0.85,\n  r.first_seen = datetime(),\n  r.created_at = datetime();\n\n// Step 4: Add STIX indicator count to CVE nodes\nMATCH (c:CVE)-[:HAS_STIX_INDICATOR]->()\nWITH c, count(*) AS indicator_count\nSET c.stix_indicator_count = indicator_count;\n\n// Step 5: Validation query\nMATCH (c:CVE)-[r:HAS_STIX_INDICATOR]->(stix:STIXIndicator)\nRETURN\n  stix.indicator_type AS indicator_type,\n  count(DISTINCT c) AS cve_count,\n  count(stix) AS indicator_count\nORDER BY cve_count DESC;\n```\n\n### 2.3 ThreatActor \u2192 ICS Targeting In",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 46,
+      "start_char": 36800,
+      "end_char": 37800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_47",
+    "text": "x:STIXIndicator)\nRETURN\n  stix.indicator_type AS indicator_type,\n  count(DISTINCT c) AS cve_count,\n  count(stix) AS indicator_count\nORDER BY cve_count DESC;\n```\n\n### 2.3 ThreatActor \u2192 ICS Targeting Integration\n\n**Pattern:** Link ThreatActor nodes to ICS components they specifically target.\n\n**Complete Cypher Implementation:**\n\n```cypher\n// ===============================================\n// ThreatActor \u2192 ICS Targeting Pattern\n// ===============================================\n\n// Step 1: Identify ThreatActors with ICS targeting based on CVE exploitation\nMATCH (ta:ThreatActor)-[:EXPLOITED_BY_ACTOR]->(c:CVE)-[:AFFECTS_ICS_COMPONENT]->(ics:ICSComponent)\nWITH ta, ics, count(c) AS cve_count\nWHERE cve_count >= 2  // Require at least 2 CVEs targeting same ICS component\nMERGE (ta)-[r:TARGETS_ICS_COMPONENT]->(ics)\nSET\n  r.cve_exploitation_count = cve_count,\n  r.targeting_confidence = CASE\n    WHEN cve_count >= 10 THEN 0.95\n    WHEN cve_count >= 5 THEN 0.85\n    ELSE 0.75\n  END,\n  r.targeting_inte",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 47,
+      "start_char": 37600,
+      "end_char": 38600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_48",
+    "text": "MPONENT]->(ics)\nSET\n  r.cve_exploitation_count = cve_count,\n  r.targeting_confidence = CASE\n    WHEN cve_count >= 10 THEN 0.95\n    WHEN cve_count >= 5 THEN 0.85\n    ELSE 0.75\n  END,\n  r.targeting_intent = CASE ta.motivation\n    WHEN 'espionage' THEN 'intelligence_collection'\n    WHEN 'destruction' THEN 'sabotage'\n    WHEN 'financial' THEN 'ransomware'\n    ELSE 'disruption'\n  END,\n  r.created_at = datetime();\n\n// Step 2: Add ICS targeting properties to ThreatActor nodes\nMATCH (ta:ThreatActor)-[r:TARGETS_ICS_COMPONENT]->()\nWITH ta, collect(DISTINCT r) AS ics_targets\nSET\n  ta.ics_focused = true,\n  ta.ics_target_count = size(ics_targets),\n  ta.ics_threat_level = CASE\n    WHEN size(ics_targets) >= 5 THEN 'critical'\n    WHEN size(ics_targets) >= 3 THEN 'high'\n    ELSE 'medium'\n  END;\n\n// Step 3: Link ThreatActors to ICS ATT&CK techniques\nMATCH (ta:ThreatActor)-[:EXPLOITED_BY_ACTOR]->(c:CVE)-[:ENABLES_ICS_TECHNIQUE]->(tech:ICSAttackTechnique)\nMERGE (ta)-[r:USES_ICS_TECHNIQUE]->(tech)\nSET\n  r.",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 48,
+      "start_char": 38400,
+      "end_char": 39400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_49",
+    "text": " Link ThreatActors to ICS ATT&CK techniques\nMATCH (ta:ThreatActor)-[:EXPLOITED_BY_ACTOR]->(c:CVE)-[:ENABLES_ICS_TECHNIQUE]->(tech:ICSAttackTechnique)\nMERGE (ta)-[r:USES_ICS_TECHNIQUE]->(tech)\nSET\n  r.technique_id = tech.technique_id,\n  r.usage_frequency = 'observed',\n  r.confidence = 0.80,\n  r.created_at = datetime();\n\n// Step 4: Validation query\nMATCH (ta:ThreatActor)-[r:TARGETS_ICS_COMPONENT]->(ics:ICSComponent)\nRETURN\n  ta.name AS threat_actor,\n  collect(ics.component_type) AS targeted_components,\n  ta.ics_threat_level AS threat_level,\n  avg(r.targeting_confidence) AS avg_confidence\nORDER BY ta.ics_target_count DESC;\n```\n\n## 3. Cross-Domain Integration Patterns\n\n### 3.1 SAREF \u2192 CVE \u2192 Mitigation Chain\n\n**Pattern:** Complete chain from SAREF device vulnerability to mitigation strategy.\n\n**Complete Cypher Implementation:**\n\n```cypher\n// ===============================================\n// SAREF \u2192 CVE \u2192 Mitigation Chain Pattern\n// ===============================================\n\n// Query ",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 49,
+      "start_char": 39200,
+      "end_char": 40200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_50",
+    "text": "*Complete Cypher Implementation:**\n\n```cypher\n// ===============================================\n// SAREF \u2192 CVE \u2192 Mitigation Chain Pattern\n// ===============================================\n\n// Query 1: Find SAREF devices with critical vulnerabilities and mitigations\nMATCH path = (saref:SAREFDevice)<-[:AFFECTS_SAREF_DEVICE]-(c:CVE)-[:MITIGATED_BY]->(m:Mitigation)\nWHERE c.severity = 'CRITICAL' AND c.cvss_score >= 9.0\nRETURN\n  saref.device_category AS device_type,\n  c.id AS cve_id,\n  c.cvss_score AS severity,\n  c.description AS vulnerability,\n  m.description AS mitigation,\n  m.implementation_cost AS cost,\n  path;\n\n// Query 2: SAREF device vulnerability surface analysis\nMATCH (saref:SAREFDevice)<-[r:AFFECTS_SAREF_DEVICE]-(c:CVE)\nWITH saref, count(c) AS vulnerability_count, collect(c) AS cves\nOPTIONAL MATCH (cve:CVE)-[:MITIGATED_BY]->(m:Mitigation)\nWHERE cve IN cves\nWITH saref, vulnerability_count,\n  count(DISTINCT m) AS mitigation_count,\n  avg(cve.cvss_score) AS avg_severity\nRETURN\n  sare",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 50,
+      "start_char": 40000,
+      "end_char": 41000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_51",
+    "text": "OPTIONAL MATCH (cve:CVE)-[:MITIGATED_BY]->(m:Mitigation)\nWHERE cve IN cves\nWITH saref, vulnerability_count,\n  count(DISTINCT m) AS mitigation_count,\n  avg(cve.cvss_score) AS avg_severity\nRETURN\n  saref.device_category AS device_type,\n  vulnerability_count,\n  mitigation_count,\n  avg_severity,\n  (mitigation_count * 100.0 / vulnerability_count) AS mitigation_coverage_percent\nORDER BY vulnerability_count DESC;\n\n// Query 3: SAREF function impact with remediation paths\nMATCH (saref:SAREFDevice)<-[:AFFECTS_SAREF_DEVICE]-(c:CVE)-[:IMPACTS_SAREF_FUNCTION]->(func:SAREFFunction)\nOPTIONAL MATCH (c)-[:MITIGATED_BY]->(m:Mitigation)\nRETURN\n  saref.device_category AS device,\n  func.function_category AS function,\n  collect(DISTINCT c.id) AS vulnerable_cves,\n  collect(DISTINCT m.description) AS available_mitigations\nORDER BY device, function;\n```\n\n### 3.2 ICS \u2192 ATT&CK \u2192 CVE \u2192 Mitigation Chain\n\n**Pattern:** Complete ICS attack chain from component to technique to vulnerability to mitigation.\n\n**Complete ",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 51,
+      "start_char": 40800,
+      "end_char": 41800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_52",
+    "text": "tigations\nORDER BY device, function;\n```\n\n### 3.2 ICS \u2192 ATT&CK \u2192 CVE \u2192 Mitigation Chain\n\n**Pattern:** Complete ICS attack chain from component to technique to vulnerability to mitigation.\n\n**Complete Cypher Implementation:**\n\n```cypher\n// ===============================================\n// ICS \u2192 ATT&CK \u2192 CVE \u2192 Mitigation Chain Pattern\n// ===============================================\n\n// Query 1: Complete ICS attack chain analysis\nMATCH path = (ics:ICSComponent)<-[:AFFECTS_ICS_COMPONENT]-(c:CVE)-[:ENABLES_ICS_TECHNIQUE]->(tech:ICSAttackTechnique)\nOPTIONAL MATCH (c)-[:MITIGATED_BY]->(m:Mitigation)\nRETURN\n  ics.component_type AS ics_component,\n  tech.technique_id AS attack_technique,\n  tech.tactic AS attack_tactic,\n  c.id AS cve_id,\n  c.cvss_score AS severity,\n  collect(DISTINCT m.description) AS mitigations,\n  path;\n\n// Query 2: ICS component vulnerability and attack surface\nMATCH (ics:ICSComponent)<-[r:AFFECTS_ICS_COMPONENT]-(c:CVE)\nWITH ics, collect(c) AS cves\nOPTIONAL MATCH (cve:CVE)",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 52,
+      "start_char": 41600,
+      "end_char": 42600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_53",
+    "text": "n) AS mitigations,\n  path;\n\n// Query 2: ICS component vulnerability and attack surface\nMATCH (ics:ICSComponent)<-[r:AFFECTS_ICS_COMPONENT]-(c:CVE)\nWITH ics, collect(c) AS cves\nOPTIONAL MATCH (cve:CVE)-[:ENABLES_ICS_TECHNIQUE]->(tech:ICSAttackTechnique)\nWHERE cve IN cves\nWITH ics, cves,\n  collect(DISTINCT tech.tactic) AS attack_tactics,\n  collect(DISTINCT tech.technique_id) AS techniques\nRETURN\n  ics.component_type AS component,\n  ics.purdue_level AS purdue_level,\n  size(cves) AS vulnerability_count,\n  avg([cve IN cves | cve.cvss_score]) AS avg_cvss,\n  attack_tactics,\n  size(techniques) AS technique_count;\n\n// Query 3: Purdue Model level vulnerability analysis\nMATCH (ics:ICSComponent)<-[r:AFFECTS_ICS_COMPONENT]-(c:CVE)\nWHERE r.criticality_level IN ['safety_critical', 'production_critical']\nWITH r.purdue_level AS purdue_levels, collect(c) AS cves\nUNWIND purdue_levels AS level\nWITH level, cves\nOPTIONAL MATCH (cve:CVE)-[:MITIGATED_BY]->(m:Mitigation)\nWHERE cve IN cves\nRETURN\n  level AS pur",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 53,
+      "start_char": 42400,
+      "end_char": 43400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_54",
+    "text": "WITH r.purdue_level AS purdue_levels, collect(c) AS cves\nUNWIND purdue_levels AS level\nWITH level, cves\nOPTIONAL MATCH (cve:CVE)-[:MITIGATED_BY]->(m:Mitigation)\nWHERE cve IN cves\nRETURN\n  level AS purdue_level,\n  count(DISTINCT cves) AS critical_cves,\n  count(DISTINCT m) AS available_mitigations,\n  avg([c IN cves | c.cvss_score]) AS avg_severity\nORDER BY purdue_level;\n\n// Query 4: ICS-specific threat actor targeting analysis\nMATCH (ta:ThreatActor)-[:TARGETS_ICS_COMPONENT]->(ics:ICSComponent)\nMATCH (ta)-[:EXPLOITED_BY_ACTOR]->(c:CVE)-[:AFFECTS_ICS_COMPONENT]->(ics)\nOPTIONAL MATCH (c)-[:ENABLES_ICS_TECHNIQUE]->(tech:ICSAttackTechnique)\nRETURN\n  ta.name AS threat_actor,\n  ta.motivation AS motivation,\n  ics.component_type AS targeted_component,\n  collect(DISTINCT c.id) AS exploited_cves,\n  collect(DISTINCT tech.technique_id) AS ics_techniques,\n  ta.ics_threat_level AS threat_level;\n```\n\n### 3.3 SBOM \u2192 CVE \u2192 Dependency Chain \u2192 Mitigation\n\n**Pattern:** Software supply chain vulnerability tra",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 54,
+      "start_char": 43200,
+      "end_char": 44200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_55",
+    "text": "lect(DISTINCT tech.technique_id) AS ics_techniques,\n  ta.ics_threat_level AS threat_level;\n```\n\n### 3.3 SBOM \u2192 CVE \u2192 Dependency Chain \u2192 Mitigation\n\n**Pattern:** Software supply chain vulnerability tracking with transitive dependency analysis.\n\n**Complete Cypher Implementation:**\n\n```cypher\n// ===============================================\n// SBOM \u2192 CVE \u2192 Dependency Chain Pattern\n// ===============================================\n\n// Query 1: Direct SBOM component vulnerabilities\nMATCH (sbom:SBOMComponent)<-[r:AFFECTS_SBOM_COMPONENT]-(c:CVE)\nOPTIONAL MATCH (c)-[:MITIGATED_BY]->(m:Mitigation)\nRETURN\n  sbom.name AS component,\n  sbom.package_manager AS ecosystem,\n  r.component_version AS version,\n  collect(c.id) AS vulnerabilities,\n  avg(c.cvss_score) AS avg_severity,\n  collect(DISTINCT m.description) AS mitigations\nORDER BY avg_severity DESC;\n\n// Query 2: Transitive dependency vulnerability propagation\nMATCH (root:SBOMComponent)<-[:AFFECTS_SBOM_COMPONENT]-(c:CVE)-[r:PROPAGATES_THROUGH]->",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 55,
+      "start_char": 44000,
+      "end_char": 45000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_56",
+    "text": "cription) AS mitigations\nORDER BY avg_severity DESC;\n\n// Query 2: Transitive dependency vulnerability propagation\nMATCH (root:SBOMComponent)<-[:AFFECTS_SBOM_COMPONENT]-(c:CVE)-[r:PROPAGATES_THROUGH]->(chain:DependencyChain)\nWHERE r.transitive_impact = 'high'\nRETURN\n  root.name AS root_component,\n  c.id AS cve,\n  r.chain_depth AS dependency_depth,\n  r.transitive_impact AS impact,\n  c.cvss_score AS severity\nORDER BY dependency_depth DESC, severity DESC;\n\n// Query 3: Package ecosystem vulnerability analysis\nMATCH (c:CVE)-[r:AFFECTS_SBOM_COMPONENT]->(sbom:SBOMComponent)\nWITH sbom.package_manager AS ecosystem, collect(c) AS cves\nRETURN\n  ecosystem,\n  count(DISTINCT cves) AS total_cves,\n  size([c IN cves WHERE c.cvss_score >= 9.0]) AS critical_cves,\n  size([c IN cves WHERE c.cvss_score >= 7.0]) AS high_cves,\n  avg([c IN cves | c.cvss_score]) AS avg_cvss\nORDER BY total_cves DESC;\n\n// Query 4: Supply chain risk assessment\nMATCH (c:CVE)\nWHERE c.supply_chain_risk IN ['high', 'medium']\nMATCH (c)-",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 56,
+      "start_char": 44800,
+      "end_char": 45800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_57",
+    "text": "AS high_cves,\n  avg([c IN cves | c.cvss_score]) AS avg_cvss\nORDER BY total_cves DESC;\n\n// Query 4: Supply chain risk assessment\nMATCH (c:CVE)\nWHERE c.supply_chain_risk IN ['high', 'medium']\nMATCH (c)-[:AFFECTS_SBOM_COMPONENT]->(sbom:SBOMComponent)\nOPTIONAL MATCH (c)-[:PROPAGATES_THROUGH]->(chain:DependencyChain)\nRETURN\n  c.id AS cve,\n  c.supply_chain_risk AS risk_level,\n  collect(DISTINCT sbom.name) AS affected_components,\n  count(DISTINCT chain) AS dependency_chains,\n  c.cvss_score AS severity\nORDER BY risk_level DESC, severity DESC;\n```\n\n### 3.4 ThreatActor \u2192 CVE \u2192 UCO Observable \u2192 Forensics\n\n**Pattern:** Threat attribution through CVE exploitation to forensic artifacts.\n\n**Complete Cypher Implementation:**\n\n```cypher\n// ===============================================\n// ThreatActor \u2192 CVE \u2192 UCO Observable Pattern\n// ===============================================\n\n// Query 1: Threat actor exploitation with forensic artifacts\nMATCH (ta:ThreatActor)-[r:EXPLOITED_BY_ACTOR]->(c:CVE)-[:CR",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 57,
+      "start_char": 45600,
+      "end_char": 46600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_58",
+    "text": "E \u2192 UCO Observable Pattern\n// ===============================================\n\n// Query 1: Threat actor exploitation with forensic artifacts\nMATCH (ta:ThreatActor)-[r:EXPLOITED_BY_ACTOR]->(c:CVE)-[:CREATES_OBSERVABLE]->(obs:UCOObservable)\nRETURN\n  ta.name AS threat_actor,\n  ta.motivation AS motivation,\n  c.id AS exploited_cve,\n  c.cvss_score AS severity,\n  collect(DISTINCT obs.observable_type) AS forensic_artifacts,\n  r.attribution_confidence AS confidence\nORDER BY severity DESC;\n\n// Query 2: Campaign-level forensic intelligence\nMATCH (campaign:Campaign)<-[:USED_IN_CAMPAIGN]-(c:CVE)-[:CREATES_OBSERVABLE]->(obs:UCOObservable)\nOPTIONAL MATCH (campaign)<-[:CONDUCTS]-(ta:ThreatActor)\nRETURN\n  campaign.name AS campaign,\n  ta.name AS attributed_actor,\n  collect(DISTINCT c.id) AS exploited_cves,\n  collect(DISTINCT obs.observable_type) AS observable_types,\n  collect(DISTINCT obs.artifact_patterns) AS forensic_patterns;\n\n// Query 3: UCO action chains for investigation\nMATCH (c:CVE)-[:TRIGGERS_A",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 58,
+      "start_char": 46400,
+      "end_char": 47400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_59",
+    "text": "  collect(DISTINCT obs.observable_type) AS observable_types,\n  collect(DISTINCT obs.artifact_patterns) AS forensic_patterns;\n\n// Query 3: UCO action chains for investigation\nMATCH (c:CVE)-[:TRIGGERS_ACTION]->(action:UCOAction)\nMATCH (c)<-[:EXPLOITED_BY_ACTOR]-(ta:ThreatActor)\nRETURN\n  ta.name AS threat_actor,\n  c.id AS cve,\n  action.action_type AS action,\n  action.forensic_value AS forensic_value,\n  c.investigation_priority AS priority\nORDER BY priority DESC, forensic_value DESC;\n\n// Query 4: Multi-stage attack reconstruction\nMATCH path = (ta:ThreatActor)-[:EXPLOITED_BY_ACTOR]->(c1:CVE)-[:CREATES_OBSERVABLE]->(obs1:UCOObservable),\n             (ta)-[:EXPLOITED_BY_ACTOR]->(c2:CVE)-[:CREATES_OBSERVABLE]->(obs2:UCOObservable)\nWHERE c1 <> c2\n  AND obs1.observable_type = 'network'\n  AND obs2.observable_type = 'process'\nRETURN\n  ta.name AS threat_actor,\n  c1.id AS initial_cve,\n  obs1.observable_type AS initial_observable,\n  c2.id AS followup_cve,\n  obs2.observable_type AS followup_observable",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 59,
+      "start_char": 47200,
+      "end_char": 48200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_60",
+    "text": "servable_type = 'process'\nRETURN\n  ta.name AS threat_actor,\n  c1.id AS initial_cve,\n  obs1.observable_type AS initial_observable,\n  c2.id AS followup_cve,\n  obs2.observable_type AS followup_observable,\n  path;\n```\n\n## 4. Advanced Integration Queries\n\n### 4.1 Multi-Domain Threat Landscape Query\n\n**Pattern:** Comprehensive threat analysis across all domains.\n\n```cypher\n// ===============================================\n// Multi-Domain Threat Landscape Analysis\n// ===============================================\n\nMATCH (ta:ThreatActor)-[:EXPLOITED_BY_ACTOR]->(c:CVE)\nOPTIONAL MATCH (c)-[:AFFECTS_SAREF_DEVICE]->(saref:SAREFDevice)\nOPTIONAL MATCH (c)-[:AFFECTS_ICS_COMPONENT]->(ics:ICSComponent)\nOPTIONAL MATCH (c)-[:AFFECTS_SBOM_COMPONENT]->(sbom:SBOMComponent)\nOPTIONAL MATCH (c)-[:CREATES_OBSERVABLE]->(uco:UCOObservable)\nOPTIONAL MATCH (c)-[:MITIGATED_BY]->(m:Mitigation)\nRETURN\n  ta.name AS threat_actor,\n  ta.motivation AS motivation,\n  count(DISTINCT c) AS exploited_cves,\n  count(DISTINCT sa",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 60,
+      "start_char": 48000,
+      "end_char": 49000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_61",
+    "text": "BLE]->(uco:UCOObservable)\nOPTIONAL MATCH (c)-[:MITIGATED_BY]->(m:Mitigation)\nRETURN\n  ta.name AS threat_actor,\n  ta.motivation AS motivation,\n  count(DISTINCT c) AS exploited_cves,\n  count(DISTINCT saref) AS iot_targets,\n  count(DISTINCT ics) AS ics_targets,\n  count(DISTINCT sbom) AS supply_chain_targets,\n  collect(DISTINCT uco.observable_type) AS forensic_artifacts,\n  count(DISTINCT m) AS available_mitigations,\n  avg(c.cvss_score) AS avg_severity\nORDER BY exploited_cves DESC;\n```\n\n### 4.2 Critical Asset Protection Query\n\n**Pattern:** Identify critical assets (SAREF + ICS) with unmitigated vulnerabilities.\n\n```cypher\n// ===============================================\n// Critical Asset Protection Analysis\n// ===============================================\n\nMATCH (c:CVE)\nWHERE c.severity = 'CRITICAL' AND c.cvss_score >= 9.0\nOPTIONAL MATCH (c)-[:AFFECTS_SAREF_DEVICE]->(saref:SAREFDevice)\nOPTIONAL MATCH (c)-[:AFFECTS_ICS_COMPONENT]->(ics:ICSComponent)\nOPTIONAL MATCH (c)-[:MITIGATED_BY]->(m",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 61,
+      "start_char": 48800,
+      "end_char": 49800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_62",
+    "text": "CRITICAL' AND c.cvss_score >= 9.0\nOPTIONAL MATCH (c)-[:AFFECTS_SAREF_DEVICE]->(saref:SAREFDevice)\nOPTIONAL MATCH (c)-[:AFFECTS_ICS_COMPONENT]->(ics:ICSComponent)\nOPTIONAL MATCH (c)-[:MITIGATED_BY]->(m:Mitigation)\nWITH c, saref, ics, m\nWHERE saref IS NOT NULL OR ics IS NOT NULL\nRETURN\n  c.id AS critical_cve,\n  c.cvss_score AS severity,\n  COALESCE(saref.device_category, ics.component_type) AS asset_type,\n  CASE\n    WHEN saref IS NOT NULL THEN 'IoT Device'\n    WHEN ics IS NOT NULL THEN 'ICS Component'\n  END AS domain,\n  CASE\n    WHEN m IS NULL THEN 'UNMITIGATED'\n    ELSE 'Mitigated'\n  END AS mitigation_status,\n  m.description AS mitigation\nORDER BY severity DESC, mitigation_status;\n```\n\n## 5. Conclusion\n\nThis document provides comprehensive integration patterns for the AEON Digital Twin Cybersecurity Threat Intelligence schema enhancement. Each pattern includes:\n\n- **Complete Cypher implementations** with no truncation\n- **Relationship semantics** and property mappings\n- **Validation quer",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 62,
+      "start_char": 49600,
+      "end_char": 50600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_63",
+    "text": "security Threat Intelligence schema enhancement. Each pattern includes:\n\n- **Complete Cypher implementations** with no truncation\n- **Relationship semantics** and property mappings\n- **Validation queries** for data integrity\n- **Cross-domain integration** examples\n\nThese patterns enable rich, multi-dimensional threat intelligence analysis across CVE vulnerabilities, IoT devices (SAREF), ICS/OT systems, software supply chains (SBOM), cyber-observables (UCO), threat actors, and attack patterns (ATT&CK).\n\n**Implementation Checklist:**\n- [ ] Review all Cypher queries for project-specific adjustments\n- [ ] Test pattern queries on sample data before production\n- [ ] Validate relationship property assignments\n- [ ] Verify index creation for query performance\n- [ ] Document any custom property additions\n- [ ] Establish monitoring for integration quality\n\n---\n\n**Document Version:** v1.0.0\n**Last Updated:** 2025-10-30\n**Next Review:** During Wave Implementation\n**Owner:** AEON FORGE Implementati",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 63,
+      "start_char": 50400,
+      "end_char": 51400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "16_INTEGRATION_PATTERNS.md_chunk_64",
+    "text": "itions\n- [ ] Establish monitoring for integration quality\n\n---\n\n**Document Version:** v1.0.0\n**Last Updated:** 2025-10-30\n**Next Review:** During Wave Implementation\n**Owner:** AEON FORGE Implementation Team\n",
+    "metadata": {
+      "file_name": "16_INTEGRATION_PATTERNS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/16_INTEGRATION_PATTERNS.md",
+      "file_size": 51408,
+      "indexed_at": "2025-10-31T00:57:14.159492",
+      "chunk_id": 64,
+      "start_char": 51200,
+      "end_char": 52200,
+      "chunk_size": 208
+    }
+  }
+]

@@ -1,0 +1,492 @@
+[
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_0",
+    "text": "# MANDATORY GROUND RULES FOR SCHEMA ENHANCEMENT\n\n**File:** 00_MANDATORY_GROUND_RULES.md\n**Created:** 2025-10-30 00:00:00 UTC\n**Version:** v2.0.0\n**Author:** AEON Forge Development Team\n**Purpose:** Non-negotiable rules governing all schema enhancement activities\n**Status:** ACTIVE - MUST BE FOLLOWED WITHOUT EXCEPTION\n\n## Document Overview\n\nThis document establishes the immutable ground rules that govern all schema enhancement activities for the AEON Digital Twin Cybersecurity Threat Intelligence ontology. These rules are NON-NEGOTIABLE and MUST be followed by all team members, automated processes, and third-party contributors without exception. Violation of these rules will result in immediate work stoppage and mandatory rollback procedures.\n\nThe purpose of these ground rules is to protect the integrity of the existing 147,923 CVE nodes and 35,146 supporting nodes (183,069 total) while enabling systematic enhancement to reach the target state of 307,569+ nodes. Every rule has been desi",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_1",
+    "text": " the integrity of the existing 147,923 CVE nodes and 35,146 supporting nodes (183,069 total) while enabling systematic enhancement to reach the target state of 307,569+ nodes. Every rule has been designed based on enterprise data governance best practices and lessons learned from large-scale ontology evolution projects.\n\n---\n\n## 1. CVE PRESERVATION POLICY (NON-NEGOTIABLE)\n\n### 1.1 The Sacred 147,923: Absolute Protection\n\nThe 147,923 CVE nodes represent the foundation and primary value of this ontology. These nodes are the result of extensive data ingestion, validation, and relationship mapping that cannot be recreated without significant cost and risk. Therefore, the following rules apply:\n\n**RULE 1.1.1 - Zero CVE Node Deletion**: Under NO circumstances shall any of the 147,923 CVE nodes be deleted, archived, deprecated, or marked as inactive. Every CVE node that exists today must exist in every future version of the ontology.\n\n**RULE 1.1.2 - No CVE Re-Import**: The CVE data import pro",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_2",
+    "text": "e deleted, archived, deprecated, or marked as inactive. Every CVE node that exists today must exist in every future version of the ontology.\n\n**RULE 1.1.2 - No CVE Re-Import**: The CVE data import process shall NOT be repeated. The existing CVE nodes are authoritative. If CVE data appears missing or incorrect, the solution is targeted correction, not bulk re-import.\n\n**RULE 1.1.3 - CVE Node Immutability**: The core properties of CVE nodes (CVE-ID, description, severity scores, publication dates) are immutable. These properties may only be updated to correct factual errors, never for schema restructuring purposes.\n\n**RULE 1.1.4 - Relationship Addition Only**: New relationships may be added to CVE nodes to connect them to enhancement nodes. Existing relationships to CVE nodes may NOT be removed unless proven to be factually incorrect.\n\n### 1.2 Verification and Protection Procedures\n\n**RULE 1.2.1 - Pre-Enhancement CVE Census**: Before any enhancement wave begins, an automated census must ",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_3",
+    "text": "ved unless proven to be factually incorrect.\n\n### 1.2 Verification and Protection Procedures\n\n**RULE 1.2.1 - Pre-Enhancement CVE Census**: Before any enhancement wave begins, an automated census must count and record the exact number of CVE nodes. This census establishes the baseline that must be preserved.\n\n**RULE 1.2.2 - Post-Enhancement CVE Verification**: After any enhancement activity (batch update, relationship addition, property modification), an automated verification process must confirm that all 147,923 CVE nodes still exist and that no CVE node properties have been improperly modified.\n\n**RULE 1.2.3 - CVE Node Checksum Validation**: A cryptographic checksum of core CVE node properties (CVE-ID, publication date, base severity) shall be calculated before enhancement activities. This checksum must validate successfully after any changes.\n\n**RULE 1.2.4 - Automated Rollback Triggers**: Any process that results in CVE node count reduction, CVE-ID modification, or CVE core property",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_4",
+    "text": "is checksum must validate successfully after any changes.\n\n**RULE 1.2.4 - Automated Rollback Triggers**: Any process that results in CVE node count reduction, CVE-ID modification, or CVE core property corruption shall trigger an immediate automated rollback to the last known good state.\n\n### 1.3 CVE Enhancement Allowances\n\nWhile CVE nodes are protected, the following enhancements ARE permitted:\n\n**PERMITTED 1.3.1 - Adding New Relationships**: CVE nodes may have new relationships added to connect them to attack patterns, threat actors, vulnerability categories, affected systems, and mitigation strategies.\n\n**PERMITTED 1.3.2 - Adding Non-Core Properties**: New properties may be added to CVE nodes (tags, sector-specific risk scores, remediation links) as long as core properties remain unchanged.\n\n**PERMITTED 1.3.3 - Correcting Factual Errors**: If a CVE node contains factually incorrect information verified against official NVD data, targeted correction is permitted with full audit loggin",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_5",
+    "text": "ed.\n\n**PERMITTED 1.3.3 - Correcting Factual Errors**: If a CVE node contains factually incorrect information verified against official NVD data, targeted correction is permitted with full audit logging.\n\n**PERMITTED 1.3.4 - Enhancing CVE Context**: Nodes that provide context for CVE nodes (attack techniques, affected products, mitigation strategies) may be added freely as long as they connect to, rather than replace, CVE nodes.\n\n### 1.4 CVE Protection Monitoring\n\n**RULE 1.4.1 - Real-Time CVE Monitoring**: A monitoring system shall run continuously to detect any unexpected changes to CVE node count or properties. Anomalies trigger immediate investigation.\n\n**RULE 1.4.2 - Weekly CVE Integrity Reports**: Every Friday, an automated report shall verify CVE node integrity, count stability, and relationship health. Any anomalies require executive review before proceeding.\n\n**RULE 1.4.3 - Quarterly CVE Deep Audits**: Every quarter, a manual deep audit shall verify a statistical sample of CVE n",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_6",
+    "text": "elationship health. Any anomalies require executive review before proceeding.\n\n**RULE 1.4.3 - Quarterly CVE Deep Audits**: Every quarter, a manual deep audit shall verify a statistical sample of CVE nodes (minimum 1,000 nodes) to ensure data quality and relationship accuracy.\n\n---\n\n## 2. ENHANCEMENT-ONLY PHILOSOPHY\n\n### 2.1 Additive-Only Principle\n\nThe schema enhancement project operates under the principle of \"addition, never subtraction.\" This philosophy ensures that existing ontology value is preserved while new capabilities are layered on top.\n\n**RULE 2.1.1 - No Node Deletion Policy**: No existing nodes of any type (CVE, organization, system, sector, etc.) shall be deleted. Nodes that become obsolete shall be marked with a lifecycle property (\"deprecated\") but remain in the ontology.\n\n**RULE 2.1.2 - No Relationship Removal Policy**: Existing relationships shall not be removed unless they are factually incorrect or duplicate relationships to identical targets. Relationship refinemen",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_7",
+    "text": "**RULE 2.1.2 - No Relationship Removal Policy**: Existing relationships shall not be removed unless they are factually incorrect or duplicate relationships to identical targets. Relationship refinement is achieved through addition of more precise relationships, not removal of existing ones.\n\n**RULE 2.1.3 - No Property Elimination**: Existing node properties shall not be removed. If a property becomes obsolete, it shall be marked as deprecated but retained for backward compatibility.\n\n**RULE 2.1.4 - No Schema Breaking Changes**: Changes to the ontology schema shall be backward compatible. Existing queries, integrations, and applications shall continue to function after enhancement waves.\n\n### 2.2 Backward Compatibility Requirements\n\n**RULE 2.2.1 - Query Preservation**: All existing Cypher queries documented in project repositories must continue to execute successfully after enhancement. Query result sets may expand (more nodes returned) but must not contract (fewer nodes returned) unles",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_8",
+    "text": "ueries documented in project repositories must continue to execute successfully after enhancement. Query result sets may expand (more nodes returned) but must not contract (fewer nodes returned) unless correcting data quality issues.\n\n**RULE 2.2.2 - API Contract Stability**: Any APIs or integration points that expose ontology data must maintain their contracts. Response formats may be extended with new optional fields but existing fields must remain unchanged.\n\n**RULE 2.2.3 - Visualization Compatibility**: Existing visualization tools and dashboards must continue to function. New node types and relationships may be added to visualizations, but existing elements must render as before.\n\n**RULE 2.2.4 - Client Application Resilience**: Client applications that consume ontology data shall not break due to schema enhancements. This requires that new node types and properties be introduced in a way that existing clients can safely ignore them.\n\n### 2.3 Enhancement Validation Gates\n\n**RULE 2.3",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_9",
+    "text": "reak due to schema enhancements. This requires that new node types and properties be introduced in a way that existing clients can safely ignore them.\n\n### 2.3 Enhancement Validation Gates\n\n**RULE 2.3.1 - Pre-Enhancement Testing**: Before applying any enhancement to production, it must be tested in a complete clone of the production ontology. All regression tests must pass before promotion.\n\n**RULE 2.3.2 - Backward Compatibility Test Suite**: A comprehensive test suite of existing queries, integrations, and use cases must execute successfully against the enhanced ontology clone before production deployment.\n\n**RULE 2.3.3 - Performance Regression Testing**: Query performance benchmarks must be captured before enhancement and verified after enhancement. Performance degradation beyond 10% requires optimization before deployment.\n\n**RULE 2.3.4 - Rollback Readiness**: Every enhancement deployment must have a tested rollback procedure that can restore the previous state within 15 minutes if ",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_10",
+    "text": "uires optimization before deployment.\n\n**RULE 2.3.4 - Rollback Readiness**: Every enhancement deployment must have a tested rollback procedure that can restore the previous state within 15 minutes if critical issues are discovered.\n\n### 2.4 Deprecation Lifecycle Management\n\nWhen nodes, relationships, or properties become obsolete, the following deprecation lifecycle applies:\n\n**RULE 2.4.1 - Deprecation Marking**: Obsolete elements shall be marked with a property `lifecycleStatus: \"deprecated\"` and a property `deprecationDate: \"YYYY-MM-DD\"`. They remain in the ontology for historical reference.\n\n**RULE 2.4.2 - Deprecation Documentation**: A centralized deprecation log shall document what was deprecated, why, when, and what replacement (if any) should be used instead.\n\n**RULE 2.4.3 - Deprecation Retention Policy**: Deprecated elements shall be retained for a minimum of 24 months before any consideration of archival. Archival (moving to a separate historical ontology) requires executive a",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_11",
+    "text": "tion Retention Policy**: Deprecated elements shall be retained for a minimum of 24 months before any consideration of archival. Archival (moving to a separate historical ontology) requires executive approval.\n\n**RULE 2.4.4 - Deprecation Impact Analysis**: Before marking anything as deprecated, an impact analysis must identify all queries, integrations, and applications that reference it. Affected stakeholders must be notified 90 days in advance.\n\n---\n\n## 3. NO TRUNCATION STANDARDS\n\n### 3.1 Complete Documentation Requirement\n\nAll documentation, plans, specifications, and technical artifacts produced for this project must be COMPLETE. Truncation, summarization, and abbreviated content are forbidden in all formal deliverables.\n\n**RULE 3.1.1 - Full Content Mandate**: Every document, plan, specification, and report shall contain complete information. There shall be no sections marked \"abbreviated for brevity,\" \"see separate document,\" or \"details omitted.\"\n\n**RULE 3.1.2 - Minimum Word Count",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_12",
+    "text": "ification, and report shall contain complete information. There shall be no sections marked \"abbreviated for brevity,\" \"see separate document,\" or \"details omitted.\"\n\n**RULE 3.1.2 - Minimum Word Counts**: Strategic documents have minimum word counts: Ground Rules (3,000 words), Master Plan (15,000 words), Wave Plans (8,000 words each), Technical Specifications (5,000 words each). These are minimums, not targets.\n\n**RULE 3.1.3 - Section Completeness**: Every section in every document must be fully written with complete sentences, detailed explanations, concrete examples, and actionable guidance. No placeholders, no \"TBD\" markers.\n\n**RULE 3.1.4 - Example and Reference Inclusion**: Documents must include complete examples, sample data, reference queries, code snippets, and visual diagrams. References to external resources must include full citations.\n\n### 3.2 Forbidden Phrases and Markers\n\nThe following phrases and patterns are FORBIDDEN in all project deliverables:\n\n**FORBIDDEN 3.2.1 - T",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_13",
+    "text": "ferences to external resources must include full citations.\n\n### 3.2 Forbidden Phrases and Markers\n\nThe following phrases and patterns are FORBIDDEN in all project deliverables:\n\n**FORBIDDEN 3.2.1 - Truncation Indicators**:\n- \"... (content abbreviated for brevity)\"\n- \"... (details omitted)\"\n- \"See separate document for details\"\n- \"Further details available upon request\"\n- \"TBD\" or \"To Be Determined\" in final deliverables\n- \"[Content continues in next section]\" unless it actually continues\n\n**FORBIDDEN 3.2.2 - Summary Disclaimers**:\n- \"This is a high-level summary; full details available elsewhere\"\n- \"For detailed information, see...\"\n- \"Executive summary only; technical appendix separate\"\n- Any indication that the document is incomplete\n\n**FORBIDDEN 3.2.3 - Placeholder Text**:\n- \"Lorem ipsum\" or other dummy text\n- \"[Insert details here]\"\n- \"Example TBD\"\n- \"Section under development\"\n- Any bracketed placeholders in final versions\n\n**FORBIDDEN 3.2.4 - Referral to Missing Content**:\n- \"As",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_14",
+    "text": "um\" or other dummy text\n- \"[Insert details here]\"\n- \"Example TBD\"\n- \"Section under development\"\n- Any bracketed placeholders in final versions\n\n**FORBIDDEN 3.2.4 - Referral to Missing Content**:\n- \"As detailed in the full specification (not included here)\"\n- \"Complete analysis available in separate report\"\n- \"See appendix (appendix not attached)\"\n\n### 3.3 Quality Verification Process\n\n**RULE 3.3.1 - Automated Completeness Scanning**: Before any document is marked as final, an automated scanner shall check for forbidden phrases, minimum word counts, and section completeness markers.\n\n**RULE 3.3.2 - Peer Review for Completeness**: Every major deliverable shall be peer-reviewed with a specific checklist item: \"Is this document complete with no truncation or omission?\"\n\n**RULE 3.3.3 - Executive Sign-Off on Completeness**: Project leadership must explicitly certify that strategic documents (Master Plan, Wave Plans) are complete before work based on those documents can proceed.\n\n**RULE 3.3.4",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_15",
+    "text": "e Sign-Off on Completeness**: Project leadership must explicitly certify that strategic documents (Master Plan, Wave Plans) are complete before work based on those documents can proceed.\n\n**RULE 3.3.4 - Completeness Rejection Authority**: Any team member has the authority to reject a document that contains truncation markers or incomplete sections. The document must be completed before acceptance.\n\n### 3.4 Completeness Examples\n\n**EXAMPLE 3.4.1 - Incomplete Node Description (FORBIDDEN)**:\n```\nAttackPattern Node: Represents attack techniques... (see MITRE ATT&CK for full details)\n```\n\n**EXAMPLE 3.4.2 - Complete Node Description (REQUIRED)**:\n```\nAttackPattern Node: Represents a documented attack technique or procedure used by threat actors to compromise systems or exfiltrate data. Each AttackPattern node includes:\n- Unique identifier (ATT&CK technique ID)\n- Name and description (minimum 200 characters)\n- Tactics (what the attacker is trying to achieve)\n- Detection methods (how defenders",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_16",
+    "text": "ckPattern node includes:\n- Unique identifier (ATT&CK technique ID)\n- Name and description (minimum 200 characters)\n- Tactics (what the attacker is trying to achieve)\n- Detection methods (how defenders can identify this technique)\n- Mitigation strategies (how to prevent or reduce impact)\n- Example usage by known threat actors\n- Related CVEs that enable this attack pattern\n- Affected system types and configurations\n\nExample: AttackPattern \"T1059.001 - PowerShell\" describes how attackers abuse PowerShell for command execution, including detection through PowerShell logging (Event ID 4104) and mitigation through Constrained Language Mode and execution policies.\n```\n\n---\n\n## 4. MULTI-SECTOR COVERAGE REQUIREMENTS\n\n### 4.1 Critical Infrastructure Sector Mandate\n\nThe ontology must provide comprehensive coverage for all 16 U.S. Critical Infrastructure Sectors as defined by CISA. This is non-negotiable as the ontology is designed to serve multi-sector threat intelligence needs.\n\n**RULE 4.1.1 - A",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_17",
+    "text": "nsive coverage for all 16 U.S. Critical Infrastructure Sectors as defined by CISA. This is non-negotiable as the ontology is designed to serve multi-sector threat intelligence needs.\n\n**RULE 4.1.1 - All 16 Sectors Required**: The ontology must include detailed coverage for every one of the 16 critical infrastructure sectors:\n1. Chemical Sector\n2. Commercial Facilities Sector\n3. Communications Sector\n4. Critical Manufacturing Sector\n5. Dams Sector\n6. Defense Industrial Base Sector\n7. Emergency Services Sector\n8. Energy Sector\n9. Financial Services Sector\n10. Food and Agriculture Sector\n11. Government Facilities Sector\n12. Healthcare and Public Health Sector\n13. Information Technology Sector\n14. Nuclear Reactors, Materials, and Waste Sector\n15. Transportation Systems Sector\n16. Water and Wastewater Systems Sector\n\n**RULE 4.1.2 - Sector-Specific Node Requirements**: Each sector must have dedicated nodes representing:\n- Sector-specific systems and technologies (minimum 50 nodes per sector)",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_18",
+    "text": "tewater Systems Sector\n\n**RULE 4.1.2 - Sector-Specific Node Requirements**: Each sector must have dedicated nodes representing:\n- Sector-specific systems and technologies (minimum 50 nodes per sector)\n- Sector-specific threat actors and threat patterns (minimum 20 nodes per sector)\n- Sector-specific vulnerabilities beyond general CVEs (minimum 30 nodes per sector)\n- Sector-specific regulatory requirements and compliance frameworks (minimum 10 nodes per sector)\n- Sector-specific mitigation strategies and best practices (minimum 25 nodes per sector)\n\n**RULE 4.1.3 - Sector Parity Principle**: No sector shall be significantly underrepresented compared to others. If one sector has 200 specific nodes, other sectors should have at least 150 nodes (75% parity minimum).\n\n### 4.2 Shared vs. Sector-Specific Nodes\n\nThe ontology architecture must distinguish between nodes that apply across sectors and nodes that are sector-specific.\n\n**RULE 4.2.1 - Shared Node Reusability**: Nodes representing gene",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_19",
+    "text": "pecific Nodes\n\nThe ontology architecture must distinguish between nodes that apply across sectors and nodes that are sector-specific.\n\n**RULE 4.2.1 - Shared Node Reusability**: Nodes representing general concepts (attack patterns, CVEs, generic technologies) shall be marked as shared and reused across sectors rather than duplicated for each sector.\n\n**RULE 4.2.2 - Sector-Specific Tagging**: Nodes that are specific to one or more sectors shall be tagged with sector applicability properties. This allows filtering and sector-focused queries.\n\n**RULE 4.2.3 - Cross-Sector Impact Analysis**: When a threat or vulnerability affects multiple sectors, relationships shall explicitly connect the threat to each affected sector with impact severity scoring per sector.\n\n**RULE 4.2.4 - Sector Specialization Relationships**: Shared nodes may have sector-specific specialization nodes. Example: \"SCADA System\" (shared) has relationships to \"Energy SCADA System\" (Energy sector) and \"Water SCADA System\" (Wa",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_20",
+    "text": "on Relationships**: Shared nodes may have sector-specific specialization nodes. Example: \"SCADA System\" (shared) has relationships to \"Energy SCADA System\" (Energy sector) and \"Water SCADA System\" (Water sector).\n\n### 4.3 Sector Applicability Mapping\n\n**RULE 4.3.1 - Explicit Sector Relationships**: Every CVE node that is relevant to one or more sectors must have explicit relationships to those sector nodes with relationship properties indicating relevance level (Critical, High, Medium, Low).\n\n**RULE 4.3.2 - Sector Coverage Metrics**: Project tracking shall include metrics showing the number of threat intelligence nodes applicable to each sector. Gaps below 100 nodes per sector trigger additional research.\n\n**RULE 4.3.3 - Sector Expert Validation**: For each sector, at least one domain expert must validate that the ontology coverage is comprehensive and accurately represents sector-specific threats and technologies.\n\n**RULE 4.3.4 - Sector Query Support**: The ontology must support effic",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_21",
+    "text": "rt must validate that the ontology coverage is comprehensive and accurately represents sector-specific threats and technologies.\n\n**RULE 4.3.4 - Sector Query Support**: The ontology must support efficient queries like \"Show me all threats relevant to the Energy Sector\" or \"What CVEs affect Healthcare but not Financial Services?\" Performance target: <2 seconds.\n\n### 4.4 Sector Balance Enforcement\n\n**RULE 4.4.1 - Sector Coverage Dashboard**: A live dashboard shall display node counts, relationship counts, and coverage depth for each of the 16 sectors. Underrepresented sectors are highlighted.\n\n**RULE 4.4.2 - Sector Balance Gates**: Before completing any enhancement wave, sector coverage balance must be verified. No wave is complete if any sector has less than 75% of the average sector coverage.\n\n**RULE 4.4.3 - Sector-Specific Waves**: If sector imbalances emerge, dedicated enhancement waves focused solely on underrepresented sectors shall be scheduled to restore balance.\n\n---\n\n## 5. WAVE",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_22",
+    "text": "ge.\n\n**RULE 4.4.3 - Sector-Specific Waves**: If sector imbalances emerge, dedicated enhancement waves focused solely on underrepresented sectors shall be scheduled to restore balance.\n\n---\n\n## 5. WAVE COMPLETION CRITERIA\n\n### 5.1 100% Complete Before Next Wave\n\nThe enhancement project follows a strict wave-based methodology where each wave must be 100% complete before the next wave begins. This prevents cascade failures and ensures quality at each step.\n\n**RULE 5.1.1 - Wave Completion Definition**: A wave is considered complete when:\n- All planned nodes have been created (100% of target)\n- All planned relationships have been established (100% of target)\n- All sector coverage requirements for the wave are met (100% of sectors covered as planned)\n- All validation tests pass (100% pass rate)\n- All documentation is complete (no truncation)\n- Performance benchmarks meet targets (query times within limits)\n\n**RULE 5.1.2 - No Partial Wave Acceptance**: Partial wave completion (e.g., \"We creat",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_23",
+    "text": "- All documentation is complete (no truncation)\n- Performance benchmarks meet targets (query times within limits)\n\n**RULE 5.1.2 - No Partial Wave Acceptance**: Partial wave completion (e.g., \"We created 90% of the nodes\") is not acceptable. Waves are binary: complete or incomplete. Incomplete waves must be finished before progression.\n\n**RULE 5.1.3 - No Wave Skipping**: Waves must be executed in sequence (Wave 1, then Wave 2, then Wave 3, etc.). Skipping waves because they seem less important is forbidden. The wave sequence has dependencies.\n\n**RULE 5.1.4 - No Parallel Wave Execution**: Only one wave may be in active execution at a time. This prevents resource conflicts and ensures focus. Planning for future waves is allowed while a wave executes.\n\n### 5.2 Validation Gates\n\nEach wave must pass through multiple validation gates before being marked complete.\n\n**RULE 5.2.1 - Technical Validation Gate**: Automated tests verify that all nodes and relationships exist, properties are populate",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_24",
+    "text": "pass through multiple validation gates before being marked complete.\n\n**RULE 5.2.1 - Technical Validation Gate**: Automated tests verify that all nodes and relationships exist, properties are populated correctly, and no data corruption occurred. 100% pass required.\n\n**RULE 5.2.2 - Performance Validation Gate**: Benchmark queries execute within performance targets (specific thresholds defined per wave). Queries slower than baseline require optimization before progression.\n\n**RULE 5.2.3 - Coverage Validation Gate**: Sector coverage analysis confirms that the wave achieved its coverage goals for all 16 sectors. Gaps require remediation before progression.\n\n**RULE 5.2.4 - Integration Validation Gate**: Existing queries, applications, and integrations continue to function correctly (backward compatibility verification). Any breaking changes require fixes before progression.\n\n**RULE 5.2.5 - Documentation Validation Gate**: All documentation deliverables for the wave are complete (no truncati",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_25",
+    "text": "mpatibility verification). Any breaking changes require fixes before progression.\n\n**RULE 5.2.5 - Documentation Validation Gate**: All documentation deliverables for the wave are complete (no truncation), peer-reviewed, and approved. Incomplete documentation blocks wave completion.\n\n**RULE 5.2.6 - Stakeholder Validation Gate**: Key stakeholders review wave outcomes and provide approval to proceed. Stakeholder concerns must be addressed before progression.\n\n### 5.3 Documentation Standards\n\nEach wave produces mandatory documentation deliverables that must meet completeness standards.\n\n**RULE 5.3.1 - Wave Execution Report**: Each wave shall produce an execution report detailing:\n- Node creation summary (types, counts, examples)\n- Relationship creation summary (types, counts, examples)\n- Sector coverage achieved (metrics per sector)\n- Validation test results (all tests documented)\n- Performance benchmark results (query times, resource usage)\n- Issues encountered and resolutions\n- Lessons l",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_26",
+    "text": "r coverage achieved (metrics per sector)\n- Validation test results (all tests documented)\n- Performance benchmark results (query times, resource usage)\n- Issues encountered and resolutions\n- Lessons learned for future waves\n- Minimum 5,000 words, complete with no truncation\n\n**RULE 5.3.2 - Wave Validation Report**: Each wave shall produce a validation report certifying:\n- All validation gates passed\n- Test evidence (screenshots, logs, query results)\n- Performance evidence (benchmark data, charts)\n- Coverage evidence (sector metrics, node counts)\n- Sign-off from technical lead and project manager\n- Minimum 3,000 words, complete with no truncation\n\n**RULE 5.3.3 - Wave Knowledge Transfer Document**: Each wave shall produce a knowledge transfer document for future maintainers:\n- What was built and why\n- Key design decisions and rationale\n- Code snippets and query examples\n- Troubleshooting guide for common issues\n- Recommendations for future enhancements\n- Minimum 4,000 words, complete wit",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_27",
+    "text": " and why\n- Key design decisions and rationale\n- Code snippets and query examples\n- Troubleshooting guide for common issues\n- Recommendations for future enhancements\n- Minimum 4,000 words, complete with no truncation\n\n### 5.4 Sign-Off Procedures\n\n**RULE 5.4.1 - Technical Lead Sign-Off**: The technical lead must review all wave deliverables and explicitly sign off that the wave is technically complete and meets all quality standards.\n\n**RULE 5.4.2 - Project Manager Sign-Off**: The project manager must verify that all wave documentation is complete, all validation gates passed, and the wave is ready for production deployment.\n\n**RULE 5.4.3 - Stakeholder Sign-Off**: At least two stakeholder representatives (e.g., threat intelligence analysts, security operations personnel) must review wave outcomes and confirm that deliverables meet operational needs.\n\n**RULE 5.4.4 - Executive Sponsor Sign-Off**: For major waves (Waves 1, 4, 8, 12), the executive sponsor must provide explicit approval base",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_28",
+    "text": "comes and confirm that deliverables meet operational needs.\n\n**RULE 5.4.4 - Executive Sponsor Sign-Off**: For major waves (Waves 1, 4, 8, 12), the executive sponsor must provide explicit approval based on strategic alignment and business value delivery.\n\n**RULE 5.4.5 - Sign-Off Documentation**: All sign-offs must be documented with signatures (electronic or digital), dates, and any conditions or recommendations for future waves.\n\n### 5.5 Wave Completion Metrics\n\nEach wave completion is tracked with quantitative metrics that must meet minimum thresholds:\n\n**METRIC 5.5.1 - Node Creation Accuracy**: Percentage of planned nodes successfully created. Minimum: 100%.\n\n**METRIC 5.5.2 - Relationship Creation Accuracy**: Percentage of planned relationships successfully created. Minimum: 100%.\n\n**METRIC 5.5.3 - Validation Test Pass Rate**: Percentage of validation tests passed. Minimum: 100%.\n\n**METRIC 5.5.4 - Performance Benchmark Achievement**: Percentage of queries meeting performance targets.",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_29",
+    "text": "RIC 5.5.3 - Validation Test Pass Rate**: Percentage of validation tests passed. Minimum: 100%.\n\n**METRIC 5.5.4 - Performance Benchmark Achievement**: Percentage of queries meeting performance targets. Minimum: 95%.\n\n**METRIC 5.5.5 - Sector Coverage Achievement**: Percentage of sector-specific goals met. Minimum: 100% for all 16 sectors.\n\n**METRIC 5.5.6 - Documentation Completeness**: Percentage of documentation deliverables complete with no truncation. Minimum: 100%.\n\n**METRIC 5.5.7 - Stakeholder Satisfaction**: Stakeholder approval rating based on wave outcomes. Minimum: 4.0 out of 5.0.\n\n---\n\n## 6. ENFORCEMENT AND ACCOUNTABILITY\n\n### 6.1 Rule Violation Procedures\n\n**RULE 6.1.1 - Immediate Work Stoppage**: If any team member identifies a violation of these ground rules, they have the authority to immediately halt work until the violation is addressed.\n\n**RULE 6.1.2 - Root Cause Analysis**: Every rule violation triggers a root cause analysis to understand why the violation occurred and ",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_30",
+    "text": "rity to immediately halt work until the violation is addressed.\n\n**RULE 6.1.2 - Root Cause Analysis**: Every rule violation triggers a root cause analysis to understand why the violation occurred and how to prevent recurrence.\n\n**RULE 6.1.3 - Corrective Action Plans**: Violations require documented corrective action plans with specific steps, responsible parties, and completion dates.\n\n**RULE 6.1.4 - Violation Tracking**: All rule violations are tracked in a centralized log with severity ratings, resolution status, and lessons learned.\n\n### 6.2 Accountability Framework\n\n**RULE 6.2.1 - Technical Lead Accountability**: The technical lead is ultimately accountable for ensuring that these ground rules are followed in all technical work.\n\n**RULE 6.2.2 - Project Manager Accountability**: The project manager is accountable for ensuring that these ground rules are incorporated into project processes, schedules, and quality gates.\n\n**RULE 6.2.3 - Team Member Responsibility**: Every team member ",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_31",
+    "text": "ject manager is accountable for ensuring that these ground rules are incorporated into project processes, schedules, and quality gates.\n\n**RULE 6.2.3 - Team Member Responsibility**: Every team member is responsible for understanding these ground rules, following them in their work, and raising concerns when violations are observed.\n\n**RULE 6.2.4 - Executive Oversight**: The executive sponsor shall receive monthly reports on ground rule compliance, violations, and corrective actions.\n\n### 6.3 Continuous Improvement\n\n**RULE 6.3.1 - Ground Rule Evolution**: These ground rules may be updated based on lessons learned, but only through a formal change control process requiring executive approval.\n\n**RULE 6.3.2 - Quarterly Ground Rule Review**: Every quarter, the project team shall review these ground rules for relevance, clarity, and effectiveness. Recommended updates go through change control.\n\n**RULE 6.3.3 - Lessons Learned Integration**: Insights from wave execution, validation findings, ",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_32",
+    "text": "round rules for relevance, clarity, and effectiveness. Recommended updates go through change control.\n\n**RULE 6.3.3 - Lessons Learned Integration**: Insights from wave execution, validation findings, and stakeholder feedback shall be incorporated into ground rule refinements where appropriate.\n\n---\n\n## 7. SUMMARY AND COMMITMENT\n\nThese ground rules establish the foundation for safe, effective, and value-preserving enhancement of the AEON Digital Twin Cybersecurity Threat Intelligence ontology. They are designed to protect the existing investment of 147,923 CVE nodes while enabling systematic growth to 307,569+ nodes across 12 enhancement waves.\n\n**Every team member commits to:**\n- Protecting the 147,923 CVE nodes as sacred and immutable\n- Following the enhancement-only philosophy (no deletions)\n- Producing complete documentation with no truncation\n- Ensuring comprehensive multi-sector coverage\n- Completing each wave 100% before moving to the next\n\n**Project leadership commits to:**\n- En",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_33",
+    "text": "ons)\n- Producing complete documentation with no truncation\n- Ensuring comprehensive multi-sector coverage\n- Completing each wave 100% before moving to the next\n\n**Project leadership commits to:**\n- Enforcing these ground rules without exception\n- Providing resources and support for compliance\n- Addressing violations swiftly and transparently\n- Continuously improving these rules based on experience\n\n**Success is defined as:** Delivering a 307,569+ node ontology that preserves all existing value, adds comprehensive multi-sector coverage, maintains high performance, and serves as the foundation for advanced threat intelligence capabilities across all 16 critical infrastructure sectors.\n\n---\n\n**DOCUMENT END - 00_MANDATORY_GROUND_RULES.md**\n\n**Word Count:** ~3,800 words (exceeds 3,000-word minimum)\n**Completeness:** 100% - No truncation, no omissions, all sections fully detailed\n**Status:** ACTIVE - Ready for immediate use in project governance\n",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 954
+    }
+  },
+  {
+    "id": "00_MANDATORY_GROUND_RULES.md_chunk_34",
+    "text": "mum)\n**Completeness:** 100% - No truncation, no omissions, all sections fully detailed\n**Status:** ACTIVE - Ready for immediate use in project governance\n",
+    "metadata": {
+      "file_name": "00_MANDATORY_GROUND_RULES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/00_MANDATORY_GROUND_RULES.md",
+      "file_size": 27354,
+      "indexed_at": "2025-10-31T00:58:48.316169",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 154
+    }
+  }
+]

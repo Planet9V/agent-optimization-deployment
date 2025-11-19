@@ -1,0 +1,177 @@
+# AEON Automated Document Ingestion System - Main Configuration
+
+system:
+  name: "AEON Automated Document Ingestion"
+  version: "1.0.0"
+  environment: "development"  # development, staging, production
+
+monitoring:
+  watch_directories:
+    - "/home/jim/2_OXOT_Projects_Dev/Import 1 NOV 2025/Critical_Sector_IACS"
+
+  supported_extensions:
+    - ".pdf"
+    - ".docx"
+    - ".doc"
+    - ".html"
+    - ".htm"
+    - ".md"
+    - ".txt"
+
+  check_interval_seconds: 10
+  batch_size: 5
+  parallel_workers: 3
+  recursive: true
+
+classification:
+  confidence_threshold: 0.75
+  interactive_mode: true
+  batch_questions: true
+  batch_question_threshold: 3
+  auto_classify_high_confidence: true
+
+  model_paths:
+    sector: "models/classifiers/sector_classifier.pkl"
+    subsector: "models/classifiers/subsector_classifier.pkl"
+    doctype: "models/classifiers/doctype_classifier.pkl"
+
+conversion:
+  pdf_strategy: "pymupdf_primary"  # pymupdf_primary, pdfplumber_primary, camelot_tables
+  docx_strategy: "mammoth"  # mammoth, python-docx
+  html_strategy: "beautifulsoup"  # beautifulsoup, markdownify, pandoc
+
+  fallback_order:
+    pdf:
+      - "PyMuPDF"
+      - "pdfplumber"
+      - "Camelot"
+      - "pandoc"
+    docx:
+      - "mammoth"
+      - "python-docx"
+      - "pandoc"
+    html:
+      - "BeautifulSoup"
+      - "markdownify"
+      - "pandoc"
+
+  table_extraction: true
+  preserve_formatting: true
+  max_file_size_mb: 100
+  output_dir: "/tmp/aeon_processed_docs"
+
+ner:
+  approach: "pattern_neural_hybrid"  # pattern_neural_hybrid, neural_only, pattern_only
+  pattern_priority: true
+
+  spacy_model: "en_core_web_lg"  # en_core_web_lg, en_core_web_trf
+  batch_size: 50
+
+  custom_models:
+    energy: "models/spacy/energy_hybrid"
+    water: "models/spacy/water_hybrid"
+    manufacturing: "models/spacy/manufacturing_hybrid"
+
+  entity_types:
+    - "VENDOR"
+    - "PROTOCOL"
+    - "STANDARD"
+    - "COMPONENT"
+    - "MEASUREMENT"
+    - "ORGANIZATION"
+    - "SAFETY_CLASS"
+    - "SYSTEM_LAYER"
+
+neo4j:
+  uri: "bolt://localhost:7687"
+  user: "neo4j"
+  password: "${NEO4J_PASSWORD}"  # Environment variable
+  database: "neo4j"
+
+  batch_size: 100
+  timeout: 30
+  max_retries: 3
+
+  connection:
+    max_connection_lifetime: 3600  # seconds
+    max_connection_pool_size: 50
+    connection_acquisition_timeout: 60
+    encrypted: false  # Set to true for production
+
+ingestion:
+  deduplication: "sha256"  # sha256 + relationship validation
+  validation_enabled: true
+  progress_tracking: true
+  checkpoint_interval: 10  # Save progress every 10 documents
+  error_recovery: "skip_and_log"  # skip_and_log, retry, fail_fast
+
+  validation_rules:
+    require_title: true
+    require_content: true
+    min_content_length: 50
+    max_content_length: 10000000
+    require_sector: true
+    require_document_type: true
+
+  deduplication_strategy:
+    method: "sha256_relationship"  # sha256_only, relationship_only, sha256_relationship
+    check_existing: true
+    update_if_changed: true
+    preserve_relationships: true
+
+memory:
+  qdrant_enabled: false  # Set to true when Qdrant is available
+  qdrant_host: "localhost"
+  qdrant_port: 6333
+  collection_name: "document_classifications"
+
+  vector_size: 384  # sentence-transformers/all-MiniLM-L6-v2
+  distance_metric: "cosine"
+
+  decision_tracking: true
+  learning_enabled: true
+
+notifications:
+  enabled: false  # Set to true to enable email notifications
+  email_on_completion: true
+  email_on_error: false
+
+  smtp_server: "smtp.gmail.com"
+  smtp_port: 587
+  smtp_user_env: "SMTP_USER"
+  smtp_password_env: "SMTP_PASSWORD"
+
+  from_address: "aeon-system@example.com"
+  to_addresses:
+    - "user@example.com"
+
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+  file_logging: true
+  log_directory: "logs"
+  log_filename: "auto_ingest_{date}.log"
+
+  max_log_size_mb: 100
+  backup_count: 5
+
+error_handling:
+  retry_attempts: 3
+  retry_delay_seconds: 5
+  retry_backoff_multiplier: 2
+
+  checkpoint_frequency: 10  # Create checkpoint every N files
+  rollback_on_batch_failure: true
+
+  skip_on_permanent_failure: true
+  log_skipped_files: true
+  skipped_files_log: "logs/skipped_files.log"
+
+progress:
+  show_progress_bar: true
+  update_frequency_seconds: 5
+  detailed_stats: true
+
+  report_format: "terminal"  # terminal, json, both
+  json_report_path: "logs/progress_report.json"

@@ -1,0 +1,23 @@
+{"timestamp": "2025-10-31T15:20:14.312185", "operation": "wave_6_execution_started", "details": {"timestamp": "2025-10-31T15:20:14.312150"}}
+{"timestamp": "2025-10-31T15:20:14.312391", "operation": "phase_started", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T15:20:14.357715", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT uco_observable_id_unique IF NOT EXISTS FOR (o:UCO_Observable) ..."}}
+{"timestamp": "2025-10-31T15:20:14.404303", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT stix_object_id_unique IF NOT EXISTS FOR (s:STIX_Object) REQUIR..."}}
+{"timestamp": "2025-10-31T15:20:14.450314", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT investigation_case_id_unique IF NOT EXISTS FOR (c:Investigatio..."}}
+{"timestamp": "2025-10-31T15:20:14.460172", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX uco_observable_type_idx IF NOT EXISTS FOR (o:UCO_Observable) ON (o...."}}
+{"timestamp": "2025-10-31T15:20:14.470195", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX stix_object_type_idx IF NOT EXISTS FOR (s:STIX_Object) ON (s.stix_t..."}}
+{"timestamp": "2025-10-31T15:20:14.483863", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX stix_object_created_idx IF NOT EXISTS FOR (s:STIX_Object) ON (s.cre..."}}
+{"timestamp": "2025-10-31T15:20:14.493813", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX investigation_case_status_idx IF NOT EXISTS FOR (c:Investigation_Ca..."}}
+{"timestamp": "2025-10-31T15:20:14.499432", "operation": "phase_completed", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T15:20:14.499619", "operation": "phase_started", "details": {"phase": "create_uco_stix_nodes"}}
+{"timestamp": "2025-10-31T15:20:14.554555", "operation": "uco_observables_created", "details": {"count": 15}}
+{"timestamp": "2025-10-31T15:20:14.607831", "operation": "stix_domain_objects_created", "details": {"count": 12}}
+{"timestamp": "2025-10-31T15:20:14.675434", "operation": "stix_cyber_observables_created", "details": {"count": 18}}
+{"timestamp": "2025-10-31T15:20:14.728834", "operation": "investigation_cases_created", "details": {"count": 10}}
+{"timestamp": "2025-10-31T15:20:14.729019", "operation": "phase_completed", "details": {"phase": "create_uco_stix_nodes", "nodes_created": 55}}
+{"timestamp": "2025-10-31T15:20:14.729068", "operation": "phase_started", "details": {"phase": "create_relationships"}}
+{"timestamp": "2025-10-31T15:20:14.772821", "operation": "relationships_created", "details": {"type": "MAPS_TO_STIX_ATTACK_PATTERN", "count": 50}}
+{"timestamp": "2025-10-31T15:20:14.809442", "operation": "relationships_created", "details": {"type": "MAPS_TO_STIX_VULNERABILITY", "count": 100}}
+{"timestamp": "2025-10-31T15:20:14.913348", "operation": "relationships_created", "details": {"type": "EQUIVALENT_TO_STIX", "count": 4}}
+{"timestamp": "2025-10-31T15:20:14.958752", "operation": "relationships_created", "details": {"type": "CONTAINS_EVIDENCE", "count": 15}}
+{"timestamp": "2025-10-31T15:20:14.958895", "operation": "phase_completed", "details": {"phase": "create_relationships", "total_relationships": 169}}
+{"timestamp": "2025-10-31T15:20:14.958980", "operation": "wave_6_execution_completed", "details": {"timestamp": "2025-10-31T15:20:14.958976", "nodes_created": 55, "relationships_created": 169}}

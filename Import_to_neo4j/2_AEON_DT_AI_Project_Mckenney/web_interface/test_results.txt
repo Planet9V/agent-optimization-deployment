@@ -1,0 +1,66 @@
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.2, pluggy-1.6.0 -- /home/jim/2_OXOT_Projects_Dev/Import_to_neo4j/2_AEON_DT_AI_Project_Mckenney/venv/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/jim/2_OXOT_Projects_Dev/Import_to_neo4j/2_AEON_DT_AI_Project_Mckenney
+plugins: anyio-4.11.0
+collecting ... collected 174 items / 3 errors
+
+==================================== ERRORS ====================================
+_______________ ERROR collecting tests/test_classifier_agent.py ________________
+ImportError while importing test module '/home/jim/2_OXOT_Projects_Dev/Import_to_neo4j/2_AEON_DT_AI_Project_Mckenney/tests/test_classifier_agent.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_classifier_agent.py:16: in <module>
+    from agents.classifier_agent import ClassifierAgent
+agents/__init__.py:7: in <module>
+    from .orchestrator_agent import OrchestratorAgent
+agents/orchestrator_agent.py:18: in <module>
+    from .ingestion_agent import IngestionAgent
+agents/ingestion_agent.py:14: in <module>
+    from nlp_ingestion_pipeline import NLPIngestionPipeline
+E   ModuleNotFoundError: No module named 'nlp_ingestion_pipeline'
+_______________ ERROR collecting tests/test_entity_resolution.py _______________
+ImportError while importing test module '/home/jim/2_OXOT_Projects_Dev/Import_to_neo4j/2_AEON_DT_AI_Project_Mckenney/tests/test_entity_resolution.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_entity_resolution.py:30: in <module>
+    from entity_resolver import EntityResolver
+E   ModuleNotFoundError: No module named 'entity_resolver'
+______________ ERROR collecting tests/test_sbom_cve_validation.py ______________
+ImportError while importing test module '/home/jim/2_OXOT_Projects_Dev/Import_to_neo4j/2_AEON_DT_AI_Project_Mckenney/tests/test_sbom_cve_validation.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/usr/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_sbom_cve_validation.py:14: in <module>
+    from agents.sbom_agent import SBOMAgent
+agents/__init__.py:7: in <module>
+    from .orchestrator_agent import OrchestratorAgent
+agents/orchestrator_agent.py:18: in <module>
+    from .ingestion_agent import IngestionAgent
+agents/ingestion_agent.py:14: in <module>
+    from nlp_ingestion_pipeline import NLPIngestionPipeline
+E   ModuleNotFoundError: No module named 'nlp_ingestion_pipeline'
+=============================== warnings summary ===============================
+venv/lib/python3.12/site-packages/spacy/cli/_util.py:23
+  /home/jim/2_OXOT_Projects_Dev/Import_to_neo4j/2_AEON_DT_AI_Project_Mckenney/venv/lib/python3.12/site-packages/spacy/cli/_util.py:23: DeprecationWarning: Importing 'parser.split_arg_string' is deprecated, it will only be available in 'shell_completion' in Click 9.0.
+    from click.parser import split_arg_string
+
+venv/lib/python3.12/site-packages/weasel/util/config.py:8
+  /home/jim/2_OXOT_Projects_Dev/Import_to_neo4j/2_AEON_DT_AI_Project_Mckenney/venv/lib/python3.12/site-packages/weasel/util/config.py:8: DeprecationWarning: Importing 'parser.split_arg_string' is deprecated, it will only be available in 'shell_completion' in Click 9.0.
+    from click.parser import split_arg_string
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+ERROR tests/test_classifier_agent.py
+ERROR tests/test_entity_resolution.py
+ERROR tests/test_sbom_cve_validation.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 3 errors during collection !!!!!!!!!!!!!!!!!!!!
+======================== 2 warnings, 3 errors in 7.42s =========================

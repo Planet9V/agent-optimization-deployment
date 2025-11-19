@@ -1,0 +1,562 @@
+[
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_0",
+    "text": "# WAVE 9: IT INFRASTRUCTURE & SOFTWARE ASSETS\n**File:** 11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md\n**Created:** 2025-10-30 00:00:00 UTC\n**Version:** v1.0.0\n**Status:** ACTIVE\n**Wave Priority:** 9 of 12\n**Estimated Nodes:** ~5,000\n\n## Wave Overview\n\nWave 9 focuses on comprehensive IT infrastructure and software asset management, covering hardware assets, software inventory, cloud resources, virtualization infrastructure, and their security relationships. This wave bridges traditional IT asset management with cybersecurity threat intelligence.\n\n### Objectives\n1. Define complete hardware asset inventory schemas\n2. Establish software lifecycle management models\n3. Integrate cloud infrastructure monitoring\n4. Map virtualization layers and dependencies\n5. Connect infrastructure to vulnerability management\n6. Enable asset-based threat correlation\n\n### Dependencies\n- Wave 1-2: SAREF Core Infrastructure (device foundations)\n- Wave 3-5: Cybersecurity threat models (vulnerability linkage)\n- Wave 7-8",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_1",
+    "text": "agement\n6. Enable asset-based threat correlation\n\n### Dependencies\n- Wave 1-2: SAREF Core Infrastructure (device foundations)\n- Wave 3-5: Cybersecurity threat models (vulnerability linkage)\n- Wave 7-8: SBOM integration (software component mapping)\n\n---\n\n## COMPLETE NODE SCHEMAS\n\n### 1. HARDWARE ASSETS (~1,500 nodes)\n\n#### 1.1 Physical Servers (400 nodes)\n\n**PhysicalServer**\n```yaml\nPhysicalServer:\n  extends: saref:Device\n  properties:\n    # Identity\n    serverID: string (unique identifier)\n    assetTag: string (organization asset tag)\n    hostname: string (FQDN)\n    domain: string\n    serialNumber: string (manufacturer serial)\n\n    # Hardware Configuration\n    manufacturer: string\n    model: string\n    formFactor: enum[tower, rack_mount, blade, micro_server]\n    rackUnit: integer (U height)\n    weight: float (kg)\n\n    # Compute Resources\n    cpu:\n      model: string\n      manufacturer: string\n      architecture: enum[x86, x64, arm, risc_v, power]\n      cores: integer (physical cores)\n ",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_2",
+    "text": ")\n    weight: float (kg)\n\n    # Compute Resources\n    cpu:\n      model: string\n      manufacturer: string\n      architecture: enum[x86, x64, arm, risc_v, power]\n      cores: integer (physical cores)\n      threads: integer (logical processors)\n      baseSpeed: float (GHz)\n      maxSpeed: float (GHz)\n      cache:\n        l1: integer (KB)\n        l2: integer (KB)\n        l3: integer (MB)\n\n    # Memory Configuration\n    memory:\n      total: integer (GB)\n      type: enum[ddr3, ddr4, ddr5, ecc_ddr4, ecc_ddr5]\n      speed: integer (MHz)\n      slots: integer\n      slotsUsed: integer\n      maxCapacity: integer (GB)\n\n    # Storage Configuration\n    storage:\n      - type: enum[hdd, ssd, nvme, sas, sata]\n        capacity: integer (GB)\n        interface: string\n        speed: integer (RPM for HDD, MB/s for SSD)\n        raidLevel: enum[none, raid0, raid1, raid5, raid6, raid10]\n        controller: string\n\n    # Network Interfaces\n    networkInterfaces:\n      - name: string (eth0, ens192, etc)\n       ",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_3",
+    "text": " for SSD)\n        raidLevel: enum[none, raid0, raid1, raid5, raid6, raid10]\n        controller: string\n\n    # Network Interfaces\n    networkInterfaces:\n      - name: string (eth0, ens192, etc)\n        macAddress: string\n        ipv4Address: string\n        ipv6Address: string\n        speed: integer (Mbps)\n        type: enum[ethernet, fiber, wifi, infiniband]\n        vlanID: integer\n        bondingMode: enum[none, active_backup, load_balance, broadcast]\n\n    # Power Configuration\n    powerSupply:\n      type: enum[single, redundant, n_plus_1]\n      capacity: integer (watts)\n      efficiency: string (80_plus_rating)\n      voltage: integer\n      inputType: enum[ac, dc]\n\n    # Physical Location\n    location:\n      datacenter: string\n      building: string\n      floor: integer\n      room: string\n      rack: string\n      rackPosition: integer (starting U position)\n      coordinates: geopoint\n\n    # Operating System\n    operatingSystem:\n      name: string\n      version: string\n      distributio",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_4",
+    "text": "      rack: string\n      rackPosition: integer (starting U position)\n      coordinates: geopoint\n\n    # Operating System\n    operatingSystem:\n      name: string\n      version: string\n      distribution: string\n      kernel: string\n      architecture: string\n      installDate: datetime\n      lastUpdate: datetime\n      patchLevel: string\n\n    # Management\n    managementInterface:\n      type: enum[ipmi, ilo, idrac, redfish]\n      ipAddress: string\n      firmwareVersion: string\n      accessMethod: enum[web, ssh, api]\n\n    # Operational Status\n    powerState: enum[on, off, standby, hibernating]\n    operationalStatus: enum[operational, degraded, failed, maintenance, decommissioned]\n    uptime: integer (seconds)\n    bootTime: datetime\n\n    # Capacity & Performance\n    cpuUtilization: float (percentage)\n    memoryUtilization: float (percentage)\n    storageUtilization: float (percentage)\n    temperatureCPU: float (celsius)\n    temperatureAmbient: float (celsius)\n    fanSpeed: array[integer] (RP",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_5",
+    "text": "ntage)\n    memoryUtilization: float (percentage)\n    storageUtilization: float (percentage)\n    temperatureCPU: float (celsius)\n    temperatureAmbient: float (celsius)\n    fanSpeed: array[integer] (RPM)\n\n    # Lifecycle Management\n    purchaseDate: date\n    warrantyExpiry: date\n    maintenanceContract: string\n    depreciationPeriod: integer (months)\n    endOfLife: date\n\n    # Asset Classification\n    criticality: enum[critical, high, medium, low]\n    dataClassification: enum[public, internal, confidential, restricted, top_secret]\n    complianceRequirements: array[enum[pci_dss, hipaa, gdpr, sox, fedramp, fisma]]\n\n  relationships:\n    # Physical Relationships\n    locatedIn: Datacenter (many-to-1)\n    installedIn: Rack (many-to-1)\n    poweredBy: PowerDistributionUnit (many-to-1)\n    cooledBy: CoolingSystem (many-to-1)\n\n    # Virtualization\n    hosts: VirtualMachine (1-to-many)\n    runsHypervisor: Hypervisor (1-to-1)\n\n    # Software & Applications\n    runsOS: OperatingSystem (1-to-1)\n    r",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_6",
+    "text": " CoolingSystem (many-to-1)\n\n    # Virtualization\n    hosts: VirtualMachine (1-to-many)\n    runsHypervisor: Hypervisor (1-to-1)\n\n    # Software & Applications\n    runsOS: OperatingSystem (1-to-1)\n    runs: Application (1-to-many)\n    hasAgent: ManagementAgent (1-to-many)\n\n    # Network Connectivity\n    connectedTo: NetworkSwitch (many-to-many)\n    partOf: NetworkSegment (many-to-1)\n    hasNetworkInterface: NetworkInterface (1-to-many)\n\n    # Security\n    protectedBy: EndpointProtection (1-to-1)\n    monitored By: MonitoringSystem (many-to-many)\n    backupTo: BackupSystem (many-to-many)\n\n    # Vulnerability & Threats\n    hasVulnerability: Vulnerability (many-to-many)\n    affectedBy: Incident (many-to-many)\n    exposedTo: ThreatActor (many-to-many)\n\n    # Clustering & High Availability\n    memberOf: Cluster (many-to-1)\n    failoverTo: PhysicalServer (many-to-1)\n\n    # Management & Ownership\n    ownedBy: Organization (many-to-1)\n    managedBy: User (many-to-many)\n    assignedTo: BusinessUni",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_7",
+    "text": "berOf: Cluster (many-to-1)\n    failoverTo: PhysicalServer (many-to-1)\n\n    # Management & Ownership\n    ownedBy: Organization (many-to-1)\n    managedBy: User (many-to-many)\n    assignedTo: BusinessUnit (many-to-1)\n\n  validation_rules:\n    - serialNumber must be unique\n    - hostname must be valid FQDN\n    - ipAddress must be valid IPv4 or IPv6\n    - cpuUtilization range [0, 100]\n    - memoryUtilization range [0, 100]\n    - powerState transition requires authorization\n```\n\n**ServerCluster**\n```yaml\nServerCluster:\n  properties:\n    clusterID: string\n    clusterName: string\n    clusterType: enum[ha, load_balancing, hpc, database, storage, kubernetes]\n    nodeCount: integer\n    minimumNodes: integer\n    quorumNodes: integer\n    clusterSoftware: string\n    version: string\n\n    # Configuration\n    sharedStorage: boolean\n    storageType: enum[san, nas, das, distributed]\n    networkTopology: enum[star, mesh, ring, bus]\n    failoverMode: enum[active_active, active_passive, n_plus_1]\n\n    # Stat",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_8",
+    "text": "   sharedStorage: boolean\n    storageType: enum[san, nas, das, distributed]\n    networkTopology: enum[star, mesh, ring, bus]\n    failoverMode: enum[active_active, active_passive, n_plus_1]\n\n    # Status\n    clusterStatus: enum[online, degraded, offline, maintenance]\n    healthScore: float (0-100)\n    lastFailover: datetime\n\n  relationships:\n    contains: PhysicalServer (1-to-many)\n    uses: SharedStorage (many-to-many)\n    managedBy: ClusterManager (many-to-1)\n```\n\n#### 1.2 Workstations & Endpoints (500 nodes)\n\n**Workstation**\n```yaml\nWorkstation:\n  extends: saref:Device\n  properties:\n    # Identity\n    assetTag: string\n    hostname: string\n    serialNumber: string\n\n    # Hardware\n    manufacturer: string\n    model: string\n    formFactor: enum[desktop, laptop, all_in_one, thin_client, workstation]\n    cpu: string\n    memory: integer (GB)\n    storage: integer (GB)\n    graphics: string\n\n    # Configuration\n    operatingSystem: string\n    osVersion: string\n    osBuild: string\n    bitness:",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_9",
+    "text": "station]\n    cpu: string\n    memory: integer (GB)\n    storage: integer (GB)\n    graphics: string\n\n    # Configuration\n    operatingSystem: string\n    osVersion: string\n    osBuild: string\n    bitness: enum[32bit, 64bit, arm64]\n\n    # Network\n    macAddress: string\n    ipAddress: string\n    dhcpEnabled: boolean\n    dnsServers: array[string]\n\n    # Security\n    encryptionStatus: enum[encrypted, not_encrypted, partially_encrypted]\n    encryptionType: enum[bitlocker, filevault, luks, veracrypt]\n    firewallEnabled: boolean\n    antivirusInstalled: boolean\n    antivirusVersion: string\n    lastVirusScan: datetime\n\n    # Status\n    powerState: enum[on, off, sleep, hibernate]\n    lastBoot: datetime\n    uptime: integer (seconds)\n\n    # User Assignment\n    primaryUser: string\n    department: string\n    location: string\n\n  relationships:\n    assignedTo: User (many-to-1)\n    hasAgent: EndpointProtection (1-to-1)\n    connectedTo: NetworkSegment (many-to-1)\n    managedBy: MDM (many-to-1)\n    hasVulne",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_10",
+    "text": "   location: string\n\n  relationships:\n    assignedTo: User (many-to-1)\n    hasAgent: EndpointProtection (1-to-1)\n    connectedTo: NetworkSegment (many-to-1)\n    managedBy: MDM (many-to-1)\n    hasVulnerability: Vulnerability (many-to-many)\n```\n\n**MobileDevice**\n```yaml\nMobileDevice:\n  extends: Workstation\n  properties:\n    # Device Specifics\n    deviceType: enum[smartphone, tablet, phablet]\n    imei: string\n    carrier: string\n    phoneNumber: string\n\n    # Mobile Configuration\n    mobileOS: enum[ios, android, windows_mobile, other]\n    osVersion: string\n    jailbroken: boolean\n    rooted: boolean\n\n    # Security\n    passcodeEnabled: boolean\n    biometricEnabled: boolean\n    mdmEnrolled: boolean\n\n    # Connectivity\n    wifiMacAddress: string\n    bluetoothMacAddress: string\n    cellularConnection: boolean\n\n  relationships:\n    enrolledIn: MDM (many-to-1)\n    hasProfile: MDMProfile (many-to-many)\n```\n\n#### 1.3 Network Devices (300 nodes)\n\n**NetworkDevice**\n```yaml\nNetworkDevice:\n  extends",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_11",
+    "text": "ction: boolean\n\n  relationships:\n    enrolledIn: MDM (many-to-1)\n    hasProfile: MDMProfile (many-to-many)\n```\n\n#### 1.3 Network Devices (300 nodes)\n\n**NetworkDevice**\n```yaml\nNetworkDevice:\n  extends: saref:Device\n  properties:\n    # Identity\n    deviceID: string\n    hostname: string\n    managementIP: string\n\n    # Device Type\n    deviceType: enum[router, switch, firewall, load_balancer, vpn_gateway, wireless_ap, proxy]\n    manufacturer: string\n    model: string\n    serialNumber: string\n\n    # Configuration\n    firmwareVersion: string\n    operatingSystem: string\n    osVersion: string\n    configurationVersion: string\n    lastConfigBackup: datetime\n\n    # Physical Specifications\n    portCount: integer\n    speed: enum[10Mbps, 100Mbps, 1Gbps, 10Gbps, 40Gbps, 100Gbps]\n    formFactor: enum[rack_mount, standalone, modular]\n    powerType: enum[ac, dc, poe]\n\n    # Capacity\n    throughput: float (Gbps)\n    packetsPerSecond: integer\n    concurrentSessions: integer\n\n    # Status\n    operationalSt",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_12",
+    "text": "_mount, standalone, modular]\n    powerType: enum[ac, dc, poe]\n\n    # Capacity\n    throughput: float (Gbps)\n    packetsPerSecond: integer\n    concurrentSessions: integer\n\n    # Status\n    operationalStatus: enum[up, down, degraded, testing]\n    adminStatus: enum[enabled, disabled, maintenance]\n    uptime: integer (seconds)\n\n  relationships:\n    hasInterface: NetworkInterface (1-to-many)\n    connectedTo: NetworkDevice (many-to-many)\n    manages: VLAN (1-to-many)\n    routes: NetworkSegment (many-to-many)\n    protects: NetworkSegment (many-to-many)\n    hasRule: FirewallRule|ACL (1-to-many)\n```\n\n#### 1.4 Storage Systems (200 nodes)\n\n**StorageArray**\n```yaml\nStorageArray:\n  extends: saref:Device\n  properties:\n    # Identity\n    arrayID: string\n    arrayName: string\n    serialNumber: string\n\n    # Configuration\n    manufacturer: string\n    model: string\n    arrayType: enum[san, nas, das, unified, object_storage, tape_library]\n    protocol: array[enum[fc, iscsi, nfs, smb, s3, swift]]\n\n    # Ca",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_13",
+    "text": "# Configuration\n    manufacturer: string\n    model: string\n    arrayType: enum[san, nas, das, unified, object_storage, tape_library]\n    protocol: array[enum[fc, iscsi, nfs, smb, s3, swift]]\n\n    # Capacity\n    totalCapacity: integer (TB)\n    usedCapacity: integer (TB)\n    availableCapacity: integer (TB)\n    utilizationPercentage: float\n\n    # Performance\n    iopsRead: integer\n    iopsWrite: integer\n    throughputRead: float (MB/s)\n    throughputWrite: float (MB/s)\n    latencyRead: float (ms)\n    latencyWrite: float (ms)\n\n    # Configuration\n    raidLevel: array[enum[raid0, raid1, raid5, raid6, raid10, raid50, raid60]]\n    deduplicationEnabled: boolean\n    compressionEnabled: boolean\n    encryptionEnabled: boolean\n    snapshotEnabled: boolean\n    replicationEnabled: boolean\n\n  relationships:\n    contains: StorageVolume (1-to-many)\n    exports: LUN|Share (1-to-many)\n    replicatesTo: StorageArray (many-to-many)\n    backupTo: BackupSystem (many-to-many)\n    connectedTo: SAN (many-to-1)\n`",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_14",
+    "text": "s:\n    contains: StorageVolume (1-to-many)\n    exports: LUN|Share (1-to-many)\n    replicatesTo: StorageArray (many-to-many)\n    backupTo: BackupSystem (many-to-many)\n    connectedTo: SAN (many-to-1)\n```\n\n#### 1.5 Peripheral & IoT Devices (100 nodes)\n\n**PeripheralDevice**\n```yaml\nPeripheralDevice:\n  extends: saref:Device\n  properties:\n    deviceType: enum[printer, scanner, camera, access_reader, iot_sensor, industrial_controller]\n    manufacturer: string\n    model: string\n    firmwareVersion: string\n    ipAddress: string\n    macAddress: string\n    networkConnected: boolean\n\n  relationships:\n    connectedTo: Workstation|NetworkSegment (many-to-1)\n    hasVulnerability: Vulnerability (many-to-many)\n```\n\n---\n\n### 2. SOFTWARE ASSETS (~1,500 nodes)\n\n#### 2.1 Operating Systems (200 nodes)\n\n**OperatingSystem**\n```yaml\nOperatingSystem:\n  properties:\n    # Identity\n    osID: string\n    name: string\n    family: enum[windows, linux, unix, macos, bsd]\n    distribution: string (e.g., Ubuntu, RHEL, Wi",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_15",
+    "text": "tingSystem**\n```yaml\nOperatingSystem:\n  properties:\n    # Identity\n    osID: string\n    name: string\n    family: enum[windows, linux, unix, macos, bsd]\n    distribution: string (e.g., Ubuntu, RHEL, Windows Server)\n    version: string\n    buildNumber: string\n    architecture: enum[x86, x64, arm, arm64]\n\n    # Version Details\n    majorVersion: integer\n    minorVersion: integer\n    patchLevel: string\n    servicePackLevel: string\n\n    # Support Lifecycle\n    releaseDate: date\n    generalAvailability: date\n    mainstreamSupport: date\n    extendedSupport: date\n    endOfLife: date\n\n    # Features\n    supportedFeatures: array[string]\n    kernel Version: string\n    shellType: string\n\n  relationships:\n    installedOn: PhysicalServer|Workstation (many-to-many)\n    supports: Application (many-to-many)\n    hasVulnerability: Vulnerability (many-to-many)\n    patchedBy: Patch (many-to-many)\n```\n\n#### 2.2 Applications (600 nodes)\n\n**Application**\n```yaml\nApplication:\n  properties:\n    # Identity\n    ap",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_16",
+    "text": "\n    hasVulnerability: Vulnerability (many-to-many)\n    patchedBy: Patch (many-to-many)\n```\n\n#### 2.2 Applications (600 nodes)\n\n**Application**\n```yaml\nApplication:\n  properties:\n    # Identity\n    applicationID: string\n    applicationName: string\n    vendor: string\n    version: string\n    edition: string\n\n    # Classification\n    category: enum[business, productivity, development, security, database, web_server, middleware, monitoring, backup]\n    applicationType: enum[commercial, open_source, custom, freeware]\n\n    # Technical Details\n    installationPath: string\n    executableName: string\n    serviceNames: array[string]\n    portNumbers: array[integer]\n    protocol: array[string]\n\n    # Requirements\n    minimumOS: string\n    minimumRAM: integer (GB)\n    minimumStorage: integer (GB)\n    requiredFeatures: array[string]\n\n    # Security\n    requiresElevation: boolean\n    networkAccess: boolean\n    dataAccess: enum[none, local, network, database, internet]\n    encryptionSupport: boolean\n ",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_17",
+    "text": "equiredFeatures: array[string]\n\n    # Security\n    requiresElevation: boolean\n    networkAccess: boolean\n    dataAccess: enum[none, local, network, database, internet]\n    encryptionSupport: boolean\n    authenticationMethod: enum[none, local, ldap, saml, oauth, certificate]\n\n    # Deployment\n    installDate: datetime\n    lastUpdated: datetime\n    autoUpdateEnabled: boolean\n\n    # Business Context\n    criticality: enum[critical, high, medium, low]\n    dataClassification: enum[public, internal, confidential, restricted]\n    businessOwner: string\n    technicalOwner: string\n\n  relationships:\n    installedOn: Asset (many-to-many)\n    runsOn: OperatingSystem (many-to-many)\n    dependsOn: Application (many-to-many)\n    uses: Database (many-to-many)\n    communicatesWith: Application (many-to-many)\n    hasVulnerability: Vulnerability (many-to-many)\n    licensedBy: License (many-to-1)\n    contains: SoftwareComponent (1-to-many)\n```\n\n**WebApplication**\n```yaml\nWebApplication:\n  extends: Applicati",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_18",
+    "text": "\n    hasVulnerability: Vulnerability (many-to-many)\n    licensedBy: License (many-to-1)\n    contains: SoftwareComponent (1-to-many)\n```\n\n**WebApplication**\n```yaml\nWebApplication:\n  extends: Application\n  properties:\n    # Web Specifics\n    url: string\n    publicFacing: boolean\n    framework: array[string]\n    programmingLanguage: array[string]\n    webServer: string\n\n    # Security\n    httpsEnabled: boolean\n    certificateExpiry: datetime\n    certificateIssuer: string\n    securityHeaders: array[string]\n\n    # API\n    hasAPI: boolean\n    apiType: enum[rest, soap, graphql, grpc]\n    apiVersion: string\n\n  relationships:\n    hasEndpoint: APIEndpoint (1-to-many)\n    protectedBy: WAF (many-to-1)\n    frontedBy: LoadBalancer (many-to-1)\n```\n\n#### 2.3 Databases (200 nodes)\n\n**Database**\n```yaml\nDatabase:\n  properties:\n    # Identity\n    databaseID: string\n    databaseName: string\n    instance Name: string\n\n    # Technology\n    databaseType: enum[relational, nosql, graph, time_series, document, ",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_19",
+    "text": "abase:\n  properties:\n    # Identity\n    databaseID: string\n    databaseName: string\n    instance Name: string\n\n    # Technology\n    databaseType: enum[relational, nosql, graph, time_series, document, key_value]\n    dbms: enum[mysql, postgresql, oracle, mssql, mongodb, cassandra, redis, neo4j]\n    version: string\n    edition: string\n\n    # Configuration\n    port: integer\n    maxConnections: integer\n    characterSet: string\n    collation: string\n\n    # Capacity\n    databaseSize: integer (GB)\n    tableCount: integer\n    recordCount: integer\n\n    # Performance\n    queryPerSecond: float\n    averageResponseTime: float (ms)\n    cacheHitRatio: float (percentage)\n\n    # Security\n    encryptionAtRest: boolean\n    encryptionInTransit: boolean\n    authenticationMode: enum[database, windows, ldap, certificate]\n    auditingEnabled: boolean\n\n    # Data Classification\n    dataClassification: enum[public, internal, confidential, restricted]\n    containsPII: boolean\n    containsPHI: boolean\n    contains",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_20",
+    "text": "ificate]\n    auditingEnabled: boolean\n\n    # Data Classification\n    dataClassification: enum[public, internal, confidential, restricted]\n    containsPII: boolean\n    containsPHI: boolean\n    containsPCI: boolean\n\n    # Backup\n    backupSchedule: string\n    lastBackup: datetime\n    backupRetention: integer (days)\n\n  relationships:\n    hostedOn: Server (many-to-1)\n    usedBy: Application (many-to-many)\n    replicatesTo: Database (many-to-many)\n    backupTo: BackupSystem (many-to-1)\n    hasVulnerability: Vulnerability (many-to-many)\n```\n\n#### 2.4 Middleware (200 nodes)\n\n**Middleware**\n```yaml\nMiddleware:\n  extends: Application\n  properties:\n    middlewareType: enum[message_queue, api_gateway, esb, application_server, cache, load_balancer]\n    protocol: array[string]\n    messagingModel: enum[pub_sub, point_to_point, request_reply]\n    throughput: integer (messages/second)\n\n  relationships:\n    connects: Application (many-to-many)\n    routes: Message (1-to-many)\n```\n\n#### 2.5 Licenses (300",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_21",
+    "text": "pub_sub, point_to_point, request_reply]\n    throughput: integer (messages/second)\n\n  relationships:\n    connects: Application (many-to-many)\n    routes: Message (1-to-many)\n```\n\n#### 2.5 Licenses (300 nodes)\n\n**SoftwareLicense**\n```yaml\nSoftwareLicense:\n  properties:\n    # Identity\n    licenseID: string\n    licenseKey: string\n    licenseType: enum[perpetual, subscription, concurrent, named_user, site, enterprise, oem, academic]\n\n    # Commercial\n    vendor: string\n    productName: string\n    productVersion: string\n    purchaseDate: date\n    purchaseOrder: string\n    cost: float\n    currency: string\n\n    # Terms\n    startDate: date\n    expiryDate: date\n    renewalDate: date\n    autoRenewal: boolean\n\n    # Entitlements\n    userCount: integer\n    deviceCount: integer\n    serverCount: integer\n    coreCount: integer\n    usedCount: integer\n    availableCount: integer\n\n    # Support\n    supportLevel: enum[none, basic, standard, premium, enterprise]\n    supportExpiry: date\n\n    # Compliance\n  ",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_22",
+    "text": "    coreCount: integer\n    usedCount: integer\n    availableCount: integer\n\n    # Support\n    supportLevel: enum[none, basic, standard, premium, enterprise]\n    supportExpiry: date\n\n    # Compliance\n    complianceStatus: enum[compliant, over_deployed, under_utilized, expired, unknown]\n    lastAudit: date\n\n  relationships:\n    for: Software (many-to-1)\n    assignedTo: User|Asset (many-to-many)\n    managedBy: LicenseManager (many-to-1)\n```\n\n---\n\n### 3. CLOUD INFRASTRUCTURE (~1,000 nodes)\n\n#### 3.1 Cloud Accounts (100 nodes)\n\n**CloudAccount**\n```yaml\nCloudAccount:\n  properties:\n    accountID: string (cloud provider account ID)\n    accountName: string\n    provider: enum[aws, azure, gcp, oracle_cloud, alibaba_cloud, ibm_cloud]\n    accountType: enum[production, staging, development, sandbox]\n\n    # Billing\n    billingContact: string\n    billingEmail: string\n    monthlyBudget: float\n    currentSpend: float\n    currency: string\n\n    # Organization\n    organizationID: string\n    rootAccount: boo",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_23",
+    "text": " # Billing\n    billingContact: string\n    billingEmail: string\n    monthlyBudget: float\n    currentSpend: float\n    currency: string\n\n    # Organization\n    organizationID: string\n    rootAccount: boolean\n    parentAccount: string\n\n    # Security\n    mfaEnabled: boolean\n    ssoEnabled: boolean\n    cloudTrailEnabled: boolean (AWS)\n    securityHubEnabled: boolean\n\n  relationships:\n    owns: CloudResource (1-to-many)\n    managedBy: User (many-to-many)\n    partOf: Organization (many-to-1)\n```\n\n#### 3.2 Cloud Compute (300 nodes)\n\n**VirtualMachineInstance**\n```yaml\nVirtualMachineInstance:\n  properties:\n    # Identity\n    instanceID: string (provider instance ID)\n    instanceName: string\n    instanceType: string (e.g., t3.medium, Standard_D4s_v3)\n\n    # Configuration\n    provider: enum[aws, azure, gcp, oracle, alibaba]\n    region: string\n    availabilityZone: string\n\n    # Compute\n    vcpu: integer\n    memory: integer (GB)\n    architecture: enum[x86_64, arm64]\n\n    # Storage\n    rootVolume: {",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_24",
+    "text": ", gcp, oracle, alibaba]\n    region: string\n    availabilityZone: string\n\n    # Compute\n    vcpu: integer\n    memory: integer (GB)\n    architecture: enum[x86_64, arm64]\n\n    # Storage\n    rootVolume: {type: string, size: integer, iops: integer, encrypted: boolean}\n    additionalVolumes: array[object]\n\n    # Network\n    privateIP: string\n    publicIP: string\n    vpcID: string\n    subnetID: string\n    securityGroups: array[string]\n\n    # State\n    state: enum[running, stopped, terminated, pending, shutting_down]\n    launchTime: datetime\n\n    # Operating System\n    operatingSystem: string\n    imageID: string\n\n    # Monitoring\n    cpuUtilization: float\n    networkIn: float (GB)\n    networkOut: float (GB)\n\n  relationships:\n    partOf: CloudAccount (many-to-1)\n    runsIn: VPC (many-to-1)\n    attachedTo: CloudStorage (many-to-many)\n    protectedBy: SecurityGroup (many-to-many)\n    monitored By: CloudWatch|Monitor (many-to-1)\n    hasVulnerability: Vulnerability (many-to-many)\n```\n\n**ContainerIn",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_25",
+    "text": "chedTo: CloudStorage (many-to-many)\n    protectedBy: SecurityGroup (many-to-many)\n    monitored By: CloudWatch|Monitor (many-to-1)\n    hasVulnerability: Vulnerability (many-to-many)\n```\n\n**ContainerInstance**\n```yaml\nContainerInstance:\n  properties:\n    containerID: string\n    containerName: string\n    imageID: string\n    imageName: string\n    imageTag: string\n\n    # Runtime\n    runtime: enum[docker, containerd, cri_o, podman]\n    orchestrator: enum[kubernetes, ecs, aks, gke, docker_swarm, nomad]\n\n    # Resources\n    cpuLimit: float\n    memoryLimit: integer (MB)\n    cpuRequest: float\n    memoryRequest: integer (MB)\n\n    # State\n    state: enum[running, stopped, paused, restarting, exited]\n    startTime: datetime\n    restartCount: integer\n\n  relationships:\n    runsIn: Pod|Task (many-to-1)\n    basedOn: ContainerImage (many-to-1)\n    hasVulnerability: Vulnerability (many-to-many)\n```\n\n#### 3.3 Cloud Storage (200 nodes)\n\n**CloudStorageAccount**\n```yaml\nCloudStorageAccount:\n  properties:\n  ",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_26",
+    "text": "   basedOn: ContainerImage (many-to-1)\n    hasVulnerability: Vulnerability (many-to-many)\n```\n\n#### 3.3 Cloud Storage (200 nodes)\n\n**CloudStorageAccount**\n```yaml\nCloudStorageAccount:\n  properties:\n    storageAccountID: string\n    accountName: string\n    provider: enum[s3, azure_storage, gcs, oss]\n    region: string\n    redundancy: enum[lrs, zrs, grs, ra_grs, gzrs]\n\n    # Capacity\n    totalCapacity: integer (TB)\n    usedCapacity: integer (TB)\n\n    # Access\n    accessTier: enum[hot, cool, archive]\n    publicAccess: enum[none, blob, container]\n\n    # Security\n    encryptionEnabled: boolean\n    encryptionType: enum[sse_s3, sse_kms, customer_managed]\n    versioningEnabled: boolean\n\n  relationships:\n    contains: Bucket|Container (1-to-many)\n    encryptedBy: KMSKey (many-to-1)\n```\n\n#### 3.4 Cloud Networking (200 nodes)\n\n**VirtualNetwork**\n```yaml\nVirtualNetwork:\n  properties:\n    vpcID: string\n    vpcName: string\n    provider: enum[aws, azure, gcp]\n    region: string\n    cidrBlock: string\n\n",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_27",
+    "text": "ud Networking (200 nodes)\n\n**VirtualNetwork**\n```yaml\nVirtualNetwork:\n  properties:\n    vpcID: string\n    vpcName: string\n    provider: enum[aws, azure, gcp]\n    region: string\n    cidrBlock: string\n\n    # Configuration\n    dnsEnabled: boolean\n    dnsServers: array[string]\n    enableDnsHostnames: boolean\n\n  relationships:\n    contains: Subnet (1-to-many)\n    hasRouteTable: RouteTable (1-to-many)\n    protectedBy: NetworkACL (1-to-many)\n    peersWit h: VirtualNetwork (many-to-many)\n```\n\n#### 3.5 Cloud Functions (200 nodes)\n\n**ServerlessFunction**\n```yaml\nServerlessFunction:\n  properties:\n    functionID: string\n    functionName: string\n    runtime: string\n    handler: string\n    memorySize: integer (MB)\n    timeout: integer (seconds)\n\n    # Triggers\n    triggerType: enum[http, event, schedule, queue, stream]\n    triggerSource: string\n\n    # Metrics\n    invocationCount: integer\n    errorCount: integer\n    averageDuration: float (ms)\n\n  relationships:\n    triggeredBy: Event (many-to-many)\n ",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_28",
+    "text": ", queue, stream]\n    triggerSource: string\n\n    # Metrics\n    invocationCount: integer\n    errorCount: integer\n    averageDuration: float (ms)\n\n  relationships:\n    triggeredBy: Event (many-to-many)\n    accessesResource: CloudResource (many-to-many)\n```\n\n---\n\n### 4. VIRTUALIZATION (~1,000 nodes)\n\n#### 4.1 Hypervisors (100 nodes)\n\n**Hypervisor**\n```yaml\nHypervisor:\n  extends: saref:Device\n  properties:\n    # Identity\n    hypervisorID: string\n    hostname: string\n\n    # Type\n    hypervisorType: enum[vmware_esxi, hyper_v, kvm, xen, proxmox, oracle_vm, citrix_hypervisor]\n    version: string\n    buildNumber: string\n\n    # Resource Allocation\n    totalCPU: integer (cores)\n    allocatedCPU: integer (cores)\n    totalMemory: integer (GB)\n    allocatedMemory: integer (GB)\n    totalStorage: integer (TB)\n    allocatedStorage: integer (TB)\n\n    # Capacity\n    maxVMs: integer\n    currentVMs: integer\n\n    # Performance\n    cpuUtilization: float (percentage)\n    memoryUtilization: float (percentage)\n ",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_29",
+    "text": "TB)\n    allocatedStorage: integer (TB)\n\n    # Capacity\n    maxVMs: integer\n    currentVMs: integer\n\n    # Performance\n    cpuUtilization: float (percentage)\n    memoryUtilization: float (percentage)\n    storageUtilization: float (percentage)\n\n    # Network\n    managementIP: string\n    vmotionIP: string (vSphere)\n\n  relationships:\n    runsOn: PhysicalServer (many-to-1)\n    hosts: VirtualMachine (1-to-many)\n    partOf: Cluster (many-to-1)\n    accessesStorage: SharedStorage (many-to-many)\n    managedBy: VirtualizationManager (many-to-1)\n```\n\n#### 4.2 Virtual Machines (600 nodes)\n\n**VirtualMachine**\n```yaml\nVirtualMachine:\n  properties:\n    # Identity\n    vmID: string\n    vmName: string\n    uuid: string\n\n    # Configuration\n    vcpu: integer\n    memory: integer (GB)\n    storage: array[{name: string, size: integer, type: enum[thin, thick, eager_zeroed]}]\n\n    # Operating System\n    guestOS: string\n    osVersion: string\n    toolsStatus: enum[running, not_running, out_of_date]\n    toolsVersio",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_30",
+    "text": "tring, size: integer, type: enum[thin, thick, eager_zeroed]}]\n\n    # Operating System\n    guestOS: string\n    osVersion: string\n    toolsStatus: enum[running, not_running, out_of_date]\n    toolsVersion: string\n\n    # Network\n    networkAdapters: array[{name: string, macAddress: string, ipAddress: string, network: string}]\n\n    # State\n    powerState: enum[powered_on, powered_off, suspended]\n    connectionState: enum[connected, disconnected, orphaned, invalid]\n\n    # Performance\n    cpuUsage: float (MHz)\n    memoryUsage: float (MB)\n    networkUsage: float (Mbps)\n    diskUsage: float (MB/s)\n\n    # High Availability\n    faultTolerance: boolean\n    haProtected: boolean\n    drsEnabled: boolean\n\n  relationships:\n    hostedOn: Hypervisor (many-to-1)\n    runsOS: OperatingSystem (1-to-1)\n    runs: Application (1-to-many)\n    attachedTo: VirtualDisk (many-to-many)\n    snapshotOf: VirtualMachine (many-to-1)\n    clonedFrom: VirtualMachine (many-to-1)\n    migratesTo: Hypervisor (many-to-many)\n```\n\n",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_31",
+    "text": "Application (1-to-many)\n    attachedTo: VirtualDisk (many-to-many)\n    snapshotOf: VirtualMachine (many-to-1)\n    clonedFrom: VirtualMachine (many-to-1)\n    migratesTo: Hypervisor (many-to-many)\n```\n\n#### 4.3 Virtual Storage (200 nodes)\n\n**Datastore**\n```yaml\nDatastore:\n  properties:\n    datastoreID: string\n    datastoreName: string\n    type: enum[vmfs, nfs, vsan, iscsi]\n    capacity: integer (GB)\n    freeSpace: integer (GB)\n    provisionedSpace: integer (GB)\n\n    # Performance\n    iops: integer\n    throughput: float (MB/s)\n    latency: float (ms)\n\n  relationships:\n    presentedTo: Hypervisor (many-to-many)\n    stores: VirtualDisk (1-to-many)\n    backedBy: StorageArray (many-to-1)\n```\n\n#### 4.4 Container Orchestration (100 nodes)\n\n**KubernetesCluster**\n```yaml\nKubernetesCluster:\n  properties:\n    clusterID: string\n    clusterName: string\n    version: string\n    distribution: enum[vanilla, eks, aks, gke, openshift, rancher]\n\n    # Configuration\n    nodeCount: integer\n    masterCount: in",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_32",
+    "text": "es:\n    clusterID: string\n    clusterName: string\n    version: string\n    distribution: enum[vanilla, eks, aks, gke, openshift, rancher]\n\n    # Configuration\n    nodeCount: integer\n    masterCount: integer\n    podCount: integer\n    namespaceCount: integer\n\n    # Networking\n    serviceSubnet: string\n    podSubnet: string\n    cniPlugin: string\n\n  relationships:\n    contains: Node (1-to-many)\n    runs: Pod (1-to-many)\n    hasNamespace: Namespace (1-to-many)\n```\n\n---\n\n## COMPLETE RELATIONSHIP SCHEMAS\n\n### Asset-to-Vulnerability Relationships\n\n```yaml\nAssetVulnerabilityMapping:\n  relationships:\n    - PhysicalServer -[HAS_VULNERABILITY]-> Vulnerability\n      properties:\n        discoveryDate: datetime\n        scanSource: string\n        remediationStatus: enum[open, in_progress, mitigated, accepted, fixed]\n        remediationDueDate: datetime\n        businessImpact: enum[critical, high, medium, low]\n        technicalImpact: enum[critical, high, medium, low]\n        exploitability: enum[high, ",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_33",
+    "text": "ed, fixed]\n        remediationDueDate: datetime\n        businessImpact: enum[critical, high, medium, low]\n        technicalImpact: enum[critical, high, medium, low]\n        exploitability: enum[high, medium, low]\n\n    - Application -[HAS_VULNERABILITY]-> Vulnerability\n      properties:\n        affectedVersion: string\n        fixedVersion: string\n        patchAvailable: boolean\n        workaroundAvailable: boolean\n\n    - Software -[HAS_VULNERABILITY]-> CVE\n      properties:\n        cveID: string\n        cvssScore: float\n        exploitAvailable: boolean\n```\n\n### Asset-to-Threat Relationships\n\n```yaml\nAssetThreatMapping:\n  relationships:\n    - Asset -[EXPOSED_TO]-> ThreatActor\n      properties:\n        exposureType: enum[direct, indirect]\n        attackSurface: string\n        likelihood: float (0-1)\n\n    - Asset -[AFFECTED_BY]-> Incident\n      properties:\n        impactType: enum[compromised, unavailable, data_loss, performance_degradation]\n        recoveryTime: integer (hours)\n        d",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_34",
+    "text": "at (0-1)\n\n    - Asset -[AFFECTED_BY]-> Incident\n      properties:\n        impactType: enum[compromised, unavailable, data_loss, performance_degradation]\n        recoveryTime: integer (hours)\n        dataLoss: integer (records)\n```\n\n### Asset-to-Asset Relationships\n\n```yaml\nAssetInterconnections:\n  relationships:\n    - Server -[DEPENDS_ON]-> Server\n      properties:\n        dependencyType: enum[cluster, replication, service, data]\n        criticalPath: boolean\n\n    - Application -[COMMUNICATES_WITH]-> Application\n      properties:\n        protocol: string\n        port: integer\n        dataFlow: enum[bidirectional, unidirectional]\n        dataClassification: enum[public, internal, confidential]\n```\n\n---\n\n## INTEGRATION PATTERNS\n\n### 1. SAREF Integration\n\n```cypher\n# Link SAREF devices to IT infrastructure\nMATCH (saref:saref__Device)\nOPTIONAL MATCH (server:PhysicalServer {deviceID: saref.deviceID})\nOPTIONAL MATCH (network:NetworkDevice {deviceID: saref.deviceID})\nMERGE (saref)-[:REALIZED_",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_35",
+    "text": "infrastructure\nMATCH (saref:saref__Device)\nOPTIONAL MATCH (server:PhysicalServer {deviceID: saref.deviceID})\nOPTIONAL MATCH (network:NetworkDevice {deviceID: saref.deviceID})\nMERGE (saref)-[:REALIZED_BY]->(server)\nMERGE (saref)-[:REALIZED_BY]->(network)\n\n# Inherit SAREF properties into infrastructure nodes\nMATCH (device:PhysicalServer)\nSET device.energyEfficiency = saref.energyEfficiencyClass,\n    device.powerConsumption = saref.powerConsumption\n```\n\n### 2. Cybersecurity Integration\n\n```cypher\n# Map vulnerabilities to software components\nMATCH (app:Application)-[:CONTAINS]->(comp:SoftwareComponent)\nMATCH (vuln:Vulnerability)-[:AFFECTS]->(comp)\nMERGE (app)-[:HAS_VULNERABILITY {via: 'component'}]->(vuln)\n\n# Track incidents affecting infrastructure\nMATCH (incident:Incident)-[:AFFECTS]->(asset:Asset)\nMATCH (asset)-[:RUNS]->(app:Application)\nMERGE (incident)-[:IMPACTS {indirect: true}]->(app)\n```\n\n### 3. SBOM Integration\n\n```cypher\n# Link applications to SBOM components\nMATCH (app:Applicati",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_36",
+    "text": ":Asset)\nMATCH (asset)-[:RUNS]->(app:Application)\nMERGE (incident)-[:IMPACTS {indirect: true}]->(app)\n```\n\n### 3. SBOM Integration\n\n```cypher\n# Link applications to SBOM components\nMATCH (app:Application)\nMATCH (pkg:Package {name: app.applicationName, version: app.version})\nMERGE (app)-[:HAS_SBOM]->(pkg)\n\n# Propagate vulnerabilities from SBOM\nMATCH (app:Application)-[:HAS_SBOM]->(pkg:Package)\nMATCH (pkg)-[:CONTAINS]->(comp:SoftwareComponent)\nMATCH (comp)-[:HAS_VULNERABILITY]->(vuln:Vulnerability)\nMERGE (app)-[:HAS_VULNERABILITY {source: 'sbom'}]->(vuln)\n```\n\n---\n\n## VALIDATION CRITERIA\n\n### Schema Validation\n- [ ] All 5,000 nodes defined with complete property schemas\n- [ ] All relationships mapped with cardinality\n- [ ] All enums specified with valid values\n- [ ] All data types declared and validated\n- [ ] All constraints documented\n\n### Integration Validation\n- [ ] SAREF device mapping complete\n- [ ] Cybersecurity threat correlation active\n- [ ] SBOM vulnerability propagation working\n",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_37",
+    "text": "d validated\n- [ ] All constraints documented\n\n### Integration Validation\n- [ ] SAREF device mapping complete\n- [ ] Cybersecurity threat correlation active\n- [ ] SBOM vulnerability propagation working\n- [ ] Cross-category queries validated\n- [ ] Performance benchmarks met\n\n### Data Quality\n- [ ] Asset uniqueness enforced\n- [ ] Relationship consistency validated\n- [ ] Lifecycle states tracked\n- [ ] Audit trails complete\n- [ ] Compliance mappings verified\n\n---\n\n## EXAMPLE QUERIES\n\n### Asset Inventory Queries\n\n```cypher\n# Complete hardware inventory with utilization\nMATCH (server:PhysicalServer)\nRETURN server.hostname,\n       server.cpuUtilization,\n       server.memoryUtilization,\n       server.criticality\nORDER BY server.cpuUtilization DESC\n\n# Software installed across all systems\nMATCH (asset:Asset)-[:RUNS]->(app:Application)\nRETURN app.applicationName,\n       app.version,\n       count(asset) as installCount\nORDER BY installCount DESC\n\n# Find servers hosting vulnerable applications\nMATCH",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_38",
+    "text": "t:Asset)-[:RUNS]->(app:Application)\nRETURN app.applicationName,\n       app.version,\n       count(asset) as installCount\nORDER BY installCount DESC\n\n# Find servers hosting vulnerable applications\nMATCH (server:PhysicalServer)-[:RUNS]->(app:Application)\nMATCH (app)-[:HAS_VULNERABILITY]->(vuln:Vulnerability)\nWHERE vuln.cvssV3.baseScore > 7.0\nRETURN server.hostname, app.applicationName, vuln.vulnerabilityID, vuln.cvssV3.baseScore\n```\n\n### Vulnerability Management Queries\n\n```cypher\n# Critical vulnerabilities requiring patching\nMATCH (asset:Asset)-[:HAS_VULNERABILITY]->(vuln:Vulnerability)\nWHERE vuln.cvssV3.severity = 'critical'\n  AND NOT exists((vuln)<-[:FIXES]-(patch:Patch))\nRETURN asset, vuln, vuln.cvssV3.baseScore\nORDER BY vuln.publishedDate DESC\n\n# Vulnerability remediation status by asset criticality\nMATCH (asset:Asset)-[rel:HAS_VULNERABILITY]->(vuln:Vulnerability)\nRETURN asset.criticality,\n       rel.remediationStatus,\n       count(vuln) as vulnerabilityCount\n```\n\n### Cloud Asset Que",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md_chunk_39",
+    "text": " criticality\nMATCH (asset:Asset)-[rel:HAS_VULNERABILITY]->(vuln:Vulnerability)\nRETURN asset.criticality,\n       rel.remediationStatus,\n       count(vuln) as vulnerabilityCount\n```\n\n### Cloud Asset Queries\n\n```cypher\n# Cloud spend by account and resource type\nMATCH (account:CloudAccount)-[:OWNS]->(resource:CloudResource)\nRETURN account.accountName,\n       labels(resource)[0] as resourceType,\n       sum(resource.monthlyCost) as totalCost\nORDER BY totalCost DESC\n\n# Unencrypted cloud storage\nMATCH (storage:CloudStorageAccount)\nWHERE storage.encryptionEnabled = false\n  AND storage.dataClassification IN ['confidential', 'restricted']\nRETURN storage\n```\n\n---\n\n**Wave Status:** COMPLETE\n**Nodes Defined:** ~5,000\n**Schemas Complete:** 100%\n**Relationships Mapped:** 100%\n**Integration Ready:** YES\n",
+    "metadata": {
+      "file_name": "11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/11_WAVE_9_IT_INFRASTRUCTURE_SOFTWARE.md",
+      "file_size": 31998,
+      "indexed_at": "2025-10-31T01:01:24.361554",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 798
+    }
+  }
+]

@@ -1,0 +1,418 @@
+{"timestamp": "2025-10-31T12:29:04.972923", "operation": "wave_3_execution_started", "details": {"timestamp": "2025-10-31T12:29:04.972896"}}
+{"timestamp": "2025-10-31T12:29:04.973091", "operation": "phase_started", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T12:29:05.015118", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT energy_device_id_unique IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:29:05.070118", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT energy_property_id_unique IF NOT EXISTS FO..."}}
+{"timestamp": "2025-10-31T12:29:05.132427", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT substation_id_unique IF NOT EXISTS FOR (su..."}}
+{"timestamp": "2025-10-31T12:29:05.197088", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT transmission_line_id_unique IF NOT EXISTS ..."}}
+{"timestamp": "2025-10-31T12:29:05.266718", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT ems_id_unique IF NOT EXISTS FOR (ems:Energ..."}}
+{"timestamp": "2025-10-31T12:29:05.314122", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT der_id_unique IF NOT EXISTS FOR (der:Distr..."}}
+{"timestamp": "2025-10-31T12:29:05.354982", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT nerc_standard_id_unique IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:29:05.366942", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_device_type_idx IF NOT EXISTS FOR (ed:En..."}}
+{"timestamp": "2025-10-31T12:29:05.377856", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_voltage_level_idx IF NOT EXISTS FOR (ed:..."}}
+{"timestamp": "2025-10-31T12:29:05.394863", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_nerc_category_idx IF NOT EXISTS FOR (ed:..."}}
+{"timestamp": "2025-10-31T12:29:05.404686", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_substation_idx IF NOT EXISTS FOR (ed:Ene..."}}
+{"timestamp": "2025-10-31T12:29:05.419956", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_grid_impact_idx IF NOT EXISTS FOR (ed:En..."}}
+{"timestamp": "2025-10-31T12:29:05.433473", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_property_category_idx IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:29:05.449755", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_grid_stability_idx IF NOT EXISTS FOR (ep..."}}
+{"timestamp": "2025-10-31T12:29:05.462905", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_ieee_standard_idx IF NOT EXISTS FOR (ep:..."}}
+{"timestamp": "2025-10-31T12:29:05.477976", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX substation_type_idx IF NOT EXISTS FOR (sub:Subs..."}}
+{"timestamp": "2025-10-31T12:29:05.491280", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX substation_voltage_idx IF NOT EXISTS FOR (sub:S..."}}
+{"timestamp": "2025-10-31T12:29:05.515475", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX substation_nerc_idx IF NOT EXISTS FOR (sub:Subs..."}}
+{"timestamp": "2025-10-31T12:29:05.523749", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX transmission_voltage_idx IF NOT EXISTS FOR (tl:..."}}
+{"timestamp": "2025-10-31T12:29:05.537123", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX transmission_critical_idx IF NOT EXISTS FOR (tl..."}}
+{"timestamp": "2025-10-31T12:29:05.547974", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ems_type_idx IF NOT EXISTS FOR (ems:EnergyManag..."}}
+{"timestamp": "2025-10-31T12:29:05.569444", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ems_vendor_idx IF NOT EXISTS FOR (ems:EnergyMan..."}}
+{"timestamp": "2025-10-31T12:29:05.582278", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ems_network_architecture_idx IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:29:05.599035", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX der_type_idx IF NOT EXISTS FOR (der:Distributed..."}}
+{"timestamp": "2025-10-31T12:29:05.614016", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX der_derms_idx IF NOT EXISTS FOR (der:Distribute..."}}
+{"timestamp": "2025-10-31T12:29:05.631281", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX nerc_cip_number_idx IF NOT EXISTS FOR (ncs:NERC..."}}
+{"timestamp": "2025-10-31T12:29:05.642760", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX nerc_severity_idx IF NOT EXISTS FOR (ncs:NERCCI..."}}
+{"timestamp": "2025-10-31T12:29:05.650122", "operation": "phase_completed", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T12:29:05.650294", "operation": "phase_started", "details": {"phase": "create_energy_devices", "target_count": 10000}}
+{"timestamp": "2025-10-31T12:29:05.673405", "operation": "wave_3_execution_error", "details": {"error": "{neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Unknown function 'randomInt' (line 8, column 74 (offset: 358))\n\"                    ed.lastFirmwareUpdate = datetime() - duration({days: randomInt(30, 365)}),\"\n                                                                          ^} {gql_status: 50N42} {gql_status_description: error: general processing exception - unexpected error. Unexpected error has occurred. See debug log for details.}"}}
+{"timestamp": "2025-10-31T12:31:30.528757", "operation": "wave_3_execution_started", "details": {"timestamp": "2025-10-31T12:31:30.528732"}}
+{"timestamp": "2025-10-31T12:31:30.528903", "operation": "phase_started", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T12:31:30.547657", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT energy_device_id_unique IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:31:30.564959", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT energy_property_id_unique IF NOT EXISTS FO..."}}
+{"timestamp": "2025-10-31T12:31:30.567288", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT substation_id_unique IF NOT EXISTS FOR (su..."}}
+{"timestamp": "2025-10-31T12:31:30.569643", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT transmission_line_id_unique IF NOT EXISTS ..."}}
+{"timestamp": "2025-10-31T12:31:30.571410", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT ems_id_unique IF NOT EXISTS FOR (ems:Energ..."}}
+{"timestamp": "2025-10-31T12:31:30.573215", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT der_id_unique IF NOT EXISTS FOR (der:Distr..."}}
+{"timestamp": "2025-10-31T12:31:30.574784", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT nerc_standard_id_unique IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:31:30.578435", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_device_type_idx IF NOT EXISTS FOR (ed:En..."}}
+{"timestamp": "2025-10-31T12:31:30.580567", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_voltage_level_idx IF NOT EXISTS FOR (ed:..."}}
+{"timestamp": "2025-10-31T12:31:30.582506", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_nerc_category_idx IF NOT EXISTS FOR (ed:..."}}
+{"timestamp": "2025-10-31T12:31:30.584319", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_substation_idx IF NOT EXISTS FOR (ed:Ene..."}}
+{"timestamp": "2025-10-31T12:31:30.586027", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_grid_impact_idx IF NOT EXISTS FOR (ed:En..."}}
+{"timestamp": "2025-10-31T12:31:30.587521", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_property_category_idx IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:31:30.588989", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_grid_stability_idx IF NOT EXISTS FOR (ep..."}}
+{"timestamp": "2025-10-31T12:31:30.590571", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_ieee_standard_idx IF NOT EXISTS FOR (ep:..."}}
+{"timestamp": "2025-10-31T12:31:30.592316", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX substation_type_idx IF NOT EXISTS FOR (sub:Subs..."}}
+{"timestamp": "2025-10-31T12:31:30.593711", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX substation_voltage_idx IF NOT EXISTS FOR (sub:S..."}}
+{"timestamp": "2025-10-31T12:31:30.595056", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX substation_nerc_idx IF NOT EXISTS FOR (sub:Subs..."}}
+{"timestamp": "2025-10-31T12:31:30.596641", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX transmission_voltage_idx IF NOT EXISTS FOR (tl:..."}}
+{"timestamp": "2025-10-31T12:31:30.598184", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX transmission_critical_idx IF NOT EXISTS FOR (tl..."}}
+{"timestamp": "2025-10-31T12:31:30.599757", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ems_type_idx IF NOT EXISTS FOR (ems:EnergyManag..."}}
+{"timestamp": "2025-10-31T12:31:30.602071", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ems_vendor_idx IF NOT EXISTS FOR (ems:EnergyMan..."}}
+{"timestamp": "2025-10-31T12:31:30.604474", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ems_network_architecture_idx IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:31:30.606682", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX der_type_idx IF NOT EXISTS FOR (der:Distributed..."}}
+{"timestamp": "2025-10-31T12:31:30.608953", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX der_derms_idx IF NOT EXISTS FOR (der:Distribute..."}}
+{"timestamp": "2025-10-31T12:31:30.611585", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX nerc_cip_number_idx IF NOT EXISTS FOR (ncs:NERC..."}}
+{"timestamp": "2025-10-31T12:31:30.614040", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX nerc_severity_idx IF NOT EXISTS FOR (ncs:NERCCI..."}}
+{"timestamp": "2025-10-31T12:31:30.614582", "operation": "phase_completed", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T12:31:30.614665", "operation": "phase_started", "details": {"phase": "create_energy_devices", "target_count": 10000}}
+{"timestamp": "2025-10-31T12:31:30.714300", "operation": "energy_devices_batch_created", "details": {"batch": 0, "count": 50, "total": 50}}
+{"timestamp": "2025-10-31T12:31:30.875532", "operation": "energy_devices_batch_created", "details": {"batch": 10, "count": 50, "total": 550}}
+{"timestamp": "2025-10-31T12:31:31.019799", "operation": "energy_devices_batch_created", "details": {"batch": 20, "count": 50, "total": 1050}}
+{"timestamp": "2025-10-31T12:31:31.163796", "operation": "energy_devices_batch_created", "details": {"batch": 30, "count": 50, "total": 1550}}
+{"timestamp": "2025-10-31T12:31:31.302500", "operation": "energy_devices_batch_created", "details": {"batch": 40, "count": 50, "total": 2050}}
+{"timestamp": "2025-10-31T12:31:31.454237", "operation": "energy_devices_batch_created", "details": {"batch": 50, "count": 50, "total": 2550}}
+{"timestamp": "2025-10-31T12:31:31.597258", "operation": "energy_devices_batch_created", "details": {"batch": 60, "count": 50, "total": 3050}}
+{"timestamp": "2025-10-31T12:31:31.740773", "operation": "energy_devices_batch_created", "details": {"batch": 70, "count": 50, "total": 3550}}
+{"timestamp": "2025-10-31T12:31:31.882963", "operation": "energy_devices_batch_created", "details": {"batch": 80, "count": 50, "total": 4050}}
+{"timestamp": "2025-10-31T12:31:32.022651", "operation": "energy_devices_batch_created", "details": {"batch": 90, "count": 50, "total": 4550}}
+{"timestamp": "2025-10-31T12:31:32.168911", "operation": "energy_devices_batch_created", "details": {"batch": 100, "count": 50, "total": 5050}}
+{"timestamp": "2025-10-31T12:31:32.311273", "operation": "energy_devices_batch_created", "details": {"batch": 110, "count": 50, "total": 5550}}
+{"timestamp": "2025-10-31T12:31:32.447079", "operation": "energy_devices_batch_created", "details": {"batch": 120, "count": 50, "total": 6050}}
+{"timestamp": "2025-10-31T12:31:32.585566", "operation": "energy_devices_batch_created", "details": {"batch": 130, "count": 50, "total": 6550}}
+{"timestamp": "2025-10-31T12:31:32.724333", "operation": "energy_devices_batch_created", "details": {"batch": 140, "count": 50, "total": 7050}}
+{"timestamp": "2025-10-31T12:31:32.863191", "operation": "energy_devices_batch_created", "details": {"batch": 150, "count": 50, "total": 7550}}
+{"timestamp": "2025-10-31T12:31:33.002419", "operation": "energy_devices_batch_created", "details": {"batch": 160, "count": 50, "total": 8050}}
+{"timestamp": "2025-10-31T12:31:33.140114", "operation": "energy_devices_batch_created", "details": {"batch": 170, "count": 50, "total": 8550}}
+{"timestamp": "2025-10-31T12:31:33.275667", "operation": "energy_devices_batch_created", "details": {"batch": 180, "count": 50, "total": 9050}}
+{"timestamp": "2025-10-31T12:31:33.417072", "operation": "energy_devices_batch_created", "details": {"batch": 190, "count": 50, "total": 9550}}
+{"timestamp": "2025-10-31T12:31:33.541818", "operation": "energy_devices_batch_created", "details": {"batch": 199, "count": 50, "total": 10000}}
+{"timestamp": "2025-10-31T12:31:33.542039", "operation": "phase_completed", "details": {"phase": "create_energy_devices", "nodes_created": 10000}}
+{"timestamp": "2025-10-31T12:31:33.542104", "operation": "phase_started", "details": {"phase": "create_energy_properties", "target_count": 6000}}
+{"timestamp": "2025-10-31T12:31:33.596616", "operation": "energy_properties_batch_created", "details": {"batch": 0, "count": 100, "total": 100}}
+{"timestamp": "2025-10-31T12:31:33.761122", "operation": "energy_properties_batch_created", "details": {"batch": 10, "count": 100, "total": 1100}}
+{"timestamp": "2025-10-31T12:31:33.915563", "operation": "energy_properties_batch_created", "details": {"batch": 20, "count": 100, "total": 2100}}
+{"timestamp": "2025-10-31T12:31:34.070515", "operation": "energy_properties_batch_created", "details": {"batch": 30, "count": 100, "total": 3100}}
+{"timestamp": "2025-10-31T12:31:34.223689", "operation": "energy_properties_batch_created", "details": {"batch": 40, "count": 100, "total": 4100}}
+{"timestamp": "2025-10-31T12:31:34.374625", "operation": "energy_properties_batch_created", "details": {"batch": 50, "count": 100, "total": 5100}}
+{"timestamp": "2025-10-31T12:31:34.509042", "operation": "energy_properties_batch_created", "details": {"batch": 59, "count": 100, "total": 6000}}
+{"timestamp": "2025-10-31T12:31:34.509242", "operation": "phase_completed", "details": {"phase": "create_energy_properties", "nodes_created": 6000}}
+{"timestamp": "2025-10-31T12:31:34.509312", "operation": "phase_started", "details": {"phase": "create_substations", "target_count": 200}}
+{"timestamp": "2025-10-31T12:31:34.542452", "operation": "substations_created", "details": {"count": 200}}
+{"timestamp": "2025-10-31T12:31:34.542648", "operation": "phase_completed", "details": {"phase": "create_substations", "nodes_created": 200}}
+{"timestamp": "2025-10-31T12:31:34.542710", "operation": "phase_started", "details": {"phase": "create_transmission_lines", "target_count": 400}}
+{"timestamp": "2025-10-31T12:31:34.581840", "operation": "transmission_lines_created", "details": {"count": 400}}
+{"timestamp": "2025-10-31T12:31:34.582034", "operation": "phase_completed", "details": {"phase": "create_transmission_lines", "nodes_created": 400}}
+{"timestamp": "2025-10-31T12:31:34.582092", "operation": "phase_started", "details": {"phase": "create_ems_systems", "target_count": 25}}
+{"timestamp": "2025-10-31T12:31:34.627832", "operation": "ems_systems_created", "details": {"count": 25}}
+{"timestamp": "2025-10-31T12:31:34.628023", "operation": "phase_completed", "details": {"phase": "create_ems_systems", "nodes_created": 25}}
+{"timestamp": "2025-10-31T12:31:34.628093", "operation": "phase_started", "details": {"phase": "create_ders", "target_count": 750}}
+{"timestamp": "2025-10-31T12:31:34.696285", "operation": "ders_created", "details": {"count": 750}}
+{"timestamp": "2025-10-31T12:31:34.696478", "operation": "phase_completed", "details": {"phase": "create_ders", "nodes_created": 750}}
+{"timestamp": "2025-10-31T12:31:34.696541", "operation": "phase_started", "details": {"phase": "create_nerc_standards", "target_count": 100}}
+{"timestamp": "2025-10-31T12:31:34.732333", "operation": "nerc_standards_created", "details": {"count": 48}}
+{"timestamp": "2025-10-31T12:31:34.732537", "operation": "phase_completed", "details": {"phase": "create_nerc_standards", "nodes_created": 48}}
+{"timestamp": "2025-10-31T12:31:34.732600", "operation": "phase_started", "details": {"phase": "create_energy_measurements", "target_count": 18000}}
+{"timestamp": "2025-10-31T12:31:53.745632", "operation": "energy_measurements_created", "details": {"count": 648000}}
+{"timestamp": "2025-10-31T12:31:53.745852", "operation": "phase_completed", "details": {"phase": "create_energy_measurements", "nodes_created": 648000}}
+{"timestamp": "2025-10-31T12:31:53.745919", "operation": "phase_started", "details": {"phase": "create_relationships"}}
+{"timestamp": "2025-10-31T12:31:54.659876", "operation": "relationships_created", "details": {"type": "INSTALLED_AT_SUBSTATION", "count": 0}}
+{"timestamp": "2025-10-31T12:31:54.761861", "operation": "relationships_created", "details": {"type": "CONNECTS_SUBSTATIONS", "count": 786}}
+{"timestamp": "2025-10-31T12:31:55.045153", "operation": "relationships_created", "details": {"type": "CONTROLLED_BY_EMS", "count": 10000}}
+{"timestamp": "2025-10-31T12:31:55.145858", "operation": "relationships_created", "details": {"type": "CONNECTED_TO_GRID", "count": 750}}
+{"timestamp": "2025-10-31T12:31:55.321526", "operation": "relationships_created", "details": {"type": "COMPLIES_WITH_NERC_CIP", "count": 5000}}
+{"timestamp": "2025-10-31T12:31:55.331152", "operation": "wave_3_execution_error", "details": {"error": "{neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Relationship type expressions in patterns are not allowed in a CREATE clause, but only in a MATCH clause (line 8, column 47 (offset: 256))\n\"            CREATE (ed)-[r:HAS_ENERGY_PROPERTY:HAS_PROPERTY {\"\n                                               ^} {gql_status: 50N42} {gql_status_description: error: general processing exception - unexpected error. Unexpected error has occurred. See debug log for details.}"}}
+{"timestamp": "2025-10-31T12:33:09.271186", "operation": "wave_3_execution_started", "details": {"timestamp": "2025-10-31T12:33:09.271160"}}
+{"timestamp": "2025-10-31T12:33:09.271328", "operation": "phase_started", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T12:33:09.274679", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT energy_device_id_unique IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:33:09.275872", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT energy_property_id_unique IF NOT EXISTS FO..."}}
+{"timestamp": "2025-10-31T12:33:09.276918", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT substation_id_unique IF NOT EXISTS FOR (su..."}}
+{"timestamp": "2025-10-31T12:33:09.277787", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT transmission_line_id_unique IF NOT EXISTS ..."}}
+{"timestamp": "2025-10-31T12:33:09.278654", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT ems_id_unique IF NOT EXISTS FOR (ems:Energ..."}}
+{"timestamp": "2025-10-31T12:33:09.279510", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT der_id_unique IF NOT EXISTS FOR (der:Distr..."}}
+{"timestamp": "2025-10-31T12:33:09.280341", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT nerc_standard_id_unique IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:33:09.281207", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_device_type_idx IF NOT EXISTS FOR (ed:En..."}}
+{"timestamp": "2025-10-31T12:33:09.282045", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_voltage_level_idx IF NOT EXISTS FOR (ed:..."}}
+{"timestamp": "2025-10-31T12:33:09.283000", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_nerc_category_idx IF NOT EXISTS FOR (ed:..."}}
+{"timestamp": "2025-10-31T12:33:09.284027", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_substation_idx IF NOT EXISTS FOR (ed:Ene..."}}
+{"timestamp": "2025-10-31T12:33:09.284911", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_grid_impact_idx IF NOT EXISTS FOR (ed:En..."}}
+{"timestamp": "2025-10-31T12:33:09.286076", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_property_category_idx IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:33:09.286997", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_grid_stability_idx IF NOT EXISTS FOR (ep..."}}
+{"timestamp": "2025-10-31T12:33:09.287948", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_ieee_standard_idx IF NOT EXISTS FOR (ep:..."}}
+{"timestamp": "2025-10-31T12:33:09.288941", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX substation_type_idx IF NOT EXISTS FOR (sub:Subs..."}}
+{"timestamp": "2025-10-31T12:33:09.289843", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX substation_voltage_idx IF NOT EXISTS FOR (sub:S..."}}
+{"timestamp": "2025-10-31T12:33:09.290690", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX substation_nerc_idx IF NOT EXISTS FOR (sub:Subs..."}}
+{"timestamp": "2025-10-31T12:33:09.291604", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX transmission_voltage_idx IF NOT EXISTS FOR (tl:..."}}
+{"timestamp": "2025-10-31T12:33:09.292677", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX transmission_critical_idx IF NOT EXISTS FOR (tl..."}}
+{"timestamp": "2025-10-31T12:33:09.293526", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ems_type_idx IF NOT EXISTS FOR (ems:EnergyManag..."}}
+{"timestamp": "2025-10-31T12:33:09.294360", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ems_vendor_idx IF NOT EXISTS FOR (ems:EnergyMan..."}}
+{"timestamp": "2025-10-31T12:33:09.295345", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ems_network_architecture_idx IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:33:09.296325", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX der_type_idx IF NOT EXISTS FOR (der:Distributed..."}}
+{"timestamp": "2025-10-31T12:33:09.297402", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX der_derms_idx IF NOT EXISTS FOR (der:Distribute..."}}
+{"timestamp": "2025-10-31T12:33:09.298499", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX nerc_cip_number_idx IF NOT EXISTS FOR (ncs:NERC..."}}
+{"timestamp": "2025-10-31T12:33:09.299403", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX nerc_severity_idx IF NOT EXISTS FOR (ncs:NERCCI..."}}
+{"timestamp": "2025-10-31T12:33:09.299664", "operation": "phase_completed", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T12:33:09.299727", "operation": "phase_started", "details": {"phase": "create_energy_devices", "target_count": 10000}}
+{"timestamp": "2025-10-31T12:33:09.316197", "operation": "energy_devices_batch_created", "details": {"batch": 0, "count": 50, "total": 50}}
+{"timestamp": "2025-10-31T12:33:09.330438", "operation": "wave_3_execution_error", "details": {"error": "{neo4j_code: Neo.ClientError.Schema.ConstraintValidationFailed} {message: Node(318460) already exists with label `EnergyDevice` and property `deviceId` = 'energy:device:circuitbreaker-000050'} {gql_status: 50N42} {gql_status_description: error: general processing exception - unexpected error. Unexpected error has occurred. See debug log for details.}"}}
+{"timestamp": "2025-10-31T12:37:57.479299", "operation": "wave_3_execution_started", "details": {"timestamp": "2025-10-31T12:37:57.479271"}}
+{"timestamp": "2025-10-31T12:37:57.479474", "operation": "phase_started", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T12:37:57.482763", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT energy_device_id_unique IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:37:57.484161", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT energy_property_id_unique IF NOT EXISTS FO..."}}
+{"timestamp": "2025-10-31T12:37:57.485856", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT substation_id_unique IF NOT EXISTS FOR (su..."}}
+{"timestamp": "2025-10-31T12:37:57.486984", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT transmission_line_id_unique IF NOT EXISTS ..."}}
+{"timestamp": "2025-10-31T12:37:57.487974", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT ems_id_unique IF NOT EXISTS FOR (ems:Energ..."}}
+{"timestamp": "2025-10-31T12:37:57.488869", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT der_id_unique IF NOT EXISTS FOR (der:Distr..."}}
+{"timestamp": "2025-10-31T12:37:57.489722", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT nerc_standard_id_unique IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:37:57.490747", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_device_type_idx IF NOT EXISTS FOR (ed:En..."}}
+{"timestamp": "2025-10-31T12:37:57.491709", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_voltage_level_idx IF NOT EXISTS FOR (ed:..."}}
+{"timestamp": "2025-10-31T12:37:57.492459", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_nerc_category_idx IF NOT EXISTS FOR (ed:..."}}
+{"timestamp": "2025-10-31T12:37:57.493366", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_substation_idx IF NOT EXISTS FOR (ed:Ene..."}}
+{"timestamp": "2025-10-31T12:37:57.494276", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_grid_impact_idx IF NOT EXISTS FOR (ed:En..."}}
+{"timestamp": "2025-10-31T12:37:57.495070", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_property_category_idx IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:37:57.496154", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_grid_stability_idx IF NOT EXISTS FOR (ep..."}}
+{"timestamp": "2025-10-31T12:37:57.497037", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_ieee_standard_idx IF NOT EXISTS FOR (ep:..."}}
+{"timestamp": "2025-10-31T12:37:57.497930", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX substation_type_idx IF NOT EXISTS FOR (sub:Subs..."}}
+{"timestamp": "2025-10-31T12:37:57.498709", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX substation_voltage_idx IF NOT EXISTS FOR (sub:S..."}}
+{"timestamp": "2025-10-31T12:37:57.499450", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX substation_nerc_idx IF NOT EXISTS FOR (sub:Subs..."}}
+{"timestamp": "2025-10-31T12:37:57.500360", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX transmission_voltage_idx IF NOT EXISTS FOR (tl:..."}}
+{"timestamp": "2025-10-31T12:37:57.501263", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX transmission_critical_idx IF NOT EXISTS FOR (tl..."}}
+{"timestamp": "2025-10-31T12:37:57.502177", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ems_type_idx IF NOT EXISTS FOR (ems:EnergyManag..."}}
+{"timestamp": "2025-10-31T12:37:57.503149", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ems_vendor_idx IF NOT EXISTS FOR (ems:EnergyMan..."}}
+{"timestamp": "2025-10-31T12:37:57.504040", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ems_network_architecture_idx IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:37:57.504919", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX der_type_idx IF NOT EXISTS FOR (der:Distributed..."}}
+{"timestamp": "2025-10-31T12:37:57.505725", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX der_derms_idx IF NOT EXISTS FOR (der:Distribute..."}}
+{"timestamp": "2025-10-31T12:37:57.506549", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX nerc_cip_number_idx IF NOT EXISTS FOR (ncs:NERC..."}}
+{"timestamp": "2025-10-31T12:37:57.507388", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX nerc_severity_idx IF NOT EXISTS FOR (ncs:NERCCI..."}}
+{"timestamp": "2025-10-31T12:37:57.507707", "operation": "phase_completed", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T12:37:57.507796", "operation": "phase_started", "details": {"phase": "create_energy_devices", "target_count": 10000}}
+{"timestamp": "2025-10-31T12:37:57.524419", "operation": "energy_devices_batch_created", "details": {"batch": 0, "count": 50, "total": 50}}
+{"timestamp": "2025-10-31T12:37:57.665449", "operation": "energy_devices_batch_created", "details": {"batch": 10, "count": 50, "total": 550}}
+{"timestamp": "2025-10-31T12:37:57.795918", "operation": "energy_devices_batch_created", "details": {"batch": 20, "count": 50, "total": 1050}}
+{"timestamp": "2025-10-31T12:37:57.927230", "operation": "energy_devices_batch_created", "details": {"batch": 30, "count": 50, "total": 1550}}
+{"timestamp": "2025-10-31T12:37:58.055596", "operation": "energy_devices_batch_created", "details": {"batch": 40, "count": 50, "total": 2050}}
+{"timestamp": "2025-10-31T12:37:58.187604", "operation": "energy_devices_batch_created", "details": {"batch": 50, "count": 50, "total": 2550}}
+{"timestamp": "2025-10-31T12:37:58.320559", "operation": "energy_devices_batch_created", "details": {"batch": 60, "count": 50, "total": 3050}}
+{"timestamp": "2025-10-31T12:37:58.456857", "operation": "energy_devices_batch_created", "details": {"batch": 70, "count": 50, "total": 3550}}
+{"timestamp": "2025-10-31T12:37:58.583516", "operation": "energy_devices_batch_created", "details": {"batch": 80, "count": 50, "total": 4050}}
+{"timestamp": "2025-10-31T12:37:58.714937", "operation": "energy_devices_batch_created", "details": {"batch": 90, "count": 50, "total": 4550}}
+{"timestamp": "2025-10-31T12:37:58.842856", "operation": "energy_devices_batch_created", "details": {"batch": 100, "count": 50, "total": 5050}}
+{"timestamp": "2025-10-31T12:37:58.972040", "operation": "energy_devices_batch_created", "details": {"batch": 110, "count": 50, "total": 5550}}
+{"timestamp": "2025-10-31T12:37:59.112172", "operation": "energy_devices_batch_created", "details": {"batch": 120, "count": 50, "total": 6050}}
+{"timestamp": "2025-10-31T12:37:59.250857", "operation": "energy_devices_batch_created", "details": {"batch": 130, "count": 50, "total": 6550}}
+{"timestamp": "2025-10-31T12:37:59.404255", "operation": "energy_devices_batch_created", "details": {"batch": 140, "count": 50, "total": 7050}}
+{"timestamp": "2025-10-31T12:37:59.552261", "operation": "energy_devices_batch_created", "details": {"batch": 150, "count": 50, "total": 7550}}
+{"timestamp": "2025-10-31T12:37:59.703024", "operation": "energy_devices_batch_created", "details": {"batch": 160, "count": 50, "total": 8050}}
+{"timestamp": "2025-10-31T12:37:59.849043", "operation": "energy_devices_batch_created", "details": {"batch": 170, "count": 50, "total": 8550}}
+{"timestamp": "2025-10-31T12:37:59.986101", "operation": "energy_devices_batch_created", "details": {"batch": 180, "count": 50, "total": 9050}}
+{"timestamp": "2025-10-31T12:38:00.119578", "operation": "energy_devices_batch_created", "details": {"batch": 190, "count": 50, "total": 9550}}
+{"timestamp": "2025-10-31T12:38:00.240884", "operation": "energy_devices_batch_created", "details": {"batch": 199, "count": 50, "total": 10000}}
+{"timestamp": "2025-10-31T12:38:00.241082", "operation": "phase_completed", "details": {"phase": "create_energy_devices", "nodes_created": 10000}}
+{"timestamp": "2025-10-31T12:38:00.241136", "operation": "phase_started", "details": {"phase": "create_energy_properties", "target_count": 6000}}
+{"timestamp": "2025-10-31T12:38:00.256356", "operation": "energy_properties_batch_created", "details": {"batch": 0, "count": 100, "total": 100}}
+{"timestamp": "2025-10-31T12:38:00.413281", "operation": "energy_properties_batch_created", "details": {"batch": 10, "count": 100, "total": 1100}}
+{"timestamp": "2025-10-31T12:38:00.558407", "operation": "energy_properties_batch_created", "details": {"batch": 20, "count": 100, "total": 2100}}
+{"timestamp": "2025-10-31T12:38:00.707289", "operation": "energy_properties_batch_created", "details": {"batch": 30, "count": 100, "total": 3100}}
+{"timestamp": "2025-10-31T12:38:00.856074", "operation": "energy_properties_batch_created", "details": {"batch": 40, "count": 100, "total": 4100}}
+{"timestamp": "2025-10-31T12:38:00.998457", "operation": "energy_properties_batch_created", "details": {"batch": 50, "count": 100, "total": 5100}}
+{"timestamp": "2025-10-31T12:38:01.133000", "operation": "energy_properties_batch_created", "details": {"batch": 59, "count": 100, "total": 6000}}
+{"timestamp": "2025-10-31T12:38:01.133201", "operation": "phase_completed", "details": {"phase": "create_energy_properties", "nodes_created": 6000}}
+{"timestamp": "2025-10-31T12:38:01.133268", "operation": "phase_started", "details": {"phase": "create_substations", "target_count": 200}}
+{"timestamp": "2025-10-31T12:38:01.150475", "operation": "substations_created", "details": {"count": 200}}
+{"timestamp": "2025-10-31T12:38:01.150671", "operation": "phase_completed", "details": {"phase": "create_substations", "nodes_created": 200}}
+{"timestamp": "2025-10-31T12:38:01.150736", "operation": "phase_started", "details": {"phase": "create_transmission_lines", "target_count": 400}}
+{"timestamp": "2025-10-31T12:38:01.173131", "operation": "transmission_lines_created", "details": {"count": 400}}
+{"timestamp": "2025-10-31T12:38:01.173323", "operation": "phase_completed", "details": {"phase": "create_transmission_lines", "nodes_created": 400}}
+{"timestamp": "2025-10-31T12:38:01.173383", "operation": "phase_started", "details": {"phase": "create_ems_systems", "target_count": 25}}
+{"timestamp": "2025-10-31T12:38:01.182452", "operation": "ems_systems_created", "details": {"count": 25}}
+{"timestamp": "2025-10-31T12:38:01.182643", "operation": "phase_completed", "details": {"phase": "create_ems_systems", "nodes_created": 25}}
+{"timestamp": "2025-10-31T12:38:01.182714", "operation": "phase_started", "details": {"phase": "create_ders", "target_count": 750}}
+{"timestamp": "2025-10-31T12:38:01.223159", "operation": "ders_created", "details": {"count": 750}}
+{"timestamp": "2025-10-31T12:38:01.223348", "operation": "phase_completed", "details": {"phase": "create_ders", "nodes_created": 750}}
+{"timestamp": "2025-10-31T12:38:01.223417", "operation": "phase_started", "details": {"phase": "create_nerc_standards", "target_count": 100}}
+{"timestamp": "2025-10-31T12:38:01.232198", "operation": "nerc_standards_created", "details": {"count": 45}}
+{"timestamp": "2025-10-31T12:38:01.232334", "operation": "phase_completed", "details": {"phase": "create_nerc_standards", "nodes_created": 45}}
+{"timestamp": "2025-10-31T12:38:01.232391", "operation": "phase_started", "details": {"phase": "create_energy_measurements", "target_count": 18000}}
+{"timestamp": "2025-10-31T12:38:01.729094", "operation": "energy_measurements_created", "details": {"count": 18000}}
+{"timestamp": "2025-10-31T12:38:01.729282", "operation": "phase_completed", "details": {"phase": "create_energy_measurements", "nodes_created": 18000}}
+{"timestamp": "2025-10-31T12:38:01.729343", "operation": "phase_started", "details": {"phase": "create_relationships"}}
+{"timestamp": "2025-10-31T12:38:01.783128", "operation": "wave_3_execution_error", "details": {"error": "{neo4j_code: Neo.DatabaseError.Statement.ExecutionFailed} {message: Tried to query index with illegal query. A STRING_CONTAINS predicate is not allowed for a RANGE index. Query was :[PropertyIndexQuery.StringContainsPredicate[contains=String(\"SUBST-164\"),propertyKeyId=678]]} {gql_status: 50N00} {gql_status_description: error: general processing exception - internal error. Internal exception raised CypherExecution: Tried to query index with illegal query. A STRING_CONTAINS predicate is not allowed for a RANGE index. Query was :[PropertyIndexQuery.StringContainsPredicate[contains=String(\"SUBST-164\"),propertyKeyId=678]]}"}}
+{"timestamp": "2025-10-31T12:40:08.973556", "operation": "wave_3_execution_started", "details": {"timestamp": "2025-10-31T12:40:08.973530"}}
+{"timestamp": "2025-10-31T12:40:08.973713", "operation": "phase_started", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T12:40:08.976927", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT energy_device_id_unique IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:40:08.978090", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT energy_property_id_unique IF NOT EXISTS FO..."}}
+{"timestamp": "2025-10-31T12:40:08.978882", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT substation_id_unique IF NOT EXISTS FOR (su..."}}
+{"timestamp": "2025-10-31T12:40:08.979799", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT transmission_line_id_unique IF NOT EXISTS ..."}}
+{"timestamp": "2025-10-31T12:40:08.980760", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT ems_id_unique IF NOT EXISTS FOR (ems:Energ..."}}
+{"timestamp": "2025-10-31T12:40:08.981502", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT der_id_unique IF NOT EXISTS FOR (der:Distr..."}}
+{"timestamp": "2025-10-31T12:40:08.982272", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT nerc_standard_id_unique IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:40:08.983068", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_device_type_idx IF NOT EXISTS FOR (ed:En..."}}
+{"timestamp": "2025-10-31T12:40:08.983760", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_voltage_level_idx IF NOT EXISTS FOR (ed:..."}}
+{"timestamp": "2025-10-31T12:40:08.984408", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_nerc_category_idx IF NOT EXISTS FOR (ed:..."}}
+{"timestamp": "2025-10-31T12:40:08.985492", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_substation_idx IF NOT EXISTS FOR (ed:Ene..."}}
+{"timestamp": "2025-10-31T12:40:08.986364", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_grid_impact_idx IF NOT EXISTS FOR (ed:En..."}}
+{"timestamp": "2025-10-31T12:40:08.987407", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_property_category_idx IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:40:08.988277", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_grid_stability_idx IF NOT EXISTS FOR (ep..."}}
+{"timestamp": "2025-10-31T12:40:08.989114", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_ieee_standard_idx IF NOT EXISTS FOR (ep:..."}}
+{"timestamp": "2025-10-31T12:40:08.989947", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX substation_type_idx IF NOT EXISTS FOR (sub:Subs..."}}
+{"timestamp": "2025-10-31T12:40:08.990728", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX substation_voltage_idx IF NOT EXISTS FOR (sub:S..."}}
+{"timestamp": "2025-10-31T12:40:08.991549", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX substation_nerc_idx IF NOT EXISTS FOR (sub:Subs..."}}
+{"timestamp": "2025-10-31T12:40:08.992353", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX transmission_voltage_idx IF NOT EXISTS FOR (tl:..."}}
+{"timestamp": "2025-10-31T12:40:08.993071", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX transmission_critical_idx IF NOT EXISTS FOR (tl..."}}
+{"timestamp": "2025-10-31T12:40:08.993730", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ems_type_idx IF NOT EXISTS FOR (ems:EnergyManag..."}}
+{"timestamp": "2025-10-31T12:40:08.994572", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ems_vendor_idx IF NOT EXISTS FOR (ems:EnergyMan..."}}
+{"timestamp": "2025-10-31T12:40:08.995450", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ems_network_architecture_idx IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T12:40:08.996404", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX der_type_idx IF NOT EXISTS FOR (der:Distributed..."}}
+{"timestamp": "2025-10-31T12:40:08.997300", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX der_derms_idx IF NOT EXISTS FOR (der:Distribute..."}}
+{"timestamp": "2025-10-31T12:40:08.998082", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX nerc_cip_number_idx IF NOT EXISTS FOR (ncs:NERC..."}}
+{"timestamp": "2025-10-31T12:40:08.998814", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX nerc_severity_idx IF NOT EXISTS FOR (ncs:NERCCI..."}}
+{"timestamp": "2025-10-31T12:40:08.999118", "operation": "phase_completed", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T12:40:08.999195", "operation": "phase_started", "details": {"phase": "create_energy_devices", "target_count": 10000}}
+{"timestamp": "2025-10-31T12:40:09.023409", "operation": "energy_devices_batch_created", "details": {"batch": 0, "count": 50, "total": 50}}
+{"timestamp": "2025-10-31T12:40:09.182022", "operation": "energy_devices_batch_created", "details": {"batch": 10, "count": 50, "total": 550}}
+{"timestamp": "2025-10-31T12:40:09.312046", "operation": "energy_devices_batch_created", "details": {"batch": 20, "count": 50, "total": 1050}}
+{"timestamp": "2025-10-31T12:40:09.441495", "operation": "energy_devices_batch_created", "details": {"batch": 30, "count": 50, "total": 1550}}
+{"timestamp": "2025-10-31T12:40:09.567355", "operation": "energy_devices_batch_created", "details": {"batch": 40, "count": 50, "total": 2050}}
+{"timestamp": "2025-10-31T12:40:09.698224", "operation": "energy_devices_batch_created", "details": {"batch": 50, "count": 50, "total": 2550}}
+{"timestamp": "2025-10-31T12:40:09.827316", "operation": "energy_devices_batch_created", "details": {"batch": 60, "count": 50, "total": 3050}}
+{"timestamp": "2025-10-31T12:40:09.957199", "operation": "energy_devices_batch_created", "details": {"batch": 70, "count": 50, "total": 3550}}
+{"timestamp": "2025-10-31T12:40:10.079523", "operation": "energy_devices_batch_created", "details": {"batch": 80, "count": 50, "total": 4050}}
+{"timestamp": "2025-10-31T12:40:10.205227", "operation": "energy_devices_batch_created", "details": {"batch": 90, "count": 50, "total": 4550}}
+{"timestamp": "2025-10-31T12:40:10.333869", "operation": "energy_devices_batch_created", "details": {"batch": 100, "count": 50, "total": 5050}}
+{"timestamp": "2025-10-31T12:40:10.473795", "operation": "energy_devices_batch_created", "details": {"batch": 110, "count": 50, "total": 5550}}
+{"timestamp": "2025-10-31T12:40:10.596339", "operation": "energy_devices_batch_created", "details": {"batch": 120, "count": 50, "total": 6050}}
+{"timestamp": "2025-10-31T12:40:10.724530", "operation": "energy_devices_batch_created", "details": {"batch": 130, "count": 50, "total": 6550}}
+{"timestamp": "2025-10-31T12:40:10.852866", "operation": "energy_devices_batch_created", "details": {"batch": 140, "count": 50, "total": 7050}}
+{"timestamp": "2025-10-31T12:40:10.980416", "operation": "energy_devices_batch_created", "details": {"batch": 150, "count": 50, "total": 7550}}
+{"timestamp": "2025-10-31T12:40:11.100706", "operation": "energy_devices_batch_created", "details": {"batch": 160, "count": 50, "total": 8050}}
+{"timestamp": "2025-10-31T12:40:11.228082", "operation": "energy_devices_batch_created", "details": {"batch": 170, "count": 50, "total": 8550}}
+{"timestamp": "2025-10-31T12:40:11.359895", "operation": "energy_devices_batch_created", "details": {"batch": 180, "count": 50, "total": 9050}}
+{"timestamp": "2025-10-31T12:40:11.497302", "operation": "energy_devices_batch_created", "details": {"batch": 190, "count": 50, "total": 9550}}
+{"timestamp": "2025-10-31T12:40:11.609022", "operation": "energy_devices_batch_created", "details": {"batch": 199, "count": 50, "total": 10000}}
+{"timestamp": "2025-10-31T12:40:11.609197", "operation": "phase_completed", "details": {"phase": "create_energy_devices", "nodes_created": 10000}}
+{"timestamp": "2025-10-31T12:40:11.609260", "operation": "phase_started", "details": {"phase": "create_energy_properties", "target_count": 6000}}
+{"timestamp": "2025-10-31T12:40:11.622149", "operation": "energy_properties_batch_created", "details": {"batch": 0, "count": 100, "total": 100}}
+{"timestamp": "2025-10-31T12:40:11.771383", "operation": "energy_properties_batch_created", "details": {"batch": 10, "count": 100, "total": 1100}}
+{"timestamp": "2025-10-31T12:40:11.923267", "operation": "energy_properties_batch_created", "details": {"batch": 20, "count": 100, "total": 2100}}
+{"timestamp": "2025-10-31T12:40:12.068124", "operation": "energy_properties_batch_created", "details": {"batch": 30, "count": 100, "total": 3100}}
+{"timestamp": "2025-10-31T12:40:12.209536", "operation": "energy_properties_batch_created", "details": {"batch": 40, "count": 100, "total": 4100}}
+{"timestamp": "2025-10-31T12:40:12.350834", "operation": "energy_properties_batch_created", "details": {"batch": 50, "count": 100, "total": 5100}}
+{"timestamp": "2025-10-31T12:40:12.484289", "operation": "energy_properties_batch_created", "details": {"batch": 59, "count": 100, "total": 6000}}
+{"timestamp": "2025-10-31T12:40:12.484478", "operation": "phase_completed", "details": {"phase": "create_energy_properties", "nodes_created": 6000}}
+{"timestamp": "2025-10-31T12:40:12.484541", "operation": "phase_started", "details": {"phase": "create_substations", "target_count": 200}}
+{"timestamp": "2025-10-31T12:40:12.501542", "operation": "substations_created", "details": {"count": 200}}
+{"timestamp": "2025-10-31T12:40:12.501719", "operation": "phase_completed", "details": {"phase": "create_substations", "nodes_created": 200}}
+{"timestamp": "2025-10-31T12:40:12.501782", "operation": "phase_started", "details": {"phase": "create_transmission_lines", "target_count": 400}}
+{"timestamp": "2025-10-31T12:40:12.523520", "operation": "transmission_lines_created", "details": {"count": 400}}
+{"timestamp": "2025-10-31T12:40:12.523698", "operation": "phase_completed", "details": {"phase": "create_transmission_lines", "nodes_created": 400}}
+{"timestamp": "2025-10-31T12:40:12.523762", "operation": "phase_started", "details": {"phase": "create_ems_systems", "target_count": 25}}
+{"timestamp": "2025-10-31T12:40:12.533077", "operation": "ems_systems_created", "details": {"count": 25}}
+{"timestamp": "2025-10-31T12:40:12.533237", "operation": "phase_completed", "details": {"phase": "create_ems_systems", "nodes_created": 25}}
+{"timestamp": "2025-10-31T12:40:12.533295", "operation": "phase_started", "details": {"phase": "create_ders", "target_count": 750}}
+{"timestamp": "2025-10-31T12:40:12.574424", "operation": "ders_created", "details": {"count": 750}}
+{"timestamp": "2025-10-31T12:40:12.574623", "operation": "phase_completed", "details": {"phase": "create_ders", "nodes_created": 750}}
+{"timestamp": "2025-10-31T12:40:12.574691", "operation": "phase_started", "details": {"phase": "create_nerc_standards", "target_count": 100}}
+{"timestamp": "2025-10-31T12:40:12.584112", "operation": "nerc_standards_created", "details": {"count": 49}}
+{"timestamp": "2025-10-31T12:40:12.584252", "operation": "phase_completed", "details": {"phase": "create_nerc_standards", "nodes_created": 49}}
+{"timestamp": "2025-10-31T12:40:12.584368", "operation": "phase_started", "details": {"phase": "create_energy_measurements", "target_count": 18000}}
+{"timestamp": "2025-10-31T12:40:12.984688", "operation": "energy_measurements_created", "details": {"count": 18000}}
+{"timestamp": "2025-10-31T12:40:12.984882", "operation": "phase_completed", "details": {"phase": "create_energy_measurements", "nodes_created": 18000}}
+{"timestamp": "2025-10-31T12:40:12.984941", "operation": "phase_started", "details": {"phase": "create_relationships"}}
+{"timestamp": "2025-10-31T12:40:13.219729", "operation": "relationships_created", "details": {"type": "INSTALLED_AT_SUBSTATION", "count": 10000}}
+{"timestamp": "2025-10-31T12:40:13.293993", "operation": "relationships_created", "details": {"type": "CONNECTS_SUBSTATIONS", "count": 782}}
+{"timestamp": "2025-10-31T12:40:13.491495", "operation": "relationships_created", "details": {"type": "CONTROLLED_BY_EMS", "count": 10000}}
+{"timestamp": "2025-10-31T12:40:13.561790", "operation": "relationships_created", "details": {"type": "CONNECTED_TO_GRID", "count": 750}}
+{"timestamp": "2025-10-31T12:40:13.671961", "operation": "relationships_created", "details": {"type": "COMPLIES_WITH_NERC_CIP", "count": 5000}}
+{"timestamp": "2025-10-31T12:40:16.170451", "operation": "relationships_created", "details": {"type": "HAS_ENERGY_PROPERTY", "count": 30000}}
+{"timestamp": "2025-10-31T12:40:16.661093", "operation": "relationships_created", "details": {"type": "EXTENDS_SAREF_DEVICE", "count": 3000}}
+{"timestamp": "2025-10-31T12:40:16.760528", "operation": "relationships_created", "details": {"type": "DEPENDS_ON_ENERGY", "count": 1000}}
+{"timestamp": "2025-10-31T12:40:17.028727", "operation": "relationships_created", "details": {"type": "THREATENS_GRID_STABILITY", "count": 3000}}
+{"timestamp": "2025-10-31T12:40:17.028928", "operation": "phase_completed", "details": {"phase": "create_relationships", "total_relationships": 63532}}
+{"timestamp": "2025-10-31T12:40:17.029016", "operation": "wave_3_execution_completed", "details": {"timestamp": "2025-10-31T12:40:17.029013", "nodes_created": 35424, "relationships_created": 63532}}
+{"timestamp": "2025-11-01T01:24:29.670186", "operation": "wave_3_execution_started", "details": {"timestamp": "2025-11-01T01:24:29.670159"}}
+{"timestamp": "2025-11-01T01:24:29.670369", "operation": "phase_started", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-11-01T01:24:29.675504", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT energy_device_id_unique IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-11-01T01:24:29.678847", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT energy_property_id_unique IF NOT EXISTS FO..."}}
+{"timestamp": "2025-11-01T01:24:29.681735", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT substation_id_unique IF NOT EXISTS FOR (su..."}}
+{"timestamp": "2025-11-01T01:24:29.684124", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT transmission_line_id_unique IF NOT EXISTS ..."}}
+{"timestamp": "2025-11-01T01:24:29.686557", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT ems_id_unique IF NOT EXISTS FOR (ems:Energ..."}}
+{"timestamp": "2025-11-01T01:24:29.689302", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT der_id_unique IF NOT EXISTS FOR (der:Distr..."}}
+{"timestamp": "2025-11-01T01:24:29.691534", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT nerc_standard_id_unique IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-11-01T01:24:29.694099", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_device_type_idx IF NOT EXISTS FOR (ed:En..."}}
+{"timestamp": "2025-11-01T01:24:29.696158", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_voltage_level_idx IF NOT EXISTS FOR (ed:..."}}
+{"timestamp": "2025-11-01T01:24:29.697880", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_nerc_category_idx IF NOT EXISTS FOR (ed:..."}}
+{"timestamp": "2025-11-01T01:24:29.699664", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_substation_idx IF NOT EXISTS FOR (ed:Ene..."}}
+{"timestamp": "2025-11-01T01:24:29.701574", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_grid_impact_idx IF NOT EXISTS FOR (ed:En..."}}
+{"timestamp": "2025-11-01T01:24:29.703205", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_property_category_idx IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-11-01T01:24:29.705744", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_grid_stability_idx IF NOT EXISTS FOR (ep..."}}
+{"timestamp": "2025-11-01T01:24:29.707916", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX energy_ieee_standard_idx IF NOT EXISTS FOR (ep:..."}}
+{"timestamp": "2025-11-01T01:24:29.709686", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX substation_type_idx IF NOT EXISTS FOR (sub:Subs..."}}
+{"timestamp": "2025-11-01T01:24:29.711513", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX substation_voltage_idx IF NOT EXISTS FOR (sub:S..."}}
+{"timestamp": "2025-11-01T01:24:29.714732", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX substation_nerc_idx IF NOT EXISTS FOR (sub:Subs..."}}
+{"timestamp": "2025-11-01T01:24:29.717755", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX transmission_voltage_idx IF NOT EXISTS FOR (tl:..."}}
+{"timestamp": "2025-11-01T01:24:29.720193", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX transmission_critical_idx IF NOT EXISTS FOR (tl..."}}
+{"timestamp": "2025-11-01T01:24:29.722924", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ems_type_idx IF NOT EXISTS FOR (ems:EnergyManag..."}}
+{"timestamp": "2025-11-01T01:24:29.725230", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ems_vendor_idx IF NOT EXISTS FOR (ems:EnergyMan..."}}
+{"timestamp": "2025-11-01T01:24:29.727510", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ems_network_architecture_idx IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-11-01T01:24:29.729571", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX der_type_idx IF NOT EXISTS FOR (der:Distributed..."}}
+{"timestamp": "2025-11-01T01:24:29.731452", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX der_derms_idx IF NOT EXISTS FOR (der:Distribute..."}}
+{"timestamp": "2025-11-01T01:24:29.733273", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX nerc_cip_number_idx IF NOT EXISTS FOR (ncs:NERC..."}}
+{"timestamp": "2025-11-01T01:24:29.735010", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX nerc_severity_idx IF NOT EXISTS FOR (ncs:NERCCI..."}}
+{"timestamp": "2025-11-01T01:24:29.735314", "operation": "phase_completed", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-11-01T01:24:29.735392", "operation": "phase_started", "details": {"phase": "create_energy_devices", "target_count": 10000}}
+{"timestamp": "2025-11-01T01:24:29.787837", "operation": "energy_devices_batch_created", "details": {"batch": 0, "count": 50, "total": 50}}
+{"timestamp": "2025-11-01T01:24:29.915495", "operation": "energy_devices_batch_created", "details": {"batch": 10, "count": 50, "total": 550}}
+{"timestamp": "2025-11-01T01:24:30.042282", "operation": "energy_devices_batch_created", "details": {"batch": 20, "count": 50, "total": 1050}}
+{"timestamp": "2025-11-01T01:24:30.169574", "operation": "energy_devices_batch_created", "details": {"batch": 30, "count": 50, "total": 1550}}
+{"timestamp": "2025-11-01T01:24:30.306453", "operation": "energy_devices_batch_created", "details": {"batch": 40, "count": 50, "total": 2050}}
+{"timestamp": "2025-11-01T01:24:30.434045", "operation": "energy_devices_batch_created", "details": {"batch": 50, "count": 50, "total": 2550}}
+{"timestamp": "2025-11-01T01:24:30.561703", "operation": "energy_devices_batch_created", "details": {"batch": 60, "count": 50, "total": 3050}}
+{"timestamp": "2025-11-01T01:24:30.691923", "operation": "energy_devices_batch_created", "details": {"batch": 70, "count": 50, "total": 3550}}
+{"timestamp": "2025-11-01T01:24:30.819145", "operation": "energy_devices_batch_created", "details": {"batch": 80, "count": 50, "total": 4050}}
+{"timestamp": "2025-11-01T01:24:30.947122", "operation": "energy_devices_batch_created", "details": {"batch": 90, "count": 50, "total": 4550}}
+{"timestamp": "2025-11-01T01:24:31.076362", "operation": "energy_devices_batch_created", "details": {"batch": 100, "count": 50, "total": 5050}}
+{"timestamp": "2025-11-01T01:24:31.204934", "operation": "energy_devices_batch_created", "details": {"batch": 110, "count": 50, "total": 5550}}
+{"timestamp": "2025-11-01T01:24:31.348613", "operation": "energy_devices_batch_created", "details": {"batch": 120, "count": 50, "total": 6050}}
+{"timestamp": "2025-11-01T01:24:31.478168", "operation": "energy_devices_batch_created", "details": {"batch": 130, "count": 50, "total": 6550}}
+{"timestamp": "2025-11-01T01:24:31.606786", "operation": "energy_devices_batch_created", "details": {"batch": 140, "count": 50, "total": 7050}}
+{"timestamp": "2025-11-01T01:24:31.732228", "operation": "energy_devices_batch_created", "details": {"batch": 150, "count": 50, "total": 7550}}
+{"timestamp": "2025-11-01T01:24:31.869036", "operation": "energy_devices_batch_created", "details": {"batch": 160, "count": 50, "total": 8050}}
+{"timestamp": "2025-11-01T01:24:32.000265", "operation": "energy_devices_batch_created", "details": {"batch": 170, "count": 50, "total": 8550}}
+{"timestamp": "2025-11-01T01:24:32.126676", "operation": "energy_devices_batch_created", "details": {"batch": 180, "count": 50, "total": 9050}}
+{"timestamp": "2025-11-01T01:24:32.296609", "operation": "energy_devices_batch_created", "details": {"batch": 190, "count": 50, "total": 9550}}
+{"timestamp": "2025-11-01T01:24:32.419476", "operation": "energy_devices_batch_created", "details": {"batch": 199, "count": 50, "total": 10000}}
+{"timestamp": "2025-11-01T01:24:32.419694", "operation": "phase_completed", "details": {"phase": "create_energy_devices", "nodes_created": 10000}}
+{"timestamp": "2025-11-01T01:24:32.419773", "operation": "phase_started", "details": {"phase": "create_energy_properties", "target_count": 6000}}
+{"timestamp": "2025-11-01T01:24:32.455529", "operation": "energy_properties_batch_created", "details": {"batch": 0, "count": 100, "total": 100}}
+{"timestamp": "2025-11-01T01:24:32.672330", "operation": "energy_properties_batch_created", "details": {"batch": 10, "count": 100, "total": 1100}}
+{"timestamp": "2025-11-01T01:24:32.822004", "operation": "energy_properties_batch_created", "details": {"batch": 20, "count": 100, "total": 2100}}
+{"timestamp": "2025-11-01T01:24:32.972401", "operation": "energy_properties_batch_created", "details": {"batch": 30, "count": 100, "total": 3100}}
+{"timestamp": "2025-11-01T01:24:33.142133", "operation": "energy_properties_batch_created", "details": {"batch": 40, "count": 100, "total": 4100}}
+{"timestamp": "2025-11-01T01:24:33.287366", "operation": "energy_properties_batch_created", "details": {"batch": 50, "count": 100, "total": 5100}}
+{"timestamp": "2025-11-01T01:24:33.447174", "operation": "energy_properties_batch_created", "details": {"batch": 59, "count": 100, "total": 6000}}
+{"timestamp": "2025-11-01T01:24:33.447368", "operation": "phase_completed", "details": {"phase": "create_energy_properties", "nodes_created": 6000}}
+{"timestamp": "2025-11-01T01:24:33.447434", "operation": "phase_started", "details": {"phase": "create_substations", "target_count": 200}}
+{"timestamp": "2025-11-01T01:24:33.472334", "operation": "substations_created", "details": {"count": 200}}
+{"timestamp": "2025-11-01T01:24:33.472522", "operation": "phase_completed", "details": {"phase": "create_substations", "nodes_created": 200}}
+{"timestamp": "2025-11-01T01:24:33.472598", "operation": "phase_started", "details": {"phase": "create_transmission_lines", "target_count": 400}}
+{"timestamp": "2025-11-01T01:24:33.504740", "operation": "transmission_lines_created", "details": {"count": 400}}
+{"timestamp": "2025-11-01T01:24:33.504926", "operation": "phase_completed", "details": {"phase": "create_transmission_lines", "nodes_created": 400}}
+{"timestamp": "2025-11-01T01:24:33.505005", "operation": "phase_started", "details": {"phase": "create_ems_systems", "target_count": 25}}
+{"timestamp": "2025-11-01T01:24:33.530850", "operation": "ems_systems_created", "details": {"count": 25}}
+{"timestamp": "2025-11-01T01:24:33.531045", "operation": "phase_completed", "details": {"phase": "create_ems_systems", "nodes_created": 25}}
+{"timestamp": "2025-11-01T01:24:33.531123", "operation": "phase_started", "details": {"phase": "create_ders", "target_count": 750}}
+{"timestamp": "2025-11-01T01:24:33.589048", "operation": "ders_created", "details": {"count": 750}}
+{"timestamp": "2025-11-01T01:24:33.589269", "operation": "phase_completed", "details": {"phase": "create_ders", "nodes_created": 750}}
+{"timestamp": "2025-11-01T01:24:33.589337", "operation": "phase_started", "details": {"phase": "create_nerc_standards", "target_count": 100}}
+{"timestamp": "2025-11-01T01:24:33.611196", "operation": "nerc_standards_created", "details": {"count": 49}}
+{"timestamp": "2025-11-01T01:24:33.611385", "operation": "phase_completed", "details": {"phase": "create_nerc_standards", "nodes_created": 49}}
+{"timestamp": "2025-11-01T01:24:33.611464", "operation": "phase_started", "details": {"phase": "create_energy_measurements", "target_count": 18000}}
+{"timestamp": "2025-11-01T01:24:34.113811", "operation": "energy_measurements_created", "details": {"count": 18000}}
+{"timestamp": "2025-11-01T01:24:34.113990", "operation": "phase_completed", "details": {"phase": "create_energy_measurements", "nodes_created": 18000}}
+{"timestamp": "2025-11-01T01:24:34.114072", "operation": "phase_started", "details": {"phase": "create_relationships"}}
+{"timestamp": "2025-11-01T01:24:34.305305", "operation": "relationships_created", "details": {"type": "INSTALLED_AT_SUBSTATION", "count": 10000}}
+{"timestamp": "2025-11-01T01:24:34.371604", "operation": "relationships_created", "details": {"type": "CONNECTS_SUBSTATIONS", "count": 780}}
+{"timestamp": "2025-11-01T01:24:34.601831", "operation": "relationships_created", "details": {"type": "CONTROLLED_BY_EMS", "count": 10000}}
+{"timestamp": "2025-11-01T01:24:34.675980", "operation": "relationships_created", "details": {"type": "CONNECTED_TO_GRID", "count": 750}}
+{"timestamp": "2025-11-01T01:24:34.768406", "operation": "relationships_created", "details": {"type": "COMPLIES_WITH_NERC_CIP", "count": 5000}}
+{"timestamp": "2025-11-01T01:24:37.258148", "operation": "relationships_created", "details": {"type": "HAS_ENERGY_PROPERTY", "count": 30000}}
+{"timestamp": "2025-11-01T01:24:41.698122", "operation": "relationships_created", "details": {"type": "EXTENDS_SAREF_DEVICE", "count": 3000}}
+{"timestamp": "2025-11-01T01:24:41.762923", "operation": "relationships_created", "details": {"type": "DEPENDS_ON_ENERGY", "count": 1000}}
+{"timestamp": "2025-11-01T01:24:41.928329", "operation": "relationships_created", "details": {"type": "THREATENS_GRID_STABILITY", "count": 3000}}
+{"timestamp": "2025-11-01T01:24:41.928531", "operation": "phase_completed", "details": {"phase": "create_relationships", "total_relationships": 63530}}
+{"timestamp": "2025-11-01T01:24:41.928643", "operation": "wave_3_execution_completed", "details": {"timestamp": "2025-11-01T01:24:41.928639", "nodes_created": 35424, "relationships_created": 63530}}

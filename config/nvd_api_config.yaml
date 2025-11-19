@@ -1,0 +1,54 @@
+# NVD API Configuration
+# For CVE data import and synchronization
+
+api:
+  # NIST NVD API endpoint
+  base_url: "https://services.nvd.nist.gov/rest/json/cves/2.0"
+
+  # API authentication
+  api_key: "YOUR_API_KEY_HERE"  # Get from https://nvd.nist.gov/developers/request-an-api-key
+
+  # Rate limiting
+  rate_limit:
+    requests: 50      # Requests per period
+    period: 30        # Period in seconds
+    backoff: 2.0      # Exponential backoff multiplier
+
+  # Request configuration
+  timeout: 30         # Request timeout in seconds
+  retry_attempts: 3   # Number of retry attempts
+  retry_backoff: 2.0  # Backoff multiplier for retries
+
+# Data import settings
+import:
+  batch_size: 100           # CVEs to process per batch
+  skip_existing: true       # Skip already imported CVEs
+  update_existing: true     # Update existing CVE data
+  validate_data: true       # Validate data before import
+  namespace: "nvd_2024"     # Data namespace for isolation
+
+# Filtering
+filters:
+  min_score: 0.0           # Minimum CVSS score to import
+  years: [2020, 2021, 2022, 2023, 2024]  # Years to import
+  exclude_rejected: true    # Skip REJECTED CVEs
+
+# Caching
+cache:
+  enabled: true
+  ttl: 86400              # Cache TTL in seconds (24 hours)
+  directory: "processing/cache"
+
+# Logging
+logging:
+  level: "INFO"
+  file: "processing/logs/nvd_import.log"
+  max_size: 10485760      # 10MB
+  backup_count: 5
+
+# Error handling
+error_handling:
+  continue_on_error: true     # Continue processing on errors
+  max_errors: 100             # Stop after max errors
+  log_errors: true
+  error_file: "processing/logs/nvd_errors.log"

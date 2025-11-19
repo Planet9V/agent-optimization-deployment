@@ -1,0 +1,5 @@
+Facility_ID,Facility_Name,Facility_Type,Sector,Latitude,Longitude,Address,Customer_Namespace,Tags,Customer_ID,Region_ID
+FAC-SCADA-NE-001,SCADA Control Center - Northeast,SCADA_CONTROL_CENTER,Energy,42.3601,-71.0589,"123 Grid Control Way, Boston, MA",utility_operator_001,"critical_infrastructure,energy_sector,IEC62443_applicable",CUSTOMER-UTILITY-001,REGION-NE-GRID
+FAC-SUBSTATION-001,Substation Alpha,SUBSTATION,Energy,41.8240,-71.4128,"456 Transformer Rd, Providence, RI",utility_operator_001,"critical_infrastructure,energy_sector",CUSTOMER-UTILITY-001,REGION-NE-GRID
+FAC-WATER-TREATMENT-001,Water Treatment Plant - Pacific,WATER_TREATMENT_PLANT,Water,37.7749,-122.4194,"789 Aqua Drive, San Francisco, CA",water_operator_001,"critical_infrastructure,water_sector",CUSTOMER-WATER-001,REGION-PACIFIC-WATER
+FAC-RAILWAY-STATION-001,Railway Control Station - Region 001,RAILWAY_CONTROL_CENTER,Transportation,40.7128,-74.0060,"101 Rail Plaza, New York, NY",railway_operator_001,"critical_infrastructure,transportation_sector",CUSTOMER-RAILWAY-001,REGION-RAIL-001

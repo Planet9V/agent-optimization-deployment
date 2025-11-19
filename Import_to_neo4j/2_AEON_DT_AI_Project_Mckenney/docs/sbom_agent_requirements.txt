@@ -1,0 +1,15 @@
+# SBOM Agent Dependencies
+# Install with: pip install -r sbom_agent_requirements.txt
+
+# Core SBOM parsing libraries
+lib4sbom>=0.8.0              # Unified SBOM parser for SPDX and CycloneDX
+cyclonedx-python-lib>=7.0.0  # CycloneDX 1.6 support
+spdx-tools>=0.8.0            # SPDX 3.0 support
+
+# Additional utilities
+packageurl-python>=0.11.0    # PURL parsing and manipulation
+cpe>=1.2.1                   # CPE parsing and matching
+
+# Already included in base requirements:
+# - requests (for CVE database queries)
+# - python-dateutil (for date parsing)

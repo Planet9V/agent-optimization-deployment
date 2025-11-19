@@ -1,0 +1,1206 @@
+[
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_0",
+    "text": "# COMPLETE NODE INVENTORY\n**File:** 02_COMPLETE_NODE_INVENTORY.md\n**Created:** 2025-10-30 00:00:00 UTC\n**Version:** v1.0.0\n**Status:** ACTIVE\n\n## Executive Summary\n\nThis document provides a comprehensive inventory of ALL ~163,500 nodes across the AEON Digital Twin Cybersecurity Threat Intelligence ontology. Each category includes complete property schemas, relationship definitions, and integration patterns.\n\n**Total Node Count:** ~163,500 nodes\n- Category 1: SAREF Infrastructure (~2,500 nodes)\n- Category 2: Cybersecurity (~15,000 nodes)\n- Category 3: Psychometric (~1,000 nodes)\n- Category 4: IT Infrastructure Shared (~5,000 nodes)\n- Category 5: SBOM (~140,000 nodes)\n\n---\n\n## CATEGORY 1: SAREF INFRASTRUCTURE (~2,500 NODES)\n\n### 1.1 SAREF Core Entities (500 nodes)\n\n#### Device (150 nodes)\n**Base Schema:**\n```yaml\nsaref:Device:\n  properties:\n    deviceID: string (unique identifier)\n    deviceName: string\n    manufacturer: string\n    model: string\n    serialNumber: string\n    firmwareVersi",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_1",
+    "text": "Base Schema:**\n```yaml\nsaref:Device:\n  properties:\n    deviceID: string (unique identifier)\n    deviceName: string\n    manufacturer: string\n    model: string\n    serialNumber: string\n    firmwareVersion: string\n    hardwareVersion: string\n    installationDate: datetime\n    lastMaintenanceDate: datetime\n    operationalStatus: enum[operational, degraded, failed, maintenance]\n    location: geopoint\n    energyEfficiencyClass: enum[A+++, A++, A+, A, B, C, D, E, F, G]\n    powerConsumption: float (watts)\n    certifications: array[string]\n    ipAddress: string\n    macAddress: string\n    networkSegment: string\n    securityLevel: enum[critical, high, medium, low]\n    dataClassification: enum[public, internal, confidential, restricted]\n\n  relationships:\n    consistsOf: saref:Device (1-to-many)\n    isUsedFor: saref:Task (many-to-many)\n    accomplishes: saref:Function (many-to-many)\n    offers: saref:Service (1-to-many)\n    isLocatedIn: saref:Building (many-to-1)\n    hasProfile: saref:Profile (1-to",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_2",
+    "text": "UsedFor: saref:Task (many-to-many)\n    accomplishes: saref:Function (many-to-many)\n    offers: saref:Service (1-to-many)\n    isLocatedIn: saref:Building (many-to-1)\n    hasProfile: saref:Profile (1-to-1)\n    interactsWith: saref:Device (many-to-many)\n    monitors: saref:Property (1-to-many)\n    controls: saref:Actuator (1-to-many)\n    hasMeasurement: saref:Measurement (1-to-many)\n```\n\n**Device Subtypes (50 nodes each):**\n\n1. **saref:Sensor**\n```yaml\nsaref:Sensor:\n  extends: saref:Device\n  properties:\n    sensorType: enum[temperature, humidity, motion, pressure, light, sound, smoke, gas, vibration, proximity]\n    measurementRange: {min: float, max: float, unit: string}\n    accuracy: float (percentage)\n    precision: float\n    responseTime: float (milliseconds)\n    samplingRate: float (Hz)\n    calibrationDate: datetime\n    calibrationInterval: integer (days)\n    dataFormat: string\n    outputType: enum[analog, digital, modbus, mqtt, http]\n\n  relationships:\n    measuresProperty: saref:Prop",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_3",
+    "text": "   calibrationDate: datetime\n    calibrationInterval: integer (days)\n    dataFormat: string\n    outputType: enum[analog, digital, modbus, mqtt, http]\n\n  relationships:\n    measuresProperty: saref:Property (many-to-many)\n    makesMeasurement: saref:Measurement (1-to-many)\n    sensingRange: saref:UnitOfMeasure (many-to-1)\n```\n\n2. **saref:Actuator**\n```yaml\nsaref:Actuator:\n  extends: saref:Device\n  properties:\n    actuatorType: enum[switch, motor, valve, relay, dimmer, servo, pneumatic, hydraulic]\n    controlType: enum[on_off, analog, pwm, step]\n    maxLoadCapacity: float\n    responseTime: float (milliseconds)\n    dutyCycle: float (percentage)\n    operatingVoltage: float\n    operatingCurrent: float\n    protectionRating: string (IP rating)\n\n  relationships:\n    actsUpon: saref:Property (many-to-many)\n    hasCommand: saref:Command (1-to-many)\n    controlsProperty: saref:Property (many-to-many)\n```\n\n3. **saref:Meter**\n```yaml\nsaref:Meter:\n  extends: saref:Device\n  properties:\n    meterType: ",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_4",
+    "text": "o-many)\n    hasCommand: saref:Command (1-to-many)\n    controlsProperty: saref:Property (many-to-many)\n```\n\n3. **saref:Meter**\n```yaml\nsaref:Meter:\n  extends: saref:Device\n  properties:\n    meterType: enum[electricity, water, gas, heat, cooling]\n    meterReading: float\n    readingUnit: string\n    lastReadingTime: datetime\n    totalConsumption: float\n    currentDemand: float\n    peakDemand: float\n    meterAccuracyClass: string\n    communicationProtocol: enum[modbus, mbus, lorawan, zigbee, bacnet]\n\n  relationships:\n    measures: saref:Commodity (many-to-1)\n    hasReading: saref:Measurement (1-to-many)\n```\n\n#### Function (200 nodes)\n**Base Schema:**\n```yaml\nsaref:Function:\n  properties:\n    functionID: string (unique)\n    functionName: string\n    description: string\n    category: enum[sensing, actuating, metering, computing, communication, storage]\n    inputParameters: array[{name: string, type: string, required: boolean}]\n    outputParameters: array[{name: string, type: string}]\n    execu",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_5",
+    "text": " actuating, metering, computing, communication, storage]\n    inputParameters: array[{name: string, type: string, required: boolean}]\n    outputParameters: array[{name: string, type: string}]\n    executionTime: float (milliseconds)\n    energyConsumption: float (watts)\n    reliability: float (percentage)\n\n  relationships:\n    hasCommand: saref:Command (1-to-many)\n    isAccomplishedBy: saref:Device (many-to-many)\n```\n\n**Function Subtypes (40 nodes each):**\n\n1. **saref:SensingFunction**\n```yaml\nsaref:SensingFunction:\n  extends: saref:Function\n  properties:\n    sensingFrequency: float (Hz)\n    sensingAccuracy: float\n    detectionThreshold: float\n\n  relationships:\n    sensingProperty: saref:Property (many-to-1)\n```\n\n2. **saref:ActuatingFunction**\n```yaml\nsaref:ActuatingFunction:\n  extends: saref:Function\n  properties:\n    actuationRange: {min: float, max: float}\n    actuationSpeed: float\n\n  relationships:\n    actsUponProperty: saref:Property (many-to-1)\n```\n\n3. **saref:MeteringFunction**\n```",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_6",
+    "text": ":Function\n  properties:\n    actuationRange: {min: float, max: float}\n    actuationSpeed: float\n\n  relationships:\n    actsUponProperty: saref:Property (many-to-1)\n```\n\n3. **saref:MeteringFunction**\n```yaml\nsaref:MeteringFunction:\n  extends: saref:Function\n  properties:\n    meteringInterval: integer (seconds)\n    meteringAccuracy: float\n\n  relationships:\n    metersCommodity: saref:Commodity (many-to-1)\n```\n\n4. **saref:EventFunction**\n```yaml\nsaref:EventFunction:\n  extends: saref:Function\n  properties:\n    eventType: enum[alarm, notification, trigger, change]\n    eventPriority: enum[critical, high, medium, low]\n    eventThreshold: float\n\n  relationships:\n    notifiesAbout: saref:Property (many-to-many)\n```\n\n5. **saref:LevelControlFunction**\n```yaml\nsaref:LevelControlFunction:\n  extends: saref:Function\n  properties:\n    minLevel: float\n    maxLevel: float\n    stepSize: float\n\n  relationships:\n    controlsLevel: saref:Property (many-to-1)\n```\n\n#### Property (100 nodes)\n**Base Schema:**\n```y",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_7",
+    "text": ":Function\n  properties:\n    minLevel: float\n    maxLevel: float\n    stepSize: float\n\n  relationships:\n    controlsLevel: saref:Property (many-to-1)\n```\n\n#### Property (100 nodes)\n**Base Schema:**\n```yaml\nsaref:Property:\n  properties:\n    propertyID: string (unique)\n    propertyName: string\n    description: string\n    propertyType: enum[physical, virtual, computed, derived]\n    dataType: enum[integer, float, boolean, string, datetime, binary]\n    unit: string\n    minValue: float\n    maxValue: float\n    defaultValue: any\n    isReadOnly: boolean\n    isObservable: boolean\n    updateFrequency: float (Hz)\n\n  relationships:\n    relatesToProperty: saref:Property (many-to-many)\n    isPropertyOf: saref:FeatureOfInterest (many-to-1)\n    isMeasuredIn: saref:UnitOfMeasure (many-to-1)\n```\n\n**Property Subtypes (20 nodes each):**\n\n1. **saref:Temperature**\n```yaml\nsaref:Temperature:\n  extends: saref:Property\n  properties:\n    temperatureScale: enum[celsius, fahrenheit, kelvin]\n    temperatureRange: {mi",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_8",
+    "text": "btypes (20 nodes each):**\n\n1. **saref:Temperature**\n```yaml\nsaref:Temperature:\n  extends: saref:Property\n  properties:\n    temperatureScale: enum[celsius, fahrenheit, kelvin]\n    temperatureRange: {min: float, max: float}\n```\n\n2. **saref:Humidity**\n```yaml\nsaref:Humidity:\n  extends: saref:Property\n  properties:\n    humidityType: enum[relative, absolute]\n    humidityRange: {min: float, max: float}\n```\n\n3. **saref:Pressure**\n```yaml\nsaref:Pressure:\n  extends: saref:Property\n  properties:\n    pressureType: enum[absolute, gauge, differential]\n    pressureRange: {min: float, max: float}\n```\n\n4. **saref:Energy**\n```yaml\nsaref:Energy:\n  extends: saref:Property\n  properties:\n    energyType: enum[electrical, thermal, mechanical, chemical]\n    powerFactor: float\n```\n\n5. **saref:Power**\n```yaml\nsaref:Power:\n  extends: saref:Property\n  properties:\n    powerType: enum[active, reactive, apparent]\n    voltage: float\n    current: float\n    frequency: float\n```\n\n#### Command (50 nodes)\n**Base Schema:**",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_9",
+    "text": ":Power:\n  extends: saref:Property\n  properties:\n    powerType: enum[active, reactive, apparent]\n    voltage: float\n    current: float\n    frequency: float\n```\n\n#### Command (50 nodes)\n**Base Schema:**\n```yaml\nsaref:Command:\n  properties:\n    commandID: string (unique)\n    commandName: string\n    description: string\n    commandType: enum[synchronous, asynchronous]\n    parameters: array[{name: string, type: string, required: boolean, defaultValue: any}]\n    returnType: string\n    executionTimeout: integer (milliseconds)\n    retryPolicy: {maxRetries: integer, backoffStrategy: enum[linear, exponential]}\n    authorization: array[string] (required roles)\n\n  relationships:\n    actsUpon: saref:Property (many-to-many)\n    isCommandOf: saref:Function (many-to-1)\n    hasResult: saref:Result (1-to-1)\n```\n\n### 1.2 SAREF Energy (300 nodes)\n\n#### Energy-Related Devices (100 nodes)\n\n1. **saref:Generator**\n```yaml\nsaref:Generator:\n  extends: saref:Device\n  properties:\n    generationType: enum[solar, wi",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_10",
+    "text": "```\n\n### 1.2 SAREF Energy (300 nodes)\n\n#### Energy-Related Devices (100 nodes)\n\n1. **saref:Generator**\n```yaml\nsaref:Generator:\n  extends: saref:Device\n  properties:\n    generationType: enum[solar, wind, hydro, gas, diesel, biomass, geothermal, nuclear]\n    ratedCapacity: float (kW)\n    currentOutput: float (kW)\n    efficiency: float (percentage)\n    fuelType: string\n    fuelConsumption: float (L/h or m3/h)\n    emissionRate: float (kg CO2/kWh)\n    startupTime: integer (seconds)\n    shutdownTime: integer (seconds)\n    minimumRuntime: integer (minutes)\n    maximumRuntime: integer (minutes)\n    maintenanceInterval: integer (hours)\n    operatingHours: integer\n\n  relationships:\n    generates: saref:Energy (1-to-many)\n    suppliesTo: saref:LoadPoint (1-to-many)\n    hasEfficiencyProfile: saref:Profile (1-to-1)\n```\n\n2. **saref:Storage**\n```yaml\nsaref:Storage:\n  extends: saref:Device\n  properties:\n    storageType: enum[battery, flywheel, compressed_air, pumped_hydro, thermal]\n    capacity: floa",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_11",
+    "text": "ofile (1-to-1)\n```\n\n2. **saref:Storage**\n```yaml\nsaref:Storage:\n  extends: saref:Device\n  properties:\n    storageType: enum[battery, flywheel, compressed_air, pumped_hydro, thermal]\n    capacity: float (kWh)\n    stateOfCharge: float (percentage)\n    ratedPower: float (kW)\n    chargingRate: float (kW)\n    dischargingRate: float (kW)\n    roundTripEfficiency: float (percentage)\n    cycleLife: integer\n    currentCycles: integer\n    depthOfDischarge: float (percentage)\n    temperatureRange: {min: float, max: float}\n    chargingVoltage: float\n    dischargingVoltage: float\n\n  relationships:\n    stores: saref:Energy (1-to-many)\n    chargedBy: saref:Generator (many-to-many)\n    suppliesTo: saref:LoadPoint (1-to-many)\n```\n\n3. **saref:LoadPoint**\n```yaml\nsaref:LoadPoint:\n  extends: saref:Device\n  properties:\n    loadType: enum[resistive, inductive, capacitive, mixed]\n    ratedLoad: float (kW)\n    currentLoad: float (kW)\n    powerFactor: float\n    loadPriority: enum[critical, essential, non_essent",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_12",
+    "text": "perties:\n    loadType: enum[resistive, inductive, capacitive, mixed]\n    ratedLoad: float (kW)\n    currentLoad: float (kW)\n    powerFactor: float\n    loadPriority: enum[critical, essential, non_essential, deferrable]\n    schedulable: boolean\n    flexibilityWindow: integer (minutes)\n    interruptible: boolean\n\n  relationships:\n    consumes: saref:Energy (1-to-many)\n    suppliedBy: saref:Generator (many-to-many)\n    hasLoadProfile: saref:Profile (1-to-1)\n```\n\n#### Energy Management (100 nodes)\n\n1. **saref:EnergyProfile**\n```yaml\nsaref:EnergyProfile:\n  extends: saref:Profile\n  properties:\n    profileType: enum[generation, consumption, storage, flexibility]\n    timeResolution: integer (seconds)\n    forecastHorizon: integer (hours)\n    historicalPeriod: integer (days)\n    dataPoints: array[{timestamp: datetime, value: float}]\n    averageValue: float\n    peakValue: float\n    valleyValue: float\n    volatility: float\n\n  relationships:\n    profileOf: saref:Device (many-to-1)\n    basedOnMeasurem",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_13",
+    "text": "estamp: datetime, value: float}]\n    averageValue: float\n    peakValue: float\n    valleyValue: float\n    volatility: float\n\n  relationships:\n    profileOf: saref:Device (many-to-1)\n    basedOnMeasurement: saref:Measurement (many-to-many)\n```\n\n2. **saref:DemandResponse**\n```yaml\nsaref:DemandResponse:\n  properties:\n    programID: string\n    programType: enum[load_curtailment, load_shifting, valley_filling, peak_clipping]\n    activationSignal: enum[price, grid_signal, manual]\n    responseTime: integer (minutes)\n    duration: integer (minutes)\n    expectedReduction: float (kW)\n    incentiveRate: float (currency/kWh)\n    penaltyRate: float (currency/kWh)\n\n  relationships:\n    involves: saref:LoadPoint (1-to-many)\n    triggeredBy: saref:PriceSignal (many-to-1)\n```\n\n3. **saref:PowerQuality**\n```yaml\nsaref:PowerQuality:\n  properties:\n    voltageDeviation: float (percentage)\n    frequencyDeviation: float (Hz)\n    harmonicDistortion: float (percentage)\n    powerFactor: float\n    flickerSeverity:",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_14",
+    "text": "aml\nsaref:PowerQuality:\n  properties:\n    voltageDeviation: float (percentage)\n    frequencyDeviation: float (Hz)\n    harmonicDistortion: float (percentage)\n    powerFactor: float\n    flickerSeverity: float\n    unbalanceFactor: float (percentage)\n    complianceLevel: enum[excellent, good, acceptable, poor]\n\n  relationships:\n    measuredAt: saref:LoadPoint (many-to-1)\n    affects: saref:Device (many-to-many)\n```\n\n#### Grid Integration (100 nodes)\n\n1. **saref:GridConnection**\n```yaml\nsaref:GridConnection:\n  properties:\n    connectionType: enum[grid_tied, off_grid, hybrid]\n    voltageLevel: enum[lv, mv, hv, ehv]\n    nominalVoltage: float (kV)\n    ratedCurrent: float (A)\n    connectionPoint: string\n    meterID: string\n    bilateralFlow: boolean\n\n  relationships:\n    connects: saref:Device (many-to-many)\n    hasContract: saref:EnergyContract (many-to-1)\n```\n\n2. **saref:Microgrid**\n```yaml\nsaref:Microgrid:\n  properties:\n    microgridID: string\n    operatingMode: enum[grid_connected, islanded",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_15",
+    "text": "y-to-many)\n    hasContract: saref:EnergyContract (many-to-1)\n```\n\n2. **saref:Microgrid**\n```yaml\nsaref:Microgrid:\n  properties:\n    microgridID: string\n    operatingMode: enum[grid_connected, islanded, transition]\n    totalCapacity: float (kW)\n    currentGeneration: float (kW)\n    currentLoad: float (kW)\n    storageCapacity: float (kWh)\n    autonomy: float (hours)\n\n  relationships:\n    includes: saref:Device (1-to-many)\n    connectedTo: saref:GridConnection (many-to-1)\n```\n\n### 1.3 SAREF Building (400 nodes)\n\n#### Building Structure (150 nodes)\n\n1. **saref:Building**\n```yaml\nsaref:Building:\n  properties:\n    buildingID: string (unique)\n    buildingName: string\n    buildingType: enum[residential, commercial, industrial, educational, healthcare, government]\n    address: {street: string, city: string, state: string, zip: string, country: string}\n    geoLocation: geopoint\n    totalFloorArea: float (m2)\n    numberOfFloors: integer\n    constructionYear: integer\n    renovationYear: integer\n  ",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_16",
+    "text": ": string, state: string, zip: string, country: string}\n    geoLocation: geopoint\n    totalFloorArea: float (m2)\n    numberOfFloors: integer\n    constructionYear: integer\n    renovationYear: integer\n    energyRating: string\n    occupancyType: enum[single_tenant, multi_tenant]\n    maxOccupancy: integer\n    currentOccupancy: integer\n\n  relationships:\n    hasSpace: saref:BuildingSpace (1-to-many)\n    hasZone: saref:Zone (1-to-many)\n    contains: saref:Device (1-to-many)\n    hasSystem: saref:BuildingSystem (1-to-many)\n```\n\n2. **saref:BuildingSpace**\n```yaml\nsaref:BuildingSpace:\n  properties:\n    spaceID: string\n    spaceName: string\n    spaceType: enum[room, corridor, lobby, office, laboratory, storage, utility, parking]\n    floorNumber: integer\n    area: float (m2)\n    volume: float (m3)\n    ceilingHeight: float (m)\n    occupancySchedule: string\n    maxOccupants: integer\n    currentOccupants: integer\n    accessLevel: enum[public, restricted, secure, classified]\n\n  relationships:\n    isSpac",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_17",
+    "text": "eilingHeight: float (m)\n    occupancySchedule: string\n    maxOccupants: integer\n    currentOccupants: integer\n    accessLevel: enum[public, restricted, secure, classified]\n\n  relationships:\n    isSpaceOf: saref:Building (many-to-1)\n    containsDevice: saref:Device (1-to-many)\n    adjacentTo: saref:BuildingSpace (many-to-many)\n    partOfZone: saref:Zone (many-to-1)\n```\n\n3. **saref:Zone**\n```yaml\nsaref:Zone:\n  properties:\n    zoneID: string\n    zoneName: string\n    zoneType: enum[thermal, lighting, security, hvac, occupancy]\n    controlStrategy: string\n    setpoint: float\n    currentValue: float\n    tolerance: float\n\n  relationships:\n    isZoneOf: saref:Building (many-to-1)\n    includes: saref:BuildingSpace (1-to-many)\n    controlledBy: saref:Device (many-to-many)\n```\n\n#### Building Systems (150 nodes)\n\n1. **saref:HVAC**\n```yaml\nsaref:HVAC:\n  extends: saref:BuildingSystem\n  properties:\n    systemType: enum[central, distributed, hybrid]\n    heatingType: enum[electric, gas, oil, heat_pump,",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_18",
+    "text": "(150 nodes)\n\n1. **saref:HVAC**\n```yaml\nsaref:HVAC:\n  extends: saref:BuildingSystem\n  properties:\n    systemType: enum[central, distributed, hybrid]\n    heatingType: enum[electric, gas, oil, heat_pump, district]\n    coolingType: enum[electric, absorption, evaporative]\n    ventilationType: enum[natural, mechanical, mixed_mode]\n    heatingCapacity: float (kW)\n    coolingCapacity: float (kW)\n    airflowRate: float (m3/h)\n    efficiency: float (COP or SEER)\n    filterType: string\n    filterEfficiency: string (MERV rating)\n\n  relationships:\n    serves: saref:Zone (1-to-many)\n    hasComponent: saref:HVACComponent (1-to-many)\n```\n\n2. **saref:LightingSystem**\n```yaml\nsaref:LightingSystem:\n  extends: saref:BuildingSystem\n  properties:\n    systemType: enum[natural, artificial, hybrid]\n    controlType: enum[manual, scheduled, occupancy, daylight, adaptive]\n    installedCapacity: float (W)\n    efficacy: float (lm/W)\n    colorTemperature: integer (K)\n    dimmingCapability: boolean\n\n  relationships:\n",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_19",
+    "text": ": enum[manual, scheduled, occupancy, daylight, adaptive]\n    installedCapacity: float (W)\n    efficacy: float (lm/W)\n    colorTemperature: integer (K)\n    dimmingCapability: boolean\n\n  relationships:\n    illuminates: saref:Zone (1-to-many)\n    hasFixture: saref:LightingFixture (1-to-many)\n```\n\n3. **saref:SecuritySystem**\n```yaml\nsaref:SecuritySystem:\n  extends: saref:BuildingSystem\n  properties:\n    systemType: enum[intrusion, access_control, surveillance, fire, integrated]\n    armedStatus: enum[armed, disarmed, stay, away]\n    alarmStatus: enum[normal, warning, alarm, tamper]\n    monitoringType: enum[self_monitored, professionally_monitored, hybrid]\n\n  relationships:\n    protects: saref:Zone (1-to-many)\n    hasComponent: saref:SecurityDevice (1-to-many)\n```\n\n#### Building Automation (100 nodes)\n\n1. **saref:BMS** (Building Management System)\n```yaml\nsaref:BMS:\n  properties:\n    systemID: string\n    manufacturer: string\n    version: string\n    protocol: enum[bacnet, modbus, knx, lonwork",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_20",
+    "text": "nodes)\n\n1. **saref:BMS** (Building Management System)\n```yaml\nsaref:BMS:\n  properties:\n    systemID: string\n    manufacturer: string\n    version: string\n    protocol: enum[bacnet, modbus, knx, lonworks, dali]\n    numberOfPoints: integer\n    updateRate: float (Hz)\n\n  relationships:\n    manages: saref:BuildingSystem (1-to-many)\n    monitors: saref:Device (1-to-many)\n    controls: saref:Device (1-to-many)\n    hasInterface: saref:Interface (1-to-many)\n```\n\n2. **saref:AutomationRule**\n```yaml\nsaref:AutomationRule:\n  properties:\n    ruleID: string\n    ruleName: string\n    priority: integer\n    enabled: boolean\n    triggerCondition: string (expression)\n    actions: array[string]\n    schedule: string (cron expression)\n\n  relationships:\n    monitors: saref:Property (many-to-many)\n    controls: saref:Device (many-to-many)\n```\n\n### 1.4 SAREF Environment (300 nodes)\n\n#### Environmental Monitoring (100 nodes)\n\n1. **saref:AirQuality**\n```yaml\nsaref:AirQuality:\n  extends: saref:Property\n  properties:",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_21",
+    "text": "f:Device (many-to-many)\n```\n\n### 1.4 SAREF Environment (300 nodes)\n\n#### Environmental Monitoring (100 nodes)\n\n1. **saref:AirQuality**\n```yaml\nsaref:AirQuality:\n  extends: saref:Property\n  properties:\n    aqi: integer (0-500)\n    pm25: float (\u03bcg/m3)\n    pm10: float (\u03bcg/m3)\n    co2: float (ppm)\n    co: float (ppm)\n    no2: float (ppb)\n    o3: float (ppb)\n    voc: float (ppb)\n    category: enum[good, moderate, unhealthy_sensitive, unhealthy, very_unhealthy, hazardous]\n\n  relationships:\n    measuredBy: saref:Sensor (many-to-many)\n    affects: saref:BuildingSpace (many-to-many)\n```\n\n2. **saref:Weather**\n```yaml\nsaref:Weather:\n  properties:\n    temperature: float (\u00b0C)\n    humidity: float (%)\n    pressure: float (hPa)\n    windSpeed: float (m/s)\n    windDirection: integer (degrees)\n    precipitation: float (mm)\n    cloudCover: float (%)\n    visibility: float (km)\n    uvIndex: integer\n    weatherCondition: enum[clear, cloudy, rainy, snowy, stormy, foggy]\n\n  relationships:\n    observedAt: geopo",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_22",
+    "text": "ion: float (mm)\n    cloudCover: float (%)\n    visibility: float (km)\n    uvIndex: integer\n    weatherCondition: enum[clear, cloudy, rainy, snowy, stormy, foggy]\n\n  relationships:\n    observedAt: geopoint\n    forecastFor: datetime\n```\n\n3. **saref:Noise**\n```yaml\nsaref:Noise:\n  extends: saref:Property\n  properties:\n    soundLevel: float (dB)\n    frequencyWeighting: enum[A, C, Z]\n    timeWeighting: enum[fast, slow, impulse]\n    leq: float (equivalent continuous sound level)\n    lmax: float (maximum sound level)\n    lmin: float (minimum sound level)\n\n  relationships:\n    measuredBy: saref:Sensor (many-to-1)\n    affects: saref:BuildingSpace (many-to-many)\n```\n\n#### Environmental Control (100 nodes)\n\n1. **saref:ClimateControl**\n```yaml\nsaref:ClimateControl:\n  properties:\n    controlMode: enum[auto, manual, scheduled, adaptive]\n    temperatureSetpoint: float (\u00b0C)\n    humiditySetpoint: float (%)\n    ventilationRate: float (ACH)\n    co2Threshold: float (ppm)\n\n  relationships:\n    controls: sare",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_23",
+    "text": "to, manual, scheduled, adaptive]\n    temperatureSetpoint: float (\u00b0C)\n    humiditySetpoint: float (%)\n    ventilationRate: float (ACH)\n    co2Threshold: float (ppm)\n\n  relationships:\n    controls: saref:HVAC (many-to-1)\n    maintainsComfort: saref:Zone (many-to-many)\n```\n\n2. **saref:LightingControl**\n```yaml\nsaref:LightingControl:\n  properties:\n    controlMode: enum[manual, scheduled, occupancy, daylight, scene]\n    dimmingLevel: float (%)\n    colorTemperature: integer (K)\n    scene: string\n\n  relationships:\n    controls: saref:LightingSystem (many-to-1)\n    affectsZone: saref:Zone (many-to-many)\n```\n\n#### Sustainability Metrics (100 nodes)\n\n1. **saref:EnergyEfficiency**\n```yaml\nsaref:EnergyEfficiency:\n  properties:\n    eui: float (kWh/m2/year - Energy Use Intensity)\n    pue: float (Power Usage Effectiveness)\n    ghgIntensity: float (kg CO2e/m2/year)\n    renewablePercentage: float (%)\n    baselineConsumption: float (kWh)\n    currentConsumption: float (kWh)\n    savings: float (kWh)\n\n  re",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_24",
+    "text": "sage Effectiveness)\n    ghgIntensity: float (kg CO2e/m2/year)\n    renewablePercentage: float (%)\n    baselineConsumption: float (kWh)\n    currentConsumption: float (kWh)\n    savings: float (kWh)\n\n  relationships:\n    measuredFor: saref:Building (many-to-1)\n    includes: saref:Measurement (many-to-many)\n```\n\n2. **saref:WaterManagement**\n```yaml\nsaref:WaterManagement:\n  properties:\n    totalConsumption: float (L)\n    potableWater: float (L)\n    recycledWater: float (L)\n    rainwaterHarvested: float (L)\n    wastewater: float (L)\n    waterIntensity: float (L/m2/year)\n\n  relationships:\n    measuredFor: saref:Building (many-to-1)\n    meteredBy: saref:Meter (many-to-many)\n```\n\n### 1.5 SAREF Industry4.0 (300 nodes)\n\n#### Manufacturing Entities (100 nodes)\n\n1. **saref:ProductionEquipment**\n```yaml\nsaref:ProductionEquipment:\n  extends: saref:Device\n  properties:\n    equipmentType: enum[machine_tool, robot, conveyor, agv, assembly_station, inspection_station]\n    manufacturer: string\n    model: s",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_25",
+    "text": "saref:ProductionEquipment:\n  extends: saref:Device\n  properties:\n    equipmentType: enum[machine_tool, robot, conveyor, agv, assembly_station, inspection_station]\n    manufacturer: string\n    model: string\n    capacity: float\n    currentUtilization: float (%)\n    productionRate: float (units/hour)\n    oeeScore: float (%) # Overall Equipment Effectiveness\n    availability: float (%)\n    performance: float (%)\n    quality: float (%)\n    maintenanceStatus: enum[operational, scheduled, unscheduled, failed]\n\n  relationships:\n    produces: saref:Product (many-to-many)\n    partOfLine: saref:ProductionLine (many-to-1)\n    hasMaintenanceSchedule: saref:MaintenanceSchedule (1-to-1)\n```\n\n2. **saref:ProductionLine**\n```yaml\nsaref:ProductionLine:\n  properties:\n    lineID: string\n    lineName: string\n    lineType: enum[discrete, continuous, batch, hybrid]\n    cycleTime: float (seconds)\n    takt Time: float (seconds)\n    throughput: float (units/hour)\n    efficiency: float (%)\n    operatingStatus: en",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_26",
+    "text": "  lineType: enum[discrete, continuous, batch, hybrid]\n    cycleTime: float (seconds)\n    takt Time: float (seconds)\n    throughput: float (units/hour)\n    efficiency: float (%)\n    operatingStatus: enum[running, stopped, changeover, maintenance]\n\n  relationships:\n    contains: saref:ProductionEquipment (1-to-many)\n    produces: saref:Product (many-to-many)\n    partOfFactory: saref:Factory (many-to-1)\n```\n\n3. **saref:Product**\n```yaml\nsaref:Product:\n  properties:\n    productID: string\n    productName: string\n    productType: string\n    sku: string\n    batchNumber: string\n    serialNumber: string\n    manufacturingDate: datetime\n    expiryDate: datetime\n    quality Status: enum[passed, failed, pending, rework]\n    specifications: object\n\n  relationships:\n    producedBy: saref:ProductionEquipment (many-to-many)\n    hasComponent: saref:Product (many-to-many)\n    hasMaterial: saref:Material (many-to-many)\n```\n\n#### Process Control (100 nodes)\n\n1. **saref:ProcessParameter**\n```yaml\nsaref:Proc",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_27",
+    "text": "ent (many-to-many)\n    hasComponent: saref:Product (many-to-many)\n    hasMaterial: saref:Material (many-to-many)\n```\n\n#### Process Control (100 nodes)\n\n1. **saref:ProcessParameter**\n```yaml\nsaref:ProcessParameter:\n  extends: saref:Property\n  properties:\n    parameterType: enum[input, output, control, disturbance]\n    setpoint: float\n    currentValue: float\n    upperLimit: float\n    lowerLimit: float\n    criticalRange: {min: float, max: float}\n    controlStrategy: enum[pid, fuzzy, mpc, adaptive]\n\n  relationships:\n    controlledBy: saref:Controller (many-to-1)\n    affects: saref:Product (many-to-many)\n```\n\n2. **saref:QualityCheck**\n```yaml\nsaref:QualityCheck:\n  properties:\n    checkpointID: string\n    checkType: enum[visual, dimensional, functional, material, performance]\n    inspectionMethod: enum[manual, automated, semi_automated]\n    passRate: float (%)\n    defectRate: float (%)\n    sampleSize: integer\n\n  relationships:\n    inspects: saref:Product (many-to-many)\n    detects: saref:Def",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_28",
+    "text": "d: enum[manual, automated, semi_automated]\n    passRate: float (%)\n    defectRate: float (%)\n    sampleSize: integer\n\n  relationships:\n    inspects: saref:Product (many-to-many)\n    detects: saref:Defect (1-to-many)\n```\n\n#### Logistics & Supply Chain (100 nodes)\n\n1. **saref:Warehouse**\n```yaml\nsaref:Warehouse:\n  properties:\n    warehouseID: string\n    totalCapacity: float (m3)\n    occupancyRate: float (%)\n    storageType: enum[ambient, refrigerated, frozen, controlled]\n    numberOfZones: integer\n\n  relationships:\n    stores: saref:Material (many-to-many)\n    hasZone: saref:StorageZone (1-to-many)\n    uses: saref:AGV (many-to-many)\n```\n\n2. **saref:Inventory**\n```yaml\nsaref:Inventory:\n  properties:\n    itemID: string\n    itemType: enum[raw_material, wip, finished_goods, spare_parts]\n    quantity: float\n    unit: string\n    location: string\n    minimumStock: float\n    maximumStock: float\n    reorderPoint: float\n    leadTime: integer (days)\n\n  relationships:\n    locatedIn: saref:Warehouse ",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_29",
+    "text": "tity: float\n    unit: string\n    location: string\n    minimumStock: float\n    maximumStock: float\n    reorderPoint: float\n    leadTime: integer (days)\n\n  relationships:\n    locatedIn: saref:Warehouse (many-to-1)\n    usedBy: saref:ProductionLine (many-to-many)\n```\n\n### 1.6 SAREF Wear (200 nodes)\n\n#### Wearable Devices (100 nodes)\n\n1. **saref:WearableDevice**\n```yaml\nsaref:WearableDevice:\n  extends: saref:Device\n  properties:\n    wearableType: enum[smartwatch, fitness_tracker, smart_glasses, smart_clothing, medical_patch, hearing_aid]\n    wearLocation: enum[wrist, chest, head, ankle, ear, torso, limb]\n    batteryLevel: float (%)\n    chargingStatus: enum[charging, discharging, full]\n    waterResistance: string (IP rating)\n    connectivity: array[enum[bluetooth, wifi, nfc, cellular, lora]]\n\n  relationships:\n    wornBy: saref:User (many-to-1)\n    tracks: saref:HealthMetric (1-to-many)\n    syncsTo: saref:MobileDevice (many-to-many)\n```\n\n2. **saref:HealthMetric**\n```yaml\nsaref:HealthMetric:\n ",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_30",
+    "text": "relationships:\n    wornBy: saref:User (many-to-1)\n    tracks: saref:HealthMetric (1-to-many)\n    syncsTo: saref:MobileDevice (many-to-many)\n```\n\n2. **saref:HealthMetric**\n```yaml\nsaref:HealthMetric:\n  extends: saref:Property\n  properties:\n    metricType: enum[heart_rate, steps, calories, sleep, spo2, blood_pressure, temperature, stress, activity]\n    currentValue: float\n    unit: string\n    timestamp: datetime\n    qualityIndicator: enum[good, fair, poor]\n\n  relationships:\n    measuredBy: saref:WearableDevice (many-to-1)\n    belongsTo: saref:User (many-to-1)\n```\n\n#### Health Monitoring (100 nodes)\n\n1. **saref:ActivityTracking**\n```yaml\nsaref:ActivityTracking:\n  properties:\n    activityType: enum[walking, running, cycling, swimming, sleeping, standing, sitting]\n    duration: integer (seconds)\n    intensity: enum[low, moderate, high, vigorous]\n    caloriesBurned: float\n    distance: float (meters)\n    averageHeartRate: float (bpm)\n\n  relationships:\n    trackedBy: saref:WearableDevice (man",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_31",
+    "text": ")\n    intensity: enum[low, moderate, high, vigorous]\n    caloriesBurned: float\n    distance: float (meters)\n    averageHeartRate: float (bpm)\n\n  relationships:\n    trackedBy: saref:WearableDevice (many-to-1)\n    associatedWith: saref:User (many-to-1)\n```\n\n2. **saref:SleepAnalysis**\n```yaml\nsaref:SleepAnalysis:\n  properties:\n    sleepDuration: integer (minutes)\n    deepSleep: integer (minutes)\n    lightSleep: integer (minutes)\n    remSleep: integer (minutes)\n    awakeTime: integer (minutes)\n    sleepScore: float (0-100)\n\n  relationships:\n    analyzedBy: saref:WearableDevice (many-to-1)\n    belongsTo: saref:User (many-to-1)\n```\n\n### 1.7 SAREF Agriculture-Food (300 nodes)\n\n#### Agricultural Monitoring (100 nodes)\n\n1. **saref:Soil**\n```yaml\nsaref:Soil:\n  properties:\n    soilType: enum[clay, silt, sand, loam, peat, chalk]\n    moisture: float (%)\n    temperature: float (\u00b0C)\n    ph: float\n    ec: float (electrical conductivity)\n    nitrogen: float (ppm)\n    phosphorus: float (ppm)\n    potassi",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_32",
+    "text": "lt, sand, loam, peat, chalk]\n    moisture: float (%)\n    temperature: float (\u00b0C)\n    ph: float\n    ec: float (electrical conductivity)\n    nitrogen: float (ppm)\n    phosphorus: float (ppm)\n    potassium: float (ppm)\n    organicMatter: float (%)\n\n  relationships:\n    measuredBy: saref:Sensor (many-to-many)\n    locatedAt: geopoint\n    belongsTo: saref:Field (many-to-1)\n```\n\n2. **saref:Crop**\n```yaml\nsaref:Crop:\n  properties:\n    cropType: string\n    variety: string\n    plantingDate: date\n    expectedHarvestDate: date\n    growthStage: enum[seeding, vegetative, flowering, fruiting, ripening, harvest]\n    healthStatus: enum[healthy, stressed, diseased, pest_infested]\n    yieldEstimate: float (kg/ha)\n\n  relationships:\n    grownIn: saref:Field (many-to-1)\n    requires: saref:IrrigationSchedule (many-to-1)\n    monitored By: saref:Sensor (many-to-many)\n```\n\n3. **saref:Field**\n```yaml\nsaref:Field:\n  properties:\n    fieldID: string\n    area: float (hectares)\n    boundaries: array[geopoint]\n    el",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_33",
+    "text": "any-to-1)\n    monitored By: saref:Sensor (many-to-many)\n```\n\n3. **saref:Field**\n```yaml\nsaref:Field:\n  properties:\n    fieldID: string\n    area: float (hectares)\n    boundaries: array[geopoint]\n    elevation: float (m)\n    slope: float (degrees)\n    irrigationType: enum[drip, sprinkler, flood, none]\n\n  relationships:\n    contains: saref:Crop (1-to-many)\n    hasSoil: saref:Soil (1-to-many)\n    partOfFarm: saref:Farm (many-to-1)\n```\n\n#### Livestock Management (100 nodes)\n\n1. **saref:Animal**\n```yaml\nsaref:Animal:\n  properties:\n    animalID: string (tag/RFID)\n    species: string\n    breed: string\n    birthDate: date\n    gender: enum[male, female]\n    weight: float (kg)\n    healthStatus: enum[healthy, sick, quarantined, deceased]\n    vaccinationStatus: array[{vaccine: string, date: date}]\n\n  relationships:\n    locatedIn: saref:Enclosure (many-to-1)\n    monitored By: saref:Sensor (many-to-many)\n    hasRecord: saref:HealthRecord (1-to-many)\n```\n\n2. **saref:Enclosure**\n```yaml\nsaref:Enclosure",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_34",
+    "text": "elationships:\n    locatedIn: saref:Enclosure (many-to-1)\n    monitored By: saref:Sensor (many-to-many)\n    hasRecord: saref:HealthRecord (1-to-many)\n```\n\n2. **saref:Enclosure**\n```yaml\nsaref:Enclosure:\n  properties:\n    enclosureID: string\n    type: enum[pen, barn, pasture, coop, stable]\n    area: float (m2)\n    capacity: integer\n    currentOccupancy: integer\n    temperature: float (\u00b0C)\n    humidity: float (%)\n    ventilation: enum[natural, mechanical, mixed]\n\n  relationships:\n    contains: saref:Animal (1-to-many)\n    hasSensor: saref:Sensor (1-to-many)\n```\n\n#### Food Processing (100 nodes)\n\n1. **saref:FoodProduct**\n```yaml\nsaref:FoodProduct:\n  properties:\n    productID: string\n    productName: string\n    category: string\n    batchNumber: string\n    productionDate: datetime\n    expiryDate: datetime\n    storageConditions: {temperature: float, humidity: float}\n    nutritionalInfo: object\n    allergens: array[string]\n    certifications: array[string]\n\n  relationships:\n    processedBy: sa",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_35",
+    "text": ": datetime\n    storageConditions: {temperature: float, humidity: float}\n    nutritionalInfo: object\n    allergens: array[string]\n    certifications: array[string]\n\n  relationships:\n    processedBy: saref:ProcessingEquipment (many-to-many)\n    derivedFrom: saref:RawMaterial (many-to-many)\n    trackedBy: saref:TraceabilitySystem (many-to-1)\n```\n\n2. **saref:FoodSafety**\n```yaml\nsaref:FoodSafety:\n  properties:\n    haccpCompliance: boolean\n    microbiologicalTests: array[{test: string, result: string, date: datetime}]\n    chemicalTests: array[{substance: string, level: float, limit: float}]\n    physicalInspection: enum[passed, failed, pending]\n    certificationStatus: enum[certified, pending, expired, revoked]\n\n  relationships:\n    appliesTo: saref:FoodProduct (many-to-many)\n    verifiedBy: saref:Inspector (many-to-1)\n```\n\n### 1.8 SAREF Smart Cities (200 nodes)\n\n#### Urban Infrastructure (100 nodes)\n\n1. **saref:StreetLight**\n```yaml\nsaref:StreetLight:\n  extends: saref:Device\n  properties:\n ",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_36",
+    "text": "ef:Inspector (many-to-1)\n```\n\n### 1.8 SAREF Smart Cities (200 nodes)\n\n#### Urban Infrastructure (100 nodes)\n\n1. **saref:StreetLight**\n```yaml\nsaref:StreetLight:\n  extends: saref:Device\n  properties:\n    lightID: string\n    lightType: enum[led, sodium, halogen, fluorescent]\n    power: float (W)\n    brightness: float (%)\n    status: enum[on, off, dimmed, faulty]\n    operatingHours: integer\n    energyConsumed: float (kWh)\n    controlMethod: enum[manual, scheduled, adaptive, sensor_based]\n\n  relationships:\n    illuminates: saref:Street (many-to-1)\n    partOfNetwork: saref:LightingNetwork (many-to-1)\n    hasSensor: saref:Sensor (1-to-many)\n```\n\n2. **saref:ParkingSpace**\n```yaml\nsaref:ParkingSpace:\n  properties:\n    spaceID: string\n    spaceType: enum[standard, accessible, ev_charging, motorcycle, loading]\n    occupancyStatus: enum[occupied, vacant, reserved]\n    location: geopoint\n    rate: float (currency/hour)\n    restrictions: array[string]\n\n  relationships:\n    partOfParkingFacility: sa",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_37",
+    "text": "e, loading]\n    occupancyStatus: enum[occupied, vacant, reserved]\n    location: geopoint\n    rate: float (currency/hour)\n    restrictions: array[string]\n\n  relationships:\n    partOfParkingFacility: saref:ParkingFacility (many-to-1)\n    detectedBy: saref:Sensor (many-to-1)\n    reservedBy: saref:User (many-to-1)\n```\n\n3. **saref:WasteContainer**\n```yaml\nsaref:WasteContainer:\n  properties:\n    containerID: string\n    wasteType: enum[general, recyclable, organic, glass, hazardous]\n    capacity: float (L)\n    fillLevel: float (%)\n    temperature: float (\u00b0C)\n    lastEmptied: datetime\n    location: geopoint\n\n  relationships:\n    monitored By: saref:Sensor (many-to-1)\n    collectedBy: saref:WasteCollectionVehicle (many-to-many)\n```\n\n#### Traffic Management (100 nodes)\n\n1. **saref:TrafficSensor**\n```yaml\nsaref:TrafficSensor:\n  extends: saref:Sensor\n  properties:\n    sensorType: enum[loop_detector, camera, radar, lidar]\n    vehicleCount: integer\n    averageSpeed: float (km/h)\n    occupancy: float",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_38",
+    "text": "`yaml\nsaref:TrafficSensor:\n  extends: saref:Sensor\n  properties:\n    sensorType: enum[loop_detector, camera, radar, lidar]\n    vehicleCount: integer\n    averageSpeed: float (km/h)\n    occupancy: float (%)\n    congestionLevel: enum[free_flow, moderate, congested, jammed]\n\n  relationships:\n    monitors: saref:RoadSegment (many-to-1)\n    feedsInto: saref:TrafficManagementSystem (many-to-1)\n```\n\n2. **saref:TrafficLight**\n```yaml\nsaref:TrafficLight:\n  extends: saref:Device\n  properties:\n    signalID: string\n    currentPhase: enum[red, yellow, green, red_yellow]\n    phaseDuration: integer (seconds)\n    cycleTime: integer (seconds)\n    controlMode: enum[fixed, actuated, adaptive]\n\n  relationships:\n    controls: saref:Intersection (many-to-1)\n    coordinatedWith: saref:TrafficLight (many-to-many)\n```\n\n---\n\n## CATEGORY 2: CYBERSECURITY (~15,000 NODES)\n\n### 2.1 Threat Intelligence (3,000 nodes)\n\n#### Threat Actors (500 nodes)\n\n1. **ThreatActor**\n```yaml\nThreatActor:\n  properties:\n    actorID: st",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_39",
+    "text": "```\n\n---\n\n## CATEGORY 2: CYBERSECURITY (~15,000 NODES)\n\n### 2.1 Threat Intelligence (3,000 nodes)\n\n#### Threat Actors (500 nodes)\n\n1. **ThreatActor**\n```yaml\nThreatActor:\n  properties:\n    actorID: string (unique)\n    name: string\n    aliases: array[string]\n    type: enum[nation_state, cybercriminal, hacktivist, insider, terrorist, script_kiddie]\n    sophistication: enum[none, minimal, intermediate, advanced, expert, innovator, strategic]\n    primaryMotivation: enum[ideological, financial, military, political, espionage, revenge]\n    secondaryMotivations: array[enum]\n    resources: enum[individual, club, contest, team, organization, government]\n    firstSeen: datetime\n    lastSeen: datetime\n    active: boolean\n    attributedCountry: string\n    language: array[string]\n    confidence: float (0-1)\n\n  relationships:\n    sponsors: ThreatActor (many-to-1)\n    collaborates: ThreatActor (many-to-many)\n    targets: Identity (many-to-many)\n    uses: AttackPattern (many-to-many)\n    uses: Malware",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_40",
+    "text": "(0-1)\n\n  relationships:\n    sponsors: ThreatActor (many-to-1)\n    collaborates: ThreatActor (many-to-many)\n    targets: Identity (many-to-many)\n    uses: AttackPattern (many-to-many)\n    uses: Malware (many-to-many)\n    uses: Tool (many-to-many)\n    attributedTo: IntrusionSet (many-to-many)\n    impersonates: Identity (many-to-many)\n```\n\n2. **IntrusionSet**\n```yaml\nIntrusionSet:\n  properties:\n    intrusionSetID: string\n    name: string\n    aliases: array[string]\n    description: string\n    firstSeen: datetime\n    lastSeen: datetime\n    goals: array[string]\n    resourceLevel: enum[individual, club, contest, team, organization, government]\n    primaryMotivation: enum[ideology, financial, military, political]\n\n  relationships:\n    attributedTo: ThreatActor (many-to-1)\n    targets: Identity (many-to-many)\n    uses: AttackPattern (many-to-many)\n    uses: Malware (many-to-many)\n    uses: Tool (many-to-many)\n    uses: Infrastructure (many-to-many)\n```\n\n3. **Campaign**\n```yaml\nCampaign:\n  prope",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 40,
+      "start_char": 32000,
+      "end_char": 33000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_41",
+    "text": "ny-to-many)\n    uses: AttackPattern (many-to-many)\n    uses: Malware (many-to-many)\n    uses: Tool (many-to-many)\n    uses: Infrastructure (many-to-many)\n```\n\n3. **Campaign**\n```yaml\nCampaign:\n  properties:\n    campaignID: string\n    name: string\n    description: string\n    aliases: array[string]\n    firstSeen: datetime\n    lastSeen: datetime\n    objective: string\n    status: enum[active, dormant, completed, unknown]\n    confidence: float\n\n  relationships:\n    attributedTo: ThreatActor (many-to-1)\n    uses: AttackPattern (many-to-many)\n    uses: Malware (many-to-many)\n    targets: Identity (many-to-many)\n    targets: Vulnerability (many-to-many)\n```\n\n#### Attack Patterns (1,000 nodes)\n\n1. **AttackPattern**\n```yaml\nAttackPattern:\n  properties:\n    attackPatternID: string (CAPEC ID)\n    name: string\n    description: string\n    killChainPhases: array[{killChainName: string, phaseName: string}]\n    mitreID: string (ATT&CK Technique ID)\n    tactics: array[string]\n    platforms: array[enum[w",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 41,
+      "start_char": 32800,
+      "end_char": 33800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_42",
+    "text": ": string\n    description: string\n    killChainPhases: array[{killChainName: string, phaseName: string}]\n    mitreID: string (ATT&CK Technique ID)\n    tactics: array[string]\n    platforms: array[enum[windows, linux, macos, ios, android, web, cloud, network, ics]]\n    dataSource: array[string]\n    permissions: array[enum[user, administrator, system, root]]\n    defensesBypassed: array[string]\n    detectionDifficulty: enum[trivial, easy, moderate, hard, very_hard]\n\n  relationships:\n    usedBy: ThreatActor (many-to-many)\n    uses: Malware (many-to-many)\n    mitigatedBy: CourseOfAction (many-to-many)\n    targets: Vulnerability (many-to-many)\n    delivers: Malware (many-to-many)\n    parentOf: AttackPattern (many-to-many)\n```\n\n2. **TTP** (Tactics, Techniques, and Procedures)\n```yaml\nTTP:\n  properties:\n    ttpID: string\n    tactic: enum[reconnaissance, resource_development, initial_access, execution, persistence, privilege_escalation, defense_evasion, credential_access, discovery, lateral_movem",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 42,
+      "start_char": 33600,
+      "end_char": 34600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_43",
+    "text": "ies:\n    ttpID: string\n    tactic: enum[reconnaissance, resource_development, initial_access, execution, persistence, privilege_escalation, defense_evasion, credential_access, discovery, lateral_movement, collection, command_control, exfiltration, impact]\n    technique: string\n    subTechnique: string\n    procedureDescription: string\n    detectionMethods: array[string]\n\n  relationships:\n    implementedBy: AttackPattern (many-to-1)\n    usedBy: ThreatActor (many-to-many)\n    mitigatedBy: CourseOfAction (many-to-many)\n```\n\n#### Malware (1,000 nodes)\n\n1. **Malware**\n```yaml\nMalware:\n  properties:\n    malwareID: string\n    name: string\n    aliases: array[string]\n    type: array[enum[backdoor, botnet, ddos, downloader, dropper, exploit_kit, keylogger, ransomware, rat, rootkit, trojan, virus, worm, spyware]]\n    isFamily: boolean\n    familyName: string\n    platforms: array[string]\n    architecture: array[enum[x86, x64, arm, mips]]\n    killChainPhases: array[string]\n    capabilities: array[str",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 43,
+      "start_char": 34400,
+      "end_char": 35400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_44",
+    "text": "m, spyware]]\n    isFamily: boolean\n    familyName: string\n    platforms: array[string]\n    architecture: array[enum[x86, x64, arm, mips]]\n    killChainPhases: array[string]\n    capabilities: array[string]\n    implementation: array[enum[native, javascript, python, powershell, shell]]\n    firstSeen: datetime\n\n  relationships:\n    variantOf: Malware (many-to-1)\n    uses: AttackPattern (many-to-many)\n    targets: Vulnerability (many-to-many)\n    communicatesWith: Infrastructure (many-to-many)\n    drops: Malware (many-to-many)\n    downloads: Malware (many-to-many)\n    usedBy: ThreatActor (many-to-many)\n```\n\n2. **MalwareSample**\n```yaml\nMalwareSample:\n  properties:\n    sampleID: string\n    hashes: {md5: string, sha1: string, sha256: string, sha512: string, ssdeep: string}\n    fileSize: integer (bytes)\n    fileType: string\n    packer: string\n    obfuscation: array[string]\n    analysisDate: datetime\n    sandboxReport: string (URL or embedded)\n\n  relationships:\n    instanceOf: Malware (many-to-",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 44,
+      "start_char": 35200,
+      "end_char": 36200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_45",
+    "text": "bytes)\n    fileType: string\n    packer: string\n    obfuscation: array[string]\n    analysisDate: datetime\n    sandboxReport: string (URL or embedded)\n\n  relationships:\n    instanceOf: Malware (many-to-1)\n    behaviorObserved: Behavior (1-to-many)\n    connectsTo: NetworkIndicator (many-to-many)\n```\n\n#### Indicators (500 nodes)\n\n1. **Indicator**\n```yaml\nIndicator:\n  properties:\n    indicatorID: string\n    type: enum[file, network, email, url, domain, ip, registry, mutex, certificate]\n    pattern: string (STIX pattern)\n    validFrom: datetime\n    validUntil: datetime\n    confidence: float (0-1)\n    severity: enum[low, medium, high, critical]\n    killChainPhases: array[string]\n    labels: array[string]\n\n  relationships:\n    indicates: ThreatActor|Malware|AttackPattern (many-to-many)\n    basedOn: Observable (many-to-many)\n    mitigatedBy: CourseOfAction (many-to-many)\n```\n\n2. **Observable**\n```yaml\nObservable:\n  properties:\n    observableID: string\n    type: enum[ipv4, ipv6, domain, url, ema",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 45,
+      "start_char": 36000,
+      "end_char": 37000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_46",
+    "text": ": Observable (many-to-many)\n    mitigatedBy: CourseOfAction (many-to-many)\n```\n\n2. **Observable**\n```yaml\nObservable:\n  properties:\n    observableID: string\n    type: enum[ipv4, ipv6, domain, url, email, file_hash, mutex, registry_key, process, user_account, certificate]\n    value: string\n    context: object\n    firstSeen: datetime\n    lastSeen: datetime\n    occurrences: integer\n    reputation: enum[malicious, suspicious, neutral, benign]\n\n  relationships:\n    associatedWith: Indicator (many-to-many)\n    observedIn: Incident (many-to-many)\n    relatedTo: Observable (many-to-many)\n```\n\n### 2.2 Vulnerability Management (2,000 nodes)\n\n#### Vulnerabilities (1,000 nodes)\n\n1. **Vulnerability**\n```yaml\nVulnerability:\n  properties:\n    vulnerabilityID: string (CVE ID)\n    name: string\n    description: string\n    publishedDate: datetime\n    lastModifiedDate: datetime\n    cvssV3: {\n      baseScore: float,\n      vectorString: string,\n      severity: enum[none, low, medium, high, critical],\n      ",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 46,
+      "start_char": 36800,
+      "end_char": 37800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_47",
+    "text": "ion: string\n    publishedDate: datetime\n    lastModifiedDate: datetime\n    cvssV3: {\n      baseScore: float,\n      vectorString: string,\n      severity: enum[none, low, medium, high, critical],\n      attackVector: enum[network, adjacent, local, physical],\n      attackComplexity: enum[low, high],\n      privilegesRequired: enum[none, low, high],\n      userInteraction: enum[none, required],\n      scope: enum[unchanged, changed],\n      confidentiality: enum[none, low, high],\n      integrity: enum[none, low, high],\n      availability: enum[none, low, high]\n    }\n    cvssV2: {baseScore: float, vectorString: string}\n    cwe: array[string] (CWE IDs)\n    references: array[{source: string, url: string}]\n    exploitabilityScore: float\n    impactScore: float\n\n  relationships:\n    affects: Software (many-to-many)\n    exploitedBy: AttackPattern (many-to-many)\n    exploitedBy: Malware (many-to-many)\n    mitigatedBy: CourseOfAction (many-to-many)\n    relatedTo: Vulnerability (many-to-many)\n```\n\n2. **W",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 47,
+      "start_char": 37600,
+      "end_char": 38600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_48",
+    "text": "ny-to-many)\n    exploitedBy: AttackPattern (many-to-many)\n    exploitedBy: Malware (many-to-many)\n    mitigatedBy: CourseOfAction (many-to-many)\n    relatedTo: Vulnerability (many-to-many)\n```\n\n2. **Weakness**\n```yaml\nWeakness:\n  properties:\n    weaknessID: string (CWE ID)\n    name: string\n    description: string\n    type: enum[class, base, variant, compound]\n    abstraction: enum[pillar, class, base, variant]\n    status: enum[draft, incomplete, stable, deprecated]\n    likelihood: enum[high, medium, low]\n\n  relationships:\n    childOf: Weakness (many-to-1)\n    canPrecede: Weakness (many-to-many)\n    relatedTo: AttackPattern (many-to-many)\n    manifestsAs: Vulnerability (many-to-many)\n```\n\n#### Exploits (500 nodes)\n\n1. **Exploit**\n```yaml\nExploit:\n  properties:\n    exploitID: string\n    name: string\n    description: string\n    type: enum[proof_of_concept, weaponized, zero_day]\n    availability: enum[public, private, limited, weaponized]\n    reliability: enum[unreliable, functional, limit",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 48,
+      "start_char": 38400,
+      "end_char": 39400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_49",
+    "text": ": string\n    description: string\n    type: enum[proof_of_concept, weaponized, zero_day]\n    availability: enum[public, private, limited, weaponized]\n    reliability: enum[unreliable, functional, limited, crash_service, dos, high]\n    platforms: array[string]\n    requiredPrivileges: enum[none, user, admin, root]\n    publicationDate: datetime\n    sourceCode: string (URL or embedded)\n\n  relationships:\n    exploits: Vulnerability (many-to-1)\n    usedBy: ThreatActor (many-to-many)\n    delivers: Malware (many-to-many)\n```\n\n#### Patches (500 nodes)\n\n1. **Patch**\n```yaml\nPatch:\n  properties:\n    patchID: string\n    name: string\n    vendor: string\n    releaseDate: datetime\n    severity: enum[critical, important, moderate, low]\n    restartRequired: boolean\n    installationTime: integer (minutes)\n    dependencies: array[string]\n\n  relationships:\n    fixes: Vulnerability (many-to-many)\n    appliesTo: Software (many-to-many)\n    supersedes: Patch (many-to-many)\n```\n\n### 2.3 Security Events (3,000 n",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 49,
+      "start_char": 39200,
+      "end_char": 40200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_50",
+    "text": " dependencies: array[string]\n\n  relationships:\n    fixes: Vulnerability (many-to-many)\n    appliesTo: Software (many-to-many)\n    supersedes: Patch (many-to-many)\n```\n\n### 2.3 Security Events (3,000 nodes)\n\n#### Incidents (1,000 nodes)\n\n1. **Incident**\n```yaml\nIncident:\n  properties:\n    incidentID: string\n    title: string\n    description: string\n    severity: enum[informational, low, medium, high, critical]\n    status: enum[new, investigating, contained, eradicated, recovered, closed]\n    category: enum[malware, phishing, dos, unauthorized_access, data_breach, insider_threat, policy_violation]\n    detectionSource: enum[ids, ips, siem, av, user_report, threat_intel, third_party]\n    detectionTime: datetime\n    reportTime: datetime\n    containmentTime: datetime\n    eradicationTime: datetime\n    recoveryTime: datetime\n    affectedSystems: integer\n    affectedRecords: integer\n    financialImpact: float\n\n  relationships:\n    affects: Asset (many-to-many)\n    uses: AttackPattern (many-to-m",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 50,
+      "start_char": 40000,
+      "end_char": 41000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_51",
+    "text": "e\n    recoveryTime: datetime\n    affectedSystems: integer\n    affectedRecords: integer\n    financialImpact: float\n\n  relationships:\n    affects: Asset (many-to-many)\n    uses: AttackPattern (many-to-many)\n    involves: Malware (many-to-many)\n    attributedTo: ThreatActor (many-to-1)\n    contains: Alert (1-to-many)\n    mitigatedBy: Response (1-to-many)\n```\n\n2. **Alert**\n```yaml\nAlert:\n  properties:\n    alertID: string\n    timestamp: datetime\n    alertType: enum[signature, anomaly, correlation, threat_intel]\n    severity: enum[low, medium, high, critical]\n    status: enum[new, acknowledged, investigating, false_positive, true_positive, resolved]\n    source: string\n    destination: string\n    protocol: string\n    signatureID: string\n    signatureName: string\n    eventCount: integer\n\n  relationships:\n    partOf: Incident (many-to-1)\n    triggeredBy: Observable (many-to-many)\n    correlatesWith: Alert (many-to-many)\n```\n\n#### Logs (1,000 nodes)\n\n1. **SecurityLog**\n```yaml\nSecurityLog:\n  pro",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 51,
+      "start_char": 40800,
+      "end_char": 41800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_52",
+    "text": "nships:\n    partOf: Incident (many-to-1)\n    triggeredBy: Observable (many-to-many)\n    correlatesWith: Alert (many-to-many)\n```\n\n#### Logs (1,000 nodes)\n\n1. **SecurityLog**\n```yaml\nSecurityLog:\n  properties:\n    logID: string\n    timestamp: datetime\n    logType: enum[system, application, security, network, firewall, ids, authentication]\n    severity: enum[debug, info, warning, error, critical]\n    source: string\n    eventCode: string\n    eventDescription: string\n    userName: string\n    sourceIP: string\n    destinationIP: string\n    action: enum[allow, deny, alert, drop]\n\n  relationships:\n    generatedBy: Asset (many-to-1)\n    associatedWith: Alert (many-to-many)\n    correlatesWith: SecurityLog (many-to-many)\n```\n\n#### Forensics (1,000 nodes)\n\n1. **Evidence**\n```yaml\nEvidence:\n  properties:\n    evidenceID: string\n    type: enum[file, memory, network, disk, log, artifact]\n    collectionTime: datetime\n    collector: string\n    chainOfCustody: array[{person: string, timestamp: datetime, ",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 52,
+      "start_char": 41600,
+      "end_char": 42600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_53",
+    "text": "s:\n    evidenceID: string\n    type: enum[file, memory, network, disk, log, artifact]\n    collectionTime: datetime\n    collector: string\n    chainOfCustody: array[{person: string, timestamp: datetime, action: string}]\n    hash: string\n    fileSize: integer\n    storageLocation: string\n\n  relationships:\n    relatedTo: Incident (many-to-1)\n    analyzedBy: ForensicAnalysis (1-to-many)\n```\n\n2. **ForensicAnalysis**\n```yaml\nForensicAnalysis:\n  properties:\n    analysisID: string\n    analyst: string\n    startTime: datetime\n    endTime: datetime\n    tools: array[string]\n    methodology: string\n    findings: text\n    timeline: array[{timestamp: datetime, event: string}]\n\n  relationships:\n    analyzes: Evidence (many-to-1)\n    supports: Incident (many-to-1)\n```\n\n### 2.4 Security Controls (2,000 nodes)\n\n#### Technical Controls (800 nodes)\n\n1. **Firewall**\n```yaml\nFirewall:\n  extends: saref:Device\n  properties:\n    firewallType: enum[packet_filter, stateful, proxy, ngfw, waf]\n    manufacturer: string",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 53,
+      "start_char": 42400,
+      "end_char": 43400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_54",
+    "text": "\n#### Technical Controls (800 nodes)\n\n1. **Firewall**\n```yaml\nFirewall:\n  extends: saref:Device\n  properties:\n    firewallType: enum[packet_filter, stateful, proxy, ngfw, waf]\n    manufacturer: string\n    model: string\n    firmwareVersion: string\n    managementIP: string\n    interfaces: array[{name: string, ip: string, zone: string}]\n    ruleCount: integer\n    throughput: float (Gbps)\n    sessionCapacity: integer\n\n  relationships:\n    hasRule: FirewallRule (1-to-many)\n    protects: NetworkSegment (many-to-many)\n    blocks: Indicator (many-to-many)\n```\n\n2. **IDS/IPS**\n```yaml\nIDS_IPS:\n  extends: saref:Device\n  properties:\n    systemType: enum[nids, hids, nips, hips]\n    detectionMethod: enum[signature, anomaly, hybrid]\n    mode: enum[inline, passive]\n    signatureVersion: string\n    throughput: float (Gbps)\n\n  relationships:\n    monitors: NetworkSegment (many-to-many)\n    generates: Alert (1-to-many)\n    blocks: Indicator (many-to-many)\n```\n\n3. **EndpointProtection**\n```yaml\nEndpointPro",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 54,
+      "start_char": 43200,
+      "end_char": 44200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_55",
+    "text": "put: float (Gbps)\n\n  relationships:\n    monitors: NetworkSegment (many-to-many)\n    generates: Alert (1-to-many)\n    blocks: Indicator (many-to-many)\n```\n\n3. **EndpointProtection**\n```yaml\nEndpointProtection:\n  properties:\n    agentID: string\n    agentVersion: string\n    signatureVersion: string\n    lastUpdate: datetime\n    scanStatus: enum[idle, scanning, updating, cleaning]\n    protectionStatus: enum[protected, at_risk, disabled]\n\n  relationships:\n    protects: Asset (many-to-1)\n    detects: Malware (many-to-many)\n    quarantines: MalwareSample (many-to-many)\n```\n\n#### Administrative Controls (600 nodes)\n\n1. **Policy**\n```yaml\nPolicy:\n  properties:\n    policyID: string\n    policyName: string\n    type: enum[security, access_control, acceptable_use, data_classification, incident_response]\n    approvalDate: date\n    effectiveDate: date\n    reviewDate: date\n    owner: string\n    status: enum[draft, active, archived]\n\n  relationships:\n    implementedBy: Procedure (1-to-many)\n    enforces:",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 55,
+      "start_char": 44000,
+      "end_char": 45000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_56",
+    "text": "    approvalDate: date\n    effectiveDate: date\n    reviewDate: date\n    owner: string\n    status: enum[draft, active, archived]\n\n  relationships:\n    implementedBy: Procedure (1-to-many)\n    enforces: Control (many-to-many)\n    appliesTo: Asset (many-to-many)\n```\n\n2. **Procedure**\n```yaml\nProcedure:\n  properties:\n    procedureID: string\n    procedureName: string\n    description: string\n    steps: array[{stepNumber: integer, description: string, responsible: string}]\n    version: string\n    lastUpdated: datetime\n\n  relationships:\n    implements: Policy (many-to-1)\n    referencedBy: Incident (many-to-many)\n```\n\n#### Physical Controls (600 nodes)\n\n1. **AccessControl**\n```yaml\nAccessControl:\n  extends: saref:Device\n  properties:\n    controlType: enum[card_reader, biometric, keypad, turnstile, mantrap, guard]\n    location: string\n    accessLevel: enum[public, restricted, confidential, secret, top_secret]\n\n  relationships:\n    controls: PhysicalZone (many-to-1)\n    grants: AccessEvent (1-to-",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 56,
+      "start_char": 44800,
+      "end_char": 45800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_57",
+    "text": "mantrap, guard]\n    location: string\n    accessLevel: enum[public, restricted, confidential, secret, top_secret]\n\n  relationships:\n    controls: PhysicalZone (many-to-1)\n    grants: AccessEvent (1-to-many)\n```\n\n2. **SurveillanceCamera**\n```yaml\nSurveillanceCamera:\n  extends: saref:Device\n  properties:\n    cameraType: enum[dome, bullet, ptz, thermal, ip]\n    resolution: string\n    fieldOfView: float (degrees)\n    recordingStatus: enum[recording, idle, offline]\n    storageCapacity: integer (days)\n\n  relationships:\n    monitors: PhysicalZone (many-to-1)\n    recordsTo: StorageSystem (many-to-1)\n```\n\n### 2.5 Identity & Access (2,000 nodes)\n\n#### Identity (800 nodes)\n\n1. **User**\n```yaml\nUser:\n  properties:\n    userID: string\n    userName: string\n    email: string\n    firstName: string\n    lastName: string\n    department: string\n    title: string\n    manager: string\n    employeeType: enum[employee, contractor, partner, service_account]\n    status: enum[active, inactive, suspended, terminated",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 57,
+      "start_char": 45600,
+      "end_char": 46600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_58",
+    "text": "ame: string\n    department: string\n    title: string\n    manager: string\n    employeeType: enum[employee, contractor, partner, service_account]\n    status: enum[active, inactive, suspended, terminated]\n    creationDate: datetime\n    lastLoginDate: datetime\n    passwordLastChanged: datetime\n    mfaEnabled: boolean\n\n  relationships:\n    hasRole: Role (many-to-many)\n    memberOf: Group (many-to-many)\n    owns: Asset (1-to-many)\n    hasAccess: Asset (many-to-many)\n    authenticatedBy: AuthenticationEvent (1-to-many)\n```\n\n2. **ServiceAccount**\n```yaml\nServiceAccount:\n  extends: User\n  properties:\n    purpose: string\n    associatedApplication: string\n    rotationSchedule: integer (days)\n    lastRotation: datetime\n\n  relationships:\n    usedBy: Application (many-to-1)\n```\n\n#### Access Control (600 nodes)\n\n1. **Role**\n```yaml\nRole:\n  properties:\n    roleID: string\n    roleName: string\n    description: string\n    type: enum[functional, organizational, project, privileged]\n    riskLevel: enum[low",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 58,
+      "start_char": 46400,
+      "end_char": 47400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_59",
+    "text": " nodes)\n\n1. **Role**\n```yaml\nRole:\n  properties:\n    roleID: string\n    roleName: string\n    description: string\n    type: enum[functional, organizational, project, privileged]\n    riskLevel: enum[low, medium, high, critical]\n\n  relationships:\n    includes: Permission (many-to-many)\n    assignedTo: User (many-to-many)\n    inheritsFrom: Role (many-to-many)\n```\n\n2. **Permission**\n```yaml\nPermission:\n  properties:\n    permissionID: string\n    permissionName: string\n    resource: string\n    action: enum[read, write, execute, delete, admin]\n    scope: string\n\n  relationships:\n    grantedBy: Role (many-to-many)\n    appliesTo: Asset (many-to-many)\n```\n\n#### Authentication (600 nodes)\n\n1. **AuthenticationEvent**\n```yaml\nAuthenticationEvent:\n  properties:\n    eventID: string\n    timestamp: datetime\n    userName: string\n    authMethod: enum[password, certificate, token, biometric, sso, mfa]\n    sourceIP: string\n    userAgent: string\n    result: enum[success, failure, locked, expired]\n    failure",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 59,
+      "start_char": 47200,
+      "end_char": 48200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_60",
+    "text": "\n    userName: string\n    authMethod: enum[password, certificate, token, biometric, sso, mfa]\n    sourceIP: string\n    userAgent: string\n    result: enum[success, failure, locked, expired]\n    failureReason: string\n\n  relationships:\n    authenticates: User (many-to-1)\n    from: Asset (many-to-1)\n    triggersAlert: Alert (many-to-1)\n```\n\n2. **MFADevice**\n```yaml\nMFADevice:\n  properties:\n    deviceID: string\n    deviceType: enum[hardware_token, software_token, sms, biometric, push]\n    registrationDate: datetime\n    lastUsed: datetime\n    status: enum[active, inactive, lost, compromised]\n\n  relationships:\n    belongsTo: User (many-to-1)\n    used In: AuthenticationEvent (many-to-many)\n```\n\n### 2.6 Network Security (3,000 nodes)\n\n#### Network Topology (1,000 nodes)\n\n1. **NetworkSegment**\n```yaml\nNetworkSegment:\n  properties:\n    segmentID: string\n    segmentName: string\n    vlanID: integer\n    ipRange: string (CIDR)\n    gateway: string\n    securityZone: enum[public, dmz, internal, manageme",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 60,
+      "start_char": 48000,
+      "end_char": 49000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_61",
+    "text": "ml\nNetworkSegment:\n  properties:\n    segmentID: string\n    segmentName: string\n    vlanID: integer\n    ipRange: string (CIDR)\n    gateway: string\n    securityZone: enum[public, dmz, internal, management, secure]\n    securityLevel: enum[low, medium, high, critical]\n\n  relationships:\n    contains: Asset (1-to-many)\n    protectedBy: Firewall (many-to-many)\n    monitors: IDS_IPS (many-to-many)\n    connectedTo: NetworkSegment (many-to-many)\n```\n\n2. **NetworkDevice**\n```yaml\nNetworkDevice:\n  extends: saref:Device\n  properties:\n    deviceType: enum[router, switch, load_balancer, vpn_gateway, proxy]\n    managementIP: string\n    ports: integer\n    throughput: float (Gbps)\n    firmwareVersion: string\n\n  relationships:\n    routes: NetworkSegment (many-to-many)\n    hasInterface: NetworkInterface (1-to-many)\n```\n\n#### Traffic Analysis (1,000 nodes)\n\n1. **NetworkFlow**\n```yaml\nNetworkFlow:\n  properties:\n    flowID: string\n    startTime: datetime\n    endTime: datetime\n    sourceIP: string\n    sourceP",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 61,
+      "start_char": 48800,
+      "end_char": 49800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_62",
+    "text": "-many)\n```\n\n#### Traffic Analysis (1,000 nodes)\n\n1. **NetworkFlow**\n```yaml\nNetworkFlow:\n  properties:\n    flowID: string\n    startTime: datetime\n    endTime: datetime\n    sourceIP: string\n    sourcePort: integer\n    destinationIP: string\n    destinationPort: integer\n    protocol: enum[tcp, udp, icmp, other]\n    bytesTransferred: integer\n    packetsTransferred: integer\n    flags: array[string]\n\n  relationships:\n    from: Asset (many-to-1)\n    to: Asset (many-to-1)\n    blocked By: Firewall (many-to-many)\n    alertedBy: IDS_IPS (many-to-many)\n```\n\n2. **Packet**\n```yaml\nPacket:\n  properties:\n    packetID: string\n    timestamp: datetime\n    sourceMAC: string\n    destinationMAC: string\n    sourceIP: string\n    destinationIP: string\n    protocol: string\n    length: integer\n    payload: string (hex or base64)\n\n  relationships:\n    partOf: NetworkFlow (many-to-1)\n    analyzedBy: IDS_IPS (many-to-many)\n```\n\n#### VPN & Remote Access (1,000 nodes)\n\n1. **VPNConnection**\n```yaml\nVPNConnection:\n  pr",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 62,
+      "start_char": 49600,
+      "end_char": 50600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_63",
+    "text": "ex or base64)\n\n  relationships:\n    partOf: NetworkFlow (many-to-1)\n    analyzedBy: IDS_IPS (many-to-many)\n```\n\n#### VPN & Remote Access (1,000 nodes)\n\n1. **VPNConnection**\n```yaml\nVPNConnection:\n  properties:\n    connectionID: string\n    userName: string\n    clientIP: string\n    assignedIP: string\n    vpnType: enum[ssl, ipsec, pptp, l2tp, wireguard]\n    encryption: string\n    connectTime: datetime\n    disconnectTime: datetime\n    bytesIn: integer\n    bytesOut: integer\n\n  relationships:\n    authenticates: User (many-to-1)\n    terminatesAt: VPNGateway (many-to-1)\n```\n\n2. **VPNGateway**\n```yaml\nVPNGateway:\n  extends: NetworkDevice\n  properties:\n    maxConnections: integer\n    currentConnections: integer\n    throughput: float (Mbps)\n    cipherSuites: array[string]\n\n  relationships:\n    serves: VPNConnection (1-to-many)\n    protects: NetworkSegment (many-to-many)\n```\n\n### 2.7 Application Security (2,000 nodes)\n\n#### Applications (800 nodes)\n\n1. **Application**\n```yaml\nApplication:\n  proper",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 63,
+      "start_char": 50400,
+      "end_char": 51400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_64",
+    "text": ": VPNConnection (1-to-many)\n    protects: NetworkSegment (many-to-many)\n```\n\n### 2.7 Application Security (2,000 nodes)\n\n#### Applications (800 nodes)\n\n1. **Application**\n```yaml\nApplication:\n  properties:\n    applicationID: string\n    applicationName: string\n    version: string\n    vendor: string\n    category: enum[web, mobile, desktop, api, database, middleware]\n    criticality: enum[low, medium, high, critical]\n    dataClassification: enum[public, internal, confidential, restricted]\n    authenticationMethod: enum[local, ldap, saml, oauth, api_key]\n    encryptionAtRest: boolean\n    encryptionInTransit: boolean\n\n  relationships:\n    runsOn: Asset (many-to-many)\n    uses: Database (many-to-many)\n    hasVulnerability: Vulnerability (many-to-many)\n    dependsOn: Application (many-to-many)\n    protectedBy: WAF (many-to-many)\n```\n\n2. **WebApplication**\n```yaml\nWebApplication:\n  extends: Application\n  properties:\n    url: string\n    framework: string\n    programmingLanguage: array[string]\n ",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 64,
+      "start_char": 51200,
+      "end_char": 52200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_65",
+    "text": "  protectedBy: WAF (many-to-many)\n```\n\n2. **WebApplication**\n```yaml\nWebApplication:\n  extends: Application\n  properties:\n    url: string\n    framework: string\n    programmingLanguage: array[string]\n    webServer: string\n    certificateExpiry: datetime\n\n  relationships:\n    hasEndpoint: APIEndpoint (1-to-many)\n    protectedBy: WAF (many-to-1)\n```\n\n#### API Security (600 nodes)\n\n1. **APIEndpoint**\n```yaml\nAPIEndpoint:\n  properties:\n    endpointID: string\n    path: string\n    method: enum[GET, POST, PUT, DELETE, PATCH, OPTIONS, HEAD]\n    authentication: enum[none, basic, bearer, oauth, api_key]\n    rateLimit: integer (requests/minute)\n    dataClassification: enum[public, internal, confidential, restricted]\n\n  relationships:\n    partOf: WebApplication (many-to-1)\n    consumes: DataElement (many-to-many)\n    produces: DataElement (many-to-many)\n```\n\n2. **APIKey**\n```yaml\nAPIKey:\n  properties:\n    keyID: string\n    keyValue: string (hashed)\n    owner: string\n    creationDate: datetime\n    e",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 65,
+      "start_char": 52000,
+      "end_char": 53000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_66",
+    "text": "ny-to-many)\n    produces: DataElement (many-to-many)\n```\n\n2. **APIKey**\n```yaml\nAPIKey:\n  properties:\n    keyID: string\n    keyValue: string (hashed)\n    owner: string\n    creationDate: datetime\n    expiryDate: datetime\n    permissions: array[string]\n    usageCount: integer\n    lastUsed: datetime\n    status: enum[active, expired, revoked]\n\n  relationships:\n    authorizes: APIEndpoint (many-to-many)\n    belongsTo: User (many-to-1)\n```\n\n#### Code Security (600 nodes)\n\n1. **CodeRepository**\n```yaml\nCodeRepository:\n  properties:\n    repoID: string\n    repoName: string\n    repoURL: string\n    vcsType: enum[git, svn, mercurial, perforce]\n    visibility: enum[public, private, internal]\n    lastCommit: datetime\n    contributors: integer\n\n  relationships:\n    contains: CodeFile (1-to-many)\n    hasVulnerability: Vulnerability (many-to-many)\n    scanBy: CodeScanner (many-to-many)\n```\n\n2. **CodeVulnerability**\n```yaml\nCodeVulnerability:\n  properties:\n    vulnID: string\n    type: enum[injection, xs",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 66,
+      "start_char": 52800,
+      "end_char": 53800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_67",
+    "text": "ulnerability: Vulnerability (many-to-many)\n    scanBy: CodeScanner (many-to-many)\n```\n\n2. **CodeVulnerability**\n```yaml\nCodeVulnerability:\n  properties:\n    vulnID: string\n    type: enum[injection, xss, csrf, authentication, authorization, cryptographic, configuration]\n    severity: enum[low, medium, high, critical]\n    cweID: string\n    file: string\n    lineNumber: integer\n    functionName: string\n    detectionDate: datetime\n    fixedDate: datetime\n    status: enum[open, confirmed, false_positive, fixed, accepted]\n\n  relationships:\n    foundIn: CodeRepository (many-to-1)\n    relatedTo: Vulnerability (many-to-1)\n    fixedBy: Commit (many-to-1)\n```\n\n---\n\n## CATEGORY 3: PSYCHOMETRIC (~1,000 NODES)\n\n### 3.1 Psychological Traits (300 nodes)\n\n1. **PersonalityTrait**\n```yaml\nPersonalityTrait:\n  properties:\n    traitID: string\n    traitName: string\n    dimension: enum[openness, conscientiousness, extraversion, agreeableness, neuroticism]\n    score: float (0-100)\n    percentile: float (0-100)\n",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 67,
+      "start_char": 53600,
+      "end_char": 54600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_68",
+    "text": "properties:\n    traitID: string\n    traitName: string\n    dimension: enum[openness, conscientiousness, extraversion, agreeableness, neuroticism]\n    score: float (0-100)\n    percentile: float (0-100)\n    description: string\n\n  relationships:\n    measuredBy: Assessment (many-to-many)\n    correlatesWith: PersonalityTrait (many-to-many)\n    influences: Behavior (many-to-many)\n```\n\n2. **CognitiveTrait**\n```yaml\nCognitiveTrait:\n  properties:\n    traitID: string\n    traitName: string\n    category: enum[reasoning, memory, attention, processing_speed, spatial]\n    rawScore: float\n    standardScore: float\n    percentile: float\n\n  relationships:\n    measuredBy: Assessment (many-to-many)\n    predicts: Performance (many-to-many)\n```\n\n3. **EmotionalIntelligence**\n```yaml\nEmotionalIntelligence:\n  properties:\n    eiID: string\n    selfAwareness: float\n    selfManagement: float\n    socialAwareness: float\n    relationshipManagement: float\n    overallScore: float\n\n  relationships:\n    measuredBy: Assessm",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 68,
+      "start_char": 54400,
+      "end_char": 55400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_69",
+    "text": "ties:\n    eiID: string\n    selfAwareness: float\n    selfManagement: float\n    socialAwareness: float\n    relationshipManagement: float\n    overallScore: float\n\n  relationships:\n    measuredBy: Assessment (many-to-1)\n    influences: SecurityBehavior (many-to-many)\n```\n\n### 3.2 Behavioral Patterns (300 nodes)\n\n1. **SecurityBehavior**\n```yaml\nSecurityBehavior:\n  properties:\n    behaviorID: string\n    behaviorType: enum[password_hygiene, phishing_susceptibility, data_handling, device_security, social_engineering_resistance]\n    riskScore: float (0-100)\n    frequency: enum[never, rarely, sometimes, often, always]\n    context: string\n\n  relationships:\n    exhibitedBy: User (many-to-1)\n    influences: IncidentLikelihood (many-to-many)\n    modifiedBy: Training (many-to-many)\n```\n\n2. **DecisionMakingStyle**\n```yaml\nDecisionMakingStyle:\n  properties:\n    styleID: string\n    approach: enum[analytical, intuitive, dependent, avoidant, spontaneous]\n    riskTolerance: enum[risk_averse, risk_neutral, ",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 69,
+      "start_char": 55200,
+      "end_char": 56200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_70",
+    "text": "ngStyle**\n```yaml\nDecisionMakingStyle:\n  properties:\n    styleID: string\n    approach: enum[analytical, intuitive, dependent, avoidant, spontaneous]\n    riskTolerance: enum[risk_averse, risk_neutral, risk_seeking]\n    informationProcessing: enum[systematic, heuristic]\n\n  relationships:\n    characterizes: User (many-to-1)\n    affects: SecurityDecision (many-to-many)\n```\n\n### 3.3 Risk Factors (400 nodes)\n\n1. **PsychologicalRiskFactor**\n```yaml\nPsychologicalRiskFactor:\n  properties:\n    factorID: string\n    factorName: string\n    category: enum[cognitive_bias, personality, motivation, stress, fatigue]\n    severity: enum[low, medium, high]\n    description: string\n\n  relationships:\n    affects: User (many-to-many)\n    increases: VulnerabilityLikelihood (many-to-many)\n    mitigatedBy: Intervention (many-to-many)\n```\n\n2. **StressFactor**\n```yaml\nStressFactor:\n  properties:\n    factorID: string\n    stressType: enum[workload, deadline, interpersonal, organizational, technical]\n    intensity: fl",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 70,
+      "start_char": 56000,
+      "end_char": 57000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_71",
+    "text": "on (many-to-many)\n```\n\n2. **StressFactor**\n```yaml\nStressFactor:\n  properties:\n    factorID: string\n    stressType: enum[workload, deadline, interpersonal, organizational, technical]\n    intensity: float (0-10)\n    duration: enum[acute, chronic]\n\n  relationships:\n    experienced By: User (many-to-1)\n    correlatesWith: ErrorRate (many-to-many)\n```\n\n---\n\n## CATEGORY 4: IT INFRASTRUCTURE SHARED (~5,000 NODES)\n\n### 4.1 Hardware Assets (1,500 nodes)\n\n1. **Server**\n```yaml\nServer:\n  extends: saref:Device\n  properties:\n    serverType: enum[physical, virtual, container]\n    hostname: string\n    domain: string\n    ipAddress: array[string]\n    macAddress: array[string]\n    manufacturer: string\n    model: string\n    serialNumber: string\n    cpu: {model: string, cores: integer, threads: integer, speed: float}\n    memory: {total: integer, type: string, speed: integer}\n    storage: array[{type: string, capacity: integer, interface: string}]\n    operatingSystem: string\n    osVersion: string\n    loca",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 71,
+      "start_char": 56800,
+      "end_char": 57800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_72",
+    "text": "d: float}\n    memory: {total: integer, type: string, speed: integer}\n    storage: array[{type: string, capacity: integer, interface: string}]\n    operatingSystem: string\n    osVersion: string\n    location: string\n    datacenter: string\n    rack: string\n    rackUnit: integer\n    powerSupply: {type: enum[single, redundant], capacity: integer}\n    networkInterfaces: array[{name: string, speed: integer, type: string}]\n\n  relationships:\n    hosts: Application (1-to-many)\n    partOf: Cluster (many-to-1)\n    backupTo: BackupSystem (many-to-many)\n```\n\n2. **Workstation**\n```yaml\nWorkstation:\n  extends: saref:Device\n  properties:\n    assetTag: string\n    hostname: string\n    manufacturer: string\n    model: string\n    serialNumber: string\n    cpu: string\n    memory: integer (GB)\n    storage: integer (GB)\n    operatingSystem: string\n    osVersion: string\n\n  relationships:\n    assignedTo: User (many-to-1)\n    hasAgent: EndpointProtection (1-to-1)\n    connectedTo: NetworkSegment (many-to-1)\n```\n\n###",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 72,
+      "start_char": 57600,
+      "end_char": 58600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_73",
+    "text": "(GB)\n    operatingSystem: string\n    osVersion: string\n\n  relationships:\n    assignedTo: User (many-to-1)\n    hasAgent: EndpointProtection (1-to-1)\n    connectedTo: NetworkSegment (many-to-1)\n```\n\n### 4.2 Software Assets (1,500 nodes)\n\n1. **Software**\n```yaml\nSoftware:\n  properties:\n    softwareID: string\n    name: string\n    vendor: string\n    version: string\n    releaseDate: date\n    endOfLife: date\n    endOfSupport: date\n    licenseType: enum[proprietary, open_source, freeware, shareware]\n\n  relationships:\n    installedOn: Asset (many-to-many)\n    hasVulnerability: Vulnerability (many-to-many)\n    requires: Software (many-to-many)\n```\n\n2. **License**\n```yaml\nLicense:\n  properties:\n    licenseID: string\n    licenseKey: string\n    licenseType: enum[perpetual, subscription, concurrent, named_user, site]\n    purchaseDate: date\n    expiryDate: date\n    quantity: integer\n    usedCount: integer\n    cost: float\n\n  relationships:\n    for: Software (many-to-1)\n    assignedTo: User|Asset (many",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 73,
+      "start_char": 58400,
+      "end_char": 59400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_74",
+    "text": "ed_user, site]\n    purchaseDate: date\n    expiryDate: date\n    quantity: integer\n    usedCount: integer\n    cost: float\n\n  relationships:\n    for: Software (many-to-1)\n    assignedTo: User|Asset (many-to-many)\n```\n\n### 4.3 Cloud Infrastructure (1,000 nodes)\n\n1. **CloudResource**\n```yaml\nCloudResource:\n  properties:\n    resourceID: string\n    resourceType: enum[vm, container, function, storage, database, network]\n    provider: enum[aws, azure, gcp, oracle, alibaba]\n    region: string\n    availabilityZone: string\n    resourceARN: string\n    tags: object\n\n  relationships:\n    partOf: CloudAccount (many-to-1)\n    hosts: Application (many-to-many)\n    connectedTo: CloudResource (many-to-many)\n```\n\n2. **CloudAccount**\n```yaml\nCloudAccount:\n  properties:\n    accountID: string\n    provider: string\n    accountName: string\n    billingContact: string\n    monthlyBudget: float\n    currentSpend: float\n\n  relationships:\n    owns: CloudResource (1-to-many)\n    managedBy: User (many-to-many)\n```\n\n### 4",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 74,
+      "start_char": 59200,
+      "end_char": 60200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_75",
+    "text": "\n    accountName: string\n    billingContact: string\n    monthlyBudget: float\n    currentSpend: float\n\n  relationships:\n    owns: CloudResource (1-to-many)\n    managedBy: User (many-to-many)\n```\n\n### 4.4 Virtualization (1,000 nodes)\n\n1. **Hypervisor**\n```yaml\nHypervisor:\n  extends: saref:Device\n  properties:\n    hypervisorType: enum[vmware, hyper_v, kvm, xen, proxmox]\n    version: string\n    totalCPU: integer\n    totalMemory: integer (GB)\n    totalStorage: integer (TB)\n    allocatedCPU: integer\n    allocatedMemory: integer\n    allocatedStorage: integer\n\n  relationships:\n    hosts: VirtualMachine (1-to-many)\n    partOf: Cluster (many-to-1)\n```\n\n2. **VirtualMachine**\n```yaml\nVirtualMachine:\n  properties:\n    vmID: string\n    vmName: string\n    vcpu: integer\n    memory: integer (GB)\n    storage: integer (GB)\n    operatingSystem: string\n    ipAddress: array[string]\n    powerState: enum[on, off, suspended, paused]\n\n  relationships:\n    hostedOn: Hypervisor (many-to-1)\n    runs: Application (",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 75,
+      "start_char": 60000,
+      "end_char": 61000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_76",
+    "text": "e: integer (GB)\n    operatingSystem: string\n    ipAddress: array[string]\n    powerState: enum[on, off, suspended, paused]\n\n  relationships:\n    hostedOn: Hypervisor (many-to-1)\n    runs: Application (1-to-many)\n    snapshotOf: VirtualMachine (many-to-1)\n```\n\n---\n\n## CATEGORY 5: SBOM (~140,000 NODES)\n\n### 5.1 Software Components (50,000 nodes)\n\n1. **SoftwareComponent**\n```yaml\nSoftwareComponent:\n  properties:\n    componentID: string (PURL or SWID)\n    name: string\n    version: string\n    type: enum[library, framework, application, container, file, firmware, source, archive, install]\n    supplier: string\n    author: string\n    publisher: string\n    group: string\n    description: string\n    license: array[string]\n    copyright: string\n    purl: string (Package URL)\n    cpe: string (CPE 2.3)\n    swid: string (SWID Tag ID)\n    hashes: array[{algorithm: enum[md5, sha1, sha256, sha512], value: string}]\n    externalReferences: array[{type: string, url: string}]\n\n  relationships:\n    dependsOn:",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 76,
+      "start_char": 60800,
+      "end_char": 61800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_77",
+    "text": "   swid: string (SWID Tag ID)\n    hashes: array[{algorithm: enum[md5, sha1, sha256, sha512], value: string}]\n    externalReferences: array[{type: string, url: string}]\n\n  relationships:\n    dependsOn: SoftwareComponent (many-to-many)\n    hasVulnerability: Vulnerability (many-to-many)\n    partOf: Package (many-to-1)\n    provides: Service (many-to-many)\n    modifiedBy: Patch (many-to-many)\n```\n\n2. **Package**\n```yaml\nPackage:\n  properties:\n    packageID: string\n    name: string\n    version: string\n    packageManager: enum[npm, pip, maven, nuget, gem, cargo, composer, go_mod]\n    downloadLocation: string\n    homepage: string\n    sourceInfo: string\n    releaseDate: datetime\n    builtDate: datetime\n    validUntilDate: datetime\n\n  relationships:\n    contains: SoftwareComponent (1-to-many)\n    managedBy: PackageManager (many-to-1)\n```\n\n### 5.2 Dependencies (40,000 nodes)\n\n1. **Dependency**\n```yaml\nDependency:\n  properties:\n    dependencyID: string\n    dependencyType: enum[direct, indirect, tr",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 77,
+      "start_char": 61600,
+      "end_char": 62600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_78",
+    "text": "nagedBy: PackageManager (many-to-1)\n```\n\n### 5.2 Dependencies (40,000 nodes)\n\n1. **Dependency**\n```yaml\nDependency:\n  properties:\n    dependencyID: string\n    dependencyType: enum[direct, indirect, transitive, optional, dev, test, runtime]\n    versionConstraint: string\n    scope: enum[compile, runtime, test, provided, system]\n    optional: boolean\n\n  relationships:\n    from: SoftwareComponent (many-to-1)\n    to: SoftwareComponent (many-to-1)\n    introduces: Vulnerability (many-to-many)\n```\n\n2. **DependencyTree**\n```yaml\nDependencyTree:\n  properties:\n    treeID: string\n    rootComponent: string\n    depth: integer\n    totalDependencies: integer\n    directDependencies: integer\n    transitiveDepend: integer\n\n  relationships:\n    represents: SoftwareComponent (many-to-1)\n    includes: Dependency (1-to-many)\n```\n\n### 5.3 Build Information (20,000 nodes)\n\n1. **Build**\n```yaml\nBuild:\n  properties:\n    buildID: string\n    buildNumber: string\n    buildDate: datetime\n    buildTool: string\n    bui",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 78,
+      "start_char": 62400,
+      "end_char": 63400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_79",
+    "text": "y (1-to-many)\n```\n\n### 5.3 Build Information (20,000 nodes)\n\n1. **Build**\n```yaml\nBuild:\n  properties:\n    buildID: string\n    buildNumber: string\n    buildDate: datetime\n    buildTool: string\n    buildToolVersion: string\n    compiler: string\n    compilerVersion: string\n    buildEnvironment: object\n    buildParameters: object\n    buildDuration: integer (seconds)\n\n  relationships:\n    produces: SoftwareComponent (1-to-many)\n    uses: BuildTool (many-to-many)\n    triggeredBy: CommitEvent (many-to-1)\n```\n\n2. **BuildTool**\n```yaml\nBuildTool:\n  properties:\n    toolID: string\n    toolName: string\n    toolVersion: string\n    type: enum[compiler, linker, packager, container_builder]\n\n  relationships:\n    usedIn: Build (many-to-many)\n    hasVulnerability: Vulnerability (many-to-many)\n```\n\n### 5.4 Licenses (15,000 nodes)\n\n1. **SoftwareLicense**\n```yaml\nSoftwareLicense:\n  properties:\n    licenseID: string (SPDX identifier)\n    licenseName: string\n    licenseText: text\n    licenseType: enum[permis",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 79,
+      "start_char": 63200,
+      "end_char": 64200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_80",
+    "text": "icenses (15,000 nodes)\n\n1. **SoftwareLicense**\n```yaml\nSoftwareLicense:\n  properties:\n    licenseID: string (SPDX identifier)\n    licenseName: string\n    licenseText: text\n    licenseType: enum[permissive, copyleft, proprietary, public_domain]\n    osiApproved: boolean\n    fsfLibre: boolean\n    commercialUse: boolean\n    modification: boolean\n    distribution: boolean\n    patentUse: boolean\n    privateUse: boolean\n    sublicense: boolean\n\n  relationships:\n    appliesTo: SoftwareComponent (many-to-many)\n    compatibleWith: SoftwareLicense (many-to-many)\n    conflictsWith: SoftwareLicense (many-to-many)\n```\n\n2. **LicenseCompliance**\n```yaml\nLicenseCompliance:\n  properties:\n    complianceID: string\n    complianceStatus: enum[compliant, non_compliant, needs_review, unknown]\n    riskLevel: enum[low, medium, high, critical]\n    obligations: array[string]\n    restrictions: array[string]\n    reviewDate: datetime\n    reviewer: string\n    notes: text\n\n  relationships:\n    evaluates: SoftwareLicen",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 80,
+      "start_char": 64000,
+      "end_char": 65000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_81",
+    "text": "low, medium, high, critical]\n    obligations: array[string]\n    restrictions: array[string]\n    reviewDate: datetime\n    reviewer: string\n    notes: text\n\n  relationships:\n    evaluates: SoftwareLicense (many-to-1)\n    affects: SoftwareComponent (many-to-many)\n```\n\n### 5.5 Provenance (15,000 nodes)\n\n1. **Provenance**\n```yaml\nProvenance:\n  properties:\n    provenanceID: string\n    timestamp: datetime\n    actor: string\n    actorType: enum[person, organization, tool, service]\n    activity: string\n    sourceRepository: string\n    sourceBranch: string\n    sourceCommit: string\n    buildPipeline: string\n    signatureAlgorithm: string\n    signature: string\n\n  relationships:\n    documents: Build (many-to-1)\n    verifies: SoftwareComponent (many-to-many)\n    signedBy: CryptographicKey (many-to-1)\n```\n\n2. **Attestation**\n```yaml\nAttestation:\n  properties:\n    attestationID: string\n    predicateType: string\n    subject: string\n    timestamp: datetime\n    expiryTime: datetime\n    issuer: string\n    ",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 81,
+      "start_char": 64800,
+      "end_char": 65800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_82",
+    "text": "\n\n2. **Attestation**\n```yaml\nAttestation:\n  properties:\n    attestationID: string\n    predicateType: string\n    subject: string\n    timestamp: datetime\n    expiryTime: datetime\n    issuer: string\n    signature: string\n\n  relationships:\n    attests: SoftwareComponent|Build (many-to-1)\n    verifiedBy: PublicKey (many-to-1)\n```\n\n---\n\n## INTEGRATION PATTERNS\n\n### Cross-Category Relationships\n\n```yaml\nSAREF_to_Cybersecurity:\n  - saref:Device \u2192 Asset\n  - saref:Sensor \u2192 IDS/IPS\n  - saref:BMS \u2192 SCADA_System\n  - saref:User \u2192 Identity.User\n\nCybersecurity_to_IT_Infrastructure:\n  - Vulnerability \u2192 Software\n  - Incident \u2192 Asset\n  - EndpointProtection \u2192 Workstation\n  - NetworkSegment \u2192 CloudResource\n\nIT_Infrastructure_to_SBOM:\n  - Software \u2192 SoftwareComponent\n  - Application \u2192 Package\n  - Server \u2192 hosts \u2192 SoftwareComponent\n\nPsychometric_to_Cybersecurity:\n  - SecurityBehavior \u2192 User\n  - PsychologicalRiskFactor \u2192 IncidentLikelihood\n  - EmotionalIntelligence \u2192 PhishingSusceptibility\n\nSBOM_to_Cybersecur",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 82,
+      "start_char": 65600,
+      "end_char": 66600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_83",
+    "text": " \u2192 SoftwareComponent\n\nPsychometric_to_Cybersecurity:\n  - SecurityBehavior \u2192 User\n  - PsychologicalRiskFactor \u2192 IncidentLikelihood\n  - EmotionalIntelligence \u2192 PhishingSusceptibility\n\nSBOM_to_Cybersecurity:\n  - SoftwareComponent \u2192 Vulnerability\n  - Dependency \u2192 AttackSurface\n  - License \u2192 ComplianceRisk\n```\n\n### Common Query Patterns\n\n```cypher\n# Find all vulnerabilities in deployed software\nMATCH (s:Server)-[:RUNS]->(app:Application)-[:CONTAINS]->(comp:SoftwareComponent)-[:HAS_VULNERABILITY]->(vuln:Vulnerability)\nWHERE vuln.cvssV3.baseScore > 7.0\nRETURN s, app, comp, vuln\n\n# Identify users with high psychological risk and system access\nMATCH (u:User)-[:HAS_TRAIT]->(risk:PsychologicalRiskFactor)\nWHERE risk.severity = 'high'\nMATCH (u)-[:HAS_ACCESS]->(asset:Asset)\nWHERE asset.dataClassification IN ['confidential', 'restricted']\nRETURN u, risk, asset\n\n# Track SBOM provenance chain\nMATCH (comp:SoftwareComponent)<-[:PRODUCES]-(build:Build)<-[:DOCUMENTS]-(prov:Provenance)\nWHERE comp.name = 'cr",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 83,
+      "start_char": 66400,
+      "end_char": 67400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_84",
+    "text": "n IN ['confidential', 'restricted']\nRETURN u, risk, asset\n\n# Track SBOM provenance chain\nMATCH (comp:SoftwareComponent)<-[:PRODUCES]-(build:Build)<-[:DOCUMENTS]-(prov:Provenance)\nWHERE comp.name = 'critical-library'\nRETURN comp, build, prov\n\n# Find attack paths through network\nMATCH path = (attacker:ExternalEntity)-[:CONNECTS_TO*1..5]->(target:Asset)\nWHERE target.dataClassification = 'restricted'\nRETURN path\n\n# Correlate incidents with device vulnerabilities\nMATCH (incident:Incident)-[:AFFECTS]->(device:saref:Device)\nMATCH (device)-[:RUNS]->(software:Software)-[:HAS_VULNERABILITY]->(vuln:Vulnerability)\nWHERE incident.severity = 'critical'\nRETURN incident, device, software, vuln\n```\n\n---\n\n## VALIDATION CRITERIA\n\n### Completeness Checks\n- All 163,500 nodes documented\n- All property schemas defined\n- All relationships mapped\n- All enums specified\n- All data types declared\n\n### Consistency Checks\n- Naming conventions consistent\n- Property patterns uniform\n- Relationship directions logical\n",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 84,
+      "start_char": 67200,
+      "end_char": 68200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "02_COMPLETE_NODE_INVENTORY.md_chunk_85",
+    "text": "efined\n- All relationships mapped\n- All enums specified\n- All data types declared\n\n### Consistency Checks\n- Naming conventions consistent\n- Property patterns uniform\n- Relationship directions logical\n- Data types appropriate\n- Constraints validated\n\n### Integration Checks\n- Cross-category relationships defined\n- Query patterns validated\n- Use cases covered\n- Performance optimized\n- Scalability verified\n\n---\n\n**Document Status:** COMPLETE\n**Total Nodes Documented:** ~163,500\n**Categories Covered:** 5 of 5\n**Schemas Complete:** 100%\n**Relationships Mapped:** 100%\n",
+    "metadata": {
+      "file_name": "02_COMPLETE_NODE_INVENTORY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/02_COMPLETE_NODE_INVENTORY.md",
+      "file_size": 68568,
+      "indexed_at": "2025-10-31T01:00:34.761474",
+      "chunk_id": 85,
+      "start_char": 68000,
+      "end_char": 69000,
+      "chunk_size": 568
+    }
+  }
+]

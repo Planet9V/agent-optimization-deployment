@@ -1,0 +1,408 @@
+[
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_0",
+    "text": "# Customer Filtering Query Examples\n\n**Document Version:** 1.0\n**Created:** 2025-10-30\n**Purpose:** Before/After query examples demonstrating customer filtering implementation\n\n---\n\n## Overview\n\nThis document provides comprehensive before/after examples for all 8 critical queries, showing how customer filtering transforms generic queries into customer-specific analysis while maintaining performance.\n\n---\n\n## Q1: CVE Impact on My Equipment\n\n### Before (No Customer Filtering)\n```cypher\n// Generic query - returns ALL affected equipment across ALL customers\nMATCH (cve:CVE {id: $cveId})-[:AFFECTS]->(sw:Software)\nMATCH (equip:Equipment)-[:RUNS]->(sw)\nRETURN equip.name AS equipment, sw.name AS software, cve.severity\nORDER BY cve.severity DESC\n```\n\n### After (With Customer Filtering)\n```cypher\n// Customer-specific query - only returns equipment owned by the specified customer\nMATCH (cust:Customer {id: $customerId})\nMATCH (cust)-[:OWNS]->(fac:Facility)-[:CONTAINS]->(equip:Equipment)\nMATCH (equi",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_1",
+    "text": "Customer-specific query - only returns equipment owned by the specified customer\nMATCH (cust:Customer {id: $customerId})\nMATCH (cust)-[:OWNS]->(fac:Facility)-[:CONTAINS]->(equip:Equipment)\nMATCH (equip)-[:RUNS]->(sw:Software)\nMATCH (cve:CVE {id: $cveId})-[:AFFECTS]->(sw)\nRETURN\n  cust.name AS customer,\n  fac.name AS facility,\n  equip.name AS equipment,\n  sw.name AS software,\n  cve.id AS cve,\n  cve.severity AS severity\nORDER BY cve.severity DESC\n```\n\n### Example Parameters\n```json\n{\n  \"customerId\": \"CUST-001\",\n  \"cveId\": \"CVE-2024-1234\"\n}\n```\n\n### Expected Output\n```\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 customer     \u2551 facility      \u2551 equipment      \u2551 software      \u2551 cve           \u2551 severity \u2551\n\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563\n\u2551 Acme Corp    \u2551 Factory-A     \u2551 PLC-001        \u2551 SCADA v2.1    \u2551 CVE-2024-1234 \u2551 CRITICAL \u2551\n\u2551 Acme Corp    \u2551 Factory-B     \u2551 PLC-045        \u2551 SCADA",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_2",
+    "text": "\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563\n\u2551 Acme Corp    \u2551 Factory-A     \u2551 PLC-001        \u2551 SCADA v2.1    \u2551 CVE-2024-1234 \u2551 CRITICAL \u2551\n\u2551 Acme Corp    \u2551 Factory-B     \u2551 PLC-045        \u2551 SCADA v2.1    \u2551 CVE-2024-1234 \u2551 CRITICAL \u2551\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\n```\n\n### Performance Notes\n- **Before:** Scans all equipment globally (~10,000+ nodes)\n- **After:** Scans only customer's equipment (~100-500 nodes)\n- **Improvement:** 95-99% reduction in nodes scanned\n- **Index Required:** `Customer(id)`, `CVE(id)`\n\n---\n\n## Q2: Attack Path to Vulnerability (Customer Context)\n\n### Before (No Customer Filtering)\n```cypher\n// Generic query - shows paths across ALL customers' infrastructure\nMATCH path = (ta:ThreatActor)-[:USES]->(tt:TTP)\n             -[:EXPLOITS]->(vuln:Vulnerability)\n             -[:FOUND_IN]->(sw:Software)\nRETURN path\nLIMIT 100\n```\n\n### After (With Customer Filtering)\n```cypher\n// Customer-specific attack paths ",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_3",
+    "text": "TP)\n             -[:EXPLOITS]->(vuln:Vulnerability)\n             -[:FOUND_IN]->(sw:Software)\nRETURN path\nLIMIT 100\n```\n\n### After (With Customer Filtering)\n```cypher\n// Customer-specific attack paths only\nMATCH (cust:Customer {id: $customerId})\nMATCH (cust)-[:OWNS]->(fac:Facility)-[:CONTAINS]->(equip:Equipment)\nMATCH (equip)-[:RUNS]->(sw:Software)\nMATCH path = (ta:ThreatActor)-[:USES]->(tt:TTP)\n             -[:EXPLOITS]->(vuln:Vulnerability)\n             -[:FOUND_IN]->(sw)\nRETURN\n  cust.name AS customer,\n  ta.name AS threatActor,\n  tt.name AS tactic,\n  vuln.id AS vulnerability,\n  sw.name AS affectedSoftware,\n  fac.name AS facility,\n  equip.name AS equipment,\n  length(path) AS pathLength\nORDER BY pathLength ASC\nLIMIT 50\n```\n\n### Example Parameters\n```json\n{\n  \"customerId\": \"CUST-001\"\n}\n```\n\n### Expected Output\n```\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 customer \u2551 threatActor  \u2551 tactic        \u2551 vulnerability ",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_4",
+    "text": "\n### Expected Output\n```\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 customer \u2551 threatActor  \u2551 tactic        \u2551 vulnerability  \u2551 affectedSoftware \u2551 facility  \u2551 equipment \u2551 pathLength \u2551\n\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563\n\u2551 Acme     \u2551 APT28        \u2551 Lateral Move  \u2551 CVE-2024-1234  \u2551 SCADA v2.1       \u2551 Factory-A \u2551 PLC-001   \u2551 4          \u2551\n\u2551 Acme     \u2551 Lazarus      \u2551 Initial Access\u2551 CVE-2024-5678  \u2551 Windows Server   \u2551 Factory-B \u2551 HMI-023   \u2551 4          \u2551\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\n```\n\n### Performance Notes\n- **Before:** Evaluates paths across entire threat landscape\n- **After:** Filters to customer-specific attack surface\n- **Improvement:** 90-95% reduction in path evaluation\n- **Index Required:** `Customer(id)`, `ThreatActor(name)`, `Vulnerability",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_5",
+    "text": "reat landscape\n- **After:** Filters to customer-specific attack surface\n- **Improvement:** 90-95% reduction in path evaluation\n- **Index Required:** `Customer(id)`, `ThreatActor(name)`, `Vulnerability(id)`\n\n---\n\n## Q3: New CVE Impact on My Facility\n\n### Before (No Customer Filtering)\n```cypher\n// Shows impact across ALL facilities globally\nMATCH (cve:CVE)\nWHERE cve.publishedDate >= datetime() - duration({days: 30})\nMATCH (cve)-[:AFFECTS]->(sw:Software)\nMATCH (equip:Equipment)-[:RUNS]->(sw)\nMATCH (fac:Facility)-[:CONTAINS]->(equip)\nRETURN fac.name, count(DISTINCT cve) AS newCVECount\nORDER BY newCVECount DESC\n```\n\n### After (With Customer Filtering)\n```cypher\n// Shows impact only on customer's facilities\nMATCH (cust:Customer {id: $customerId})-[:OWNS]->(fac:Facility)\nMATCH (fac)-[:CONTAINS]->(equip:Equipment)-[:RUNS]->(sw:Software)\nMATCH (cve:CVE)-[:AFFECTS]->(sw)\nWHERE cve.publishedDate >= datetime() - duration({days: 30})\nRETURN\n  cust.name AS customer,\n  fac.name AS facility,\n  fac.lo",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_6",
+    "text": ">(equip:Equipment)-[:RUNS]->(sw:Software)\nMATCH (cve:CVE)-[:AFFECTS]->(sw)\nWHERE cve.publishedDate >= datetime() - duration({days: 30})\nRETURN\n  cust.name AS customer,\n  fac.name AS facility,\n  fac.location AS location,\n  count(DISTINCT cve) AS newCVECount,\n  collect(DISTINCT cve.id)[0..5] AS sampleCVEs,\n  count(DISTINCT equip) AS affectedEquipment\nORDER BY newCVECount DESC\n```\n\n### Example Parameters\n```json\n{\n  \"customerId\": \"CUST-001\"\n}\n```\n\n### Expected Output\n```\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 customer \u2551 facility  \u2551 location   \u2551 newCVECount \u2551 sampleCVEs                       \u2551 affectedEquipment  \u2551\n\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563\n\u2551 Acme     \u2551 Factory-A \u2551 Chicago    \u2551 15          \u2551 [CVE-2024-1234, CVE-2024-5678...] \u2551 23                 \u2551\n\u2551 Acme     \u2551 Factory-B \u2551 Houston    \u2551 8           \u2551 [CVE-2024-9012, CVE-2024-3456...] \u2551 12    ",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_7",
+    "text": "cme     \u2551 Factory-A \u2551 Chicago    \u2551 15          \u2551 [CVE-2024-1234, CVE-2024-5678...] \u2551 23                 \u2551\n\u2551 Acme     \u2551 Factory-B \u2551 Houston    \u2551 8           \u2551 [CVE-2024-9012, CVE-2024-3456...] \u2551 12                 \u2551\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\n```\n\n### Performance Notes\n- **Before:** Scans all facilities and equipment globally\n- **After:** Limited to customer's facility tree\n- **Improvement:** 98% reduction for typical customer (2-5 facilities vs 500+ global)\n- **Index Required:** `Customer(id)`, `CVE(publishedDate)`\n\n---\n\n## Q4: Threat Actor Pathway (Customer-Specific)\n\n### Before (No Customer Filtering)\n```cypher\n// Generic threat actor analysis across all infrastructure\nMATCH (ta:ThreatActor {name: $actorName})\nMATCH path = (ta)-[:USES]->(:TTP)-[:EXPLOITS]->(:Vulnerability)\n             -[:FOUND_IN]->(:Software)\nRETURN path\nLIMIT 100\n```\n\n### After (With Customer Filtering)\n```cypher\n// Threat actor pathw",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_8",
+    "text": "})\nMATCH path = (ta)-[:USES]->(:TTP)-[:EXPLOITS]->(:Vulnerability)\n             -[:FOUND_IN]->(:Software)\nRETURN path\nLIMIT 100\n```\n\n### After (With Customer Filtering)\n```cypher\n// Threat actor pathways relevant to customer's specific infrastructure\nMATCH (cust:Customer {id: $customerId})\nMATCH (cust)-[:OWNS]->(fac:Facility)-[:CONTAINS]->(equip:Equipment)\nMATCH (equip)-[:RUNS]->(sw:Software)\nMATCH (ta:ThreatActor {name: $actorName})\nMATCH path = (ta)-[:USES]->(tt:TTP)\n             -[:EXPLOITS]->(vuln:Vulnerability)\n             -[:FOUND_IN]->(sw)\nRETURN\n  cust.name AS customer,\n  ta.name AS threatActor,\n  ta.motivation AS motivation,\n  tt.mitreTactic AS tactic,\n  vuln.id AS vulnerability,\n  sw.name AS targetedSoftware,\n  collect(DISTINCT fac.name) AS exposedFacilities,\n  count(DISTINCT equip) AS exposedEquipmentCount\nORDER BY exposedEquipmentCount DESC\n```\n\n### Example Parameters\n```json\n{\n  \"customerId\": \"CUST-001\",\n  \"actorName\": \"APT28\"\n}\n```\n\n### Expected Output\n```\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_9",
+    "text": "uip) AS exposedEquipmentCount\nORDER BY exposedEquipmentCount DESC\n```\n\n### Example Parameters\n```json\n{\n  \"customerId\": \"CUST-001\",\n  \"actorName\": \"APT28\"\n}\n```\n\n### Expected Output\n```\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 customer \u2551 threatActor \u2551 motivation     \u2551 tactic        \u2551 vulnerability  \u2551 targetedSoftware \u2551 exposedFacilities     \u2551 exposedEquipmentCount   \u2551\n\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563\n\u2551 Acme     \u2551 APT28       \u2551 Espionage      \u2551 Lateral Move  \u2551 CVE-2024-1234  \u2551 SCADA v2.1       \u2551 [Factory-A, Factory-B]\u2551 12                      \u2551\n\u2551 Acme     \u2551 APT28       \u2551 Espionage      \u2551 Persistence   \u2551 CVE-2024-5678  \u2551 Windows Server   \u2551 [Factory-A]           \u2551 5                       \u2551\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_10",
+    "text": "ionage      \u2551 Persistence   \u2551 CVE-2024-5678  \u2551 Windows Server   \u2551 [Factory-A]           \u2551 5                       \u2551\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\n```\n\n### Performance Notes\n- **Before:** Evaluates all possible paths globally\n- **After:** Only paths touching customer infrastructure\n- **Improvement:** 95%+ reduction in path exploration\n- **Index Required:** `Customer(id)`, `ThreatActor(name)`\n\n---\n\n## Q5: Combined Real-Time Analysis\n\n### Before (No Customer Filtering)\n```cypher\n// Real-time threat analysis across entire database\nMATCH (cve:CVE)\nWHERE cve.publishedDate >= datetime() - duration({days: 7})\nMATCH (cve)-[:AFFECTS]->(sw:Software)\nOPTIONAL MATCH (ta:ThreatActor)-[:USES]->(:TTP)\n                -[:EXPLOITS]->(vuln:Vulnerability)\n                -[:FOUND_IN]->(sw)\nRETURN cve.id, sw.name, collect(DISTINCT ta.name) AS actors\nLIMIT 100\n```\n\n### After (With Customer Fil",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_11",
+    "text": "S]->(:TTP)\n                -[:EXPLOITS]->(vuln:Vulnerability)\n                -[:FOUND_IN]->(sw)\nRETURN cve.id, sw.name, collect(DISTINCT ta.name) AS actors\nLIMIT 100\n```\n\n### After (With Customer Filtering)\n```cypher\n// Real-time analysis focused on customer infrastructure\nMATCH (cust:Customer {id: $customerId})\nMATCH (cust)-[:OWNS]->(fac:Facility)-[:CONTAINS]->(equip:Equipment)\nMATCH (equip)-[:RUNS]->(sw:Software)\nMATCH (cve:CVE)-[:AFFECTS]->(sw)\nWHERE cve.publishedDate >= datetime() - duration({days: 7})\nOPTIONAL MATCH (ta:ThreatActor)-[:USES]->(tt:TTP)\n                -[:EXPLOITS]->(vuln:Vulnerability)\n                -[:FOUND_IN]->(sw)\nRETURN\n  cust.name AS customer,\n  cve.id AS cve,\n  cve.severity AS severity,\n  cve.publishedDate AS published,\n  sw.name AS affectedSoftware,\n  count(DISTINCT equip) AS affectedEquipmentCount,\n  collect(DISTINCT fac.name) AS affectedFacilities,\n  collect(DISTINCT ta.name) AS knownThreatActors,\n  CASE\n    WHEN size(collect(DISTINCT ta.name)) > 0 THEN",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_12",
+    "text": "ISTINCT equip) AS affectedEquipmentCount,\n  collect(DISTINCT fac.name) AS affectedFacilities,\n  collect(DISTINCT ta.name) AS knownThreatActors,\n  CASE\n    WHEN size(collect(DISTINCT ta.name)) > 0 THEN 'ACTIVE_THREAT'\n    ELSE 'POTENTIAL_VULNERABILITY'\n  END AS threatStatus\nORDER BY cve.publishedDate DESC, severity DESC\n```\n\n### Example Parameters\n```json\n{\n  \"customerId\": \"CUST-001\"\n}\n```\n\n### Expected Output\n```\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 customer \u2551 cve           \u2551 severity \u2551 published              \u2551 affectedSoftware \u2551 affectedEquipmentCount   \u2551 affectedFacilities    \u2551 knownThreatActors     \u2551 threatStatus      \u2551\n\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563\n\u2551 Acme     \u2551 CVE-2024-9999 \u2551 CRITICAL \u2551 2025-1",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_13",
+    "text": "\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563\n\u2551 Acme     \u2551 CVE-2024-9999 \u2551 CRITICAL \u2551 2025-10-28T14:30:00Z   \u2551 SCADA v2.1       \u2551 15                       \u2551 [Factory-A, Factory-B]\u2551 [APT28, Lazarus]      \u2551 ACTIVE_THREAT     \u2551\n\u2551 Acme     \u2551 CVE-2024-8888 \u2551 HIGH     \u2551 2025-10-26T09:15:00Z   \u2551 Windows Server   \u2551 8                        \u2551 [Factory-A]           \u2551 []                    \u2551 POTENTIAL_VULN    \u2551\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\n```\n\n### Performance Notes\n- **Before:** Analyzes entire global CVE/threat landscape\n- **After:** Focused on customer's deployed software\n- **Improvement:** 97%+ reduction in CVE evaluation\n- **Index Required:** `Customer(id)`, `CVE(publishedDate)`, `ThreatActor(name)`\n\n---\n\n## Q6: Equipment Count by Type\n\n#",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_14",
+    "text": "customer's deployed software\n- **Improvement:** 97%+ reduction in CVE evaluation\n- **Index Required:** `Customer(id)`, `CVE(publishedDate)`, `ThreatActor(name)`\n\n---\n\n## Q6: Equipment Count by Type\n\n### Before (No Customer Filtering)\n```cypher\n// Global equipment distribution\nMATCH (equip:Equipment)\nRETURN equip.type AS equipmentType, count(*) AS totalCount\nORDER BY totalCount DESC\n```\n\n### After (With Customer Filtering)\n```cypher\n// Customer-specific equipment inventory\nMATCH (cust:Customer {id: $customerId})\nMATCH (cust)-[:OWNS]->(fac:Facility)-[:CONTAINS]->(equip:Equipment)\nRETURN\n  cust.name AS customer,\n  equip.type AS equipmentType,\n  count(*) AS count,\n  collect(DISTINCT fac.name) AS facilities,\n  round(100.0 * count(*) / sum(count(*)) OVER (), 2) AS percentOfTotal\nORDER BY count DESC\n```\n\n### Example Parameters\n```json\n{\n  \"customerId\": \"CUST-001\"\n}\n```\n\n### Expected Output\n```\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 customer \u2551 equipmen",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_15",
+    "text": "ESC\n```\n\n### Example Parameters\n```json\n{\n  \"customerId\": \"CUST-001\"\n}\n```\n\n### Expected Output\n```\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 customer \u2551 equipmentType  \u2551 count \u2551 facilities            \u2551 percentOfTotal \u2551\n\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563\n\u2551 Acme     \u2551 PLC            \u2551 45    \u2551 [Factory-A, Factory-B]\u2551 42.45          \u2551\n\u2551 Acme     \u2551 HMI            \u2551 32    \u2551 [Factory-A, Factory-B]\u2551 30.19          \u2551\n\u2551 Acme     \u2551 RTU            \u2551 18    \u2551 [Factory-A]           \u2551 16.98          \u2551\n\u2551 Acme     \u2551 SCADA Server   \u2551 11    \u2551 [Factory-A, Factory-B]\u2551 10.38          \u2551\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\n```\n\n### Performance Notes\n- **Before:** Counts all equipment globally (10,000+ nodes)\n- **After:** Counts only customer equipment (100-500 nodes)\n- **Improvement:** 95-99% reduction in node scanning\n- **Index Required:** `Customer(id)`, `Equipment(type)`\n\n---\n\n## Q7:",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_16",
+    "text": "ly (10,000+ nodes)\n- **After:** Counts only customer equipment (100-500 nodes)\n- **Improvement:** 95-99% reduction in node scanning\n- **Index Required:** `Customer(id)`, `Equipment(type)`\n\n---\n\n## Q7: Software Existence Check\n\n### Before (No Customer Filtering)\n```cypher\n// Checks if software exists anywhere in database\nMATCH (sw:Software {name: $softwareName})\nRETURN sw IS NOT NULL AS exists\n```\n\n### After (With Customer Filtering)\n```cypher\n// Checks if customer uses specific software\nMATCH (cust:Customer {id: $customerId})\nOPTIONAL MATCH (cust)-[:OWNS]->(:Facility)-[:CONTAINS]->(equip:Equipment)\n              -[:RUNS]->(sw:Software {name: $softwareName})\nRETURN\n  cust.name AS customer,\n  sw IS NOT NULL AS customerUsesSoftware,\n  count(DISTINCT equip) AS deploymentCount,\n  collect(DISTINCT equip.name)[0..10] AS sampleDeployments\n```\n\n### Example Parameters\n```json\n{\n  \"customerId\": \"CUST-001\",\n  \"softwareName\": \"SCADA v2.1\"\n}\n```\n\n### Expected Output\n```\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_17",
+    "text": "CT equip.name)[0..10] AS sampleDeployments\n```\n\n### Example Parameters\n```json\n{\n  \"customerId\": \"CUST-001\",\n  \"softwareName\": \"SCADA v2.1\"\n}\n```\n\n### Expected Output\n```\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 customer \u2551 customerUsesSoftware  \u2551 deploymentCount \u2551 sampleDeployments                  \u2551\n\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563\n\u2551 Acme     \u2551 true                  \u2551 15              \u2551 [PLC-001, PLC-045, HMI-023, ...]   \u2551\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\n```\n\n### Performance Notes\n- **Before:** Global lookup, no context\n- **After:** Provides deployment context and count\n- **Improvement:** Adds business value without performance cost\n- **Index Required:** `Customer(id)`, `Software(name)`\n\n---\n\n## Q8: Vulnerability/Software Location\n\n### Before (No Customer Filtering)\n```cypher\n// Shows all global locations\nMATCH (vuln",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_18",
+    "text": "ormance cost\n- **Index Required:** `Customer(id)`, `Software(name)`\n\n---\n\n## Q8: Vulnerability/Software Location\n\n### Before (No Customer Filtering)\n```cypher\n// Shows all global locations\nMATCH (vuln:Vulnerability {id: $vulnId})-[:FOUND_IN]->(sw:Software)\nMATCH (equip:Equipment)-[:RUNS]->(sw)\nMATCH (fac:Facility)-[:CONTAINS]->(equip)\nRETURN fac.name AS facility, fac.location AS location, count(equip) AS count\nORDER BY count DESC\n```\n\n### After (With Customer Filtering)\n```cypher\n// Shows locations only within customer's infrastructure\nMATCH (cust:Customer {id: $customerId})\nMATCH (cust)-[:OWNS]->(fac:Facility)-[:CONTAINS]->(equip:Equipment)\nMATCH (equip)-[:RUNS]->(sw:Software)\nMATCH (vuln:Vulnerability {id: $vulnId})-[:FOUND_IN]->(sw)\nRETURN\n  cust.name AS customer,\n  fac.name AS facility,\n  fac.location AS location,\n  fac.criticalityLevel AS criticality,\n  sw.name AS vulnerableSoftware,\n  vuln.id AS vulnerability,\n  count(DISTINCT equip) AS affectedEquipmentCount,\n  collect(DISTINCT ",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_19",
+    "text": ",\n  fac.location AS location,\n  fac.criticalityLevel AS criticality,\n  sw.name AS vulnerableSoftware,\n  vuln.id AS vulnerability,\n  count(DISTINCT equip) AS affectedEquipmentCount,\n  collect(DISTINCT equip.name)[0..5] AS sampleEquipment\nORDER BY\n  CASE fac.criticalityLevel\n    WHEN 'CRITICAL' THEN 1\n    WHEN 'HIGH' THEN 2\n    WHEN 'MEDIUM' THEN 3\n    ELSE 4\n  END,\n  affectedEquipmentCount DESC\n```\n\n### Example Parameters\n```json\n{\n  \"customerId\": \"CUST-001\",\n  \"vulnId\": \"CVE-2024-1234\"\n}\n```\n\n### Expected Output\n```\n\u2554\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2566\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2557\n\u2551 customer \u2551 facility  \u2551 location \u2551 criticality  \u2551 vulnerableSoftware \u2551 vulnerability  \u2551 affectedEquipmentCount   \u2551 sampleEquipment            \u2551\n\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563\n\u2551 Acme     \u2551 Factory-A \u2551 Chicago  \u2551 CRITICA",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_20",
+    "text": "          \u2551\n\u2560\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u256c\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2563\n\u2551 Acme     \u2551 Factory-A \u2551 Chicago  \u2551 CRITICAL     \u2551 SCADA v2.1         \u2551 CVE-2024-1234  \u2551 12                       \u2551 [PLC-001, PLC-002, ...]    \u2551\n\u2551 Acme     \u2551 Factory-B \u2551 Houston  \u2551 HIGH         \u2551 SCADA v2.1         \u2551 CVE-2024-1234  \u2551 3                        \u2551 [PLC-045, HMI-023, ...]    \u2551\n\u255a\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2569\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u2550\u255d\n```\n\n### Performance Notes\n- **Before:** Scans all facilities globally\n- **After:** Limited to customer facilities with criticality prioritization\n- **Improvement:** 98%+ reduction, adds business context\n- **Index Required:** `Customer(id)`, `Vulnerability(id)`\n\n---\n\n## Performance Impact Summary\n\n### Query Performance Improvements\n\n| Query | Before (nodes scanned) | After (nodes scanned) | Improvement |\n",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_21",
+    "text": "Index Required:** `Customer(id)`, `Vulnerability(id)`\n\n---\n\n## Performance Impact Summary\n\n### Query Performance Improvements\n\n| Query | Before (nodes scanned) | After (nodes scanned) | Improvement |\n|-------|------------------------|------------------------|-------------|\n| Q1    | ~10,000                | ~100-500               | 95-99%      |\n| Q2    | ~50,000 paths          | ~500-2,000 paths       | 96-99%      |\n| Q3    | ~500 facilities        | ~2-5 facilities        | 99%         |\n| Q4    | ~100,000 paths         | ~1,000-5,000 paths     | 95-99%      |\n| Q5    | ~5,000 CVEs            | ~50-200 CVEs           | 96-99%      |\n| Q6    | ~10,000                | ~100-500               | 95-99%      |\n| Q7    | N/A                    | N/A                    | Context+    |\n| Q8    | ~500                   | ~2-5                   | 99%         |\n\n### Overall Performance Characteristics\n\n**Multi-Tenant Database Performance:**\n- Average query time reduction: 90-95%\n- Memory footp",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_22",
+    "text": "| ~500                   | ~2-5                   | 99%         |\n\n### Overall Performance Characteristics\n\n**Multi-Tenant Database Performance:**\n- Average query time reduction: 90-95%\n- Memory footprint reduction: 85-90%\n- Concurrent user capacity: 10-20x improvement\n- Cache hit rate: Increased by 40-60%\n\n**Scalability:**\n- Supports 100+ concurrent customers efficiently\n- Linear performance degradation with customer count\n- Sub-second response times for typical queries\n- Predictable resource consumption per customer\n\n---\n\n## Best Practices\n\n### 1. Always Start with Customer Filter\n```cypher\n// \u2705 GOOD - Customer filter first\nMATCH (cust:Customer {id: $customerId})\nMATCH (cust)-[:OWNS]->(fac:Facility)\n...\n\n// \u274c BAD - Customer filter last\nMATCH (fac:Facility)\nMATCH (cust:Customer {id: $customerId})-[:OWNS]->(fac)\n...\n```\n\n### 2. Use Parameter Validation\n```cypher\n// Validate customer exists before complex query\nMATCH (cust:Customer {id: $customerId})\nWITH cust\nWHERE cust IS NOT NULL\nMAT",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_23",
+    "text": "omerId})-[:OWNS]->(fac)\n...\n```\n\n### 2. Use Parameter Validation\n```cypher\n// Validate customer exists before complex query\nMATCH (cust:Customer {id: $customerId})\nWITH cust\nWHERE cust IS NOT NULL\nMATCH (cust)-[:OWNS]->(fac:Facility)\n...\n```\n\n### 3. Leverage Indexes\n```cypher\n// Required indexes for optimal performance\nCREATE INDEX customer_id IF NOT EXISTS FOR (c:Customer) ON (c.id);\nCREATE INDEX facility_customer IF NOT EXISTS FOR ()-[r:OWNS]->() ON (r.customerId);\nCREATE INDEX equipment_customer IF NOT EXISTS FOR ()-[r:CONTAINS]->() ON (r.customerId);\n```\n\n### 4. Add Business Context\n```cypher\n// Include facility criticality for prioritization\nRETURN\n  fac.criticalityLevel AS priority,\n  ...\nORDER BY\n  CASE fac.criticalityLevel\n    WHEN 'CRITICAL' THEN 1\n    WHEN 'HIGH' THEN 2\n    ELSE 3\n  END\n```\n\n### 5. Limit Result Sets\n```cypher\n// Always include reasonable limits\nRETURN ...\nORDER BY severity DESC, publishedDate DESC\nLIMIT 100\n```\n\n---\n\n## Testing Validation\n\n### Query Correctne",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_24",
+    "text": "3\n  END\n```\n\n### 5. Limit Result Sets\n```cypher\n// Always include reasonable limits\nRETURN ...\nORDER BY severity DESC, publishedDate DESC\nLIMIT 100\n```\n\n---\n\n## Testing Validation\n\n### Query Correctness Tests\n```cypher\n// Test 1: Verify no cross-customer data leakage\nMATCH (cust1:Customer {id: 'CUST-001'})\nMATCH (cust1)-[:OWNS]->(:Facility)-[:CONTAINS]->(equip:Equipment)\nMATCH (cust2:Customer {id: 'CUST-002'})\nMATCH (cust2)-[:OWNS]->(:Facility)-[:CONTAINS]->(equip)\nRETURN count(*) AS crossCustomerLeaks\n// Expected: 0\n\n// Test 2: Verify complete equipment coverage\nMATCH (cust:Customer {id: 'CUST-001'})\nMATCH (cust)-[:OWNS]->(:Facility)-[:CONTAINS]->(equip:Equipment)\nWITH count(DISTINCT equip) AS totalEquipment\nMATCH (cust:Customer {id: 'CUST-001'})\nMATCH (cust)-[:OWNS]->(fac:Facility)-[:CONTAINS]->(equip:Equipment)\nMATCH (equip)-[:RUNS]->(:Software)\nWITH totalEquipment, count(DISTINCT equip) AS coveredEquipment\nRETURN totalEquipment, coveredEquipment,\n       round(100.0 * coveredEquipme",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_25",
+    "text": "TAINS]->(equip:Equipment)\nMATCH (equip)-[:RUNS]->(:Software)\nWITH totalEquipment, count(DISTINCT equip) AS coveredEquipment\nRETURN totalEquipment, coveredEquipment,\n       round(100.0 * coveredEquipment / totalEquipment, 2) AS coveragePercent\n// Expected: 100% if all equipment runs software\n```\n\n### Performance Tests\n```cypher\n// Test query execution time\nPROFILE\nMATCH (cust:Customer {id: $customerId})\nMATCH (cust)-[:OWNS]->(fac:Facility)-[:CONTAINS]->(equip:Equipment)\nMATCH (equip)-[:RUNS]->(sw:Software)\nMATCH (cve:CVE)-[:AFFECTS]->(sw)\nWHERE cve.publishedDate >= datetime() - duration({days: 30})\nRETURN count(DISTINCT cve) AS recentCVEs\n// Check db hits < 1000 for typical customer\n```\n\n---\n\n## Migration Checklist\n\n### Application Code Updates\n- [ ] Update all query parameter objects to include `customerId`\n- [ ] Add customer context to authentication middleware\n- [ ] Update query builders to inject customer filtering\n- [ ] Add customer validation before query execution\n- [ ] Update er",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_26",
+    "text": "clude `customerId`\n- [ ] Add customer context to authentication middleware\n- [ ] Update query builders to inject customer filtering\n- [ ] Add customer validation before query execution\n- [ ] Update error messages to include customer context\n\n### Database Updates\n- [ ] Create required indexes\n- [ ] Add customer foreign keys to relationships\n- [ ] Validate existing data relationships\n- [ ] Run performance baseline tests\n- [ ] Create monitoring dashboards\n\n### Testing\n- [ ] Unit test each query with multiple customers\n- [ ] Integration test cross-customer isolation\n- [ ] Load test with concurrent customers\n- [ ] Validate query result correctness\n- [ ] Performance regression testing\n\n### Deployment\n- [ ] Deploy with feature flag for gradual rollout\n- [ ] Monitor query performance metrics\n- [ ] Validate no data leakage between customers\n- [ ] Update documentation and training materials\n- [ ] Create runbooks for troubleshooting\n\n---\n\n## Troubleshooting Guide\n\n### Issue: Slow Query Performanc",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_27",
+    "text": " Validate no data leakage between customers\n- [ ] Update documentation and training materials\n- [ ] Create runbooks for troubleshooting\n\n---\n\n## Troubleshooting Guide\n\n### Issue: Slow Query Performance\n**Symptom:** Queries taking >2 seconds\n**Solution:**\n1. Verify indexes exist: `SHOW INDEXES`\n2. Check query plan: `PROFILE <query>`\n3. Ensure customer filter is first in MATCH chain\n4. Review db_hits count (should be <1000 for typical customer)\n\n### Issue: Missing Results\n**Symptom:** Expected data not returned\n**Solution:**\n1. Verify customer ID is correct\n2. Check OWNS relationships exist: `MATCH (c:Customer {id: $id})-[:OWNS]->(f) RETURN count(f)`\n3. Validate CONTAINS relationships: `MATCH (f)-[:CONTAINS]->(e) RETURN count(e)`\n4. Check software deployments: `MATCH (e)-[:RUNS]->(s) RETURN count(s)`\n\n### Issue: Cross-Customer Data Leakage\n**Symptom:** Seeing other customer's data\n**Solution:**\n1. Audit query for missing customer filter\n2. Verify customer ID parameter is passed correctly",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md_chunk_28",
+    "text": "count(s)`\n\n### Issue: Cross-Customer Data Leakage\n**Symptom:** Seeing other customer's data\n**Solution:**\n1. Audit query for missing customer filter\n2. Verify customer ID parameter is passed correctly\n3. Check authentication middleware extracts correct customer\n4. Run isolation validation queries (see Testing section)\n\n---\n\n## Version History\n\n| Version | Date       | Changes                                      |\n|---------|------------|----------------------------------------------|\n| 1.0     | 2025-10-30 | Initial document with 8 query examples       |\n\n---\n\n**Document Status:** Complete\n**Word Count:** ~3,800 words\n**Queries Documented:** 8/8\n**Performance Impact:** 90-99% query improvement documented\n",
+    "metadata": {
+      "file_name": "CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/CUSTOMER_FILTERING_QUERY_EXAMPLES.md",
+      "file_size": 23115,
+      "indexed_at": "2025-10-31T01:02:52.636500",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 715
+    }
+  }
+]

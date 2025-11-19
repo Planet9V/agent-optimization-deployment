@@ -1,0 +1,104 @@
+# AEON UI - Next.js Web Interface for OpenSPG Infrastructure
+# Integration with existing openspg-network
+# Created: 2025-11-03
+
+services:
+  aeon-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        NODE_VERSION: 20-alpine
+    image: aeon-ui:latest
+    container_name: aeon-ui
+    hostname: aeon-ui
+
+    # Network configuration with static IP
+    # Changed from 172.18.0.8 to 172.18.0.9 to avoid conflict with openspg-server
+    networks:
+      openspg-network:
+        ipv4_address: 172.18.0.9
+
+    # Port mapping
+    # Port 3000 is currently used by aeon-saas-dev (unhealthy dev container)
+    # Using port 3001 to avoid conflict with dev environment
+    ports:
+      - "3001:3000"
+
+    # Environment variables
+    environment:
+      # Application
+      - NODE_ENV=production
+      - NEXT_PUBLIC_APP_NAME=AEON UI
+      - TZ=Asia/Shanghai
+      - PORT=3000
+
+      # Neo4j Connection (Graph Database)
+      - NEO4J_URI=bolt://openspg-neo4j:7687
+      - NEO4J_USER=neo4j
+      - NEO4J_PASSWORD=neo4j@openspg
+      - NEO4J_DATABASE=neo4j
+
+      # Qdrant Connection (Vector Database)
+      - QDRANT_URL=http://openspg-qdrant:6333
+      - QDRANT_API_KEY=deqUCd5v5tL3NNTlcY3tXuPX+9vNZ7P1NMt/WlBUOZQ=
+
+      # MySQL Connection (Relational Database)
+      - MYSQL_HOST=openspg-mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=openspg
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=openspg
+
+      # MinIO Connection (Object Storage)
+      - MINIO_ENDPOINT=http://openspg-minio:9000
+      - MINIO_ACCESS_KEY=minio
+      - MINIO_SECRET_KEY=minio@openspg
+      - MINIO_USE_SSL=false
+
+      # OpenSPG Server
+      - OPENSPG_SERVER_URL=http://openspg-server:8887
+
+      # Security (CHANGE IN PRODUCTION!)
+      # Updated to reflect port 3001 mapping
+      - NEXTAUTH_URL=http://localhost:3001
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-change-me-in-production}
+
+    # Reference production environment file
+    env_file:
+      - .env.production
+
+    # Volume mounts
+    volumes:
+      - aeon-ui-logs:/app/logs
+
+    # Restart policy
+    restart: unless-stopped
+
+    # Health check
+    healthcheck:
+      test: ["CMD", "sh", "-c", "wget --quiet --tries=1 --spider http://$(hostname):3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+    # Resource limits (recommended)
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 2G
+        reservations:
+          cpus: '1.0'
+          memory: 1G
+
+# Volumes
+volumes:
+  aeon-ui-logs:
+    driver: local
+
+# Networks
+networks:
+  openspg-network:
+    external: true  # Reference existing network

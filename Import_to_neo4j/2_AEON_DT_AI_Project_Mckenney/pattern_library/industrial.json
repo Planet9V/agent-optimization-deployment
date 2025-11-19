@@ -1,0 +1,429 @@
+{
+  "industrial": {
+    "patterns": [
+      {
+        "label": "VENDOR",
+        "pattern": [
+          {
+            "LOWER": "siemens"
+          }
+        ]
+      },
+      {
+        "label": "VENDOR",
+        "pattern": [
+          {
+            "LOWER": "rockwell"
+          },
+          {
+            "LOWER": "automation"
+          }
+        ]
+      },
+      {
+        "label": "VENDOR",
+        "pattern": [
+          {
+            "LOWER": "abb"
+          }
+        ]
+      },
+      {
+        "label": "VENDOR",
+        "pattern": [
+          {
+            "LOWER": "schneider"
+          },
+          {
+            "LOWER": "electric"
+          }
+        ]
+      },
+      {
+        "label": "VENDOR",
+        "pattern": [
+          {
+            "LOWER": "honeywell"
+          }
+        ]
+      },
+      {
+        "label": "VENDOR",
+        "pattern": [
+          {
+            "LOWER": "emerson"
+          }
+        ]
+      },
+      {
+        "label": "VENDOR",
+        "pattern": [
+          {
+            "LOWER": "yokogawa"
+          }
+        ]
+      },
+      {
+        "label": "VENDOR",
+        "pattern": [
+          {
+            "LOWER": "ge"
+          },
+          {
+            "LOWER": "digital"
+          }
+        ]
+      },
+      {
+        "label": "PROTOCOL",
+        "pattern": [
+          {
+            "LOWER": "modbus"
+          }
+        ]
+      },
+      {
+        "label": "PROTOCOL",
+        "pattern": [
+          {
+            "LOWER": "opc"
+          },
+          {
+            "LOWER": "ua"
+          }
+        ]
+      },
+      {
+        "label": "PROTOCOL",
+        "pattern": [
+          {
+            "LOWER": "profinet"
+          }
+        ]
+      },
+      {
+        "label": "PROTOCOL",
+        "pattern": [
+          {
+            "LOWER": "ethercat"
+          }
+        ]
+      },
+      {
+        "label": "PROTOCOL",
+        "pattern": [
+          {
+            "LOWER": "hart"
+          }
+        ]
+      },
+      {
+        "label": "PROTOCOL",
+        "pattern": [
+          {
+            "LOWER": "foundation"
+          },
+          {
+            "LOWER": "fieldbus"
+          }
+        ]
+      },
+      {
+        "label": "PROTOCOL",
+        "pattern": [
+          {
+            "LOWER": "devicenet"
+          }
+        ]
+      },
+      {
+        "label": "PROTOCOL",
+        "pattern": [
+          {
+            "LOWER": "bacnet"
+          }
+        ]
+      },
+      {
+        "label": "STANDARD",
+        "pattern": [
+          {
+            "TEXT": {
+              "REGEX": "IEC\\s*\\d+"
+            }
+          }
+        ]
+      },
+      {
+        "label": "STANDARD",
+        "pattern": [
+          {
+            "TEXT": {
+              "REGEX": "IEEE\\s*\\d+"
+            }
+          }
+        ]
+      },
+      {
+        "label": "STANDARD",
+        "pattern": [
+          {
+            "TEXT": {
+              "REGEX": "ISO\\s*\\d+"
+            }
+          }
+        ]
+      },
+      {
+        "label": "STANDARD",
+        "pattern": [
+          {
+            "TEXT": {
+              "REGEX": "ANSI\\s*\\d+"
+            }
+          }
+        ]
+      },
+      {
+        "label": "STANDARD",
+        "pattern": [
+          {
+            "TEXT": {
+              "REGEX": "NFPA\\s*\\d+"
+            }
+          }
+        ]
+      },
+      {
+        "label": "COMPONENT",
+        "pattern": [
+          {
+            "LOWER": "plc"
+          }
+        ]
+      },
+      {
+        "label": "COMPONENT",
+        "pattern": [
+          {
+            "LOWER": "hmi"
+          }
+        ]
+      },
+      {
+        "label": "COMPONENT",
+        "pattern": [
+          {
+            "LOWER": "rtu"
+          }
+        ]
+      },
+      {
+        "label": "COMPONENT",
+        "pattern": [
+          {
+            "LOWER": "scada"
+          }
+        ]
+      },
+      {
+        "label": "COMPONENT",
+        "pattern": [
+          {
+            "LOWER": "transmitter"
+          }
+        ]
+      },
+      {
+        "label": "COMPONENT",
+        "pattern": [
+          {
+            "LOWER": "actuator"
+          }
+        ]
+      },
+      {
+        "label": "COMPONENT",
+        "pattern": [
+          {
+            "LOWER": "sensor"
+          }
+        ]
+      },
+      {
+        "label": "COMPONENT",
+        "pattern": [
+          {
+            "LOWER": "controller"
+          }
+        ]
+      },
+      {
+        "label": "COMPONENT",
+        "pattern": [
+          {
+            "LOWER": "vfd"
+          }
+        ]
+      },
+      {
+        "label": "COMPONENT",
+        "pattern": [
+          {
+            "LOWER": "variable"
+          },
+          {
+            "LOWER": "frequency"
+          },
+          {
+            "LOWER": "drive"
+          }
+        ]
+      },
+      {
+        "label": "MEASUREMENT",
+        "pattern": [
+          {
+            "TEXT": {
+              "REGEX": "\\d+(\\.\\d+)?\\s*PSI"
+            }
+          }
+        ]
+      },
+      {
+        "label": "MEASUREMENT",
+        "pattern": [
+          {
+            "TEXT": {
+              "REGEX": "\\d+(\\.\\d+)?\\s*GPM"
+            }
+          }
+        ]
+      },
+      {
+        "label": "MEASUREMENT",
+        "pattern": [
+          {
+            "TEXT": {
+              "REGEX": "\\d+(\\.\\d+)?\\s*\u00b0[CF]"
+            }
+          }
+        ]
+      },
+      {
+        "label": "MEASUREMENT",
+        "pattern": [
+          {
+            "TEXT": {
+              "REGEX": "\\d+(\\.\\d+)?\\s*kW"
+            }
+          }
+        ]
+      },
+      {
+        "label": "MEASUREMENT",
+        "pattern": [
+          {
+            "TEXT": {
+              "REGEX": "\\d+(\\.\\d+)?\\s*HP"
+            }
+          }
+        ]
+      },
+      {
+        "label": "MEASUREMENT",
+        "pattern": [
+          {
+            "TEXT": {
+              "REGEX": "\\d+(\\.\\d+)?\\s*bar"
+            }
+          }
+        ]
+      },
+      {
+        "label": "SAFETY_CLASS",
+        "pattern": [
+          {
+            "TEXT": {
+              "REGEX": "SIL\\s*[0-4]"
+            }
+          }
+        ]
+      },
+      {
+        "label": "SAFETY_CLASS",
+        "pattern": [
+          {
+            "TEXT": {
+              "REGEX": "ASIL\\s*[A-D]"
+            }
+          }
+        ]
+      },
+      {
+        "label": "SAFETY_CLASS",
+        "pattern": [
+          {
+            "TEXT": {
+              "REGEX": "CAT\\s*[1-4]"
+            }
+          }
+        ]
+      },
+      {
+        "label": "SYSTEM_LAYER",
+        "pattern": [
+          {
+            "TEXT": {
+              "REGEX": "L[0-5]"
+            }
+          }
+        ]
+      },
+      {
+        "label": "SYSTEM_LAYER",
+        "pattern": [
+          {
+            "LOWER": "field"
+          },
+          {
+            "LOWER": "level"
+          }
+        ]
+      },
+      {
+        "label": "SYSTEM_LAYER",
+        "pattern": [
+          {
+            "LOWER": "control"
+          },
+          {
+            "LOWER": "level"
+          }
+        ]
+      },
+      {
+        "label": "SYSTEM_LAYER",
+        "pattern": [
+          {
+            "LOWER": "supervisory"
+          },
+          {
+            "LOWER": "level"
+          }
+        ]
+      },
+      {
+        "label": "SYSTEM_LAYER",
+        "pattern": [
+          {
+            "LOWER": "enterprise"
+          },
+          {
+            "LOWER": "level"
+          }
+        ]
+      }
+    ]
+  }
+}

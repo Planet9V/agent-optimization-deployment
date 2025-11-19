@@ -1,0 +1,21 @@
+FAIL tests/security-upload.test.ts
+  ● Test suite failed to run
+
+    FATAL: MINIO_ACCESS_KEY environment variable is required
+
+      15 | // Fail-fast validation
+      16 | if (!MINIO_ACCESS_KEY) {
+    > 17 |   throw new Error('FATAL: MINIO_ACCESS_KEY environment variable is required');
+         |         ^
+      18 | }
+      19 | if (!MINIO_SECRET_KEY) {
+      20 |   throw new Error('FATAL: MINIO_SECRET_KEY environment variable is required');
+
+      at Object.<anonymous> (app/api/upload/route.ts:17:9)
+      at Object.<anonymous> (tests/security-upload.test.ts:17:1)
+
+Test Suites: 1 failed, 1 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        5.232 s
+Ran all test suites.

@@ -1,0 +1,15 @@
+[[publishing]]
+[[pyschometric[]]]
+[[lacan]]
+[[news]]
+
+```
+## Knowledge Graph Elements 
+### Entity Nodes - [[Person: Major Susan Reynolds]] - Pentagon spokesperson, official representative of policy - [[Person: Admiral James Harrington]] - Policy developer, military leadership - [[Person: Thomas Chen]] - Veterans advocacy spokesperson, critic of policy - [[Person: Dr. Elizabeth Williams]] - Military sociologist, independent analyst - [[Person: General James Miller]] - Former commander, military readiness expert - [[Organization: Pentagon]] - Policy issuer, military leadership - [[Organization: Department of Defense]] - Overarching military administration - [[Organization: Veterans Advocacy Groups]] - Representatives of affected service members - [[Organization: Congressional Oversight Committees]] - Legislative review authority - [[Concept: Military Readiness]] - Central justification for policy - [[Concept: Administrative Standardization]] - Framework for policy implementation - [[Concept: Gender Identity]] - Core concept affected by policy - [[Concept: Waiver System]] - Mechanism for policy implementation - [[Policy: Pentagon Transgender Service Policy]] - Central policy being analyzed - [[Policy: 2016 Open Service Policy]] - Historical precedent - [[Policy: 2019 Birth Gender Service Policy]] - Historical precedent - [[Policy: 2021 Open Service Policy]] - Historical precedent 
+
+### Key Relationships 
+- [[Organization: Pentagon]] IMPLEMENTS [[Policy: Pentagon Transgender Service Policy]] (date: 2025-02-27, context: official directive, power_dynamic: dominant) - [[Person: Admiral James Harrington]] DEVELOPS [[Policy: Pentagon Transgender Service Policy]] (context: military administration, power_dynamic: dominant) - [[Organization: Veterans Advocacy Groups]] OPPOSES [[Policy: Pentagon Transgender Service Policy]] (context: concerns about implementation, power_dynamic: subordinate) - [[Organization: Congressional Oversight Committees]] REVIEWS [[Policy: Pentagon Transgender Service Policy]] (context: scheduled hearings, power_dynamic: equal) - [[Policy: Pentagon Transgender Service Policy]] AFFECTS [[Concept: Gender Identity]] (context: military service requirements, strength: strong) - [[Policy: Pentagon Transgender Service Policy]] SUCCEEDS [[Policy: 2021 Open Service Policy]] (date: 2025-02-27, context: policy evolution) - [[Concept: Military Readiness]] JUSTIFIES [[Policy: Pentagon Transgender Service Policy]] (context: official rationale, strength: strong) 
+- 
+
+### Psychoanalytic Relationships - [[Organization: Pentagon]] FUNCTIONS_AS_SYMBOLIC [[Concept: Authority]] (evidence: "This policy ensures consistent application of military standards") - [[Concept: Waiver System]] FUNCTIONS_AS_SYMBOLIC [[Concept: Exception Mechanism]] (context: simultaneously acknowledges and contains difference) - [[Policy: Pentagon Transgender Service Policy]] MIRRORS [[Policy: Don't Ask Don't Tell]] (context: historical pattern of conditional inclusion) - [[Organization: Pentagon
+```

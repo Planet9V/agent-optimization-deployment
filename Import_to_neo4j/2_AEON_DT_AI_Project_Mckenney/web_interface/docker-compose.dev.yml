@@ -1,0 +1,154 @@
+# AEON SaaS Development Environment
+# Extends SaaS-Boilerplate with AEON Digital Twin features
+# Hot reload enabled with volume mounts for rapid development
+
+version: '3.8'
+
+services:
+  # AEON SaaS Frontend (Development)
+  aeon-saas-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: aeon-saas-dev
+    command: npm run dev
+    networks:
+      - openspg-network
+    ports:
+      - "3000:3000"
+    volumes:
+      # Hot reload support - mount source code
+      - ./app:/app/app:delegated
+      - ./components:/app/components:delegated
+      - ./lib:/app/lib:delegated
+      - ./public:/app/public:delegated
+      - ./styles:/app/styles:delegated
+      - ./hooks:/app/hooks:delegated
+
+      # Exclude node_modules and build artifacts from volume mounts
+      - /app/node_modules
+      - /app/.next
+
+      # Configuration files
+      - ./package.json:/app/package.json:ro
+      # package-lock.json generated inside container with React 19 deps
+      # - ./package-lock.json:/app/package-lock.json:ro
+      - ./tsconfig.json:/app/tsconfig.json:ro
+      - ./next.config.ts:/app/next.config.ts:ro
+      - ./tailwind.config.ts:/app/tailwind.config.ts:ro
+      - ./postcss.config.mjs:/app/postcss.config.mjs:ro
+
+    environment:
+      # Next.js Development Mode
+      - NODE_ENV=development
+      - NEXT_TELEMETRY_DISABLED=1
+
+      # Clerk Authentication (Development Keys)
+      - NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=${CLERK_PUBLISHABLE_KEY_DEV}
+      - CLERK_SECRET_KEY=${CLERK_SECRET_KEY_DEV}
+      - NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+      - NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+      - NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
+      - NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard
+
+      # PostgreSQL (SaaS-Boilerplate - LOCAL DEVELOPMENT)
+      - DATABASE_URL=postgresql://postgres:postgres@postgres-dev:5432/aeon_saas_dev
+      - POSTGRES_HOST=postgres-dev
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=aeon_saas_dev
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+      # Neo4j (AEON - REMOTE via openspg-network)
+      - NEO4J_URI=bolt://openspg-neo4j:7687
+      - NEO4J_USER=neo4j
+      - NEO4J_PASSWORD=neo4j@openspg
+
+      # Qdrant (AEON - REMOTE via openspg-network)
+      - QDRANT_URL=http://openspg-qdrant:6333
+      # Qdrant server has no API key configured - omit to connect without auth
+      # - QDRANT_API_KEY=deqUCd5v5tL3NNTlcY3tXuPX+9vNZ7P1NMt/WlBUOZQ=
+
+      # MySQL (AEON - REMOTE via openspg-network)
+      - MYSQL_HOST=openspg-mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=openspg
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=openspg
+
+      # MinIO (AEON - REMOTE via openspg-network)
+      - MINIO_ENDPOINT=openspg-minio:9000
+      - MINIO_PORT=9000
+      - MINIO_ACCESS_KEY=minio
+      - MINIO_SECRET_KEY=minio@openspg
+      - MINIO_BUCKET=aeon-uploads
+      - MINIO_USE_SSL=false
+
+      # OpenSPG Server (AEON - REMOTE via openspg-network)
+      - OPENSPG_SERVER_URL=http://openspg-server:8887
+
+      # OpenAI API (Development)
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_MODEL=gpt-4o-mini
+
+      # Application Configuration
+      - NEXT_PUBLIC_APP_NAME=AEON Digital Twin
+      - NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+    depends_on:
+      postgres-dev:
+        condition: service_healthy
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "-O", "/dev/null", "http://0.0.0.0:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # PostgreSQL (Local Development Database for SaaS-Boilerplate)
+  postgres-dev:
+    image: postgres:16-alpine
+    container_name: aeon-postgres-dev
+    networks:
+      - openspg-network
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=aeon_saas_dev
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --locale=en_US.UTF-8
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/init-db.sql:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d aeon_saas_dev"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Adminer (Database Management UI - Optional)
+  adminer:
+    image: adminer:latest
+    container_name: aeon-adminer-dev
+    networks:
+      - openspg-network
+    ports:
+      - "8080:8080"
+    environment:
+      - ADMINER_DEFAULT_SERVER=postgres-dev
+      - ADMINER_DESIGN=dracula
+    restart: unless-stopped
+    profiles:
+      - tools
+
+networks:
+  openspg-network:
+    external: true
+    name: openspg-network
+
+volumes:
+  postgres_dev_data:
+    name: aeon_postgres_dev_data

@@ -1,0 +1,37 @@
+! Cisco ACL for AEON Digital Twin Railway Network
+! Generated: 2025-01-15
+
+! Control Network Access Control List
+access-list 101 remark Control Network Access
+access-list 101 permit tcp 10.5.0.0 0.0.0.255 10.1.0.0 0.0.0.255 eq 22
+access-list 101 permit tcp 10.2.0.0 0.0.0.255 10.1.0.0 0.0.0.255 eq 502
+access-list 101 permit tcp 10.2.0.0 0.0.0.255 10.1.0.0 0.0.0.255 eq 4840
+access-list 101 deny ip any 10.1.0.0 0.0.0.255
+
+! Process Network Access Control List
+access-list 102 remark Process Network Access
+access-list 102 permit tcp 10.3.0.0 0.0.0.255 10.2.0.0 0.0.0.255 eq 443
+access-list 102 permit udp 10.4.0.0 0.0.0.255 10.2.0.0 0.0.0.255 eq 161
+access-list 102 permit tcp 10.1.0.0 0.0.0.255 10.2.0.0 0.0.0.255
+access-list 102 deny ip any 10.2.0.0 0.0.0.255
+
+! DMZ Network Access Control List
+access-list 103 remark DMZ Network Access
+access-list 103 permit tcp 10.4.0.0 0.0.0.255 10.3.0.0 0.0.0.255 eq 443
+access-list 103 permit tcp 10.5.0.0 0.0.0.255 10.3.0.0 0.0.0.255 eq 22
+access-list 103 permit tcp any 10.3.0.0 0.0.0.255 eq 443
+access-list 103 deny ip any 10.3.0.0 0.0.0.255
+
+! Corporate Network Access Control List
+access-list 104 remark Corporate Network Access
+access-list 104 permit tcp 10.4.0.0 0.0.0.255 any eq 80
+access-list 104 permit tcp 10.4.0.0 0.0.0.255 any eq 443
+access-list 104 permit udp 10.4.0.0 0.0.0.255 any eq 53
+access-list 104 deny ip 10.4.0.0 0.0.0.255 10.0.0.0 0.255.255.255
+
+! Maintenance Network Access Control List
+access-list 105 remark Maintenance Network Access
+access-list 105 permit tcp 10.5.0.0 0.0.0.255 10.1.0.0 0.0.0.255 eq 3389
+access-list 105 permit tcp 10.5.0.0 0.0.0.255 10.2.0.0 0.0.0.255 eq 22
+access-list 105 permit tcp 10.5.0.0 0.0.0.255 10.3.0.0 0.0.0.255 eq 22
+access-list 105 deny ip any any

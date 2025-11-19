@@ -1,0 +1,16 @@
+Document Type,Format,Template Based,Auto-Generated,Audience
+IEC 62443 Gap Analysis Report,PDF/DOCX,IEC 62443-3-2 template,Partial (gap analysis),"Client CISO, Compliance Officer"
+IEC 62443 Control Matrix,Excel/CSV,IEC 62443 control catalog,Yes (from KG),Client Security Team
+Security Level Assessment,PDF/DOCX,SL 1-4 criteria checklist,Yes (from SL mappings),Client Management
+Zone & Conduit Design Document,PDF/Visio,IEC 62443-3-3 zones/conduits,Partial (diagrams manual),Client Security Architect
+Penetration Test Report,PDF/DOCX,Industry standard pentest format,Partial (findings from KG),Client IT/Security Team
+Attack Path Analysis Report,PDF with graphs,Custom with MITRE mapping,Yes (from KAG reasoning),"Client CISO, Board"
+Vulnerability Assessment Report,PDF/Excel,CVSS-based ranking template,Yes (from asset-CVE links),Client Vulnerability Manager
+Threat Model Document,PDF/DOCX,STRIDE/MITRE framework,Partial (scenarios manual),"Client Security Team, Dev Team"
+Risk Assessment Report,PDF/DOCX,Multi-factor risk model,Yes (from risk calculations),"Client Management, Board"
+ISO 57000 Security Report,PDF/DOCX,ISO 57000 series requirements,Partial (mapping from KG),"Rail Authority, Client"
+ISO 57000 Handover Document,PDF/DOCX,Rail industry standard format,Partial (evidence from KG),System Owner/Operator
+Security Architecture Design,PDF/Visio,Network architecture template,Partial (topology from KG),Client IT/OT Team
+Incident Response Report,PDF/DOCX,NIST incident response framework,Partial (timeline from KG),"Client IR Team, Management"
+Compliance Evidence Package,ZIP/PDF,Regulatory audit format,Yes (automated collection),"Auditors, Regulators"
+Executive Summary Dashboard,Interactive Web,Executive-level KPI dashboard,Yes (real-time data),Client Executive Team

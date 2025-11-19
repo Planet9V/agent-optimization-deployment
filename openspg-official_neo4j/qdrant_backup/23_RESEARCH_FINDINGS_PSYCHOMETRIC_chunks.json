@@ -1,0 +1,632 @@
+[
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_0",
+    "text": "# Psychometric Research Findings\n\n**File:** 23_RESEARCH_FINDINGS_PSYCHOMETRIC.md\n**Created:** 2025-10-30 00:00:00 UTC\n**Modified:** 2025-10-30 00:00:00 UTC\n**Version:** v1.0.0\n**Author:** Research Analysis Agent\n**Purpose:** Comprehensive documentation of psychometric frameworks for threat actor profiling including Lacanian psychoanalysis and Big Five personality traits\n**Status:** ACTIVE\n\n## Executive Summary\n\nThis document presents comprehensive research findings on psychometric frameworks applicable to cyber threat actor profiling:\n\n1. **Lacanian Psychoanalysis**: Psychoanalytic framework for understanding desire, motivation, and behavioral patterns\n2. **Big Five Personality Traits**: Five-factor model for personality assessment\n3. **Dark Triad**: Narcissism, Machiavellianism, Psychopathy traits\n4. **Threat Actor Profiling**: Application to cybersecurity adversary analysis\n\n**Key Findings:**\n- Lacanian concepts (desire, fantasy, jouissance) model threat actor motivations\n- Big Five ",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_1",
+    "text": "hy traits\n4. **Threat Actor Profiling**: Application to cybersecurity adversary analysis\n\n**Key Findings:**\n- Lacanian concepts (desire, fantasy, jouissance) model threat actor motivations\n- Big Five traits provide structured personality assessment\n- Dark Triad traits correlate with malicious cyber behavior\n- Psychometric profiling enhances threat actor attribution and prediction\n- Integration with MITRE ATT&CK enriches adversary characterization\n\n**Critical Applications:**\n- Threat actor motivation analysis\n- Insider threat detection\n- Attribution confidence assessment\n- Behavioral anomaly detection\n- Social engineering vulnerability analysis\n\n## 1. Lacanian Psychoanalysis Framework\n\n### 1.1 Overview\n\n**Source**: Jacques Lacan's psychoanalytic theory\n**Domain**: Psychoanalysis, desire, subjectivity, symbolic order\n**Application**: Understanding human motivation, behavior patterns, unconscious drives\n\n**Core Concepts:**\n1. **The Real**: Reality beyond symbolization\n2. **The Symbolic**:",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_2",
+    "text": "bjectivity, symbolic order\n**Application**: Understanding human motivation, behavior patterns, unconscious drives\n\n**Core Concepts:**\n1. **The Real**: Reality beyond symbolization\n2. **The Symbolic**: Language, law, social structures\n3. **The Imaginary**: Images, identifications, ego\n4. **Desire**: Fundamental human drive\n5. **Jouissance**: Excessive enjoyment beyond pleasure principle\n6. **Fantasy**: Framework structuring desire\n7. **Subject Positions**: Roles in symbolic order\n\n### 1.2 Lacanian Ontology Structure\n\n```turtle\nlacan:PsychoanalyticConcept a owl:Class ;\n  rdfs:label \"Psychoanalytic Concept\" ;\n  rdfs:comment \"Fundamental concepts in Lacanian psychoanalysis\" .\n\nlacan:Register a owl:Class ;\n  rdfs:subClassOf lacan:PsychoanalyticConcept ;\n  rdfs:label \"Lacanian Register\" ;\n  rdfs:comment \"Three registers: Real, Symbolic, Imaginary\" .\n\nlacan:Real a lacan:Register ;\n  rdfs:label \"The Real\" ;\n  rdfs:comment \"Reality beyond symbolization and language\" ;\n  lacan:characteristic \"Im",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_3",
+    "text": ":comment \"Three registers: Real, Symbolic, Imaginary\" .\n\nlacan:Real a lacan:Register ;\n  rdfs:label \"The Real\" ;\n  rdfs:comment \"Reality beyond symbolization and language\" ;\n  lacan:characteristic \"Impossible to fully represent\" ;\n  lacan:characteristic \"Source of trauma and anxiety\" ;\n  lacan:characteristic \"Resists symbolization\" .\n\nlacan:Symbolic a lacan:Register ;\n  rdfs:label \"The Symbolic\" ;\n  rdfs:comment \"Order of language, law, and social structures\" ;\n  lacan:characteristic \"Linguistic structures\" ;\n  lacan:characteristic \"Social rules and norms\" ;\n  lacan:characteristic \"Symbolic identifications\" .\n\nlacan:Imaginary a lacan:Register ;\n  rdfs:label \"The Imaginary\" ;\n  rdfs:comment \"Order of images and identifications\" ;\n  lacan:characteristic \"Visual representations\" ;\n  lacan:characteristic \"Ego identifications\" ;\n  lacan:characteristic \"Narcissistic dimension\" .\n```\n\n### 1.3 Desire and Drive\n\n#### Desire Structure\n```turtle\nlacan:Desire a owl:Class ;\n  rdfs:subClassOf lacan:",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_4",
+    "text": "racteristic \"Ego identifications\" ;\n  lacan:characteristic \"Narcissistic dimension\" .\n```\n\n### 1.3 Desire and Drive\n\n#### Desire Structure\n```turtle\nlacan:Desire a owl:Class ;\n  rdfs:subClassOf lacan:PsychoanalyticConcept ;\n  rdfs:label \"Desire\" ;\n  rdfs:comment \"Fundamental human motivation structured by lack\" .\n\nlacan:hasDesire a owl:ObjectProperty ;\n  rdfs:domain lacan:Subject ;\n  rdfs:range lacan:Desire ;\n  rdfs:comment \"Subject has desire\" .\n\nlacan:DesireObject a owl:Class ;\n  rdfs:label \"Object of Desire\" ;\n  rdfs:comment \"That which is desired (objet petit a)\" .\n\nlacan:objectOfDesire a owl:ObjectProperty ;\n  rdfs:domain lacan:Desire ;\n  rdfs:range lacan:DesireObject ;\n  rdfs:comment \"Desire is directed toward object\" .\n\n# Desire characteristics\n:Desire_Characteristics a owl:Class ;\n  lacan:metonymicStructure true ;  # Desire moves from object to object\n  lacan:neverSatisfied true ;       # Desire is fundamentally unsatisfiable\n  lacan:structuredByLack true ;     # Desire arises ",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_5",
+    "text": "  lacan:metonymicStructure true ;  # Desire moves from object to object\n  lacan:neverSatisfied true ;       # Desire is fundamentally unsatisfiable\n  lacan:structuredByLack true ;     # Desire arises from fundamental lack\n  lacan:mediatedByOther true .      # Desire is always desire of the Other\n```\n\n#### Drive Structure\n```turtle\nlacan:Drive a owl:Class ;\n  rdfs:subClassOf lacan:PsychoanalyticConcept ;\n  rdfs:label \"Drive\" ;\n  rdfs:comment \"Partial drive (oral, anal, scopic, invocatory)\" .\n\nlacan:DriveType\n  \u251c\u2500\u2500 lacan:OralDrive     # Drive for incorporation\n  \u251c\u2500\u2500 lacan:AnalDrive     # Drive for control/retention\n  \u251c\u2500\u2500 lacan:ScopicDrive   # Drive to see/be seen\n  \u2514\u2500\u2500 lacan:InvocatoryDrive  # Drive to hear/be heard\n\nlacan:Drive_Structure\n  lacan:source \"Erogenous zone\" ;\n  lacan:aim \"Satisfaction through circuit\" ;\n  lacan:object \"Object a (partial object)\" ;\n  lacan:circuit \"Circular path around object\" .\n```\n\n### 1.4 Jouissance (Excessive Enjoyment)\n\n```turtle\nlacan:Jouissance a owl:C",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_6",
+    "text": "action through circuit\" ;\n  lacan:object \"Object a (partial object)\" ;\n  lacan:circuit \"Circular path around object\" .\n```\n\n### 1.4 Jouissance (Excessive Enjoyment)\n\n```turtle\nlacan:Jouissance a owl:Class ;\n  rdfs:subClassOf lacan:PsychoanalyticConcept ;\n  rdfs:label \"Jouissance\" ;\n  rdfs:comment \"Excessive enjoyment beyond pleasure principle\" .\n\nlacan:JouissanceType\n  \u251c\u2500\u2500 lacan:PhalicJouissance\n  \u2502   # Jouissance regulated by symbolic law\n  \u2502   lacan:characteristic \"Structured by castration\" ;\n  \u2502   lacan:characteristic \"Symbolic regulation\"\n  \u251c\u2500\u2500 lacan:OtherJouissance\n  \u2502   # Jouissance beyond phallic organization\n  \u2502   lacan:characteristic \"Mystical experience\" ;\n  \u2502   lacan:characteristic \"Beyond symbolic\"\n  \u2514\u2500\u2500 lacan:JouissanceOfTheOther\n      # Jouissance attributed to the Other\n      lacan:characteristic \"Paranoid dimension\" ;\n      lacan:characteristic \"Perceived in Other's enjoyment\"\n\n:Jouissance_Properties\n  lacan:beyondPleasurePrinciple true ;\n  lacan:painfulPleasure true ;\n",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_7",
+    "text": "  lacan:characteristic \"Paranoid dimension\" ;\n      lacan:characteristic \"Perceived in Other's enjoyment\"\n\n:Jouissance_Properties\n  lacan:beyondPleasurePrinciple true ;\n  lacan:painfulPleasure true ;\n  lacan:compulsiveRepetition true ;\n  lacan:transgressiveDimension true .\n```\n\n### 1.5 Fantasy Structure\n\n```turtle\nlacan:Fantasy a owl:Class ;\n  rdfs:subClassOf lacan:PsychoanalyticConcept ;\n  rdfs:label \"Fantasy\" ;\n  rdfs:comment \"Scenario structuring desire and defending against lack\" .\n\nlacan:FantasyFormula \"$ \u25ca a\" ;\n  lacan:barredSubject \"$\" ;      # Subject divided by language\n  lacan:punche \"\u25ca\" ;              # Relation of desire/defense\n  lacan:objectSmallA \"a\" .        # Object-cause of desire\n\nlacan:FantasyFunction\n  \u251c\u2500\u2500 lacan:StructuresDesire\n  \u2502   rdfs:comment \"Provides framework for what is desirable\"\n  \u251c\u2500\u2500 lacan:DefendsAgainstLack\n  \u2502   rdfs:comment \"Conceals fundamental lack in the Other\"\n  \u251c\u2500\u2500 lacan:StagingOfDesire\n  \u2502   rdfs:comment \"Narrative scenario organizing desire\"\n ",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_8",
+    "text": "or what is desirable\"\n  \u251c\u2500\u2500 lacan:DefendsAgainstLack\n  \u2502   rdfs:comment \"Conceals fundamental lack in the Other\"\n  \u251c\u2500\u2500 lacan:StagingOfDesire\n  \u2502   rdfs:comment \"Narrative scenario organizing desire\"\n  \u2514\u2500\u2500 lacan:ResponseToTrauma\n      rdfs:comment \"Symbolic construction dealing with Real\"\n\n:Fantasy_Example_Recognition a lacan:Fantasy ;\n  lacan:narrative \"If I achieve X, I will be recognized and valued\" ;\n  lacan:subject :Threat_Actor_Motivated_By_Recognition ;\n  lacan:desiredObject lacan:SocialRecognition ;\n  lacan:defendsAgainst lacan:FearOfInsignificance .\n```\n\n### 1.6 Subject Positions\n\n```turtle\nlacan:SubjectPosition a owl:Class ;\n  rdfs:label \"Subject Position\" ;\n  rdfs:comment \"Position of subject in symbolic structure\" .\n\nlacan:SubjectPositions\n  \u251c\u2500\u2500 lacan:MasterPosition\n  \u2502   # Position of authority and command\n  \u2502   lacan:discourse \"Master's Discourse\" ;\n  \u2502   lacan:characteristic \"Issues commands\" ;\n  \u2502   lacan:characteristic \"Assumes authority\"\n  \u251c\u2500\u2500 lacan:UniversityPosition\n",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_9",
+    "text": "tion of authority and command\n  \u2502   lacan:discourse \"Master's Discourse\" ;\n  \u2502   lacan:characteristic \"Issues commands\" ;\n  \u2502   lacan:characteristic \"Assumes authority\"\n  \u251c\u2500\u2500 lacan:UniversityPosition\n  \u2502   # Position of knowledge and expertise\n  \u2502   lacan:discourse \"University Discourse\" ;\n  \u2502   lacan:characteristic \"Claims to know\" ;\n  \u2502   lacan:characteristic \"Transmits knowledge\"\n  \u251c\u2500\u2500 lacan:HystericPosition\n  \u2502   # Position of questioning authority\n  \u2502   lacan:discourse \"Hysteric's Discourse\" ;\n  \u2502   lacan:characteristic \"Challenges master\" ;\n  \u2502   lacan:characteristic \"Questions knowledge\"\n  \u2514\u2500\u2500 lacan:AnalystPosition\n      # Position of causing desire to speak\n      lacan:discourse \"Analyst's Discourse\" ;\n      lacan:characteristic \"Causes production\" ;\n      lacan:characteristic \"Incarnates object a\"\n```\n\n### 1.7 The Big Other\n\n```turtle\nlacan:BigOther a owl:Class ;\n  rdfs:subClassOf lacan:PsychoanalyticConcept ;\n  rdfs:label \"The Big Other\" ;\n  rdfs:comment \"Symbolic order, lang",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_10",
+    "text": "arnates object a\"\n```\n\n### 1.7 The Big Other\n\n```turtle\nlacan:BigOther a owl:Class ;\n  rdfs:subClassOf lacan:PsychoanalyticConcept ;\n  rdfs:label \"The Big Other\" ;\n  rdfs:comment \"Symbolic order, language, social norms\" .\n\nlacan:BigOther_Characteristics\n  lacan:symbolicOrder \"Order of language and law\" ;\n  lacan:socialNorms \"Internalized rules and expectations\" ;\n  lacan:guaranteeOfMeaning \"Supposed to guarantee coherence\" ;\n  lacan:fundamentallyIncomplete \"The Other does not exist\" ;\n  lacan:subjectSupposedToKnow \"Transferred knowledge to Other\" .\n\nlacan:SubjectRelationToOther\n  lacan:alienation \"Subject constituted through signifiers of Other\" ;\n  lacan:separation \"Subject separates from identifying with Other's desire\" ;\n  lacan:desireOfTheOther \"Subject desires to be object of Other's desire\" .\n```\n\n### 1.8 Application to Threat Actor Profiling\n\n#### Threat Actor Motivational Structure\n```turtle\n:ThreatActor_Lacanian_Profile a owl:Class ;\n  rdfs:subClassOf lacan:SubjectAnalysis ;\n ",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_11",
+    "text": "desire\" .\n```\n\n### 1.8 Application to Threat Actor Profiling\n\n#### Threat Actor Motivational Structure\n```turtle\n:ThreatActor_Lacanian_Profile a owl:Class ;\n  rdfs:subClassOf lacan:SubjectAnalysis ;\n  rdfs:label \"Threat Actor Lacanian Profile\" ;\n  rdfs:comment \"Psychoanalytic profiling of cyber adversary\" .\n\n:ThreatActor_APT33_Profile a :ThreatActor_Lacanian_Profile ;\n  # Identity and position\n  cyber:threatActorID \"APT33\" ;\n  lacan:subjectPosition lacan:UniversityPosition ;\n  lacan:assumedIdentity \"Technical expert with mission\" ;\n\n  # Desire structure\n  lacan:primaryDesire :Desire_National_Recognition ;\n  lacan:objectOfDesire [\n    lacan:geopoliticalPower\n    lacan:technicalMastery\n    lacan:vengeanceAgainstAdversary\n  ] ;\n\n  # Fantasy framework\n  lacan:fundamentalFantasy [\n    lacan:narrative \"By disrupting enemy infrastructure, we assert our nation's power\" ;\n    lacan:defendsAgainst \"National vulnerability and weakness\"\n  ] ;\n\n  # Jouissance dimension\n  lacan:jouissance :Jouissanc",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_12",
+    "text": "rative \"By disrupting enemy infrastructure, we assert our nation's power\" ;\n    lacan:defendsAgainst \"National vulnerability and weakness\"\n  ] ;\n\n  # Jouissance dimension\n  lacan:jouissance :Jouissance_Disruption ;\n  lacan:enjoymentIn \"Technical mastery and causing chaos\" ;\n  lacan:compulsiveRepetition \"Repeated targeting of energy sector\" ;\n\n  # Relation to Other\n  lacan:bigOtherPosition \"Nation-state authority\" ;\n  lacan:supposedSubjectToKnow \"Intelligence apparatus\" ;\n  lacan:desireOfOther \"Nation desires disruption of adversary\" ;\n\n  # Drive manifestation\n  lacan:dominantDrive lacan:ScopicDrive ;\n  lacan:scopicManifestion \"Surveillance and reconnaissance focus\" ;\n\n  # Symbolic registration\n  lacan:symbolicIdentification \"Iranian national cyber warrior\" ;\n  lacan:imaginaryIdentification \"Elite hacker with patriotic mission\" .\n```\n\n#### Insider Threat Lacanian Analysis\n```turtle\n:InsiderThreat_Profile a :ThreatActor_Lacanian_Profile ;\n  # Subject position\n  lacan:subjectPosition laca",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_13",
+    "text": " \"Elite hacker with patriotic mission\" .\n```\n\n#### Insider Threat Lacanian Analysis\n```turtle\n:InsiderThreat_Profile a :ThreatActor_Lacanian_Profile ;\n  # Subject position\n  lacan:subjectPosition lacan:HystericPosition ;\n  lacan:positionDescription \"Challenges organizational authority\" ;\n\n  # Desire structure\n  lacan:primaryDesire :Desire_Recognition_And_Revenge ;\n  lacan:desireNarrative \"Recognition for perceived mistreatment\" ;\n  lacan:lackExperienced \"Organizational recognition and respect\" ;\n\n  # Fantasy structure\n  lacan:fundamentalFantasy [\n    lacan:narrative \"If I expose their vulnerabilities, they will recognize my value\" ;\n    lacan:alternative \"If I leak data, I will hurt them as they hurt me\" ;\n    lacan:defendsAgainst \"Feelings of insignificance and powerlessness\"\n  ] ;\n\n  # Jouissance\n  lacan:jouissance :Jouissance_Transgression ;\n  lacan:enjoymentIn \"Breaking rules and proving superiority\" ;\n  lacan:beyondRational true ;\n  lacan:selfDestructiveDimension \"Aware of consequ",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_14",
+    "text": "ouissance\n  lacan:jouissance :Jouissance_Transgression ;\n  lacan:enjoymentIn \"Breaking rules and proving superiority\" ;\n  lacan:beyondRational true ;\n  lacan:selfDestructiveDimension \"Aware of consequences but compelled\" ;\n\n  # Relation to Other\n  lacan:bigOtherPosition \"Organization/Management\" ;\n  lacan:otherPerceived \"Unjust, unappreciative, persecutory\" ;\n  lacan:relationToOther \"Hostile, seeking to expose Other's lack\" ;\n\n  # Drive manifestation\n  lacan:dominantDrive lacan:AnalDrive ;\n  lacan:analManifesation \"Control through withholding/releasing information\" ;\n\n  # Symptom formation\n  lacan:symptom \"Data exfiltration\" ;\n  lacan:symptomMeaning \"Compromise formation between desire and prohibition\" .\n```\n\n#### Hacktivist Lacanian Profile\n```turtle\n:Hacktivist_Profile a :ThreatActor_Lacanian_Profile ;\n  # Subject position\n  lacan:subjectPosition lacan:MasterPosition ;\n  lacan:positionDescription \"Speaks on behalf of cause\" ;\n\n  # Desire structure\n  lacan:primaryDesire :Desire_Social",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_15",
+    "text": "anian_Profile ;\n  # Subject position\n  lacan:subjectPosition lacan:MasterPosition ;\n  lacan:positionDescription \"Speaks on behalf of cause\" ;\n\n  # Desire structure\n  lacan:primaryDesire :Desire_Social_Justice ;\n  lacan:objectOfDesire [\n    lacan:politicalChange\n    lacan:exposure_of_corruption\n    lacan:collective_recognition\n  ] ;\n\n  # Fantasy structure\n  lacan:fundamentalFantasy [\n    lacan:narrative \"By hacking the powerful, we expose injustice and inspire change\" ;\n    lacan:defendsAgainst \"Powerlessness in face of systemic oppression\"\n  ] ;\n\n  # Jouissance\n  lacan:jouissance :Jouissance_Transgression_For_Cause ;\n  lacan:enjoymentIn \"Violation of authority in service of higher purpose\" ;\n  lacan:justification \"Moral righteousness supersedes law\" ;\n\n  # Relation to Other\n  lacan:bigOtherPosition \"Movement/Collective (Anonymous, etc.)\" ;\n  lacan:desireOfOther \"The Cause desires exposure of corruption\" ;\n  lacan:symbolicMandatePerceived \"Authorized by collective to act\" ;\n\n  # Imagina",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_16",
+    "text": "rPosition \"Movement/Collective (Anonymous, etc.)\" ;\n  lacan:desireOfOther \"The Cause desires exposure of corruption\" ;\n  lacan:symbolicMandatePerceived \"Authorized by collective to act\" ;\n\n  # Imaginary identification\n  lacan:imaginaryIdentification \"Digital Robin Hood\" ;\n  lacan:egoIdeal \"Heroic whistleblower/freedom fighter\" .\n```\n\n#### Financial Cybercriminal Profile\n```turtle\n:Cybercriminal_Financial_Profile a :ThreatActor_Lacanian_Profile ;\n  # Subject position\n  lacan:subjectPosition lacan:PerversePosition ;\n  lacan:positionDescription \"Makes self instrument of Other's jouissance\" ;\n\n  # Desire structure\n  lacan:primaryDesire :Desire_Financial_Gain ;\n  lacan:objectOfDesire lacan:Money ;\n  lacan:metonymicShift \"Money represents power, freedom, status\" ;\n\n  # Fantasy structure\n  lacan:fundamentalFantasy [\n    lacan:narrative \"Through cybercrime, I achieve wealth and freedom\" ;\n    lacan:defendsAgainst \"Economic vulnerability and powerlessness\"\n  ] ;\n\n  # Jouissance\n  lacan:jouissan",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_17",
+    "text": "fundamentalFantasy [\n    lacan:narrative \"Through cybercrime, I achieve wealth and freedom\" ;\n    lacan:defendsAgainst \"Economic vulnerability and powerlessness\"\n  ] ;\n\n  # Jouissance\n  lacan:jouissance :Jouissance_Profit_And_Risk ;\n  lacan:enjoymentIn \"Thrill of theft and getting away with it\" ;\n  lacan:riskTaking \"Compulsive despite increasing danger\" ;\n\n  # Relation to Other\n  lacan:bigOtherPosition \"Market/Capitalism\" ;\n  lacan:cynicalReason \"Knows it's wrong but does it anyway\" ;\n  lacan:perverseLogic \"Uses Other's rules against Other\" ;\n\n  # Drive manifestation\n  lacan:dominantDrive lacan:OralDrive ;\n  lacan:oralManifesation \"Incorporation/consumption of victims' resources\" .\n```\n\n## 2. Big Five Personality Traits\n\n### 2.1 Overview\n\n**Source**: Five-Factor Model (FFM) of personality\n**Domain**: Personality psychology, individual differences\n**Application**: Personality assessment and prediction of behavior\n\n**Five Factors:**\n1. **Openness to Experience**: Curiosity, creativity, n",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_18",
+    "text": "**Domain**: Personality psychology, individual differences\n**Application**: Personality assessment and prediction of behavior\n\n**Five Factors:**\n1. **Openness to Experience**: Curiosity, creativity, novelty-seeking\n2. **Conscientiousness**: Organization, responsibility, self-discipline\n3. **Extraversion**: Sociability, assertiveness, energy\n4. **Agreeableness**: Compassion, cooperation, trust\n5. **Neuroticism**: Emotional instability, anxiety, negative affect\n\n### 2.2 Big Five Ontology Structure\n\n```turtle\nbigfive:PersonalityTrait a owl:Class ;\n  rdfs:label \"Personality Trait\" ;\n  rdfs:comment \"Stable pattern of behavior, thought, and emotion\" .\n\nbigfive:BigFiveFactor a owl:Class ;\n  rdfs:subClassOf bigfive:PersonalityTrait ;\n  rdfs:label \"Big Five Factor\" ;\n  rdfs:comment \"One of five fundamental personality dimensions\" .\n\nbigfive:hasTraitScore a owl:DatatypeProperty ;\n  rdfs:domain bigfive:PersonalityProfile ;\n  rdfs:range xsd:float ;\n  rdfs:comment \"Score on trait dimension (typical",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_19",
+    "text": "damental personality dimensions\" .\n\nbigfive:hasTraitScore a owl:DatatypeProperty ;\n  rdfs:domain bigfive:PersonalityProfile ;\n  rdfs:range xsd:float ;\n  rdfs:comment \"Score on trait dimension (typically 1-5 or 0-100)\" .\n```\n\n### 2.3 Openness to Experience\n\n```turtle\nbigfive:Openness a bigfive:BigFiveFactor ;\n  rdfs:label \"Openness to Experience\" ;\n  rdfs:comment \"Curiosity, creativity, preference for novelty\" .\n\nbigfive:Openness_Facets\n  \u251c\u2500\u2500 bigfive:Imagination\n  \u2502   rdfs:comment \"Fantasy and creative imagination\"\n  \u251c\u2500\u2500 bigfive:ArtisticInterests\n  \u2502   rdfs:comment \"Appreciation for art and beauty\"\n  \u251c\u2500\u2500 bigfive:Emotionality\n  \u2502   rdfs:comment \"Awareness of own emotions\"\n  \u251c\u2500\u2500 bigfive:Adventurousness\n  \u2502   rdfs:comment \"Willingness to try new experiences\"\n  \u251c\u2500\u2500 bigfive:Intellect\n  \u2502   rdfs:comment \"Interest in abstract ideas\"\n  \u2514\u2500\u2500 bigfive:Liberalism\n      rdfs:comment \"Readiness to challenge authority and tradition\"\n\nbigfive:Openness_Characteristics\n  bigfive:highScore [\n    \"Creative ",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_20",
+    "text": "comment \"Interest in abstract ideas\"\n  \u2514\u2500\u2500 bigfive:Liberalism\n      rdfs:comment \"Readiness to challenge authority and tradition\"\n\nbigfive:Openness_Characteristics\n  bigfive:highScore [\n    \"Creative and curious\"\n    \"Prefers novelty and variety\"\n    \"Intellectually curious\"\n    \"Appreciates art and beauty\"\n    \"Open to new ideas\"\n  ] ;\n  bigfive:lowScore [\n    \"Practical and conventional\"\n    \"Prefers routine and familiar\"\n    \"Down-to-earth\"\n    \"Resistant to change\"\n    \"Traditional values\"\n  ] .\n```\n\n### 2.4 Conscientiousness\n\n```turtle\nbigfive:Conscientiousness a bigfive:BigFiveFactor ;\n  rdfs:label \"Conscientiousness\" ;\n  rdfs:comment \"Organization, responsibility, self-control\" .\n\nbigfive:Conscientiousness_Facets\n  \u251c\u2500\u2500 bigfive:SelfEfficacy\n  \u2502   rdfs:comment \"Confidence in ability to accomplish tasks\"\n  \u251c\u2500\u2500 bigfive:Orderliness\n  \u2502   rdfs:comment \"Organizational skills and neatness\"\n  \u251c\u2500\u2500 bigfive:Dutifulness\n  \u2502   rdfs:comment \"Adherence to obligations and rules\"\n  \u251c\u2500\u2500 bigfive:Ac",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_21",
+    "text": "o accomplish tasks\"\n  \u251c\u2500\u2500 bigfive:Orderliness\n  \u2502   rdfs:comment \"Organizational skills and neatness\"\n  \u251c\u2500\u2500 bigfive:Dutifulness\n  \u2502   rdfs:comment \"Adherence to obligations and rules\"\n  \u251c\u2500\u2500 bigfive:AchievementStriving\n  \u2502   rdfs:comment \"Drive to accomplish and succeed\"\n  \u251c\u2500\u2500 bigfive:SelfDiscipline\n  \u2502   rdfs:comment \"Ability to complete tasks despite distractions\"\n  \u2514\u2500\u2500 bigfive:Cautiousness\n      rdfs:comment \"Tendency to think carefully before acting\"\n\nbigfive:Conscientiousness_Characteristics\n  bigfive:highScore [\n    \"Organized and responsible\"\n    \"Reliable and dependable\"\n    \"Goal-directed\"\n    \"Plans ahead\"\n    \"Self-disciplined\"\n  ] ;\n  bigfive:lowScore [\n    \"Disorganized and spontaneous\"\n    \"Less reliable\"\n    \"Flexible with goals\"\n    \"Impulsive\"\n    \"Easily distracted\"\n  ] .\n```\n\n### 2.5 Extraversion\n\n```turtle\nbigfive:Extraversion a bigfive:BigFiveFactor ;\n  rdfs:label \"Extraversion\" ;\n  rdfs:comment \"Sociability, assertiveness, energy level\" .\n\nbigfive:Extraversion_Face",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_22",
+    "text": "```\n\n### 2.5 Extraversion\n\n```turtle\nbigfive:Extraversion a bigfive:BigFiveFactor ;\n  rdfs:label \"Extraversion\" ;\n  rdfs:comment \"Sociability, assertiveness, energy level\" .\n\nbigfive:Extraversion_Facets\n  \u251c\u2500\u2500 bigfive:Friendliness\n  \u2502   rdfs:comment \"Warmth towards others\"\n  \u251c\u2500\u2500 bigfive:Gregariousness\n  \u2502   rdfs:comment \"Preference for company of others\"\n  \u251c\u2500\u2500 bigfive:Assertiveness\n  \u2502   rdfs:comment \"Tendency to take charge and speak up\"\n  \u251c\u2500\u2500 bigfive:ActivityLevel\n  \u2502   rdfs:comment \"Pace and energy of activity\"\n  \u251c\u2500\u2500 bigfive:ExcitementSeeking\n  \u2502   rdfs:comment \"Need for stimulation and thrills\"\n  \u2514\u2500\u2500 bigfive:Cheerfulness\n      rdfs:comment \"Tendency towards positive emotions\"\n\nbigfive:Extraversion_Characteristics\n  bigfive:highScore [\n    \"Sociable and outgoing\"\n    \"Energetic and active\"\n    \"Assertive\"\n    \"Enjoys attention\"\n    \"Seeks excitement\"\n  ] ;\n  bigfive:lowScore [\n    \"Reserved and quiet\"\n    \"Lower energy\"\n    \"Less assertive\"\n    \"Prefers solitude\"\n    \"Cautious\"\n  ] .",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_23",
+    "text": "e\"\n    \"Assertive\"\n    \"Enjoys attention\"\n    \"Seeks excitement\"\n  ] ;\n  bigfive:lowScore [\n    \"Reserved and quiet\"\n    \"Lower energy\"\n    \"Less assertive\"\n    \"Prefers solitude\"\n    \"Cautious\"\n  ] .\n```\n\n### 2.6 Agreeableness\n\n```turtle\nbigfive:Agreeableness a bigfive:BigFiveFactor ;\n  rdfs:label \"Agreeableness\" ;\n  rdfs:comment \"Compassion, cooperation, trust in others\" .\n\nbigfive:Agreeableness_Facets\n  \u251c\u2500\u2500 bigfive:Trust\n  \u2502   rdfs:comment \"Belief in honesty of others\"\n  \u251c\u2500\u2500 bigfive:Morality\n  \u2502   rdfs:comment \"Straightforwardness and honesty\"\n  \u251c\u2500\u2500 bigfive:Altruism\n  \u2502   rdfs:comment \"Concern for welfare of others\"\n  \u251c\u2500\u2500 bigfive:Cooperation\n  \u2502   rdfs:comment \"Preference for collaboration over competition\"\n  \u251c\u2500\u2500 bigfive:Modesty\n  \u2502   rdfs:comment \"Humility and lack of arrogance\"\n  \u2514\u2500\u2500 bigfive:Sympathy\n      rdfs:comment \"Empathy and concern for others' distress\"\n\nbigfive:Agreeableness_Characteristics\n  bigfive:highScore [\n    \"Compassionate and kind\"\n    \"Cooperative\"\n    \"Trusting",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_24",
+    "text": "bigfive:Sympathy\n      rdfs:comment \"Empathy and concern for others' distress\"\n\nbigfive:Agreeableness_Characteristics\n  bigfive:highScore [\n    \"Compassionate and kind\"\n    \"Cooperative\"\n    \"Trusting of others\"\n    \"Helpful and generous\"\n    \"Conflict-averse\"\n  ] ;\n  bigfive:lowScore [\n    \"Competitive and skeptical\"\n    \"Less concerned with others\"\n    \"Suspicious\"\n    \"Less cooperative\"\n    \"Direct and blunt\"\n  ] .\n```\n\n### 2.7 Neuroticism (Emotional Stability)\n\n```turtle\nbigfive:Neuroticism a bigfive:BigFiveFactor ;\n  rdfs:label \"Neuroticism\" ;\n  rdfs:comment \"Emotional instability, tendency towards negative emotions\" ;\n  owl:inverseOf bigfive:EmotionalStability .\n\nbigfive:Neuroticism_Facets\n  \u251c\u2500\u2500 bigfive:Anxiety\n  \u2502   rdfs:comment \"Worry and nervousness\"\n  \u251c\u2500\u2500 bigfive:Anger\n  \u2502   rdfs:comment \"Tendency to feel angry and irritable\"\n  \u251c\u2500\u2500 bigfive:Depression\n  \u2502   rdfs:comment \"Tendency towards sadness and hopelessness\"\n  \u251c\u2500\u2500 bigfive:SelfConsciousness\n  \u2502   rdfs:comment \"Sensitivity ",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_25",
+    "text": ":comment \"Tendency to feel angry and irritable\"\n  \u251c\u2500\u2500 bigfive:Depression\n  \u2502   rdfs:comment \"Tendency towards sadness and hopelessness\"\n  \u251c\u2500\u2500 bigfive:SelfConsciousness\n  \u2502   rdfs:comment \"Sensitivity to embarrassment\"\n  \u251c\u2500\u2500 bigfive:Immoderation\n  \u2502   rdfs:comment \"Difficulty resisting impulses\"\n  \u2514\u2500\u2500 bigfive:Vulnerability\n      rdfs:comment \"Susceptibility to stress\"\n\nbigfive:Neuroticism_Characteristics\n  bigfive:highScore [\n    \"Emotionally reactive\"\n    \"Prone to anxiety and worry\"\n    \"Mood swings\"\n    \"Sensitive to stress\"\n    \"Self-conscious\"\n  ] ;\n  bigfive:lowScore [\n    \"Emotionally stable\"\n    \"Calm and resilient\"\n    \"Even-tempered\"\n    \"Handles stress well\"\n    \"Confident\"\n  ] .\n```\n\n### 2.8 Big Five Threat Actor Profiles\n\n#### Nation-State APT Profile\n```turtle\n:ThreatActor_APT_BigFive_Profile a bigfive:PersonalityProfile ;\n  cyber:threatActorID \"APT33\" ;\n\n  # Big Five scores (0-100 scale)\n  bigfive:opennessScore \"75\"^^xsd:float ;\n  bigfive:conscientiousnessScore \"85\"^^xsd:",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_26",
+    "text": "_BigFive_Profile a bigfive:PersonalityProfile ;\n  cyber:threatActorID \"APT33\" ;\n\n  # Big Five scores (0-100 scale)\n  bigfive:opennessScore \"75\"^^xsd:float ;\n  bigfive:conscientiousnessScore \"85\"^^xsd:float ;\n  bigfive:extraversionScore \"45\"^^xsd:float ;\n  bigfive:agreeablenessScore \"30\"^^xsd:float ;\n  bigfive:neuroticismScore \"40\"^^xsd:float ;\n\n  # Interpretation\n  bigfive:profile [\n    bigfive:openness \"High - Intellectually curious, creative problem-solving\" ;\n    bigfive:conscientiousness \"Very High - Methodical, persistent, goal-oriented\" ;\n    bigfive:extraversion \"Moderate - Mix of independent work and coordination\" ;\n    bigfive:agreeableness \"Low - Competitive, willing to harm adversaries\" ;\n    bigfive:neuroticism \"Moderate - Some stress but generally stable\"\n  ] ;\n\n  # Behavioral predictions\n  bigfive:predictedBehavior [\n    \"Highly organized and persistent campaigns\"\n    \"Innovative and adaptive tactics\"\n    \"Disciplined operational security\"\n    \"Low empathy for victims\"\n  ",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_27",
+    "text": " predictions\n  bigfive:predictedBehavior [\n    \"Highly organized and persistent campaigns\"\n    \"Innovative and adaptive tactics\"\n    \"Disciplined operational security\"\n    \"Low empathy for victims\"\n    \"Mission-focused despite setbacks\"\n  ] .\n```\n\n#### Insider Threat Profile\n```turtle\n:InsiderThreat_BigFive_Profile a bigfive:PersonalityProfile ;\n  cyber:threatType \"Insider Threat\" ;\n\n  # Big Five scores\n  bigfive:opennessScore \"60\"^^xsd:float ;\n  bigfive:conscientiousnessScore \"40\"^^xsd:float ;\n  bigfive:extraversionScore \"35\"^^xsd:float ;\n  bigfive:agreeablenessScore \"35\"^^xsd:float ;\n  bigfive:neuroticismScore \"70\"^^xsd:float ;\n\n  # Interpretation\n  bigfive:profile [\n    bigfive:openness \"Moderate - Some creativity in methods\" ;\n    bigfive:conscientiousness \"Low - Disorganized, impulsive actions\" ;\n    bigfive:extraversion \"Low - Isolated, prefers working alone\" ;\n    bigfive:agreeableness \"Low - Resentful, low trust in organization\" ;\n    bigfive:neuroticism \"High - Emotionally rea",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_28",
+    "text": "e actions\" ;\n    bigfive:extraversion \"Low - Isolated, prefers working alone\" ;\n    bigfive:agreeableness \"Low - Resentful, low trust in organization\" ;\n    bigfive:neuroticism \"High - Emotionally reactive, sensitive to perceived slights\"\n  ] ;\n\n  # Risk indicators\n  bigfive:riskIndicators [\n    \"Low conscientiousness + high neuroticism = impulsive risky behavior\"\n    \"Low agreeableness = willing to harm organization\"\n    \"Low extraversion = social isolation, less peer monitoring\"\n    \"High emotional reactivity to organizational events\"\n  ] .\n```\n\n#### Hacktivist Profile\n```turtle\n:Hacktivist_BigFive_Profile a bigfive:PersonalityProfile ;\n  cyber:threatType \"Hacktivist\" ;\n\n  # Big Five scores\n  bigfive:opennessScore \"85\"^^xsd:float ;\n  bigfive:conscientiousnessScore \"55\"^^xsd:float ;\n  bigfive:extraversionScore \"65\"^^xsd:float ;\n  bigfive:agreeablenessScore \"60\"^^xsd:float ;\n  bigfive:neuroticismScore \"50\"^^xsd:float ;\n\n  # Interpretation\n  bigfive:profile [\n    bigfive:openness \"Very ",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_29",
+    "text": "five:extraversionScore \"65\"^^xsd:float ;\n  bigfive:agreeablenessScore \"60\"^^xsd:float ;\n  bigfive:neuroticismScore \"50\"^^xsd:float ;\n\n  # Interpretation\n  bigfive:profile [\n    bigfive:openness \"Very High - Challenges status quo, open to unconventional methods\" ;\n    bigfive:conscientiousness \"Moderate - Some planning but can be impulsive for cause\" ;\n    bigfive:extraversion \"Moderate-High - Seeks collective action and recognition\" ;\n    bigfive:agreeableness \"Moderate - Compassionate towards cause but hostile to opponents\" ;\n    bigfive:neuroticism \"Moderate - Emotionally invested but generally stable\"\n  ] ;\n\n  # Behavioral predictions\n  bigfive:predictedBehavior [\n    \"Highly ideologically motivated\"\n    \"Creative and unconventional tactics\"\n    \"Seeks publicity and collective recognition\"\n    \"Selective empathy based on ideology\"\n    \"Willing to take risks for cause\"\n  ] .\n```\n\n## 3. Dark Triad\n\n### 3.1 Overview\n\n**Source**: Personality psychology research on malevolent traits\n**Co",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_30",
+    "text": "on\"\n    \"Selective empathy based on ideology\"\n    \"Willing to take risks for cause\"\n  ] .\n```\n\n## 3. Dark Triad\n\n### 3.1 Overview\n\n**Source**: Personality psychology research on malevolent traits\n**Components**: Narcissism, Machiavellianism, Psychopathy\n**Application**: Understanding antisocial and exploitative behavior\n\n### 3.2 Dark Triad Ontology\n\n```turtle\ndark:DarkTriadTrait a owl:Class ;\n  rdfs:label \"Dark Triad Trait\" ;\n  rdfs:comment \"Malevolent personality trait\" .\n\ndark:DarkTriadProfile a owl:Class ;\n  rdfs:label \"Dark Triad Profile\" ;\n  rdfs:comment \"Assessment of narcissism, Machiavellianism, psychopathy\" .\n```\n\n### 3.3 Narcissism\n\n```turtle\ndark:Narcissism a dark:DarkTriadTrait ;\n  rdfs:label \"Narcissism\" ;\n  rdfs:comment \"Grandiosity, entitlement, need for admiration\" .\n\ndark:Narcissism_Characteristics\n  \u251c\u2500\u2500 dark:Grandiosity\n  \u2502   rdfs:comment \"Inflated sense of self-importance\"\n  \u251c\u2500\u2500 dark:Entitlement\n  \u2502   rdfs:comment \"Belief in deserving special treatment\"\n  \u251c\u2500\u2500 dark:Ne",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_31",
+    "text": "Narcissism_Characteristics\n  \u251c\u2500\u2500 dark:Grandiosity\n  \u2502   rdfs:comment \"Inflated sense of self-importance\"\n  \u251c\u2500\u2500 dark:Entitlement\n  \u2502   rdfs:comment \"Belief in deserving special treatment\"\n  \u251c\u2500\u2500 dark:NeedForAdmiration\n  \u2502   rdfs:comment \"Constant need for praise and attention\"\n  \u251c\u2500\u2500 dark:LackOfEmpathy\n  \u2502   rdfs:comment \"Inability to recognize others' feelings\"\n  \u251c\u2500\u2500 dark:Arrogance\n  \u2502   rdfs:comment \"Haughty and superior attitude\"\n  \u2514\u2500\u2500 dark:ExploitativeRelationships\n      rdfs:comment \"Uses others for self-gain\"\n\ndark:Narcissism_Subtypes\n  \u251c\u2500\u2500 dark:GrandioseNarcissism\n  \u2502   dark:characteristic \"Overt arrogance, dominance-seeking\"\n  \u2514\u2500\u2500 dark:VulnerableNarcissism\n      dark:characteristic \"Covert fragility, defensive grandiosity\"\n\n# Cyber application\n:Narcissistic_Hacker_Profile\n  dark:narcissismScore \"High\" ;\n  dark:motivations [\n    \"Recognition and fame\"\n    \"Proving superiority\"\n    \"Gaining admiration\"\n    \"Building reputation\"\n  ] ;\n  dark:behavioralIndicators [\n    \"Bragging about",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_32",
+    "text": "ssismScore \"High\" ;\n  dark:motivations [\n    \"Recognition and fame\"\n    \"Proving superiority\"\n    \"Gaining admiration\"\n    \"Building reputation\"\n  ] ;\n  dark:behavioralIndicators [\n    \"Bragging about exploits\"\n    \"Leaving signatures/tags\"\n    \"Seeking media attention\"\n    \"Competitive with peers\"\n    \"Sensitive to criticism\"\n  ] .\n```\n\n### 3.4 Machiavellianism\n\n```turtle\ndark:Machiavellianism a dark:DarkTriadTrait ;\n  rdfs:label \"Machiavellianism\" ;\n  rdfs:comment \"Manipulative, strategic, exploitative for personal gain\" .\n\ndark:Machiavellianism_Characteristics\n  \u251c\u2500\u2500 dark:Manipulativeness\n  \u2502   rdfs:comment \"Strategic manipulation of others\"\n  \u251c\u2500\u2500 dark:CynicalWorldview\n  \u2502   rdfs:comment \"Belief that others are selfish and dishonest\"\n  \u251c\u2500\u2500 dark:EmotionalDetachment\n  \u2502   rdfs:comment \"Lack of emotional involvement\"\n  \u251c\u2500\u2500 dark:StrategicThinking\n  \u2502   rdfs:comment \"Long-term planning for personal gain\"\n  \u251c\u2500\u2500 dark:ImmoralityJustified\n  \u2502   rdfs:comment \"Ends justify means\"\n  \u2514\u2500\u2500 dark:Soc",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_33",
+    "text": "k of emotional involvement\"\n  \u251c\u2500\u2500 dark:StrategicThinking\n  \u2502   rdfs:comment \"Long-term planning for personal gain\"\n  \u251c\u2500\u2500 dark:ImmoralityJustified\n  \u2502   rdfs:comment \"Ends justify means\"\n  \u2514\u2500\u2500 dark:SocialCharm\n      rdfs:comment \"Can be charming when strategically useful\"\n\n# Cyber application\n:Machiavellian_Threat_Actor\n  dark:machiavellianismScore \"High\" ;\n  dark:motivations [\n    \"Financial gain\"\n    \"Strategic advantage\"\n    \"Power and control\"\n    \"Exploitation of vulnerabilities\"\n  ] ;\n  dark:behavioralIndicators [\n    \"Sophisticated social engineering\"\n    \"Long-term persistent campaigns\"\n    \"Strategic target selection\"\n    \"Exploitation without remorse\"\n    \"Calculated risk-taking\"\n  ] .\n```\n\n### 3.5 Psychopathy\n\n```turtle\ndark:Psychopathy a dark:DarkTriadTrait ;\n  rdfs:label \"Psychopathy\" ;\n  rdfs:comment \"Callousness, impulsivity, antisocial behavior\" .\n\ndark:Psychopathy_Facets\n  \u251c\u2500\u2500 dark:PrimaryPsychopathy\n  \u2502   \u251c\u2500\u2500 dark:SuperficialCharm\n  \u2502   \u251c\u2500\u2500 dark:Fearlessness\n  \u2502   \u251c\u2500\u2500 ",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_34",
+    "text": "opathy\" ;\n  rdfs:comment \"Callousness, impulsivity, antisocial behavior\" .\n\ndark:Psychopathy_Facets\n  \u251c\u2500\u2500 dark:PrimaryPsychopathy\n  \u2502   \u251c\u2500\u2500 dark:SuperficialCharm\n  \u2502   \u251c\u2500\u2500 dark:Fearlessness\n  \u2502   \u251c\u2500\u2500 dark:LowAnxiety\n  \u2502   \u251c\u2500\u2500 dark:EmotionalShallowness\n  \u2502   \u2514\u2500\u2500 dark:CallousLackOfEmpathy\n  \u2514\u2500\u2500 dark:SecondaryPsychopathy\n      \u251c\u2500\u2500 dark:Impulsivity\n      \u251c\u2500\u2500 dark:HighReactivity\n      \u251c\u2500\u2500 dark:Aggression\n      \u251c\u2500\u2500 dark:IrresponsibleBehavior\n      \u2514\u2500\u2500 dark:AntisocialBehavior\n\ndark:Psychopathy_Characteristics\n  dark:callousness \"Lack of empathy and remorse\" ;\n  dark:impulsivity \"Reckless decision-making\" ;\n  dark:thrillSeeking \"Need for excitement and risk\" ;\n  dark:manipulativeness \"Exploitation without guilt\" ;\n  dark:superficialCharm \"Can appear engaging initially\" .\n\n# Cyber application\n:Psychopathic_Cybercriminal\n  dark:psychopathyScore \"High\" ;\n  dark:motivations [\n    \"Thrill and excitement\"\n    \"Financial gain without remorse\"\n    \"Harming victims without empathy\"\n    \"Risk-taking for",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_35",
+    "text": "hopathic_Cybercriminal\n  dark:psychopathyScore \"High\" ;\n  dark:motivations [\n    \"Thrill and excitement\"\n    \"Financial gain without remorse\"\n    \"Harming victims without empathy\"\n    \"Risk-taking for excitement\"\n  ] ;\n  dark:behavioralIndicators [\n    \"Escalating attacks without concern for harm\"\n    \"Impulsive operational security breaches\"\n    \"Lack of remorse for victims\"\n    \"Thrill-seeking behavior\"\n    \"Aggressive tactics\"\n  ] .\n```\n\n### 3.6 Dark Triad Threat Actor Profiles\n\n#### Ransomware Operator Profile\n```turtle\n:Ransomware_Operator_DarkTriad a dark:DarkTriadProfile ;\n  cyber:threatType \"Ransomware Operator\" ;\n\n  # Dark Triad scores (0-100 scale)\n  dark:narcissismScore \"45\"^^xsd:float ;\n  dark:machiavellianismScore \"85\"^^xsd:float ;\n  dark:psychopathyScore \"55\"^^xsd:float ;\n\n  # Dominant trait\n  dark:dominantTrait dark:Machiavellianism ;\n\n  # Interpretation\n  dark:profile [\n    dark:narcissism \"Moderate - Some need for recognition but not primary\" ;\n    dark:machiavellianis",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_36",
+    "text": "# Dominant trait\n  dark:dominantTrait dark:Machiavellianism ;\n\n  # Interpretation\n  dark:profile [\n    dark:narcissism \"Moderate - Some need for recognition but not primary\" ;\n    dark:machiavellianism \"Very High - Strategic, calculating, profit-focused\" ;\n    dark:psychopathy \"Moderate-High - Callous to victims, impulsive risk-taking\"\n  ] ;\n\n  # Behavioral predictions\n  dark:predictedBehavior [\n    \"Highly strategic target selection\"\n    \"Sophisticated social engineering\"\n    \"Calculated ransom demands\"\n    \"No empathy for victim impact\"\n    \"Escalating demands if successful\"\n    \"May take unnecessary risks for larger payoff\"\n  ] .\n```\n\n#### Script Kiddie / Low-Skill Attacker\n```turtle\n:Script_Kiddie_DarkTriad a dark:DarkTriadProfile ;\n  cyber:threatType \"Script Kiddie\" ;\n\n  # Dark Triad scores\n  dark:narcissismScore \"75\"^^xsd:float ;\n  dark:machiavellianismScore \"35\"^^xsd:float ;\n  dark:psychopathyScore \"60\"^^xsd:float ;\n\n  # Dominant trait\n  dark:dominantTrait dark:Narcissism ;\n\n  #",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_37",
+    "text": "scores\n  dark:narcissismScore \"75\"^^xsd:float ;\n  dark:machiavellianismScore \"35\"^^xsd:float ;\n  dark:psychopathyScore \"60\"^^xsd:float ;\n\n  # Dominant trait\n  dark:dominantTrait dark:Narcissism ;\n\n  # Interpretation\n  dark:profile [\n    dark:narcissism \"High - Seeks recognition, wants to be seen as elite\" ;\n    dark:machiavellianism \"Low - Lacks strategic planning\" ;\n    dark:psychopathy \"Moderate-High - Impulsive, thrill-seeking, callous\"\n  ] ;\n\n  # Behavioral predictions\n  dark:predictedBehavior [\n    \"Attention-seeking attacks\"\n    \"Bragging about exploits\"\n    \"Impulsive and poorly planned\"\n    \"Uses pre-made tools\"\n    \"Leaves obvious traces\"\n    \"Escalates for recognition\"\n  ] .\n```\n\n## 4. Integration with Threat Intelligence\n\n### 4.1 Combined Psychometric Profile\n\n```turtle\n:Comprehensive_Threat_Actor_Profile a owl:Class ;\n  rdfs:subClassOf [\n    :ThreatActor_Lacanian_Profile\n    bigfive:PersonalityProfile\n    dark:DarkTriadProfile\n  ] ;\n  rdfs:label \"Comprehensive Psychometric ",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_38",
+    "text": "ensive_Threat_Actor_Profile a owl:Class ;\n  rdfs:subClassOf [\n    :ThreatActor_Lacanian_Profile\n    bigfive:PersonalityProfile\n    dark:DarkTriadProfile\n  ] ;\n  rdfs:label \"Comprehensive Psychometric Threat Actor Profile\" .\n\n:APT_Comprehensive_Profile a :Comprehensive_Threat_Actor_Profile ;\n  # Identity\n  cyber:threatActorID \"APT33\" ;\n  cyber:attribution \"Iran\" ;\n  cyber:firstSeen \"2013\" ;\n\n  # Lacanian analysis\n  lacan:primaryDesire :Desire_Geopolitical_Disruption ;\n  lacan:fundamentalFantasy \"National power through cyber disruption\" ;\n  lacan:jouissance :Jouissance_Technical_Mastery ;\n  lacan:subjectPosition lacan:UniversityPosition ;\n\n  # Big Five\n  bigfive:opennessScore \"75\"^^xsd:float ;\n  bigfive:conscientiousnessScore \"85\"^^xsd:float ;\n  bigfive:extraversionScore \"45\"^^xsd:float ;\n  bigfive:agreeablenessScore \"30\"^^xsd:float ;\n  bigfive:neuroticismScore \"40\"^^xsd:float ;\n\n  # Dark Triad\n  dark:narcissismScore \"40\"^^xsd:float ;\n  dark:machiavellianismScore \"75\"^^xsd:float ;\n  dark",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_39",
+    "text": "bigfive:agreeablenessScore \"30\"^^xsd:float ;\n  bigfive:neuroticismScore \"40\"^^xsd:float ;\n\n  # Dark Triad\n  dark:narcissismScore \"40\"^^xsd:float ;\n  dark:machiavellianismScore \"75\"^^xsd:float ;\n  dark:psychopathyScore \"45\"^^xsd:float ;\n\n  # Synthesis\n  :profileSummary [\n    \"Highly methodical and persistent (high conscientiousness)\"\n    \"Strategic and calculating (high Machiavellianism)\"\n    \"Intellectually curious and adaptive (high openness)\"\n    \"Motivated by national mission and technical mastery (Lacanian desire/jouissance)\"\n    \"Low empathy for adversaries (low agreeableness, moderate psychopathy)\"\n    \"Emotionally stable enough for long campaigns (moderate neuroticism)\"\n  ] ;\n\n  # Behavioral predictions\n  :behavioralPrediction [\n    attack:sophisticatedCampaigns true ;\n    attack:persistentTargeting true ;\n    attack:adaptiveTactics true ;\n    attack:operationalSecurityDiscipline \"High\" ;\n    attack:likelyToEscalate \"If mission requires\" ;\n    attack:predictabilityLevel \"Moderat",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_40",
+    "text": "rsistentTargeting true ;\n    attack:adaptiveTactics true ;\n    attack:operationalSecurityDiscipline \"High\" ;\n    attack:likelyToEscalate \"If mission requires\" ;\n    attack:predictabilityLevel \"Moderate - follows mission objectives\"\n  ] .\n```\n\n### 4.2 Psychometric Indicators in STIX\n\n```turtle\n# Extending STIX with psychometric profiling\n\n:STIX_ThreatActor_Psychometric a stix:ThreatActor ;\n  stix:name \"TEMP.Veles\" ;\n  stix:sophistication \"expert\" ;\n\n  # Standard STIX properties\n  stix:threatActorTypes \"nation-state\" ;\n  stix:goals \"Sabotage\" ;\n  stix:resource_level \"government\" ;\n\n  # Extended psychometric properties\n  :psychometricProfile [\n    # Lacanian\n    lacan:primaryMotivation \"National directive with technical enjoyment\" ;\n    lacan:fundamentalFantasy \"Proving superiority through safety system compromise\" ;\n    lacan:jouissanceDimension \"Transgressive jouissance in violating safety boundaries\" ;\n\n    # Big Five\n    bigfive:conscientiousness \"Very High\" ;\n    bigfive:openness \"Hi",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 40,
+      "start_char": 32000,
+      "end_char": 33000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_41",
+    "text": "fety system compromise\" ;\n    lacan:jouissanceDimension \"Transgressive jouissance in violating safety boundaries\" ;\n\n    # Big Five\n    bigfive:conscientiousness \"Very High\" ;\n    bigfive:openness \"High\" ;\n    bigfive:agreeableness \"Very Low\" ;\n\n    # Dark Triad\n    dark:machiavellianism \"High\" ;\n    dark:psychopathy \"High - callousness towards safety implications\" ;\n\n    # Behavioral implications\n    :behavioralImplications [\n      \"Extremely dangerous due to safety system targeting\"\n      \"High sophistication and patience\"\n      \"No moral constraints regarding harm\"\n      \"Strategic and methodical approach\"\n    ]\n  ] .\n```\n\n## 5. Summary and Integration Recommendations\n\n### 5.1 Framework Strengths\n\n**Lacanian Psychoanalysis:**\n- Strengths: Deep motivational analysis, desire structures, unconscious drives\n- Application: Understanding \"why\" behind threat actor behavior\n- Integration Priority: HIGH for motivation analysis\n\n**Big Five:**\n- Strengths: Structured, empirically validated, pr",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 41,
+      "start_char": 32800,
+      "end_char": 33800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_42",
+    "text": "nconscious drives\n- Application: Understanding \"why\" behind threat actor behavior\n- Integration Priority: HIGH for motivation analysis\n\n**Big Five:**\n- Strengths: Structured, empirically validated, predictive\n- Application: Behavioral prediction, insider threat detection\n- Integration Priority: HIGH for profiling\n\n**Dark Triad:**\n- Strengths: Malevolent trait focus, cybercrime correlation\n- Application: Risk assessment, threat actor categorization\n- Integration Priority: HIGH for adversary analysis\n\n### 5.2 Key Integration Points\n\n1. **Lacanian Desire \u2192 ATT&CK Motivations**: Map desire structures to threat actor goals\n2. **Big Five \u2192 Behavioral Prediction**: Predict tactics/techniques from personality\n3. **Dark Triad \u2192 Risk Scoring**: Assess threat severity from malevolent traits\n4. **Combined Profile \u2192 Attribution Confidence**: Multiple frameworks increase confidence\n5. **Psychometric \u2192 STIX Enrichment**: Extend threat intelligence with psychological depth\n\n### 5.3 AEON-DT Integration",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 42,
+      "start_char": 33600,
+      "end_char": 34600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_43",
+    "text": "ined Profile \u2192 Attribution Confidence**: Multiple frameworks increase confidence\n5. **Psychometric \u2192 STIX Enrichment**: Extend threat intelligence with psychological depth\n\n### 5.3 AEON-DT Integration Strategy\n\n**Layer 1: Motivation and Desire (Lacanian)**\n- Fundamental fantasy structures\n- Jouissance dimensions\n- Relation to symbolic authority\n\n**Layer 2: Personality Structure (Big Five)**\n- Trait scores and profiles\n- Behavioral predictions\n- Team composition analysis\n\n**Layer 3: Malevolent Traits (Dark Triad)**\n- Narcissism, Machiavellianism, Psychopathy scores\n- Risk indicators\n- Escalation potential\n\n**Layer 4: Threat Actor Integration**\n- Map to MITRE ATT&CK groups\n- Enrich STIX threat actor objects\n- Connect to UCO investigation profiles\n\n**Layer 5: Predictive Analytics**\n- Behavioral prediction models\n- Insider threat detection\n- Attribution confidence scoring\n\n## Version History\n\n- v1.0.0 (2025-10-30): Initial psychometric research findings\n\n## References\n\n1. Lacan, J. \"\u00c9crits",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 43,
+      "start_char": 34400,
+      "end_char": 35400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md_chunk_44",
+    "text": "al prediction models\n- Insider threat detection\n- Attribution confidence scoring\n\n## Version History\n\n- v1.0.0 (2025-10-30): Initial psychometric research findings\n\n## References\n\n1. Lacan, J. \"\u00c9crits\" and \"The Four Fundamental Concepts of Psychoanalysis\"\n2. Costa, P. T., & McCrae, R. R. \"Revised NEO Personality Inventory (NEO-PI-R)\"\n3. Paulhus, D. L., & Williams, K. M. \"The Dark Triad of personality\"\n4. Cyber psychological profiling research literature\n5. Forensic psychology applications to cybercrime\n\n---\n\n*Document Complete - Psychometric Frameworks for Threat Actor Profiling Analyzed*\n",
+    "metadata": {
+      "file_name": "23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/23_RESEARCH_FINDINGS_PSYCHOMETRIC.md",
+      "file_size": 35796,
+      "indexed_at": "2025-10-31T00:59:30.255483",
+      "chunk_id": 44,
+      "start_char": 35200,
+      "end_char": 36200,
+      "chunk_size": 596
+    }
+  }
+]

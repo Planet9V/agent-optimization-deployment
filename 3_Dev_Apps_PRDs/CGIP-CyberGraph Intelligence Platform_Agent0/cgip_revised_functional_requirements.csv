@@ -1,0 +1,31 @@
+Requirement ID,Category,Requirement,Priority,Phase,Acceptance Criteria
+FR-001,Multi-Tenancy,Multi-tenant architecture with data segregation,Critical,Phase 1,"Row-level security enforced, tenant data isolated in tests"
+FR-002,Multi-Tenancy,Per-client dashboard with role-based views,Critical,Phase 7,"Client users only see their org data, configurable views"
+FR-003,Multi-Tenancy,Shared knowledge base accessible across clients,High,Phase 5,Common CVE/MITRE data accessible across all tenants
+FR-004,Data Ingestion,Automated CVE/CWE/CAPEC/MITRE ATT&CK ingestion,Critical,Phase 4,"Daily sync with NVD/MITRE, <6hr lag, validation tests"
+FR-005,Data Ingestion,IEC 62443 standards database integration,Critical,Phase 4,IEC 62443 parts 1-4 requirements and controls loaded
+FR-006,Data Ingestion,ISO 57000 series rail standards integration,High,Phase 4,ISO 57000 series standards mapped to security controls
+FR-007,Data Ingestion,Client asset database import and sync,Critical,Phase 4,"API connector imports assets, auto-sync on schedule"
+FR-008,Data Ingestion,ICS/SCADA/OT device knowledge extraction,High,Phase 4,Diagram parser extracts ICS topology from PDFs/images
+FR-009,Knowledge Graph,UCO (Unified Cybersecurity Ontology) integration,Critical,Phase 3,UCO classes and properties integrated into SPG schema
+FR-010,Knowledge Graph,Custom ICS ontology with IEC 62443 concepts,Critical,Phase 3,"Custom ICS entities (PLC, SCADA, HMI) with 62443 zones"
+FR-011,IEC 62443 Compliance,IEC 62443 control mapping to client infrastructure,Critical,Phase 5,Control-to-requirement mapping with coverage report
+FR-012,IEC 62443 Compliance,Security Level (SL) gap analysis and reporting,Critical,Phase 6,Gap analysis showing unmet SL requirements by zone
+FR-013,IEC 62443 Compliance,Zone and conduit modeling for ICS,High,Phase 5,Visual zone/conduit editor with security level assignment
+FR-014,ISO 57000 Rail,Rail system security requirements mapping (ISO 57000),High,Phase 5,Rail-specific requirements linked to system components
+FR-015,Penetration Testing,Attack path discovery and visualization,Critical,Phase 6,Shortest path algorithm identifies attack chains
+FR-016,Penetration Testing,Exploit database with CAPEC pattern matching,Critical,Phase 6,CAPEC patterns matched to infrastructure vulnerabilities
+FR-017,Penetration Testing,Penetration test plan generation,High,Phase 7,Template-driven pentest plan with scope and timeline
+FR-018,Agent Zero Integration,Agent Zero API integration for KG access,Critical,Phase 6,REST API allows Agent Zero to query/update KG
+FR-019,Agent Zero Integration,Autonomous attack path selection and execution,Critical,Phase 6,AI selects optimal attack path based on success probability
+FR-020,Threat Modeling,STRIDE threat modeling framework,High,Phase 6,STRIDE categories applied to threat model diagrams
+FR-021,Threat Modeling,Threat scenario simulation with MITRE techniques,High,Phase 6,Simulation runs MITRE techniques against defenses
+FR-022,Risk Assessment,"Multi-factor risk scoring (CVSS, exploitability, criticality)",Critical,Phase 6,"Risk score combines CVSS, ease of exploit, asset value"
+FR-023,Risk Assessment,Risk propagation through infrastructure dependencies,Critical,Phase 6,Graph algorithms calculate downstream impact
+FR-024,Asset Management,Asset-to-vulnerability linking with CPE matching,Critical,Phase 5,CPE matching links assets to applicable CVEs
+FR-025,RAMS Integration,CMMS integration for maintenance data (MTBF/MTTR),High,Phase 4,"CMMS data imported via API, reliability metrics displayed"
+FR-026,Document Generation,IEC 62443 assessment report generation,Critical,Phase 7,Word/PDF reports generated per IEC 62443 templates
+FR-027,Document Generation,ISO 57000 security handover report templates,Critical,Phase 7,ISO 57000 handover docs with evidence artifacts
+FR-028,SOC Integration,Bi-directional SOC integration (alert enrichment),High,Phase 8,"SOC sends alerts, receives enriched context responses"
+FR-029,Crisis Management,Incident response knowledge base and playbooks,High,Phase 8,"IR playbooks retrieved by incident type, linked to KG"
+FR-030,Reasoning & Analytics,Multi-hop reasoning for attack path analysis,Critical,Phase 6,KAG-Solver handles 3+ hop queries in <5s

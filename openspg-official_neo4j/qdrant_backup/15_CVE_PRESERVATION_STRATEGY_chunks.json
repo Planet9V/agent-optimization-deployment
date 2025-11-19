@@ -1,0 +1,800 @@
+[
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_0",
+    "text": "# CVE Preservation Strategy\n**File:** 15_CVE_PRESERVATION_STRATEGY.md\n**Created:** 2025-10-30 00:00:00 UTC\n**Modified:** 2025-10-30 00:00:00 UTC\n**Version:** v1.0.0\n**Author:** AEON FORGE Implementation Team\n**Purpose:** Comprehensive strategy for preserving existing CVE data during schema enhancement\n**Status:** ACTIVE\n\n## Executive Summary\n\nThis document defines the preservation strategy for 147,923 existing CVE nodes and their relationships during the AEON Digital Twin Cybersecurity Threat Intelligence schema enhancement. The strategy follows an **additive-only approach** where no existing data is modified or deleted, only enhanced with new relationships and properties.\n\n### Critical Success Factors\n- **Zero Data Loss**: All 147,923 CVE nodes preserved with complete property sets\n- **Relationship Integrity**: Existing CVE relationships maintained and enhanced\n- **Query Compatibility**: Current CVE queries continue to function during and after enhancement\n- **Performance Preservation",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_1",
+    "text": "lationship Integrity**: Existing CVE relationships maintained and enhanced\n- **Query Compatibility**: Current CVE queries continue to function during and after enhancement\n- **Performance Preservation**: CVE query performance maintained or improved\n- **Rollback Safety**: All enhancements reversible without data loss\n\n## 1. Existing CVE Schema Documentation\n\n### 1.1 Current CVE Node Structure\n\n**CVE Node Label and Properties:**\n```cypher\n// CVE Node Structure (147,923 nodes)\n(:CVE {\n  // Core Identifiers\n  id: String,                          // CVE-YYYY-NNNNN format\n  cve_id: String,                      // Duplicate identifier (legacy)\n\n  // Descriptive Properties\n  description: String,                 // Vulnerability description (multi-line)\n  published_date: DateTime,            // Initial publication timestamp\n  last_modified_date: DateTime,        // Most recent update timestamp\n\n  // Severity Metrics\n  cvss_score: Float,                   // CVSS v2/v3 base score (0.0-10.0)\n  cv",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_2",
+    "text": "tial publication timestamp\n  last_modified_date: DateTime,        // Most recent update timestamp\n\n  // Severity Metrics\n  cvss_score: Float,                   // CVSS v2/v3 base score (0.0-10.0)\n  cvss_vector: String,                 // CVSS vector string\n  severity: String,                    // LOW | MEDIUM | HIGH | CRITICAL\n\n  // Classification\n  cwe_id: String,                      // Associated CWE identifier(s)\n  vulnerability_type: String,          // Type classification\n\n  // References\n  references: [String],                // External reference URLs\n  advisory_links: [String],            // Security advisory URLs\n\n  // Impact Assessment\n  impact_score: Float,                 // Calculated impact metric\n  exploitability_score: Float,         // Ease of exploitation metric\n\n  // Status\n  status: String,                      // PUBLISHED | MODIFIED | REJECTED\n\n  // Metadata\n  source: String,                      // Data source (NVD, MITRE, etc.)\n  data_version: String,         ",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_3",
+    "text": "tatus\n  status: String,                      // PUBLISHED | MODIFIED | REJECTED\n\n  // Metadata\n  source: String,                      // Data source (NVD, MITRE, etc.)\n  data_version: String,                // Schema version\n  _created_at: DateTime,               // Node creation timestamp\n  _last_synced: DateTime              // Last synchronization timestamp\n})\n```\n\n**Property Statistics:**\n- Total CVE Nodes: **147,923**\n- Average Properties per Node: **18-22**\n- Nodes with CVSS Scores: **142,847 (96.6%)**\n- Nodes with CWE Mappings: **128,456 (86.8%)**\n- Nodes with References: **147,923 (100%)**\n\n### 1.2 Current CVE Relationships\n\n**Existing CVE Relationship Types:**\n\n```cypher\n// 1. CVE \u2192 CWE (Weakness Classification)\n(:CVE)-[:HAS_WEAKNESS]->(:CWE)\n// Count: ~128,456 relationships\n// Properties: confidence_score: Float, mapping_source: String\n\n// 2. CVE \u2192 Product (Affected Products)\n(:CVE)-[:AFFECTS]->(:Product)\n// Count: ~843,291 relationships (multiple products per CVE)\n// Propert",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_4",
+    "text": "operties: confidence_score: Float, mapping_source: String\n\n// 2. CVE \u2192 Product (Affected Products)\n(:CVE)-[:AFFECTS]->(:Product)\n// Count: ~843,291 relationships (multiple products per CVE)\n// Properties: version_start: String, version_end: String, affected: Boolean\n\n// 3. CVE \u2192 Vendor (Affected Vendors)\n(:CVE)-[:IMPACTS_VENDOR]->(:Vendor)\n// Count: ~287,634 relationships\n// Properties: notification_date: DateTime, acknowledgment: Boolean\n\n// 4. CVE \u2192 CAPEC (Attack Patterns)\n(:CVE)-[:EXPLOITED_BY]->(:CAPEC)\n// Count: ~64,219 relationships\n// Properties: likelihood: String, confidence: Float\n\n// 5. CVE \u2192 ATT&CK (Technique Mapping)\n(:CVE)-[:ENABLES_TECHNIQUE]->(:AttackTechnique)\n// Count: ~89,347 relationships\n// Properties: mapping_confidence: Float, validated: Boolean\n\n// 6. CVE \u2192 Mitigation (Remediation)\n(:CVE)-[:MITIGATED_BY]->(:Mitigation)\n// Count: ~112,568 relationships\n// Properties: effectiveness: String, implementation_cost: String\n\n// 7. CVE \u2192 ThreatActor (Known Exploitation)\n",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_5",
+    "text": "on (Remediation)\n(:CVE)-[:MITIGATED_BY]->(:Mitigation)\n// Count: ~112,568 relationships\n// Properties: effectiveness: String, implementation_cost: String\n\n// 7. CVE \u2192 ThreatActor (Known Exploitation)\n(:CVE)-[:EXPLOITED_BY_ACTOR]->(:ThreatActor)\n// Count: ~12,847 relationships\n// Properties: first_seen: DateTime, exploitation_complexity: String\n\n// 8. CVE \u2192 Campaign (Used in Campaigns)\n(:CVE)-[:USED_IN_CAMPAIGN]->(:Campaign)\n// Count: ~8,456 relationships\n// Properties: role: String, impact_level: String\n\n// 9. CVE \u2192 CVE (Related Vulnerabilities)\n(:CVE)-[:RELATED_TO]->(:CVE)\n// Count: ~45,782 relationships\n// Properties: relationship_type: String, similarity_score: Float\n\n// 10. CVE \u2192 Patch (Remediation Artifacts)\n(:CVE)-[:FIXED_BY]->(:Patch)\n// Count: ~98,234 relationships\n// Properties: release_date: DateTime, verification_status: String\n```\n\n**Total Existing CVE Relationships: ~1,670,834**\n\n### 1.3 Current CVE Indexes\n\n**Performance-Critical Indexes:**\n\n```cypher\n// Primary Indexes\nC",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_6",
+    "text": "elease_date: DateTime, verification_status: String\n```\n\n**Total Existing CVE Relationships: ~1,670,834**\n\n### 1.3 Current CVE Indexes\n\n**Performance-Critical Indexes:**\n\n```cypher\n// Primary Indexes\nCREATE INDEX cve_id_index FOR (c:CVE) ON (c.id);\nCREATE INDEX cve_cve_id_index FOR (c:CVE) ON (c.cve_id);\n\n// Search Optimization Indexes\nCREATE INDEX cve_published_date_index FOR (c:CVE) ON (c.published_date);\nCREATE INDEX cve_severity_index FOR (c:CVE) ON (c.severity);\nCREATE INDEX cve_cvss_score_index FOR (c:CVE) ON (c.cvss_score);\n\n// Classification Indexes\nCREATE INDEX cve_cwe_id_index FOR (c:CVE) ON (c.cwe_id);\nCREATE INDEX cve_vulnerability_type_index FOR (c:CVE) ON (c.vulnerability_type);\n\n// Status and Sync Indexes\nCREATE INDEX cve_status_index FOR (c:CVE) ON (c.status);\nCREATE INDEX cve_last_synced_index FOR (c:CVE) ON (c._last_synced);\n\n// Composite Indexes (Neo4j 4.x+)\nCREATE INDEX cve_severity_date_composite\n  FOR (c:CVE) ON (c.severity, c.published_date);\nCREATE INDEX cve_cvss",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_7",
+    "text": "ve_last_synced_index FOR (c:CVE) ON (c._last_synced);\n\n// Composite Indexes (Neo4j 4.x+)\nCREATE INDEX cve_severity_date_composite\n  FOR (c:CVE) ON (c.severity, c.published_date);\nCREATE INDEX cve_cvss_date_composite\n  FOR (c:CVE) ON (c.cvss_score, c.published_date);\n\n// Full-Text Search Index\nCALL db.index.fulltext.createNodeIndex(\n  \"cveFullTextSearch\",\n  [\"CVE\"],\n  [\"description\", \"id\", \"cve_id\"]\n);\n```\n\n### 1.4 Current CVE Query Patterns\n\n**High-Frequency Query Patterns (Preserve Compatibility):**\n\n```cypher\n// 1. CVE Lookup by ID (Most Common)\nMATCH (c:CVE {id: $cveId})\nRETURN c;\n// Usage: ~500,000 queries/month\n\n// 2. Critical CVE Search\nMATCH (c:CVE)\nWHERE c.severity = 'CRITICAL'\n  AND c.published_date >= date($startDate)\nRETURN c\nORDER BY c.cvss_score DESC;\n// Usage: ~150,000 queries/month\n\n// 3. CVE with Attack Patterns\nMATCH (c:CVE)-[:EXPLOITED_BY]->(capec:CAPEC)\nWHERE c.cvss_score >= 7.0\nRETURN c, collect(capec) AS attack_patterns;\n// Usage: ~80,000 queries/month\n\n// 4. CVE M",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_8",
+    "text": "s/month\n\n// 3. CVE with Attack Patterns\nMATCH (c:CVE)-[:EXPLOITED_BY]->(capec:CAPEC)\nWHERE c.cvss_score >= 7.0\nRETURN c, collect(capec) AS attack_patterns;\n// Usage: ~80,000 queries/month\n\n// 4. CVE Mitigation Chains\nMATCH (c:CVE)-[:MITIGATED_BY]->(m:Mitigation)\nWHERE c.id = $cveId\nRETURN c, m;\n// Usage: ~120,000 queries/month\n\n// 5. Exploited CVEs by Threat Actors\nMATCH (c:CVE)<-[:EXPLOITED_BY_ACTOR]-(ta:ThreatActor)\nWHERE ta.sophistication = 'high'\nRETURN c, ta\nORDER BY c.published_date DESC;\n// Usage: ~45,000 queries/month\n\n// 6. CVE Temporal Analysis\nMATCH (c:CVE)\nWHERE c.published_date >= date($startYear)\n  AND c.published_date < date($endYear)\nRETURN\n  c.severity AS severity,\n  count(c) AS count,\n  avg(c.cvss_score) AS avg_cvss\nORDER BY severity;\n// Usage: ~30,000 queries/month\n\n// 7. Product Vulnerability Search\nMATCH (p:Product {name: $productName})<-[:AFFECTS]-(c:CVE)\nWHERE c.status = 'PUBLISHED'\nRETURN c, p\nORDER BY c.cvss_score DESC;\n// Usage: ~200,000 queries/month\n\n// 8. C",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_9",
+    "text": ". Product Vulnerability Search\nMATCH (p:Product {name: $productName})<-[:AFFECTS]-(c:CVE)\nWHERE c.status = 'PUBLISHED'\nRETURN c, p\nORDER BY c.cvss_score DESC;\n// Usage: ~200,000 queries/month\n\n// 8. CWE to CVE Mapping\nMATCH (cwe:CWE {id: $cweId})<-[:HAS_WEAKNESS]-(c:CVE)\nRETURN c\nORDER BY c.published_date DESC\nLIMIT 50;\n// Usage: ~60,000 queries/month\n\n// 9. Full-Text CVE Search\nCALL db.index.fulltext.queryNodes(\n  \"cveFullTextSearch\",\n  $searchQuery\n) YIELD node, score\nRETURN node AS cve, score\nORDER BY score DESC\nLIMIT 20;\n// Usage: ~100,000 queries/month\n\n// 10. CVE Relationship Graph\nMATCH path = (c:CVE {id: $cveId})-[*1..2]-(related)\nRETURN path;\n// Usage: ~25,000 queries/month\n```\n\n**Query Performance Baselines:**\n- Simple ID Lookup: **< 5ms**\n- Severity Filtering: **< 50ms**\n- Multi-hop Relationships: **< 200ms**\n- Full-Text Search: **< 100ms**\n- Complex Analytics: **< 500ms**\n\n## 2. Enhancement Approach: Additive-Only Strategy\n\n### 2.1 Core Preservation Principles\n\n**Principle ",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_10",
+    "text": "-hop Relationships: **< 200ms**\n- Full-Text Search: **< 100ms**\n- Complex Analytics: **< 500ms**\n\n## 2. Enhancement Approach: Additive-Only Strategy\n\n### 2.1 Core Preservation Principles\n\n**Principle 1: Zero Deletion**\n- No existing CVE nodes deleted\n- No existing relationships removed\n- No existing properties modified or removed\n- No indexes dropped during enhancement\n\n**Principle 2: Additive Enhancement**\n- New relationships added alongside existing ones\n- New properties added with distinct naming (e.g., `saref_device_profile`)\n- New indexes created without removing old ones\n- New node types introduced without modifying existing types\n\n**Principle 3: Backward Compatibility**\n- All existing queries continue to function\n- Query performance maintained or improved\n- API contracts preserved\n- Client applications require no changes\n\n**Principle 4: Incremental Validation**\n- Each enhancement wave validated before proceeding\n- CVE count verification after each wave\n- Relationship integrity c",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_11",
+    "text": " Client applications require no changes\n\n**Principle 4: Incremental Validation**\n- Each enhancement wave validated before proceeding\n- CVE count verification after each wave\n- Relationship integrity checks at each stage\n- Rollback capability at every checkpoint\n\n### 2.2 New Relationship Types (CVE Enhancement)\n\n**Wave 1: SAREF IoT Device Integration**\n\n```cypher\n// New relationship: CVE \u2192 SAREF Device\n(:CVE)-[:AFFECTS_SAREF_DEVICE]->(:SAREFDevice)\n// Properties:\n//   - device_category: String (sensor, actuator, appliance)\n//   - vulnerability_context: String (firmware, protocol, configuration)\n//   - exposure_level: String (direct, indirect, transitive)\n//   - remediation_priority: String (critical, high, medium, low)\n\n// New relationship: CVE \u2192 SAREF Function\n(:CVE)-[:IMPACTS_SAREF_FUNCTION]->(:SAREFFunction)\n// Properties:\n//   - function_category: String (sensing, actuating, metering)\n//   - impact_severity: String (complete_loss, degradation, intermittent)\n//   - affected_propertie",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_12",
+    "text": "ON]->(:SAREFFunction)\n// Properties:\n//   - function_category: String (sensing, actuating, metering)\n//   - impact_severity: String (complete_loss, degradation, intermittent)\n//   - affected_properties: [String] (list of SAREF properties)\n\n// New relationship: CVE \u2192 SAREF Measurement\n(:CVE)-[:CORRUPTS_MEASUREMENT]->(:SAREFMeasurement)\n// Properties:\n//   - manipulation_type: String (spoofing, tampering, replay)\n//   - detection_difficulty: String (trivial, moderate, sophisticated)\n```\n\n**Wave 2: ICS/OT Security Integration**\n\n```cypher\n// New relationship: CVE \u2192 ICS Component\n(:CVE)-[:AFFECTS_ICS_COMPONENT]->(:ICSComponent)\n// Properties:\n//   - component_type: String (PLC, HMI, SCADA, DCS, RTU)\n//   - criticality_level: String (safety_critical, production_critical, monitoring)\n//   - ics_impact: String (process_disruption, safety_hazard, data_corruption)\n//   - purdue_level: [Integer] (0-5, can affect multiple levels)\n\n// New relationship: CVE \u2192 Industrial Protocol\n(:CVE)-[:EXPLOITS_P",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_13",
+    "text": "impact: String (process_disruption, safety_hazard, data_corruption)\n//   - purdue_level: [Integer] (0-5, can affect multiple levels)\n\n// New relationship: CVE \u2192 Industrial Protocol\n(:CVE)-[:EXPLOITS_PROTOCOL]->(:IndustrialProtocol)\n// Properties:\n//   - protocol_name: String (Modbus, DNP3, OPC-UA, etc.)\n//   - attack_vector: String (network, adjacent, local)\n//   - exploit_complexity: String (low, medium, high)\n\n// New relationship: CVE \u2192 ICS ATT&CK Technique (enhanced)\n(:CVE)-[:ENABLES_ICS_TECHNIQUE]->(:ICSAttackTechnique)\n// Properties:\n//   - technique_id: String (T0xxx format)\n//   - ics_tactic: String (initial_access, execution, persistence, etc.)\n//   - asset_requirement: String (engineering_workstation, HMI, controller)\n```\n\n**Wave 3: SBOM Component Tracking**\n\n```cypher\n// New relationship: CVE \u2192 SBOM Component\n(:CVE)-[:AFFECTS_SBOM_COMPONENT]->(:SBOMComponent)\n// Properties:\n//   - component_name: String\n//   - component_version: String\n//   - purl: String (Package URL)\n//   -",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_14",
+    "text": "tionship: CVE \u2192 SBOM Component\n(:CVE)-[:AFFECTS_SBOM_COMPONENT]->(:SBOMComponent)\n// Properties:\n//   - component_name: String\n//   - component_version: String\n//   - purl: String (Package URL)\n//   - license: String\n//   - scope: String (required, optional, development)\n\n// New relationship: CVE \u2192 Software Package\n(:CVE)-[:IMPACTS_PACKAGE]->(:SoftwarePackage)\n// Properties:\n//   - package_manager: String (npm, maven, pypi, cargo)\n//   - affected_versions: [String]\n//   - fixed_version: String\n//   - patch_available: Boolean\n\n// New relationship: CVE \u2192 Dependency Chain\n(:CVE)-[:PROPAGATES_THROUGH]->(:DependencyChain)\n// Properties:\n//   - chain_depth: Integer (how many levels deep)\n//   - direct_dependency: Boolean\n//   - transitive_impact: String (high, medium, low)\n```\n\n**Wave 4: UCO Cyber-Observable Integration**\n\n```cypher\n// New relationship: CVE \u2192 UCO Observable\n(:CVE)-[:CREATES_OBSERVABLE]->(:UCOObservable)\n// Properties:\n//   - observable_type: String (file, process, network, r",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_15",
+    "text": "er-Observable Integration**\n\n```cypher\n// New relationship: CVE \u2192 UCO Observable\n(:CVE)-[:CREATES_OBSERVABLE]->(:UCOObservable)\n// Properties:\n//   - observable_type: String (file, process, network, registry)\n//   - exploitation_artifact: Boolean\n//   - detection_relevance: String (high, medium, low)\n\n// New relationship: CVE \u2192 UCO Action\n(:CVE)-[:TRIGGERS_ACTION]->(:UCOAction)\n// Properties:\n//   - action_type: String (create, modify, delete, execute)\n//   - forensic_value: String (critical, important, supplementary)\n```\n\n**Wave 5: Advanced Threat Intelligence**\n\n```cypher\n// Enhanced relationship: CVE \u2192 ThreatActor (with psychometrics)\n(:CVE)-[:EXPLOITED_BY_ACTOR_ENHANCED]->(:ThreatActor)\n// Properties:\n//   - exploitation_motivation: String (financial, espionage, disruption)\n//   - actor_capability_match: Float (0.0-1.0 alignment score)\n//   - typical_campaign_phase: String (reconnaissance, weaponization, exploitation)\n//   - attribution_confidence: Float (0.0-1.0)\n\n// New relations",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_16",
+    "text": "r_capability_match: Float (0.0-1.0 alignment score)\n//   - typical_campaign_phase: String (reconnaissance, weaponization, exploitation)\n//   - attribution_confidence: Float (0.0-1.0)\n\n// New relationship: CVE \u2192 STIX Indicator\n(:CVE)-[:HAS_STIX_INDICATOR]->(:STIXIndicator)\n// Properties:\n//   - indicator_type: String (vulnerability-signature, exploit-code)\n//   - detection_pattern: String\n//   - valid_from: DateTime\n//   - valid_until: DateTime\n```\n\n### 2.3 New Property Additions\n\n**CVE Node Property Enhancements (Additive Only):**\n\n```cypher\n// Wave 1: SAREF Context Properties\n(:CVE {\n  // ... existing properties ...\n\n  // SAREF Enhancement Properties (NEW)\n  saref_device_types: [String],        // Types of IoT devices affected\n  saref_function_impact: [String],     // Impacted SAREF functions\n  saref_measurement_risk: String,      // Risk to measurement integrity\n  iot_exploitation_vector: String,     // IoT-specific attack vector\n  saref_severity_modifier: Float,      // IoT context ",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_17",
+    "text": "ions\n  saref_measurement_risk: String,      // Risk to measurement integrity\n  iot_exploitation_vector: String,     // IoT-specific attack vector\n  saref_severity_modifier: Float,      // IoT context severity adjustment\n})\n\n// Wave 2: ICS/OT Context Properties\n(:CVE {\n  // ... existing properties + Wave 1 properties ...\n\n  // ICS Enhancement Properties (NEW)\n  ics_applicable: Boolean,             // Relevant to ICS/OT environments\n  ics_component_types: [String],       // Affected ICS components\n  purdue_levels: [Integer],            // Purdue model levels affected\n  safety_impact: String,               // Safety system impact (NONE, LOW, HIGH, CRITICAL)\n  process_impact: String,              // Production process impact\n  ics_mitre_techniques: [String],      // ICS ATT&CK technique IDs\n  industrial_protocols: [String],      // Vulnerable industrial protocols\n})\n\n// Wave 3: SBOM Integration Properties\n(:CVE {\n  // ... existing properties + Wave 1-2 properties ...\n\n  // SBOM Enhancement",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_18",
+    "text": "industrial_protocols: [String],      // Vulnerable industrial protocols\n})\n\n// Wave 3: SBOM Integration Properties\n(:CVE {\n  // ... existing properties + Wave 1-2 properties ...\n\n  // SBOM Enhancement Properties (NEW)\n  sbom_component_count: Integer,       // Number of SBOM components affected\n  package_ecosystems: [String],        // Package manager ecosystems (npm, maven, etc.)\n  dependency_depth: Integer,           // Maximum transitive dependency depth\n  license_implications: [String],      // License-related concerns\n  supply_chain_risk: String,           // Supply chain risk level\n  purl_identifiers: [String],          // Package URL identifiers\n})\n\n// Wave 4: UCO Forensic Properties\n(:CVE {\n  // ... existing properties + Wave 1-3 properties ...\n\n  // UCO Enhancement Properties (NEW)\n  uco_observable_types: [String],      // Types of observables created\n  forensic_artifacts: [String],        // Key forensic artifacts\n  exploitation_signatures: [String],   // Observable exploitati",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_19",
+    "text": "\n  uco_observable_types: [String],      // Types of observables created\n  forensic_artifacts: [String],        // Key forensic artifacts\n  exploitation_signatures: [String],   // Observable exploitation signatures\n  investigation_priority: String,      // Forensic investigation priority\n})\n\n// Wave 5: Advanced Threat Intelligence Properties\n(:CVE {\n  // ... existing properties + Wave 1-4 properties ...\n\n  // Threat Intelligence Enhancement Properties (NEW)\n  threat_actor_associations: [String], // Associated threat actor names\n  campaign_usage_count: Integer,       // Number of campaigns using CVE\n  exploit_kit_usage: [String],         // Exploit kits incorporating CVE\n  dark_web_mentions: Integer,          // Mentions in dark web forums\n  weaponization_timeline: DateTime,    // First known weaponization date\n  stix_indicator_count: Integer,       // Number of STIX indicators\n  threat_intel_confidence: Float,      // Overall threat intel confidence (0.0-1.0)\n})\n```\n\n### 2.4 Index Enhan",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_20",
+    "text": "n weaponization date\n  stix_indicator_count: Integer,       // Number of STIX indicators\n  threat_intel_confidence: Float,      // Overall threat intel confidence (0.0-1.0)\n})\n```\n\n### 2.4 Index Enhancement Strategy\n\n**New Indexes (Non-Disruptive):**\n\n```cypher\n// Wave 1: SAREF Index Enhancement\nCREATE INDEX cve_saref_device_types_index\n  FOR (c:CVE) ON (c.saref_device_types);\nCREATE INDEX cve_iot_exploitation_vector_index\n  FOR (c:CVE) ON (c.iot_exploitation_vector);\n\n// Wave 2: ICS/OT Index Enhancement\nCREATE INDEX cve_ics_applicable_index\n  FOR (c:CVE) ON (c.ics_applicable);\nCREATE INDEX cve_safety_impact_index\n  FOR (c:CVE) ON (c.safety_impact);\nCREATE INDEX cve_purdue_levels_index\n  FOR (c:CVE) ON (c.purdue_levels);\n\n// Wave 3: SBOM Index Enhancement\nCREATE INDEX cve_package_ecosystems_index\n  FOR (c:CVE) ON (c.package_ecosystems);\nCREATE INDEX cve_supply_chain_risk_index\n  FOR (c:CVE) ON (c.supply_chain_risk);\n\n// Wave 4: UCO Index Enhancement\nCREATE INDEX cve_uco_observable_type",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_21",
+    "text": "s_index\n  FOR (c:CVE) ON (c.package_ecosystems);\nCREATE INDEX cve_supply_chain_risk_index\n  FOR (c:CVE) ON (c.supply_chain_risk);\n\n// Wave 4: UCO Index Enhancement\nCREATE INDEX cve_uco_observable_types_index\n  FOR (c:CVE) ON (c.uco_observable_types);\nCREATE INDEX cve_investigation_priority_index\n  FOR (c:CVE) ON (c.investigation_priority);\n\n// Wave 5: Threat Intelligence Index Enhancement\nCREATE INDEX cve_threat_actor_associations_index\n  FOR (c:CVE) ON (c.threat_actor_associations);\nCREATE INDEX cve_weaponization_timeline_index\n  FOR (c:CVE) ON (c.weaponization_timeline);\n\n// Composite Indexes for Enhanced Queries\nCREATE INDEX cve_ics_severity_composite\n  FOR (c:CVE) ON (c.ics_applicable, c.severity);\nCREATE INDEX cve_sbom_risk_composite\n  FOR (c:CVE) ON (c.supply_chain_risk, c.cvss_score);\n\n// Full-Text Index Enhancement (Non-Destructive)\nCALL db.index.fulltext.createNodeIndex(\n  \"cveEnhancedFullTextSearch\",\n  [\"CVE\"],\n  [\"description\", \"id\", \"cve_id\", \"saref_device_types\",\n   \"ics_c",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_22",
+    "text": ");\n\n// Full-Text Index Enhancement (Non-Destructive)\nCALL db.index.fulltext.createNodeIndex(\n  \"cveEnhancedFullTextSearch\",\n  [\"CVE\"],\n  [\"description\", \"id\", \"cve_id\", \"saref_device_types\",\n   \"ics_component_types\", \"industrial_protocols\"]\n);\n```\n\n## 3. Verification Procedures\n\n### 3.1 Pre-Wave Baseline Capture\n\n**Execute Before Each Wave:**\n\n```cypher\n// 1. Capture CVE Count Baseline\nMATCH (c:CVE)\nRETURN count(c) AS baseline_cve_count;\n// Expected: 147,923\n// Store result: baseline_cve_count_wave_N\n\n// 2. Capture Property Completeness Baseline\nMATCH (c:CVE)\nRETURN\n  count(c.id) AS id_count,\n  count(c.description) AS description_count,\n  count(c.cvss_score) AS cvss_count,\n  count(c.severity) AS severity_count,\n  count(c.cwe_id) AS cwe_count,\n  count(c.published_date) AS published_date_count;\n// Store results: baseline_properties_wave_N\n\n// 3. Capture Relationship Count Baseline\nMATCH (c:CVE)-[r]->()\nRETURN type(r) AS relationship_type, count(r) AS count\nORDER BY count DESC;\n// Store r",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_23",
+    "text": "nt;\n// Store results: baseline_properties_wave_N\n\n// 3. Capture Relationship Count Baseline\nMATCH (c:CVE)-[r]->()\nRETURN type(r) AS relationship_type, count(r) AS count\nORDER BY count DESC;\n// Store results: baseline_relationships_wave_N\n\n// 4. Capture Sample CVE Snapshots (Random 1000)\nMATCH (c:CVE)\nWITH c, rand() AS random\nORDER BY random\nLIMIT 1000\nRETURN\n  c.id AS cve_id,\n  properties(c) AS props,\n  [(c)-[r]->(n) | {type: type(r), target: labels(n)}] AS rels;\n// Store results: baseline_sample_wave_N.json\n\n// 5. Capture Query Performance Baseline\n// Execute each high-frequency query 10 times, measure average\n// Store results: baseline_performance_wave_N\n```\n\n**Baseline Storage:**\n```bash\n# Create baseline directory\nmkdir -p /home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/baselines\n\n# Export baseline data\nneo4j-admin database export \\\n  --database=aeon-cyber-threat \\\n  --to=/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/baselines/p",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_24",
+    "text": "reat_Intel/baselines\n\n# Export baseline data\nneo4j-admin database export \\\n  --database=aeon-cyber-threat \\\n  --to=/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/baselines/pre_wave_1_baseline.dump\n\n# Verify export integrity\nmd5sum pre_wave_1_baseline.dump > pre_wave_1_baseline.md5\n```\n\n### 3.2 Post-Wave Validation Checks\n\n**Mandatory Validation After Each Wave:**\n\n```cypher\n// VALIDATION 1: CVE Node Count Verification (CRITICAL)\nMATCH (c:CVE)\nWITH count(c) AS post_wave_count\nMATCH (baseline:Baseline {wave: $waveNumber})\nWITH post_wave_count, baseline.cve_count AS baseline_count\nRETURN\n  baseline_count,\n  post_wave_count,\n  (post_wave_count = baseline_count) AS count_preserved,\n  CASE\n    WHEN post_wave_count = baseline_count THEN 'PASS'\n    ELSE 'FAIL: CVE COUNT MISMATCH'\n  END AS validation_status;\n// Expected: count_preserved = true\n// If FAIL: HALT and initiate rollback\n\n// VALIDATION 2: Property Preservation Check\nMATCH (c:CVE)\nRETURN\n  count(c.id) AS id_",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_25",
+    "text": "MISMATCH'\n  END AS validation_status;\n// Expected: count_preserved = true\n// If FAIL: HALT and initiate rollback\n\n// VALIDATION 2: Property Preservation Check\nMATCH (c:CVE)\nRETURN\n  count(c.id) AS id_count,\n  count(c.description) AS description_count,\n  count(c.cvss_score) AS cvss_count,\n  count(c.severity) AS severity_count,\n  count(c.cwe_id) AS cwe_count,\n  count(c.published_date) AS published_date_count;\n// Compare to baseline_properties_wave_N\n// Expected: All counts identical or greater (never less)\n\n// VALIDATION 3: Existing Relationship Preservation\nMATCH (c:CVE)-[r]->()\nWHERE type(r) IN [\n  'HAS_WEAKNESS', 'AFFECTS', 'IMPACTS_VENDOR', 'EXPLOITED_BY',\n  'ENABLES_TECHNIQUE', 'MITIGATED_BY', 'EXPLOITED_BY_ACTOR',\n  'USED_IN_CAMPAIGN', 'RELATED_TO', 'FIXED_BY'\n]\nRETURN type(r) AS relationship_type, count(r) AS count\nORDER BY relationship_type;\n// Compare to baseline_relationships_wave_N\n// Expected: All counts identical or greater (never less)\n\n// VALIDATION 4: New Relationship Ver",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_26",
+    "text": "ionship_type, count(r) AS count\nORDER BY relationship_type;\n// Compare to baseline_relationships_wave_N\n// Expected: All counts identical or greater (never less)\n\n// VALIDATION 4: New Relationship Verification\nMATCH (c:CVE)-[r]->()\nWHERE type(r) IN $newRelationshipTypes  // Wave-specific new types\nRETURN type(r) AS new_relationship_type, count(r) AS count;\n// Expected: Counts > 0 for all new relationship types\n\n// VALIDATION 5: Sample CVE Integrity Check\nUNWIND $sampleCveIds AS cveId\nMATCH (c:CVE {id: cveId})\nRETURN\n  c.id,\n  properties(c) AS current_props,\n  [(c)-[r]->(n) | {type: type(r), target: labels(n)}] AS current_rels;\n// Compare to baseline_sample_wave_N.json\n// Expected: All original properties and relationships present\n\n// VALIDATION 6: Index Integrity Check\nCALL db.indexes() YIELD name, state, type\nWHERE name CONTAINS 'cve'\nRETURN name, state, type\nORDER BY name;\n// Expected: All original indexes + new indexes present\n// Expected: All indexes in 'ONLINE' state\n\n// VALIDATIO",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_27",
+    "text": "ELD name, state, type\nWHERE name CONTAINS 'cve'\nRETURN name, state, type\nORDER BY name;\n// Expected: All original indexes + new indexes present\n// Expected: All indexes in 'ONLINE' state\n\n// VALIDATION 7: Query Performance Regression Check\n// Re-run high-frequency query baseline\n// Expected: Performance within 10% of baseline (preferably improved)\n\n// VALIDATION 8: Full-Text Search Preservation\nCALL db.index.fulltext.queryNodes(\n  \"cveFullTextSearch\",\n  \"sql injection\"\n) YIELD node, score\nRETURN count(node) AS result_count;\n// Compare to baseline search results\n// Expected: Result count identical or greater\n```\n\n**Automated Validation Script:**\n\n```bash\n#!/bin/bash\n# File: /home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/scripts/validate_wave.sh\n\nWAVE_NUMBER=$1\nBASELINE_DIR=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/baselines\"\nRESULTS_DIR=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/validation_result",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_28",
+    "text": "ELINE_DIR=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/baselines\"\nRESULTS_DIR=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/validation_results\"\n\necho \"=== CVE Preservation Validation: Wave $WAVE_NUMBER ===\"\necho \"Start Time: $(date)\"\n\n# Load baseline data\nBASELINE_CVE_COUNT=$(cat \"$BASELINE_DIR/wave_${WAVE_NUMBER}_baseline.json\" | jq '.cve_count')\n\n# Run validation queries\necho \"1. Validating CVE node count...\"\nCURRENT_CVE_COUNT=$(cypher-shell -u neo4j -p password \\\n  \"MATCH (c:CVE) RETURN count(c) AS count\" --format plain | tail -n 1)\n\nif [ \"$CURRENT_CVE_COUNT\" -ne \"$BASELINE_CVE_COUNT\" ]; then\n  echo \"CRITICAL FAILURE: CVE count mismatch!\"\n  echo \"Expected: $BASELINE_CVE_COUNT, Found: $CURRENT_CVE_COUNT\"\n  echo \"Initiating automatic rollback...\"\n  ./rollback_wave.sh $WAVE_NUMBER\n  exit 1\nfi\n\necho \"\u2713 CVE count preserved: $CURRENT_CVE_COUNT\"\n\n# Continue with remaining validations...\necho \"2. Validating property preservation...\"",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_29",
+    "text": "tic rollback...\"\n  ./rollback_wave.sh $WAVE_NUMBER\n  exit 1\nfi\n\necho \"\u2713 CVE count preserved: $CURRENT_CVE_COUNT\"\n\n# Continue with remaining validations...\necho \"2. Validating property preservation...\"\n# [Additional validation logic]\n\necho \"=== Validation Complete: Wave $WAVE_NUMBER ===\"\necho \"Status: PASS\"\necho \"End Time: $(date)\"\n```\n\n### 3.3 Continuous Validation During Enhancement\n\n**Real-Time Monitoring Queries:**\n\n```cypher\n// Monitor 1: CVE Count Tracker (Run every 5 minutes during wave)\nMATCH (c:CVE)\nWITH count(c) AS current_count\nRETURN\n  current_count,\n  datetime() AS timestamp,\n  CASE\n    WHEN current_count = 147923 THEN 'OK'\n    ELSE 'ALERT: Count Changed'\n  END AS status;\n\n// Monitor 2: Relationship Growth Tracker\nMATCH (c:CVE)-[r]->()\nRETURN\n  type(r) AS rel_type,\n  count(r) AS count,\n  datetime() AS timestamp\nORDER BY rel_type;\n\n// Monitor 3: Property Null Check (Detect Accidental Overwrites)\nMATCH (c:CVE)\nWHERE\n  c.id IS NULL OR\n  c.description IS NULL OR\n  c.cvss_score ",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_30",
+    "text": "S count,\n  datetime() AS timestamp\nORDER BY rel_type;\n\n// Monitor 3: Property Null Check (Detect Accidental Overwrites)\nMATCH (c:CVE)\nWHERE\n  c.id IS NULL OR\n  c.description IS NULL OR\n  c.cvss_score IS NULL OR\n  c.severity IS NULL\nRETURN count(c) AS nullified_cve_count;\n// Expected: Always 0 (trigger alert if > 0)\n\n// Monitor 4: Index Health Check\nCALL db.indexes() YIELD name, state, populationPercent\nWHERE name CONTAINS 'cve'\n  AND (state <> 'ONLINE' OR populationPercent < 100.0)\nRETURN name, state, populationPercent;\n// Expected: Always empty (trigger alert if any results)\n```\n\n## 4. Rollback Procedures\n\n### 4.1 Wave-Level Rollback Strategy\n\n**Rollback Preparation (Before Each Wave):**\n\n```bash\n#!/bin/bash\n# File: /home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/scripts/prepare_rollback.sh\n\nWAVE_NUMBER=$1\nBACKUP_DIR=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/backups\"\nTIMESTAMP=$(date +%Y%m%d_%H%M%S)\n\necho \"=== Preparing Rollba",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_31",
+    "text": "/scripts/prepare_rollback.sh\n\nWAVE_NUMBER=$1\nBACKUP_DIR=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/backups\"\nTIMESTAMP=$(date +%Y%m%d_%H%M%S)\n\necho \"=== Preparing Rollback Point: Wave $WAVE_NUMBER ===\"\n\n# 1. Full database backup\necho \"Creating full database backup...\"\nneo4j-admin database backup \\\n  --database=aeon-cyber-threat \\\n  --to-path=\"$BACKUP_DIR/wave_${WAVE_NUMBER}_pre_${TIMESTAMP}\" \\\n  --verbose\n\n# 2. Create restoration checkpoint\necho \"Creating restoration checkpoint...\"\nneo4j-admin database checkpoint \\\n  --database=aeon-cyber-threat\n\n# 3. Export CVE-specific data\necho \"Exporting CVE data for differential rollback...\"\ncypher-shell -u neo4j -p password \\\n  \"MATCH (c:CVE) RETURN c\" \\\n  --format json > \"$BACKUP_DIR/wave_${WAVE_NUMBER}_cve_nodes_${TIMESTAMP}.json\"\n\ncypher-shell -u neo4j -p password \\\n  \"MATCH (c:CVE)-[r]->() RETURN c.id AS cve_id, type(r) AS rel_type, properties(r) AS rel_props\" \\\n  --format json > \"$BACKUP_DIR/wave_${WAVE_NUMBER}",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_32",
+    "text": "ESTAMP}.json\"\n\ncypher-shell -u neo4j -p password \\\n  \"MATCH (c:CVE)-[r]->() RETURN c.id AS cve_id, type(r) AS rel_type, properties(r) AS rel_props\" \\\n  --format json > \"$BACKUP_DIR/wave_${WAVE_NUMBER}_cve_rels_${TIMESTAMP}.json\"\n\n# 4. Generate rollback manifest\ncat > \"$BACKUP_DIR/wave_${WAVE_NUMBER}_rollback_manifest.json\" <<EOF\n{\n  \"wave_number\": $WAVE_NUMBER,\n  \"timestamp\": \"$TIMESTAMP\",\n  \"baseline_cve_count\": 147923,\n  \"backup_location\": \"$BACKUP_DIR/wave_${WAVE_NUMBER}_pre_${TIMESTAMP}\",\n  \"new_relationship_types\": $(cat \"../wave_${WAVE_NUMBER}_config.json\" | jq '.new_relationship_types'),\n  \"new_properties\": $(cat \"../wave_${WAVE_NUMBER}_config.json\" | jq '.new_properties'),\n  \"new_indexes\": $(cat \"../wave_${WAVE_NUMBER}_config.json\" | jq '.new_indexes')\n}\nEOF\n\necho \"\u2713 Rollback preparation complete\"\necho \"Backup location: $BACKUP_DIR/wave_${WAVE_NUMBER}_pre_${TIMESTAMP}\"\n```\n\n### 4.2 Rollback Execution Procedures\n\n**Option 1: Surgical Rollback (Remove Only New Elements)**\n\n```cyp",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_33",
+    "text": "ration complete\"\necho \"Backup location: $BACKUP_DIR/wave_${WAVE_NUMBER}_pre_${TIMESTAMP}\"\n```\n\n### 4.2 Rollback Execution Procedures\n\n**Option 1: Surgical Rollback (Remove Only New Elements)**\n\n```cypher\n// SURGICAL ROLLBACK: Wave-Specific Enhancement Removal\n\n// Step 1: Remove new relationships (Wave 1 example)\nMATCH (c:CVE)-[r:AFFECTS_SAREF_DEVICE]->()\nDELETE r;\n\nMATCH (c:CVE)-[r:IMPACTS_SAREF_FUNCTION]->()\nDELETE r;\n\nMATCH (c:CVE)-[r:CORRUPTS_MEASUREMENT]->()\nDELETE r;\n\n// Step 2: Remove new properties (set to null, not remove node)\nMATCH (c:CVE)\nWHERE c.saref_device_types IS NOT NULL\nSET\n  c.saref_device_types = null,\n  c.saref_function_impact = null,\n  c.saref_measurement_risk = null,\n  c.iot_exploitation_vector = null,\n  c.saref_severity_modifier = null;\n\n// Step 3: Drop new indexes\nDROP INDEX cve_saref_device_types_index IF EXISTS;\nDROP INDEX cve_iot_exploitation_vector_index IF EXISTS;\n\n// Step 4: Verification\nMATCH (c:CVE)\nRETURN count(c) AS cve_count;\n// Expected: 147,923 (un",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_34",
+    "text": "DROP INDEX cve_saref_device_types_index IF EXISTS;\nDROP INDEX cve_iot_exploitation_vector_index IF EXISTS;\n\n// Step 4: Verification\nMATCH (c:CVE)\nRETURN count(c) AS cve_count;\n// Expected: 147,923 (unchanged)\n\nMATCH (c:CVE)-[r:AFFECTS_SAREF_DEVICE]->()\nRETURN count(r) AS should_be_zero;\n// Expected: 0 (all new relationships removed)\n```\n\n**Option 2: Full Database Restore (Nuclear Option)**\n\n```bash\n#!/bin/bash\n# File: /home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/scripts/rollback_wave_full.sh\n\nWAVE_NUMBER=$1\nBACKUP_DIR=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/backups\"\nMANIFEST=\"$BACKUP_DIR/wave_${WAVE_NUMBER}_rollback_manifest.json\"\n\necho \"=== FULL DATABASE ROLLBACK: Wave $WAVE_NUMBER ===\"\necho \"WARNING: This will restore database to pre-wave state\"\nread -p \"Are you sure? (yes/no): \" confirm\n\nif [ \"$confirm\" != \"yes\" ]; then\n  echo \"Rollback cancelled\"\n  exit 0\nfi\n\n# 1. Stop database\necho \"Stopping Neo4j database...\"\nneo4j s",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_35",
+    "text": "se to pre-wave state\"\nread -p \"Are you sure? (yes/no): \" confirm\n\nif [ \"$confirm\" != \"yes\" ]; then\n  echo \"Rollback cancelled\"\n  exit 0\nfi\n\n# 1. Stop database\necho \"Stopping Neo4j database...\"\nneo4j stop\n\n# 2. Restore from backup\nBACKUP_PATH=$(cat \"$MANIFEST\" | jq -r '.backup_location')\necho \"Restoring from: $BACKUP_PATH\"\n\nneo4j-admin database restore \\\n  --from-path=\"$BACKUP_PATH\" \\\n  --database=aeon-cyber-threat \\\n  --overwrite-destination=true\n\n# 3. Start database\necho \"Starting Neo4j database...\"\nneo4j start\n\n# Wait for database to be ready\nsleep 30\n\n# 4. Verify restoration\necho \"Verifying CVE count...\"\nCVE_COUNT=$(cypher-shell -u neo4j -p password \\\n  \"MATCH (c:CVE) RETURN count(c) AS count\" --format plain | tail -n 1)\n\nEXPECTED_COUNT=$(cat \"$MANIFEST\" | jq -r '.baseline_cve_count')\n\nif [ \"$CVE_COUNT\" -ne \"$EXPECTED_COUNT\" ]; then\n  echo \"ERROR: Restoration failed! CVE count: $CVE_COUNT (expected: $EXPECTED_COUNT)\"\n  exit 1\nfi\n\necho \"\u2713 Database successfully restored to pre-wave st",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_36",
+    "text": "if [ \"$CVE_COUNT\" -ne \"$EXPECTED_COUNT\" ]; then\n  echo \"ERROR: Restoration failed! CVE count: $CVE_COUNT (expected: $EXPECTED_COUNT)\"\n  exit 1\nfi\n\necho \"\u2713 Database successfully restored to pre-wave state\"\necho \"CVE count verified: $CVE_COUNT\"\n```\n\n### 4.3 Rollback Decision Matrix\n\n**When to Use Surgical Rollback:**\n- Validation failure detected immediately after wave completion\n- Specific enhancement causing issues (identifiable problem)\n- CVE node count remains correct (147,923)\n- Existing relationships intact\n- Only new elements problematic\n\n**When to Use Full Restore:**\n- CVE node count discrepancy detected\n- Existing properties corrupted or nullified\n- Existing relationships deleted or modified\n- Multiple validation failures\n- Database integrity compromised\n- Unknown extent of damage\n\n**Rollback Validation:**\n\n```cypher\n// Post-Rollback Verification Checklist\n\n// 1. CVE Count\nMATCH (c:CVE) RETURN count(c) AS cve_count;\n// Expected: 147,923\n\n// 2. Core Properties Intact\nMATCH (c:CVE",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_37",
+    "text": "**Rollback Validation:**\n\n```cypher\n// Post-Rollback Verification Checklist\n\n// 1. CVE Count\nMATCH (c:CVE) RETURN count(c) AS cve_count;\n// Expected: 147,923\n\n// 2. Core Properties Intact\nMATCH (c:CVE)\nRETURN\n  count(c.id) = 147923 AS id_complete,\n  count(c.description) >= 147900 AS description_complete,\n  count(c.cvss_score) >= 142847 AS cvss_complete;\n// Expected: All true\n\n// 3. Core Relationships Intact\nMATCH (c:CVE)-[r:HAS_WEAKNESS]->()\nRETURN count(r) AS weakness_rels;\n// Expected: ~128,456 (match baseline)\n\n// 4. Query Performance Restored\n// Re-run performance baseline queries\n// Expected: Performance within 5% of original baseline\n\n// 5. Sample CVE Verification\nMATCH (c:CVE {id: 'CVE-2023-12345'})\nRETURN properties(c) AS props;\n// Compare to baseline sample data\n// Expected: Exact match to pre-wave state\n```\n\n## 5. CVE Data Restoration Procedures\n\n### 5.1 Differential CVE Restoration\n\n**Scenario: Partial Data Corruption Detected**\n\n```cypher\n// Step 1: Identify corrupted CVE n",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_38",
+    "text": " match to pre-wave state\n```\n\n## 5. CVE Data Restoration Procedures\n\n### 5.1 Differential CVE Restoration\n\n**Scenario: Partial Data Corruption Detected**\n\n```cypher\n// Step 1: Identify corrupted CVE nodes\nMATCH (c:CVE)\nWHERE\n  c.id IS NULL OR\n  c.description IS NULL OR\n  c.cvss_score IS NULL\nRETURN c.id AS corrupted_cve_id;\n// Result: List of affected CVE IDs\n\n// Step 2: Load backup data (from JSON export)\nCALL apoc.load.json('file:///wave_1_cve_nodes_backup.json')\nYIELD value\nWITH value WHERE value.id IN $corruptedCveIds\nMATCH (c:CVE {id: value.id})\nSET c = value.properties;\n// Restore properties for corrupted nodes only\n\n// Step 3: Restore relationships for affected CVEs\nCALL apoc.load.json('file:///wave_1_cve_rels_backup.json')\nYIELD value\nWITH value WHERE value.cve_id IN $corruptedCveIds\nMATCH (c:CVE {id: value.cve_id})\nMATCH (target) WHERE id(target) = value.target_id\nCREATE (c)-[r:``+value.rel_type+``]->(target)\nSET r = value.rel_props;\n// Restore relationships for corrupted node",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_39",
+    "text": "ds\nMATCH (c:CVE {id: value.cve_id})\nMATCH (target) WHERE id(target) = value.target_id\nCREATE (c)-[r:``+value.rel_type+``]->(target)\nSET r = value.rel_props;\n// Restore relationships for corrupted nodes\n\n// Step 4: Verify restoration\nMATCH (c:CVE)\nWHERE c.id IN $corruptedCveIds\n  AND (c.id IS NULL OR c.description IS NULL)\nRETURN count(c) AS still_corrupted;\n// Expected: 0 (all restored)\n```\n\n### 5.2 Complete CVE Dataset Restoration\n\n**Scenario: Catastrophic Failure, Full CVE Restoration Required**\n\n```bash\n#!/bin/bash\n# File: /home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/scripts/restore_cve_dataset.sh\n\necho \"=== CVE Dataset Complete Restoration ===\"\n\n# 1. Clear corrupted CVE data\ncypher-shell -u neo4j -p password <<CYPHER\nMATCH (c:CVE)\nDETACH DELETE c;\nCYPHER\n\necho \"\u2713 Corrupted CVE data cleared\"\n\n# 2. Restore CVE nodes from backup\ncypher-shell -u neo4j -p password <<CYPHER\nCALL apoc.load.json('file:///cve_nodes_backup.json') YIELD value\nCREATE (c:CVE)\nSET c ",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_40",
+    "text": "cho \"\u2713 Corrupted CVE data cleared\"\n\n# 2. Restore CVE nodes from backup\ncypher-shell -u neo4j -p password <<CYPHER\nCALL apoc.load.json('file:///cve_nodes_backup.json') YIELD value\nCREATE (c:CVE)\nSET c = value.properties;\nCYPHER\n\necho \"\u2713 CVE nodes restored\"\n\n# 3. Restore CVE relationships from backup\ncypher-shell -u neo4j -p password <<CYPHER\nCALL apoc.load.json('file:///cve_rels_backup.json') YIELD value\nMATCH (c:CVE {id: value.cve_id})\nMATCH (target) WHERE id(target) = value.target_id\nCALL apoc.create.relationship(c, value.rel_type, value.rel_props, target) YIELD rel\nRETURN count(rel) AS relationships_restored;\nCYPHER\n\necho \"\u2713 CVE relationships restored\"\n\n# 4. Rebuild indexes\ncypher-shell -u neo4j -p password < ../cypher/rebuild_cve_indexes.cypher\n\necho \"\u2713 CVE indexes rebuilt\"\n\n# 5. Final verification\nCVE_COUNT=$(cypher-shell -u neo4j -p password \\\n  \"MATCH (c:CVE) RETURN count(c)\" --format plain | tail -n 1)\n\necho \"Final CVE count: $CVE_COUNT\"\n\nif [ \"$CVE_COUNT\" -ne \"147923\" ]; then\n ",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 40,
+      "start_char": 32000,
+      "end_char": 33000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_41",
+    "text": "verification\nCVE_COUNT=$(cypher-shell -u neo4j -p password \\\n  \"MATCH (c:CVE) RETURN count(c)\" --format plain | tail -n 1)\n\necho \"Final CVE count: $CVE_COUNT\"\n\nif [ \"$CVE_COUNT\" -ne \"147923\" ]; then\n  echo \"ERROR: CVE count mismatch after restoration!\"\n  exit 1\nfi\n\necho \"\u2713 CVE dataset successfully restored and verified\"\n```\n\n## 6. Backup Strategy\n\n### 6.1 Pre-Wave Backup Protocol\n\n**Comprehensive Backup Before Each Wave:**\n\n```bash\n#!/bin/bash\n# File: /home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/scripts/comprehensive_backup.sh\n\nWAVE_NUMBER=$1\nBACKUP_ROOT=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/backups\"\nWAVE_BACKUP_DIR=\"$BACKUP_ROOT/wave_${WAVE_NUMBER}\"\nTIMESTAMP=$(date +%Y%m%d_%H%M%S)\n\nmkdir -p \"$WAVE_BACKUP_DIR\"\n\necho \"=== Comprehensive Pre-Wave Backup: Wave $WAVE_NUMBER ===\"\n\n# 1. Full Neo4j database backup\necho \"1. Full database backup...\"\nneo4j-admin database backup \\\n  --database=aeon-cyber-threat \\\n  --to-path=\"$WAVE",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 41,
+      "start_char": 32800,
+      "end_char": 33800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_42",
+    "text": "mprehensive Pre-Wave Backup: Wave $WAVE_NUMBER ===\"\n\n# 1. Full Neo4j database backup\necho \"1. Full database backup...\"\nneo4j-admin database backup \\\n  --database=aeon-cyber-threat \\\n  --to-path=\"$WAVE_BACKUP_DIR/full_db_${TIMESTAMP}\" \\\n  --verbose\n\n# 2. CVE-specific node export\necho \"2. CVE node export...\"\ncypher-shell -u neo4j -p password <<CYPHER > \"$WAVE_BACKUP_DIR/cve_nodes_${TIMESTAMP}.json\"\nMATCH (c:CVE)\nRETURN {\n  id: c.id,\n  properties: properties(c),\n  labels: labels(c)\n} AS cve_node;\nCYPHER\n\n# 3. CVE relationship export\necho \"3. CVE relationship export...\"\ncypher-shell -u neo4j -p password <<CYPHER > \"$WAVE_BACKUP_DIR/cve_relationships_${TIMESTAMP}.json\"\nMATCH (c:CVE)-[r]->(target)\nRETURN {\n  source_id: c.id,\n  rel_type: type(r),\n  rel_properties: properties(r),\n  target_labels: labels(target),\n  target_id: CASE\n    WHEN 'CVE' IN labels(target) THEN target.id\n    WHEN 'CWE' IN labels(target) THEN target.id\n    WHEN 'CAPEC' IN labels(target) THEN target.id\n    WHEN 'ThreatActo",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 42,
+      "start_char": 33600,
+      "end_char": 34600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_43",
+    "text": "labels(target),\n  target_id: CASE\n    WHEN 'CVE' IN labels(target) THEN target.id\n    WHEN 'CWE' IN labels(target) THEN target.id\n    WHEN 'CAPEC' IN labels(target) THEN target.id\n    WHEN 'ThreatActor' IN labels(target) THEN target.name\n    ELSE toString(id(target))\n  END\n} AS cve_relationship;\nCYPHER\n\n# 4. Index definitions export\necho \"4. Index definitions export...\"\ncypher-shell -u neo4j -p password <<CYPHER > \"$WAVE_BACKUP_DIR/indexes_${TIMESTAMP}.cypher\"\nCALL db.indexes() YIELD name, type, labelsOrTypes, properties, options\nWHERE name CONTAINS 'cve'\nRETURN\n  'CREATE INDEX ' + name +\n  ' FOR (n:' + labelsOrTypes[0] + ') ON (' +\n  [prop IN properties | 'n.' + prop] + ');' AS index_definition;\nCYPHER\n\n# 5. Baseline statistics export\necho \"5. Baseline statistics export...\"\ncypher-shell -u neo4j -p password <<CYPHER > \"$WAVE_BACKUP_DIR/baseline_stats_${TIMESTAMP}.json\"\nMATCH (c:CVE)\nWITH count(c) AS total_cves\nMATCH (c:CVE)-[r]->()\nWITH total_cves, type(r) AS rel_type, count(r) AS rel",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 43,
+      "start_char": 34400,
+      "end_char": 35400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_44",
+    "text": "u neo4j -p password <<CYPHER > \"$WAVE_BACKUP_DIR/baseline_stats_${TIMESTAMP}.json\"\nMATCH (c:CVE)\nWITH count(c) AS total_cves\nMATCH (c:CVE)-[r]->()\nWITH total_cves, type(r) AS rel_type, count(r) AS rel_count\nRETURN {\n  total_cves: total_cves,\n  relationships: collect({type: rel_type, count: rel_count}),\n  timestamp: datetime()\n} AS baseline_statistics;\nCYPHER\n\n# 6. Sample CVE deep snapshot (1000 random CVEs)\necho \"6. Sample CVE snapshot...\"\ncypher-shell -u neo4j -p password <<CYPHER > \"$WAVE_BACKUP_DIR/sample_cves_${TIMESTAMP}.json\"\nMATCH (c:CVE)\nWITH c, rand() AS random\nORDER BY random\nLIMIT 1000\nOPTIONAL MATCH (c)-[r]->(related)\nWITH c, collect({\n  rel_type: type(r),\n  target_labels: labels(related),\n  rel_props: properties(r)\n}) AS relationships\nRETURN {\n  cve_id: c.id,\n  properties: properties(c),\n  relationships: relationships\n} AS sample_cve;\nCYPHER\n\n# 7. Generate backup manifest\ncat > \"$WAVE_BACKUP_DIR/backup_manifest_${TIMESTAMP}.json\" <<EOF\n{\n  \"wave_number\": $WAVE_NUMBER,\n  \"b",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 44,
+      "start_char": 35200,
+      "end_char": 36200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_45",
+    "text": "perties(c),\n  relationships: relationships\n} AS sample_cve;\nCYPHER\n\n# 7. Generate backup manifest\ncat > \"$WAVE_BACKUP_DIR/backup_manifest_${TIMESTAMP}.json\" <<EOF\n{\n  \"wave_number\": $WAVE_NUMBER,\n  \"backup_timestamp\": \"$TIMESTAMP\",\n  \"backup_type\": \"comprehensive_pre_wave\",\n  \"database_version\": \"$(neo4j --version)\",\n  \"baseline_cve_count\": 147923,\n  \"files\": {\n    \"full_database\": \"full_db_${TIMESTAMP}\",\n    \"cve_nodes\": \"cve_nodes_${TIMESTAMP}.json\",\n    \"cve_relationships\": \"cve_relationships_${TIMESTAMP}.json\",\n    \"indexes\": \"indexes_${TIMESTAMP}.cypher\",\n    \"baseline_stats\": \"baseline_stats_${TIMESTAMP}.json\",\n    \"sample_cves\": \"sample_cves_${TIMESTAMP}.json\"\n  },\n  \"validation\": {\n    \"md5_full_db\": \"$(md5sum $WAVE_BACKUP_DIR/full_db_${TIMESTAMP} | awk '{print $1}')\",\n    \"md5_cve_nodes\": \"$(md5sum $WAVE_BACKUP_DIR/cve_nodes_${TIMESTAMP}.json | awk '{print $1}')\"\n  }\n}\nEOF\n\necho \"\u2713 Comprehensive backup complete\"\necho \"Location: $WAVE_BACKUP_DIR\"\necho \"Manifest: backup_manifest",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 45,
+      "start_char": 36000,
+      "end_char": 37000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_46",
+    "text": "_nodes\": \"$(md5sum $WAVE_BACKUP_DIR/cve_nodes_${TIMESTAMP}.json | awk '{print $1}')\"\n  }\n}\nEOF\n\necho \"\u2713 Comprehensive backup complete\"\necho \"Location: $WAVE_BACKUP_DIR\"\necho \"Manifest: backup_manifest_${TIMESTAMP}.json\"\n```\n\n### 6.2 Backup Verification\n\n**Post-Backup Integrity Checks:**\n\n```bash\n#!/bin/bash\n# File: /home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/scripts/verify_backup.sh\n\nWAVE_BACKUP_DIR=$1\nMANIFEST=\"$WAVE_BACKUP_DIR/backup_manifest_*.json\"\n\necho \"=== Backup Integrity Verification ===\"\n\n# 1. Verify file existence\necho \"1. Checking file existence...\"\nfor file_key in $(jq -r '.files | keys[]' \"$MANIFEST\"); do\n  file_name=$(jq -r \".files.$file_key\" \"$MANIFEST\")\n  file_path=\"$WAVE_BACKUP_DIR/$file_name\"\n\n  if [ ! -f \"$file_path\" ] && [ ! -d \"$file_path\" ]; then\n    echo \"ERROR: Missing file: $file_name\"\n    exit 1\n  fi\n  echo \"\u2713 Found: $file_name\"\ndone\n\n# 2. Verify MD5 checksums\necho \"2. Verifying checksums...\"\nEXPECTED_MD5=$(jq -r '.validation.md5",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 46,
+      "start_char": 36800,
+      "end_char": 37800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_47",
+    "text": "\" ]; then\n    echo \"ERROR: Missing file: $file_name\"\n    exit 1\n  fi\n  echo \"\u2713 Found: $file_name\"\ndone\n\n# 2. Verify MD5 checksums\necho \"2. Verifying checksums...\"\nEXPECTED_MD5=$(jq -r '.validation.md5_cve_nodes' \"$MANIFEST\")\nACTUAL_MD5=$(md5sum \"$WAVE_BACKUP_DIR\"/cve_nodes_*.json | awk '{print $1}')\n\nif [ \"$EXPECTED_MD5\" != \"$ACTUAL_MD5\" ]; then\n  echo \"ERROR: MD5 mismatch for CVE nodes backup\"\n  exit 1\nfi\necho \"\u2713 Checksums verified\"\n\n# 3. Validate JSON structure\necho \"3. Validating JSON structure...\"\njq empty \"$WAVE_BACKUP_DIR\"/cve_nodes_*.json 2>/dev/null\nif [ $? -ne 0 ]; then\n  echo \"ERROR: Invalid JSON in CVE nodes backup\"\n  exit 1\nfi\necho \"\u2713 JSON structure valid\"\n\n# 4. Validate CVE count in backup\necho \"4. Validating CVE count...\"\nBACKUP_CVE_COUNT=$(jq -s 'length' \"$WAVE_BACKUP_DIR\"/cve_nodes_*.json)\nEXPECTED_COUNT=$(jq -r '.baseline_cve_count' \"$MANIFEST\")\n\nif [ \"$BACKUP_CVE_COUNT\" -ne \"$EXPECTED_COUNT\" ]; then\n  echo \"ERROR: CVE count mismatch in backup\"\n  echo \"Expected: $EXPEC",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 47,
+      "start_char": 37600,
+      "end_char": 38600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_48",
+    "text": "ve_nodes_*.json)\nEXPECTED_COUNT=$(jq -r '.baseline_cve_count' \"$MANIFEST\")\n\nif [ \"$BACKUP_CVE_COUNT\" -ne \"$EXPECTED_COUNT\" ]; then\n  echo \"ERROR: CVE count mismatch in backup\"\n  echo \"Expected: $EXPECTED_COUNT, Found: $BACKUP_CVE_COUNT\"\n  exit 1\nfi\necho \"\u2713 CVE count verified: $BACKUP_CVE_COUNT\"\n\necho \"\u2713 Backup verification complete: All checks passed\"\n```\n\n### 6.3 Backup Retention Policy\n\n**Backup Storage Strategy:**\n\n```yaml\nbackup_retention_policy:\n  pre_wave_backups:\n    retention_period: \"permanent\"  # Never auto-delete\n    storage_location: \"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/backups/wave_N/\"\n    compression: true\n    encryption: false  # Enable for production\n\n  post_wave_validation_backups:\n    retention_period: \"90_days\"\n    storage_location: \"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/backups/validation/\"\n    compression: true\n    auto_cleanup: true\n\n  incremental_checkpoints:\n    retention_period: \"30_days\"",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 48,
+      "start_char": 38400,
+      "end_char": 39400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_49",
+    "text": "\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/backups/validation/\"\n    compression: true\n    auto_cleanup: true\n\n  incremental_checkpoints:\n    retention_period: \"30_days\"\n    storage_location: \"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/backups/checkpoints/\"\n    frequency: \"hourly_during_wave\"\n    compression: true\n    auto_cleanup: true\n\n  emergency_restore_backups:\n    retention_period: \"permanent\"\n    storage_location: \"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/backups/emergency/\"\n    trigger: \"validation_failure\"\n    compression: true\n    encryption: false\n```\n\n## 7. Success Metrics and KPIs\n\n### 7.1 CVE Preservation KPIs\n\n**Mandatory Success Criteria:**\n\n```yaml\ncve_preservation_kpis:\n  critical_kpis:\n    - metric: \"CVE Node Count\"\n      target: 147923\n      tolerance: 0\n      validation_frequency: \"continuous\"\n\n    - metric: \"CVE ID Integrity\"\n      target: \"100% unique and valid\"\n      t",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 49,
+      "start_char": 39200,
+      "end_char": 40200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_50",
+    "text": "al_kpis:\n    - metric: \"CVE Node Count\"\n      target: 147923\n      tolerance: 0\n      validation_frequency: \"continuous\"\n\n    - metric: \"CVE ID Integrity\"\n      target: \"100% unique and valid\"\n      tolerance: 0\n      validation_frequency: \"post_wave\"\n\n    - metric: \"Core Property Completeness\"\n      target: \">=baseline counts\"\n      tolerance: 0\n      validation_frequency: \"post_wave\"\n\n    - metric: \"Existing Relationship Preservation\"\n      target: \"100% of baseline\"\n      tolerance: 0\n      validation_frequency: \"post_wave\"\n\n  performance_kpis:\n    - metric: \"Query Performance Regression\"\n      target: \"<10% slowdown\"\n      tolerance: \"5%\"\n      validation_frequency: \"post_wave\"\n\n    - metric: \"Index Online Status\"\n      target: \"100% ONLINE\"\n      tolerance: 0\n      validation_frequency: \"continuous\"\n\n  enhancement_kpis:\n    - metric: \"New Relationships Created\"\n      target: \">0 for each new type\"\n      tolerance: \"wave_specific\"\n      validation_frequency: \"post_wave\"\n\n    - metr",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 50,
+      "start_char": 40000,
+      "end_char": 41000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_51",
+    "text": "y: \"continuous\"\n\n  enhancement_kpis:\n    - metric: \"New Relationships Created\"\n      target: \">0 for each new type\"\n      tolerance: \"wave_specific\"\n      validation_frequency: \"post_wave\"\n\n    - metric: \"New Properties Populated\"\n      target: \">50% of applicable CVEs\"\n      tolerance: \"10%\"\n      validation_frequency: \"post_wave\"\n```\n\n### 7.2 Reporting and Documentation\n\n**Post-Wave Success Report Template:**\n\n```markdown\n# Wave [N] CVE Preservation Report\n\n**Date:** [YYYY-MM-DD]\n**Wave:** [N] - [Wave Name]\n**Status:** [PASS/FAIL]\n\n## 1. CVE Preservation Validation\n\n### 1.1 Node Count Verification\n- **Baseline CVE Count:** 147,923\n- **Post-Wave CVE Count:** [ACTUAL]\n- **Status:** [PASS/FAIL]\n- **Discrepancy:** [0 or explanation]\n\n### 1.2 Property Preservation\n| Property | Baseline Count | Post-Wave Count | Status |\n|----------|----------------|-----------------|--------|\n| id | 147,923 | [ACTUAL] | [PASS/FAIL] |\n| description | 147,900+ | [ACTUAL] | [PASS/FAIL] |\n| cvss_score | 142,8",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 51,
+      "start_char": 40800,
+      "end_char": 41800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_52",
+    "text": "| Post-Wave Count | Status |\n|----------|----------------|-----------------|--------|\n| id | 147,923 | [ACTUAL] | [PASS/FAIL] |\n| description | 147,900+ | [ACTUAL] | [PASS/FAIL] |\n| cvss_score | 142,847+ | [ACTUAL] | [PASS/FAIL] |\n| severity | 147,800+ | [ACTUAL] | [PASS/FAIL] |\n| cwe_id | 128,456+ | [ACTUAL] | [PASS/FAIL] |\n\n### 1.3 Relationship Preservation\n| Relationship Type | Baseline Count | Post-Wave Count | Status |\n|-------------------|----------------|-----------------|--------|\n| HAS_WEAKNESS | ~128,456 | [ACTUAL] | [PASS/FAIL] |\n| AFFECTS | ~843,291 | [ACTUAL] | [PASS/FAIL] |\n| EXPLOITED_BY | ~64,219 | [ACTUAL] | [PASS/FAIL] |\n| [Additional types...] | [...] | [ACTUAL] | [PASS/FAIL] |\n\n## 2. Enhancement Validation\n\n### 2.1 New Relationships Created\n| New Relationship Type | Count | Target | Status |\n|-----------------------|-------|--------|--------|\n| [NEW_TYPE_1] | [ACTUAL] | >0 | [PASS/FAIL] |\n| [NEW_TYPE_2] | [ACTUAL] | >0 | [PASS/FAIL] |\n\n### 2.2 New Properties Populat",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 52,
+      "start_char": 41600,
+      "end_char": 42600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_53",
+    "text": "nt | Target | Status |\n|-----------------------|-------|--------|--------|\n| [NEW_TYPE_1] | [ACTUAL] | >0 | [PASS/FAIL] |\n| [NEW_TYPE_2] | [ACTUAL] | >0 | [PASS/FAIL] |\n\n### 2.2 New Properties Populated\n| New Property | CVEs Populated | Percentage | Target | Status |\n|--------------|----------------|------------|--------|--------|\n| [PROP_1] | [ACTUAL] | [%] | >50% | [PASS/FAIL] |\n| [PROP_2] | [ACTUAL] | [%] | >50% | [PASS/FAIL] |\n\n## 3. Performance Impact\n\n### 3.1 Query Performance\n| Query Type | Baseline (ms) | Post-Wave (ms) | Change | Status |\n|------------|---------------|----------------|--------|--------|\n| CVE Lookup | <5 | [ACTUAL] | [%] | [PASS/FAIL] |\n| Severity Filter | <50 | [ACTUAL] | [%] | [PASS/FAIL] |\n| Multi-hop | <200 | [ACTUAL] | [%] | [PASS/FAIL] |\n\n### 3.2 Index Health\n| Index Name | State | Population % | Status |\n|------------|-------|--------------|--------|\n| [INDEX_1] | ONLINE | 100.0 | PASS |\n| [INDEX_2] | ONLINE | 100.0 | PASS |\n\n## 4. Rollback Assessment\n\n",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 53,
+      "start_char": 42400,
+      "end_char": 43400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_54",
+    "text": "h\n| Index Name | State | Population % | Status |\n|------------|-------|--------------|--------|\n| [INDEX_1] | ONLINE | 100.0 | PASS |\n| [INDEX_2] | ONLINE | 100.0 | PASS |\n\n## 4. Rollback Assessment\n\n**Rollback Required:** [YES/NO]\n**Rollback Type:** [NONE / SURGICAL / FULL]\n**Rollback Reason:** [N/A or explanation]\n**Rollback Executed:** [YES/NO]\n**Rollback Verified:** [YES/NO]\n\n## 5. Recommendations\n\n### 5.1 Issues Identified\n[List any issues or concerns]\n\n### 5.2 Recommendations for Next Wave\n[List recommendations]\n\n## 6. Approval\n\n**Validated By:** [Name]\n**Validation Date:** [YYYY-MM-DD]\n**Approved for Next Wave:** [YES/NO]\n\n---\n**Backup Location:** [Path to wave backup]\n**Manifest File:** [backup_manifest_YYYYMMDD_HHMMSS.json]\n```\n\n## 8. Conclusion\n\nThis CVE Preservation Strategy ensures that all 147,923 existing CVE nodes and their 1.67 million relationships remain intact throughout the schema enhancement process. The additive-only approach, comprehensive validation procedures, ",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 54,
+      "start_char": 43200,
+      "end_char": 44200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_55",
+    "text": "ures that all 147,923 existing CVE nodes and their 1.67 million relationships remain intact throughout the schema enhancement process. The additive-only approach, comprehensive validation procedures, and robust rollback mechanisms provide multiple layers of protection against data loss or corruption.\n\n**Key Success Factors:**\n1. **Zero-tolerance for CVE node loss** - Continuous monitoring and immediate rollback\n2. **Property preservation** - All existing CVE properties maintained\n3. **Relationship integrity** - Existing relationships never modified, only enhanced\n4. **Query compatibility** - Current CVE queries continue to function\n5. **Performance preservation** - CVE query performance maintained or improved\n\n**Implementation Checklist:**\n- [ ] Pre-wave comprehensive backup completed\n- [ ] Baseline metrics captured and stored\n- [ ] Validation scripts tested and ready\n- [ ] Rollback procedures documented and tested\n- [ ] Monitoring queries deployed\n- [ ] Emergency contacts and escalati",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 55,
+      "start_char": 44000,
+      "end_char": 45000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "15_CVE_PRESERVATION_STRATEGY.md_chunk_56",
+    "text": "] Baseline metrics captured and stored\n- [ ] Validation scripts tested and ready\n- [ ] Rollback procedures documented and tested\n- [ ] Monitoring queries deployed\n- [ ] Emergency contacts and escalation procedures defined\n- [ ] Success criteria and approval gates established\n\nThis strategy provides the operational foundation for safe, reversible, and verifiable CVE data enhancement across all five enhancement waves.\n\n---\n\n**Document Version:** v1.0.0\n**Last Updated:** 2025-10-30\n**Next Review:** Before Wave 1 Execution\n**Owner:** AEON FORGE Implementation Team\n",
+    "metadata": {
+      "file_name": "15_CVE_PRESERVATION_STRATEGY.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/15_CVE_PRESERVATION_STRATEGY.md",
+      "file_size": 45367,
+      "indexed_at": "2025-10-31T00:59:42.286832",
+      "chunk_id": 56,
+      "start_char": 44800,
+      "end_char": 45800,
+      "chunk_size": 567
+    }
+  }
+]

@@ -1,0 +1,534 @@
+[
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_0",
+    "text": "# Rollback Procedures\n**File:** 18_ROLLBACK_PROCEDURES.md\n**Created:** 2025-10-30 00:00:00 UTC\n**Modified:** 2025-10-30 00:00:00 UTC\n**Version:** v1.0.0\n**Author:** AEON FORGE Implementation Team\n**Purpose:** Comprehensive rollback procedures for safe schema enhancement wave reversal\n**Status:** ACTIVE\n\n## Executive Summary\n\nThis document provides detailed rollback procedures for safely reversing AEON Digital Twin schema enhancements at wave-level or individual component level. Each procedure includes detection triggers, decision criteria, execution steps, and validation protocols to ensure complete restoration to pre-wave state with zero data loss.\n\n### Rollback Strategy Overview\n\n**Three-Tier Rollback Approach:**\n1. **Surgical Rollback**: Remove only new enhancements, preserve all original data (fastest, lowest risk)\n2. **Incremental Restoration**: Restore specific components from differential backups (moderate speed, moderate risk)\n3. **Full Database Restore**: Complete restoration ",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_1",
+    "text": "al data (fastest, lowest risk)\n2. **Incremental Restoration**: Restore specific components from differential backups (moderate speed, moderate risk)\n3. **Full Database Restore**: Complete restoration from full backup (slowest, highest confidence)\n\n**Rollback Decision Matrix:**\n- **Surgical**: Validation failures in new data only, CVE count intact\n- **Incremental**: Property corruption or partial relationship loss\n- **Full Restore**: CVE node loss, database corruption, or multiple critical failures\n\n## 1. Rollback Triggers and Detection\n\n### 1.1 Automatic Rollback Triggers\n\n**CRITICAL Triggers (Automatic Rollback Initiation):**\n\n```cypher\n// ===============================================\n// TRIGGER 1: CVE Node Count Discrepancy\n// ===============================================\n// Run continuously during wave execution (every 5 minutes)\nMATCH (c:CVE)\nWITH count(c) AS current_cve_count\nWHERE current_cve_count <> 147923\nRETURN\n  current_cve_count,\n  147923 AS expected_count,\n  'CRITICAL:",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_2",
+    "text": "inuously during wave execution (every 5 minutes)\nMATCH (c:CVE)\nWITH count(c) AS current_cve_count\nWHERE current_cve_count <> 147923\nRETURN\n  current_cve_count,\n  147923 AS expected_count,\n  'CRITICAL: CVE NODE LOSS DETECTED - INITIATING AUTOMATIC ROLLBACK' AS alert_message,\n  datetime() AS trigger_time;\n// Trigger Action: Halt wave execution, initiate full database restore\n\n// ===============================================\n// TRIGGER 2: Existing Relationship Deletion\n// ===============================================\n// Run after each major wave operation\nMATCH (c:CVE)-[r]->()\nWHERE type(r) IN [\n  'HAS_WEAKNESS', 'AFFECTS', 'IMPACTS_VENDOR', 'EXPLOITED_BY',\n  'ENABLES_TECHNIQUE', 'MITIGATED_BY', 'EXPLOITED_BY_ACTOR',\n  'USED_IN_CAMPAIGN', 'RELATED_TO', 'FIXED_BY'\n]\nWITH type(r) AS rel_type, count(r) AS current_count\nWITH rel_type, current_count,\n  CASE rel_type\n    WHEN 'HAS_WEAKNESS' THEN 128456\n    WHEN 'AFFECTS' THEN 843291\n    WHEN 'IMPACTS_VENDOR' THEN 287634\n    WHEN 'EXPLOITED_",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_3",
+    "text": "e, count(r) AS current_count\nWITH rel_type, current_count,\n  CASE rel_type\n    WHEN 'HAS_WEAKNESS' THEN 128456\n    WHEN 'AFFECTS' THEN 843291\n    WHEN 'IMPACTS_VENDOR' THEN 287634\n    WHEN 'EXPLOITED_BY' THEN 64219\n    WHEN 'ENABLES_TECHNIQUE' THEN 89347\n    WHEN 'MITIGATED_BY' THEN 112568\n    WHEN 'EXPLOITED_BY_ACTOR' THEN 12847\n    WHEN 'USED_IN_CAMPAIGN' THEN 8456\n    WHEN 'RELATED_TO' THEN 45782\n    WHEN 'FIXED_BY' THEN 98234\n  END AS baseline_count\nWHERE current_count < baseline_count\nRETURN\n  rel_type,\n  current_count,\n  baseline_count,\n  (baseline_count - current_count) AS missing_relationships,\n  'CRITICAL: RELATIONSHIP LOSS DETECTED - INITIATING AUTOMATIC ROLLBACK' AS alert_message,\n  datetime() AS trigger_time;\n// Trigger Action: Halt wave execution, initiate incremental restoration\n\n// ===============================================\n// TRIGGER 3: Property Nullification\n// ===============================================\n// Run after each property enhancement operation\nMATCH (",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_4",
+    "text": "ion\n\n// ===============================================\n// TRIGGER 3: Property Nullification\n// ===============================================\n// Run after each property enhancement operation\nMATCH (c:CVE)\nWHERE c.id IS NULL OR c.description IS NULL OR c.cvss_score IS NULL\nWITH count(c) AS nullified_count\nWHERE nullified_count > 0\nRETURN\n  nullified_count,\n  'CRITICAL: PROPERTY NULLIFICATION DETECTED - INITIATING AUTOMATIC ROLLBACK' AS alert_message,\n  datetime() AS trigger_time;\n// Trigger Action: Halt wave execution, initiate incremental restoration\n```\n\n**Automatic Rollback Script:**\n\n```bash\n#!/bin/bash\n# File: /home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/scripts/automatic_rollback_trigger.sh\n\nWAVE_NUMBER=$1\nBACKUP_DIR=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/backups\"\nLOG_FILE=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/logs/rollback.log\"\n\necho \"=== AUTOMATIC ROLLBACK TRIGGER: Wave $WAVE_",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_5",
+    "text": "ologies/AEON_DT_CyberSec_Threat_Intel/backups\"\nLOG_FILE=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/logs/rollback.log\"\n\necho \"=== AUTOMATIC ROLLBACK TRIGGER: Wave $WAVE_NUMBER ===\" | tee -a \"$LOG_FILE\"\necho \"Trigger Time: $(date)\" | tee -a \"$LOG_FILE\"\n\n# 1. Check CVE node count\nCVE_COUNT=$(cypher-shell -u neo4j -p password \\\n  \"MATCH (c:CVE) RETURN count(c) AS count\" --format plain | tail -n 1)\n\nif [ \"$CVE_COUNT\" -ne \"147923\" ]; then\n  echo \"CRITICAL: CVE count mismatch! Expected: 147923, Found: $CVE_COUNT\" | tee -a \"$LOG_FILE\"\n  echo \"Initiating FULL DATABASE RESTORE...\" | tee -a \"$LOG_FILE\"\n  ./rollback_wave_full.sh $WAVE_NUMBER\n  exit 1\nfi\n\n# 2. Check for property nullification\nNULL_PROPERTIES=$(cypher-shell -u neo4j -p password \\\n  \"MATCH (c:CVE) WHERE c.id IS NULL OR c.description IS NULL RETURN count(c)\" \\\n  --format plain | tail -n 1)\n\nif [ \"$NULL_PROPERTIES\" -ne \"0\" ]; then\n  echo \"CRITICAL: Property nullification detected! Count: $NULL_PROPERTIES",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_6",
+    "text": "id IS NULL OR c.description IS NULL RETURN count(c)\" \\\n  --format plain | tail -n 1)\n\nif [ \"$NULL_PROPERTIES\" -ne \"0\" ]; then\n  echo \"CRITICAL: Property nullification detected! Count: $NULL_PROPERTIES\" | tee -a \"$LOG_FILE\"\n  echo \"Initiating INCREMENTAL RESTORATION...\" | tee -a \"$LOG_FILE\"\n  ./rollback_wave_incremental.sh $WAVE_NUMBER\n  exit 1\nfi\n\necho \"\u2713 No critical triggers detected\" | tee -a \"$LOG_FILE\"\n```\n\n### 1.2 Manual Rollback Triggers\n\n**High-Priority Triggers (Manual Decision Required):**\n\n- **Performance Degradation**: Query response times > 200% of baseline\n- **Semantic Inconsistencies**: Validation failures in domain logic\n- **Integration Failures**: Cross-domain relationship errors\n- **User-Reported Issues**: Critical functionality broken\n\n**Rollback Decision Flowchart:**\n\n```\nValidation Failure Detected\n  \u251c\u2500 CVE Node Loss? \u2500 YES \u2500> FULL RESTORE (Automatic)\n  \u251c\u2500 Property Nullification? \u2500 YES \u2500> INCREMENTAL RESTORE (Automatic)\n  \u251c\u2500 Relationship Loss? \u2500 YES \u2500> INCREMENTAL R",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_7",
+    "text": "`\nValidation Failure Detected\n  \u251c\u2500 CVE Node Loss? \u2500 YES \u2500> FULL RESTORE (Automatic)\n  \u251c\u2500 Property Nullification? \u2500 YES \u2500> INCREMENTAL RESTORE (Automatic)\n  \u251c\u2500 Relationship Loss? \u2500 YES \u2500> INCREMENTAL RESTORE (Automatic)\n  \u251c\u2500 Performance > 200% Baseline? \u2500 YES \u2500> Manual Review \u2500> SURGICAL or FULL\n  \u251c\u2500 Semantic Errors? \u2500 YES \u2500> Manual Review \u2500> SURGICAL or No Action\n  \u2514\u2500 Other Issues? \u2500 YES \u2500> Manual Review \u2500> Context-Dependent\n```\n\n## 2. Surgical Rollback Procedures\n\n### 2.1 Wave-Specific Surgical Rollback\n\n**Use Case:** Remove only new enhancements added during specific wave, preserve all original data.\n\n**Wave 1: SAREF IoT Integration Rollback**\n\n```cypher\n// ===============================================\n// SURGICAL ROLLBACK: Wave 1 (SAREF)\n// ===============================================\n\n// Step 1: Log rollback initiation\nCREATE (rollback:RollbackEvent {\n  wave: 1,\n  wave_name: 'SAREF IoT Integration',\n  rollback_type: 'surgical',\n  initiated_by: 'validation_failure',\n  timestamp",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_8",
+    "text": "===\n\n// Step 1: Log rollback initiation\nCREATE (rollback:RollbackEvent {\n  wave: 1,\n  wave_name: 'SAREF IoT Integration',\n  rollback_type: 'surgical',\n  initiated_by: 'validation_failure',\n  timestamp: datetime(),\n  status: 'in_progress'\n});\n\n// Step 2: Remove SAREF relationships from CVEs\nMATCH (c:CVE)-[r:AFFECTS_SAREF_DEVICE]->()\nWITH count(r) AS saref_device_rels\nDELETE r\nRETURN saref_device_rels AS deleted_saref_device_relationships;\n\nMATCH (c:CVE)-[r:IMPACTS_SAREF_FUNCTION]->()\nWITH count(r) AS saref_function_rels\nDELETE r\nRETURN saref_function_rels AS deleted_saref_function_relationships;\n\nMATCH (c:CVE)-[r:CORRUPTS_MEASUREMENT]->()\nWITH count(r) AS measurement_rels\nDELETE r\nRETURN measurement_rels AS deleted_measurement_relationships;\n\n// Step 3: Remove SAREF-specific properties from CVE nodes\nMATCH (c:CVE)\nWHERE c.saref_device_types IS NOT NULL\n  OR c.saref_function_impact IS NOT NULL\n  OR c.saref_measurement_risk IS NOT NULL\n  OR c.iot_exploitation_vector IS NOT NULL\n  OR c.sar",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_9",
+    "text": " CVE nodes\nMATCH (c:CVE)\nWHERE c.saref_device_types IS NOT NULL\n  OR c.saref_function_impact IS NOT NULL\n  OR c.saref_measurement_risk IS NOT NULL\n  OR c.iot_exploitation_vector IS NOT NULL\n  OR c.saref_severity_modifier IS NOT NULL\nWITH count(c) AS cves_to_update\nSET\n  c.saref_device_types = null,\n  c.saref_function_impact = null,\n  c.saref_measurement_risk = null,\n  c.iot_exploitation_vector = null,\n  c.saref_severity_modifier = null\nRETURN cves_to_update AS cves_cleaned;\n\n// Step 4: Drop SAREF-specific indexes\nDROP INDEX cve_saref_device_types_index IF EXISTS;\nDROP INDEX cve_iot_exploitation_vector_index IF EXISTS;\n\n// Step 5: Update rollback event status\nMATCH (rollback:RollbackEvent)\nWHERE rollback.wave = 1 AND rollback.status = 'in_progress'\nSET rollback.status = 'completed',\n    rollback.completion_time = datetime();\n\n// Step 6: Verification\nMATCH (c:CVE)\nRETURN\n  count(c) AS total_cves,\n  count(c.saref_device_types) AS cves_with_saref_props,\n  CASE\n    WHEN count(c) = 147923 AN",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_10",
+    "text": "lback.completion_time = datetime();\n\n// Step 6: Verification\nMATCH (c:CVE)\nRETURN\n  count(c) AS total_cves,\n  count(c.saref_device_types) AS cves_with_saref_props,\n  CASE\n    WHEN count(c) = 147923 AND count(c.saref_device_types) = 0 THEN 'SUCCESS'\n    ELSE 'VERIFICATION FAILED'\n  END AS rollback_verification;\n// Expected: total_cves = 147923, cves_with_saref_props = 0, verification = 'SUCCESS'\n```\n\n**Wave 2: ICS/OT Integration Rollback**\n\n```cypher\n// ===============================================\n// SURGICAL ROLLBACK: Wave 2 (ICS)\n// ===============================================\n\n// Step 1: Log rollback initiation\nCREATE (rollback:RollbackEvent {\n  wave: 2,\n  wave_name: 'ICS/OT Integration',\n  rollback_type: 'surgical',\n  timestamp: datetime(),\n  status: 'in_progress'\n});\n\n// Step 2: Remove ICS relationships\nMATCH (c:CVE)-[r:AFFECTS_ICS_COMPONENT]->()\nDELETE r;\n\nMATCH (c:CVE)-[r:EXPLOITS_PROTOCOL]->()\nDELETE r;\n\nMATCH (c:CVE)-[r:ENABLES_ICS_TECHNIQUE]->()\nDELETE r;\n\n// Step 3: Rem",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_11",
+    "text": "Remove ICS relationships\nMATCH (c:CVE)-[r:AFFECTS_ICS_COMPONENT]->()\nDELETE r;\n\nMATCH (c:CVE)-[r:EXPLOITS_PROTOCOL]->()\nDELETE r;\n\nMATCH (c:CVE)-[r:ENABLES_ICS_TECHNIQUE]->()\nDELETE r;\n\n// Step 3: Remove ICS-specific properties from CVE nodes\nMATCH (c:CVE)\nWHERE c.ics_applicable IS NOT NULL\nSET\n  c.ics_applicable = null,\n  c.ics_component_types = null,\n  c.purdue_levels = null,\n  c.safety_impact = null,\n  c.process_impact = null,\n  c.ics_mitre_techniques = null,\n  c.industrial_protocols = null;\n\n// Step 4: Drop ICS-specific indexes\nDROP INDEX cve_ics_applicable_index IF EXISTS;\nDROP INDEX cve_safety_impact_index IF EXISTS;\nDROP INDEX cve_purdue_levels_index IF EXISTS;\nDROP INDEX cve_ics_severity_composite IF EXISTS;\n\n// Step 5: Update rollback event status\nMATCH (rollback:RollbackEvent)\nWHERE rollback.wave = 2 AND rollback.status = 'in_progress'\nSET rollback.status = 'completed',\n    rollback.completion_time = datetime();\n\n// Step 6: Verification\nMATCH (c:CVE)\nRETURN\n  count(c) AS tota",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_12",
+    "text": "ERE rollback.wave = 2 AND rollback.status = 'in_progress'\nSET rollback.status = 'completed',\n    rollback.completion_time = datetime();\n\n// Step 6: Verification\nMATCH (c:CVE)\nRETURN\n  count(c) AS total_cves,\n  count(c.ics_applicable) AS cves_with_ics_props,\n  CASE\n    WHEN count(c) = 147923 AND count(c.ics_applicable) = 0 THEN 'SUCCESS'\n    ELSE 'VERIFICATION FAILED'\n  END AS rollback_verification;\n```\n\n**Wave 3: SBOM Integration Rollback**\n\n```cypher\n// ===============================================\n// SURGICAL ROLLBACK: Wave 3 (SBOM)\n// ===============================================\n\n// Step 1: Log rollback initiation\nCREATE (rollback:RollbackEvent {\n  wave: 3,\n  wave_name: 'SBOM Integration',\n  rollback_type: 'surgical',\n  timestamp: datetime(),\n  status: 'in_progress'\n});\n\n// Step 2: Remove SBOM relationships\nMATCH (c:CVE)-[r:AFFECTS_SBOM_COMPONENT]->()\nDELETE r;\n\nMATCH (c:CVE)-[r:IMPACTS_PACKAGE]->()\nDELETE r;\n\nMATCH (c:CVE)-[r:PROPAGATES_THROUGH]->()\nDELETE r;\n\n// Step 3: Remov",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_13",
+    "text": " Remove SBOM relationships\nMATCH (c:CVE)-[r:AFFECTS_SBOM_COMPONENT]->()\nDELETE r;\n\nMATCH (c:CVE)-[r:IMPACTS_PACKAGE]->()\nDELETE r;\n\nMATCH (c:CVE)-[r:PROPAGATES_THROUGH]->()\nDELETE r;\n\n// Step 3: Remove SBOM-specific properties\nMATCH (c:CVE)\nWHERE c.sbom_component_count IS NOT NULL\nSET\n  c.sbom_component_count = null,\n  c.package_ecosystems = null,\n  c.dependency_depth = null,\n  c.license_implications = null,\n  c.supply_chain_risk = null,\n  c.purl_identifiers = null;\n\n// Step 4: Drop SBOM-specific indexes\nDROP INDEX cve_package_ecosystems_index IF EXISTS;\nDROP INDEX cve_supply_chain_risk_index IF EXISTS;\nDROP INDEX cve_sbom_risk_composite IF EXISTS;\n\n// Step 5: Update rollback event status\nMATCH (rollback:RollbackEvent)\nWHERE rollback.wave = 3 AND rollback.status = 'in_progress'\nSET rollback.status = 'completed',\n    rollback.completion_time = datetime();\n\n// Step 6: Verification\nMATCH (c:CVE)\nRETURN\n  count(c) AS total_cves,\n  count(c.sbom_component_count) AS cves_with_sbom_props,\n  CA",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_14",
+    "text": "k.status = 'completed',\n    rollback.completion_time = datetime();\n\n// Step 6: Verification\nMATCH (c:CVE)\nRETURN\n  count(c) AS total_cves,\n  count(c.sbom_component_count) AS cves_with_sbom_props,\n  CASE\n    WHEN count(c) = 147923 AND count(c.sbom_component_count) = 0 THEN 'SUCCESS'\n    ELSE 'VERIFICATION FAILED'\n  END AS rollback_verification;\n```\n\n**Wave 4: UCO Integration Rollback**\n\n```cypher\n// ===============================================\n// SURGICAL ROLLBACK: Wave 4 (UCO)\n// ===============================================\n\n// Step 1: Log rollback initiation\nCREATE (rollback:RollbackEvent {\n  wave: 4,\n  wave_name: 'UCO Integration',\n  rollback_type: 'surgical',\n  timestamp: datetime(),\n  status: 'in_progress'\n});\n\n// Step 2: Remove UCO relationships\nMATCH (c:CVE)-[r:CREATES_OBSERVABLE]->()\nDELETE r;\n\nMATCH (c:CVE)-[r:TRIGGERS_ACTION]->()\nDELETE r;\n\n// Step 3: Remove UCO-specific properties\nMATCH (c:CVE)\nWHERE c.uco_observable_types IS NOT NULL\nSET\n  c.uco_observable_types = null",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_15",
+    "text": "LE]->()\nDELETE r;\n\nMATCH (c:CVE)-[r:TRIGGERS_ACTION]->()\nDELETE r;\n\n// Step 3: Remove UCO-specific properties\nMATCH (c:CVE)\nWHERE c.uco_observable_types IS NOT NULL\nSET\n  c.uco_observable_types = null,\n  c.forensic_artifacts = null,\n  c.exploitation_signatures = null,\n  c.investigation_priority = null;\n\n// Step 4: Drop UCO-specific indexes\nDROP INDEX cve_uco_observable_types_index IF EXISTS;\nDROP INDEX cve_investigation_priority_index IF EXISTS;\n\n// Step 5: Update rollback event status\nMATCH (rollback:RollbackEvent)\nWHERE rollback.wave = 4 AND rollback.status = 'in_progress'\nSET rollback.status = 'completed',\n    rollback.completion_time = datetime();\n\n// Step 6: Verification\nMATCH (c:CVE)\nRETURN\n  count(c) AS total_cves,\n  count(c.uco_observable_types) AS cves_with_uco_props,\n  CASE\n    WHEN count(c) = 147923 AND count(c.uco_observable_types) = 0 THEN 'SUCCESS'\n    ELSE 'VERIFICATION FAILED'\n  END AS rollback_verification;\n```\n\n**Wave 5: Threat Intelligence Integration Rollback**\n\n```",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_16",
+    "text": "HEN count(c) = 147923 AND count(c.uco_observable_types) = 0 THEN 'SUCCESS'\n    ELSE 'VERIFICATION FAILED'\n  END AS rollback_verification;\n```\n\n**Wave 5: Threat Intelligence Integration Rollback**\n\n```cypher\n// ===============================================\n// SURGICAL ROLLBACK: Wave 5 (Threat Intelligence)\n// ===============================================\n\n// Step 1: Log rollback initiation\nCREATE (rollback:RollbackEvent {\n  wave: 5,\n  wave_name: 'Threat Intelligence Integration',\n  rollback_type: 'surgical',\n  timestamp: datetime(),\n  status: 'in_progress'\n});\n\n// Step 2: Remove Threat Intelligence relationships\nMATCH (c:CVE)-[r:HAS_STIX_INDICATOR]->()\nDELETE r;\n\nMATCH (ta:ThreatActor)-[r:TARGETS_ICS_COMPONENT]->()\nDELETE r;\n\nMATCH (ta:ThreatActor)-[r:USES_ICS_TECHNIQUE]->()\nDELETE r;\n\nMATCH (ta:ThreatActor)-[r:ASSOCIATED_WITH_STIX]->()\nDELETE r;\n\n// Step 3: Remove enhanced ThreatActor properties\nMATCH (ta:ThreatActor)\nWHERE ta.psychometric_profile IS NOT NULL\nSET\n  ta.psychometric_",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_17",
+    "text": "MATCH (ta:ThreatActor)-[r:ASSOCIATED_WITH_STIX]->()\nDELETE r;\n\n// Step 3: Remove enhanced ThreatActor properties\nMATCH (ta:ThreatActor)\nWHERE ta.psychometric_profile IS NOT NULL\nSET\n  ta.psychometric_profile = null,\n  ta.risk_tolerance = null,\n  ta.operational_tempo = null,\n  ta.target_selection = null,\n  ta.technical_capability = null,\n  ta.ttp_diversity_score = null,\n  ta.ics_focused = null,\n  ta.ics_target_count = null,\n  ta.ics_threat_level = null;\n\n// Step 4: Remove Threat Intelligence properties from CVEs\nMATCH (c:CVE)\nWHERE c.threat_actor_associations IS NOT NULL\nSET\n  c.threat_actor_associations = null,\n  c.campaign_usage_count = null,\n  c.exploit_kit_usage = null,\n  c.dark_web_mentions = null,\n  c.weaponization_timeline = null,\n  c.stix_indicator_count = null,\n  c.threat_intel_confidence = null;\n\n// Step 5: Drop Threat Intelligence indexes\nDROP INDEX cve_threat_actor_associations_index IF EXISTS;\nDROP INDEX cve_weaponization_timeline_index IF EXISTS;\n\n// Step 6: Update rollbac",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_18",
+    "text": "fidence = null;\n\n// Step 5: Drop Threat Intelligence indexes\nDROP INDEX cve_threat_actor_associations_index IF EXISTS;\nDROP INDEX cve_weaponization_timeline_index IF EXISTS;\n\n// Step 6: Update rollback event status\nMATCH (rollback:RollbackEvent)\nWHERE rollback.wave = 5 AND rollback.status = 'in_progress'\nSET rollback.status = 'completed',\n    rollback.completion_time = datetime();\n\n// Step 7: Verification\nMATCH (c:CVE)\nWITH count(c) AS total_cves,\n     count(c.threat_actor_associations) AS cves_with_ti_props\nMATCH (ta:ThreatActor)\nRETURN\n  total_cves,\n  cves_with_ti_props,\n  count(ta.psychometric_profile) AS tas_with_profiles,\n  CASE\n    WHEN total_cves = 147923\n      AND cves_with_ti_props = 0\n      AND count(ta.psychometric_profile) = 0\n    THEN 'SUCCESS'\n    ELSE 'VERIFICATION FAILED'\n  END AS rollback_verification;\n```\n\n### 2.2 Surgical Rollback Automation Script\n\n```bash\n#!/bin/bash\n# File: /home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/scripts/surgical_",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_19",
+    "text": " END AS rollback_verification;\n```\n\n### 2.2 Surgical Rollback Automation Script\n\n```bash\n#!/bin/bash\n# File: /home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/scripts/surgical_rollback.sh\n\nWAVE_NUMBER=$1\nLOG_FILE=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/logs/surgical_rollback_wave_${WAVE_NUMBER}.log\"\n\necho \"=== SURGICAL ROLLBACK: Wave $WAVE_NUMBER ===\" | tee -a \"$LOG_FILE\"\necho \"Start Time: $(date)\" | tee -a \"$LOG_FILE\"\n\n# Load wave-specific Cypher rollback script\nROLLBACK_SCRIPT=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/cypher/rollback_wave_${WAVE_NUMBER}.cypher\"\n\nif [ ! -f \"$ROLLBACK_SCRIPT\" ]; then\n  echo \"ERROR: Rollback script not found: $ROLLBACK_SCRIPT\" | tee -a \"$LOG_FILE\"\n  exit 1\nfi\n\n# Execute surgical rollback\necho \"Executing surgical rollback for Wave $WAVE_NUMBER...\" | tee -a \"$LOG_FILE\"\ncypher-shell -u neo4j -p password < \"$ROLLBACK_SCRIPT\" 2>&1 | tee -a \"$LOG_FILE\"\n\n# Verify CVE co",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_20",
+    "text": "ute surgical rollback\necho \"Executing surgical rollback for Wave $WAVE_NUMBER...\" | tee -a \"$LOG_FILE\"\ncypher-shell -u neo4j -p password < \"$ROLLBACK_SCRIPT\" 2>&1 | tee -a \"$LOG_FILE\"\n\n# Verify CVE count\nCVE_COUNT=$(cypher-shell -u neo4j -p password \\\n  \"MATCH (c:CVE) RETURN count(c)\" --format plain | tail -n 1)\n\necho \"Post-Rollback CVE Count: $CVE_COUNT\" | tee -a \"$LOG_FILE\"\n\nif [ \"$CVE_COUNT\" -eq \"147923\" ]; then\n  echo \"\u2713 SUCCESS: CVE count verified (147,923)\" | tee -a \"$LOG_FILE\"\nelse\n  echo \"\u2717 FAILURE: CVE count mismatch! Expected: 147923, Found: $CVE_COUNT\" | tee -a \"$LOG_FILE\"\n  exit 1\nfi\n\n# Verify relationship preservation\necho \"Verifying existing relationship preservation...\" | tee -a \"$LOG_FILE\"\ncypher-shell -u neo4j -p password <<CYPHER | tee -a \"$LOG_FILE\"\nMATCH (c:CVE)-[r]->()\nWHERE type(r) IN [\n  'HAS_WEAKNESS', 'AFFECTS', 'IMPACTS_VENDOR', 'EXPLOITED_BY',\n  'ENABLES_TECHNIQUE', 'MITIGATED_BY', 'EXPLOITED_BY_ACTOR',\n  'USED_IN_CAMPAIGN', 'RELATED_TO', 'FIXED_BY'\n]\nRETURN\n",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_21",
+    "text": "\nWHERE type(r) IN [\n  'HAS_WEAKNESS', 'AFFECTS', 'IMPACTS_VENDOR', 'EXPLOITED_BY',\n  'ENABLES_TECHNIQUE', 'MITIGATED_BY', 'EXPLOITED_BY_ACTOR',\n  'USED_IN_CAMPAIGN', 'RELATED_TO', 'FIXED_BY'\n]\nRETURN\n  type(r) AS relationship_type,\n  count(r) AS current_count\nORDER BY relationship_type;\nCYPHER\n\necho \"=== Surgical Rollback Complete ===\" | tee -a \"$LOG_FILE\"\necho \"End Time: $(date)\" | tee -a \"$LOG_FILE\"\n```\n\n## 3. Incremental Restoration Procedures\n\n### 3.1 Property-Level Restoration\n\n**Use Case:** Restore corrupted or nullified CVE properties from differential backups.\n\n```bash\n#!/bin/bash\n# File: /home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/scripts/restore_cve_properties.sh\n\nWAVE_NUMBER=$1\nBACKUP_DIR=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/backups/wave_${WAVE_NUMBER}\"\nLOG_FILE=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/logs/property_restoration_wave_${WAVE_NUMBER}.log\"\n\necho \"=== CVE PROPERT",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_22",
+    "text": "_Threat_Intel/backups/wave_${WAVE_NUMBER}\"\nLOG_FILE=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/logs/property_restoration_wave_${WAVE_NUMBER}.log\"\n\necho \"=== CVE PROPERTY RESTORATION: Wave $WAVE_NUMBER ===\" | tee -a \"$LOG_FILE\"\necho \"Start Time: $(date)\" | tee -a \"$LOG_FILE\"\n\n# 1. Identify corrupted CVEs\necho \"Identifying corrupted CVE properties...\" | tee -a \"$LOG_FILE\"\nCORRUPTED_CVES=$(cypher-shell -u neo4j -p password <<CYPHER\nMATCH (c:CVE)\nWHERE c.id IS NULL OR c.description IS NULL OR c.cvss_score IS NULL\nRETURN collect(id(c)) AS corrupted_ids;\nCYPHER\n)\n\nif [ \"$CORRUPTED_CVES\" == \"[]\" ]; then\n  echo \"\u2713 No corrupted CVE properties detected\" | tee -a \"$LOG_FILE\"\n  exit 0\nfi\n\n# 2. Load backup CVE data\nBACKUP_FILE=\"$BACKUP_DIR/cve_nodes_*.json\"\necho \"Loading backup CVE data from: $BACKUP_FILE\" | tee -a \"$LOG_FILE\"\n\n# 3. Restore properties for corrupted CVEs\ncypher-shell -u neo4j -p password <<CYPHER | tee -a \"$LOG_FILE\"\nCALL apoc.load.json('file:///$BACK",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_23",
+    "text": " backup CVE data from: $BACKUP_FILE\" | tee -a \"$LOG_FILE\"\n\n# 3. Restore properties for corrupted CVEs\ncypher-shell -u neo4j -p password <<CYPHER | tee -a \"$LOG_FILE\"\nCALL apoc.load.json('file:///$BACKUP_FILE') YIELD value\nWITH value\nWHERE value.id IN $CORRUPTED_CVES\nMATCH (c:CVE)\nWHERE id(c) IN $CORRUPTED_CVES AND c.id = value.id\nSET c = value.properties\nRETURN count(c) AS restored_cves;\nCYPHER\n\n# 4. Verification\necho \"Verifying property restoration...\" | tee -a \"$LOG_FILE\"\nNULL_COUNT=$(cypher-shell -u neo4j -p password \\\n  \"MATCH (c:CVE) WHERE c.id IS NULL OR c.description IS NULL RETURN count(c)\" \\\n  --format plain | tail -n 1)\n\nif [ \"$NULL_COUNT\" -eq \"0\" ]; then\n  echo \"\u2713 SUCCESS: All CVE properties restored\" | tee -a \"$LOG_FILE\"\nelse\n  echo \"\u2717 FAILURE: $NULL_COUNT CVEs still have null properties\" | tee -a \"$LOG_FILE\"\n  exit 1\nfi\n\necho \"=== Property Restoration Complete ===\" | tee -a \"$LOG_FILE\"\necho \"End Time: $(date)\" | tee -a \"$LOG_FILE\"\n```\n\n### 3.2 Relationship-Level Restoratio",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_24",
+    "text": "properties\" | tee -a \"$LOG_FILE\"\n  exit 1\nfi\n\necho \"=== Property Restoration Complete ===\" | tee -a \"$LOG_FILE\"\necho \"End Time: $(date)\" | tee -a \"$LOG_FILE\"\n```\n\n### 3.2 Relationship-Level Restoration\n\n**Use Case:** Restore deleted or corrupted CVE relationships from differential backups.\n\n```bash\n#!/bin/bash\n# File: /home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/scripts/restore_cve_relationships.sh\n\nWAVE_NUMBER=$1\nBACKUP_DIR=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/backups/wave_${WAVE_NUMBER}\"\nLOG_FILE=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/logs/relationship_restoration_wave_${WAVE_NUMBER}.log\"\n\necho \"=== CVE RELATIONSHIP RESTORATION: Wave $WAVE_NUMBER ===\" | tee -a \"$LOG_FILE\"\necho \"Start Time: $(date)\" | tee -a \"$LOG_FILE\"\n\n# 1. Identify missing relationships\necho \"Checking for missing relationships...\" | tee -a \"$LOG_FILE\"\ncypher-shell -u neo4j -p password <<CYPHER | tee -a \"$LOG_FILE\"",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_25",
+    "text": "me: $(date)\" | tee -a \"$LOG_FILE\"\n\n# 1. Identify missing relationships\necho \"Checking for missing relationships...\" | tee -a \"$LOG_FILE\"\ncypher-shell -u neo4j -p password <<CYPHER | tee -a \"$LOG_FILE\"\nMATCH (c:CVE)-[r]->()\nWHERE type(r) IN [\n  'HAS_WEAKNESS', 'AFFECTS', 'IMPACTS_VENDOR', 'EXPLOITED_BY',\n  'ENABLES_TECHNIQUE', 'MITIGATED_BY', 'EXPLOITED_BY_ACTOR',\n  'USED_IN_CAMPAIGN', 'RELATED_TO', 'FIXED_BY'\n]\nWITH type(r) AS rel_type, count(r) AS current_count\nWITH rel_type, current_count,\n  CASE rel_type\n    WHEN 'HAS_WEAKNESS' THEN 128456\n    WHEN 'AFFECTS' THEN 843291\n    WHEN 'IMPACTS_VENDOR' THEN 287634\n    WHEN 'EXPLOITED_BY' THEN 64219\n    WHEN 'ENABLES_TECHNIQUE' THEN 89347\n    WHEN 'MITIGATED_BY' THEN 112568\n    WHEN 'EXPLOITED_BY_ACTOR' THEN 12847\n    WHEN 'USED_IN_CAMPAIGN' THEN 8456\n    WHEN 'RELATED_TO' THEN 45782\n    WHEN 'FIXED_BY' THEN 98234\n  END AS baseline_count\nWHERE current_count < baseline_count\nRETURN\n  rel_type,\n  baseline_count - current_count AS missing_coun",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_26",
+    "text": "EN 8456\n    WHEN 'RELATED_TO' THEN 45782\n    WHEN 'FIXED_BY' THEN 98234\n  END AS baseline_count\nWHERE current_count < baseline_count\nRETURN\n  rel_type,\n  baseline_count - current_count AS missing_count;\nCYPHER\n\n# 2. Load backup relationship data\nBACKUP_FILE=\"$BACKUP_DIR/cve_relationships_*.json\"\necho \"Loading backup relationship data from: $BACKUP_FILE\" | tee -a \"$LOG_FILE\"\n\n# 3. Restore missing relationships\ncypher-shell -u neo4j -p password <<CYPHER | tee -a \"$LOG_FILE\"\nCALL apoc.load.json('file:///$BACKUP_FILE') YIELD value\nMATCH (c:CVE {id: value.source_id})\nMATCH (target) WHERE id(target) = value.target_id\nMERGE (c)-[r:\\`\\${value.rel_type}\\`]->(target)\nSET r = value.rel_properties\nRETURN count(r) AS restored_relationships;\nCYPHER\n\n# 4. Verification\necho \"Verifying relationship restoration...\" | tee -a \"$LOG_FILE\"\ncypher-shell -u neo4j -p password <<CYPHER | tee -a \"$LOG_FILE\"\nMATCH (c:CVE)-[r]->()\nWHERE type(r) IN [\n  'HAS_WEAKNESS', 'AFFECTS', 'IMPACTS_VENDOR', 'EXPLOITED_BY',\n  ",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_27",
+    "text": "tion...\" | tee -a \"$LOG_FILE\"\ncypher-shell -u neo4j -p password <<CYPHER | tee -a \"$LOG_FILE\"\nMATCH (c:CVE)-[r]->()\nWHERE type(r) IN [\n  'HAS_WEAKNESS', 'AFFECTS', 'IMPACTS_VENDOR', 'EXPLOITED_BY',\n  'ENABLES_TECHNIQUE', 'MITIGATED_BY', 'EXPLOITED_BY_ACTOR',\n  'USED_IN_CAMPAIGN', 'RELATED_TO', 'FIXED_BY'\n]\nRETURN\n  type(r) AS relationship_type,\n  count(r) AS current_count,\n  CASE\n    WHEN count(r) >= CASE type(r)\n      WHEN 'HAS_WEAKNESS' THEN 128456\n      WHEN 'AFFECTS' THEN 843291\n      WHEN 'IMPACTS_VENDOR' THEN 287634\n      WHEN 'EXPLOITED_BY' THEN 64219\n      WHEN 'ENABLES_TECHNIQUE' THEN 89347\n      WHEN 'MITIGATED_BY' THEN 112568\n      WHEN 'EXPLOITED_BY_ACTOR' THEN 12847\n      WHEN 'USED_IN_CAMPAIGN' THEN 8456\n      WHEN 'RELATED_TO' THEN 45782\n      WHEN 'FIXED_BY' THEN 98234\n    END THEN 'PASS'\n    ELSE 'FAIL'\n  END AS validation_status\nORDER BY relationship_type;\nCYPHER\n\necho \"=== Relationship Restoration Complete ===\" | tee -a \"$LOG_FILE\"\necho \"End Time: $(date)\" | tee -a \"",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_28",
+    "text": "END THEN 'PASS'\n    ELSE 'FAIL'\n  END AS validation_status\nORDER BY relationship_type;\nCYPHER\n\necho \"=== Relationship Restoration Complete ===\" | tee -a \"$LOG_FILE\"\necho \"End Time: $(date)\" | tee -a \"$LOG_FILE\"\n```\n\n## 4. Full Database Restore Procedures\n\n### 4.1 Complete Database Restoration\n\n**Use Case:** Catastrophic failure requiring complete database restoration from full backup.\n\n```bash\n#!/bin/bash\n# File: /home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/scripts/full_database_restore.sh\n\nWAVE_NUMBER=$1\nBACKUP_DIR=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/backups/wave_${WAVE_NUMBER}\"\nMANIFEST=\"$BACKUP_DIR/backup_manifest_*.json\"\nLOG_FILE=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/logs/full_restore_wave_${WAVE_NUMBER}.log\"\n\necho \"=== FULL DATABASE RESTORE: Wave $WAVE_NUMBER ===\" | tee -a \"$LOG_FILE\"\necho \"WARNING: This will completely restore database to pre-wave state\" | tee -a \"$LOG_FILE\"\ne",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_29",
+    "text": "re_wave_${WAVE_NUMBER}.log\"\n\necho \"=== FULL DATABASE RESTORE: Wave $WAVE_NUMBER ===\" | tee -a \"$LOG_FILE\"\necho \"WARNING: This will completely restore database to pre-wave state\" | tee -a \"$LOG_FILE\"\necho \"Start Time: $(date)\" | tee -a \"$LOG_FILE\"\n\n# 1. Confirm restoration\nread -p \"Are you sure you want to perform FULL DATABASE RESTORE? (yes/no): \" confirm\nif [ \"$confirm\" != \"yes\" ]; then\n  echo \"Restoration cancelled by user\" | tee -a \"$LOG_FILE\"\n  exit 0\nfi\n\n# 2. Stop Neo4j database\necho \"Stopping Neo4j database...\" | tee -a \"$LOG_FILE\"\nneo4j stop\n\n# Wait for clean shutdown\nsleep 10\n\n# 3. Identify backup path from manifest\nif [ ! -f \"$MANIFEST\" ]; then\n  echo \"ERROR: Backup manifest not found: $MANIFEST\" | tee -a \"$LOG_FILE\"\n  exit 1\nfi\n\nBACKUP_PATH=$(jq -r '.files.full_database' \"$MANIFEST\")\nFULL_BACKUP_PATH=\"$BACKUP_DIR/$BACKUP_PATH\"\n\nif [ ! -d \"$FULL_BACKUP_PATH\" ]; then\n  echo \"ERROR: Backup not found: $FULL_BACKUP_PATH\" | tee -a \"$LOG_FILE\"\n  exit 1\nfi\n\necho \"Restoring from: $FUL",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_30",
+    "text": "ST\")\nFULL_BACKUP_PATH=\"$BACKUP_DIR/$BACKUP_PATH\"\n\nif [ ! -d \"$FULL_BACKUP_PATH\" ]; then\n  echo \"ERROR: Backup not found: $FULL_BACKUP_PATH\" | tee -a \"$LOG_FILE\"\n  exit 1\nfi\n\necho \"Restoring from: $FULL_BACKUP_PATH\" | tee -a \"$LOG_FILE\"\n\n# 4. Perform database restore\nneo4j-admin database restore \\\n  --from-path=\"$FULL_BACKUP_PATH\" \\\n  --database=aeon-cyber-threat \\\n  --overwrite-destination=true \\\n  2>&1 | tee -a \"$LOG_FILE\"\n\nif [ $? -ne 0 ]; then\n  echo \"ERROR: Database restore failed!\" | tee -a \"$LOG_FILE\"\n  exit 1\nfi\n\n# 5. Start Neo4j database\necho \"Starting Neo4j database...\" | tee -a \"$LOG_FILE\"\nneo4j start\n\n# Wait for database to be ready\nsleep 30\n\n# 6. Verify restoration\necho \"Verifying database restoration...\" | tee -a \"$LOG_FILE\"\n\nCVE_COUNT=$(cypher-shell -u neo4j -p password \\\n  \"MATCH (c:CVE) RETURN count(c)\" --format plain | tail -n 1)\n\nEXPECTED_COUNT=$(jq -r '.baseline_cve_count' \"$MANIFEST\")\n\necho \"CVE Count: $CVE_COUNT (Expected: $EXPECTED_COUNT)\" | tee -a \"$LOG_FILE\"\n\nif",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_31",
+    "text": "MATCH (c:CVE) RETURN count(c)\" --format plain | tail -n 1)\n\nEXPECTED_COUNT=$(jq -r '.baseline_cve_count' \"$MANIFEST\")\n\necho \"CVE Count: $CVE_COUNT (Expected: $EXPECTED_COUNT)\" | tee -a \"$LOG_FILE\"\n\nif [ \"$CVE_COUNT\" -ne \"$EXPECTED_COUNT\" ]; then\n  echo \"ERROR: Restoration verification failed! CVE count mismatch\" | tee -a \"$LOG_FILE\"\n  exit 1\nfi\n\n# 7. Verify property completeness\ncypher-shell -u neo4j -p password <<CYPHER | tee -a \"$LOG_FILE\"\nMATCH (c:CVE)\nRETURN\n  count(c) AS total_cves,\n  count(c.id) AS id_count,\n  count(c.description) AS description_count,\n  count(c.cvss_score) AS cvss_count,\n  CASE\n    WHEN count(c.id) = count(c) AND count(c.cvss_score) >= 142847\n    THEN 'SUCCESS'\n    ELSE 'VERIFICATION FAILED'\n  END AS validation_status;\nCYPHER\n\n# 8. Verify relationship counts\ncypher-shell -u neo4j -p password <<CYPHER | tee -a \"$LOG_FILE\"\nMATCH (c:CVE)-[r]->()\nWHERE type(r) IN [\n  'HAS_WEAKNESS', 'AFFECTS', 'IMPACTS_VENDOR', 'EXPLOITED_BY',\n  'ENABLES_TECHNIQUE', 'MITIGATED_BY', ",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_32",
+    "text": "shell -u neo4j -p password <<CYPHER | tee -a \"$LOG_FILE\"\nMATCH (c:CVE)-[r]->()\nWHERE type(r) IN [\n  'HAS_WEAKNESS', 'AFFECTS', 'IMPACTS_VENDOR', 'EXPLOITED_BY',\n  'ENABLES_TECHNIQUE', 'MITIGATED_BY', 'EXPLOITED_BY_ACTOR',\n  'USED_IN_CAMPAIGN', 'RELATED_TO', 'FIXED_BY'\n]\nRETURN\n  type(r) AS relationship_type,\n  count(r) AS current_count\nORDER BY relationship_type;\nCYPHER\n\necho \"\u2713 FULL DATABASE RESTORE COMPLETE\" | tee -a \"$LOG_FILE\"\necho \"Database restored to pre-Wave $WAVE_NUMBER state\" | tee -a \"$LOG_FILE\"\necho \"End Time: $(date)\" | tee -a \"$LOG_FILE\"\n```\n\n## 5. Post-Rollback Validation\n\n### 5.1 Comprehensive Post-Rollback Validation\n\n```cypher\n// ===============================================\n// POST-ROLLBACK VALIDATION SUITE\n// ===============================================\n\n// Validation 1: CVE Node Count\nMATCH (c:CVE)\nWITH count(c) AS cve_count\nRETURN\n  cve_count,\n  147923 AS expected_count,\n  CASE WHEN cve_count = 147923 THEN 'PASS' ELSE 'FAIL' END AS status;\n\n// Validation 2: C",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_33",
+    "text": "ion 1: CVE Node Count\nMATCH (c:CVE)\nWITH count(c) AS cve_count\nRETURN\n  cve_count,\n  147923 AS expected_count,\n  CASE WHEN cve_count = 147923 THEN 'PASS' ELSE 'FAIL' END AS status;\n\n// Validation 2: Core Property Integrity\nMATCH (c:CVE)\nRETURN\n  count(c.id) / count(c) * 100.0 AS id_completeness,\n  count(c.description) / count(c) * 100.0 AS description_completeness,\n  count(c.cvss_score) / count(c) * 100.0 AS cvss_completeness,\n  CASE\n    WHEN count(c.id) = count(c) AND count(c.cvss_score) >= 142847\n    THEN 'PASS'\n    ELSE 'FAIL'\n  END AS status;\n\n// Validation 3: Relationship Preservation\nMATCH (c:CVE)-[r]->()\nWHERE type(r) IN ['HAS_WEAKNESS', 'AFFECTS', 'IMPACTS_VENDOR']\nRETURN\n  type(r) AS rel_type,\n  count(r) AS count,\n  CASE\n    WHEN type(r) = 'HAS_WEAKNESS' AND count(r) >= 128456 THEN 'PASS'\n    WHEN type(r) = 'AFFECTS' AND count(r) >= 843291 THEN 'PASS'\n    WHEN type(r) = 'IMPACTS_VENDOR' AND count(r) >= 287634 THEN 'PASS'\n    ELSE 'FAIL'\n  END AS status;\n\n// Validation 4: Enhan",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_34",
+    "text": "N 'PASS'\n    WHEN type(r) = 'AFFECTS' AND count(r) >= 843291 THEN 'PASS'\n    WHEN type(r) = 'IMPACTS_VENDOR' AND count(r) >= 287634 THEN 'PASS'\n    ELSE 'FAIL'\n  END AS status;\n\n// Validation 4: Enhanced Properties Removed\nMATCH (c:CVE)\nRETURN\n  count(c.saref_device_types) AS saref_props,\n  count(c.ics_applicable) AS ics_props,\n  count(c.sbom_component_count) AS sbom_props,\n  count(c.uco_observable_types) AS uco_props,\n  count(c.threat_actor_associations) AS ti_props,\n  CASE\n    WHEN count(c.saref_device_types) = 0\n      AND count(c.ics_applicable) = 0\n      AND count(c.sbom_component_count) = 0\n      AND count(c.uco_observable_types) = 0\n      AND count(c.threat_actor_associations) = 0\n    THEN 'PASS: All Enhanced Properties Removed'\n    ELSE 'WARN: Some Enhanced Properties Remain'\n  END AS status;\n\n// Validation 5: Query Performance Check\n// Run baseline queries and verify performance\nPROFILE MATCH (c:CVE {id: 'CVE-2023-12345'}) RETURN c;\n// Expected: < 10ms execution time\n```\n\n## 6.",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_35",
+    "text": "AS status;\n\n// Validation 5: Query Performance Check\n// Run baseline queries and verify performance\nPROFILE MATCH (c:CVE {id: 'CVE-2023-12345'}) RETURN c;\n// Expected: < 10ms execution time\n```\n\n## 6. Rollback Documentation and Reporting\n\n### 6.1 Rollback Report Template\n\n```markdown\n# Rollback Report: Wave [N]\n\n**Date:** [YYYY-MM-DD HH:MM:SS]\n**Wave:** [N] - [Wave Name]\n**Rollback Type:** [Surgical / Incremental / Full]\n**Initiated By:** [Automatic Trigger / Manual Decision / User Request]\n**Duration:** [HH:MM:SS]\n\n## 1. Rollback Trigger\n**Trigger Type:** [CVE Loss / Property Corruption / Relationship Loss / Performance / Other]\n**Detection Time:** [YYYY-MM-DD HH:MM:SS]\n**Severity:** [CRITICAL / HIGH / MEDIUM]\n**Description:** [Detailed description of failure that triggered rollback]\n\n## 2. Rollback Execution\n**Start Time:** [YYYY-MM-DD HH:MM:SS]\n**End Time:** [YYYY-MM-DD HH:MM:SS]\n**Backup Used:** [Path to backup]\n**Operations Performed:**\n- [List of rollback operations]\n\n## 3. Verif",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_36",
+    "text": "2. Rollback Execution\n**Start Time:** [YYYY-MM-DD HH:MM:SS]\n**End Time:** [YYYY-MM-DD HH:MM:SS]\n**Backup Used:** [Path to backup]\n**Operations Performed:**\n- [List of rollback operations]\n\n## 3. Verification Results\n**CVE Node Count:** [PASS/FAIL] (147,923 expected, [ACTUAL] found)\n**Property Integrity:** [PASS/FAIL]\n**Relationship Preservation:** [PASS/FAIL]\n**Query Performance:** [PASS/FAIL]\n\n## 4. Data Recovery\n**CVE Nodes Recovered:** [count]\n**Properties Restored:** [count]\n**Relationships Restored:** [count]\n**Data Loss:** [NONE / description]\n\n## 5. Root Cause Analysis\n**Primary Cause:** [Description]\n**Contributing Factors:** [List]\n**Preventable:** [YES / NO]\n\n## 6. Recommendations\n**Immediate Actions:** [List]\n**Process Improvements:** [List]\n**Prevention Measures:** [List]\n\n## 7. Approval\n**Rollback Verified By:** [Name]\n**Verification Date:** [YYYY-MM-DD]\n**Database Status:** [RESTORED / PARTIALLY RESTORED / FAILED]\n**Approved for Retry:** [YES / NO / CONDITIONAL]\n\n---\n**Lo",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "18_ROLLBACK_PROCEDURES.md_chunk_37",
+    "text": ". Approval\n**Rollback Verified By:** [Name]\n**Verification Date:** [YYYY-MM-DD]\n**Database Status:** [RESTORED / PARTIALLY RESTORED / FAILED]\n**Approved for Retry:** [YES / NO / CONDITIONAL]\n\n---\n**Log File:** [Path to detailed log]\n**Backup Location:** [Path to backup used]\n```\n\n---\n\n**Document Version:** v1.0.0\n**Last Updated:** 2025-10-30\n**Next Review:** After Each Rollback Event\n**Owner:** AEON FORGE Implementation Team\n",
+    "metadata": {
+      "file_name": "18_ROLLBACK_PROCEDURES.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/18_ROLLBACK_PROCEDURES.md",
+      "file_size": 30029,
+      "indexed_at": "2025-10-31T01:03:43.405227",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 429
+    }
+  }
+]

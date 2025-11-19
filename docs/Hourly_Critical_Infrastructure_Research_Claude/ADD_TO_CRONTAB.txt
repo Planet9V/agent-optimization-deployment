@@ -1,0 +1,6 @@
+# Add this line to your crontab (crontab -e):
+
+0 * * * * /home/jim/2_OXOT_Projects_Dev/docs/Hourly_Critical_Infrastructure_Research_Claude/scripts/run_hourly_research.sh
+
+# This will run your research prompt every hour at :00
+# The prompt itself handles everything else (rotation, reports, knowledge accumulation)

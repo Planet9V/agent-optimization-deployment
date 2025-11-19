@@ -1,0 +1,160 @@
+{"timestamp": "2025-10-31T07:20:33.238605", "operation": "wave_2_execution_started", "details": {"timestamp": "2025-10-31T07:20:33.238600"}}
+{"timestamp": "2025-10-31T07:20:33.238786", "operation": "phase_started", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T07:20:33.290990", "operation": "constraint_created", "details": {"constraint": "CREATE CONSTRAINT water_device_id_unique IF NOT EXISTS FOR ("}}
+{"timestamp": "2025-10-31T07:20:33.330495", "operation": "constraint_created", "details": {"constraint": "CREATE CONSTRAINT water_property_id_unique IF NOT EXISTS FOR"}}
+{"timestamp": "2025-10-31T07:20:33.371945", "operation": "constraint_created", "details": {"constraint": "CREATE CONSTRAINT treatment_process_id_unique IF NOT EXISTS "}}
+{"timestamp": "2025-10-31T07:20:33.415703", "operation": "constraint_created", "details": {"constraint": "CREATE CONSTRAINT scada_system_id_unique IF NOT EXISTS FOR ("}}
+{"timestamp": "2025-10-31T07:20:33.459704", "operation": "constraint_created", "details": {"constraint": "CREATE CONSTRAINT water_zone_id_unique IF NOT EXISTS FOR (wz"}}
+{"timestamp": "2025-10-31T07:20:33.501778", "operation": "constraint_created", "details": {"constraint": "CREATE CONSTRAINT water_alert_id_unique IF NOT EXISTS FOR (w"}}
+{"timestamp": "2025-10-31T07:20:33.515512", "operation": "index_created", "details": {"index": "CREATE INDEX water_device_type_idx IF NOT EXISTS FOR (wd:Wat"}}
+{"timestamp": "2025-10-31T07:20:33.526726", "operation": "index_created", "details": {"index": "CREATE INDEX water_regulatory_zone_idx IF NOT EXISTS FOR (wd"}}
+{"timestamp": "2025-10-31T07:20:33.538444", "operation": "index_created", "details": {"index": "CREATE INDEX water_cyber_risk_idx IF NOT EXISTS FOR (wd:Wate"}}
+{"timestamp": "2025-10-31T07:20:33.559264", "operation": "index_created", "details": {"index": "CREATE INDEX water_property_category_idx IF NOT EXISTS FOR ("}}
+{"timestamp": "2025-10-31T07:20:33.573741", "operation": "index_created", "details": {"index": "CREATE INDEX water_epa_parameter_idx IF NOT EXISTS FOR (wp:W"}}
+{"timestamp": "2025-10-31T07:20:33.589098", "operation": "index_created", "details": {"index": "CREATE INDEX treatment_process_type_idx IF NOT EXISTS FOR (t"}}
+{"timestamp": "2025-10-31T07:20:33.605838", "operation": "index_created", "details": {"index": "CREATE INDEX scada_vendor_idx IF NOT EXISTS FOR (ss:SCADASys"}}
+{"timestamp": "2025-10-31T07:20:33.615863", "operation": "index_created", "details": {"index": "CREATE INDEX water_zone_type_idx IF NOT EXISTS FOR (wz:Water"}}
+{"timestamp": "2025-10-31T07:20:33.622641", "operation": "index_created", "details": {"index": "CREATE INDEX water_alert_severity_idx IF NOT EXISTS FOR (wa:"}}
+{"timestamp": "2025-10-31T07:20:33.630198", "operation": "phase_completed", "details": {"phase": "constraints_and_indexes", "constraints": 6, "indexes": 9}}
+{"timestamp": "2025-10-31T07:20:33.630408", "operation": "phase_started", "details": {"phase": "create_water_devices", "target_count": 1500}}
+{"timestamp": "2025-10-31T07:20:33.690380", "operation": "water_devices_batch_created", "details": {"batch": 0, "count": 50, "total": 50}}
+{"timestamp": "2025-10-31T07:20:33.724591", "operation": "water_devices_batch_created", "details": {"batch": 1, "count": 50, "total": 100}}
+{"timestamp": "2025-10-31T07:20:33.756744", "operation": "water_devices_batch_created", "details": {"batch": 2, "count": 50, "total": 150}}
+{"timestamp": "2025-10-31T07:20:33.791731", "operation": "water_devices_batch_created", "details": {"batch": 3, "count": 50, "total": 200}}
+{"timestamp": "2025-10-31T07:20:33.808088", "operation": "water_devices_batch_created", "details": {"batch": 4, "count": 50, "total": 250}}
+{"timestamp": "2025-10-31T07:20:33.824324", "operation": "water_devices_batch_created", "details": {"batch": 5, "count": 50, "total": 300}}
+{"timestamp": "2025-10-31T07:20:33.838264", "operation": "water_devices_batch_created", "details": {"batch": 6, "count": 50, "total": 350}}
+{"timestamp": "2025-10-31T07:20:33.852123", "operation": "water_devices_batch_created", "details": {"batch": 7, "count": 50, "total": 400}}
+{"timestamp": "2025-10-31T07:20:33.864870", "operation": "water_devices_batch_created", "details": {"batch": 8, "count": 50, "total": 450}}
+{"timestamp": "2025-10-31T07:20:33.877268", "operation": "water_devices_batch_created", "details": {"batch": 9, "count": 50, "total": 500}}
+{"timestamp": "2025-10-31T07:20:33.889836", "operation": "water_devices_batch_created", "details": {"batch": 10, "count": 50, "total": 550}}
+{"timestamp": "2025-10-31T07:20:33.901930", "operation": "water_devices_batch_created", "details": {"batch": 11, "count": 50, "total": 600}}
+{"timestamp": "2025-10-31T07:20:33.914075", "operation": "water_devices_batch_created", "details": {"batch": 12, "count": 50, "total": 650}}
+{"timestamp": "2025-10-31T07:20:33.932487", "operation": "water_devices_batch_created", "details": {"batch": 13, "count": 50, "total": 700}}
+{"timestamp": "2025-10-31T07:20:33.944119", "operation": "water_devices_batch_created", "details": {"batch": 14, "count": 50, "total": 750}}
+{"timestamp": "2025-10-31T07:20:33.957058", "operation": "water_devices_batch_created", "details": {"batch": 15, "count": 50, "total": 800}}
+{"timestamp": "2025-10-31T07:20:33.968840", "operation": "water_devices_batch_created", "details": {"batch": 16, "count": 50, "total": 850}}
+{"timestamp": "2025-10-31T07:20:33.981325", "operation": "water_devices_batch_created", "details": {"batch": 17, "count": 50, "total": 900}}
+{"timestamp": "2025-10-31T07:20:33.994032", "operation": "water_devices_batch_created", "details": {"batch": 18, "count": 50, "total": 950}}
+{"timestamp": "2025-10-31T07:20:34.004896", "operation": "water_devices_batch_created", "details": {"batch": 19, "count": 50, "total": 1000}}
+{"timestamp": "2025-10-31T07:20:34.018082", "operation": "water_devices_batch_created", "details": {"batch": 20, "count": 50, "total": 1050}}
+{"timestamp": "2025-10-31T07:20:34.030286", "operation": "water_devices_batch_created", "details": {"batch": 21, "count": 50, "total": 1100}}
+{"timestamp": "2025-10-31T07:20:34.041048", "operation": "water_devices_batch_created", "details": {"batch": 22, "count": 50, "total": 1150}}
+{"timestamp": "2025-10-31T07:20:34.054357", "operation": "water_devices_batch_created", "details": {"batch": 23, "count": 50, "total": 1200}}
+{"timestamp": "2025-10-31T07:20:34.066545", "operation": "water_devices_batch_created", "details": {"batch": 24, "count": 50, "total": 1250}}
+{"timestamp": "2025-10-31T07:20:34.078973", "operation": "water_devices_batch_created", "details": {"batch": 25, "count": 50, "total": 1300}}
+{"timestamp": "2025-10-31T07:20:34.091375", "operation": "water_devices_batch_created", "details": {"batch": 26, "count": 50, "total": 1350}}
+{"timestamp": "2025-10-31T07:20:34.102947", "operation": "water_devices_batch_created", "details": {"batch": 27, "count": 50, "total": 1400}}
+{"timestamp": "2025-10-31T07:20:34.119419", "operation": "water_devices_batch_created", "details": {"batch": 28, "count": 50, "total": 1450}}
+{"timestamp": "2025-10-31T07:20:34.131605", "operation": "water_devices_batch_created", "details": {"batch": 29, "count": 50, "total": 1500}}
+{"timestamp": "2025-10-31T07:20:34.131865", "operation": "phase_completed", "details": {"phase": "create_water_devices", "nodes_created": 1500}}
+{"timestamp": "2025-10-31T07:20:34.131966", "operation": "phase_started", "details": {"phase": "create_water_properties", "target_count": 3000}}
+{"timestamp": "2025-10-31T07:20:34.165609", "operation": "water_properties_batch_created", "details": {"batch": 0, "count": 100, "total": 100}}
+{"timestamp": "2025-10-31T07:20:34.310938", "operation": "water_properties_batch_created", "details": {"batch": 10, "count": 100, "total": 1100}}
+{"timestamp": "2025-10-31T07:20:34.452690", "operation": "water_properties_batch_created", "details": {"batch": 20, "count": 100, "total": 2100}}
+{"timestamp": "2025-10-31T07:20:34.575823", "operation": "phase_completed", "details": {"phase": "create_water_properties", "nodes_created": 3000}}
+{"timestamp": "2025-10-31T07:20:34.576079", "operation": "phase_started", "details": {"phase": "create_treatment_processes", "target_count": 500}}
+{"timestamp": "2025-10-31T07:20:34.684775", "operation": "phase_completed", "details": {"phase": "create_treatment_processes", "nodes_created": 500}}
+{"timestamp": "2025-10-31T07:20:34.685028", "operation": "phase_started", "details": {"phase": "create_scada_systems", "target_count": 300}}
+{"timestamp": "2025-10-31T07:20:34.765232", "operation": "phase_completed", "details": {"phase": "create_scada_systems", "nodes_created": 300}}
+{"timestamp": "2025-10-31T07:20:34.765472", "operation": "phase_started", "details": {"phase": "create_water_zones", "target_count": 200}}
+{"timestamp": "2025-10-31T07:20:34.826106", "operation": "phase_completed", "details": {"phase": "create_water_zones", "nodes_created": 200}}
+{"timestamp": "2025-10-31T07:20:34.826363", "operation": "phase_started", "details": {"phase": "create_water_measurements", "target_count": 9000}}
+{"timestamp": "2025-10-31T07:20:35.205721", "operation": "phase_completed", "details": {"phase": "create_water_measurements", "nodes_created": 9000}}
+{"timestamp": "2025-10-31T07:20:35.206070", "operation": "phase_started", "details": {"phase": "create_water_alerts", "target_count": 500}}
+{"timestamp": "2025-10-31T07:20:35.314841", "operation": "phase_completed", "details": {"phase": "create_water_alerts", "nodes_created": 500}}
+{"timestamp": "2025-10-31T07:20:35.315126", "operation": "phase_started", "details": {"phase": "create_relationships"}}
+{"timestamp": "2025-10-31T07:20:35.371332", "operation": "relationships_created", "details": {"type": "HAS_PROPERTY", "count": 4500}}
+{"timestamp": "2025-10-31T07:20:35.581521", "operation": "relationships_created", "details": {"type": "HAS_MEASUREMENT", "count": 18000}}
+{"timestamp": "2025-10-31T07:20:35.630142", "operation": "relationships_created", "details": {"type": "USES_DEVICE", "count": 2000}}
+{"timestamp": "2025-10-31T07:20:35.680025", "operation": "relationships_created", "details": {"type": "CONTROLS", "count": 3000}}
+{"timestamp": "2025-10-31T07:20:35.730106", "operation": "relationships_created", "details": {"type": "CONTAINS", "count": 2500}}
+{"timestamp": "2025-10-31T07:20:35.774620", "operation": "relationships_created", "details": {"type": "TRIGGERED_BY", "count": 1000}}
+{"timestamp": "2025-10-31T07:20:35.842379", "operation": "relationships_created", "details": {"type": "EXTENDS_SAREF_DEVICE", "count": 1500}}
+{"timestamp": "2025-10-31T07:20:35.967603", "operation": "relationships_created", "details": {"type": "VULNERABLE_TO", "manufacturer": "Siemens", "count": 5000}}
+{"timestamp": "2025-10-31T07:20:38.744668", "operation": "relationships_created", "details": {"type": "VULNERABLE_TO", "manufacturer": "Rockwell", "count": 2500}}
+{"timestamp": "2025-10-31T07:20:38.756406", "operation": "relationships_created", "details": {"type": "VULNERABLE_TO", "manufacturer": "Schneider", "count": 0}}
+{"timestamp": "2025-10-31T07:20:38.766727", "operation": "relationships_created", "details": {"type": "VULNERABLE_TO", "manufacturer": "GE", "count": 0}}
+{"timestamp": "2025-10-31T07:20:38.777286", "operation": "relationships_created", "details": {"type": "VULNERABLE_TO", "manufacturer": "ABB", "count": 0}}
+{"timestamp": "2025-10-31T07:20:38.777532", "operation": "phase_completed", "details": {"phase": "create_relationships", "total_relationships": 40000}}
+{"timestamp": "2025-10-31T07:20:38.777643", "operation": "wave_2_execution_completed", "details": {"timestamp": "2025-10-31T07:20:38.777639", "nodes_created": 15000, "relationships_created": 40000, "constraints_created": 6, "indexes_created": 9}}
+{"timestamp": "2025-10-31T20:03:40.405090", "operation": "wave_2_execution_started", "details": {"timestamp": "2025-10-31T20:03:40.405084"}}
+{"timestamp": "2025-10-31T20:03:40.405287", "operation": "phase_started", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T20:03:40.410681", "operation": "constraint_created", "details": {"constraint": "CREATE CONSTRAINT water_device_id_unique IF NOT EXISTS FOR ("}}
+{"timestamp": "2025-10-31T20:03:40.413141", "operation": "constraint_created", "details": {"constraint": "CREATE CONSTRAINT water_property_id_unique IF NOT EXISTS FOR"}}
+{"timestamp": "2025-10-31T20:03:40.415165", "operation": "constraint_created", "details": {"constraint": "CREATE CONSTRAINT treatment_process_id_unique IF NOT EXISTS "}}
+{"timestamp": "2025-10-31T20:03:40.417020", "operation": "constraint_created", "details": {"constraint": "CREATE CONSTRAINT scada_system_id_unique IF NOT EXISTS FOR ("}}
+{"timestamp": "2025-10-31T20:03:40.419057", "operation": "constraint_created", "details": {"constraint": "CREATE CONSTRAINT water_zone_id_unique IF NOT EXISTS FOR (wz"}}
+{"timestamp": "2025-10-31T20:03:40.421034", "operation": "constraint_created", "details": {"constraint": "CREATE CONSTRAINT water_alert_id_unique IF NOT EXISTS FOR (w"}}
+{"timestamp": "2025-10-31T20:03:40.423807", "operation": "index_created", "details": {"index": "CREATE INDEX water_device_type_idx IF NOT EXISTS FOR (wd:Wat"}}
+{"timestamp": "2025-10-31T20:03:40.426704", "operation": "index_created", "details": {"index": "CREATE INDEX water_regulatory_zone_idx IF NOT EXISTS FOR (wd"}}
+{"timestamp": "2025-10-31T20:03:40.428952", "operation": "index_created", "details": {"index": "CREATE INDEX water_cyber_risk_idx IF NOT EXISTS FOR (wd:Wate"}}
+{"timestamp": "2025-10-31T20:03:40.431049", "operation": "index_created", "details": {"index": "CREATE INDEX water_property_category_idx IF NOT EXISTS FOR ("}}
+{"timestamp": "2025-10-31T20:03:40.433648", "operation": "index_created", "details": {"index": "CREATE INDEX water_epa_parameter_idx IF NOT EXISTS FOR (wp:W"}}
+{"timestamp": "2025-10-31T20:03:40.436197", "operation": "index_created", "details": {"index": "CREATE INDEX treatment_process_type_idx IF NOT EXISTS FOR (t"}}
+{"timestamp": "2025-10-31T20:03:40.438138", "operation": "index_created", "details": {"index": "CREATE INDEX scada_vendor_idx IF NOT EXISTS FOR (ss:SCADASys"}}
+{"timestamp": "2025-10-31T20:03:40.439831", "operation": "index_created", "details": {"index": "CREATE INDEX water_zone_type_idx IF NOT EXISTS FOR (wz:Water"}}
+{"timestamp": "2025-10-31T20:03:40.441563", "operation": "index_created", "details": {"index": "CREATE INDEX water_alert_severity_idx IF NOT EXISTS FOR (wa:"}}
+{"timestamp": "2025-10-31T20:03:40.441791", "operation": "phase_completed", "details": {"phase": "constraints_and_indexes", "constraints": 6, "indexes": 9}}
+{"timestamp": "2025-10-31T20:03:40.441907", "operation": "phase_started", "details": {"phase": "create_water_devices", "target_count": 1500}}
+{"timestamp": "2025-10-31T20:03:40.469735", "operation": "water_devices_batch_created", "details": {"batch": 0, "count": 50, "total": 50}}
+{"timestamp": "2025-10-31T20:03:40.482034", "operation": "water_devices_batch_created", "details": {"batch": 1, "count": 50, "total": 100}}
+{"timestamp": "2025-10-31T20:03:40.495629", "operation": "water_devices_batch_created", "details": {"batch": 2, "count": 50, "total": 150}}
+{"timestamp": "2025-10-31T20:03:40.507504", "operation": "water_devices_batch_created", "details": {"batch": 3, "count": 50, "total": 200}}
+{"timestamp": "2025-10-31T20:03:40.518968", "operation": "water_devices_batch_created", "details": {"batch": 4, "count": 50, "total": 250}}
+{"timestamp": "2025-10-31T20:03:40.530748", "operation": "water_devices_batch_created", "details": {"batch": 5, "count": 50, "total": 300}}
+{"timestamp": "2025-10-31T20:03:40.541918", "operation": "water_devices_batch_created", "details": {"batch": 6, "count": 50, "total": 350}}
+{"timestamp": "2025-10-31T20:03:40.553458", "operation": "water_devices_batch_created", "details": {"batch": 7, "count": 50, "total": 400}}
+{"timestamp": "2025-10-31T20:03:40.564998", "operation": "water_devices_batch_created", "details": {"batch": 8, "count": 50, "total": 450}}
+{"timestamp": "2025-10-31T20:03:40.576259", "operation": "water_devices_batch_created", "details": {"batch": 9, "count": 50, "total": 500}}
+{"timestamp": "2025-10-31T20:03:40.590082", "operation": "water_devices_batch_created", "details": {"batch": 10, "count": 50, "total": 550}}
+{"timestamp": "2025-10-31T20:03:40.600610", "operation": "water_devices_batch_created", "details": {"batch": 11, "count": 50, "total": 600}}
+{"timestamp": "2025-10-31T20:03:40.611706", "operation": "water_devices_batch_created", "details": {"batch": 12, "count": 50, "total": 650}}
+{"timestamp": "2025-10-31T20:03:40.622646", "operation": "water_devices_batch_created", "details": {"batch": 13, "count": 50, "total": 700}}
+{"timestamp": "2025-10-31T20:03:40.632973", "operation": "water_devices_batch_created", "details": {"batch": 14, "count": 50, "total": 750}}
+{"timestamp": "2025-10-31T20:03:40.643529", "operation": "water_devices_batch_created", "details": {"batch": 15, "count": 50, "total": 800}}
+{"timestamp": "2025-10-31T20:03:40.654592", "operation": "water_devices_batch_created", "details": {"batch": 16, "count": 50, "total": 850}}
+{"timestamp": "2025-10-31T20:03:40.666074", "operation": "water_devices_batch_created", "details": {"batch": 17, "count": 50, "total": 900}}
+{"timestamp": "2025-10-31T20:03:40.677454", "operation": "water_devices_batch_created", "details": {"batch": 18, "count": 50, "total": 950}}
+{"timestamp": "2025-10-31T20:03:40.688922", "operation": "water_devices_batch_created", "details": {"batch": 19, "count": 50, "total": 1000}}
+{"timestamp": "2025-10-31T20:03:40.700099", "operation": "water_devices_batch_created", "details": {"batch": 20, "count": 50, "total": 1050}}
+{"timestamp": "2025-10-31T20:03:40.711624", "operation": "water_devices_batch_created", "details": {"batch": 21, "count": 50, "total": 1100}}
+{"timestamp": "2025-10-31T20:03:40.722894", "operation": "water_devices_batch_created", "details": {"batch": 22, "count": 50, "total": 1150}}
+{"timestamp": "2025-10-31T20:03:40.733949", "operation": "water_devices_batch_created", "details": {"batch": 23, "count": 50, "total": 1200}}
+{"timestamp": "2025-10-31T20:03:40.745271", "operation": "water_devices_batch_created", "details": {"batch": 24, "count": 50, "total": 1250}}
+{"timestamp": "2025-10-31T20:03:40.756574", "operation": "water_devices_batch_created", "details": {"batch": 25, "count": 50, "total": 1300}}
+{"timestamp": "2025-10-31T20:03:40.768170", "operation": "water_devices_batch_created", "details": {"batch": 26, "count": 50, "total": 1350}}
+{"timestamp": "2025-10-31T20:03:40.779551", "operation": "water_devices_batch_created", "details": {"batch": 27, "count": 50, "total": 1400}}
+{"timestamp": "2025-10-31T20:03:40.790865", "operation": "water_devices_batch_created", "details": {"batch": 28, "count": 50, "total": 1450}}
+{"timestamp": "2025-10-31T20:03:40.801492", "operation": "water_devices_batch_created", "details": {"batch": 29, "count": 50, "total": 1500}}
+{"timestamp": "2025-10-31T20:03:40.801717", "operation": "phase_completed", "details": {"phase": "create_water_devices", "nodes_created": 1500}}
+{"timestamp": "2025-10-31T20:03:40.801838", "operation": "phase_started", "details": {"phase": "create_water_properties", "target_count": 3000}}
+{"timestamp": "2025-10-31T20:03:40.826465", "operation": "water_properties_batch_created", "details": {"batch": 0, "count": 100, "total": 100}}
+{"timestamp": "2025-10-31T20:03:40.962762", "operation": "water_properties_batch_created", "details": {"batch": 10, "count": 100, "total": 1100}}
+{"timestamp": "2025-10-31T20:03:41.098437", "operation": "water_properties_batch_created", "details": {"batch": 20, "count": 100, "total": 2100}}
+{"timestamp": "2025-10-31T20:03:41.218682", "operation": "phase_completed", "details": {"phase": "create_water_properties", "nodes_created": 3000}}
+{"timestamp": "2025-10-31T20:03:41.218970", "operation": "phase_started", "details": {"phase": "create_treatment_processes", "target_count": 500}}
+{"timestamp": "2025-10-31T20:03:41.315496", "operation": "phase_completed", "details": {"phase": "create_treatment_processes", "nodes_created": 500}}
+{"timestamp": "2025-10-31T20:03:41.315782", "operation": "phase_started", "details": {"phase": "create_scada_systems", "target_count": 300}}
+{"timestamp": "2025-10-31T20:03:41.382833", "operation": "phase_completed", "details": {"phase": "create_scada_systems", "nodes_created": 300}}
+{"timestamp": "2025-10-31T20:03:41.383109", "operation": "phase_started", "details": {"phase": "create_water_zones", "target_count": 200}}
+{"timestamp": "2025-10-31T20:03:41.426510", "operation": "phase_completed", "details": {"phase": "create_water_zones", "nodes_created": 200}}
+{"timestamp": "2025-10-31T20:03:41.426790", "operation": "phase_started", "details": {"phase": "create_water_measurements", "target_count": 9000}}
+{"timestamp": "2025-10-31T20:03:41.776494", "operation": "phase_completed", "details": {"phase": "create_water_measurements", "nodes_created": 9000}}
+{"timestamp": "2025-10-31T20:03:41.776780", "operation": "phase_started", "details": {"phase": "create_water_alerts", "target_count": 500}}
+{"timestamp": "2025-10-31T20:03:41.870076", "operation": "phase_completed", "details": {"phase": "create_water_alerts", "nodes_created": 500}}
+{"timestamp": "2025-10-31T20:03:41.870493", "operation": "phase_started", "details": {"phase": "create_relationships"}}
+{"timestamp": "2025-10-31T20:03:41.915723", "operation": "relationships_created", "details": {"type": "HAS_PROPERTY", "count": 4500}}
+{"timestamp": "2025-10-31T20:03:42.046813", "operation": "relationships_created", "details": {"type": "HAS_MEASUREMENT", "count": 18000}}
+{"timestamp": "2025-10-31T20:03:42.080792", "operation": "relationships_created", "details": {"type": "USES_DEVICE", "count": 2000}}
+{"timestamp": "2025-10-31T20:03:42.118768", "operation": "relationships_created", "details": {"type": "CONTROLS", "count": 3000}}
+{"timestamp": "2025-10-31T20:03:42.153752", "operation": "relationships_created", "details": {"type": "CONTAINS", "count": 2500}}
+{"timestamp": "2025-10-31T20:03:42.182902", "operation": "relationships_created", "details": {"type": "TRIGGERED_BY", "count": 1000}}
+{"timestamp": "2025-10-31T20:03:42.225546", "operation": "relationships_created", "details": {"type": "EXTENDS_SAREF_DEVICE", "count": 1500}}
+{"timestamp": "2025-10-31T20:03:42.324576", "operation": "relationships_created", "details": {"type": "VULNERABLE_TO", "manufacturer": "Siemens", "count": 5000}}
+{"timestamp": "2025-10-31T20:03:45.409215", "operation": "relationships_created", "details": {"type": "VULNERABLE_TO", "manufacturer": "Rockwell", "count": 2500}}
+{"timestamp": "2025-10-31T20:03:45.418413", "operation": "relationships_created", "details": {"type": "VULNERABLE_TO", "manufacturer": "Schneider", "count": 0}}
+{"timestamp": "2025-10-31T20:03:45.426622", "operation": "relationships_created", "details": {"type": "VULNERABLE_TO", "manufacturer": "GE", "count": 0}}
+{"timestamp": "2025-10-31T20:03:45.436074", "operation": "relationships_created", "details": {"type": "VULNERABLE_TO", "manufacturer": "ABB", "count": 0}}
+{"timestamp": "2025-10-31T20:03:45.436356", "operation": "phase_completed", "details": {"phase": "create_relationships", "total_relationships": 40000}}
+{"timestamp": "2025-10-31T20:03:45.436478", "operation": "wave_2_execution_completed", "details": {"timestamp": "2025-10-31T20:03:45.436473", "nodes_created": 15000, "relationships_created": 40000, "constraints_created": 6, "indexes_created": 9}}

@@ -1,0 +1,72 @@
+[
+  {
+    "id": "README_STEP5_VALIDATION.md_chunk_0",
+    "text": "# \ud83d\udea8 STEP 5 VALIDATION - READ THIS FIRST\n\n**Status:** READY FOR MANUAL EXECUTION\n**Time Required:** 10-15 minutes\n**Priority:** CRITICAL\n\n---\n\n## \u26a1 Quick Start\n\n**Automated validation encountered authentication issues. Manual validation required.**\n\n### What You Need to Do:\n\n1. **Open Neo4j Browser:** http://localhost:7474\n2. **Open the validation guide:** `STEP5_MANUAL_VALIDATION_GUIDE.md`\n3. **Execute 6 validation queries** (copy-paste into Neo4j Browser)\n4. **Record results** and make GO/NO-GO decision\n5. **Take action** based on results\n\n---\n\n## \ud83d\udccb Files Overview\n\n### \u2b50 **START HERE:**\n- **`STEP5_MANUAL_VALIDATION_GUIDE.md`** - Complete step-by-step validation instructions\n\n### \ud83d\udcca Supporting Documents:\n- **`STEP5_VALIDATION_SUMMARY.md`** - Executive summary of validation status\n- **`validation_report_step5.md`** - Detailed analysis of validation failures\n- **`step5_validation_queries.cypher`** - Raw Cypher queries for all validations\n\n### \ud83d\udd27 Automated Scripts (Blocked):\n- **`step5_exec",
+    "metadata": {
+      "file_name": "README_STEP5_VALIDATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/README_STEP5_VALIDATION.md",
+      "file_size": 3476,
+      "indexed_at": "2025-10-31T01:00:15.212084",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "README_STEP5_VALIDATION.md_chunk_1",
+    "text": "ation_report_step5.md`** - Detailed analysis of validation failures\n- **`step5_validation_queries.cypher`** - Raw Cypher queries for all validations\n\n### \ud83d\udd27 Automated Scripts (Blocked):\n- **`step5_execute_validations.sh`** - Bash script (cypher-shell not found)\n- **`step5_validation.py`** - Python script (authentication failed)\n\n---\n\n## \ud83c\udfaf Critical Validations\n\n### Must All Pass:\n\n| # | Validation | Expected | Critical? |\n|---|------------|----------|-----------|\n| 1 | CVE Count | 147,923 | \u2705 YES |\n| 2 | CVE Modification | 0 | \u2705 YES |\n| 3 | Customer Filtering | Works | \u26a0\ufe0f Important |\n| 4 | CVE Impact Query | Works | \u2139\ufe0f Functional |\n| 5 | Multi-Customer Isolation | 0 shared | \u2705 YES |\n| 6 | Comprehensive Report | PASS | \u2705 YES |\n\n---\n\n## \u23f1\ufe0f Timeline\n\n1. **Open Neo4j Browser** (1 minute)\n2. **Execute 6 validation queries** (8 minutes)\n3. **Review results & decide** (5 minutes)\n4. **If PASS:** Proceed to Step 6\n5. **If FAIL:** Execute rollback\n\n**Total Time:** ~15 minutes\n\n---\n\n## \ud83d\ude80 Next Step",
+    "metadata": {
+      "file_name": "README_STEP5_VALIDATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/README_STEP5_VALIDATION.md",
+      "file_size": 3476,
+      "indexed_at": "2025-10-31T01:00:15.212084",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "README_STEP5_VALIDATION.md_chunk_2",
+    "text": "ecute 6 validation queries** (8 minutes)\n3. **Review results & decide** (5 minutes)\n4. **If PASS:** Proceed to Step 6\n5. **If FAIL:** Execute rollback\n\n**Total Time:** ~15 minutes\n\n---\n\n## \ud83d\ude80 Next Steps After Validation\n\n### \u2705 If All Validations Pass (GO):\n- Step 5 is complete\n- CVE preservation confirmed (147,923 nodes intact)\n- Customer isolation validated\n- **Proceed to Step 6:** Query updates and documentation\n\n### \u274c If Any Critical Validation Fails (NO-GO):\n- Execute rollback procedure (provided in guide)\n- Investigate root cause\n- Fix identified issues\n- Retry implementation\n\n---\n\n## \ud83c\udd98 Need Help?\n\n### Common Issues:\n\n**Q: \"CVE count is way off (e.g., 28 instead of 147,923)\"**\n- A: Wrong database. Verify you're connected to production database.\n\n**Q: \"CVEs have customer_id properties\"**\n- A: Execute rollback procedure in validation guide Section 7.\n\n**Q: \"Assets are shared between customers\"**\n- A: Review Step 3 assignment logic, fix incorrect assignments.\n\n**Q: \"How do I execute q",
+    "metadata": {
+      "file_name": "README_STEP5_VALIDATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/README_STEP5_VALIDATION.md",
+      "file_size": 3476,
+      "indexed_at": "2025-10-31T01:00:15.212084",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "README_STEP5_VALIDATION.md_chunk_3",
+    "text": "*\n- A: Execute rollback procedure in validation guide Section 7.\n\n**Q: \"Assets are shared between customers\"**\n- A: Review Step 3 assignment logic, fix incorrect assignments.\n\n**Q: \"How do I execute queries in Neo4j Browser?\"**\n- A: Copy query \u2192 Paste in Neo4j Browser \u2192 Click \"Run\" (\u25b6\ufe0f button)\n\n---\n\n## \ud83d\udcde Support\n\nIf you encounter issues not covered in the manual guide:\n\n1. Check `STEP5_VALIDATION_SUMMARY.md` for detailed troubleshooting\n2. Review `validation_report_step5.md` for root cause analysis\n3. Verify database connection and credentials\n4. Ensure you have proper access to Neo4j Browser\n\n---\n\n## \u2705 Success Criteria\n\n**GO Decision Requires ALL:**\n- [ ] CVE count = 147,923 (exact match)\n- [ ] Zero CVEs with customer properties\n- [ ] Customer filtering returns equipment\n- [ ] Zero assets incorrectly shared between customers\n- [ ] Comprehensive report shows \"\u2705 PASS\"\n\n---\n\n**\ud83c\udfaf Your Mission:** Execute manual validation using `STEP5_MANUAL_VALIDATION_GUIDE.md`\n\n**\u23f0 Time:** 15 minutes\n\n**",
+    "metadata": {
+      "file_name": "README_STEP5_VALIDATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/README_STEP5_VALIDATION.md",
+      "file_size": 3476,
+      "indexed_at": "2025-10-31T01:00:15.212084",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "README_STEP5_VALIDATION.md_chunk_4",
+    "text": " incorrectly shared between customers\n- [ ] Comprehensive report shows \"\u2705 PASS\"\n\n---\n\n**\ud83c\udfaf Your Mission:** Execute manual validation using `STEP5_MANUAL_VALIDATION_GUIDE.md`\n\n**\u23f0 Time:** 15 minutes\n\n**\ud83d\ude80 Let's Go!**\n\n---\n\n**Status:** READY\n**Last Updated:** 2025-10-30 23:16:00\n",
+    "metadata": {
+      "file_name": "README_STEP5_VALIDATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/README_STEP5_VALIDATION.md",
+      "file_size": 3476,
+      "indexed_at": "2025-10-31T01:00:15.212084",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 276
+    }
+  }
+]

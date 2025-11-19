@@ -1,39 +1,54 @@
 {
-  "test_date": "2025-11-13 10:09:47",
+  "test_date": "2025-11-13 10:22:13",
   "neo4j_version": "5.26.14",
   "node_count": 571913,
   "iterations_per_benchmark": 5,
-  "summary": {
-    "simple_queries_passed": 0,
-    "complex_traversals_passed": 5,
-    "aggregations_passed": 0,
-    "overall_status": "NEEDS_INDEXING"
-  },
   "benchmarks": {
     "simple_queries": [
       {
         "id": "benchmark_1",
         "name": "Find DigitalTwinState by namespace",
         "target_ms": 50,
-        "avg_ms": 1508,
-        "status": "FAIL",
-        "recommendation": "CREATE INDEX FOR (dts:DigitalTwinState) ON (dts.customer_namespace)"
+        "avg_ms": Running: Benchmark 1: DigitalTwinState by namespace
+  Iteration 1: 1562ms
+  Iteration 2: 1622ms
+  Iteration 3: 1542ms
+  Iteration 4: 1782ms
+  Iteration 5: 1532ms
+  Statistics: min=1532ms, avg=1608ms, max=1782ms
+
+1608,
+        "status": "FAIL"
       },
       {
         "id": "benchmark_2",
         "name": "Find TemporalEvent last 24h",
         "target_ms": 100,
-        "avg_ms": 1580,
-        "status": "FAIL",
-        "recommendation": "CREATE INDEX FOR (te:TemporalEvent) ON (te.event_timestamp)"
+        "avg_ms": Running: Benchmark 2: TemporalEvent last 24h
+  Iteration 1: 1574ms
+  Iteration 2: 1509ms
+  Iteration 3: 1545ms
+  Iteration 4: 1544ms
+  Iteration 5: 1623ms
+  Statistics: min=1509ms, avg=1559ms, max=1623ms
+
+1559,
+        "status": "FAIL"
       },
       {
         "id": "benchmark_3",
         "name": "Count OperationalMetric breaches",
         "target_ms": 50,
-        "avg_ms": 1527,
-        "status": "FAIL",
-        "recommendation": "CREATE INDEX FOR (om:OperationalMetric) ON (om.metric_value, om.threshold_value)"
+        "avg_ms": Running: Benchmark 3: OperationalMetric breaches
+  Iteration 1: 1726ms
+  Iteration 2: 1508ms
+  Iteration 3: 1596ms
+  Iteration 4: 1520ms
+  Iteration 5: 1599ms
+  Statistics: min=1508ms, avg=1589ms, max=1726ms
+
+1589,
+        "status": "FAIL"
       }
     ],
     "complex_traversals": [
@@ -42,45 +57,80 @@
         "name": "UC2: Cyber-physical attack chain (8 hops)",
         "target_ms": 2000,
         "hops": 8,
-        "avg_ms": 1561,
-        "status": "PASS",
-        "performance_margin_percent": 21.95
+        "avg_ms": Running: Benchmark 4: UC2 Attack chain (8 hops)
+  Iteration 1: 1842ms
+  Iteration 2: 1637ms
+  Iteration 3: 1782ms
+  Iteration 4: 1649ms
+  Iteration 5: 1678ms
+  Statistics: min=1637ms, avg=1717ms, max=1842ms
+
+1717,
+        "status": "FAIL"
       },
       {
         "id": "benchmark_5",
         "name": "UC3: Cascading failure propagation (10+ hops)",
         "target_ms": 2000,
         "hops": 10,
-        "avg_ms": 1654,
-        "status": "PASS",
-        "performance_margin_percent": 17.3
+        "avg_ms": Running: Benchmark 5: UC3 Cascading failure (10+ hops)
+  Iteration 1: 1617ms
+  Iteration 2: 1530ms
+  Iteration 3: 1486ms
+  Iteration 4: 1501ms
+  Iteration 5: 1456ms
+  Statistics: min=1456ms, avg=1518ms, max=1617ms
+
+1518,
+        "status": "FAIL"
       },
       {
         "id": "benchmark_6",
         "name": "R6: Temporal correlation (12 hops)",
         "target_ms": 2000,
         "hops": 12,
-        "avg_ms": 1661,
-        "status": "PASS",
-        "performance_margin_percent": 16.95
+        "avg_ms": Running: Benchmark 6: R6 Temporal correlation (12 hops)
+  Iteration 1: 1866ms
+  Iteration 2: 1612ms
+  Iteration 3: 1644ms
+  Iteration 4: 1542ms
+  Iteration 5: 1562ms
+  Statistics: min=1542ms, avg=1645ms, max=1866ms
+
+1645,
+        "status": "FAIL"
       },
       {
         "id": "benchmark_7",
         "name": "CG-9: Operational impact aggregation (15 hops)",
         "target_ms": 2000,
         "hops": 15,
-        "avg_ms": 1689,
-        "status": "PASS",
-        "performance_margin_percent": 15.55
+        "avg_ms": Running: Benchmark 7: CG-9 Impact aggregation (15 hops)
+  Iteration 1: 1727ms
+  Iteration 2: 1520ms
+  Iteration 3: 1915ms
+  Iteration 4: 1555ms
+  Iteration 5: 1537ms
+  Statistics: min=1520ms, avg=1650ms, max=1915ms
+
+1650,
+        "status": "FAIL"
       },
       {
         "id": "benchmark_8",
         "name": "Cross-namespace cascading failure (14 hops)",
         "target_ms": 2000,
         "hops": 14,
-        "avg_ms": 1571,
-        "status": "PASS",
-        "performance_margin_percent": 21.45
+        "avg_ms": Running: Benchmark 8: Cross-namespace cascade (14 hops)
+  Iteration 1: 1782ms
+  Iteration 2: 1548ms
+  Iteration 3: 1545ms
+  Iteration 4: 1679ms
+  Iteration 5: 1805ms
+  Statistics: min=1545ms, avg=1671ms, max=1805ms
+
+1671,
+        "status": "FAIL"
       }
     ],
     "aggregations": [
@@ -88,40 +138,32 @@
         "id": "benchmark_9",
         "name": "Sum total financial impact",
         "target_ms": 300,
-        "avg_ms": 1582,
-        "status": "FAIL",
-        "recommendation": "CREATE INDEX FOR (ci:CustomerImpact) ON (ci.total_revenue_impact_usd)"
+        "avg_ms": Running: Benchmark 9: Total financial impact
+  Iteration 1: 1620ms
+  Iteration 2: 1555ms
+  Iteration 3: 1561ms
+  Iteration 4: 1546ms
+  Iteration 5: 1515ms
+  Statistics: min=1515ms, avg=1559ms, max=1620ms
+
+1559,
+        "status": "FAIL"
       },
       {
         "id": "benchmark_10",
         "name": "Average operational metrics by namespace",
         "target_ms": 500,
-        "avg_ms": 1622,
-        "status": "FAIL",
-        "recommendation": "CREATE INDEX FOR (om:OperationalMetric) ON (om.customer_namespace, om.metric_value, om.threshold_value)"
+        "avg_ms": Running: Benchmark 10: Avg metrics by namespace
+  Iteration 1: 1543ms
+  Iteration 2: 1542ms
+  Iteration 3: 1716ms
+  Iteration 4: 1524ms
+  Iteration 5: 1602ms
+  Statistics: min=1524ms, avg=1585ms, max=1716ms
+
+1585,
+        "status": "FAIL"
       }
-    ]
-  },
-  "analysis": {
-    "key_findings": [
-      "Complex traversals (8-15 hops) PASS with 15-22% performance margin",
-      "Simple queries and aggregations FAIL due to missing indexes",
-      "Average query performance ~1500-1700ms without optimization",
-      "All complex traversal queries under 2000ms target ✓"
-    ],
-    "critical_indexes_needed": [
-      "DigitalTwinState.customer_namespace",
-      "TemporalEvent.event_timestamp",
-      "OperationalMetric(metric_value, threshold_value)",
-      "OperationalMetric.customer_namespace",
-      "CustomerImpact.total_revenue_impact_usd"
-    ],
-    "expected_improvement_with_indexes": "10-30x for simple queries and aggregations",
-    "next_steps": [
-      "Create recommended indexes",
-      "Re-run benchmarks to validate improvements",
-      "Monitor query plans for full index usage",
-      "Consider composite indexes for multi-property filters"
     ]
   }
 }

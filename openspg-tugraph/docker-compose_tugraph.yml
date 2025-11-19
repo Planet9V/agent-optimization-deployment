@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  openspg-server:
+    image: spg-registry.cn-hangzhou.cr.aliyuncs.com/spg/openspg-server:latest
+    ports:
+      - "8887:8887"
+    depends_on:
+      - openspg-mysql
+      - tugraph
+      - elasticsearch
+    environment:
+      - MYSQL_HOST=openspg-mysql
+      - MYSQL_PORT=3306
+      - GRAPH_DB_TYPE=tugraph
+      - TUGRAPH_HOST=tugraph
+      - TUGRAPH_PORT=7070
+      - ELASTICSEARCH_HOST=elasticsearch:9200
+
+  openspg-mysql:
+    image: mysql:8.0
+    environment:
+      - MYSQL_DATABASE=openspg
+      - MYSQL_ROOT_PASSWORD=openspg@mysql
+    ports:
+      - "3306:3306"
+
+  tugraph:
+    image: tugraph/tugraph-runtime:latest
+    container_name: openspg-tugraph
+    ports:
+      - "7070:7070"
+    environment:
+      - TUGRAPH_USER=admin
+      - TUGRAPH_PASSWORD=TuGraph@123
+    volumes:
+      - ./tugraph/data:/data
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.10.2
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+    ports:
+      - "9200:9200"

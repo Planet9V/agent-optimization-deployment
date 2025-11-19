@@ -1,0 +1,772 @@
+[
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_0",
+    "text": "# Wave 3: Energy Grid Domain Extensions\n\n**File:** 05_WAVE_3_ENERGY_GRID.md\n**Created:** 2025-10-30 00:00:00 UTC\n**Version:** v1.0.0\n**Status:** ACTIVE\n**Purpose:** Complete implementation specification for Wave 3 energy grid ontology integration extending SAREF core for electrical generation, transmission, distribution, and smart grid security\n\n---\n\n## 1. Wave Overview\n\n### 1.1 Objectives\n\nWave 3 extends the SAREF core foundation (Wave 1) and incorporates lessons from water infrastructure (Wave 2) to model the electrical power grid as a cyber-physical system. This wave focuses on:\n\n1. **Energy Device Specialization**: Extend SAREF:Device for generators, transformers, circuit breakers, smart meters, DERMS (Distributed Energy Resource Management Systems)\n2. **Grid Topology Modeling**: Represent electrical network topology (substations, transmission lines, distribution feeders) with security implications\n3. **SCADA/EMS Integration**: Model Energy Management Systems and SCADA controlling ",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_1",
+    "text": "sent electrical network topology (substations, transmission lines, distribution feeders) with security implications\n3. **SCADA/EMS Integration**: Model Energy Management Systems and SCADA controlling grid operations with attack surface analysis\n4. **Electrical Property Extensions**: Energy-specific properties (voltage, current, power factor, frequency, load)\n5. **Smart Grid & DER Security**: Model distributed energy resources (solar, wind, battery storage) and smart grid communication protocols (DNP3, IEC 61850)\n6. **NERC CIP Compliance**: Map devices and processes to NERC Critical Infrastructure Protection standards\n7. **Cascading Failure Analysis**: Model grid interdependencies for cyber-physical attack impact assessment\n\n### 1.2 Duration & Resources\n\n- **Estimated Duration**: 8-10 weeks\n- **Target Node Count**: 15,000-22,000 new nodes\n- **Relationship Count:** 45,000-70,000 new relationships\n- **Integration Points**: 18 connection types (8 to Wave 1 SAREF, 6 to Wave 2 Water, 4 to ex",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_2",
+    "text": "\n- **Target Node Count**: 15,000-22,000 new nodes\n- **Relationship Count:** 45,000-70,000 new relationships\n- **Integration Points**: 18 connection types (8 to Wave 1 SAREF, 6 to Wave 2 Water, 4 to existing CVE/ICS data)\n- **Rollback Complexity**: Medium (additive with Wave 1 & 2 dependencies, complex interdependencies)\n\n### 1.3 Dependencies\n\n**Prerequisites:**\n- Wave 1 SAREF core completed and validated\n- Wave 2 Water Infrastructure completed (for SCADA patterns and critical infrastructure models)\n- Existing AEON graph with CVE/ICS data\n- Energy grid asset inventory and SCADA network topology\n\n**External Dependencies:**\n- NERC CIP v7 standards\n- IEC 61850 substations communication standard\n- IEEE 2030.5 smart grid interoperability\n- DNP3 protocol specifications\n- Energy sector ICS-CERT advisories\n\n**Internal Dependencies:**\n- Wave 4 (ICS Security KG) will leverage energy grid attack patterns\n- Water-energy nexus relationships for critical infrastructure interdependencies\n\n---\n\n## 2. C",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_3",
+    "text": "visories\n\n**Internal Dependencies:**\n- Wave 4 (ICS Security KG) will leverage energy grid attack patterns\n- Water-energy nexus relationships for critical infrastructure interdependencies\n\n---\n\n## 2. Complete Node Schemas\n\n### 2.1 Energy:EnergyDevice Node (extends SAREF:Device)\n\n**Purpose:** Represents specialized energy grid devices inheriting SAREF core properties with energy-specific extensions.\n\n**Inheritance:** All properties from `SAREF:Device` (Wave 1) plus:\n\n**Additional Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| energyDeviceType | String | Yes | Energy grid device classification | `Generator`, `Transformer`, `CircuitBreaker`, `SmartMeter`, `RTU`, `IED` |\n| voltageLevel | String | Yes | Operating voltage classification | `Transmission-500kV`, `Subtransmission-115kV`, `Distribution-12.47kV`, `Secondary-480V` |\n| ratedCapacity | Float | No | Rated capacity (MVA, kVA, MW) | `150.0` (MVA for transfor",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_4",
+    "text": "tage classification | `Transmission-500kV`, `Subtransmission-115kV`, `Distribution-12.47kV`, `Secondary-480V` |\n| ratedCapacity | Float | No | Rated capacity (MVA, kVA, MW) | `150.0` (MVA for transformer) |\n| ratedVoltage | Float | No | Rated voltage (kV) | `115.0` |\n| ratedCurrent | Float | No | Rated current (Amperes) | `750.0` |\n| nercCIPCategory | String | Yes | NERC CIP asset category | `BES-Cyber-Asset`, `EACMS`, `PACS`, `PCAs` |\n| substationId | String | No | Parent substation identifier | `SUBST-NORTH-001` |\n| feederNumber | String | No | Distribution feeder number | `FEEDER-12-47-003` |\n| iedFunctionType | String | No | IED (Intelligent Electronic Device) function | `Protection`, `Control`, `Metering`, `Monitoring` |\n| communicationProtocol | String[] | No | Supported protocols | `[\"DNP3\", \"IEC-61850\", \"Modbus/TCP\"]` |\n| lastFirmwareUpdate | DateTime | No | Last firmware update | `2024-07-20T02:30:00Z` |\n| cybersecurityPatch Level | String | No | Patch level | `Critical-Patche",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_5",
+    "text": "`[\"DNP3\", \"IEC-61850\", \"Modbus/TCP\"]` |\n| lastFirmwareUpdate | DateTime | No | Last firmware update | `2024-07-20T02:30:00Z` |\n| cybersecurityPatch Level | String | No | Patch level | `Critical-Patches-Applied`, `Pending-Updates`, `End-of-Life` |\n| nercCIPCompliance | String | Yes | NERC CIP compliance status | `Compliant`, `NonCompliant`, `Exempt` |\n| gridImpactLevel | String | Yes | Grid reliability impact | `Critical`, `High`, `Medium`, `Low` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (ed:Energy:EnergyDevice:Device {\n    // SAREF:Device inherited properties\n    deviceId: 'energy:device:transformer-sub-north-001',\n    name: 'Main Power Transformer T1 - North Substation',\n    model: 'Siemens 4GU1252-6AB80-Z',\n    manufacturer: 'Siemens Energy',\n    firmwareVersion: 'V2.4.7',\n    serialNumber: 'SE-2023-T1-00147',\n    deviceCategory: 'Controller',\n    deploymentLocation: 'North Substation - Bay 1',\n    commissionDate: datetime('2023-06-15T08:00:00Z'),\n    operationalStatus: 'Acti",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_6",
+    "text": "rialNumber: 'SE-2023-T1-00147',\n    deviceCategory: 'Controller',\n    deploymentLocation: 'North Substation - Bay 1',\n    commissionDate: datetime('2023-06-15T08:00:00Z'),\n    operationalStatus: 'Active',\n    ipAddress: '192.168.20.10',\n    macAddress: '00:1F:6A:B2:C3:D4',\n    protocol: ['IEC-61850', 'DNP3', 'Modbus/TCP'],\n    criticality: 'Critical',\n    lastUpdated: datetime(),\n\n    // Energy-specific properties\n    energyDeviceType: 'Transformer',\n    voltageLevel: 'Transmission-115kV',\n    ratedCapacity: 150.0,\n    ratedVoltage: 115.0,\n    ratedCurrent: 751.5,\n    nercCIPCategory: 'BES-Cyber-Asset',\n    substationId: 'SUBST-NORTH-001',\n    feederNumber: null,\n    iedFunctionType: 'Monitoring',\n    communicationProtocol: ['IEC-61850', 'DNP3'],\n    lastFirmwareUpdate: datetime('2024-07-20T02:30:00Z'),\n    cybersecurityPatchLevel: 'Critical-Patches-Applied',\n    nercCIPCompliance: 'Compliant',\n    gridImpactLevel: 'Critical'\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE INDEX",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_7",
+    "text": "0T02:30:00Z'),\n    cybersecurityPatchLevel: 'Critical-Patches-Applied',\n    nercCIPCompliance: 'Compliant',\n    gridImpactLevel: 'Critical'\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE INDEX energy_device_type_idx IF NOT EXISTS\nFOR (ed:EnergyDevice) ON (ed.energyDeviceType);\n\nCREATE INDEX energy_voltage_level_idx IF NOT EXISTS\nFOR (ed:EnergyDevice) ON (ed.voltageLevel);\n\nCREATE INDEX energy_nerc_category_idx IF NOT EXISTS\nFOR (ed:EnergyDevice) ON (ed.nercCIPCategory);\n\nCREATE INDEX energy_substation_idx IF NOT EXISTS\nFOR (ed:EnergyDevice) ON (ed.substationId);\n\nCREATE INDEX energy_grid_impact_idx IF NOT EXISTS\nFOR (ed:EnergyDevice) ON (ed.gridImpactLevel, ed.nercCIPCompliance);\n```\n\n---\n\n### 2.2 Energy:EnergyProperty Node (extends SAREF:Property)\n\n**Purpose:** Represents energy-specific measurable properties critical for grid stability and security monitoring.\n\n**Inheritance:** All properties from `SAREF:Property` (Wave 1) plus:\n\n**Additional Properties:**\n\n| Property | Type ",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_8",
+    "text": "pecific measurable properties critical for grid stability and security monitoring.\n\n**Inheritance:** All properties from `SAREF:Property` (Wave 1) plus:\n\n**Additional Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| energyPropertyCategory | String | Yes | Property category | `Electrical`, `Power Quality`, `Frequency`, `Load`, `Generation` |\n| gridStabilityImpact | String | Yes | Impact on grid stability | `Critical`, `High`, `Medium`, `Low` |\n| nercSTDLimit | Float | No | NERC standard limit | `60.0` (Hz for frequency) |\n| ieeeStandard | String | No | IEEE standard reference | `IEEE-1547`, `IEEE-519` |\n| protectionRelay Setpoint | Float | No | Protection relay setpoint | `110.0` (% of rated voltage) |\n| alarmThresholdHigh | Float | No | High alarm threshold | `62.0` (Hz) |\n| alarmThresholdLow | Float | No | Low alarm threshold | `58.0` (Hz) |\n| tripThresholdHigh | Float | No | High trip threshold | `63.5` (Hz",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_9",
+    "text": "sholdHigh | Float | No | High alarm threshold | `62.0` (Hz) |\n| alarmThresholdLow | Float | No | Low alarm threshold | `58.0` (Hz) |\n| tripThresholdHigh | Float | No | High trip threshold | `63.5` (Hz) |\n| tripThresholdLow | Float | No | Low trip threshold | `57.0` (Hz) |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (ep:Energy:EnergyProperty:Property {\n    // SAREF:Property inherited properties\n    propertyId: 'energy:property:frequency-001',\n    propertyType: 'Frequency',\n    unitOfMeasure: 'Hz',\n    minValue: 57.0,\n    maxValue: 63.5,\n    normalRangeMin: 59.95,\n    normalRangeMax: 60.05,\n    criticalThresholdMin: 57.0,\n    criticalThresholdMax: 63.5,\n    measurementAccuracy: 0.001,\n    description: 'System frequency measurement at 115kV bus',\n    lastCalibration: datetime('2024-09-10T10:00:00Z'),\n\n    // Energy-specific properties\n    energyPropertyCategory: 'Frequency',\n    gridStabilityImpact: 'Critical',\n    nercSTDLimit: 60.0,\n    ieeeStandard: 'IEEE-1547',\n    protectionRelay",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_10",
+    "text": "10:00:00Z'),\n\n    // Energy-specific properties\n    energyPropertyCategory: 'Frequency',\n    gridStabilityImpact: 'Critical',\n    nercSTDLimit: 60.0,\n    ieeeStandard: 'IEEE-1547',\n    protectionRelaySetpoint: null,\n    alarmThresholdHigh: 60.5,\n    alarmThresholdLow: 59.5,\n    tripThresholdHigh: 63.5,\n    tripThresholdLow: 57.0\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE INDEX energy_property_category_idx IF NOT EXISTS\nFOR (ep:EnergyProperty) ON (ep.energyPropertyCategory);\n\nCREATE INDEX energy_grid_stability_idx IF NOT EXISTS\nFOR (ep:EnergyProperty) ON (ep.gridStabilityImpact);\n\nCREATE INDEX energy_ieee_standard_idx IF NOT EXISTS\nFOR (ep:EnergyProperty) ON (ep.ieeeStandard);\n```\n\n---\n\n### 2.3 Energy:Substation Node\n\n**Purpose:** Represents electrical substations containing multiple energy devices with security perimeters.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| substationId | String |",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_11",
+    "text": "tiple energy devices with security perimeters.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| substationId | String | Yes | Unique substation identifier | `energy:substation:north-001` |\n| substationName | String | Yes | Human-readable name | `North Substation` |\n| substationType | String | Yes | Substation classification | `Transmission`, `Distribution`, `Collector`, `Mobile` |\n| voltageClass | String | Yes | Primary voltage class | `500kV`, `230kV`, `115kV`, `69kV`, `34.5kV`, `12.47kV` |\n| transformerCount | Integer | No | Number of power transformers | `3` |\n| breakerCount | Integer | No | Number of circuit breakers | `12` |\n| busConfiguration | String | Yes | Bus configuration type | `RingBus`, `BreakerAndHalf`, `DoubleBus`, `SingleBus` |\n| scadaCoverage | Boolean | Yes | SCADA monitoring enabled | `true` |\n| physicalSecurity | String | Yes | Physical security level | `Fenced-CardAccess`, `Fenced-Gua",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_12",
+    "text": "ndHalf`, `DoubleBus`, `SingleBus` |\n| scadaCoverage | Boolean | Yes | SCADA monitoring enabled | `true` |\n| physicalSecurity | String | Yes | Physical security level | `Fenced-CardAccess`, `Fenced-GuardPatrol`, `OpenAccess` |\n| gpsCoordinates | String | No | GPS location | `40.7589,-73.9851` |\n| nercCIPSite | Boolean | Yes | NERC CIP regulated site | `true` |\n| criticalInfrastructure | Boolean | Yes | Designated critical infrastructure | `true` |\n| loadServed | Float | No | Load served (MW) | `87.5` |\n| populationServed | Integer | No | Population served | `125000` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (sub:Energy:Substation {\n    substationId: 'energy:substation:north-001',\n    substationName: 'North Substation',\n    substationType: 'Transmission',\n    voltageClass: '115kV',\n    transformerCount: 3,\n    breakerCount: 12,\n    busConfiguration: 'BreakerAndHalf',\n    scadaCoverage: true,\n    physicalSecurity: 'Fenced-CardAccess',\n    gpsCoordinates: '40.7589,-73.9851',\n    ne",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_13",
+    "text": "   transformerCount: 3,\n    breakerCount: 12,\n    busConfiguration: 'BreakerAndHalf',\n    scadaCoverage: true,\n    physicalSecurity: 'Fenced-CardAccess',\n    gpsCoordinates: '40.7589,-73.9851',\n    nercCIPSite: true,\n    criticalInfrastructure: true,\n    loadServed: 87.5,\n    populationServed: 125000\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT substation_id_unique IF NOT EXISTS\nFOR (sub:Substation) REQUIRE sub.substationId IS UNIQUE;\n\nCREATE INDEX substation_type_idx IF NOT EXISTS\nFOR (sub:Substation) ON (sub.substationType);\n\nCREATE INDEX substation_voltage_idx IF NOT EXISTS\nFOR (sub:Substation) ON (sub.voltageClass);\n\nCREATE INDEX substation_nerc_idx IF NOT EXISTS\nFOR (sub:Substation) ON (sub.nercCIPSite);\n```\n\n---\n\n### 2.4 Energy:TransmissionLine Node\n\n**Purpose:** Represents transmission lines connecting substations with reliability and security implications.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_14",
+    "text": " Represents transmission lines connecting substations with reliability and security implications.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| lineId | String | Yes | Unique transmission line identifier | `energy:line:north-south-115-001` |\n| lineName | String | Yes | Human-readable line name | `North-South 115kV Line 1` |\n| voltageLevel | String | Yes | Line voltage level | `500kV`, `230kV`, `115kV` |\n| lineLength | Float | No | Line length (miles) | `47.3` |\n| conductorType | String | No | Conductor material/type | `ACSR-Drake`, `ACCC` |\n| thermalRating | Float | No | Thermal rating (MVA) | `250.0` |\n| impedance | Float | No | Line impedance (ohms) | `8.75` |\n| nercCIPDesignation | String | Yes | NERC CIP designation | `BES-Transmission`, `Non-BES` |\n| criticalPath | Boolean | Yes | Critical transmission path | `true` |\n| redundancyLevel | String | Yes | System redundancy | `N-1`, `N-2`, `Radial` |\n|",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_15",
+    "text": "P designation | `BES-Transmission`, `Non-BES` |\n| criticalPath | Boolean | Yes | Critical transmission path | `true` |\n| redundancyLevel | String | Yes | System redundancy | `N-1`, `N-2`, `Radial` |\n| monitoringSystem | String | No | Monitoring system type | `SCADA-PMU`, `SCADA-Only`, `None` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (tl:Energy:TransmissionLine {\n    lineId: 'energy:line:north-south-115-001',\n    lineName: 'North-South 115kV Line 1',\n    voltageLevel: '115kV',\n    lineLength: 47.3,\n    conductorType: 'ACSR-Drake',\n    thermalRating: 250.0,\n    impedance: 8.75,\n    nercCIPDesignation: 'BES-Transmission',\n    criticalPath: true,\n    redundancyLevel: 'N-1',\n    monitoringSystem: 'SCADA-PMU'\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT transmission_line_id_unique IF NOT EXISTS\nFOR (tl:TransmissionLine) REQUIRE tl.lineId IS UNIQUE;\n\nCREATE INDEX transmission_voltage_idx IF NOT EXISTS\nFOR (tl:TransmissionLine) ON (tl.voltageLevel);\n\nCREATE INDEX t",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_16",
+    "text": "line_id_unique IF NOT EXISTS\nFOR (tl:TransmissionLine) REQUIRE tl.lineId IS UNIQUE;\n\nCREATE INDEX transmission_voltage_idx IF NOT EXISTS\nFOR (tl:TransmissionLine) ON (tl.voltageLevel);\n\nCREATE INDEX transmission_critical_idx IF NOT EXISTS\nFOR (tl:TransmissionLine) ON (tl.criticalPath);\n```\n\n---\n\n### 2.5 Energy:EnergyManagementSystem Node\n\n**Purpose:** Represents EMS/SCADA systems controlling grid operations with detailed security attributes.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| emsId | String | Yes | Unique EMS identifier | `energy:ems:central-control-001` |\n| systemName | String | Yes | Human-readable system name | `Central Energy Management System` |\n| emsType | String | Yes | System classification | `EMS`, `SCADA`, `DMS`, `DERMS`, `ADMS` |\n| vendor | String | Yes | EMS vendor | `GE Grid Solutions`, `Siemens`, `ABB`, `OSIsoft` |\n| softwareVersion | String | Yes | EMS software version | `GE e-",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_17",
+    "text": "on | `EMS`, `SCADA`, `DMS`, `DERMS`, `ADMS` |\n| vendor | String | Yes | EMS vendor | `GE Grid Solutions`, `Siemens`, `ABB`, `OSIsoft` |\n| softwareVersion | String | Yes | EMS software version | `GE e-terra Platform v8.2` |\n| controlCenterLocation | String | No | Control center location | `Central Control Building, Floor 3` |\n| rtuCount | Integer | No | Number of connected RTUs | `247` |\n| iedCount | Integer | No | Number of connected IEDs | `1,847` |\n| smartMeterCount | Integer | No | Number of connected smart meters | `487,000` |\n| pmuCount | Integer | No | Number of PMUs (Phasor Measurement Units) | `23` |\n| networkArchitecture | String | Yes | Network architecture | `Flat`, `Segmented`, `DMZ-Protected`, `ZeroTrust` |\n| communicationProtocols | String[] | Yes | Supported protocols | `[\"DNP3\", \"IEC-61850\", \"Modbus/TCP\", \"ICCP\"]` |\n| dataHistorian | String | No | Data historian system | `OSIsoft PI`, `Wonderware`, `Custom` |\n| remoteAccessEnabled | Boolean | Yes | Remote access configu",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_18",
+    "text": "NP3\", \"IEC-61850\", \"Modbus/TCP\", \"ICCP\"]` |\n| dataHistorian | String | No | Data historian system | `OSIsoft PI`, `Wonderware`, `Custom` |\n| remoteAccessEnabled | Boolean | Yes | Remote access configuration | `true` |\n| vpnRequired | Boolean | Yes | VPN requirement | `true` |\n| multiFactorAuth | Boolean | Yes | MFA enabled | `true` |\n| encryptionInTransit | Boolean | Yes | Data encryption enabled | `true` |\n| siem Integration | Boolean | Yes | SIEM integration status | `true` |\n| incidentResponse Plan | String | No | IR plan reference | `IRP-ENERGY-2024-v3` |\n| lastPenetrationTest | DateTime | No | Last penetration test | `2024-08-15T00:00:00Z` |\n| nercCIPCompliance | String[] | Yes | NERC CIP standards compliant | `[\"CIP-005\", \"CIP-007\", \"CIP-010\"]` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (ems:Energy:EnergyManagementSystem {\n    emsId: 'energy:ems:central-control-001',\n    systemName: 'Central Energy Management System',\n    emsType: 'EMS',\n    vendor: 'GE Grid Solutions',\n  ",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_19",
+    "text": "her\nCREATE (ems:Energy:EnergyManagementSystem {\n    emsId: 'energy:ems:central-control-001',\n    systemName: 'Central Energy Management System',\n    emsType: 'EMS',\n    vendor: 'GE Grid Solutions',\n    softwareVersion: 'GE e-terra Platform v8.2',\n    controlCenterLocation: 'Central Control Building, Floor 3',\n    rtuCount: 247,\n    iedCount: 1847,\n    smartMeterCount: 487000,\n    pmuCount: 23,\n    networkArchitecture: 'DMZ-Protected',\n    communicationProtocols: ['DNP3', 'IEC-61850', 'Modbus/TCP', 'ICCP'],\n    dataHistorian: 'OSIsoft PI',\n    remoteAccessEnabled: true,\n    vpnRequired: true,\n    multiFactorAuth: true,\n    encryptionInTransit: true,\n    siemIntegration: true,\n    incidentResponsePlan: 'IRP-ENERGY-2024-v3',\n    lastPenetrationTest: datetime('2024-08-15T00:00:00Z'),\n    nercCIPCompliance: ['CIP-005', 'CIP-007', 'CIP-010', 'CIP-011']\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT ems_id_unique IF NOT EXISTS\nFOR (ems:EnergyManagementSystem) REQUIRE ems.em",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_20",
+    "text": "IPCompliance: ['CIP-005', 'CIP-007', 'CIP-010', 'CIP-011']\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT ems_id_unique IF NOT EXISTS\nFOR (ems:EnergyManagementSystem) REQUIRE ems.emsId IS UNIQUE;\n\nCREATE INDEX ems_type_idx IF NOT EXISTS\nFOR (ems:EnergyManagementSystem) ON (ems.emsType);\n\nCREATE INDEX ems_vendor_idx IF NOT EXISTS\nFOR (ems:EnergyManagementSystem) ON (ems.vendor);\n\nCREATE INDEX ems_network_architecture_idx IF NOT EXISTS\nFOR (ems:EnergyManagementSystem) ON (ems.networkArchitecture);\n```\n\n---\n\n### 2.6 Energy:DistributedEnergyResource Node\n\n**Purpose:** Represents DERs (solar, wind, battery storage) with smart grid and cybersecurity implications.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| derId | String | Yes | Unique DER identifier | `energy:der:solar-farm-east-001` |\n| derName | String | Yes | Human-readable DER name | `East Solar Farm` |\n| derType | String | Yes | DER",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_21",
+    "text": "-|---------|\n| derId | String | Yes | Unique DER identifier | `energy:der:solar-farm-east-001` |\n| derName | String | Yes | Human-readable DER name | `East Solar Farm` |\n| derType | String | Yes | DER classification | `Solar-PV`, `Wind-Turbine`, `Battery-Storage`, `Microgrid` |\n| capacity | Float | Yes | Installed capacity (MW) | `25.0` |\n| inverterModel | String | No | Inverter manufacturer/model | `SMA Sunny Central 2750` |\n| ieee1547Compliant | Boolean | Yes | IEEE 1547 compliance | `true` |\n| gridConnection | String | Yes | Grid connection type | `Utility-Scale`, `Commercial`, `Residential` |\n| communicationProtocol | String | Yes | Communication protocol | `IEEE-2030.5`, `Modbus/TCP`, `SunSpec` |\n| remoteControl Enabled | Boolean | Yes | Remote control capability | `true` |\n| dermsManaged | Boolean | Yes | DERMS management enabled | `true` |\n| cybersecurityCertified | Boolean | Yes | Cybersecurity certification status | `false` |\n| lastSecurityAssessment | DateTime | No | Last sec",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_22",
+    "text": "aged | Boolean | Yes | DERMS management enabled | `true` |\n| cybersecurityCertified | Boolean | Yes | Cybersecurity certification status | `false` |\n| lastSecurityAssessment | DateTime | No | Last security assessment | `2024-05-20T00:00:00Z` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (der:Energy:DistributedEnergyResource {\n    derId: 'energy:der:solar-farm-east-001',\n    derName: 'East Solar Farm',\n    derType: 'Solar-PV',\n    capacity: 25.0,\n    inverterModel: 'SMA Sunny Central 2750',\n    ieee1547Compliant: true,\n    gridConnection: 'Utility-Scale',\n    communicationProtocol: 'IEEE-2030.5',\n    remoteControlEnabled: true,\n    dermsManaged: true,\n    cybersecurityCertified: false,\n    lastSecurityAssessment: datetime('2024-05-20T00:00:00Z')\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT der_id_unique IF NOT EXISTS\nFOR (der:DistributedEnergyResource) REQUIRE der.derId IS UNIQUE;\n\nCREATE INDEX der_type_idx IF NOT EXISTS\nFOR (der:DistributedEnergyResource) ON (d",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_23",
+    "text": "cypher\nCREATE CONSTRAINT der_id_unique IF NOT EXISTS\nFOR (der:DistributedEnergyResource) REQUIRE der.derId IS UNIQUE;\n\nCREATE INDEX der_type_idx IF NOT EXISTS\nFOR (der:DistributedEnergyResource) ON (der.derType);\n\nCREATE INDEX der_derms_idx IF NOT EXISTS\nFOR (der:DistributedEnergyResource) ON (der.dermsManaged);\n```\n\n---\n\n### 2.7 Energy:NERCCIPStandard Node\n\n**Purpose:** Represents NERC CIP regulatory standards for compliance tracking.\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| standardId | String | Yes | Unique standard identifier | `energy:standard:nerc-cip-005-r2` |\n| cipNumber | String | Yes | NERC CIP number | `CIP-005-7` |\n| requirementNumber | String | Yes | Specific requirement | `R2` |\n| title | String | Yes | Requirement title | `Electronic Security Perimeters` |\n| description | String | Yes | Requirement description | `Identify and document Electronic Security Perimeters` |\n| applicability",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_24",
+    "text": " String | Yes | Requirement title | `Electronic Security Perimeters` |\n| description | String | Yes | Requirement description | `Identify and document Electronic Security Perimeters` |\n| applicability | String[] | Yes | Applicable asset types | `[\"BES-Cyber-Asset\", \"EACMS\"]` |\n| complianceEnforcement | String | Yes | Enforcement level | `Mandatory`, `Recommended` |\n| violationSeverity | String | Yes | Violation severity level | `High`, `Medium`, `Lower` |\n| auditFrequency | String | Yes | Audit frequency | `Annual`, `Triennial` |\n| effectiveDate | DateTime | Yes | Standard effective date | `2024-07-01T00:00:00Z` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nCREATE (ncs:Energy:NERCCIPStandard {\n    standardId: 'energy:standard:nerc-cip-005-r2',\n    cipNumber: 'CIP-005-7',\n    requirementNumber: 'R2',\n    title: 'Electronic Security Perimeters',\n    description: 'Identify and document all Electronic Security Perimeters and access points',\n    applicability: ['BES-Cyber-Asset', 'EACMS', 'PAC",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_25",
+    "text": ": 'R2',\n    title: 'Electronic Security Perimeters',\n    description: 'Identify and document all Electronic Security Perimeters and access points',\n    applicability: ['BES-Cyber-Asset', 'EACMS', 'PACS', 'PCAs'],\n    complianceEnforcement: 'Mandatory',\n    violationSeverity: 'High',\n    auditFrequency: 'Triennial',\n    effectiveDate: datetime('2024-07-01T00:00:00Z')\n})\n```\n\n**Indexes and Constraints:**\n\n```cypher\nCREATE CONSTRAINT nerc_standard_id_unique IF NOT EXISTS\nFOR (ncs:NERCCIPStandard) REQUIRE ncs.standardId IS UNIQUE;\n\nCREATE INDEX nerc_cip_number_idx IF NOT EXISTS\nFOR (ncs:NERCCIPStandard) ON (ncs.cipNumber);\n\nCREATE INDEX nerc_severity_idx IF NOT EXISTS\nFOR (ncs:NERCCIPStandard) ON (ncs.violationSeverity);\n```\n\n---\n\n## 3. Complete Relationship Schemas\n\n### 3.1 INSTALLED_AT_SUBSTATION Relationship\n\n**Purpose:** Links energy devices to their parent substations.\n\n**Source:** `Energy:EnergyDevice`\n**Target:** `Energy:Substation`\n**Cardinality:** Many-to-One (many devices at one ",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_26",
+    "text": "ATION Relationship\n\n**Purpose:** Links energy devices to their parent substations.\n\n**Source:** `Energy:EnergyDevice`\n**Target:** `Energy:Substation`\n**Cardinality:** Many-to-One (many devices at one substation)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| bay Number | String | No | Substation bay location | `Bay-1` |\n| installationDate | DateTime | Yes | Device installation date | `2023-06-15T08:00:00Z` |\n| primaryFunction | String | Yes | Device primary function at substation | `Protection`, `Control`, `Metering` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (ed:EnergyDevice {deviceId: 'energy:device:transformer-sub-north-001'})\nMATCH (sub:Substation {substationId: 'energy:substation:north-001'})\nCREATE (ed)-[r:INSTALLED_AT_SUBSTATION {\n    bayNumber: 'Bay-1',\n    installationDate: datetime('2023-06-15T08:00:00Z'),\n    primaryFunction: 'Power Transformation'\n}]->(sub)\n```\n\n---\n\n### 3.2 CONNECTS_SU",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_27",
+    "text": "TE (ed)-[r:INSTALLED_AT_SUBSTATION {\n    bayNumber: 'Bay-1',\n    installationDate: datetime('2023-06-15T08:00:00Z'),\n    primaryFunction: 'Power Transformation'\n}]->(sub)\n```\n\n---\n\n### 3.2 CONNECTS_SUBSTATIONS Relationship\n\n**Purpose:** Links transmission lines to source and destination substations.\n\n**Source:** `Energy:TransmissionLine`\n**Target:** `Energy:Substation`\n**Cardinality:** One-to-Two (each line connects exactly two substations)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| connectionType | String | Yes | Connection endpoint type | `Source`, `Destination` |\n| commissionDate | DateTime | Yes | Line commission date | `2018-03-20T00:00:00Z` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (tl:TransmissionLine {lineId: 'energy:line:north-south-115-001'})\nMATCH (subSource:Substation {substationId: 'energy:substation:north-001'})\nMATCH (subDest:Substation {substationId: 'energy:substation:south-00",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_28",
+    "text": "missionLine {lineId: 'energy:line:north-south-115-001'})\nMATCH (subSource:Substation {substationId: 'energy:substation:north-001'})\nMATCH (subDest:Substation {substationId: 'energy:substation:south-001'})\nCREATE (tl)-[r1:CONNECTS_SUBSTATIONS {\n    connectionType: 'Source',\n    commissionDate: datetime('2018-03-20T00:00:00Z')\n}]->(subSource)\nCREATE (tl)-[r2:CONNECTS_SUBSTATIONS {\n    connectionType: 'Destination',\n    commissionDate: datetime('2018-03-20T00:00:00Z')\n}]->(subDest)\n```\n\n---\n\n### 3.3 CONTROLLED_BY_EMS Relationship\n\n**Purpose:** Links energy devices to EMS/SCADA systems controlling them.\n\n**Source:** `Energy:EnergyDevice`\n**Target:** `Energy:EnergyManagementSystem`\n**Cardinality:** Many-to-One (many devices controlled by one EMS)\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| controlMode | String | Yes | Control mode | `Automatic`, `Manual`, `Supervisory`, `Monitoring-Only` |\n| scanRate | Int",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_29",
+    "text": " Description | Example |\n|----------|------|----------|-------------|---------|\n| controlMode | String | Yes | Control mode | `Automatic`, `Manual`, `Supervisory`, `Monitoring-Only` |\n| scanRate | Integer | No | Data scan rate (seconds) | `2` |\n| lastCommunication | DateTime | No | Last successful communication | `2025-10-30T14:45:00Z` |\n| communicationProtocol | String | Yes | Protocol used | `DNP3`, `IEC-61850`, `Modbus/TCP` |\n| failsafeMode | String | No | Behavior on EMS failure | `LastKnownGood`, `IslandMode`, `SafeShutdown` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (ed:EnergyDevice {deviceId: 'energy:device:transformer-sub-north-001'})\nMATCH (ems:EnergyManagementSystem {emsId: 'energy:ems:central-control-001'})\nCREATE (ed)-[r:CONTROLLED_BY_EMS {\n    controlMode: 'Automatic',\n    scanRate: 2,\n    lastCommunication: datetime('2025-10-30T14:45:00Z'),\n    communicationProtocol: 'IEC-61850',\n    failsafeMode: 'IslandMode'\n}]->(ems)\n```\n\n---\n\n### 3.4 CONNECTED_TO_GRID Relationsh",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_30",
+    "text": "   scanRate: 2,\n    lastCommunication: datetime('2025-10-30T14:45:00Z'),\n    communicationProtocol: 'IEC-61850',\n    failsafeMode: 'IslandMode'\n}]->(ems)\n```\n\n---\n\n### 3.4 CONNECTED_TO_GRID Relationship\n\n**Purpose:** Links DERs to grid connection points (substations or feeders).\n\n**Source:** `Energy:DistributedEnergyResource`\n**Target:** `Energy:Substation` OR `Energy:EnergyDevice` (feeder)\n**Cardinality:** Many-to-One\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| connectionPoint | String | Yes | Physical connection point | `Feeder-12-47-003-Pole-247` |\n| interconnectionDate | DateTime | Yes | Grid interconnection date | `2023-09-10T00:00:00Z` |\n| ieee1547Mode | String | Yes | IEEE 1547 operating mode | `ConstantPowerFactor`, `VoltVAR`, `FreqWatt` |\n| exportCapacity | Float | No | Export capacity limit (MW) | `25.0` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (der:DistributedEnergyResource {derId: ",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_31",
+    "text": "nstantPowerFactor`, `VoltVAR`, `FreqWatt` |\n| exportCapacity | Float | No | Export capacity limit (MW) | `25.0` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (der:DistributedEnergyResource {derId: 'energy:der:solar-farm-east-001'})\nMATCH (sub:Substation {substationId: 'energy:substation:east-001'})\nCREATE (der)-[r:CONNECTED_TO_GRID {\n    connectionPoint: 'Substation-East-12.47kV-Bus',\n    interconnectionDate: datetime('2023-09-10T00:00:00Z'),\n    ieee1547Mode: 'VoltVAR',\n    exportCapacity: 25.0\n}]->(sub)\n```\n\n---\n\n### 3.5 COMPLIES_WITH_NERC_CIP Relationship\n\n**Purpose:** Links energy devices/systems to NERC CIP standards they must comply with.\n\n**Source:** `Energy:EnergyDevice` OR `Energy:EnergyManagementSystem` OR `Energy:Substation`\n**Target:** `Energy:NERCCIPStandard`\n**Cardinality:** Many-to-Many\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| complianceStatus | String | Yes | Current compliance s",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_32",
+    "text": "** Many-to-Many\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| complianceStatus | String | Yes | Current compliance status | `Compliant`, `NonCompliant`, `InProgress`, `Exempt` |\n| lastAudit | DateTime | No | Last compliance audit | `2024-06-15T00:00:00Z` |\n| nextAudit | DateTime | No | Next scheduled audit | `2025-06-15T00:00:00Z` |\n| findingsCount | Integer | No | Number of audit findings | `2` |\n| remediationDeadline | DateTime | No | Remediation deadline for non-compliance | `2024-12-31T23:59:59Z` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (ems:EnergyManagementSystem {emsId: 'energy:ems:central-control-001'})\nMATCH (ncs:NERCCIPStandard {standardId: 'energy:standard:nerc-cip-005-r2'})\nCREATE (ems)-[r:COMPLIES_WITH_NERC_CIP {\n    complianceStatus: 'Compliant',\n    lastAudit: datetime('2024-06-15T00:00:00Z'),\n    nextAudit: datetime('2025-06-15T00:00:00Z'),\n    findingsCount: 0,\n    remediationDea",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_33",
+    "text": "r:COMPLIES_WITH_NERC_CIP {\n    complianceStatus: 'Compliant',\n    lastAudit: datetime('2024-06-15T00:00:00Z'),\n    nextAudit: datetime('2025-06-15T00:00:00Z'),\n    findingsCount: 0,\n    remediationDeadline: null\n}]->(ncs)\n```\n\n---\n\n### 3.6 THREATENS_GRID_STABILITY Relationship (extends VULNERABLE_TO)\n\n**Purpose:** Links energy devices to CVE vulnerabilities with grid stability impact assessment.\n\n**Source:** `Energy:EnergyDevice`\n**Target:** `CVE` (existing node)\n**Cardinality:** Many-to-Many\n\n**Properties:** Inherits from `VULNERABLE_TO` plus:\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| gridImpact | String | Yes | Impact on grid stability | `Blackout`, `LoadShedding`, `VoltageInstability`, `FrequencyDeviation` |\n| cascadeRisk | String | Yes | Cascading failure risk | `High`, `Medium`, `Low` |\n| populationImpact | Integer | No | Population potentially affected | `125000` |\n| icsAdvisory | String | No | ICS-CERT adviso",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_34",
+    "text": "eRisk | String | Yes | Cascading failure risk | `High`, `Medium`, `Low` |\n| populationImpact | Integer | No | Population potentially affected | `125000` |\n| icsAdvisory | String | No | ICS-CERT advisory ID | `ICSA-24-123-01` |\n| nercAlert | String | No | NERC security alert ID | `NERC-ALERT-2024-007` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (ed:EnergyDevice {deviceId: 'energy:device:transformer-sub-north-001'})\nMATCH (cve:CVE {cveId: 'CVE-2024-12345'})\nCREATE (ed)-[r:THREATENS_GRID_STABILITY:VULNERABLE_TO {\n    discoveredDate: datetime('2024-08-15T00:00:00Z'),\n    affectedFirmwareVersions: ['V2.4.7', 'V2.4.6'],\n    patchAvailable: true,\n    patchVersion: 'V2.5.0',\n    exploitabilityScore: 3.9,\n    impactScore: 5.9,\n    isExploited: false,\n    mitigationStatus: 'Unpatched',\n    gridImpact: 'LoadShedding',\n    cascadeRisk: 'Medium',\n    populationImpact: 125000,\n    icsAdvisory: 'ICSA-24-123-01',\n    nercAlert: 'NERC-ALERT-2024-007'\n}]->(cve)\n```\n\n---\n\n### 3.7 DEPENDS_ON_ENERGY R",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_35",
+    "text": "Impact: 'LoadShedding',\n    cascadeRisk: 'Medium',\n    populationImpact: 125000,\n    icsAdvisory: 'ICSA-24-123-01',\n    nercAlert: 'NERC-ALERT-2024-007'\n}]->(cve)\n```\n\n---\n\n### 3.7 DEPENDS_ON_ENERGY Relationship (Energy-Water Nexus)\n\n**Purpose:** Models critical infrastructure interdependencies between energy and water systems (cross-wave integration).\n\n**Source:** `Water:WaterDevice` (Wave 2) OR `Water:TreatmentProcess` (Wave 2)\n**Target:** `Energy:EnergyDevice` OR `Energy:Substation`\n**Cardinality:** Many-to-Many\n\n**Properties:**\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| dependencyType | String | Yes | Dependency classification | `PrimaryPower`, `BackupPower`, `CriticalLoad` |\n| powerRequirement | Float | No | Power requirement (kW) | `750.0` |\n| criticalityLevel | String | Yes | Dependency criticality | `Critical`, `High`, `Medium` |\n| failoverCapability | Boolean | Yes | Failover to backup power | `true` |\n| max",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_36",
+    "text": "equirement (kW) | `750.0` |\n| criticalityLevel | String | Yes | Dependency criticality | `Critical`, `High`, `Medium` |\n| failoverCapability | Boolean | Yes | Failover to backup power | `true` |\n| maxOutageDuration | Integer | No | Max tolerable outage (minutes) | `15` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (wd:WaterDevice {deviceId: 'water:device:pump-wtp-001'})\nMATCH (sub:Substation {substationId: 'energy:substation:north-001'})\nCREATE (wd)-[r:DEPENDS_ON_ENERGY {\n    dependencyType: 'PrimaryPower',\n    powerRequirement: 750.0,\n    criticalityLevel: 'Critical',\n    failoverCapability: true,\n    maxOutageDuration: 15\n}]->(sub)\n```\n\n---\n\n### 3.8 HAS_ENERGY_PROPERTY Relationship (extends HAS_PROPERTY from Wave 1)\n\n**Purpose:** Specialized property relationship with energy-specific metadata.\n\n**Source:** `Energy:EnergyDevice`\n**Target:** `Energy:EnergyProperty`\n**Cardinality:** Many-to-Many\n\n**Properties:** Inherits from `HAS_PROPERTY` plus:\n\n| Property | Type | Required | Descr",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_37",
+    "text": "metadata.\n\n**Source:** `Energy:EnergyDevice`\n**Target:** `Energy:EnergyProperty`\n**Cardinality:** Many-to-Many\n\n**Properties:** Inherits from `HAS_PROPERTY` plus:\n\n| Property | Type | Required | Description | Example |\n|----------|------|----------|-------------|---------|\n| measurementPoint | String | No | Measurement location | `PrimaryBusbar`, `SecondaryWinding`, `LineEnd` |\n| nercReportingRequired | Boolean | Yes | NERC reporting requirement | `true` |\n| pmuMeasurement | Boolean | Yes | PMU (Phasor Measurement Unit) data | `true` |\n\n**Cypher CREATE Statement:**\n\n```cypher\nMATCH (ed:EnergyDevice {deviceId: 'energy:device:transformer-sub-north-001'})\nMATCH (ep:EnergyProperty {propertyId: 'energy:property:frequency-001'})\nCREATE (ed)-[r:HAS_ENERGY_PROPERTY:HAS_PROPERTY {\n    assignedDate: datetime('2023-06-15T08:00:00Z'),\n    isActive: true,\n    monitoringPriority: 'Critical',\n    measurementPoint: 'PrimaryBusbar',\n    nercReportingRequired: true,\n    pmuMeasurement: true\n}]->(ep)\n```",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_38",
+    "text": " datetime('2023-06-15T08:00:00Z'),\n    isActive: true,\n    monitoringPriority: 'Critical',\n    measurementPoint: 'PrimaryBusbar',\n    nercReportingRequired: true,\n    pmuMeasurement: true\n}]->(ep)\n```\n\n---\n\n## 4. Integration Patterns\n\n### 4.1 Integration with Wave 1 SAREF Core\n\nWave 3 extends Wave 1 through inheritance patterns similar to Wave 2:\n\n#### Integration Point 1: Energy Device Inheritance from SAREF\n\n```cypher\n// Create energy device with full SAREF inheritance\nCREATE (ed:Energy:EnergyDevice:Device {\n    // All SAREF:Device properties automatically available\n    deviceId: 'energy:device:smart-meter-res-0012847',\n    name: 'Residential Smart Meter - 123 Main St',\n    model: 'Itron OpenWay Riva',\n    manufacturer: 'Itron',\n    firmwareVersion: 'V5.3.2',\n    deviceCategory: 'Sensor',\n    criticality: 'Medium',\n\n    // Energy-specific extensions\n    energyDeviceType: 'SmartMeter',\n    voltageLevel: 'Secondary-240V',\n    nercCIPCategory: 'Non-BES',\n    communicationProtocol: ['AMI",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_39",
+    "text": ",\n    criticality: 'Medium',\n\n    // Energy-specific extensions\n    energyDeviceType: 'SmartMeter',\n    voltageLevel: 'Secondary-240V',\n    nercCIPCategory: 'Non-BES',\n    communicationProtocol: ['AMI-Mesh', 'Zigbee'],\n    nercCIPCompliance: 'Exempt',\n    gridImpactLevel: 'Low'\n})\n\n// Verify inheritance - query works across all device layers\nMATCH (d:Device)\nWHERE d:EnergyDevice AND d.criticality IN ['Critical', 'High']\nRETURN d.deviceId, d.energyDeviceType, labels(d)\n\n// Returns SAREF:Device + Energy:EnergyDevice nodes\n```\n\n---\n\n#### Integration Point 2: Energy Measurements Using SAREF Framework\n\n```cypher\n// Energy property extends SAREF property and uses SAREF measurement generation\nMATCH (ep:EnergyProperty {propertyId: 'energy:property:voltage-001'})\nMATCH (ep)-[:GENERATES_MEASUREMENT]->(m:Measurement)\nWHERE m.timestamp > datetime() - duration({minutes: 15})\n\n// Energy-specific anomaly detection\nWITH ep, m\nWHERE m.value < ep.tripThresholdLow OR m.value > ep.tripThresholdHigh\nOPTION",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_40",
+    "text": "->(m:Measurement)\nWHERE m.timestamp > datetime() - duration({minutes: 15})\n\n// Energy-specific anomaly detection\nWITH ep, m\nWHERE m.value < ep.tripThresholdLow OR m.value > ep.tripThresholdHigh\nOPTIONAL MATCH (ed:EnergyDevice)-[:HAS_ENERGY_PROPERTY]->(ep)\nOPTIONAL MATCH (ed)-[:INSTALLED_AT_SUBSTATION]->(sub:Substation)\n\nRETURN ep.propertyId,\n       ep.energyPropertyCategory,\n       ep.gridStabilityImpact,\n       sub.substationName,\n       count(m) as criticalMeasurements,\n       collect(m.value)[..5] as sampleValues,\n       CASE\n         WHEN count(m) > 5 THEN 'GridInstabilityWarning'\n         ELSE 'MonitorContinue'\n       END as alertLevel\n\n// Seamless integration: energy properties leverage SAREF measurement infrastructure\n```\n\n---\n\n### 4.2 Integration with Wave 2 Water Infrastructure\n\n#### Integration Point 3: Energy-Water Critical Infrastructure Interdependencies\n\n```cypher\n// Model water treatment plant dependency on electrical substation\nMATCH (wtp:TreatmentProcess {processType: ",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 40,
+      "start_char": 32000,
+      "end_char": 33000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_41",
+    "text": "### Integration Point 3: Energy-Water Critical Infrastructure Interdependencies\n\n```cypher\n// Model water treatment plant dependency on electrical substation\nMATCH (wtp:TreatmentProcess {processType: 'Disinfection'})<-[:PART_OF_PROCESS]-(wd:WaterDevice {waterDeviceType: 'Pump'})\nMATCH (wd)-[:CONTROLLED_BY_SCADA]->(ws:SCADASystem)\n\n// Match electrical substations serving water infrastructure\nMATCH (sub:Substation)\nWHERE sub.substationName CONTAINS 'Water'\n   OR point.distance(\n        point({latitude: toFloat(split(wd.gpsCoordinates, ',')[0]), longitude: toFloat(split(wd.gpsCoordinates, ',')[1])}),\n        point({latitude: toFloat(split(sub.gpsCoordinates, ',')[0]), longitude: toFloat(split(sub.gpsCoordinates, ',')[1])})\n      ) < 5000  // Within 5km\n\n// Create energy-water dependency\nCREATE (wd)-[r:DEPENDS_ON_ENERGY {\n    dependencyType: 'PrimaryPower',\n    powerRequirement: wd.flowCapacity * 0.3,  // Estimated power requirement\n    criticalityLevel: wd.waterQualityImpact,\n    failover",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 41,
+      "start_char": 32800,
+      "end_char": 33800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_42",
+    "text": "E (wd)-[r:DEPENDS_ON_ENERGY {\n    dependencyType: 'PrimaryPower',\n    powerRequirement: wd.flowCapacity * 0.3,  // Estimated power requirement\n    criticalityLevel: wd.waterQualityImpact,\n    failoverCapability: CASE\n      WHEN wtp.redundancyLevel = 'N+1' THEN true\n      ELSE false\n    END,\n    maxOutageDuration: 15\n}]->(sub)\n\nRETURN wd.deviceId as waterDevice,\n       sub.substationName as powerSource,\n       r.powerRequirement as powerKW,\n       r.criticalityLevel\n\n// Enables cascading failure analysis across energy and water sectors\n```\n\n**Expected Results:** 800-1,200 energy-water dependency links\n\n---\n\n### 4.3 Integration with Existing CVE/ICS Data\n\n#### Integration Point 4: Energy-Specific CVE Mapping\n\n```cypher\n// Match existing CVE nodes affecting energy infrastructure\nMATCH (cve:CVE)\nWHERE cve.description CONTAINS 'substation'\n   OR cve.description CONTAINS 'SCADA'\n   OR cve.description CONTAINS 'smart meter'\n   OR cve.description CONTAINS 'IED'\n   OR cve.description CONTAINS '",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 42,
+      "start_char": 33600,
+      "end_char": 34600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_43",
+    "text": "E)\nWHERE cve.description CONTAINS 'substation'\n   OR cve.description CONTAINS 'SCADA'\n   OR cve.description CONTAINS 'smart meter'\n   OR cve.description CONTAINS 'IED'\n   OR cve.description CONTAINS 'RTU'\n   OR cve.description CONTAINS 'DNP3'\n   OR cve.description CONTAINS 'IEC 61850'\n   OR cve.affectedProducts CONTAINS 'Siemens Energy'\n   OR cve.affectedProducts CONTAINS 'GE Grid'\n   OR cve.affectedProducts CONTAINS 'ABB'\n   OR cve.affectedProducts CONTAINS 'SEL'\n\n// Match energy devices potentially affected\nMATCH (ed:EnergyDevice)\nWHERE ed.manufacturer IN ['Siemens Energy', 'GE Grid Solutions', 'ABB', 'Schweitzer Engineering Laboratories']\n  AND (\n    cve.affectedProducts CONTAINS ed.model\n    OR cve.affectedProducts CONTAINS ed.manufacturer\n  )\n\n// Calculate grid impact\nWITH ed, cve,\n     CASE ed.gridImpactLevel\n       WHEN 'Critical' THEN 'Blackout'\n       WHEN 'High' THEN 'LoadShedding'\n       ELSE 'VoltageInstability'\n     END as gridImpact,\n     CASE\n       WHEN ed.nercCIPCatego",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 43,
+      "start_char": 34400,
+      "end_char": 35400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_44",
+    "text": "   CASE ed.gridImpactLevel\n       WHEN 'Critical' THEN 'Blackout'\n       WHEN 'High' THEN 'LoadShedding'\n       ELSE 'VoltageInstability'\n     END as gridImpact,\n     CASE\n       WHEN ed.nercCIPCategory = 'BES-Cyber-Asset' AND cve.cvssScore >= 9.0 THEN 'High'\n       WHEN ed.voltageLevel CONTAINS 'Transmission' THEN 'Medium'\n       ELSE 'Low'\n     END as cascadeRisk\n\n// Match substation to determine population impact\nOPTIONAL MATCH (ed)-[:INSTALLED_AT_SUBSTATION]->(sub:Substation)\n\n// Create energy-specific vulnerability relationship\nCREATE (ed)-[r:THREATENS_GRID_STABILITY:VULNERABLE_TO {\n    discoveredDate: cve.publishedDate,\n    affectedFirmwareVersions: [ed.firmwareVersion],\n    patchAvailable: CASE WHEN cve.patchStatus = 'Available' THEN true ELSE false END,\n    exploitabilityScore: cve.exploitabilityScore,\n    impactScore: cve.impactScore,\n    isExploited: cve.exploitedInWild,\n    mitigationStatus: 'Unpatched',\n    gridImpact: gridImpact,\n    cascadeRisk: cascadeRisk,\n    populatio",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 44,
+      "start_char": 35200,
+      "end_char": 36200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_45",
+    "text": ".exploitabilityScore,\n    impactScore: cve.impactScore,\n    isExploited: cve.exploitedInWild,\n    mitigationStatus: 'Unpatched',\n    gridImpact: gridImpact,\n    cascadeRisk: cascadeRisk,\n    populationImpact: sub.populationServed,\n    icsAdvisory: CASE\n      WHEN cve.cvssScore >= 9.0 THEN 'ICSA-' + substring(cve.cveId, 4, 2) + '-' + substring(cve.cveId, 9)\n      ELSE null\n    END,\n    nercAlert: CASE\n      WHEN cve.cvssScore >= 9.0 AND ed.nercCIPCategory = 'BES-Cyber-Asset'\n      THEN 'NERC-ALERT-' + substring(cve.cveId, 4, 4) + '-' + substring(cve.cveId, 9)\n      ELSE null\n    END\n}]->(cve)\n\nRETURN count(r) as energyVulnerabilitiesLinked\n```\n\n**Expected Results:** 2,000-3,000 energy-specific CVE links\n\n---\n\n## 5. Validation Criteria\n\n### 5.1 Acceptance Tests\n\n#### Test 1: Node Creation Completeness\n\n```cypher\nCALL {\n    MATCH (ed:EnergyDevice) RETURN 'EnergyDevice' as nodeType, count(ed) as nodeCount\n    UNION\n    MATCH (ep:EnergyProperty) RETURN 'EnergyProperty' as nodeType, count(ep",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 45,
+      "start_char": 36000,
+      "end_char": 37000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_46",
+    "text": "mpleteness\n\n```cypher\nCALL {\n    MATCH (ed:EnergyDevice) RETURN 'EnergyDevice' as nodeType, count(ed) as nodeCount\n    UNION\n    MATCH (ep:EnergyProperty) RETURN 'EnergyProperty' as nodeType, count(ep) as nodeCount\n    UNION\n    MATCH (sub:Substation) RETURN 'Substation' as nodeType, count(sub) as nodeCount\n    UNION\n    MATCH (tl:TransmissionLine) RETURN 'TransmissionLine' as nodeType, count(tl) as nodeCount\n    UNION\n    MATCH (ems:EnergyManagementSystem) RETURN 'EnergyManagementSystem' as nodeType, count(ems) as nodeCount\n    UNION\n    MATCH (der:DistributedEnergyResource) RETURN 'DistributedEnergyResource' as nodeType, count(der) as nodeCount\n    UNION\n    MATCH (ncs:NERCCIPStandard) RETURN 'NERCCIPStandard' as nodeType, count(ncs) as nodeCount\n}\nRETURN nodeType, nodeCount\nORDER BY nodeType\n```\n\n**Acceptance Criteria:**\n- EnergyDevice: 8,000-12,000 nodes\n- EnergyProperty: 5,000-7,000 nodes\n- Substation: 150-250 nodes\n- TransmissionLine: 300-500 nodes\n- EnergyManagementSystem: 15-30",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 46,
+      "start_char": 36800,
+      "end_char": 37800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_47",
+    "text": "eType\n```\n\n**Acceptance Criteria:**\n- EnergyDevice: 8,000-12,000 nodes\n- EnergyProperty: 5,000-7,000 nodes\n- Substation: 150-250 nodes\n- TransmissionLine: 300-500 nodes\n- EnergyManagementSystem: 15-30 nodes\n- DistributedEnergyResource: 500-1,000 nodes\n- NERCCIPStandard: 80-120 nodes\n\n**Total Target:** 14,045-20,900 core nodes\n\n---\n\n### 5.2 Performance Benchmarks\n\n#### Benchmark 1: Cascading Failure Analysis Query\n\n```cypher\n// Query: Analyze cascading failure risk from compromised substation (\u2264 2000ms)\nPROFILE\nMATCH (sub:Substation {nercCIPSite: true})\nWHERE sub.criticalInfrastructure = true\n\n// Find all devices at substation\nMATCH (ed:EnergyDevice)-[:INSTALLED_AT_SUBSTATION]->(sub)\n\n// Find vulnerabilities affecting devices\nMATCH (ed)-[t:THREATENS_GRID_STABILITY]->(cve:CVE)\nWHERE t.cascadeRisk IN ['High', 'Medium']\n\n// Find transmission lines connected to substation\nMATCH (tl:TransmissionLine)-[:CONNECTS_SUBSTATIONS]->(sub)\n\n// Find downstream substations\nMATCH (tl)-[:CONNECTS_SUBSTAT",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 47,
+      "start_char": 37600,
+      "end_char": 38600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_48",
+    "text": "eRisk IN ['High', 'Medium']\n\n// Find transmission lines connected to substation\nMATCH (tl:TransmissionLine)-[:CONNECTS_SUBSTATIONS]->(sub)\n\n// Find downstream substations\nMATCH (tl)-[:CONNECTS_SUBSTATIONS]->(downstreamSub:Substation)\nWHERE downstreamSub <> sub\n\n// Calculate cascading impact\nWITH sub,\n     count(DISTINCT ed) as vulnerableDevices,\n     count(DISTINCT cve) as uniqueVulnerabilities,\n     count(DISTINCT tl) as affectedLines,\n     count(DISTINCT downstreamSub) as downstreamSubstations,\n     sum(downstreamSub.populationServed) as totalPopulationAtRisk\n\nRETURN sub.substationName,\n       sub.voltageClass,\n       vulnerableDevices,\n       uniqueVulnerabilities,\n       affectedLines,\n       downstreamSubstations,\n       totalPopulationAtRisk,\n       CASE\n         WHEN totalPopulationAtRisk > 100000 THEN 'CatastrophicRisk'\n         WHEN totalPopulationAtRisk > 50000 THEN 'HighRisk'\n         ELSE 'MediumRisk'\n       END as cascadeRiskLevel\nORDER BY totalPopulationAtRisk DESC\nLIMIT ",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 48,
+      "start_char": 38400,
+      "end_char": 39400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_49",
+    "text": "AtRisk > 100000 THEN 'CatastrophicRisk'\n         WHEN totalPopulationAtRisk > 50000 THEN 'HighRisk'\n         ELSE 'MediumRisk'\n       END as cascadeRiskLevel\nORDER BY totalPopulationAtRisk DESC\nLIMIT 10\n\n// Performance target: \u2264 2000ms\n```\n\n---\n\n## 6. Example Queries\n\n### 6.1 Grid Security Queries\n\n#### Query 1: NERC CIP Compliance Dashboard\n\n```cypher\nMATCH (ems:EnergyManagementSystem)\nOPTIONAL MATCH (ems)-[c:COMPLIES_WITH_NERC_CIP]->(ncs:NERCCIPStandard)\nWHERE c.complianceStatus IN ['NonCompliant', 'InProgress']\n\nWITH ems,\n     count(DISTINCT ncs) as nonCompliantStandards,\n     collect(DISTINCT ncs.cipNumber)[..5] as topNonCompliantCIPs,\n     max(c.remediationDeadline) as nearestDeadline\n\nRETURN ems.systemName,\n       ems.vendor,\n       ems.networkArchitecture,\n       ems.multiFactorAuth,\n       nonCompliantStandards,\n       topNonCompliantCIPs,\n       nearestDeadline,\n       CASE\n         WHEN nearestDeadline < datetime() + duration({days: 30}) THEN 'Urgent'\n         WHEN nearestDea",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 49,
+      "start_char": 39200,
+      "end_char": 40200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_50",
+    "text": ",\n       nonCompliantStandards,\n       topNonCompliantCIPs,\n       nearestDeadline,\n       CASE\n         WHEN nearestDeadline < datetime() + duration({days: 30}) THEN 'Urgent'\n         WHEN nearestDeadline < datetime() + duration({days: 90}) THEN 'HighPriority'\n         ELSE 'Monitor'\n       END as remediationUrgency\nORDER BY remediationUrgency, nearestDeadline\n```\n\n**Expected Results:** EMS systems with compliance gaps\n\n**Performance:** \u2264 800ms\n\n---\n\n#### Query 2: Smart Grid DER Security Assessment\n\n```cypher\nMATCH (der:DistributedEnergyResource)\nWHERE der.remoteControlEnabled = true\n\nOPTIONAL MATCH (der)-[:CONNECTED_TO_GRID]->(sub:Substation)\nOPTIONAL MATCH (der)-[:VULNERABLE_TO]->(cve:CVE)\n\nWITH der, sub,\n     count(DISTINCT cve) as vulnerabilities,\n     CASE\n       WHEN der.cybersecurityCertified = false AND der.dermsManaged = true THEN 10\n       WHEN der.cybersecurityCertified = false THEN 7\n       WHEN der.communicationProtocol = 'Modbus/TCP' THEN 5\n       ELSE 2\n     END as risk",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 50,
+      "start_char": 40000,
+      "end_char": 41000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_51",
+    "text": "tyCertified = false AND der.dermsManaged = true THEN 10\n       WHEN der.cybersecurityCertified = false THEN 7\n       WHEN der.communicationProtocol = 'Modbus/TCP' THEN 5\n       ELSE 2\n     END as riskScore\n\nRETURN der.derName,\n       der.derType,\n       der.capacity,\n       der.communicationProtocol,\n       der.cybersecurityCertified,\n       der.dermsManaged,\n       sub.substationName,\n       vulnerabilities,\n       riskScore,\n       CASE\n         WHEN riskScore >= 8 THEN 'CriticalRisk'\n         WHEN riskScore >= 5 THEN 'HighRisk'\n         ELSE 'MediumRisk'\n       END as securityPosture\nORDER BY riskScore DESC, der.capacity DESC\nLIMIT 20\n```\n\n**Expected Results:** DERs ranked by cybersecurity risk\n\n**Performance:** \u2264 1000ms\n\n---\n\n## 7. Implementation Roadmap\n\n### Week 1-2: Energy Device & Property Schema\n- Create EnergyDevice and EnergyProperty nodes\n- Establish inheritance from SAREF core\n- Implement energy-specific indexes\n\n### Week 3-4: Substation & Transmission Topology\n- Create Su",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 51,
+      "start_char": 40800,
+      "end_char": 41800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_52",
+    "text": "Property Schema\n- Create EnergyDevice and EnergyProperty nodes\n- Establish inheritance from SAREF core\n- Implement energy-specific indexes\n\n### Week 3-4: Substation & Transmission Topology\n- Create Substation and TransmissionLine nodes\n- Model grid topology relationships\n- Integrate with existing network topology\n\n### Week 5-6: EMS/SCADA & Smart Grid Integration\n- Create EnergyManagementSystem nodes\n- Model SCADA control relationships\n- Create DER nodes and grid connections\n\n### Week 7: NERC CIP Compliance & Regulatory\n- Create NERCCIPStandard nodes\n- Link devices to compliance requirements\n- Model regulatory audit relationships\n\n### Week 8-9: CVE Integration & Cross-Wave Dependencies\n- Link energy devices to existing CVEs\n- Create THREATENS_GRID_STABILITY relationships\n- Model energy-water interdependencies (DEPENDS_ON_ENERGY)\n\n### Week 10: Testing, Validation & Deployment\n- Execute all acceptance tests\n- Performance benchmarking\n- Cascading failure analysis validation\n- Production de",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 52,
+      "start_char": 41600,
+      "end_char": 42600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_53",
+    "text": "r interdependencies (DEPENDS_ON_ENERGY)\n\n### Week 10: Testing, Validation & Deployment\n- Execute all acceptance tests\n- Performance benchmarking\n- Cascading failure analysis validation\n- Production deployment\n\n---\n\n## 8. Dependencies for Wave 4\n\nWave 4 (ICS Security Knowledge Graph) will leverage Wave 3 patterns:\n\n1. **EMS/SCADA Attack Patterns**: Energy SCADA attack models serve as templates\n2. **Protocol Vulnerabilities**: DNP3, IEC 61850, Modbus protocol security patterns\n3. **Cascading Failure Models**: Grid interdependency analysis extends to all ICS sectors\n4. **NERC CIP Compliance**: Compliance framework patterns for other sector regulations\n\n**Critical Handoff:** Wave 3 grid topology and cascading failure models provide foundation for Wave 4 cross-sector attack pattern analysis.\n\n---\n\n**Wave 3 Status:** SPECIFICATION COMPLETE\n**Next Wave:** Wave 4 - ICS Security Knowledge Graph\n**Integration Status:** Additive enhancement extending Waves 1-2, preserving all existing data\n**Roll",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 53,
+      "start_char": 42400,
+      "end_char": 43400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "05_WAVE_3_ENERGY_GRID.md_chunk_54",
+    "text": "--\n\n**Wave 3 Status:** SPECIFICATION COMPLETE\n**Next Wave:** Wave 4 - ICS Security Knowledge Graph\n**Integration Status:** Additive enhancement extending Waves 1-2, preserving all existing data\n**Rollback Safety:** Complete rollback script following Wave 2 pattern\n\n",
+    "metadata": {
+      "file_name": "05_WAVE_3_ENERGY_GRID.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/05_WAVE_3_ENERGY_GRID.md",
+      "file_size": 43466,
+      "indexed_at": "2025-10-31T01:01:35.061597",
+      "chunk_id": 54,
+      "start_char": 43200,
+      "end_char": 44200,
+      "chunk_size": 266
+    }
+  }
+]

@@ -1,0 +1,604 @@
+[
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_0",
+    "text": "# WAVE 10: SBOM INTEGRATION & SOFTWARE SUPPLY CHAIN\n**File:** 12_WAVE_10_SBOM_INTEGRATION.md\n**Created:** 2025-10-30 00:00:00 UTC\n**Version:** v1.0.0\n**Status:** ACTIVE\n**Wave Priority:** 10 of 12\n**Estimated Nodes:** ~140,000\n\n## Wave Overview\n\nWave 10 implements comprehensive Software Bill of Materials (SBOM) integration, covering ~140,000 nodes for software components, dependencies, licenses, build information, and provenance tracking. This wave enables complete software supply chain visibility and vulnerability tracking from source to deployment.\n\n### Objectives\n1. Define complete SBOM component schemas\n2. Implement dependency tree analysis\n3. Establish license compliance tracking\n4. Enable build and provenance verification\n5. Integrate vulnerability propagation through supply chain\n6. Support multiple SBOM standards (SPDX, CycloneDX)\n\n### Dependencies\n- Wave 3-5: Cybersecurity (vulnerability mapping)\n- Wave 9: IT Infrastructure (software deployment mapping)\n\n---\n\n## COMPLETE NODE ",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_1",
+    "text": " Support multiple SBOM standards (SPDX, CycloneDX)\n\n### Dependencies\n- Wave 3-5: Cybersecurity (vulnerability mapping)\n- Wave 9: IT Infrastructure (software deployment mapping)\n\n---\n\n## COMPLETE NODE SCHEMAS\n\n### 1. SOFTWARE COMPONENTS (~50,000 nodes)\n\n#### 1.1 Base Software Component (20,000 nodes)\n\n**SoftwareComponent**\n```yaml\nSoftwareComponent:\n  properties:\n    # Identity - Multiple identifier formats\n    componentID: string (unique)\n    purl: string (Package URL - RFC 7396)\n    cpe: string (Common Platform Enumeration 2.3)\n    swid: string (SWID Tag ID - ISO/IEC 19770-2)\n\n    # Basic Metadata\n    name: string\n    version: string\n    versionScheme: enum[semver, integer, alpha, custom]\n    group: string (namespace/organization)\n    namespace: string\n\n    # Type Classification\n    componentType: enum[\n      library, framework, application, container, operating_system,\n      device, firmware, file, source, archive, install, patch,\n      documentation, data, configuration, tool, servi",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_2",
+    "text": "nentType: enum[\n      library, framework, application, container, operating_system,\n      device, firmware, file, source, archive, install, patch,\n      documentation, data, configuration, tool, service\n    ]\n\n    # Supplier Information\n    supplier: {\n      name: string,\n      url: string,\n      contact: string,\n      organizationType: enum[vendor, contributor, maintainer, distributor]\n    }\n\n    # Author Information\n    author: string\n    authors: array[{name: string, email: string, organization: string}]\n    publisher: string\n\n    # Descriptive Information\n    description: text\n    summary: string\n    category: array[string]\n    tags: array[string]\n\n    # License Information\n    license: string (SPDX identifier)\n    licenses: array[{\n      id: string (SPDX),\n      name: string,\n      text: text,\n      url: string,\n      acknowledgement: enum[declared, concluded, discovered]\n    }]\n    licenseExpression: string (SPDX expression)\n    copyright: text\n\n    # Hash Values (for integrity v",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_3",
+    "text": "xt: text,\n      url: string,\n      acknowledgement: enum[declared, concluded, discovered]\n    }]\n    licenseExpression: string (SPDX expression)\n    copyright: text\n\n    # Hash Values (for integrity verification)\n    hashes: array[{\n      algorithm: enum[md5, sha1, sha224, sha256, sha384, sha512, sha3_256, sha3_384, sha3_512, blake2b_256, blake2b_384, blake2b_512],\n      value: string (hex)\n    }]\n\n    # File Information\n    fileName: string\n    fileSize: integer (bytes)\n    mimeType: string\n    encoding: string\n\n    # Scope & Context\n    scope: enum[required, optional, excluded, development, test, runtime, provided, system]\n    modified: boolean\n    pedigree: {\n      ancestors: array[string (component IDs)],\n      descendants: array[string],\n      variants: array[string],\n      commits: array[string (git commit hashes)],\n      patches: array[string (patch IDs)],\n      notes: text\n    }\n\n    # External References\n    externalReferences: array[{\n      type: enum[\n        vcs, issue_trac",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_4",
+    "text": "rray[string (git commit hashes)],\n      patches: array[string (patch IDs)],\n      notes: text\n    }\n\n    # External References\n    externalReferences: array[{\n      type: enum[\n        vcs, issue_tracker, website, documentation, mailing_list,\n        social, chat, support, distribution, license, build_meta,\n        build_system, release_notes, security_contact, security_advisory,\n        vulnerability_report, other\n      ],\n      url: string,\n      comment: string,\n      hashes: array[{algorithm: string, value: string}]\n    }]\n\n    # Properties (extensible key-value pairs)\n    properties: array[{\n      name: string,\n      value: string,\n      type: enum[string, integer, float, boolean, datetime, uri]\n    }]\n\n    # Evidence (how component was identified)\n    evidence: {\n      licenses: array[{\n        method: enum[declared, discovered, analyzed],\n        confidence: float (0-1),\n        source: string\n      }],\n      occurrences: array[{\n        location: string,\n        line: integer,\n",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_5",
+    "text": "y[{\n        method: enum[declared, discovered, analyzed],\n        confidence: float (0-1),\n        source: string\n      }],\n      occurrences: array[{\n        location: string,\n        line: integer,\n        offset: integer,\n        symbolLocation: string,\n        additionalContext: string\n      }],\n      callstack: array[{\n        package: string,\n        version: string,\n        method: string\n      }],\n      identity: {\n        field: enum[group, name, version, purl, cpe, swid, hash],\n        confidence: float,\n        methods: array[{\n          technique: enum[\n            manifest_analysis, ast_fingerprint, hash_comparison,\n            binary_analysis, filename, attestation, source_code_analysis,\n            instrumentation, dynamic_analysis\n          ],\n          confidence: float,\n          value: string\n        }]\n      }\n    }\n\n    # SBOM Metadata\n    bomRef: string (unique reference within BOM)\n    spdxID: string (SPDX specific identifier)\n    specVersion: string (SBOM specif",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_6",
+    "text": "         value: string\n        }]\n      }\n    }\n\n    # SBOM Metadata\n    bomRef: string (unique reference within BOM)\n    spdxID: string (SPDX specific identifier)\n    specVersion: string (SBOM specification version)\n    serialNumber: string (URN)\n\n    # Lifecycle\n    releaseDate: datetime\n    buildDate: datetime\n    validUntilDate: datetime\n    deprecatedDate: datetime\n    endOfSupportDate: datetime\n\n    # Quality & Trust\n    confidence: float (0-1)\n    trustScore: float (0-100)\n    verificationStatus: enum[verified, unverified, failed, pending]\n\n  relationships:\n    # Dependency Relationships\n    dependsOn: SoftwareComponent (many-to-many)\n      properties:\n        dependencyType: enum[direct, indirect, transitive, optional, dev, peer]\n        versionConstraint: string\n        scope: enum[compile, runtime, test, provided, system]\n        optional: boolean\n\n    # Containment\n    partOf: Package|SoftwareComponent (many-to-1)\n    contains: SoftwareComponent (1-to-many)\n\n    # Variants &",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_7",
+    "text": "m[compile, runtime, test, provided, system]\n        optional: boolean\n\n    # Containment\n    partOf: Package|SoftwareComponent (many-to-1)\n    contains: SoftwareComponent (1-to-many)\n\n    # Variants & Evolution\n    variantOf: SoftwareComponent (many-to-1)\n    succeeds: SoftwareComponent (many-to-1)\n    replaces: SoftwareComponent (many-to-many)\n\n    # Build & Provenance\n    builtBy: BuildSystem (many-to-1)\n    producedBy: Build (many-to-1)\n    sourceIn: CodeRepository (many-to-many)\n\n    # Deployment\n    installedOn: Asset (many-to-many)\n    providesService: Service (many-to-many)\n\n    # Security\n    hasVulnerability: Vulnerability (many-to-many)\n      properties:\n        discoveryDate: datetime\n        affectedVersions: array[string]\n        fixedVersions: array[string]\n        severity: enum[critical, high, medium, low, none]\n        exploitability: enum[high, functional, poc, unproven]\n\n    patchedBy: Patch (many-to-many)\n\n    # Licensing\n    licensedUnder: SoftwareLicense (many-to-",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_8",
+    "text": "enum[critical, high, medium, low, none]\n        exploitability: enum[high, functional, poc, unproven]\n\n    patchedBy: Patch (many-to-many)\n\n    # Licensing\n    licensedUnder: SoftwareLicense (many-to-many)\n\n    # Attestation & Verification\n    attestedBy: Attestation (many-to-many)\n    signedBy: CryptographicKey (many-to-1)\n\n  validation_rules:\n    - componentID must be unique\n    - At least one of purl, cpe, swid must be present\n    - version must follow versionScheme format\n    - hashes must use secure algorithms (no MD5 for security verification)\n    - license must be valid SPDX identifier if present\n    - confidence range [0, 1]\n```\n\n#### 1.2 Package Types (10,000 nodes)\n\n**Package**\n```yaml\nPackage:\n  extends: SoftwareComponent\n  properties:\n    # Package-specific metadata\n    packageManager: enum[\n      npm, yarn, pip, poetry, maven, gradle, nuget, gem, bundler,\n      cargo, go_mod, composer, pub, cocoapods, swift_pm, hex,\n      crates_io, hackage, opam, cpan, cran\n    ]\n\n    # D",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_9",
+    "text": "Manager: enum[\n      npm, yarn, pip, poetry, maven, gradle, nuget, gem, bundler,\n      cargo, go_mod, composer, pub, cocoapods, swift_pm, hex,\n      crates_io, hackage, opam, cpan, cran\n    ]\n\n    # Distribution\n    downloadLocation: string (URL or NOASSERTION or NONE)\n    packageURL: string (canonical package URL)\n    homepage: string\n    sourceInfo: string\n\n    # Repository Information\n    repository: {\n      type: enum[git, svn, mercurial, cvs, bazaar],\n      url: string,\n      branch: string,\n      tag: string,\n      commit: string\n    }\n\n    # Verification\n    checksums: array[{\n      algorithm: string,\n      checksumValue: string\n    }]\n    packageVerificationCode: {\n      value: string,\n      excludedFiles: array[string]\n    }\n\n    # Files Analyzed\n    filesAnalyzed: boolean\n    annotations: array[{\n      annotator: string,\n      annotationDate: datetime,\n      annotationType: enum[review, comment, issue],\n      comment: text\n    }]\n\n  relationships:\n    managedBy: PackageManage",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_10",
+    "text": "otations: array[{\n      annotator: string,\n      annotationDate: datetime,\n      annotationType: enum[review, comment, issue],\n      comment: text\n    }]\n\n  relationships:\n    managedBy: PackageManager (many-to-1)\n    publishedTo: Registry (many-to-1)\n    mirroredIn: Registry (many-to-many)\n```\n\n**ContainerImage**\n```yaml\nContainerImage:\n  extends: SoftwareComponent\n  properties:\n    # Image Identity\n    imageID: string (SHA256 digest)\n    imageName: string\n    imageTag: string\n    imageDigest: string\n\n    # Registry Information\n    registry: string\n    repository: string\n\n    # Image Metadata\n    architecture: enum[amd64, arm64, armv7, 386, ppc64le, s390x]\n    os: string\n    osVersion: string\n    variant: string\n\n    # Image Layers\n    layers: array[{\n      digest: string,\n      size: integer,\n      mediaType: string,\n      command: string,\n      created: datetime\n    }]\n\n    # Configuration\n    config: {\n      user: string,\n      exposedPorts: array[string],\n      env: array[string],",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_11",
+    "text": "eger,\n      mediaType: string,\n      command: string,\n      created: datetime\n    }]\n\n    # Configuration\n    config: {\n      user: string,\n      exposedPorts: array[string],\n      env: array[string],\n      entrypoint: array[string],\n      cmd: array[string],\n      volumes: array[string],\n      workingDir: string,\n      labels: object\n    }\n\n    # Size Information\n    size: integer (bytes)\n    virtualSize: integer (bytes)\n\n  relationships:\n    basedOn: ContainerImage (many-to-1)\n    layerContains: SoftwareComponent (many-to-many)\n    scannedBy: VulnerabilityScanner (many-to-many)\n```\n\n#### 1.3 Specialized Components (20,000 nodes)\n\n**Firmware**\n```yaml\nFirmware:\n  extends: SoftwareComponent\n  properties:\n    firmwareType: enum[bios, uefi, embedded, bootloader, microcode]\n    targetDevice: string\n    flashSize: integer (bytes)\n    bootloader: string\n    cryptographicSignature: string\n\n  relationships:\n    installedOn: saref:Device (many-to-many)\n    hasVulnerability: CVE (many-to-many)\n",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_12",
+    "text": "string\n    flashSize: integer (bytes)\n    bootloader: string\n    cryptographicSignature: string\n\n  relationships:\n    installedOn: saref:Device (many-to-many)\n    hasVulnerability: CVE (many-to-many)\n```\n\n**Library**\n```yaml\nLibrary:\n  extends: SoftwareComponent\n  properties:\n    libraryType: enum[static, dynamic, shared, header_only]\n    apiVersion: string\n    abiVersion: string\n    interfaceStability: enum[stable, unstable, deprecated, experimental]\n\n    # API Surface\n    exportedSymbols: array[{\n      name: string,\n      type: enum[function, class, variable, constant],\n      visibility: enum[public, private, protected, internal]\n    }]\n\n  relationships:\n    implements: Interface (many-to-many)\n    providesAPI: API (1-to-many)\n```\n\n---\n\n### 2. DEPENDENCIES (~40,000 nodes)\n\n#### 2.1 Dependency Relationships (30,000 nodes)\n\n**Dependency**\n```yaml\nDependency:\n  properties:\n    # Identity\n    dependencyID: string\n    ref: string (bomRef of dependent component)\n    dependsOn: string (bomR",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_13",
+    "text": "dency Relationships (30,000 nodes)\n\n**Dependency**\n```yaml\nDependency:\n  properties:\n    # Identity\n    dependencyID: string\n    ref: string (bomRef of dependent component)\n    dependsOn: string (bomRef of dependency)\n\n    # Dependency Type\n    dependencyType: enum[\n      direct,           # Explicitly declared\n      indirect,         # Pulled in by another dependency\n      transitive,       # Multi-level indirect\n      dev,              # Development-only\n      test,             # Testing-only\n      runtime,          # Runtime-only\n      optional,         # Optional feature\n      peer,             # Peer dependency (npm)\n      provided,         # Provided by runtime (Maven)\n      bundled,          # Bundled with package\n      build             # Build-time only\n    ]\n\n    # Version Constraints\n    versionConstraint: string\n    versionRange: {\n      min: string,\n      max: string,\n      minInclusive: boolean,\n      maxInclusive: boolean\n    }\n    constraintExpression: string (e.g., \">=",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_14",
+    "text": "aints\n    versionConstraint: string\n    versionRange: {\n      min: string,\n      max: string,\n      minInclusive: boolean,\n      maxInclusive: boolean\n    }\n    constraintExpression: string (e.g., \">=1.0.0 <2.0.0\")\n\n    # Scope\n    scope: enum[compile, runtime, test, provided, system, import]\n\n    # Metadata\n    optional: boolean\n    required: boolean\n    excluded: boolean\n    reason: string (why dependency exists)\n\n    # Resolution\n    resolvedVersion: string\n    resolved: boolean\n    resolutionStrategy: enum[newest, oldest, range, exact, dynamic]\n\n    # Conflict Information\n    conflicts: array[{\n      with: string (component ID),\n      reason: string,\n      resolution: enum[override, exclude, force, fail]\n    }]\n\n    # Integrity\n    integrity: string (hash for package managers)\n    integrityVerified: boolean\n\n  relationships:\n    # Core dependency graph\n    from: SoftwareComponent (many-to-1)\n    to: SoftwareComponent (many-to-1)\n\n    # Vulnerability propagation\n    introduces: Vuln",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_15",
+    "text": "grityVerified: boolean\n\n  relationships:\n    # Core dependency graph\n    from: SoftwareComponent (many-to-1)\n    to: SoftwareComponent (many-to-1)\n\n    # Vulnerability propagation\n    introduces: Vulnerability (many-to-many)\n      properties:\n        introducedIn: string (version)\n        fixedIn: string (version)\n        transitiveDepth: integer\n\n    # License propagation\n    inheritsLicense: SoftwareLicense (many-to-many)\n\n    # Conflict relationships\n    conflictsWith: Dependency (many-to-many)\n    overrides: Dependency (many-to-1)\n    excludes: SoftwareComponent (many-to-many)\n```\n\n#### 2.2 Dependency Trees (10,000 nodes)\n\n**DependencyTree**\n```yaml\nDependencyTree:\n  properties:\n    # Identity\n    treeID: string\n    rootComponent: string (bomRef)\n    specVersion: string\n\n    # Metrics\n    totalNodes: integer\n    maxDepth: integer\n    directDependencies: integer\n    transitiveDependencies: integer\n\n    # Analysis Results\n    cyclicDependencies: boolean\n    diamondDependencies: boole",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_16",
+    "text": "    totalNodes: integer\n    maxDepth: integer\n    directDependencies: integer\n    transitiveDependencies: integer\n\n    # Analysis Results\n    cyclicDependencies: boolean\n    diamondDependencies: boolean (multiple paths to same dependency)\n    conflicts: array[{\n      component: string,\n      requestedVersions: array[string],\n      resolvedVersion: string\n    }]\n\n    # Vulnerability Summary\n    criticalVulnerabilities: integer\n    highVulnerabilities: integer\n    mediumVulnerabilities: integer\n    lowVulnerabilities: integer\n\n    # License Summary\n    licenseCombinations: array[string]\n    licenseConflicts: array[string]\n    copyleftLicenses: array[string]\n\n    # Generation Metadata\n    generatedBy: string (tool name)\n    generatedOn: datetime\n    generationMethod: enum[static_analysis, dynamic_analysis, manifest, hybrid]\n\n  relationships:\n    represents: SoftwareComponent (many-to-1)\n    includes: Dependency (1-to-many)\n    analyzedBy: SBOMTool (many-to-1)\n```\n\n**DependencyPath**\n```ya",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_17",
+    "text": "amic_analysis, manifest, hybrid]\n\n  relationships:\n    represents: SoftwareComponent (many-to-1)\n    includes: Dependency (1-to-many)\n    analyzedBy: SBOMTool (many-to-1)\n```\n\n**DependencyPath**\n```yaml\nDependencyPath:\n  properties:\n    pathID: string\n    pathType: enum[shortest, critical, vulnerable, license_sensitive]\n    depth: integer\n    nodes: array[string] (ordered list of component IDs)\n\n    # Risk Assessment\n    cumulativeRisk: float\n    criticalNode: string (highest risk component in path)\n\n  relationships:\n    startsAt: SoftwareComponent (many-to-1)\n    endsAt: SoftwareComponent (many-to-1)\n    traverses: Dependency (many-to-many)\n```\n\n---\n\n### 3. BUILD INFORMATION (~20,000 nodes)\n\n#### 3.1 Build Systems (5,000 nodes)\n\n**BuildSystem**\n```yaml\nBuildSystem:\n  properties:\n    # Identity\n    buildSystemID: string\n    name: string\n    type: enum[\n      make, cmake, gradle, maven, ant, msbuild, xcodebuild,\n      bazel, buck, ninja, scons, waf, cargo, go_build, npm_scripts\n    ]\n  ",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_18",
+    "text": "ntity\n    buildSystemID: string\n    name: string\n    type: enum[\n      make, cmake, gradle, maven, ant, msbuild, xcodebuild,\n      bazel, buck, ninja, scons, waf, cargo, go_build, npm_scripts\n    ]\n    version: string\n\n    # Configuration\n    configurationFiles: array[string]\n    buildScripts: array[string]\n\n    # Capabilities\n    supportedLanguages: array[string]\n    supportedPlatforms: array[string]\n\n  relationships:\n    executes: Build (1-to-many)\n    uses: BuildTool (many-to-many)\n```\n\n**Build**\n```yaml\nBuild:\n  properties:\n    # Identity\n    buildID: string (unique)\n    buildNumber: string\n    buildName: string\n\n    # Timing\n    buildDate: datetime\n    buildStartTime: datetime\n    buildEndTime: datetime\n    buildDuration: integer (seconds)\n\n    # Build Configuration\n    buildType: enum[debug, release, test, staging, production]\n    buildTool: string\n    buildToolVersion: string\n    buildScript: string\n    buildCommand: string\n\n    # Compiler Information\n    compiler: string\n    co",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_19",
+    "text": "m[debug, release, test, staging, production]\n    buildTool: string\n    buildToolVersion: string\n    buildScript: string\n    buildCommand: string\n\n    # Compiler Information\n    compiler: string\n    compilerVersion: string\n    compilerFlags: array[string]\n    optimizationLevel: string\n\n    # Environment\n    buildEnvironment: {\n      os: string,\n      osVersion: string,\n      architecture: string,\n      hostname: string,\n      user: string,\n      environmentVariables: object\n    }\n\n    # Build Parameters\n    buildParameters: array[{\n      name: string,\n      value: string,\n      type: string\n    }]\n\n    # Source Information\n    sourceRepository: string\n    sourceBranch: string\n    sourceCommit: string\n    sourceTag: string\n\n    # Build Status\n    buildStatus: enum[success, failure, unstable, aborted]\n    exitCode: integer\n    errorMessages: array[string]\n    warnings: integer\n    errors: integer\n\n    # Artifacts\n    artifactCount: integer\n    artifactTotalSize: integer (bytes)\n\n    # Tes",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_20",
+    "text": " aborted]\n    exitCode: integer\n    errorMessages: array[string]\n    warnings: integer\n    errors: integer\n\n    # Artifacts\n    artifactCount: integer\n    artifactTotalSize: integer (bytes)\n\n    # Testing\n    testsRun: integer\n    testsPassed: integer\n    testsFailed: integer\n    testCoverage: float (percentage)\n\n    # Quality Metrics\n    staticAnalysisFindings: integer\n    securityScanFindings: integer\n    codeCoverage: float (percentage)\n    technicalDebt: string\n\n  relationships:\n    # Build inputs\n    uses: BuildTool (many-to-many)\n    basedOn: SourceCode (many-to-many)\n    requires: BuildDependency (many-to-many)\n\n    # Build outputs\n    produces: SoftwareComponent (1-to-many)\n    generates: Artifact (1-to-many)\n\n    # Build provenance\n    triggeredBy: CommitEvent|User|Schedule (many-to-1)\n    executedOn: BuildAgent (many-to-1)\n    documented By: Provenance (1-to-1)\n\n    # Build lineage\n    childOf: Build (many-to-1)\n    promotes: Build (many-to-1)\n```\n\n**BuildTool**\n```yaml\nBuild",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_21",
+    "text": "to-1)\n    executedOn: BuildAgent (many-to-1)\n    documented By: Provenance (1-to-1)\n\n    # Build lineage\n    childOf: Build (many-to-1)\n    promotes: Build (many-to-1)\n```\n\n**BuildTool**\n```yaml\nBuildTool:\n  properties:\n    toolID: string\n    toolName: string\n    toolVersion: string\n    toolType: enum[\n      compiler, linker, assembler, packager, minifier, obfuscator,\n      code_generator, preprocessor, linter, formatter, test_runner\n    ]\n\n    # Tool Binary\n    executablePath: string\n    hash: string\n\n    # Configuration\n    configFile: string\n    commandLine: string\n\n  relationships:\n    usedIn: Build (many-to-many)\n    hasVulnerability: Vulnerability (many-to-many)\n```\n\n#### 3.2 Build Artifacts (15,000 nodes)\n\n**Artifact**\n```yaml\nArtifact:\n  properties:\n    # Identity\n    artifactID: string\n    name: string\n    groupID: string\n    version: string\n\n    # File Information\n    fileName: string\n    filePath: string\n    fileSize: integer (bytes)\n    mimeType: string\n\n    # Hashes\n    ha",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_22",
+    "text": "tring\n    name: string\n    groupID: string\n    version: string\n\n    # File Information\n    fileName: string\n    filePath: string\n    fileSize: integer (bytes)\n    mimeType: string\n\n    # Hashes\n    hashes: array[{\n      algorithm: enum[sha256, sha512, blake2b],\n      value: string\n    }]\n\n    # Artifact Type\n    artifactType: enum[\n      executable, library, archive, container, package, document,\n      configuration, data, source, debug_symbols, metadata\n    ]\n\n    # Classification\n    classifier: string (e.g., sources, javadoc, native)\n    extension: string\n\n    # Storage\n    storageLocation: string\n    repositoryPath: string\n    downloadURL: string\n\n    # Metadata\n    creationDate: datetime\n    modificationDate: datetime\n    signature: string\n\n  relationships:\n    producedBy: Build (many-to-1)\n    contains: SoftwareComponent (many-to-many)\n    signedBy: CryptographicKey (many-to-1)\n    publishedTo: ArtifactRepository (many-to-1)\n```\n\n---\n\n### 4. LICENSES (~15,000 nodes)\n\n#### 4.1 Sof",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_23",
+    "text": "-to-1)\n    contains: SoftwareComponent (many-to-many)\n    signedBy: CryptographicKey (many-to-1)\n    publishedTo: ArtifactRepository (many-to-1)\n```\n\n---\n\n### 4. LICENSES (~15,000 nodes)\n\n#### 4.1 Software Licenses (8,000 nodes)\n\n**SoftwareLicense**\n```yaml\nSoftwareLicense:\n  properties:\n    # Identity (SPDX standard)\n    licenseID: string (SPDX identifier, e.g., \"MIT\", \"Apache-2.0\")\n    licenseName: string\n    licenseFullName: string\n\n    # License Text\n    licenseText: text (full license text)\n    standardLicenseTemplate: text (SPDX template with variables)\n    licenseTextInFile: string (file containing license)\n\n    # Classification\n    licenseType: enum[\n      permissive,           # MIT, Apache, BSD\n      weak_copyleft,        # LGPL, MPL\n      strong_copyleft,      # GPL, AGPL\n      proprietary,          # Commercial licenses\n      public_domain,        # CC0, Unlicense\n      creative_commons,     # CC-BY, CC-BY-SA\n      other\n    ]\n\n    # Standards Compliance\n    osiApproved: bo",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_24",
+    "text": "proprietary,          # Commercial licenses\n      public_domain,        # CC0, Unlicense\n      creative_commons,     # CC-BY, CC-BY-SA\n      other\n    ]\n\n    # Standards Compliance\n    osiApproved: boolean (OSI approved)\n    fsfLibre: boolean (FSF free software)\n    spdxApproved: boolean\n\n    # License Properties\n    commercialUse: boolean\n    modification: boolean\n    distribution: boolean\n    patentUse: boolean\n    privateUse: boolean\n    sublicense: boolean\n    trademarkUse: boolean\n\n    # Requirements\n    includeNotice: boolean (must include license notice)\n    includeLicenseText: boolean\n    includeSourceCode: boolean\n    includeCopyright: boolean\n    stateChanges: boolean (must state modifications)\n    discloseSource: boolean\n\n    # Restrictions\n    networkDeployment: boolean (triggers obligations on network use)\n    trademark: boolean (restricted)\n    patent: boolean (patent grant)\n    liability: boolean (limits liability)\n    warranty: boolean (warranty disclaimer)\n\n    # URLs\n",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_25",
+    "text": "rs obligations on network use)\n    trademark: boolean (restricted)\n    patent: boolean (patent grant)\n    liability: boolean (limits liability)\n    warranty: boolean (warranty disclaimer)\n\n    # URLs\n    licenseURL: string (canonical URL)\n    referenceURL: string (SPDX reference)\n    seeAlso: array[string] (additional references)\n\n    # Cross References\n    crossRef: array[{\n      url: string,\n      isValid: boolean,\n      isLive: boolean,\n      timestamp: datetime,\n      match: enum[exact, close, partial]\n    }]\n\n    # SPDX Metadata\n    isDeprecated: boolean\n    deprecatedVersion: string\n    isFsfLibre: boolean\n\n  relationships:\n    # License relationships\n    compatibleWith: SoftwareLicense (many-to-many)\n      properties:\n        compatibilityType: enum[permissive, conditional, incompatible]\n        conditions: array[string]\n\n    conflictsWith: SoftwareLicense (many-to-many)\n      properties:\n        conflictReason: string\n        severity: enum[critical, high, medium, low]\n\n    sup",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_26",
+    "text": "ible]\n        conditions: array[string]\n\n    conflictsWith: SoftwareLicense (many-to-many)\n      properties:\n        conflictReason: string\n        severity: enum[critical, high, medium, low]\n\n    supersedes: SoftwareLicense (many-to-1)\n\n    # Usage\n    appliesTo: SoftwareComponent (many-to-many)\n\n    # License families\n    memberOf: LicenseFamily (many-to-1)\n```\n\n#### 4.2 License Compliance (7,000 nodes)\n\n**LicenseCompliance**\n```yaml\nLicenseCompliance:\n  properties:\n    # Identity\n    complianceID: string\n    assessmentDate: datetime\n    assessor: string\n\n    # Compliance Status\n    complianceStatus: enum[\n      compliant,              # Fully compliant\n      non_compliant,          # Violations found\n      needs_review,           # Requires manual review\n      unknown,                # Cannot determine\n      conditionally_compliant # Compliant with conditions\n    ]\n\n    # Risk Assessment\n    riskLevel: enum[critical, high, medium, low, none]\n    riskScore: float (0-100)\n\n    # Oblig",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_27",
+    "text": "Cannot determine\n      conditionally_compliant # Compliant with conditions\n    ]\n\n    # Risk Assessment\n    riskLevel: enum[critical, high, medium, low, none]\n    riskScore: float (0-100)\n\n    # Obligations\n    obligations: array[{\n      type: enum[\n        include_license, include_notice, include_source,\n        state_changes, provide_install_instructions,\n        retain_copyright, rename_product\n      ],\n      description: string,\n      fulfilled: boolean,\n      dueDate: datetime\n    }]\n\n    # Restrictions\n    restrictions: array[{\n      type: enum[\n        no_commercial_use, no_modification, no_distribution,\n        no_sublicense, no_trademark, network_deployment,\n        patent_retaliation\n      ],\n      description: string,\n      violated: boolean\n    }]\n\n    # Compatibility Analysis\n    licenseStack: array[string] (ordered list of licenses)\n    compatibilityIssues: array[{\n      license1: string,\n      license2: string,\n      issueType: enum[incompatible, conditional, unclear],\n ",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_28",
+    "text": "    licenseStack: array[string] (ordered list of licenses)\n    compatibilityIssues: array[{\n      license1: string,\n      license2: string,\n      issueType: enum[incompatible, conditional, unclear],\n      description: string,\n      resolution: string\n    }]\n\n    # Attribution Requirements\n    attributionText: text\n    noticeFile: string\n\n    # Review Information\n    reviewDate: datetime\n    reviewer: string\n    reviewNotes: text\n    reviewApproval: enum[approved, rejected, conditional, pending]\n\n    # Remediation\n    remediationRequired: boolean\n    remediationPlan: text\n    remediationDueDate: datetime\n    remediationStatus: enum[not_started, in_progress, completed]\n\n  relationships:\n    evaluates: SoftwareLicense (many-to-1)\n    affects: SoftwareComponent (many-to-many)\n    assessedBy: ComplianceTool (many-to-1)\n    requires: Action (1-to-many)\n```\n\n**LicensePolicy**\n```yaml\nLicensePolicy:\n  properties:\n    policyID: string\n    policyName: string\n    policyVersion: string\n    effecti",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_29",
+    "text": "omplianceTool (many-to-1)\n    requires: Action (1-to-many)\n```\n\n**LicensePolicy**\n```yaml\nLicensePolicy:\n  properties:\n    policyID: string\n    policyName: string\n    policyVersion: string\n    effectiveDate: date\n    owner: string\n\n    # Policy Rules\n    allowedLicenses: array[string] (SPDX IDs)\n    prohibitedLicenses: array[string]\n    conditionalLicenses: array[{\n      license: string,\n      conditions: array[string]\n    }]\n\n    # Use Case Policies\n    internalUse: enum[allowed, prohibited, requires_review]\n    distribution: enum[allowed, prohibited, requires_review]\n    saas: enum[allowed, prohibited, requires_review]\n    modification: enum[allowed, prohibited, requires_review]\n\n    # Copyleft Handling\n    copyleftPolicy: enum[prohibited, isolated, allowed_with_review, allowed]\n    networkCopyleftPolicy: enum[prohibited, requires_review, allowed]\n\n  relationships:\n    enforces: LicenseRule (1-to-many)\n    appliesTo: Project|Organization (many-to-many)\n```\n\n---\n\n### 5. PROVENANCE & A",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_30",
+    "text": "orkCopyleftPolicy: enum[prohibited, requires_review, allowed]\n\n  relationships:\n    enforces: LicenseRule (1-to-many)\n    appliesTo: Project|Organization (many-to-many)\n```\n\n---\n\n### 5. PROVENANCE & ATTESTATION (~15,000 nodes)\n\n#### 5.1 Provenance (8,000 nodes)\n\n**Provenance**\n```yaml\nProvenance:\n  properties:\n    # Identity (SLSA Provenance format)\n    provenanceID: string\n    provenanceVersion: string (e.g., \"slsa/v0.2\", \"slsa/v1.0\")\n\n    # Builder Identity\n    builder: {\n      id: string (builder URI),\n      version: object,\n      builderDependencies: array[{\n        uri: string,\n        digest: object\n      }]\n    }\n\n    # Build Type\n    buildType: string (URI identifying build procedure)\n\n    # Invocation\n    invocation: {\n      configSource: {\n        uri: string,\n        digest: object,\n        entryPoint: string\n      },\n      parameters: object,\n      environment: object\n    }\n\n    # Build Config\n    buildConfig: object (build-specific configuration)\n\n    # Metadata\n    metada",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_31",
+    "text": "ect,\n        entryPoint: string\n      },\n      parameters: object,\n      environment: object\n    }\n\n    # Build Config\n    buildConfig: object (build-specific configuration)\n\n    # Metadata\n    metadata: {\n      buildInvocationID: string,\n      buildStartedOn: datetime,\n      buildFinishedOn: datetime,\n      completeness: {\n        parameters: boolean,\n        environment: boolean,\n        materials: boolean\n      },\n      reproducible: boolean\n    }\n\n    # Materials (inputs to build)\n    materials: array[{\n      uri: string,\n      digest: object (hash values),\n      annotations: object\n    }]\n\n    # External Parameters\n    externalParameters: object\n\n    # System Parameters\n    systemParameters: object\n\n    # Resolved Dependencies\n    resolvedDependencies: array[{\n      uri: string,\n      digest: object,\n      name: string,\n      downloadLocation: string\n    }]\n\n    # Run Details\n    runDetails: {\n      builder: object,\n      metadata: object,\n      byproducts: array[{\n        name: s",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_32",
+    "text": " digest: object,\n      name: string,\n      downloadLocation: string\n    }]\n\n    # Run Details\n    runDetails: {\n      builder: object,\n      metadata: object,\n      byproducts: array[{\n        name: string,\n        uri: string,\n        digest: object\n      }]\n    }\n\n  relationships:\n    # Subject (what was built)\n    documents: Build (many-to-1)\n    verifies: SoftwareComponent|Artifact (many-to-many)\n      properties:\n        digest: object (hash values)\n\n    # Signing\n    signedBy: CryptographicKey (many-to-1)\n    attestedBy: Attestation (many-to-1)\n\n    # Build chain\n    derivedFrom: Provenance (many-to-many)\n```\n\n#### 5.2 Attestations (7,000 nodes)\n\n**Attestation**\n```yaml\nAttestation:\n  properties:\n    # Identity (in-toto Attestation format)\n    attestationID: string\n    attestationType: string (e.g., \"https://in-toto.io/Statement/v0.1\")\n\n    # Subject (what is being attested)\n    subject: array[{\n      name: string,\n      digest: object (alg \u2192 value mapping)\n    }]\n\n    # Predicat",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_33",
+    "text": "e: string (e.g., \"https://in-toto.io/Statement/v0.1\")\n\n    # Subject (what is being attested)\n    subject: array[{\n      name: string,\n      digest: object (alg \u2192 value mapping)\n    }]\n\n    # Predicate Type\n    predicateType: string (URI)\n      # Common types:\n      # - https://slsa.dev/provenance/v0.2\n      # - https://spdx.dev/Document\n      # - https://cyclonedx.org/bom\n      # - https://in-toto.io/attestation/scai/attribute-report/v0.2\n      # - https://in-toto.io/attestation/vuln/v0.1\n\n    # Predicate (type-specific content)\n    predicate: object\n\n    # Envelope (DSSE - Dead Simple Signing Envelope)\n    envelope: {\n      payloadType: string,\n      payload: string (base64),\n      signatures: array[{\n        keyid: string,\n        sig: string (base64)\n      }]\n    }\n\n    # Timestamp\n    timestamp: datetime\n    validUntil: datetime\n\n    # Issuer\n    issuer: string\n    issuerType: enum[organization, individual, automated_system]\n\n    # Verification\n    verificationMethod: enum[signatu",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_34",
+    "text": " timestamp: datetime\n    validUntil: datetime\n\n    # Issuer\n    issuer: string\n    issuerType: enum[organization, individual, automated_system]\n\n    # Verification\n    verificationMethod: enum[signature, certificate, token]\n    verified: boolean\n    verificationDate: datetime\n\n  relationships:\n    attests: SoftwareComponent|Build|Artifact (many-to-1)\n    signedBy: CryptographicKey (many-to-1)\n    verifiedBy: PublicKey|Certificate (many-to-1)\n    includes: Provenance (many-to-1)\n```\n\n**VulnerabilityAttestation**\n```yaml\nVulnerabilityAttestation:\n  extends: Attestation\n  properties:\n    # Vulnerability Scan Results\n    scannerName: string\n    scannerVersion: string\n    scanDate: datetime\n\n    # Results\n    vulnerabilitiesFound: integer\n    criticalCount: integer\n    highCount: integer\n    mediumCount: integer\n    lowCount: integer\n\n    # Detailed Results\n    vulnerabilities: array[{\n      cveID: string,\n      severity: string,\n      affectedComponent: string,\n      fixedVersion: string,\n",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_35",
+    "text": "diumCount: integer\n    lowCount: integer\n\n    # Detailed Results\n    vulnerabilities: array[{\n      cveID: string,\n      severity: string,\n      affectedComponent: string,\n      fixedVersion: string,\n      exploitAvailable: boolean\n    }]\n\n  relationships:\n    scannedBy: VulnerabilityScanner (many-to-1)\n```\n\n---\n\n## COMPLETE RELATIONSHIP SCHEMAS\n\n### Component-to-Vulnerability Propagation\n\n```cypher\n# Direct vulnerability\n(comp:SoftwareComponent)-[:HAS_VULNERABILITY]->(vuln:Vulnerability)\n\n# Transitive vulnerability through dependencies\nMATCH path = (root:SoftwareComponent)-[:DEPENDS_ON*]->(dep:SoftwareComponent)\n              -[:HAS_VULNERABILITY]->(vuln:Vulnerability)\nWHERE root.componentID = 'myapp-1.0.0'\nRETURN path\n\n# Calculate transitive vulnerability exposure\nMATCH (root:SoftwareComponent {componentID: 'myapp-1.0.0'})\nMATCH (root)-[:DEPENDS_ON*]->(dep:SoftwareComponent)-[:HAS_VULNERABILITY]->(vuln:Vulnerability)\nWITH vuln, count(DISTINCT dep) as affectedDeps\nRETURN vuln.cveID, v",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_36",
+    "text": "ponent {componentID: 'myapp-1.0.0'})\nMATCH (root)-[:DEPENDS_ON*]->(dep:SoftwareComponent)-[:HAS_VULNERABILITY]->(vuln:Vulnerability)\nWITH vuln, count(DISTINCT dep) as affectedDeps\nRETURN vuln.cveID, vuln.cvssScore, affectedDeps\nORDER BY vuln.cvssScore DESC\n```\n\n### License Compliance Propagation\n\n```cypher\n# License inheritance through dependencies\nMATCH (root:SoftwareComponent)-[:DEPENDS_ON*]->(dep:SoftwareComponent)\n      -[:LICENSED_UNDER]->(license:SoftwareLicense)\nWHERE license.licenseType IN ['strong_copyleft', 'weak_copyleft']\nRETURN root, dep, license\n\n# Detect license conflicts\nMATCH (comp:SoftwareComponent)-[:DEPENDS_ON]->(dep:SoftwareComponent)\n      -[:LICENSED_UNDER]->(lic1:SoftwareLicense)\nMATCH (comp)-[:LICENSED_UNDER]->(lic2:SoftwareLicense)\nMATCH (lic1)-[:CONFLICTS_WITH]->(lic2)\nRETURN comp, dep, lic1, lic2\n```\n\n### Build Provenance Chain\n\n```cypher\n# Complete build provenance\nMATCH (artifact:Artifact)<-[:PRODUCES]-(build:Build)\n      <-[:DOCUMENTS]-(prov:Provenance)<-",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_37",
+    "text": "(lic2)\nRETURN comp, dep, lic1, lic2\n```\n\n### Build Provenance Chain\n\n```cypher\n# Complete build provenance\nMATCH (artifact:Artifact)<-[:PRODUCES]-(build:Build)\n      <-[:DOCUMENTS]-(prov:Provenance)<-[:ATTESTS]-(att:Attestation)\nWHERE artifact.artifactID = 'myapp-v1.0.0.jar'\nRETURN artifact, build, prov, att\n\n# Verify build chain integrity\nMATCH path = (source:SourceCode)-[:USED_IN]->(build:Build)\n             -[:PRODUCES]->(artifact:Artifact)\nWHERE all(node in nodes(path) WHERE node.verified = true)\nRETURN path\n```\n\n---\n\n## INTEGRATION PATTERNS\n\n### 1. SBOM Generation from Deployed Systems\n\n```cypher\n# Generate SBOM from running application\nMATCH (app:Application)-[:RUNS_ON]->(server:Server)\nMATCH (app)-[:CONTAINS]->(comp:SoftwareComponent)\nOPTIONAL MATCH (comp)-[:DEPENDS_ON*]->(dep:SoftwareComponent)\nOPTIONAL MATCH (comp)-[:HAS_VULNERABILITY]->(vuln:Vulnerability)\nRETURN {\n  application: app.applicationName,\n  version: app.version,\n  components: collect(DISTINCT comp),\n  dependencies",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_38",
+    "text": "areComponent)\nOPTIONAL MATCH (comp)-[:HAS_VULNERABILITY]->(vuln:Vulnerability)\nRETURN {\n  application: app.applicationName,\n  version: app.version,\n  components: collect(DISTINCT comp),\n  dependencies: collect(DISTINCT dep),\n  vulnerabilities: collect(DISTINCT vuln)\n} as sbom\n```\n\n### 2. Vulnerability Impact Analysis\n\n```cypher\n# Find all deployed systems affected by a CVE\nMATCH (cve:Vulnerability {cveID: 'CVE-2024-1234'})\nMATCH (cve)<-[:HAS_VULNERABILITY]-(comp:SoftwareComponent)\nMATCH (comp)<-[:CONTAINS]-(app:Application)\nMATCH (app)<-[:RUNS]-(asset:Asset)\nRETURN asset, app, comp, cve\n```\n\n### 3. License Compliance Reporting\n\n```cypher\n# Audit license compliance across organization\nMATCH (org:Organization)-[:OWNS]->(app:Application)\n      -[:CONTAINS]->(comp:SoftwareComponent)\n      -[:LICENSED_UNDER]->(lic:SoftwareLicense)\nOPTIONAL MATCH (lic)-[:CONFLICTS_WITH]->(conflict:SoftwareLicense)\nRETURN app.applicationName,\n       collect(DISTINCT lic.licenseName) as licenses,\n       collec",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_39",
+    "text": "ICENSED_UNDER]->(lic:SoftwareLicense)\nOPTIONAL MATCH (lic)-[:CONFLICTS_WITH]->(conflict:SoftwareLicense)\nRETURN app.applicationName,\n       collect(DISTINCT lic.licenseName) as licenses,\n       collect(DISTINCT conflict.licenseName) as conflicts\n```\n\n---\n\n## VALIDATION CRITERIA\n\n### Schema Validation\n- [ ] All 140,000 SBOM nodes defined\n- [ ] Component schemas support SPDX and CycloneDX\n- [ ] Dependency relationships include cardinality\n- [ ] License schemas support SPDX identifiers\n- [ ] Provenance schemas support SLSA and in-toto\n\n### Data Quality\n- [ ] Component identifiers (PURL, CPE, SWID) validated\n- [ ] Version formats follow semantic versioning where applicable\n- [ ] Hash algorithms use cryptographically secure functions\n- [ ] License identifiers match SPDX registry\n- [ ] Attestation signatures verified\n\n### Integration\n- [ ] SBOM components map to deployed applications\n- [ ] Vulnerabilities propagate through dependency trees\n- [ ] License conflicts detected automatically\n- [ ]",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_40",
+    "text": "on signatures verified\n\n### Integration\n- [ ] SBOM components map to deployed applications\n- [ ] Vulnerabilities propagate through dependency trees\n- [ ] License conflicts detected automatically\n- [ ] Build provenance chain verifiable\n- [ ] Cross-wave queries validated\n\n---\n\n## EXAMPLE QUERIES\n\n### SBOM Analysis\n\n```cypher\n# Generate complete SBOM for application\nMATCH (app:Application {name: 'MyWebApp', version: '2.1.0'})\nMATCH (app)-[:CONTAINS]->(comp:SoftwareComponent)\nOPTIONAL MATCH (comp)-[:DEPENDS_ON]->(dep:SoftwareComponent)\nOPTIONAL MATCH (comp)-[:LICENSED_UNDER]->(lic:SoftwareLicense)\nOPTIONAL MATCH (comp)-[:HAS_VULNERABILITY]->(vuln:Vulnerability)\nRETURN {\n  application: {name: app.name, version: app.version},\n  components: collect(DISTINCT {\n    name: comp.name,\n    version: comp.version,\n    purl: comp.purl,\n    license: lic.licenseID,\n    vulnerabilities: collect(vuln.cveID)\n  })\n}\n\n# Find applications using vulnerable components\nMATCH (vuln:Vulnerability {cveID: 'CVE-2024",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 40,
+      "start_char": 32000,
+      "end_char": 33000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_41",
+    "text": "p.version,\n    purl: comp.purl,\n    license: lic.licenseID,\n    vulnerabilities: collect(vuln.cveID)\n  })\n}\n\n# Find applications using vulnerable components\nMATCH (vuln:Vulnerability {cveID: 'CVE-2024-5678'})\nMATCH (comp:SoftwareComponent)-[:HAS_VULNERABILITY]->(vuln)\nMATCH (app:Application)-[:CONTAINS|DEPENDS_ON*]->(comp)\nRETURN app.name, comp.name, comp.version, vuln.cvssScore\n\n# Identify outdated dependencies\nMATCH (comp:SoftwareComponent)\nWHERE comp.endOfSupportDate < date()\nMATCH (app:Application)-[:CONTAINS|DEPENDS_ON*]->(comp)\nRETURN app.name, comp.name, comp.version, comp.endOfSupportDate\nORDER BY comp.endOfSupportDate\n```\n\n---\n\n**Wave Status:** COMPLETE\n**Nodes Defined:** ~140,000\n**Schemas Complete:** 100%\n**Standards Supported:** SPDX 2.3, CycloneDX 1.5, SLSA v1.0, in-toto v0.1\n**Integration Ready:** YES\n",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 41,
+      "start_char": 32800,
+      "end_char": 33800,
+      "chunk_size": 827
+    }
+  },
+  {
+    "id": "12_WAVE_10_SBOM_INTEGRATION.md_chunk_42",
+    "text": "**Integration Ready:** YES\n",
+    "metadata": {
+      "file_name": "12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/12_WAVE_10_SBOM_INTEGRATION.md",
+      "file_size": 33627,
+      "indexed_at": "2025-10-31T01:02:59.637600",
+      "chunk_id": 42,
+      "start_char": 33600,
+      "end_char": 34600,
+      "chunk_size": 27
+    }
+  }
+]

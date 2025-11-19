@@ -1,0 +1,266 @@
+# Claude-Flow Hooks Configuration for Neo4j Ontology Enhancement
+# Automatic safety checks and checkpoint management
+# Generated: 2025-10-31
+# Version: 1.0.0
+
+hooks:
+  # ═══════════════════════════════════════════════════════════════════
+  # PRE-TASK HOOK: Safety validation before any task execution
+  # ═══════════════════════════════════════════════════════════════════
+  pre_task:
+    enabled: true
+    description: "Validate system state before task execution"
+    command: "python3 scripts/safety/pre_flight_check.py"
+    working_directory: "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2"
+    timeout: 30
+    required: true
+    failure_action: "abort"
+    validation_checks:
+      - name: "CVE Baseline Integrity"
+        check: "cve_count == 267487"
+        critical: true
+      - name: "Neo4j Connectivity"
+        check: "neo4j_connection_ok"
+        critical: true
+      - name: "Qdrant Connectivity"
+        check: "qdrant_connection_ok"
+        critical: true
+      - name: "Master Taxonomy Available"
+        check: "file_exists('master_taxonomy.yaml')"
+        critical: true
+    log_output: true
+    store_in_qdrant: true
+
+  # ═══════════════════════════════════════════════════════════════════
+  # POST-EDIT HOOK: Checkpoint creation after file modifications
+  # ═══════════════════════════════════════════════════════════════════
+  post_edit:
+    enabled: true
+    description: "Create checkpoint after Neo4j modifications"
+    command: "python3 scripts/checkpoint/create_checkpoint.py --operation '{operation}' --file '{file}'"
+    working_directory: "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2"
+    timeout: 60
+    required: false
+    failure_action: "warn"
+    trigger_conditions:
+      - "file matches '*.py' in scripts/"
+      - "file contains 'Neo4j' or 'CREATE' or 'MATCH'"
+    checkpoint_metadata:
+      - "operation_type"
+      - "file_modified"
+      - "wave_tag"
+      - "node_count_delta"
+    validation_after_checkpoint:
+      - name: "CVE Preservation"
+        check: "cve_count == 267487"
+        critical: true
+      - name: "Checkpoint Stored"
+        check: "qdrant_checkpoint_exists"
+        critical: false
+    log_output: true
+    store_in_qdrant: true
+
+  # ═══════════════════════════════════════════════════════════════════
+  # POST-TASK HOOK: Comprehensive validation after task completion
+  # ═══════════════════════════════════════════════════════════════════
+  post_task:
+    enabled: true
+    description: "Validate task completion and create recovery checkpoint"
+    command: "python3 scripts/safety/post_task_validation.py --task-id '{task_id}' --wave '{wave}'"
+    working_directory: "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2"
+    timeout: 120
+    required: true
+    failure_action: "rollback"
+    validation_levels:
+      level_1_per_batch:
+        enabled: true
+        description: "Batch-level node count verification"
+      level_2_per_type:
+        enabled: true
+        description: "Node type exact count validation"
+      level_3_category:
+        enabled: true
+        description: "Category sum validation"
+      level_4_total:
+        enabled: true
+        description: "Wave total node count validation"
+      level_5_uniqueness:
+        enabled: true
+        description: "Uniqueness constraint validation"
+      level_6_cve_preservation:
+        enabled: true
+        description: "CVE baseline preservation (MANDATORY)"
+        critical: true
+    checkpoint_after_validation: true
+    rollback_on_failure: true
+    log_output: true
+    store_in_qdrant: true
+
+  # ═══════════════════════════════════════════════════════════════════
+  # SESSION-RESTORE HOOK: Load checkpoint state when resuming
+  # ═══════════════════════════════════════════════════════════════════
+  session_restore:
+    enabled: true
+    description: "Restore checkpoint state when resuming session"
+    command: "python3 scripts/checkpoint/restore_checkpoint.py --session-id '{session_id}' --checkpoint-id '{checkpoint_id}'"
+    working_directory: "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2"
+    timeout: 180
+    required: false
+    failure_action: "warn"
+    restore_strategy: "latest_successful"
+    restore_scope:
+      - "neo4j_state"
+      - "operation_logs"
+      - "wave_progress"
+      - "validation_history"
+    verification_after_restore:
+      - name: "Restored State Integrity"
+        check: "neo4j_state_matches_checkpoint"
+        critical: true
+      - name: "CVE Preservation"
+        check: "cve_count == 267487"
+        critical: true
+      - name: "Wave Progress Loaded"
+        check: "wave_progress_restored"
+        critical: false
+    log_output: true
+    store_in_qdrant: true
+
+  # ═══════════════════════════════════════════════════════════════════
+  # SESSION-END HOOK: Create final checkpoint and export metrics
+  # ═══════════════════════════════════════════════════════════════════
+  session_end:
+    enabled: true
+    description: "Create final checkpoint and export session metrics"
+    command: "python3 scripts/checkpoint/session_end.py --session-id '{session_id}' --export-metrics"
+    working_directory: "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2"
+    timeout: 120
+    required: false
+    failure_action: "warn"
+    final_validation:
+      - name: "All Waves Validated"
+        check: "all_wave_validations_passed"
+        critical: false
+      - name: "CVE Final Check"
+        check: "cve_count == 267487"
+        critical: true
+      - name: "Cross-Wave Relationships"
+        check: "cross_wave_relationships >= 5551"
+        critical: true
+    export_artifacts:
+      - "session_summary.json"
+      - "validation_report.json"
+      - "performance_metrics.json"
+      - "error_log.jsonl"
+    cleanup_temporary_files: true
+    log_output: true
+    store_in_qdrant: true
+
+# ═══════════════════════════════════════════════════════════════════
+# HOOK EXECUTION SETTINGS
+# ═══════════════════════════════════════════════════════════════════
+execution_settings:
+  parallel_execution: false  # Run hooks sequentially for safety
+  retry_on_failure: true
+  max_retries: 3
+  retry_delay_seconds: 5
+  timeout_action: "fail"  # Fail hook if timeout exceeded
+  log_all_output: true
+  verbose_logging: true
+
+# ═══════════════════════════════════════════════════════════════════
+# QDRANT INTEGRATION SETTINGS
+# ═══════════════════════════════════════════════════════════════════
+qdrant_integration:
+  enabled: true
+  host: "localhost"
+  port: 6333
+  api_key: "deqUCd5v5tL3NNTlcY3tXuPX+9vNZ7P1NMt/WlBUOZQ="
+  https: false
+  collections:
+    checkpoints: "ontology_checkpoints"
+    operation_logs: "operation_logs"
+  checkpoint_frequency:
+    pre_task: true
+    post_edit: false  # Too frequent, only major edits
+    post_task: true
+    session_restore: false  # Reading only
+    session_end: true
+  log_frequency:
+    all_hooks: true
+
+# ═══════════════════════════════════════════════════════════════════
+# NEO4J CONNECTION SETTINGS
+# ═══════════════════════════════════════════════════════════════════
+neo4j_connection:
+  uri: "bolt://localhost:7687"
+  user: "neo4j"
+  password: "neo4j@openspg"
+  database: "neo4j"
+  connection_timeout: 30
+  max_connection_lifetime: 3600
+  max_connection_pool_size: 50
+
+# ═══════════════════════════════════════════════════════════════════
+# SAFETY THRESHOLDS
+# ═══════════════════════════════════════════════════════════════════
+safety_thresholds:
+  cve_baseline:
+    exact_count: 267487
+    tolerance: 0  # Zero tolerance - exact match required
+    check_frequency: "all_hooks"
+  wave_variance:
+    target: 0.0  # 0% variance target
+    warning_threshold: 0.05  # Warn if > 5% variance
+    failure_threshold: 0.10  # Fail if > 10% variance
+  cross_wave_relationships:
+    minimum: 5551
+    warning_threshold: 5300  # Warn if < 5300
+    failure_threshold: 5000  # Fail if < 5000
+  node_creation_rate:
+    max_per_second: 1000  # Prevent runaway creation
+    alert_threshold: 500  # Alert if rate exceeds this
+  validation_timeout:
+    per_batch: 5  # seconds
+    per_wave: 300  # seconds (5 minutes)
+    total: 3600  # seconds (1 hour)
+
+# ═══════════════════════════════════════════════════════════════════
+# ROLLBACK CONFIGURATION
+# ═══════════════════════════════════════════════════════════════════
+rollback_config:
+  enabled: true
+  automatic_rollback_triggers:
+    - "cve_count != 267487"
+    - "wave_variance > 0.10"
+    - "validation_failed"
+    - "cross_wave_relationships < 5000"
+  rollback_strategy: "checkpoint_restore"
+  rollback_target: "last_successful_checkpoint"
+  preserve_logs_on_rollback: true
+  max_rollback_attempts: 3
+
+# ═══════════════════════════════════════════════════════════════════
+# NOTIFICATION SETTINGS
+# ═══════════════════════════════════════════════════════════════════
+notifications:
+  enabled: false  # Disable for now, can enable later
+  channels:
+    - type: "file"
+      path: "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/logs/notifications.log"
+  notify_on:
+    - "pre_task_failure"
+    - "post_task_failure"
+    - "cve_preservation_failure"
+    - "rollback_triggered"
+    - "session_end"
+
+# ═══════════════════════════════════════════════════════════════════
+# VERSION CONTROL
+# ═══════════════════════════════════════════════════════════════════
+version:
+  document_version: "1.0.0"
+  created_date: "2025-10-31"
+  last_modified: "2025-10-31"
+  author: "AEON Integration Team"
+  status: "ACTIVE"

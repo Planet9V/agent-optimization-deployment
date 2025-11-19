@@ -1,0 +1,9 @@
+Component,Endpoint/Function,Purpose,Request/Response,Performance Target
+KG Query API,GET /api/v1/agent-zero/query,"Query KG for infrastructure, vulnerabilities, attack paths",JSON query -> Graph data + relationships,<500ms p95
+KG Update API,POST /api/v1/agent-zero/update,"Update KG with discovered vulnerabilities, successful exploits",JSON update payload -> Success/failure,<200ms p95
+Attack Path Selector,POST /api/v1/agent-zero/select-path,Get optimal attack path based on success probability,Target asset ID -> Ranked attack paths,<1s for complex paths
+Exploit Matcher,GET /api/v1/agent-zero/exploits,Get matching exploits for target CVE/CAPEC patterns,CVE ID / CAPEC ID -> Exploit list with metadata,<300ms
+Simulation Engine,POST /api/v1/agent-zero/simulate,"Run attack simulation, validate exploitability",Attack path + params -> Simulation results,Variable (seconds to minutes)
+Learning Feedback Loop,POST /api/v1/agent-zero/feedback,Submit success/failure feedback to improve path selection,Path ID + outcome -> Model update confirmation,<100ms
+Tool Integration,GET /api/v1/agent-zero/tools,Get available tools for specific attack technique,MITRE technique ID -> Tool recommendations,<200ms
+Result Documentation,POST /api/v1/agent-zero/results,Submit pentest results for report generation,Results JSON -> Report ID,<500ms

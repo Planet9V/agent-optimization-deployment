@@ -1,0 +1,209 @@
+#============================================================================
+# Cybersecurity Knowledge Base Configuration
+# Project: CybersecurityKB based on Unified Cybersecurity Ontology (UCO)
+# Created: 2025-10-26
+# OpenSPG + KAG + Neo4j Community Edition
+#============================================================================
+
+#------------project configuration start----------------#
+
+# OpenAI LLM Configuration for Knowledge Extraction
+openie_llm: &openie_llm
+  type: openai
+  base_url: https://api.openai.com/v1
+  api_key: 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
+  model: gpt-4o-mini  # Fast and cost-effective for extraction
+  enable_check: true  # Skip validation during project creation
+
+# OpenAI LLM Configuration for Chat/Reasoning
+chat_llm: &chat_llm
+  type: openai
+  base_url: https://api.openai.com/v1
+  api_key: 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
+  model: gpt-4o  # Most capable for reasoning and Q&A
+  enable_check: true  # Skip validation during project creation
+
+# OpenAI Embeddings Configuration
+vectorize_model: &vectorize_model
+  type: openai
+  api_key: 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
+  base_url: https://api.openai.com/v1
+  model: text-embedding-3-large  # 3072 dimensions, best quality
+  vector_dimensions: 3072
+  enable_check: true  # Skip validation during project creation
+
+vectorizer: *vectorize_model
+
+# Logging Configuration
+log:
+  level: INFO
+
+# Project Configuration
+project:
+  biz_scene: cybersecurity  # Business scenario
+  host_addr: http://127.0.0.1:8887  # OpenSPG server
+  id: "1"
+  language: en
+  namespace: CybersecurityKB  # Project namespace in Neo4j
+
+#------------project configuration end----------------#
+
+#------------kag-builder configuration start----------------#
+# Knowledge Graph Builder Pipeline
+# Extracts entities, relationships, and knowledge units from cybersecurity data
+
+kag_builder_pipeline:
+  chain:
+    type: unstructured_builder_chain  # For unstructured text data
+
+    # Entity and Relationship Extractor
+    extractor:
+      type: schema_free_extractor  # Schema-free extraction for flexibility
+      llm: *openie_llm
+      ner_prompt:
+        type: default_ner  # Named Entity Recognition
+      std_prompt:
+        type: default_std  # Entity Standardization
+      triple_prompt:
+        type: default_triple  # Relationship Extraction
+
+    # Data Reader
+    reader:
+      type: dict_reader  # Reads JSON/dict format data
+
+    # Post-processor
+    post_processor:
+      type: kag_post_processor  # KAG-specific post-processing
+
+    # Text Splitter
+    splitter:
+      type: length_splitter
+      split_length: 100000  # Large chunks for cybersecurity documents
+      window_length: 0
+
+    # Vector Embeddings Generator
+    vectorizer:
+      type: batch_vectorizer
+      vectorize_model: *vectorize_model
+
+    # Knowledge Graph Writer
+    writer:
+      type: kg_writer  # Writes to OpenSPG/Neo4j
+
+  # Parallel Processing Configuration
+  num_threads_per_chain: 1
+  num_chains: 8  # Parallel chains for faster processing
+
+  # Data Scanner
+  scanner:
+    type: dict_scanner  # Scans dictionary/JSON data
+
+#------------kag-builder configuration end----------------#
+
+#------------kag-solver configuration start----------------#
+# Knowledge Graph Query and Reasoning Pipeline
+
+# Search API Configuration
+search_api: &search_api
+  type: openspg_search_api
+
+# Graph API Configuration
+graph_api: &graph_api
+  type: openspg_graph_api
+
+# Exact Knowledge Graph Retriever
+exact_kg_retriever: &exact_kg_retriever
+  type: default_exact_kg_retriever
+  el_num: 5  # Entity linking candidates
+  llm_client: *chat_llm
+  search_api: *search_api
+  graph_api: *graph_api
+
+# Fuzzy Knowledge Graph Retriever
+fuzzy_kg_retriever: &fuzzy_kg_retriever
+  type: default_fuzzy_kg_retriever
+  el_num: 5
+  vectorize_model: *vectorize_model
+  llm_client: *chat_llm
+  search_api: *search_api
+  graph_api: *graph_api
+
+# Chunk Retriever (for text similarity)
+chunk_retriever: &chunk_retriever
+  type: default_chunk_retriever
+  llm_client: *chat_llm
+  recall_num: 10  # Number of chunks to recall
+  rerank_topk: 10  # Top K after reranking
+
+# Main Solver Pipeline
+kag_solver_pipeline:
+  # Memory for conversation context
+  memory:
+    type: default_memory
+    llm_client: *chat_llm
+
+  max_iterations: 3  # Max reasoning iterations
+
+  # Reasoner - Core reasoning engine
+  reasoner:
+    type: default_reasoner
+    llm_client: *chat_llm
+
+    # Logical Form Planner
+    lf_planner:
+      type: default_lf_planner
+      llm_client: *chat_llm
+      vectorize_model: *vectorize_model
+
+    # Logical Form Executor
+    lf_executor:
+      type: default_lf_executor
+      llm_client: *chat_llm
+      force_chunk_retriever: true  # Always use chunk retrieval
+      exact_kg_retriever: *exact_kg_retriever
+      fuzzy_kg_retriever: *fuzzy_kg_retriever
+      chunk_retriever: *chunk_retriever
+
+      # Result Merger
+      merger:
+        type: default_lf_sub_query_res_merger
+        vectorize_model: *vectorize_model
+        chunk_retriever: *chunk_retriever
+
+  # Answer Generator
+  generator:
+    type: default_generator
+    llm_client: *chat_llm
+
+  # Self-Reflection Module
+  reflector:
+    type: default_reflector
+    llm_client: *chat_llm
+
+#------------kag-solver configuration end----------------#
+
+#============================================================================
+# Configuration Notes:
+#
+# 1. Neo4j Database: Uses default 'neo4j' database (Community Edition)
+#    - No database creation needed
+#    - Namespace isolation via 'CybersecurityKB' property
+#
+# 2. OpenAI Models:
+#    - gpt-4o-mini: Fast extraction (8x cheaper than GPT-4)
+#    - gpt-4o: Best reasoning for complex queries
+#    - text-embedding-3-large: Highest quality embeddings (3072d)
+#
+# 3. Data Format: Expects JSON with structure:
+#    [{"id": "...", "name": "...", "content": "..."}]
+#
+# 4. Performance:
+#    - 8 parallel chains for faster building
+#    - Batch vectorization for efficiency
+#    - 3 reasoning iterations for complex queries
+#
+# 5. Cybersecurity Focus:
+#    - Large chunk sizes (100K) for technical documents
+#    - Schema-free extraction for flexibility
+#    - Multi-hop reasoning for threat analysis
+#============================================================================

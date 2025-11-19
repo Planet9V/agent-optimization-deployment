@@ -1,0 +1,506 @@
+[
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_0",
+    "text": "# Performance Benchmarks\n**File:** 19_PERFORMANCE_BENCHMARKS.md\n**Created:** 2025-10-30 00:00:00 UTC\n**Modified:** 2025-10-30 00:00:00 UTC\n**Version:** v1.0.0\n**Author:** AEON FORGE Implementation Team\n**Purpose:** Performance benchmarks, monitoring strategies, and optimization guidelines for schema enhancement\n**Status:** ACTIVE\n\n## Executive Summary\n\nThis document establishes performance benchmarks, monitoring strategies, and optimization guidelines for the AEON Digital Twin Cybersecurity Threat Intelligence schema enhancement. It defines baseline performance metrics, acceptable performance ranges post-enhancement, continuous monitoring protocols, and optimization techniques to maintain query performance at scale.\n\n### Performance Philosophy\n\n**Core Principles:**\n1. **Baseline Preservation**: Post-enhancement performance within 2x of baseline\n2. **Scalability**: Linear performance degradation with data growth (not exponential)\n3. **Query Optimization**: Index-backed queries for all h",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_1",
+    "text": "on**: Post-enhancement performance within 2x of baseline\n2. **Scalability**: Linear performance degradation with data growth (not exponential)\n3. **Query Optimization**: Index-backed queries for all high-frequency patterns\n4. **Continuous Monitoring**: Real-time performance tracking during and after enhancement\n5. **Proactive Optimization**: Performance tuning before degradation impacts users\n\n## 1. Baseline Performance Metrics\n\n### 1.1 Pre-Enhancement Performance Baseline\n\n**Test Environment:**\n- Neo4j Version: 5.x\n- Hardware: [Specify production hardware]\n- Dataset: 147,923 CVE nodes, ~1.67M relationships\n- Measurement Method: 100 iterations per query, median value reported\n\n**Baseline Query Performance:**\n\n```cypher\n// ===============================================\n// BASELINE 1: Simple CVE Lookup (Most Common)\n// ===============================================\n// Query frequency: ~500,000/month\nMATCH (c:CVE {id: $cveId})\nRETURN c;\n\n// Baseline Performance:\n// - Median: 3.2ms\n// - ",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_2",
+    "text": "e CVE Lookup (Most Common)\n// ===============================================\n// Query frequency: ~500,000/month\nMATCH (c:CVE {id: $cveId})\nRETURN c;\n\n// Baseline Performance:\n// - Median: 3.2ms\n// - 95th Percentile: 4.8ms\n// - 99th Percentile: 6.1ms\n// - Max: 12ms\n\n// ===============================================\n// BASELINE 2: Critical CVE Search\n// ===============================================\n// Query frequency: ~150,000/month\nMATCH (c:CVE)\nWHERE c.severity = 'CRITICAL'\n  AND c.published_date >= date($startDate)\nRETURN c\nORDER BY c.cvss_score DESC\nLIMIT 100;\n\n// Baseline Performance:\n// - Median: 42ms\n// - 95th Percentile: 68ms\n// - 99th Percentile: 85ms\n// - Max: 120ms\n\n// ===============================================\n// BASELINE 3: CVE with Attack Patterns\n// ===============================================\n// Query frequency: ~80,000/month\nMATCH (c:CVE)-[:EXPLOITED_BY]->(capec:CAPEC)\nWHERE c.cvss_score >= 7.0\nRETURN c, collect(capec) AS attack_patterns\nLIMIT 50;\n\n// Baselin",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_3",
+    "text": "=============================\n// Query frequency: ~80,000/month\nMATCH (c:CVE)-[:EXPLOITED_BY]->(capec:CAPEC)\nWHERE c.cvss_score >= 7.0\nRETURN c, collect(capec) AS attack_patterns\nLIMIT 50;\n\n// Baseline Performance:\n// - Median: 156ms\n// - 95th Percentile: 203ms\n// - 99th Percentile: 245ms\n// - Max: 320ms\n\n// ===============================================\n// BASELINE 4: CVE Mitigation Chains\n// ===============================================\n// Query frequency: ~120,000/month\nMATCH (c:CVE {id: $cveId})-[:MITIGATED_BY]->(m:Mitigation)\nRETURN c, m;\n\n// Baseline Performance:\n// - Median: 8.5ms\n// - 95th Percentile: 12ms\n// - 99th Percentile: 15ms\n// - Max: 25ms\n\n// ===============================================\n// BASELINE 5: Exploited CVEs by Threat Actors\n// ===============================================\n// Query frequency: ~45,000/month\nMATCH (c:CVE)<-[:EXPLOITED_BY_ACTOR]-(ta:ThreatActor)\nWHERE ta.sophistication = 'high'\nRETURN c, ta\nORDER BY c.published_date DESC\nLIMIT 50;\n\n// Base",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_4",
+    "text": "================\n// Query frequency: ~45,000/month\nMATCH (c:CVE)<-[:EXPLOITED_BY_ACTOR]-(ta:ThreatActor)\nWHERE ta.sophistication = 'high'\nRETURN c, ta\nORDER BY c.published_date DESC\nLIMIT 50;\n\n// Baseline Performance:\n// - Median: 98ms\n// - 95th Percentile: 135ms\n// - 99th Percentile: 172ms\n// - Max: 220ms\n\n// ===============================================\n// BASELINE 6: CVE Temporal Analysis\n// ===============================================\n// Query frequency: ~30,000/month\nMATCH (c:CVE)\nWHERE c.published_date >= date($startYear)\n  AND c.published_date < date($endYear)\nRETURN\n  c.severity AS severity,\n  count(c) AS count,\n  avg(c.cvss_score) AS avg_cvss\nORDER BY severity;\n\n// Baseline Performance:\n// - Median: 285ms\n// - 95th Percentile: 352ms\n// - 99th Percentile: 418ms\n// - Max: 520ms\n\n// ===============================================\n// BASELINE 7: Product Vulnerability Search\n// ===============================================\n// Query frequency: ~200,000/month\nMATCH (p:Product ",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_5",
+    "text": "\n\n// ===============================================\n// BASELINE 7: Product Vulnerability Search\n// ===============================================\n// Query frequency: ~200,000/month\nMATCH (p:Product {name: $productName})<-[:AFFECTS]-(c:CVE)\nWHERE c.status = 'PUBLISHED'\nRETURN c, p\nORDER BY c.cvss_score DESC\nLIMIT 50;\n\n// Baseline Performance:\n// - Median: 72ms\n// - 95th Percentile: 98ms\n// - 99th Percentile: 124ms\n// - Max: 180ms\n\n// ===============================================\n// BASELINE 8: CWE to CVE Mapping\n// ===============================================\n// Query frequency: ~60,000/month\nMATCH (cwe:CWE {id: $cweId})<-[:HAS_WEAKNESS]-(c:CVE)\nRETURN c\nORDER BY c.published_date DESC\nLIMIT 50;\n\n// Baseline Performance:\n// - Median: 54ms\n// - 95th Percentile: 78ms\n// - 99th Percentile: 95ms\n// - Max: 140ms\n\n// ===============================================\n// BASELINE 9: Full-Text CVE Search\n// ===============================================\n// Query frequency: ~100,000/month\nCA",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_6",
+    "text": "e: 95ms\n// - Max: 140ms\n\n// ===============================================\n// BASELINE 9: Full-Text CVE Search\n// ===============================================\n// Query frequency: ~100,000/month\nCALL db.index.fulltext.queryNodes(\n  \"cveFullTextSearch\",\n  $searchQuery\n) YIELD node, score\nRETURN node AS cve, score\nORDER BY score DESC\nLIMIT 20;\n\n// Baseline Performance:\n// - Median: 78ms\n// - 95th Percentile: 112ms\n// - 99th Percentile: 145ms\n// - Max: 200ms\n\n// ===============================================\n// BASELINE 10: CVE Relationship Graph\n// ===============================================\n// Query frequency: ~25,000/month\nMATCH path = (c:CVE {id: $cveId})-[*1..2]-(related)\nRETURN path\nLIMIT 50;\n\n// Baseline Performance:\n// - Median: 168ms\n// - 95th Percentile: 215ms\n// - 99th Percentile: 268ms\n// - Max: 350ms\n```\n\n**Baseline Performance Summary Table:**\n\n| Query Type | Frequency/Mo | Median (ms) | P95 (ms) | P99 (ms) | Max (ms) |\n|------------|--------------|-------------|----",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_7",
+    "text": "entile: 268ms\n// - Max: 350ms\n```\n\n**Baseline Performance Summary Table:**\n\n| Query Type | Frequency/Mo | Median (ms) | P95 (ms) | P99 (ms) | Max (ms) |\n|------------|--------------|-------------|----------|----------|----------|\n| Simple Lookup | 500,000 | 3.2 | 4.8 | 6.1 | 12 |\n| Critical Search | 150,000 | 42 | 68 | 85 | 120 |\n| Attack Patterns | 80,000 | 156 | 203 | 245 | 320 |\n| Mitigations | 120,000 | 8.5 | 12 | 15 | 25 |\n| Threat Actors | 45,000 | 98 | 135 | 172 | 220 |\n| Temporal Analysis | 30,000 | 285 | 352 | 418 | 520 |\n| Product Search | 200,000 | 72 | 98 | 124 | 180 |\n| CWE Mapping | 60,000 | 54 | 78 | 95 | 140 |\n| Full-Text | 100,000 | 78 | 112 | 145 | 200 |\n| Relationship Graph | 25,000 | 168 | 215 | 268 | 350 |\n\n### 1.2 Database Resource Baseline\n\n```cypher\n// ===============================================\n// BASELINE: Database Statistics\n// ===============================================\nCALL apoc.meta.stats() YIELD\n  nodeCount,\n  relCount,\n  labelCount,\n  relTypeCoun",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_8",
+    "text": "==================================\n// BASELINE: Database Statistics\n// ===============================================\nCALL apoc.meta.stats() YIELD\n  nodeCount,\n  relCount,\n  labelCount,\n  relTypeCount,\n  propertyKeyCount\nRETURN\n  nodeCount,                  // Baseline: ~350,000 nodes\n  relCount,                   // Baseline: ~1,670,834 relationships\n  labelCount,                 // Baseline: ~25 labels\n  relTypeCount,               // Baseline: ~15 relationship types\n  propertyKeyCount;           // Baseline: ~80 property keys\n\n// ===============================================\n// BASELINE: Index Statistics\n// ===============================================\nCALL db.indexes() YIELD\n  name,\n  state,\n  populationPercent,\n  type,\n  labelsOrTypes,\n  properties\nWHERE state = 'ONLINE'\nRETURN count(*) AS online_indexes;\n// Baseline: 18 indexes (all ONLINE, 100% populated)\n\n// ===============================================\n// BASELINE: Memory Usage Estimate\n// ==============================",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_9",
+    "text": "ount(*) AS online_indexes;\n// Baseline: 18 indexes (all ONLINE, 100% populated)\n\n// ===============================================\n// BASELINE: Memory Usage Estimate\n// ===============================================\n// Calculation: (nodes * 500 bytes) + (rels * 200 bytes)\n// Baseline: (350,000 * 500) + (1,670,834 * 200) = 509 MB\n```\n\n**Baseline Resource Summary:**\n- Total Nodes: ~350,000\n- Total Relationships: ~1,670,834\n- Relationship Degree (avg): ~4.8 relationships per node\n- Estimated Heap Memory: ~509 MB\n- Index Count: 18 (all ONLINE)\n- Query Cache Hit Rate: 65-75%\n\n## 2. Post-Enhancement Performance Targets\n\n### 2.1 Acceptable Performance Ranges\n\n**Performance Tolerance Policy:**\n- **Green Zone** (Acceptable): \u2264 150% of baseline (1.5x)\n- **Yellow Zone** (Warning): 150-200% of baseline (1.5x-2x)\n- **Red Zone** (Unacceptable): > 200% of baseline (>2x)\n\n**Target Performance After All Waves:**\n\n| Query Type | Baseline Median | Target Max | Yellow Threshold | Red Threshold |\n|------",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_10",
+    "text": "ine (1.5x-2x)\n- **Red Zone** (Unacceptable): > 200% of baseline (>2x)\n\n**Target Performance After All Waves:**\n\n| Query Type | Baseline Median | Target Max | Yellow Threshold | Red Threshold |\n|------------|-----------------|------------|------------------|---------------|\n| Simple Lookup | 3.2ms | 4.8ms | 4.8ms | 6.4ms |\n| Critical Search | 42ms | 63ms | 63ms | 84ms |\n| Attack Patterns | 156ms | 234ms | 234ms | 312ms |\n| Mitigations | 8.5ms | 12.8ms | 12.8ms | 17ms |\n| Threat Actors | 98ms | 147ms | 147ms | 196ms |\n| Temporal Analysis | 285ms | 428ms | 428ms | 570ms |\n| Product Search | 72ms | 108ms | 108ms | 144ms |\n| CWE Mapping | 54ms | 81ms | 81ms | 108ms |\n| Full-Text | 78ms | 117ms | 117ms | 156ms |\n| Relationship Graph | 168ms | 252ms | 252ms | 336ms |\n\n### 2.2 Enhanced Query Performance Targets\n\n**New Cross-Domain Queries Introduced:**\n\n```cypher\n// ===============================================\n// ENHANCED QUERY 1: SAREF Device Vulnerabilities\n// ============================",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_11",
+    "text": "rmance Targets\n\n**New Cross-Domain Queries Introduced:**\n\n```cypher\n// ===============================================\n// ENHANCED QUERY 1: SAREF Device Vulnerabilities\n// ===============================================\nMATCH (c:CVE)-[:AFFECTS_SAREF_DEVICE]->(saref:SAREFDevice)\nWHERE c.severity = 'CRITICAL'\nRETURN c, saref\nLIMIT 50;\n\n// Target Performance:\n// - Median: < 100ms\n// - 95th Percentile: < 150ms\n// - 99th Percentile: < 200ms\n\n// ===============================================\n// ENHANCED QUERY 2: ICS Component Attack Surface\n// ===============================================\nMATCH (c:CVE)-[:AFFECTS_ICS_COMPONENT]->(ics:ICSComponent)\nWHERE c.safety_impact = 'CRITICAL'\nRETURN ics.component_type, count(c) AS vulnerability_count\nORDER BY vulnerability_count DESC;\n\n// Target Performance:\n// - Median: < 120ms\n// - 95th Percentile: < 180ms\n// - 99th Percentile: < 240ms\n\n// ===============================================\n// ENHANCED QUERY 3: SBOM Supply Chain Analysis\n// ===========",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_12",
+    "text": "nce:\n// - Median: < 120ms\n// - 95th Percentile: < 180ms\n// - 99th Percentile: < 240ms\n\n// ===============================================\n// ENHANCED QUERY 3: SBOM Supply Chain Analysis\n// ===============================================\nMATCH (c:CVE)-[:AFFECTS_SBOM_COMPONENT]->(sbom:SBOMComponent)\nWHERE c.supply_chain_risk = 'high'\nOPTIONAL MATCH (c)-[:PROPAGATES_THROUGH]->(chain:DependencyChain)\nRETURN c, sbom, chain\nLIMIT 50;\n\n// Target Performance:\n// - Median: < 150ms\n// - 95th Percentile: < 225ms\n// - 99th Percentile: < 300ms\n\n// ===============================================\n// ENHANCED QUERY 4: Multi-Domain Threat Landscape\n// ===============================================\nMATCH (ta:ThreatActor)-[:EXPLOITED_BY_ACTOR]->(c:CVE)\nOPTIONAL MATCH (c)-[:AFFECTS_SAREF_DEVICE]->(saref)\nOPTIONAL MATCH (c)-[:AFFECTS_ICS_COMPONENT]->(ics)\nOPTIONAL MATCH (c)-[:CREATES_OBSERVABLE]->(uco)\nWHERE ta.sophistication = 'high'\nRETURN ta, c, saref, ics, uco\nLIMIT 30;\n\n// Target Performance:\n// - Me",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_13",
+    "text": "IONAL MATCH (c)-[:AFFECTS_ICS_COMPONENT]->(ics)\nOPTIONAL MATCH (c)-[:CREATES_OBSERVABLE]->(uco)\nWHERE ta.sophistication = 'high'\nRETURN ta, c, saref, ics, uco\nLIMIT 30;\n\n// Target Performance:\n// - Median: < 200ms\n// - 95th Percentile: < 300ms\n// - 99th Percentile: < 400ms\n\n// ===============================================\n// ENHANCED QUERY 5: UCO Forensic Artifact Chain\n// ===============================================\nMATCH (c:CVE)-[:CREATES_OBSERVABLE]->(obs:UCOObservable)\nMATCH (c)<-[:EXPLOITED_BY_ACTOR]-(ta:ThreatActor)\nWHERE c.cvss_score >= 9.0\nRETURN c, obs, ta\nLIMIT 50;\n\n// Target Performance:\n// - Median: < 120ms\n// - 95th Percentile: < 180ms\n// - 99th Percentile: < 240ms\n```\n\n**Enhanced Query Performance Summary:**\n\n| Enhanced Query | Target Median | Target P95 | Target P99 |\n|----------------|---------------|------------|------------|\n| SAREF Device Vulns | <100ms | <150ms | <200ms |\n| ICS Attack Surface | <120ms | <180ms | <240ms |\n| SBOM Supply Chain | <150ms | <225ms | ",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_14",
+    "text": "----------------|---------------|------------|------------|\n| SAREF Device Vulns | <100ms | <150ms | <200ms |\n| ICS Attack Surface | <120ms | <180ms | <240ms |\n| SBOM Supply Chain | <150ms | <225ms | <300ms |\n| Multi-Domain Threat | <200ms | <300ms | <400ms |\n| UCO Forensic Chain | <120ms | <180ms | <240ms |\n\n### 2.3 Resource Growth Targets\n\n**Post-Enhancement Resource Projections:**\n\n```yaml\npost_enhancement_targets:\n  nodes:\n    baseline: 350000\n    wave_1_growth: +3000    # SAREF nodes\n    wave_2_growth: +5000    # ICS nodes\n    wave_3_growth: +50000   # SBOM nodes (largest growth)\n    wave_4_growth: +1000    # UCO nodes\n    wave_5_growth: +500     # STIX nodes\n    total_projected: 409500\n    growth_percentage: 17%\n\n  relationships:\n    baseline: 1670834\n    wave_1_growth: +50000   # SAREF relationships\n    wave_2_growth: +75000   # ICS relationships\n    wave_3_growth: +100000  # SBOM relationships\n    wave_4_growth: +80000   # UCO relationships\n    wave_5_growth: +30000   # Threat ",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_15",
+    "text": "REF relationships\n    wave_2_growth: +75000   # ICS relationships\n    wave_3_growth: +100000  # SBOM relationships\n    wave_4_growth: +80000   # UCO relationships\n    wave_5_growth: +30000   # Threat Intel relationships\n    total_projected: 2005834\n    growth_percentage: 20%\n\n  indexes:\n    baseline: 18\n    new_indexes: +15        # Enhanced property indexes\n    total_projected: 33\n    growth_percentage: 83%\n\n  estimated_heap_memory:\n    baseline_mb: 509\n    projected_mb: 614       # (409500*500 + 2005834*200) / 1024^2\n    growth_percentage: 21%\n```\n\n**Acceptable Resource Ranges:**\n- Total Nodes: < 500,000 (manageable scale)\n- Total Relationships: < 3,000,000 (high but manageable)\n- Average Relationship Degree: < 10 (avoid super-nodes)\n- Estimated Heap Memory: < 1000 MB (1 GB, well within typical limits)\n- Index Count: < 50 (reasonable for enhanced schema)\n\n## 3. Performance Monitoring Strategies\n\n### 3.1 Real-Time Performance Monitoring\n\n**Continuous Monitoring Queries (Run Every 5 Mi",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_16",
+    "text": "typical limits)\n- Index Count: < 50 (reasonable for enhanced schema)\n\n## 3. Performance Monitoring Strategies\n\n### 3.1 Real-Time Performance Monitoring\n\n**Continuous Monitoring Queries (Run Every 5 Minutes):**\n\n```cypher\n// ===============================================\n// MONITOR 1: High-Frequency Query Performance\n// ===============================================\n// Run baseline queries and measure execution time\n// Alert if median > target max\n\nWITH [\n  'Simple Lookup',\n  'Critical Search',\n  'Product Search',\n  'Full-Text Search'\n] AS high_freq_queries\nUNWIND high_freq_queries AS query_name\n// Execute query and measure time\n// Compare to target performance\n// Trigger alert if exceeds yellow threshold\nRETURN query_name, measured_time, target_max, status;\n\n// ===============================================\n// MONITOR 2: Database Growth Rate\n// ===============================================\nCALL apoc.meta.stats() YIELD nodeCount, relCount\nWITH nodeCount, relCount, datetime() AS tim",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_17",
+    "text": "=====================\n// MONITOR 2: Database Growth Rate\n// ===============================================\nCALL apoc.meta.stats() YIELD nodeCount, relCount\nWITH nodeCount, relCount, datetime() AS timestamp\nRETURN\n  nodeCount,\n  relCount,\n  nodeCount - 409500 AS node_growth_from_target,\n  relCount - 2005834 AS rel_growth_from_target,\n  CASE\n    WHEN nodeCount > 500000 OR relCount > 3000000 THEN 'ALERT: Scale Limit Approaching'\n    WHEN nodeCount > 450000 OR relCount > 2500000 THEN 'WARNING: Monitor Growth'\n    ELSE 'OK'\n  END AS status,\n  timestamp;\n\n// ===============================================\n// MONITOR 3: Index Health Check\n// ===============================================\nCALL db.indexes() YIELD name, state, populationPercent\nWHERE state <> 'ONLINE' OR populationPercent < 100.0\nRETURN\n  name,\n  state,\n  populationPercent,\n  'CRITICAL: Index Unhealthy' AS alert\nUNION ALL\nCALL db.indexes() YIELD name WHERE name CONTAINS 'cve'\nWITH count(*) AS cve_indexes\nWHERE cve_indexes < 33",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_18",
+    "text": "RETURN\n  name,\n  state,\n  populationPercent,\n  'CRITICAL: Index Unhealthy' AS alert\nUNION ALL\nCALL db.indexes() YIELD name WHERE name CONTAINS 'cve'\nWITH count(*) AS cve_indexes\nWHERE cve_indexes < 33\nRETURN\n  'CVE Indexes' AS name,\n  'ONLINE' AS state,\n  100.0 AS populationPercent,\n  'WARNING: Missing Indexes' AS alert;\n\n// ===============================================\n// MONITOR 4: Query Cache Hit Rate\n// ===============================================\nCALL dbms.queryJmx('org.neo4j:*') YIELD name, attributes\nWHERE name CONTAINS 'Query' AND name CONTAINS 'Cache'\nWITH attributes['HitRatio'] AS hit_ratio\nRETURN\n  hit_ratio,\n  CASE\n    WHEN hit_ratio < 0.50 THEN 'CRITICAL: Low Cache Hit Rate'\n    WHEN hit_ratio < 0.65 THEN 'WARNING: Below Baseline'\n    ELSE 'OK'\n  END AS status;\n\n// ===============================================\n// MONITOR 5: Slow Query Detection\n// ===============================================\n// Identify queries taking > 500ms (configurable threshold)\nCALL dbms.li",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_19",
+    "text": "=========================================\n// MONITOR 5: Slow Query Detection\n// ===============================================\n// Identify queries taking > 500ms (configurable threshold)\nCALL dbms.listQueries() YIELD queryId, query, elapsedTimeMillis\nWHERE elapsedTimeMillis > 500\nRETURN\n  queryId,\n  query,\n  elapsedTimeMillis,\n  'SLOW QUERY DETECTED' AS alert\nORDER BY elapsedTimeMillis DESC;\n```\n\n**Monitoring Dashboard Metrics:**\n\n```yaml\nmonitoring_dashboard:\n  performance_metrics:\n    - metric: \"Median Query Time (High-Freq)\"\n      target: \"< 100ms\"\n      alert_threshold: \"150ms\"\n      critical_threshold: \"200ms\"\n\n    - metric: \"95th Percentile Query Time\"\n      target: \"< 200ms\"\n      alert_threshold: \"300ms\"\n      critical_threshold: \"400ms\"\n\n    - metric: \"Query Cache Hit Rate\"\n      target: \"> 65%\"\n      alert_threshold: \"< 50%\"\n      critical_threshold: \"< 40%\"\n\n  resource_metrics:\n    - metric: \"Total Node Count\"\n      target: \"409,500\"\n      alert_threshold: \"450,000\"\n      c",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_20",
+    "text": " target: \"> 65%\"\n      alert_threshold: \"< 50%\"\n      critical_threshold: \"< 40%\"\n\n  resource_metrics:\n    - metric: \"Total Node Count\"\n      target: \"409,500\"\n      alert_threshold: \"450,000\"\n      critical_threshold: \"500,000\"\n\n    - metric: \"Total Relationship Count\"\n      target: \"2,005,834\"\n      alert_threshold: \"2,500,000\"\n      critical_threshold: \"3,000,000\"\n\n    - metric: \"Heap Memory Usage\"\n      target: \"614 MB\"\n      alert_threshold: \"800 MB\"\n      critical_threshold: \"1000 MB\"\n\n  health_metrics:\n    - metric: \"Index Online Status\"\n      target: \"100% ONLINE\"\n      alert_threshold: \"< 100%\"\n      critical_threshold: \"< 95%\"\n\n    - metric: \"Index Population\"\n      target: \"100% Populated\"\n      alert_threshold: \"< 100%\"\n      critical_threshold: \"< 95%\"\n\n    - metric: \"Database Availability\"\n      target: \"100% Uptime\"\n      alert_threshold: \"< 99.9%\"\n      critical_threshold: \"< 99%\"\n```\n\n### 3.2 Performance Testing Protocol\n\n**Wave-by-Wave Performance Testing:**\n\n```bash\n",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_21",
+    "text": " Availability\"\n      target: \"100% Uptime\"\n      alert_threshold: \"< 99.9%\"\n      critical_threshold: \"< 99%\"\n```\n\n### 3.2 Performance Testing Protocol\n\n**Wave-by-Wave Performance Testing:**\n\n```bash\n#!/bin/bash\n# File: /home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/scripts/performance_test_suite.sh\n\nWAVE_NUMBER=$1\nRESULTS_DIR=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/performance_results\"\nTIMESTAMP=$(date +%Y%m%d_%H%M%S)\nREPORT_FILE=\"$RESULTS_DIR/wave_${WAVE_NUMBER}_performance_${TIMESTAMP}.csv\"\n\necho \"=== PERFORMANCE TEST SUITE: Wave $WAVE_NUMBER ===\" | tee \"$REPORT_FILE\"\necho \"Start Time: $(date)\" | tee -a \"$REPORT_FILE\"\necho \"Query,Iteration,ExecutionTime_ms\" >> \"$REPORT_FILE\"\n\n# Function to run query N times and measure performance\nrun_performance_test() {\n  local query_name=$1\n  local query_file=$2\n  local iterations=100\n\n  echo \"Testing: $query_name ($iterations iterations)\" | tee -a \"$REPORT_FILE\"\n\n  for i in $(seq 1 $i",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_22",
+    "text": "mance\nrun_performance_test() {\n  local query_name=$1\n  local query_file=$2\n  local iterations=100\n\n  echo \"Testing: $query_name ($iterations iterations)\" | tee -a \"$REPORT_FILE\"\n\n  for i in $(seq 1 $iterations); do\n    start_time=$(date +%s%3N)\n\n    cypher-shell -u neo4j -p password < \"$query_file\" > /dev/null 2>&1\n\n    end_time=$(date +%s%3N)\n    execution_time=$((end_time - start_time))\n\n    echo \"$query_name,$i,$execution_time\" >> \"$REPORT_FILE\"\n  done\n}\n\n# Test baseline queries\nrun_performance_test \"Simple_Lookup\" \"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/cypher/benchmark_simple_lookup.cypher\"\nrun_performance_test \"Critical_Search\" \"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/cypher/benchmark_critical_search.cypher\"\nrun_performance_test \"Attack_Patterns\" \"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/cypher/benchmark_attack_patterns.cypher\"\n\n# Test enhanced queries (wave-specific)\nif [ \"$WAVE",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_23",
+    "text": "formance_test \"Attack_Patterns\" \"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/cypher/benchmark_attack_patterns.cypher\"\n\n# Test enhanced queries (wave-specific)\nif [ \"$WAVE_NUMBER\" -ge 1 ]; then\n  run_performance_test \"SAREF_Device_Vulns\" \"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/cypher/benchmark_saref_devices.cypher\"\nfi\n\nif [ \"$WAVE_NUMBER\" -ge 2 ]; then\n  run_performance_test \"ICS_Attack_Surface\" \"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/cypher/benchmark_ics_surface.cypher\"\nfi\n\nif [ \"$WAVE_NUMBER\" -ge 3 ]; then\n  run_performance_test \"SBOM_Supply_Chain\" \"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/cypher/benchmark_sbom_chain.cypher\"\nfi\n\n# Analyze results\necho \"=== PERFORMANCE ANALYSIS ===\" | tee -a \"$REPORT_FILE\"\npython3 <<PYTHON | tee -a \"$REPORT_FILE\"\nimport pandas as pd\n\ndf = pd.read_csv('$REPORT_FILE', skiprows=2)  # Skip header lines\nsummary = df.groupby('Q",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_24",
+    "text": "ERFORMANCE ANALYSIS ===\" | tee -a \"$REPORT_FILE\"\npython3 <<PYTHON | tee -a \"$REPORT_FILE\"\nimport pandas as pd\n\ndf = pd.read_csv('$REPORT_FILE', skiprows=2)  # Skip header lines\nsummary = df.groupby('Query')['ExecutionTime_ms'].agg(['median', 'mean', 'std', 'min', 'max'])\nsummary['p95'] = df.groupby('Query')['ExecutionTime_ms'].quantile(0.95)\nsummary['p99'] = df.groupby('Query')['ExecutionTime_ms'].quantile(0.99)\n\nprint(summary.to_string())\nPYTHON\n\necho \"=== PERFORMANCE TEST COMPLETE ===\" | tee -a \"$REPORT_FILE\"\necho \"End Time: $(date)\" | tee -a \"$REPORT_FILE\"\necho \"Results saved to: $REPORT_FILE\"\n```\n\n## 4. Performance Optimization Techniques\n\n### 4.1 Index Optimization\n\n**Index Strategy for Enhanced Schema:**\n\n```cypher\n// ===============================================\n// OPTIMIZATION 1: Composite Indexes for Common Patterns\n// ===============================================\n\n// Composite index for SAREF + severity filtering\nCREATE INDEX cve_saref_severity_composite IF NOT EXISTS\nFOR",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_25",
+    "text": " Composite Indexes for Common Patterns\n// ===============================================\n\n// Composite index for SAREF + severity filtering\nCREATE INDEX cve_saref_severity_composite IF NOT EXISTS\nFOR (c:CVE) ON (c.saref_device_types, c.severity);\n\n// Composite index for ICS + CVSS filtering\nCREATE INDEX cve_ics_cvss_composite IF NOT EXISTS\nFOR (c:CVE) ON (c.ics_applicable, c.cvss_score);\n\n// Composite index for SBOM + risk filtering\nCREATE INDEX cve_sbom_risk_cvss_composite IF NOT EXISTS\nFOR (c:CVE) ON (c.supply_chain_risk, c.cvss_score);\n\n// ===============================================\n// OPTIMIZATION 2: Full-Text Index Enhancement\n// ===============================================\n\n// Enhanced full-text index including new properties\nCALL db.index.fulltext.createNodeIndex(\n  'cveEnhancedFullTextSearch',\n  ['CVE'],\n  ['description', 'id', 'cve_id',\n   'saref_device_types', 'ics_component_types', 'industrial_protocols',\n   'package_ecosystems', 'uco_observable_types']\n) IF NOT EXIS",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_26",
+    "text": "ncedFullTextSearch',\n  ['CVE'],\n  ['description', 'id', 'cve_id',\n   'saref_device_types', 'ics_component_types', 'industrial_protocols',\n   'package_ecosystems', 'uco_observable_types']\n) IF NOT EXISTS;\n\n// ===============================================\n// OPTIMIZATION 3: Relationship Type Indexes\n// ===============================================\n\n// Index on relationship types for fast filtering\n// (Neo4j 5.x feature)\nCREATE INDEX affects_saref_device_index IF NOT EXISTS\nFOR ()-[r:AFFECTS_SAREF_DEVICE]-() ON (r.device_category);\n\nCREATE INDEX affects_ics_component_index IF NOT EXISTS\nFOR ()-[r:AFFECTS_ICS_COMPONENT]-() ON (r.component_type);\n```\n\n### 4.2 Query Optimization Patterns\n\n**Optimization Pattern 1: Use Index Hints**\n\n```cypher\n// \u274c SLOW: No index hint\nMATCH (c:CVE)\nWHERE c.severity = 'CRITICAL' AND c.ics_applicable = true\nRETURN c;\n\n// \u2705 OPTIMIZED: Use index hint\nMATCH (c:CVE)\nUSING INDEX c:CVE(ics_applicable)\nWHERE c.ics_applicable = true AND c.severity = 'CRITICAL'\nRETU",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_27",
+    "text": "verity = 'CRITICAL' AND c.ics_applicable = true\nRETURN c;\n\n// \u2705 OPTIMIZED: Use index hint\nMATCH (c:CVE)\nUSING INDEX c:CVE(ics_applicable)\nWHERE c.ics_applicable = true AND c.severity = 'CRITICAL'\nRETURN c;\n```\n\n**Optimization Pattern 2: Limit Early**\n\n```cypher\n// \u274c SLOW: Collect all then limit\nMATCH (c:CVE)-[:AFFECTS_SAREF_DEVICE]->(saref)\nWITH c, collect(saref) AS devices\nRETURN c, devices\nLIMIT 50;\n\n// \u2705 OPTIMIZED: Limit CVEs first\nMATCH (c:CVE)\nWHERE EXISTS((c)-[:AFFECTS_SAREF_DEVICE]->())\nWITH c LIMIT 50\nMATCH (c)-[:AFFECTS_SAREF_DEVICE]->(saref)\nRETURN c, collect(saref) AS devices;\n```\n\n**Optimization Pattern 3: Use EXISTS for Existence Checks**\n\n```cypher\n// \u274c SLOW: Pattern matching for existence\nMATCH (c:CVE)\nOPTIONAL MATCH (c)-[:AFFECTS_ICS_COMPONENT]->(ics)\nWHERE ics IS NOT NULL\nRETURN c;\n\n// \u2705 OPTIMIZED: Use EXISTS\nMATCH (c:CVE)\nWHERE EXISTS((c)-[:AFFECTS_ICS_COMPONENT]->())\nRETURN c;\n```\n\n**Optimization Pattern 4: Batch Operations**\n\n```cypher\n// \u274c SLOW: Row-by-row processi",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_28",
+    "text": "RETURN c;\n\n// \u2705 OPTIMIZED: Use EXISTS\nMATCH (c:CVE)\nWHERE EXISTS((c)-[:AFFECTS_ICS_COMPONENT]->())\nRETURN c;\n```\n\n**Optimization Pattern 4: Batch Operations**\n\n```cypher\n// \u274c SLOW: Row-by-row processing\nMATCH (c:CVE)\nWHERE c.ics_applicable IS NULL\nSET c.ics_applicable = false;\n\n// \u2705 OPTIMIZED: Batch with CALL IN TRANSACTIONS\nMATCH (c:CVE)\nWHERE c.ics_applicable IS NULL\nCALL {\n  WITH c\n  SET c.ics_applicable = false\n} IN TRANSACTIONS OF 1000 ROWS;\n```\n\n### 4.3 Database Configuration Tuning\n\n**Neo4j Configuration Optimization:**\n\n```properties\n# /home/jim/neo4j/conf/neo4j.conf\n\n# Heap Memory (adjust based on available RAM)\ndbms.memory.heap.initial_size=2G\ndbms.memory.heap.max_size=4G\n\n# Page Cache (for graph data)\ndbms.memory.pagecache.size=2G\n\n# Query Cache\ndbms.query_cache_size=1000\n\n# Transaction Log\ndbms.tx_log.rotation.retention_policy=7 days\n\n# Performance Tuning\ndbms.checkpoint.interval.time=15m\ndbms.checkpoint.iops.limit=1000\n\n# Relationship Type Index (Neo4j 5.x)\ndbms.relationsh",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_29",
+    "text": "nsaction Log\ndbms.tx_log.rotation.retention_policy=7 days\n\n# Performance Tuning\ndbms.checkpoint.interval.time=15m\ndbms.checkpoint.iops.limit=1000\n\n# Relationship Type Index (Neo4j 5.x)\ndbms.relationship_property_index.enabled=true\n\n# Parallel Query Execution\ndbms.cypher.parallel_runtime=true\ndbms.cypher.parallel_runtime.worker_threads=4\n```\n\n## 5. Performance Regression Detection\n\n### 5.1 Automated Performance Regression Testing\n\n```bash\n#!/bin/bash\n# File: /home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/scripts/detect_performance_regression.sh\n\nWAVE_NUMBER=$1\nBASELINE_FILE=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/performance_results/baseline_performance.csv\"\nCURRENT_FILE=\"/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/performance_results/wave_${WAVE_NUMBER}_performance_*.csv\"\n\necho \"=== PERFORMANCE REGRESSION DETECTION: Wave $WAVE_NUMBER ===\"\n\npython3 <<PYTHON\nimport pandas as pd\nimport numpy as np\n",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_30",
+    "text": "ec_Threat_Intel/performance_results/wave_${WAVE_NUMBER}_performance_*.csv\"\n\necho \"=== PERFORMANCE REGRESSION DETECTION: Wave $WAVE_NUMBER ===\"\n\npython3 <<PYTHON\nimport pandas as pd\nimport numpy as np\n\n# Load baseline and current performance data\nbaseline = pd.read_csv('$BASELINE_FILE', skiprows=2)\ncurrent = pd.read_csv('$CURRENT_FILE', skiprows=2)\n\n# Calculate median for each query\nbaseline_medians = baseline.groupby('Query')['ExecutionTime_ms'].median()\ncurrent_medians = current.groupby('Query')['ExecutionTime_ms'].median()\n\n# Detect regressions\nprint(\"Query Performance Comparison:\")\nprint(\"=\" * 80)\n\nregressions = []\nfor query in baseline_medians.index:\n    if query in current_medians.index:\n        baseline_time = baseline_medians[query]\n        current_time = current_medians[query]\n        percentage_change = ((current_time - baseline_time) / baseline_time) * 100\n\n        status = 'PASS'\n        if percentage_change > 100:  # > 2x slower\n            status = 'FAIL: REGRESSION'\n     ",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_31",
+    "text": "    percentage_change = ((current_time - baseline_time) / baseline_time) * 100\n\n        status = 'PASS'\n        if percentage_change > 100:  # > 2x slower\n            status = 'FAIL: REGRESSION'\n            regressions.append(query)\n        elif percentage_change > 50:  # > 1.5x slower\n            status = 'WARN: DEGRADATION'\n\n        print(f\"{query:30} | Baseline: {baseline_time:6.1f}ms | Current: {current_time:6.1f}ms | Change: {percentage_change:+6.1f}% | {status}\")\n\nprint(\"=\" * 80)\n\nif regressions:\n    print(f\"\\\\nCRITICAL: {len(regressions)} performance regression(s) detected!\")\n    print(f\"Regressed queries: {', '.join(regressions)}\")\n    exit(1)\nelse:\n    print(\"\\\\n\u2713 No critical performance regressions detected\")\n    exit(0)\nPYTHON\n```\n\n### 5.2 Performance Alert System\n\n**Alert Configuration:**\n\n```yaml\nperformance_alerts:\n  critical_alerts:\n    - condition: \"Query median > 200% baseline\"\n      action: \"Halt wave execution, investigate immediately\"\n      notification: \"Email + Sl",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_32",
+    "text": "guration:**\n\n```yaml\nperformance_alerts:\n  critical_alerts:\n    - condition: \"Query median > 200% baseline\"\n      action: \"Halt wave execution, investigate immediately\"\n      notification: \"Email + Slack critical channel\"\n\n    - condition: \"Index goes offline\"\n      action: \"Automatic index rebuild attempt\"\n      notification: \"Email + Slack critical channel\"\n\n    - condition: \"CVE node loss detected\"\n      action: \"Automatic rollback initiation\"\n      notification: \"Email + SMS + Slack critical channel\"\n\n  warning_alerts:\n    - condition: \"Query median 150-200% baseline\"\n      action: \"Flag for manual review\"\n      notification: \"Slack warning channel\"\n\n    - condition: \"Cache hit rate < 50%\"\n      action: \"Cache tuning recommendations\"\n      notification: \"Email daily digest\"\n\n    - condition: \"Node count > 450,000\"\n      action: \"Monitor scaling closely\"\n      notification: \"Email weekly report\"\n```\n\n## 6. Performance Report Template\n\n```markdown\n# Performance Benchmark Report: Wave",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_33",
+    "text": "ition: \"Node count > 450,000\"\n      action: \"Monitor scaling closely\"\n      notification: \"Email weekly report\"\n```\n\n## 6. Performance Report Template\n\n```markdown\n# Performance Benchmark Report: Wave [N]\n\n**Date:** [YYYY-MM-DD]\n**Wave:** [N] - [Wave Name]\n**Test Duration:** [Duration]\n**Iterations per Query:** 100\n\n## 1. Executive Summary\n**Overall Performance Status:** [PASS / WARNING / FAIL]\n**Regression Count:** [Count]\n**Average Performance Change:** [+/-X%]\n\n## 2. Query Performance Results\n\n### Baseline Query Performance\n| Query | Baseline Median | Current Median | P95 | P99 | Change | Status |\n|-------|----------------|----------------|-----|-----|--------|--------|\n| Simple Lookup | 3.2ms | [X]ms | [X]ms | [X]ms | [+/-X%] | [PASS/WARN/FAIL] |\n| Critical Search | 42ms | [X]ms | [X]ms | [X]ms | [+/-X%] | [PASS/WARN/FAIL] |\n| ... | ... | ... | ... | ... | ... | ... |\n\n### Enhanced Query Performance\n| Query | Target Median | Current Median | P95 | P99 | Status |\n|-------|----------",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_34",
+    "text": "s | [X]ms | [+/-X%] | [PASS/WARN/FAIL] |\n| ... | ... | ... | ... | ... | ... | ... |\n\n### Enhanced Query Performance\n| Query | Target Median | Current Median | P95 | P99 | Status |\n|-------|---------------|----------------|-----|-----|--------|\n| SAREF Device Vulns | <100ms | [X]ms | [X]ms | [X]ms | [PASS/WARN/FAIL] |\n| ICS Attack Surface | <120ms | [X]ms | [X]ms | [X]ms | [PASS/WARN/FAIL] |\n| ... | ... | ... | ... | ... | ... |\n\n## 3. Resource Metrics\n**Node Count:** [Current] (Target: [Target], Baseline: [Baseline])\n**Relationship Count:** [Current] (Target: [Target], Baseline: [Baseline])\n**Index Count:** [Current] (Target: [Target], Baseline: [Baseline])\n**Estimated Heap Memory:** [Current MB] (Target: [Target MB])\n\n## 4. Performance Regressions\n[List any queries with performance regressions]\n\n## 5. Optimization Recommendations\n[List optimization suggestions]\n\n## 6. Approval\n**Performance Approved:** [YES / NO / CONDITIONAL]\n**Conditions:** [If applicable]\n\n**Tested By:** [Name]\n**",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "19_PERFORMANCE_BENCHMARKS.md_chunk_35",
+    "text": "ssions]\n\n## 5. Optimization Recommendations\n[List optimization suggestions]\n\n## 6. Approval\n**Performance Approved:** [YES / NO / CONDITIONAL]\n**Conditions:** [If applicable]\n\n**Tested By:** [Name]\n**Date:** [YYYY-MM-DD]\n```\n\n---\n\n**Document Version:** v1.0.0\n**Last Updated:** 2025-10-30\n**Next Review:** After Each Wave Completion\n**Owner:** AEON FORGE Implementation Team\n",
+    "metadata": {
+      "file_name": "19_PERFORMANCE_BENCHMARKS.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/19_PERFORMANCE_BENCHMARKS.md",
+      "file_size": 28375,
+      "indexed_at": "2025-10-31T00:59:10.163270",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 375
+    }
+  }
+]

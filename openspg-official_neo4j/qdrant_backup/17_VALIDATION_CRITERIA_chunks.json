@@ -1,0 +1,688 @@
+[
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_0",
+    "text": "# Validation Criteria\n**File:** 17_VALIDATION_CRITERIA.md\n**Created:** 2025-10-30 00:00:00 UTC\n**Modified:** 2025-10-30 00:00:00 UTC\n**Version:** v1.0.0\n**Author:** AEON FORGE Implementation Team\n**Purpose:** Comprehensive validation test suites and acceptance criteria for schema enhancement\n**Status:** ACTIVE\n\n## Executive Summary\n\nThis document defines comprehensive validation criteria, test suites, and acceptance standards for the AEON Digital Twin Cybersecurity Threat Intelligence schema enhancement. Validation covers data integrity, relationship correctness, query performance, semantic consistency, and cross-domain integration quality across all five enhancement waves.\n\n### Validation Architecture\n\n**Multi-Layer Validation Approach:**\n1. **Structural Validation**: Schema structure, node/relationship existence, property types\n2. **Data Integrity Validation**: Node counts, property completeness, relationship cardinality\n3. **Semantic Validation**: Relationship correctness, property ",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_1",
+    "text": "de/relationship existence, property types\n2. **Data Integrity Validation**: Node counts, property completeness, relationship cardinality\n3. **Semantic Validation**: Relationship correctness, property value validity, domain logic\n4. **Performance Validation**: Query response times, index effectiveness, scalability\n5. **Integration Validation**: Cross-domain consistency, chain completeness, attribution accuracy\n\n## 1. Structural Validation Criteria\n\n### 1.1 Schema Structure Validation\n\n**Objective:** Verify all expected node labels, relationship types, and property schemas exist.\n\n**Validation Query Suite:**\n\n```cypher\n// ===============================================\n// VALIDATION 1.1.1: Node Label Existence\n// ===============================================\nCALL db.labels() YIELD label\nWITH collect(label) AS existing_labels\nWITH existing_labels,\n  ['CVE', 'CWE', 'CAPEC', 'ThreatActor', 'Campaign', 'AttackTechnique',\n   'ICSAttackTechnique', 'Mitigation', 'Product', 'Vendor',\n   'SAREF",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_2",
+    "text": "TH collect(label) AS existing_labels\nWITH existing_labels,\n  ['CVE', 'CWE', 'CAPEC', 'ThreatActor', 'Campaign', 'AttackTechnique',\n   'ICSAttackTechnique', 'Mitigation', 'Product', 'Vendor',\n   'SAREFDevice', 'SAREFFunction', 'SAREFMeasurement',\n   'ICSComponent', 'IndustrialProtocol',\n   'SBOMComponent', 'SoftwarePackage', 'DependencyChain',\n   'UCOObservable', 'UCOAction',\n   'STIXIndicator'] AS required_labels\nWITH existing_labels, required_labels,\n  [label IN required_labels WHERE NOT label IN existing_labels] AS missing_labels\nRETURN\n  required_labels,\n  existing_labels,\n  missing_labels,\n  CASE\n    WHEN size(missing_labels) = 0 THEN 'PASS'\n    ELSE 'FAIL: Missing Labels'\n  END AS validation_status;\n// Expected: validation_status = 'PASS', missing_labels = []\n\n// ===============================================\n// VALIDATION 1.1.2: Relationship Type Existence\n// ===============================================\nCALL db.relationshipTypes() YIELD relationshipType\nWITH collect(relations",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_3",
+    "text": "==========================\n// VALIDATION 1.1.2: Relationship Type Existence\n// ===============================================\nCALL db.relationshipTypes() YIELD relationshipType\nWITH collect(relationshipType) AS existing_rels\nWITH existing_rels,\n  // Core CVE relationships\n  ['HAS_WEAKNESS', 'AFFECTS', 'IMPACTS_VENDOR', 'EXPLOITED_BY',\n   'ENABLES_TECHNIQUE', 'MITIGATED_BY', 'EXPLOITED_BY_ACTOR',\n   'USED_IN_CAMPAIGN', 'RELATED_TO', 'FIXED_BY',\n   // Wave 1: SAREF\n   'AFFECTS_SAREF_DEVICE', 'IMPACTS_SAREF_FUNCTION', 'CORRUPTS_MEASUREMENT',\n   // Wave 2: ICS\n   'AFFECTS_ICS_COMPONENT', 'EXPLOITS_PROTOCOL', 'ENABLES_ICS_TECHNIQUE',\n   // Wave 3: SBOM\n   'AFFECTS_SBOM_COMPONENT', 'IMPACTS_PACKAGE', 'PROPAGATES_THROUGH',\n   // Wave 4: UCO\n   'CREATES_OBSERVABLE', 'TRIGGERS_ACTION',\n   // Wave 5: Threat Intelligence\n   'EXPLOITED_BY_ACTOR_ENHANCED', 'HAS_STIX_INDICATOR', 'TARGETS_ICS_COMPONENT',\n   'USES_ICS_TECHNIQUE', 'ASSOCIATED_WITH_STIX'] AS required_rels\nWITH existing_rels, required_r",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_4",
+    "text": "5: Threat Intelligence\n   'EXPLOITED_BY_ACTOR_ENHANCED', 'HAS_STIX_INDICATOR', 'TARGETS_ICS_COMPONENT',\n   'USES_ICS_TECHNIQUE', 'ASSOCIATED_WITH_STIX'] AS required_rels\nWITH existing_rels, required_rels,\n  [rel IN required_rels WHERE NOT rel IN existing_rels] AS missing_rels\nRETURN\n  required_rels,\n  existing_rels,\n  missing_rels,\n  CASE\n    WHEN size(missing_rels) = 0 THEN 'PASS'\n    ELSE 'FAIL: Missing Relationships'\n  END AS validation_status;\n// Expected: validation_status = 'PASS', missing_rels = []\n\n// ===============================================\n// VALIDATION 1.1.3: Property Schema Validation\n// ===============================================\n// CVE node property schema\nMATCH (c:CVE)\nWITH c LIMIT 1\nWITH keys(c) AS cve_properties\nWITH cve_properties,\n  ['id', 'cve_id', 'description', 'published_date', 'last_modified_date',\n   'cvss_score', 'cvss_vector', 'severity', 'cwe_id', 'vulnerability_type',\n   'references', 'advisory_links', 'impact_score', 'exploitability_score',\n   '",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_5",
+    "text": "on', 'published_date', 'last_modified_date',\n   'cvss_score', 'cvss_vector', 'severity', 'cwe_id', 'vulnerability_type',\n   'references', 'advisory_links', 'impact_score', 'exploitability_score',\n   'status', 'source', 'data_version', '_created_at', '_last_synced',\n   // Wave 1: SAREF properties\n   'saref_device_types', 'saref_function_impact', 'saref_measurement_risk',\n   'iot_exploitation_vector', 'saref_severity_modifier',\n   // Wave 2: ICS properties\n   'ics_applicable', 'ics_component_types', 'purdue_levels', 'safety_impact',\n   'process_impact', 'ics_mitre_techniques', 'industrial_protocols',\n   // Wave 3: SBOM properties\n   'sbom_component_count', 'package_ecosystems', 'dependency_depth',\n   'license_implications', 'supply_chain_risk', 'purl_identifiers',\n   // Wave 4: UCO properties\n   'uco_observable_types', 'forensic_artifacts', 'exploitation_signatures',\n   'investigation_priority',\n   // Wave 5: Threat Intelligence properties\n   'threat_actor_associations', 'campaign_usage_",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_6",
+    "text": "s\n   'uco_observable_types', 'forensic_artifacts', 'exploitation_signatures',\n   'investigation_priority',\n   // Wave 5: Threat Intelligence properties\n   'threat_actor_associations', 'campaign_usage_count', 'exploit_kit_usage',\n   'dark_web_mentions', 'weaponization_timeline', 'stix_indicator_count',\n   'threat_intel_confidence'] AS expected_properties\nWITH cve_properties, expected_properties,\n  [prop IN expected_properties WHERE NOT prop IN cve_properties] AS missing_props\nRETURN\n  expected_properties,\n  cve_properties,\n  missing_props,\n  CASE\n    WHEN size(missing_props) = 0 THEN 'PASS'\n    WHEN size(missing_props) <= 5 THEN 'PASS (with warnings)'\n    ELSE 'FAIL: Missing Properties'\n  END AS validation_status;\n// Expected: validation_status = 'PASS' or 'PASS (with warnings)'\n// Note: Some properties may not be populated yet depending on wave completion\n```\n\n**Acceptance Criteria:**\n- \u2705 All required node labels exist in database\n- \u2705 All required relationship types exist in database\n-",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_7",
+    "text": "me properties may not be populated yet depending on wave completion\n```\n\n**Acceptance Criteria:**\n- \u2705 All required node labels exist in database\n- \u2705 All required relationship types exist in database\n- \u2705 CVE nodes have all core properties (original + enhanced)\n- \u2705 No unexpected schema changes to existing entities\n\n### 1.2 Index Existence Validation\n\n**Objective:** Verify all performance-critical indexes are created and online.\n\n**Validation Query Suite:**\n\n```cypher\n// ===============================================\n// VALIDATION 1.2.1: CVE Index Validation\n// ===============================================\nCALL db.indexes() YIELD name, state, labelsOrTypes, properties\nWHERE 'CVE' IN labelsOrTypes\nWITH collect({\n  name: name,\n  state: state,\n  properties: properties\n}) AS cve_indexes\nWITH cve_indexes,\n  ['id', 'cve_id', 'published_date', 'severity', 'cvss_score',\n   'cwe_id', 'vulnerability_type', 'status', '_last_synced',\n   // Enhanced property indexes\n   'saref_device_types', 'iot_ex",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_8",
+    "text": "ve_indexes,\n  ['id', 'cve_id', 'published_date', 'severity', 'cvss_score',\n   'cwe_id', 'vulnerability_type', 'status', '_last_synced',\n   // Enhanced property indexes\n   'saref_device_types', 'iot_exploitation_vector',\n   'ics_applicable', 'safety_impact', 'purdue_levels',\n   'package_ecosystems', 'supply_chain_risk',\n   'uco_observable_types', 'investigation_priority',\n   'threat_actor_associations', 'weaponization_timeline'] AS expected_indexed_props\nWITH cve_indexes,\n  [prop IN expected_indexed_props\n   WHERE NOT ANY(idx IN cve_indexes WHERE prop IN idx.properties)] AS missing_indexes,\n  [idx IN cve_indexes WHERE idx.state <> 'ONLINE'] AS offline_indexes\nRETURN\n  size(cve_indexes) AS total_cve_indexes,\n  missing_indexes,\n  offline_indexes,\n  CASE\n    WHEN size(missing_indexes) = 0 AND size(offline_indexes) = 0 THEN 'PASS'\n    WHEN size(offline_indexes) > 0 THEN 'FAIL: Offline Indexes'\n    ELSE 'WARN: Missing Indexes'\n  END AS validation_status;\n// Expected: validation_status = 'PAS",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_9",
+    "text": "size(offline_indexes) = 0 THEN 'PASS'\n    WHEN size(offline_indexes) > 0 THEN 'FAIL: Offline Indexes'\n    ELSE 'WARN: Missing Indexes'\n  END AS validation_status;\n// Expected: validation_status = 'PASS'\n\n// ===============================================\n// VALIDATION 1.2.2: Full-Text Index Validation\n// ===============================================\nCALL db.index.fulltext.queryNodes('cveFullTextSearch', 'test') YIELD node\nRETURN 'PASS' AS validation_status\nUNION ALL\nCALL db.index.fulltext.queryNodes('cveEnhancedFullTextSearch', 'test') YIELD node\nRETURN 'PASS' AS validation_status;\n// Expected: Both queries return results without errors\n\n// ===============================================\n// VALIDATION 1.2.3: Composite Index Validation\n// ===============================================\nCALL db.indexes() YIELD name, state, properties\nWHERE size(properties) > 1  // Composite indexes\n  AND state = 'ONLINE'\nWITH collect({name: name, properties: properties}) AS composite_indexes\nRETURN\n  c",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_10",
+    "text": "LL db.indexes() YIELD name, state, properties\nWHERE size(properties) > 1  // Composite indexes\n  AND state = 'ONLINE'\nWITH collect({name: name, properties: properties}) AS composite_indexes\nRETURN\n  composite_indexes,\n  size(composite_indexes) AS count,\n  CASE\n    WHEN size(composite_indexes) >= 3 THEN 'PASS'\n    ELSE 'WARN: Insufficient Composite Indexes'\n  END AS validation_status;\n// Expected: At least 3 composite indexes (severity+date, cvss+date, ics+severity)\n```\n\n**Acceptance Criteria:**\n- \u2705 All core CVE property indexes exist and are ONLINE\n- \u2705 Enhanced property indexes created for new properties\n- \u2705 Full-text search indexes functional\n- \u2705 Composite indexes created for common query patterns\n- \u2705 No index population failures (100% populated)\n\n## 2. Data Integrity Validation Criteria\n\n### 2.1 Node Count Validation\n\n**Objective:** Verify no data loss occurred during enhancement waves.\n\n**Validation Query Suite:**\n\n```cypher\n// ===============================================\n// VALI",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_11",
+    "text": "\n### 2.1 Node Count Validation\n\n**Objective:** Verify no data loss occurred during enhancement waves.\n\n**Validation Query Suite:**\n\n```cypher\n// ===============================================\n// VALIDATION 2.1.1: CVE Node Count Preservation\n// ===============================================\nMATCH (c:CVE)\nWITH count(c) AS current_cve_count\nRETURN\n  current_cve_count,\n  147923 AS expected_cve_count,\n  current_cve_count = 147923 AS count_preserved,\n  CASE\n    WHEN current_cve_count = 147923 THEN 'PASS'\n    WHEN current_cve_count > 147923 THEN 'WARN: Additional CVEs Added'\n    ELSE 'FAIL: CVE DATA LOSS'\n  END AS validation_status;\n// Expected: validation_status = 'PASS', count_preserved = true\n\n// ===============================================\n// VALIDATION 2.1.2: Property Completeness Check\n// ===============================================\nMATCH (c:CVE)\nRETURN\n  count(c) AS total_cves,\n  count(c.id) AS cves_with_id,\n  count(c.description) AS cves_with_description,\n  count(c.cvss_score)",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_12",
+    "text": "\n// ===============================================\nMATCH (c:CVE)\nRETURN\n  count(c) AS total_cves,\n  count(c.id) AS cves_with_id,\n  count(c.description) AS cves_with_description,\n  count(c.cvss_score) AS cves_with_cvss,\n  count(c.severity) AS cves_with_severity,\n  count(c.published_date) AS cves_with_date,\n  // Validate critical properties have high completeness\n  (count(c.id) * 100.0 / count(c)) AS id_completeness_percent,\n  (count(c.cvss_score) * 100.0 / count(c)) AS cvss_completeness_percent,\n  CASE\n    WHEN count(c.id) = count(c) AND count(c.cvss_score) >= 142847 THEN 'PASS'\n    ELSE 'FAIL: Property Completeness Issue'\n  END AS validation_status;\n// Expected: id_completeness_percent = 100.0, cvss_completeness_percent >= 96.6\n\n// ===============================================\n// VALIDATION 2.1.3: Enhanced Property Population\n// ===============================================\n// Wave 1: SAREF property population\nMATCH (c:CVE)\nWHERE c.saref_device_types IS NOT NULL\nWITH count(c) AS c",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_13",
+    "text": "TION 2.1.3: Enhanced Property Population\n// ===============================================\n// Wave 1: SAREF property population\nMATCH (c:CVE)\nWHERE c.saref_device_types IS NOT NULL\nWITH count(c) AS cves_with_saref\nMATCH (c:CVE)\nWITH cves_with_saref, count(c) AS total_cves\nRETURN\n  cves_with_saref,\n  total_cves,\n  (cves_with_saref * 100.0 / total_cves) AS saref_population_percent,\n  CASE\n    WHEN cves_with_saref > 0 THEN 'PASS: SAREF Enhancement Applied'\n    ELSE 'FAIL: No SAREF Enhancement'\n  END AS validation_status;\n// Expected: saref_population_percent > 0.0 (at least some CVEs enhanced)\n\n// Wave 2: ICS property population\nMATCH (c:CVE)\nWHERE c.ics_applicable = true\nWITH count(c) AS ics_applicable_cves\nMATCH (c:CVE)\nWITH ics_applicable_cves, count(c) AS total_cves\nRETURN\n  ics_applicable_cves,\n  total_cves,\n  (ics_applicable_cves * 100.0 / total_cves) AS ics_population_percent,\n  CASE\n    WHEN ics_applicable_cves > 0 THEN 'PASS: ICS Enhancement Applied'\n    ELSE 'FAIL: No ICS Enhan",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_14",
+    "text": "le_cves,\n  total_cves,\n  (ics_applicable_cves * 100.0 / total_cves) AS ics_population_percent,\n  CASE\n    WHEN ics_applicable_cves > 0 THEN 'PASS: ICS Enhancement Applied'\n    ELSE 'FAIL: No ICS Enhancement'\n  END AS validation_status;\n// Expected: ics_population_percent > 0.0\n\n// Wave 3: SBOM property population\nMATCH (c:CVE)\nWHERE c.sbom_component_count > 0\nWITH count(c) AS cves_with_sbom\nMATCH (c:CVE)\nWITH cves_with_sbom, count(c) AS total_cves\nRETURN\n  cves_with_sbom,\n  total_cves,\n  (cves_with_sbom * 100.0 / total_cves) AS sbom_population_percent,\n  CASE\n    WHEN cves_with_sbom > 0 THEN 'PASS: SBOM Enhancement Applied'\n    ELSE 'FAIL: No SBOM Enhancement'\n  END AS validation_status;\n// Expected: sbom_population_percent > 0.0\n```\n\n**Acceptance Criteria:**\n- \u2705 **CRITICAL**: CVE node count = 147,923 (zero tolerance for loss)\n- \u2705 Core property completeness matches baseline (id: 100%, cvss_score: \u226596.6%)\n- \u2705 Enhanced properties populated for applicable CVEs (>0% for each wave)\n- \u2705 No p",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_15",
+    "text": "nt = 147,923 (zero tolerance for loss)\n- \u2705 Core property completeness matches baseline (id: 100%, cvss_score: \u226596.6%)\n- \u2705 Enhanced properties populated for applicable CVEs (>0% for each wave)\n- \u2705 No property values overwritten to NULL\n- \u2705 Property data types correct (Float for scores, DateTime for dates, etc.)\n\n### 2.2 Relationship Integrity Validation\n\n**Objective:** Verify existing relationships preserved and new relationships created correctly.\n\n**Validation Query Suite:**\n\n```cypher\n// ===============================================\n// VALIDATION 2.2.1: Existing Relationship Preservation\n// ===============================================\nMATCH (c:CVE)-[r]->()\nWHERE type(r) IN [\n  'HAS_WEAKNESS', 'AFFECTS', 'IMPACTS_VENDOR', 'EXPLOITED_BY',\n  'ENABLES_TECHNIQUE', 'MITIGATED_BY', 'EXPLOITED_BY_ACTOR',\n  'USED_IN_CAMPAIGN', 'RELATED_TO', 'FIXED_BY'\n]\nRETURN\n  type(r) AS relationship_type,\n  count(r) AS current_count,\n  // Expected baseline counts\n  CASE type(r)\n    WHEN 'HAS_WEAKNESS'",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_16",
+    "text": "TED_BY_ACTOR',\n  'USED_IN_CAMPAIGN', 'RELATED_TO', 'FIXED_BY'\n]\nRETURN\n  type(r) AS relationship_type,\n  count(r) AS current_count,\n  // Expected baseline counts\n  CASE type(r)\n    WHEN 'HAS_WEAKNESS' THEN 128456\n    WHEN 'AFFECTS' THEN 843291\n    WHEN 'IMPACTS_VENDOR' THEN 287634\n    WHEN 'EXPLOITED_BY' THEN 64219\n    WHEN 'ENABLES_TECHNIQUE' THEN 89347\n    WHEN 'MITIGATED_BY' THEN 112568\n    WHEN 'EXPLOITED_BY_ACTOR' THEN 12847\n    WHEN 'USED_IN_CAMPAIGN' THEN 8456\n    WHEN 'RELATED_TO' THEN 45782\n    WHEN 'FIXED_BY' THEN 98234\n  END AS expected_baseline,\n  CASE\n    WHEN count(r) >= CASE type(r)\n      WHEN 'HAS_WEAKNESS' THEN 128456\n      WHEN 'AFFECTS' THEN 843291\n      WHEN 'IMPACTS_VENDOR' THEN 287634\n      WHEN 'EXPLOITED_BY' THEN 64219\n      WHEN 'ENABLES_TECHNIQUE' THEN 89347\n      WHEN 'MITIGATED_BY' THEN 112568\n      WHEN 'EXPLOITED_BY_ACTOR' THEN 12847\n      WHEN 'USED_IN_CAMPAIGN' THEN 8456\n      WHEN 'RELATED_TO' THEN 45782\n      WHEN 'FIXED_BY' THEN 98234\n    END THEN 'PA",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_17",
+    "text": " WHEN 'MITIGATED_BY' THEN 112568\n      WHEN 'EXPLOITED_BY_ACTOR' THEN 12847\n      WHEN 'USED_IN_CAMPAIGN' THEN 8456\n      WHEN 'RELATED_TO' THEN 45782\n      WHEN 'FIXED_BY' THEN 98234\n    END THEN 'PASS'\n    ELSE 'FAIL: Relationship Loss'\n  END AS validation_status\nORDER BY relationship_type;\n// Expected: All validation_status = 'PASS' (current_count >= expected_baseline)\n\n// ===============================================\n// VALIDATION 2.2.2: New Relationship Creation\n// ===============================================\n// Wave 1: SAREF relationships\nMATCH (c:CVE)-[r:AFFECTS_SAREF_DEVICE]->()\nWITH 'AFFECTS_SAREF_DEVICE' AS rel_type, count(r) AS count\nRETURN rel_type, count,\n  CASE WHEN count > 0 THEN 'PASS' ELSE 'FAIL' END AS status\nUNION ALL\nMATCH (c:CVE)-[r:IMPACTS_SAREF_FUNCTION]->()\nWITH 'IMPACTS_SAREF_FUNCTION' AS rel_type, count(r) AS count\nRETURN rel_type, count,\n  CASE WHEN count > 0 THEN 'PASS' ELSE 'FAIL' END AS status\nUNION ALL\nMATCH (c:CVE)-[r:CORRUPTS_MEASUREMENT]->()\nWITH ",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_18",
+    "text": "H 'IMPACTS_SAREF_FUNCTION' AS rel_type, count(r) AS count\nRETURN rel_type, count,\n  CASE WHEN count > 0 THEN 'PASS' ELSE 'FAIL' END AS status\nUNION ALL\nMATCH (c:CVE)-[r:CORRUPTS_MEASUREMENT]->()\nWITH 'CORRUPTS_MEASUREMENT' AS rel_type, count(r) AS count\nRETURN rel_type, count,\n  CASE WHEN count > 0 THEN 'PASS' ELSE 'FAIL' END AS status\n\nUNION ALL\n// Wave 2: ICS relationships\nMATCH (c:CVE)-[r:AFFECTS_ICS_COMPONENT]->()\nWITH 'AFFECTS_ICS_COMPONENT' AS rel_type, count(r) AS count\nRETURN rel_type, count,\n  CASE WHEN count > 0 THEN 'PASS' ELSE 'FAIL' END AS status\nUNION ALL\nMATCH (c:CVE)-[r:EXPLOITS_PROTOCOL]->()\nWITH 'EXPLOITS_PROTOCOL' AS rel_type, count(r) AS count\nRETURN rel_type, count,\n  CASE WHEN count > 0 THEN 'PASS' ELSE 'FAIL' END AS status\n\nUNION ALL\n// Wave 3: SBOM relationships\nMATCH (c:CVE)-[r:AFFECTS_SBOM_COMPONENT]->()\nWITH 'AFFECTS_SBOM_COMPONENT' AS rel_type, count(r) AS count\nRETURN rel_type, count,\n  CASE WHEN count > 0 THEN 'PASS' ELSE 'FAIL' END AS status\nUNION ALL\nMAT",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_19",
+    "text": "CH (c:CVE)-[r:AFFECTS_SBOM_COMPONENT]->()\nWITH 'AFFECTS_SBOM_COMPONENT' AS rel_type, count(r) AS count\nRETURN rel_type, count,\n  CASE WHEN count > 0 THEN 'PASS' ELSE 'FAIL' END AS status\nUNION ALL\nMATCH (c:CVE)-[r:PROPAGATES_THROUGH]->()\nWITH 'PROPAGATES_THROUGH' AS rel_type, count(r) AS count\nRETURN rel_type, count,\n  CASE WHEN count > 0 THEN 'PASS' ELSE 'FAIL' END AS status\n\nUNION ALL\n// Wave 4: UCO relationships\nMATCH (c:CVE)-[r:CREATES_OBSERVABLE]->()\nWITH 'CREATES_OBSERVABLE' AS rel_type, count(r) AS count\nRETURN rel_type, count,\n  CASE WHEN count > 0 THEN 'PASS' ELSE 'FAIL' END AS status\nUNION ALL\nMATCH (c:CVE)-[r:TRIGGERS_ACTION]->()\nWITH 'TRIGGERS_ACTION' AS rel_type, count(r) AS count\nRETURN rel_type, count,\n  CASE WHEN count > 0 THEN 'PASS' ELSE 'FAIL' END AS status\n\nUNION ALL\n// Wave 5: Threat Intelligence relationships\nMATCH (c:CVE)-[r:HAS_STIX_INDICATOR]->()\nWITH 'HAS_STIX_INDICATOR' AS rel_type, count(r) AS count\nRETURN rel_type, count,\n  CASE WHEN count > 0 THEN 'PASS' E",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_20",
+    "text": " Wave 5: Threat Intelligence relationships\nMATCH (c:CVE)-[r:HAS_STIX_INDICATOR]->()\nWITH 'HAS_STIX_INDICATOR' AS rel_type, count(r) AS count\nRETURN rel_type, count,\n  CASE WHEN count > 0 THEN 'PASS' ELSE 'FAIL' END AS status;\n// Expected: All status = 'PASS' (count > 0)\n\n// ===============================================\n// VALIDATION 2.2.3: Relationship Property Validation\n// ===============================================\n// Validate SAREF relationship properties\nMATCH (c:CVE)-[r:AFFECTS_SAREF_DEVICE]->()\nWITH r LIMIT 100\nRETURN\n  count(r.device_category) AS has_device_category,\n  count(r.vulnerability_context) AS has_vuln_context,\n  count(r.exposure_level) AS has_exposure_level,\n  count(r.remediation_priority) AS has_priority,\n  count(r.confidence_score) AS has_confidence,\n  CASE\n    WHEN count(r.device_category) = 100\n      AND count(r.confidence_score) = 100\n    THEN 'PASS'\n    ELSE 'WARN: Incomplete Relationship Properties'\n  END AS validation_status;\n// Expected: All properties ",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_21",
+    "text": "EN count(r.device_category) = 100\n      AND count(r.confidence_score) = 100\n    THEN 'PASS'\n    ELSE 'WARN: Incomplete Relationship Properties'\n  END AS validation_status;\n// Expected: All properties present in relationships\n\n// Validate ICS relationship properties\nMATCH (c:CVE)-[r:AFFECTS_ICS_COMPONENT]->()\nWITH r LIMIT 100\nRETURN\n  count(r.component_type) AS has_component_type,\n  count(r.criticality_level) AS has_criticality,\n  count(r.ics_impact) AS has_impact,\n  count(r.purdue_level) AS has_purdue_level,\n  CASE\n    WHEN count(r.component_type) = 100\n      AND count(r.purdue_level) = 100\n    THEN 'PASS'\n    ELSE 'WARN: Incomplete Relationship Properties'\n  END AS validation_status;\n// Expected: Critical relationship properties populated\n```\n\n**Acceptance Criteria:**\n- \u2705 **CRITICAL**: All existing relationship counts \u2265 baseline (no relationship loss)\n- \u2705 New relationships created for each wave (count > 0)\n- \u2705 Relationship properties populated with valid values\n- \u2705 No orphaned relatio",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_22",
+    "text": "l existing relationship counts \u2265 baseline (no relationship loss)\n- \u2705 New relationships created for each wave (count > 0)\n- \u2705 Relationship properties populated with valid values\n- \u2705 No orphaned relationships (source or target nodes missing)\n- \u2705 Relationship cardinality correct (e.g., CVE can have multiple SAREFDevice targets)\n\n## 3. Semantic Validation Criteria\n\n### 3.1 Domain Logic Validation\n\n**Objective:** Verify relationships and properties make semantic sense.\n\n**Validation Query Suite:**\n\n```cypher\n// ===============================================\n// VALIDATION 3.1.1: SAREF Device Type Consistency\n// ===============================================\n// Validate that CVEs affecting sensors have sensing-related descriptions\nMATCH (c:CVE)-[r:AFFECTS_SAREF_DEVICE]->(saref:SAREFDevice)\nWHERE r.device_category = 'sensor'\n  AND NOT (c.description =~ '(?i).*(sensor|sensing|measurement|detect|monitor).*')\nRETURN\n  c.id AS potentially_incorrect_cve,\n  c.description AS description,\n  r.device",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_23",
+    "text": "E r.device_category = 'sensor'\n  AND NOT (c.description =~ '(?i).*(sensor|sensing|measurement|detect|monitor).*')\nRETURN\n  c.id AS potentially_incorrect_cve,\n  c.description AS description,\n  r.device_category AS claimed_device_category,\n  r.confidence_score AS confidence;\n// Expected: Empty result set (all sensor CVEs mention sensors)\n// If results exist, review confidence scores and descriptions\n\n// ===============================================\n// VALIDATION 3.1.2: ICS Criticality Logic\n// ===============================================\n// Validate that safety_critical ICS vulnerabilities have high CVSS scores\nMATCH (c:CVE)-[r:AFFECTS_ICS_COMPONENT]->()\nWHERE r.criticality_level = 'safety_critical'\n  AND c.cvss_score < 7.0\nRETURN\n  c.id AS low_severity_safety_critical,\n  c.cvss_score AS cvss,\n  r.criticality_level AS criticality,\n  r.ics_impact AS impact;\n// Expected: Empty or very small result set (safety critical should be high severity)\n\n// ======================================",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_24",
+    "text": "S cvss,\n  r.criticality_level AS criticality,\n  r.ics_impact AS impact;\n// Expected: Empty or very small result set (safety critical should be high severity)\n\n// ===============================================\n// VALIDATION 3.1.3: Purdue Model Level Logic\n// ===============================================\n// Validate Purdue levels are in valid range (0-5)\nMATCH (c:CVE)-[r:AFFECTS_ICS_COMPONENT]->()\nWHERE ANY(level IN r.purdue_level WHERE level < 0 OR level > 5)\nRETURN\n  c.id AS invalid_purdue_level_cve,\n  r.purdue_level AS invalid_levels;\n// Expected: Empty result set (all Purdue levels between 0-5)\n\n// ===============================================\n// VALIDATION 3.1.4: SBOM Supply Chain Risk Logic\n// ===============================================\n// Validate high supply chain risk correlates with high component count or severity\nMATCH (c:CVE)\nWHERE c.supply_chain_risk = 'high'\n  AND c.sbom_component_count < 5\n  AND c.cvss_score < 7.0\nRETURN\n  c.id AS questionable_high_risk_cve,\n  c.",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_25",
+    "text": "lates with high component count or severity\nMATCH (c:CVE)\nWHERE c.supply_chain_risk = 'high'\n  AND c.sbom_component_count < 5\n  AND c.cvss_score < 7.0\nRETURN\n  c.id AS questionable_high_risk_cve,\n  c.sbom_component_count AS component_count,\n  c.cvss_score AS severity,\n  c.supply_chain_risk AS risk_level;\n// Expected: Empty or small result set (high risk should have justification)\n\n// ===============================================\n// VALIDATION 3.1.5: UCO Observable Artifact Consistency\n// ===============================================\n// Validate process observables have execution-related CVEs\nMATCH (c:CVE)-[r:CREATES_OBSERVABLE]->(obs:UCOObservable {observable_type: 'process'})\nWHERE NOT (c.description =~ '(?i).*(execution|command|process|inject|run|execute).*')\nRETURN\n  c.id AS potentially_incorrect_process_observable,\n  c.description AS description,\n  obs.observable_type AS observable_type;\n// Expected: Empty or very small result set\n\n// ===========================================",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_26",
+    "text": "ally_incorrect_process_observable,\n  c.description AS description,\n  obs.observable_type AS observable_type;\n// Expected: Empty or very small result set\n\n// ===============================================\n// VALIDATION 3.1.6: Threat Actor Motivation Consistency\n// ===============================================\n// Validate threat actor exploitation motivation matches actor profile\nMATCH (ta:ThreatActor)-[r:EXPLOITED_BY_ACTOR]->(c:CVE)\nWHERE r.exploitation_motivation <> ta.motivation\nRETURN\n  ta.name AS threat_actor,\n  ta.motivation AS actor_motivation,\n  r.exploitation_motivation AS relationship_motivation,\n  c.id AS cve;\n// Expected: Empty result set (motivations should match)\n```\n\n**Acceptance Criteria:**\n- \u2705 SAREF device categorization logically consistent with CVE descriptions\n- \u2705 ICS criticality levels correlate with severity and impact\n- \u2705 Purdue Model levels within valid range (0-5)\n- \u2705 Supply chain risk ratings justified by component count or severity\n- \u2705 UCO observable types m",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_27",
+    "text": "criticality levels correlate with severity and impact\n- \u2705 Purdue Model levels within valid range (0-5)\n- \u2705 Supply chain risk ratings justified by component count or severity\n- \u2705 UCO observable types match exploitation artifacts described in CVE\n- \u2705 Threat actor exploitation motivations consistent with actor profiles\n- \u2705 No semantic contradictions in relationship properties\n\n### 3.2 Cross-Domain Integration Validation\n\n**Objective:** Verify cross-domain relationships are logically correct.\n\n**Validation Query Suite:**\n\n```cypher\n// ===============================================\n// VALIDATION 3.2.1: SAREF \u2192 CVE \u2192 Mitigation Chain Completeness\n// ===============================================\n// Validate critical SAREF device vulnerabilities have mitigations\nMATCH (saref:SAREFDevice)<-[:AFFECTS_SAREF_DEVICE]-(c:CVE)\nWHERE c.severity = 'CRITICAL' AND c.cvss_score >= 9.0\nOPTIONAL MATCH (c)-[:MITIGATED_BY]->(m:Mitigation)\nWITH saref, c, m\nWHERE m IS NULL\nRETURN\n  saref.device_category AS d",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_28",
+    "text": "ECTS_SAREF_DEVICE]-(c:CVE)\nWHERE c.severity = 'CRITICAL' AND c.cvss_score >= 9.0\nOPTIONAL MATCH (c)-[:MITIGATED_BY]->(m:Mitigation)\nWITH saref, c, m\nWHERE m IS NULL\nRETURN\n  saref.device_category AS device,\n  count(c) AS unmitigated_critical_cves,\n  collect(c.id)[0..5] AS sample_cves;\n// Expected: Low count or empty (critical CVEs should have mitigations)\n\n// ===============================================\n// VALIDATION 3.2.2: ICS \u2192 ATT&CK \u2192 CVE Chain Validation\n// ===============================================\n// Validate ICS CVEs enabling ATT&CK techniques actually affect ICS components\nMATCH (c:CVE)-[:ENABLES_ICS_TECHNIQUE]->(tech:ICSAttackTechnique)\nWHERE NOT EXISTS((c)-[:AFFECTS_ICS_COMPONENT]->())\nRETURN\n  c.id AS orphaned_ics_technique_cve,\n  tech.technique_id AS technique;\n// Expected: Empty result set (CVEs with ICS techniques should affect ICS components)\n\n// ===============================================\n// VALIDATION 3.2.3: SBOM \u2192 CVE \u2192 Dependency Propagation\n// =========",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_29",
+    "text": "cted: Empty result set (CVEs with ICS techniques should affect ICS components)\n\n// ===============================================\n// VALIDATION 3.2.3: SBOM \u2192 CVE \u2192 Dependency Propagation\n// ===============================================\n// Validate dependency chains have valid depth and impact assessment\nMATCH (c:CVE)-[r:PROPAGATES_THROUGH]->(chain:DependencyChain)\nWHERE r.chain_depth < 1 OR r.chain_depth IS NULL\nRETURN\n  c.id AS invalid_chain_depth_cve,\n  r.chain_depth AS depth,\n  chain.id AS chain_id;\n// Expected: Empty result set (all chains should have valid depth \u2265 1)\n\n// ===============================================\n// VALIDATION 3.2.4: ThreatActor \u2192 CVE \u2192 UCO Observable Chain\n// ===============================================\n// Validate threat actors exploiting CVEs have observable artifacts\nMATCH (ta:ThreatActor)-[:EXPLOITED_BY_ACTOR]->(c:CVE)\nWHERE c.cvss_score >= 9.0  // Critical CVEs\nOPTIONAL MATCH (c)-[:CREATES_OBSERVABLE]->(obs:UCOObservable)\nWITH ta, c, collect(obs) ",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_30",
+    "text": "able artifacts\nMATCH (ta:ThreatActor)-[:EXPLOITED_BY_ACTOR]->(c:CVE)\nWHERE c.cvss_score >= 9.0  // Critical CVEs\nOPTIONAL MATCH (c)-[:CREATES_OBSERVABLE]->(obs:UCOObservable)\nWITH ta, c, collect(obs) AS observables\nWHERE size(observables) = 0\nRETURN\n  ta.name AS threat_actor,\n  count(c) AS critical_cves_without_observables,\n  collect(c.id)[0..3] AS sample_cves;\n// Expected: Low count (critical exploited CVEs should have forensic artifacts)\n\n// ===============================================\n// VALIDATION 3.2.5: Multi-Domain CVE Coverage\n// ===============================================\n// Validate high-severity CVEs are enhanced across multiple domains\nMATCH (c:CVE)\nWHERE c.severity = 'CRITICAL' AND c.cvss_score >= 9.0\nOPTIONAL MATCH (c)-[:AFFECTS_SAREF_DEVICE]->(saref)\nOPTIONAL MATCH (c)-[:AFFECTS_ICS_COMPONENT]->(ics)\nOPTIONAL MATCH (c)-[:AFFECTS_SBOM_COMPONENT]->(sbom)\nOPTIONAL MATCH (c)-[:CREATES_OBSERVABLE]->(uco)\nWITH c,\n  (saref IS NOT NULL) AS has_saref,\n  (ics IS NOT NULL) AS",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_31",
+    "text": "-[:AFFECTS_ICS_COMPONENT]->(ics)\nOPTIONAL MATCH (c)-[:AFFECTS_SBOM_COMPONENT]->(sbom)\nOPTIONAL MATCH (c)-[:CREATES_OBSERVABLE]->(uco)\nWITH c,\n  (saref IS NOT NULL) AS has_saref,\n  (ics IS NOT NULL) AS has_ics,\n  (sbom IS NOT NULL) AS has_sbom,\n  (uco IS NOT NULL) AS has_uco\nWITH c, has_saref, has_ics, has_sbom, has_uco,\n  size([x IN [has_saref, has_ics, has_sbom, has_uco] WHERE x = true]) AS domain_coverage\nWHERE domain_coverage = 0\nRETURN\n  c.id AS unenhanced_critical_cve,\n  c.description AS description,\n  domain_coverage;\n// Expected: Empty or small result set (critical CVEs should have some enhancement)\n```\n\n**Acceptance Criteria:**\n- \u2705 Critical SAREF device vulnerabilities have mitigation paths\n- \u2705 CVEs enabling ICS ATT&CK techniques actually affect ICS components\n- \u2705 SBOM dependency chains have valid depth and impact assessments\n- \u2705 High-severity exploited CVEs have UCO forensic observables\n- \u2705 Critical CVEs enhanced across at least one domain (SAREF, ICS, SBOM, or UCO)\n- \u2705 No orp",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_32",
+    "text": "hains have valid depth and impact assessments\n- \u2705 High-severity exploited CVEs have UCO forensic observables\n- \u2705 Critical CVEs enhanced across at least one domain (SAREF, ICS, SBOM, or UCO)\n- \u2705 No orphaned cross-domain relationships\n\n## 4. Performance Validation Criteria\n\n### 4.1 Query Performance Validation\n\n**Objective:** Ensure query performance meets or exceeds baseline after enhancement.\n\n**Validation Query Suite:**\n\n```cypher\n// ===============================================\n// VALIDATION 4.1.1: CVE Lookup Performance (Baseline: <5ms)\n// ===============================================\nPROFILE\nMATCH (c:CVE {id: 'CVE-2023-12345'})\nRETURN c;\n// Expected: Execution time < 10ms (allowing 2x baseline tolerance)\n\n// ===============================================\n// VALIDATION 4.1.2: Severity Filter Performance (Baseline: <50ms)\n// ===============================================\nPROFILE\nMATCH (c:CVE)\nWHERE c.severity = 'CRITICAL'\n  AND c.published_date >= date('2023-01-01')\nRETURN c\nOR",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_33",
+    "text": "ity Filter Performance (Baseline: <50ms)\n// ===============================================\nPROFILE\nMATCH (c:CVE)\nWHERE c.severity = 'CRITICAL'\n  AND c.published_date >= date('2023-01-01')\nRETURN c\nORDER BY c.cvss_score DESC\nLIMIT 100;\n// Expected: Execution time < 100ms\n\n// ===============================================\n// VALIDATION 4.1.3: Multi-hop Relationship Performance (Baseline: <200ms)\n// ===============================================\nPROFILE\nMATCH path = (c:CVE {id: 'CVE-2023-12345'})-[*1..2]-(related)\nRETURN path\nLIMIT 50;\n// Expected: Execution time < 400ms\n\n// ===============================================\n// VALIDATION 4.1.4: Full-Text Search Performance (Baseline: <100ms)\n// ===============================================\nPROFILE\nCALL db.index.fulltext.queryNodes(\n  'cveFullTextSearch',\n  'sql injection'\n) YIELD node, score\nRETURN node, score\nORDER BY score DESC\nLIMIT 20;\n// Expected: Execution time < 200ms\n\n// ===============================================\n// VALIDA",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_34",
+    "text": "ullTextSearch',\n  'sql injection'\n) YIELD node, score\nRETURN node, score\nORDER BY score DESC\nLIMIT 20;\n// Expected: Execution time < 200ms\n\n// ===============================================\n// VALIDATION 4.1.5: Complex Analytics Performance (Baseline: <500ms)\n// ===============================================\nPROFILE\nMATCH (c:CVE)\nWHERE c.published_date >= date('2023-01-01')\n  AND c.published_date < date('2024-01-01')\nRETURN\n  c.severity AS severity,\n  count(c) AS count,\n  avg(c.cvss_score) AS avg_cvss,\n  collect(c.id)[0..5] AS sample_cves\nORDER BY severity;\n// Expected: Execution time < 1000ms\n\n// ===============================================\n// VALIDATION 4.1.6: Enhanced Cross-Domain Query Performance\n// ===============================================\nPROFILE\nMATCH (c:CVE)-[:AFFECTS_SAREF_DEVICE]->(saref:SAREFDevice)\nMATCH (c)-[:AFFECTS_ICS_COMPONENT]->(ics:ICSComponent)\nWHERE c.cvss_score >= 9.0\nRETURN\n  c.id AS cve,\n  saref.device_category AS iot_device,\n  ics.component_type AS ",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_35",
+    "text": "AREF_DEVICE]->(saref:SAREFDevice)\nMATCH (c)-[:AFFECTS_ICS_COMPONENT]->(ics:ICSComponent)\nWHERE c.cvss_score >= 9.0\nRETURN\n  c.id AS cve,\n  saref.device_category AS iot_device,\n  ics.component_type AS ics_component,\n  c.cvss_score AS severity\nLIMIT 50;\n// Expected: Execution time < 500ms\n\n// ===============================================\n// VALIDATION 4.1.7: Threat Actor Exploitation Chain Performance\n// ===============================================\nPROFILE\nMATCH (ta:ThreatActor)-[:EXPLOITED_BY_ACTOR]->(c:CVE)-[:CREATES_OBSERVABLE]->(obs:UCOObservable)\nWHERE ta.name = 'APT28'\nRETURN\n  ta.name AS actor,\n  collect(DISTINCT c.id) AS exploited_cves,\n  collect(DISTINCT obs.observable_type) AS observables\nLIMIT 100;\n// Expected: Execution time < 300ms\n```\n\n**Performance Measurement Script:**\n\n```bash\n#!/bin/bash\n# File: /home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/scripts/measure_query_performance.sh\n\necho \"=== Query Performance Validation ===\"\necho \"Measuring ",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_36",
+    "text": "```bash\n#!/bin/bash\n# File: /home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/scripts/measure_query_performance.sh\n\necho \"=== Query Performance Validation ===\"\necho \"Measuring query execution times...\"\n\n# Function to measure query time\nmeasure_query() {\n  local query_name=$1\n  local query=$2\n  local baseline_ms=$3\n\n  echo \"Testing: $query_name\"\n  start_time=$(date +%s%3N)\n\n  cypher-shell -u neo4j -p password \"$query\" > /dev/null 2>&1\n\n  end_time=$(date +%s%3N)\n  execution_time=$((end_time - start_time))\n\n  if [ \"$execution_time\" -le \"$((baseline_ms * 2))\" ]; then\n    echo \"\u2713 PASS: ${execution_time}ms (baseline: ${baseline_ms}ms, tolerance: $((baseline_ms * 2))ms)\"\n  else\n    echo \"\u2717 FAIL: ${execution_time}ms exceeds tolerance\"\n  fi\n}\n\n# Test queries\nmeasure_query \"CVE Lookup\" \"MATCH (c:CVE {id: 'CVE-2023-12345'}) RETURN c;\" 5\nmeasure_query \"Severity Filter\" \"MATCH (c:CVE) WHERE c.severity = 'CRITICAL' RETURN c LIMIT 100;\" 50\nmeasure_query \"Full-Text Search\" \"CAL",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_37",
+    "text": "VE Lookup\" \"MATCH (c:CVE {id: 'CVE-2023-12345'}) RETURN c;\" 5\nmeasure_query \"Severity Filter\" \"MATCH (c:CVE) WHERE c.severity = 'CRITICAL' RETURN c LIMIT 100;\" 50\nmeasure_query \"Full-Text Search\" \"CALL db.index.fulltext.queryNodes('cveFullTextSearch', 'sql injection') YIELD node RETURN node LIMIT 20;\" 100\n\necho \"=== Performance Validation Complete ===\"\n```\n\n**Acceptance Criteria:**\n- \u2705 Simple CVE lookup < 10ms (2x baseline tolerance)\n- \u2705 Severity filtering < 100ms\n- \u2705 Multi-hop relationships < 400ms\n- \u2705 Full-text search < 200ms\n- \u2705 Complex analytics < 1000ms\n- \u2705 Enhanced cross-domain queries < 500ms\n- \u2705 No query performance regression > 100% (2x slowdown)\n- \u2705 Index hints used appropriately in PROFILE output\n\n### 4.2 Scalability Validation\n\n**Objective:** Verify system handles enhanced data volume efficiently.\n\n**Validation Query Suite:**\n\n```cypher\n// ===============================================\n// VALIDATION 4.2.1: Total Relationship Count\n// =======================================",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_38",
+    "text": " volume efficiently.\n\n**Validation Query Suite:**\n\n```cypher\n// ===============================================\n// VALIDATION 4.2.1: Total Relationship Count\n// ===============================================\nMATCH ()-[r]->()\nWITH count(r) AS total_rels\nRETURN\n  total_rels,\n  total_rels / 1000000.0 AS total_rels_millions,\n  CASE\n    WHEN total_rels > 0 AND total_rels < 10000000 THEN 'PASS: Manageable Scale'\n    WHEN total_rels >= 10000000 THEN 'WARN: Large Scale (Monitor Performance)'\n    ELSE 'FAIL: Zero Relationships'\n  END AS validation_status;\n// Expected: total_rels > 1,670,834 (baseline), validation_status = 'PASS'\n\n// ===============================================\n// VALIDATION 4.2.2: Average Relationship Degree\n// ===============================================\nMATCH (c:CVE)\nOPTIONAL MATCH (c)-[r]->()\nWITH c, count(r) AS degree\nRETURN\n  min(degree) AS min_degree,\n  max(degree) AS max_degree,\n  avg(degree) AS avg_degree,\n  percentileCont(degree, 0.95) AS p95_degree,\n  CASE\n    ",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_39",
+    "text": "NAL MATCH (c)-[r]->()\nWITH c, count(r) AS degree\nRETURN\n  min(degree) AS min_degree,\n  max(degree) AS max_degree,\n  avg(degree) AS avg_degree,\n  percentileCont(degree, 0.95) AS p95_degree,\n  CASE\n    WHEN avg(degree) > 0 AND avg(degree) < 100 THEN 'PASS: Healthy Connectivity'\n    ELSE 'WARN: Review Connectivity'\n  END AS validation_status;\n// Expected: avg_degree between 5-50, p95_degree < 100\n\n// ===============================================\n// VALIDATION 4.2.3: Memory Usage Estimate\n// ===============================================\nCALL apoc.meta.stats() YIELD nodeCount, relCount, labelCount, relTypeCount, propertyKeyCount\nRETURN\n  nodeCount,\n  relCount,\n  labelCount,\n  relTypeCount,\n  propertyKeyCount,\n  (nodeCount * 500 + relCount * 200) / 1024 / 1024 AS estimated_heap_mb,\n  CASE\n    WHEN (nodeCount * 500 + relCount * 200) / 1024 / 1024 < 16000 THEN 'PASS: Manageable Memory'\n    ELSE 'WARN: High Memory Usage'\n  END AS validation_status;\n// Expected: estimated_heap_mb < 16,000 MB",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_40",
+    "text": "  WHEN (nodeCount * 500 + relCount * 200) / 1024 / 1024 < 16000 THEN 'PASS: Manageable Memory'\n    ELSE 'WARN: High Memory Usage'\n  END AS validation_status;\n// Expected: estimated_heap_mb < 16,000 MB (16GB) for production systems\n```\n\n**Acceptance Criteria:**\n- \u2705 Total relationships > baseline (1.67M) and < 10M for manageable scale\n- \u2705 Average CVE relationship degree between 5-50 (healthy connectivity)\n- \u2705 95th percentile relationship degree < 100 (no super-nodes)\n- \u2705 Estimated heap memory < 16GB for production deployment\n- \u2705 Query response times linear with data growth (not exponential)\n\n## 5. Wave-Specific Validation\n\n### 5.1 Wave 1: SAREF IoT Integration Validation\n\n```cypher\n// Wave 1 Validation Suite\nMATCH (c:CVE)-[:AFFECTS_SAREF_DEVICE]->(saref:SAREFDevice)\nWITH count(DISTINCT c) AS saref_cves,\n     count(DISTINCT saref) AS saref_devices\nMATCH (c:CVE)-[:IMPACTS_SAREF_FUNCTION]->()\nWITH saref_cves, saref_devices, count(DISTINCT c) AS function_impact_cves\nMATCH (c:CVE)-[:CORRUPTS_",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 40,
+      "start_char": 32000,
+      "end_char": 33000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_41",
+    "text": " saref_cves,\n     count(DISTINCT saref) AS saref_devices\nMATCH (c:CVE)-[:IMPACTS_SAREF_FUNCTION]->()\nWITH saref_cves, saref_devices, count(DISTINCT c) AS function_impact_cves\nMATCH (c:CVE)-[:CORRUPTS_MEASUREMENT]->()\nWITH saref_cves, saref_devices, function_impact_cves, count(DISTINCT c) AS measurement_cves\nRETURN\n  saref_cves,\n  saref_devices,\n  function_impact_cves,\n  measurement_cves,\n  CASE\n    WHEN saref_cves > 0 AND saref_devices >= 3 THEN 'PASS: Wave 1 Complete'\n    ELSE 'FAIL: Wave 1 Incomplete'\n  END AS validation_status;\n// Expected: saref_cves > 0, saref_devices >= 3 (sensor, actuator, appliance)\n```\n\n### 5.2 Wave 2: ICS/OT Integration Validation\n\n```cypher\n// Wave 2 Validation Suite\nMATCH (c:CVE)-[:AFFECTS_ICS_COMPONENT]->(ics:ICSComponent)\nWITH count(DISTINCT c) AS ics_cves,\n     count(DISTINCT ics) AS ics_components\nMATCH (c:CVE)-[:EXPLOITS_PROTOCOL]->()\nWITH ics_cves, ics_components, count(DISTINCT c) AS protocol_cves\nMATCH (c:CVE)\nWHERE c.ics_applicable = true\nWITH ics_",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 41,
+      "start_char": 32800,
+      "end_char": 33800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_42",
+    "text": "    count(DISTINCT ics) AS ics_components\nMATCH (c:CVE)-[:EXPLOITS_PROTOCOL]->()\nWITH ics_cves, ics_components, count(DISTINCT c) AS protocol_cves\nMATCH (c:CVE)\nWHERE c.ics_applicable = true\nWITH ics_cves, ics_components, protocol_cves, count(c) AS ics_applicable_cves\nRETURN\n  ics_cves,\n  ics_components,\n  protocol_cves,\n  ics_applicable_cves,\n  CASE\n    WHEN ics_cves > 0 AND ics_components >= 5 THEN 'PASS: Wave 2 Complete'\n    ELSE 'FAIL: Wave 2 Incomplete'\n  END AS validation_status;\n// Expected: ics_cves > 0, ics_components >= 5 (PLC, HMI, SCADA, DCS, RTU)\n```\n\n### 5.3 Wave 3: SBOM Integration Validation\n\n```cypher\n// Wave 3 Validation Suite\nMATCH (c:CVE)-[:AFFECTS_SBOM_COMPONENT]->(sbom:SBOMComponent)\nWITH count(DISTINCT c) AS sbom_cves,\n     count(DISTINCT sbom) AS sbom_components\nMATCH (c:CVE)-[:PROPAGATES_THROUGH]->()\nWITH sbom_cves, sbom_components, count(DISTINCT c) AS chain_cves\nMATCH (c:CVE)\nWHERE c.sbom_component_count > 0\nWITH sbom_cves, sbom_components, chain_cves, count(",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 42,
+      "start_char": 33600,
+      "end_char": 34600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_43",
+    "text": "CH (c:CVE)-[:PROPAGATES_THROUGH]->()\nWITH sbom_cves, sbom_components, count(DISTINCT c) AS chain_cves\nMATCH (c:CVE)\nWHERE c.sbom_component_count > 0\nWITH sbom_cves, sbom_components, chain_cves, count(c) AS tracked_cves\nRETURN\n  sbom_cves,\n  sbom_components,\n  chain_cves,\n  tracked_cves,\n  CASE\n    WHEN sbom_cves > 0 AND sbom_components > 0 THEN 'PASS: Wave 3 Complete'\n    ELSE 'FAIL: Wave 3 Incomplete'\n  END AS validation_status;\n// Expected: sbom_cves > 0, sbom_components > 0\n```\n\n### 5.4 Wave 4: UCO Integration Validation\n\n```cypher\n// Wave 4 Validation Suite\nMATCH (c:CVE)-[:CREATES_OBSERVABLE]->(obs:UCOObservable)\nWITH count(DISTINCT c) AS observable_cves,\n     count(DISTINCT obs) AS observable_types\nMATCH (c:CVE)-[:TRIGGERS_ACTION]->()\nWITH observable_cves, observable_types, count(DISTINCT c) AS action_cves\nMATCH (c:CVE)\nWHERE c.uco_observable_types IS NOT NULL\nWITH observable_cves, observable_types, action_cves, count(c) AS tracked_cves\nRETURN\n  observable_cves,\n  observable_types",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 43,
+      "start_char": 34400,
+      "end_char": 35400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_44",
+    "text": "INCT c) AS action_cves\nMATCH (c:CVE)\nWHERE c.uco_observable_types IS NOT NULL\nWITH observable_cves, observable_types, action_cves, count(c) AS tracked_cves\nRETURN\n  observable_cves,\n  observable_types,\n  action_cves,\n  tracked_cves,\n  CASE\n    WHEN observable_cves > 0 AND observable_types >= 4 THEN 'PASS: Wave 4 Complete'\n    ELSE 'FAIL: Wave 4 Incomplete'\n  END AS validation_status;\n// Expected: observable_cves > 0, observable_types >= 4 (file, process, network, registry)\n```\n\n### 5.5 Wave 5: Threat Intelligence Integration Validation\n\n```cypher\n// Wave 5 Validation Suite\nMATCH (c:CVE)-[:HAS_STIX_INDICATOR]->()\nWITH count(DISTINCT c) AS stix_cves\nMATCH (ta:ThreatActor)\nWHERE ta.psychometric_profile IS NOT NULL\nWITH stix_cves, count(ta) AS profiled_actors\nMATCH (ta:ThreatActor)-[:TARGETS_ICS_COMPONENT]->()\nWITH stix_cves, profiled_actors, count(DISTINCT ta) AS ics_targeting_actors\nRETURN\n  stix_cves,\n  profiled_actors,\n  ics_targeting_actors,\n  CASE\n    WHEN stix_cves > 0 AND profiled_",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 44,
+      "start_char": 35200,
+      "end_char": 36200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_45",
+    "text": "CS_COMPONENT]->()\nWITH stix_cves, profiled_actors, count(DISTINCT ta) AS ics_targeting_actors\nRETURN\n  stix_cves,\n  profiled_actors,\n  ics_targeting_actors,\n  CASE\n    WHEN stix_cves > 0 AND profiled_actors > 0 THEN 'PASS: Wave 5 Complete'\n    ELSE 'FAIL: Wave 5 Incomplete'\n  END AS validation_status;\n// Expected: stix_cves > 0, profiled_actors > 0\n```\n\n## 6. Final Acceptance Criteria\n\n### 6.1 Go/No-Go Decision Criteria\n\n**CRITICAL (Must Pass All):**\n- \u2705 CVE node count = 147,923 (zero data loss)\n- \u2705 All existing relationship types preserved with counts \u2265 baseline\n- \u2705 All core CVE properties intact (id, description, cvss_score, etc.)\n- \u2705 All required indexes created and ONLINE\n- \u2705 No query performance regression > 100% (2x slowdown)\n\n**HIGH PRIORITY (Must Pass \u226580%):**\n- \u2705 Enhanced properties populated for applicable CVEs (>0% per wave)\n- \u2705 New relationships created for each completed wave\n- \u2705 Semantic consistency checks pass (no logical contradictions)\n- \u2705 Cross-domain integration chai",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 45,
+      "start_char": 36000,
+      "end_char": 37000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_46",
+    "text": "es populated for applicable CVEs (>0% per wave)\n- \u2705 New relationships created for each completed wave\n- \u2705 Semantic consistency checks pass (no logical contradictions)\n- \u2705 Cross-domain integration chains complete\n- \u2705 Wave-specific validation criteria met\n\n**MEDIUM PRIORITY (Must Pass \u226560%):**\n- \u2705 Relationship property completeness \u226590%\n- \u2705 Complex query performance within 2x tolerance\n- \u2705 Scalability metrics within acceptable ranges\n- \u2705 Multi-domain CVE coverage for critical vulnerabilities\n\n### 6.2 Validation Report Template\n\n```markdown\n# Schema Enhancement Validation Report\n\n**Date:** [YYYY-MM-DD]\n**Waves Validated:** [1, 2, 3, 4, 5]\n**Overall Status:** [PASS / CONDITIONAL PASS / FAIL]\n\n## 1. Structural Validation\n- Node Labels: [PASS/FAIL]\n- Relationship Types: [PASS/FAIL]\n- Property Schemas: [PASS/FAIL]\n- Index Existence: [PASS/FAIL]\n\n## 2. Data Integrity\n- CVE Node Count: [PASS/FAIL] (147,923 expected)\n- Property Completeness: [PASS/FAIL]\n- Relationship Preservation: [PASS/FAIL]\n-",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 46,
+      "start_char": 36800,
+      "end_char": 37800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_47",
+    "text": "hemas: [PASS/FAIL]\n- Index Existence: [PASS/FAIL]\n\n## 2. Data Integrity\n- CVE Node Count: [PASS/FAIL] (147,923 expected)\n- Property Completeness: [PASS/FAIL]\n- Relationship Preservation: [PASS/FAIL]\n- New Relationships: [PASS/FAIL]\n\n## 3. Semantic Validation\n- Domain Logic: [PASS/FAIL]\n- Cross-Domain Integration: [PASS/FAIL]\n- Attribute Consistency: [PASS/FAIL]\n\n## 4. Performance Validation\n- Query Performance: [PASS/FAIL]\n- Scalability: [PASS/FAIL]\n\n## 5. Wave-Specific Validation\n- Wave 1 (SAREF): [PASS/FAIL]\n- Wave 2 (ICS): [PASS/FAIL]\n- Wave 3 (SBOM): [PASS/FAIL]\n- Wave 4 (UCO): [PASS/FAIL]\n- Wave 5 (Threat Intel): [PASS/FAIL]\n\n## 6. Critical Failures\n[List any critical failures that require immediate remediation]\n\n## 7. Warnings and Recommendations\n[List warnings and improvement recommendations]\n\n## 8. Approval Decision\n**Approved for Production:** [YES / NO / CONDITIONAL]\n**Conditions (if applicable):** [List conditions]\n\n**Validated By:** [Name]\n**Date:** [YYYY-MM-DD]\n```\n\n---\n\n*",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 47,
+      "start_char": 37600,
+      "end_char": 38600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "17_VALIDATION_CRITERIA.md_chunk_48",
+    "text": "endations]\n\n## 8. Approval Decision\n**Approved for Production:** [YES / NO / CONDITIONAL]\n**Conditions (if applicable):** [List conditions]\n\n**Validated By:** [Name]\n**Date:** [YYYY-MM-DD]\n```\n\n---\n\n**Document Version:** v1.0.0\n**Last Updated:** 2025-10-30\n**Next Review:** After Each Wave Completion\n**Owner:** AEON FORGE Implementation Team\n",
+    "metadata": {
+      "file_name": "17_VALIDATION_CRITERIA.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/17_VALIDATION_CRITERIA.md",
+      "file_size": 38743,
+      "indexed_at": "2025-10-31T00:58:27.090430",
+      "chunk_id": 48,
+      "start_char": 38400,
+      "end_char": 39400,
+      "chunk_size": 343
+    }
+  }
+]

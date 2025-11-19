@@ -1,0 +1,76 @@
+# spaCy NLP Configuration
+# For entity extraction and text processing
+
+nlp:
+  # Model selection
+  model: "en_core_web_lg"  # English large model (requires: python -m spacy download en_core_web_lg)
+
+  # Disable unnecessary components for speed
+  disabled_components:
+    - "ner"        # Disable if using custom patterns only
+
+  # Custom entity patterns
+  custom_patterns:
+    CVE: "CVE-\\d{4}-\\d{4,7}"
+    CWE: "CWE-\\d+"
+    CAPEC: "CAPEC-\\d+"
+    CVSS: "CVSS[v]?\\d+\\.\\d"
+    PRODUCT: "[A-Z][a-zA-Z0-9\\s]*\\s(v|version)?\\s?\\d+\\.\\d+"
+
+  # Processing configuration
+  batch_size: 1000        # Documents per batch
+  n_process: 4            # Parallel processes
+
+  # Pipeline configuration
+  pipeline:
+    # Tokenization
+    - name: "tok2vec"
+      enabled: true
+
+    # Named Entity Recognition
+    - name: "ner"
+      enabled: true
+      extend_existing: true
+
+    # Dependency parsing
+    - name: "parser"
+      enabled: true
+
+# Entity extraction settings
+entity_extraction:
+  # Custom label sets
+  labels:
+    VULNERABILITY: "CVE, CWE"
+    ATTACK_PATTERN: "CAPEC"
+    SOFTWARE: "PRODUCT, VENDOR"
+    SEVERITY: "CVSS"
+
+  # Confidence thresholds
+  min_confidence: 0.5
+
+  # Output format
+  output_format: "json"  # json or csv
+
+# Performance tuning
+performance:
+  # Memory management
+  memory_limit_mb: 2048
+
+  # Processing optimization
+  use_gpu: false         # Set to true if CUDA available
+  batch_processing: true
+
+  # Caching
+  cache_models: true
+  cache_dir: "processing/cache/spacy"
+
+# Logging
+logging:
+  level: "INFO"
+  file: "processing/logs/spacy_nlp.log"
+
+# Error handling
+error_handling:
+  skip_errors: true
+  log_failures: true
+  failure_file: "processing/logs/spacy_failures.log"

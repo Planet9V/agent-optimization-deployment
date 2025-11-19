@@ -1,0 +1,2736 @@
+# Subsectors Configuration
+# 388 detailed subsector mappings across 13 critical infrastructure sectors
+
+subsectors:
+  # ============================================================================
+  # ENERGY SECTOR - 50 subsectors
+  # ============================================================================
+
+  - id: energy_power_generation_coal
+    name: Coal Power Generation
+    parent_sector: energy
+    keywords: [coal, thermal, steam turbine, boiler]
+    description: Coal-fired power generation facilities
+
+  - id: energy_power_generation_natural_gas
+    name: Natural Gas Power Generation
+    parent_sector: energy
+    keywords: [natural gas, combined cycle, gas turbine, CCGT]
+    description: Natural gas-fired power generation
+
+  - id: energy_power_generation_nuclear
+    name: Nuclear Power Generation
+    parent_sector: energy
+    keywords: [nuclear, reactor, uranium, fission]
+    description: Nuclear power generation facilities
+
+  - id: energy_power_generation_hydro
+    name: Hydroelectric Power Generation
+    parent_sector: energy
+    keywords: [hydroelectric, dam, turbine, reservoir]
+    description: Hydroelectric power generation
+
+  - id: energy_renewable_solar_pv
+    name: Solar Photovoltaic
+    parent_sector: energy
+    keywords: [solar, photovoltaic, PV, solar farm]
+    description: Solar photovoltaic power generation
+
+  - id: energy_renewable_solar_thermal
+    name: Solar Thermal
+    parent_sector: energy
+    keywords: [solar thermal, concentrated solar, CSP]
+    description: Concentrated solar thermal power
+
+  - id: energy_renewable_wind_onshore
+    name: Onshore Wind
+    parent_sector: energy
+    keywords: [wind, onshore, wind turbine, wind farm]
+    description: Onshore wind power generation
+
+  - id: energy_renewable_wind_offshore
+    name: Offshore Wind
+    parent_sector: energy
+    keywords: [offshore wind, marine wind, floating wind]
+    description: Offshore wind power generation
+
+  - id: energy_renewable_biomass
+    name: Biomass Energy
+    parent_sector: energy
+    keywords: [biomass, biogas, biofuel, organic waste]
+    description: Biomass and biogas power generation
+
+  - id: energy_renewable_geothermal
+    name: Geothermal Energy
+    parent_sector: energy
+    keywords: [geothermal, hot springs, thermal wells]
+    description: Geothermal power generation
+
+  - id: energy_transmission_high_voltage
+    name: High Voltage Transmission
+    parent_sector: energy
+    keywords: [transmission, high voltage, HV, power lines]
+    description: High voltage transmission infrastructure
+
+  - id: energy_transmission_extra_high_voltage
+    name: Extra High Voltage Transmission
+    parent_sector: energy
+    keywords: [EHV, extra high voltage, HVDC]
+    description: Extra high voltage transmission systems
+
+  - id: energy_distribution_primary
+    name: Primary Distribution
+    parent_sector: energy
+    keywords: [primary distribution, medium voltage, MV]
+    description: Primary distribution networks
+
+  - id: energy_distribution_secondary
+    name: Secondary Distribution
+    parent_sector: energy
+    keywords: [secondary distribution, low voltage, LV]
+    description: Secondary distribution networks
+
+  - id: energy_substation_transmission
+    name: Transmission Substations
+    parent_sector: energy
+    keywords: [transmission substation, switching station]
+    description: High voltage transmission substations
+
+  - id: energy_substation_distribution
+    name: Distribution Substations
+    parent_sector: energy
+    keywords: [distribution substation, transformer station]
+    description: Distribution substations
+
+  - id: energy_oil_extraction
+    name: Oil Extraction
+    parent_sector: energy
+    keywords: [oil well, crude oil, drilling, extraction]
+    description: Crude oil extraction operations
+
+  - id: energy_oil_refining
+    name: Oil Refining
+    parent_sector: energy
+    keywords: [refinery, crude processing, distillation]
+    description: Oil refining and processing
+
+  - id: energy_oil_pipeline
+    name: Oil Pipeline Transport
+    parent_sector: energy
+    keywords: [oil pipeline, crude pipeline, petroleum transport]
+    description: Oil pipeline transportation
+
+  - id: energy_gas_extraction
+    name: Natural Gas Extraction
+    parent_sector: energy
+    keywords: [gas well, natural gas, gas field]
+    description: Natural gas extraction
+
+  - id: energy_gas_processing
+    name: Gas Processing
+    parent_sector: energy
+    keywords: [gas processing, LNG, gas treatment]
+    description: Natural gas processing facilities
+
+  - id: energy_gas_pipeline
+    name: Gas Pipeline Transport
+    parent_sector: energy
+    keywords: [gas pipeline, natural gas pipeline]
+    description: Natural gas pipeline transportation
+
+  - id: energy_gas_storage
+    name: Gas Storage
+    parent_sector: energy
+    keywords: [gas storage, underground storage, LNG terminal]
+    description: Natural gas storage facilities
+
+  - id: energy_petroleum_storage
+    name: Petroleum Storage
+    parent_sector: energy
+    keywords: [oil storage, tank farm, petroleum depot]
+    description: Petroleum product storage
+
+  - id: energy_fuel_distribution
+    name: Fuel Distribution
+    parent_sector: energy
+    keywords: [fuel depot, gas station, fuel terminal]
+    description: Fuel distribution infrastructure
+
+  - id: energy_smart_grid
+    name: Smart Grid Systems
+    parent_sector: energy
+    keywords: [smart grid, AMI, smart meter, grid automation]
+    description: Smart grid and metering systems
+
+  - id: energy_scada
+    name: Energy SCADA Systems
+    parent_sector: energy
+    keywords: [SCADA, energy management, grid control]
+    description: SCADA and grid control systems
+
+  - id: energy_battery_storage
+    name: Battery Energy Storage
+    parent_sector: energy
+    keywords: [battery storage, BESS, grid battery]
+    description: Battery energy storage systems
+
+  - id: energy_pumped_hydro_storage
+    name: Pumped Hydro Storage
+    parent_sector: energy
+    keywords: [pumped storage, pumped hydro, energy storage]
+    description: Pumped hydroelectric storage
+
+  - id: energy_compressed_air_storage
+    name: Compressed Air Storage
+    parent_sector: energy
+    keywords: [CAES, compressed air, energy storage]
+    description: Compressed air energy storage
+
+  - id: energy_hydrogen_production
+    name: Hydrogen Production
+    parent_sector: energy
+    keywords: [hydrogen, electrolysis, green hydrogen]
+    description: Hydrogen production facilities
+
+  - id: energy_hydrogen_storage
+    name: Hydrogen Storage
+    parent_sector: energy
+    keywords: [hydrogen storage, H2 storage]
+    description: Hydrogen storage infrastructure
+
+  - id: energy_fuel_cell
+    name: Fuel Cell Systems
+    parent_sector: energy
+    keywords: [fuel cell, hydrogen fuel cell]
+    description: Fuel cell power generation
+
+  - id: energy_microgrid
+    name: Microgrid Systems
+    parent_sector: energy
+    keywords: [microgrid, distributed generation, islanding]
+    description: Microgrid installations
+
+  - id: energy_district_heating
+    name: District Heating
+    parent_sector: energy
+    keywords: [district heating, CHP, cogeneration]
+    description: District heating and cooling
+
+  - id: energy_demand_response
+    name: Demand Response
+    parent_sector: energy
+    keywords: [demand response, load management]
+    description: Demand response systems
+
+  - id: energy_coal_mining
+    name: Coal Mining
+    parent_sector: energy
+    keywords: [coal mine, coal extraction, mining]
+    description: Coal mining operations
+
+  - id: energy_uranium_mining
+    name: Uranium Mining
+    parent_sector: energy
+    keywords: [uranium mine, uranium extraction]
+    description: Uranium mining and processing
+
+  - id: energy_nuclear_fuel_fabrication
+    name: Nuclear Fuel Fabrication
+    parent_sector: energy
+    keywords: [fuel fabrication, nuclear fuel, enrichment]
+    description: Nuclear fuel fabrication facilities
+
+  - id: energy_nuclear_waste
+    name: Nuclear Waste Management
+    parent_sector: energy
+    keywords: [nuclear waste, radioactive waste, disposal]
+    description: Nuclear waste storage and disposal
+
+  - id: energy_carbon_capture
+    name: Carbon Capture
+    parent_sector: energy
+    keywords: [carbon capture, CCS, CCUS]
+    description: Carbon capture and storage
+
+  - id: energy_energy_trading
+    name: Energy Trading Systems
+    parent_sector: energy
+    keywords: [energy market, trading platform, power exchange]
+    description: Energy trading and market systems
+
+  - id: energy_metering
+    name: Energy Metering
+    parent_sector: energy
+    keywords: [metering, energy meter, billing]
+    description: Energy metering infrastructure
+
+  - id: energy_load_balancing
+    name: Load Balancing Systems
+    parent_sector: energy
+    keywords: [load balancing, frequency control, grid stability]
+    description: Grid load balancing systems
+
+  - id: energy_power_quality
+    name: Power Quality Management
+    parent_sector: energy
+    keywords: [power quality, voltage regulation, harmonics]
+    description: Power quality monitoring and control
+
+  - id: energy_grid_interconnection
+    name: Grid Interconnection
+    parent_sector: energy
+    keywords: [interconnection, grid tie, synchronous grid]
+    description: Grid interconnection infrastructure
+
+  - id: energy_reserve_capacity
+    name: Reserve Capacity
+    parent_sector: energy
+    keywords: [spinning reserve, backup power, peaker plant]
+    description: Reserve and peaking capacity
+
+  - id: energy_transmission_planning
+    name: Transmission Planning
+    parent_sector: energy
+    keywords: [transmission planning, grid planning]
+    description: Transmission system planning
+
+  - id: energy_renewable_integration
+    name: Renewable Integration
+    parent_sector: energy
+    keywords: [renewable integration, variable generation]
+    description: Renewable energy integration systems
+
+  - id: energy_electric_vehicle_charging
+    name: EV Charging Infrastructure
+    parent_sector: energy
+    keywords: [EV charging, electric vehicle, charging station]
+    description: Electric vehicle charging infrastructure
+
+  # ============================================================================
+  # WATER SECTOR - 35 subsectors
+  # ============================================================================
+
+  - id: water_drinking_treatment_surface
+    name: Surface Water Treatment
+    parent_sector: water
+    keywords: [water treatment, surface water, purification]
+    description: Surface water treatment facilities
+
+  - id: water_drinking_treatment_groundwater
+    name: Groundwater Treatment
+    parent_sector: water
+    keywords: [groundwater, well, aquifer treatment]
+    description: Groundwater treatment facilities
+
+  - id: water_drinking_treatment_desalination
+    name: Desalination
+    parent_sector: water
+    keywords: [desalination, reverse osmosis, seawater]
+    description: Desalination facilities
+
+  - id: water_drinking_disinfection
+    name: Water Disinfection
+    parent_sector: water
+    keywords: [disinfection, chlorination, UV treatment]
+    description: Water disinfection systems
+
+  - id: water_drinking_filtration
+    name: Water Filtration
+    parent_sector: water
+    keywords: [filtration, membrane, sand filter]
+    description: Water filtration systems
+
+  - id: water_drinking_storage_reservoir
+    name: Water Reservoirs
+    parent_sector: water
+    keywords: [reservoir, water storage, impoundment]
+    description: Drinking water reservoirs
+
+  - id: water_drinking_storage_tank
+    name: Water Storage Tanks
+    parent_sector: water
+    keywords: [water tank, elevated tank, storage tank]
+    description: Drinking water storage tanks
+
+  - id: water_distribution_transmission
+    name: Water Transmission Mains
+    parent_sector: water
+    keywords: [transmission main, water main, pipeline]
+    description: Water transmission pipelines
+
+  - id: water_distribution_network
+    name: Distribution Network
+    parent_sector: water
+    keywords: [distribution, water network, service line]
+    description: Water distribution networks
+
+  - id: water_pump_station
+    name: Water Pump Stations
+    parent_sector: water
+    keywords: [pump station, booster station, pumping]
+    description: Water pumping stations
+
+  - id: water_pressure_management
+    name: Pressure Management
+    parent_sector: water
+    keywords: [pressure zone, PRV, pressure control]
+    description: Water pressure management systems
+
+  - id: water_wastewater_collection
+    name: Wastewater Collection
+    parent_sector: water
+    keywords: [sewer, wastewater collection, sanitary sewer]
+    description: Wastewater collection systems
+
+  - id: water_wastewater_treatment_primary
+    name: Primary Wastewater Treatment
+    parent_sector: water
+    keywords: [primary treatment, screening, sedimentation]
+    description: Primary wastewater treatment
+
+  - id: water_wastewater_treatment_secondary
+    name: Secondary Wastewater Treatment
+    parent_sector: water
+    keywords: [secondary treatment, biological treatment, activated sludge]
+    description: Secondary wastewater treatment
+
+  - id: water_wastewater_treatment_tertiary
+    name: Tertiary Wastewater Treatment
+    parent_sector: water
+    keywords: [tertiary treatment, advanced treatment, nutrient removal]
+    description: Tertiary wastewater treatment
+
+  - id: water_wastewater_disinfection
+    name: Wastewater Disinfection
+    parent_sector: water
+    keywords: [effluent disinfection, wastewater disinfection]
+    description: Wastewater disinfection systems
+
+  - id: water_sludge_treatment
+    name: Sludge Treatment
+    parent_sector: water
+    keywords: [sludge, biosolids, digestion]
+    description: Sludge treatment and processing
+
+  - id: water_sludge_disposal
+    name: Sludge Disposal
+    parent_sector: water
+    keywords: [sludge disposal, biosolids disposal]
+    description: Sludge disposal facilities
+
+  - id: water_stormwater_collection
+    name: Stormwater Collection
+    parent_sector: water
+    keywords: [stormwater, storm drain, drainage]
+    description: Stormwater collection systems
+
+  - id: water_stormwater_treatment
+    name: Stormwater Treatment
+    parent_sector: water
+    keywords: [stormwater treatment, retention, detention]
+    description: Stormwater treatment facilities
+
+  - id: water_combined_sewer
+    name: Combined Sewer Systems
+    parent_sector: water
+    keywords: [combined sewer, CSO, overflow]
+    description: Combined sewer overflow systems
+
+  - id: water_water_reuse
+    name: Water Reuse Systems
+    parent_sector: water
+    keywords: [water reuse, reclaimed water, recycling]
+    description: Water reuse and recycling facilities
+
+  - id: water_industrial_water
+    name: Industrial Water Supply
+    parent_sector: water
+    keywords: [industrial water, process water, cooling water]
+    description: Industrial water supply systems
+
+  - id: water_agricultural_irrigation
+    name: Agricultural Irrigation
+    parent_sector: water
+    keywords: [irrigation, agricultural water, farm water]
+    description: Agricultural irrigation systems
+
+  - id: water_leak_detection
+    name: Leak Detection
+    parent_sector: water
+    keywords: [leak detection, water loss, NRW]
+    description: Water leak detection systems
+
+  - id: water_scada
+    name: Water SCADA Systems
+    parent_sector: water
+    keywords: [water SCADA, monitoring, control]
+    description: Water system SCADA and control
+
+  - id: water_quality_monitoring
+    name: Water Quality Monitoring
+    parent_sector: water
+    keywords: [water quality, monitoring, sensors]
+    description: Water quality monitoring systems
+
+  - id: water_smart_metering
+    name: Smart Water Metering
+    parent_sector: water
+    keywords: [smart meter, AMI, water meter]
+    description: Smart water metering infrastructure
+
+  - id: water_flood_control
+    name: Flood Control
+    parent_sector: water
+    keywords: [flood control, levee, floodgate]
+    description: Flood control infrastructure
+
+  - id: water_dam_management
+    name: Dam Management
+    parent_sector: water
+    keywords: [dam, spillway, reservoir management]
+    description: Dam operation and management
+
+  - id: water_watershed_management
+    name: Watershed Management
+    parent_sector: water
+    keywords: [watershed, catchment, source protection]
+    description: Watershed protection systems
+
+  - id: water_groundwater_management
+    name: Groundwater Management
+    parent_sector: water
+    keywords: [groundwater management, aquifer recharge]
+    description: Groundwater management systems
+
+  - id: water_water_rights
+    name: Water Rights Management
+    parent_sector: water
+    keywords: [water rights, allocation, permits]
+    description: Water rights and allocation systems
+
+  - id: water_emergency_response
+    name: Water Emergency Response
+    parent_sector: water
+    keywords: [emergency, contingency, backup water]
+    description: Water emergency response systems
+
+  - id: water_remote_monitoring
+    name: Remote Water Monitoring
+    parent_sector: water
+    keywords: [remote monitoring, telemetry, RTU]
+    description: Remote water system monitoring
+
+  # ============================================================================
+  # MANUFACTURING SECTOR - 40 subsectors
+  # ============================================================================
+
+  - id: manufacturing_automotive_assembly
+    name: Automotive Assembly
+    parent_sector: manufacturing
+    keywords: [automotive, car assembly, vehicle production]
+    description: Automotive assembly plants
+
+  - id: manufacturing_automotive_parts
+    name: Automotive Parts Manufacturing
+    parent_sector: manufacturing
+    keywords: [auto parts, components, tier supplier]
+    description: Automotive parts and components
+
+  - id: manufacturing_aerospace_aircraft
+    name: Aircraft Manufacturing
+    parent_sector: manufacturing
+    keywords: [aircraft, airplane, aerospace assembly]
+    description: Aircraft manufacturing facilities
+
+  - id: manufacturing_aerospace_components
+    name: Aerospace Components
+    parent_sector: manufacturing
+    keywords: [aerospace components, aircraft parts]
+    description: Aerospace component manufacturing
+
+  - id: manufacturing_electronics_semiconductors
+    name: Semiconductor Manufacturing
+    parent_sector: manufacturing
+    keywords: [semiconductor, chip fab, wafer]
+    description: Semiconductor fabrication facilities
+
+  - id: manufacturing_electronics_pcb
+    name: PCB Manufacturing
+    parent_sector: manufacturing
+    keywords: [PCB, printed circuit board, electronics]
+    description: Printed circuit board manufacturing
+
+  - id: manufacturing_electronics_assembly
+    name: Electronics Assembly
+    parent_sector: manufacturing
+    keywords: [electronics assembly, SMT, component assembly]
+    description: Electronics assembly operations
+
+  - id: manufacturing_electronics_consumer
+    name: Consumer Electronics
+    parent_sector: manufacturing
+    keywords: [consumer electronics, smartphones, tablets]
+    description: Consumer electronics manufacturing
+
+  - id: manufacturing_metals_steel
+    name: Steel Production
+    parent_sector: manufacturing
+    keywords: [steel, blast furnace, steelmaking]
+    description: Steel production facilities
+
+  - id: manufacturing_metals_aluminum
+    name: Aluminum Production
+    parent_sector: manufacturing
+    keywords: [aluminum, smelting, aluminum production]
+    description: Aluminum production facilities
+
+  - id: manufacturing_metals_casting
+    name: Metal Casting
+    parent_sector: manufacturing
+    keywords: [casting, foundry, molding]
+    description: Metal casting and foundry operations
+
+  - id: manufacturing_metals_forging
+    name: Metal Forging
+    parent_sector: manufacturing
+    keywords: [forging, stamping, metal forming]
+    description: Metal forging operations
+
+  - id: manufacturing_metals_machining
+    name: Metal Machining
+    parent_sector: manufacturing
+    keywords: [machining, CNC, metal cutting]
+    description: Metal machining operations
+
+  - id: manufacturing_chemicals_basic
+    name: Basic Chemicals
+    parent_sector: manufacturing
+    keywords: [chemicals, petrochemicals, industrial chemicals]
+    description: Basic chemical manufacturing
+
+  - id: manufacturing_chemicals_specialty
+    name: Specialty Chemicals
+    parent_sector: manufacturing
+    keywords: [specialty chemicals, fine chemicals]
+    description: Specialty chemical production
+
+  - id: manufacturing_chemicals_pharmaceuticals
+    name: Pharmaceutical Manufacturing
+    parent_sector: manufacturing
+    keywords: [pharmaceuticals, drugs, medicine production]
+    description: Pharmaceutical manufacturing facilities
+
+  - id: manufacturing_plastics_resin
+    name: Plastic Resin Production
+    parent_sector: manufacturing
+    keywords: [plastic resin, polymer, polymerization]
+    description: Plastic resin manufacturing
+
+  - id: manufacturing_plastics_molding
+    name: Plastic Molding
+    parent_sector: manufacturing
+    keywords: [injection molding, blow molding, plastic parts]
+    description: Plastic molding operations
+
+  - id: manufacturing_food_processing
+    name: Food Processing
+    parent_sector: manufacturing
+    keywords: [food processing, food production, packaged foods]
+    description: Food processing facilities
+
+  - id: manufacturing_food_beverage
+    name: Beverage Production
+    parent_sector: manufacturing
+    keywords: [beverage, bottling, drinks production]
+    description: Beverage manufacturing facilities
+
+  - id: manufacturing_food_dairy
+    name: Dairy Processing
+    parent_sector: manufacturing
+    keywords: [dairy, milk processing, cheese]
+    description: Dairy processing facilities
+
+  - id: manufacturing_food_meat
+    name: Meat Processing
+    parent_sector: manufacturing
+    keywords: [meat processing, slaughterhouse, meat packing]
+    description: Meat processing facilities
+
+  - id: manufacturing_textiles
+    name: Textile Manufacturing
+    parent_sector: manufacturing
+    keywords: [textiles, fabric, weaving, spinning]
+    description: Textile manufacturing operations
+
+  - id: manufacturing_apparel
+    name: Apparel Manufacturing
+    parent_sector: manufacturing
+    keywords: [apparel, garment, clothing manufacturing]
+    description: Apparel manufacturing facilities
+
+  - id: manufacturing_paper_pulp
+    name: Pulp and Paper Mills
+    parent_sector: manufacturing
+    keywords: [paper mill, pulp, paper production]
+    description: Pulp and paper manufacturing
+
+  - id: manufacturing_wood_products
+    name: Wood Products
+    parent_sector: manufacturing
+    keywords: [lumber, wood products, sawmill]
+    description: Wood product manufacturing
+
+  - id: manufacturing_furniture
+    name: Furniture Manufacturing
+    parent_sector: manufacturing
+    keywords: [furniture, upholstery, furniture assembly]
+    description: Furniture manufacturing facilities
+
+  - id: manufacturing_glass
+    name: Glass Manufacturing
+    parent_sector: manufacturing
+    keywords: [glass, glass production, float glass]
+    description: Glass manufacturing facilities
+
+  - id: manufacturing_cement
+    name: Cement Production
+    parent_sector: manufacturing
+    keywords: [cement, clinker, cement plant]
+    description: Cement manufacturing facilities
+
+  - id: manufacturing_ceramics
+    name: Ceramics Manufacturing
+    parent_sector: manufacturing
+    keywords: [ceramics, pottery, tile production]
+    description: Ceramics manufacturing operations
+
+  - id: manufacturing_rubber
+    name: Rubber Products
+    parent_sector: manufacturing
+    keywords: [rubber, tire, rubber products]
+    description: Rubber product manufacturing
+
+  - id: manufacturing_medical_devices
+    name: Medical Device Manufacturing
+    parent_sector: manufacturing
+    keywords: [medical devices, surgical equipment]
+    description: Medical device manufacturing
+
+  - id: manufacturing_batteries
+    name: Battery Manufacturing
+    parent_sector: manufacturing
+    keywords: [battery, lithium ion, battery production]
+    description: Battery manufacturing facilities
+
+  - id: manufacturing_renewable_equipment
+    name: Renewable Energy Equipment
+    parent_sector: manufacturing
+    keywords: [solar panel, wind turbine, renewable equipment]
+    description: Renewable energy equipment manufacturing
+
+  - id: manufacturing_hvac
+    name: HVAC Equipment
+    parent_sector: manufacturing
+    keywords: [HVAC, air conditioning, heating equipment]
+    description: HVAC equipment manufacturing
+
+  - id: manufacturing_industrial_machinery
+    name: Industrial Machinery
+    parent_sector: manufacturing
+    keywords: [machinery, industrial equipment, machine tools]
+    description: Industrial machinery manufacturing
+
+  - id: manufacturing_robotics
+    name: Robotics Manufacturing
+    parent_sector: manufacturing
+    keywords: [robotics, industrial robots, automation equipment]
+    description: Robotics manufacturing facilities
+
+  - id: manufacturing_3d_printing
+    name: Additive Manufacturing
+    parent_sector: manufacturing
+    keywords: [3D printing, additive manufacturing, rapid prototyping]
+    description: Additive manufacturing operations
+
+  - id: manufacturing_defense
+    name: Defense Manufacturing
+    parent_sector: manufacturing
+    keywords: [defense, military equipment, weapons]
+    description: Defense and military equipment manufacturing
+
+  - id: manufacturing_scada
+    name: Manufacturing SCADA
+    parent_sector: manufacturing
+    keywords: [manufacturing SCADA, MES, industrial control]
+    description: Manufacturing control systems
+
+  # ============================================================================
+  # TRANSPORTATION SECTOR - 38 subsectors
+  # ============================================================================
+
+  - id: transportation_aviation_commercial
+    name: Commercial Aviation
+    parent_sector: transportation
+    keywords: [commercial aviation, airline, passenger flight]
+    description: Commercial passenger aviation
+
+  - id: transportation_aviation_cargo
+    name: Air Cargo
+    parent_sector: transportation
+    keywords: [air cargo, freight, cargo airline]
+    description: Air cargo operations
+
+  - id: transportation_aviation_general
+    name: General Aviation
+    parent_sector: transportation
+    keywords: [general aviation, private aircraft, charter]
+    description: General aviation operations
+
+  - id: transportation_airport_terminal
+    name: Airport Terminals
+    parent_sector: transportation
+    keywords: [airport terminal, passenger terminal]
+    description: Airport terminal facilities
+
+  - id: transportation_airport_runway
+    name: Airport Runways
+    parent_sector: transportation
+    keywords: [runway, taxiway, airfield]
+    description: Airport runway infrastructure
+
+  - id: transportation_airport_atc
+    name: Air Traffic Control
+    parent_sector: transportation
+    keywords: [ATC, air traffic control, tower]
+    description: Air traffic control systems
+
+  - id: transportation_airport_ground
+    name: Airport Ground Operations
+    parent_sector: transportation
+    keywords: [ground handling, baggage, fueling]
+    description: Airport ground operations
+
+  - id: transportation_rail_passenger
+    name: Passenger Rail
+    parent_sector: transportation
+    keywords: [passenger rail, train, railway]
+    description: Passenger rail services
+
+  - id: transportation_rail_freight
+    name: Freight Rail
+    parent_sector: transportation
+    keywords: [freight rail, cargo train, rail freight]
+    description: Freight rail operations
+
+  - id: transportation_rail_urban
+    name: Urban Rail Transit
+    parent_sector: transportation
+    keywords: [metro, subway, light rail, urban transit]
+    description: Urban rail transit systems
+
+  - id: transportation_rail_high_speed
+    name: High-Speed Rail
+    parent_sector: transportation
+    keywords: [high speed rail, HSR, bullet train]
+    description: High-speed rail systems
+
+  - id: transportation_rail_track
+    name: Rail Track Infrastructure
+    parent_sector: transportation
+    keywords: [rail track, railway infrastructure, track maintenance]
+    description: Rail track and infrastructure
+
+  - id: transportation_rail_signaling
+    name: Rail Signaling
+    parent_sector: transportation
+    keywords: [rail signaling, train control, PTC]
+    description: Rail signaling and control systems
+
+  - id: transportation_rail_station
+    name: Rail Stations
+    parent_sector: transportation
+    keywords: [train station, railway station, terminal]
+    description: Rail station facilities
+
+  - id: transportation_road_highway
+    name: Highway Systems
+    parent_sector: transportation
+    keywords: [highway, interstate, motorway]
+    description: Highway infrastructure
+
+  - id: transportation_road_bridge
+    name: Bridge Infrastructure
+    parent_sector: transportation
+    keywords: [bridge, overpass, viaduct]
+    description: Bridge infrastructure
+
+  - id: transportation_road_tunnel
+    name: Tunnel Infrastructure
+    parent_sector: transportation
+    keywords: [tunnel, underground passage]
+    description: Tunnel infrastructure
+
+  - id: transportation_road_traffic
+    name: Traffic Management
+    parent_sector: transportation
+    keywords: [traffic management, ITS, traffic control]
+    description: Intelligent traffic systems
+
+  - id: transportation_road_toll
+    name: Toll Systems
+    parent_sector: transportation
+    keywords: [toll, toll road, electronic tolling]
+    description: Toll collection systems
+
+  - id: transportation_bus_public
+    name: Public Bus Transit
+    parent_sector: transportation
+    keywords: [bus, public transit, bus rapid transit]
+    description: Public bus transit systems
+
+  - id: transportation_bus_intercity
+    name: Intercity Bus
+    parent_sector: transportation
+    keywords: [intercity bus, coach, long distance bus]
+    description: Intercity bus services
+
+  - id: transportation_trucking
+    name: Trucking Operations
+    parent_sector: transportation
+    keywords: [trucking, freight, logistics]
+    description: Trucking and freight operations
+
+  - id: transportation_maritime_port
+    name: Seaports
+    parent_sector: transportation
+    keywords: [seaport, harbor, port]
+    description: Seaport facilities
+
+  - id: transportation_maritime_container
+    name: Container Terminals
+    parent_sector: transportation
+    keywords: [container terminal, container port]
+    description: Container terminal operations
+
+  - id: transportation_maritime_bulk
+    name: Bulk Cargo Terminals
+    parent_sector: transportation
+    keywords: [bulk terminal, bulk cargo, dry bulk]
+    description: Bulk cargo terminal operations
+
+  - id: transportation_maritime_tanker
+    name: Tanker Terminals
+    parent_sector: transportation
+    keywords: [tanker terminal, oil terminal, liquid cargo]
+    description: Tanker and liquid cargo terminals
+
+  - id: transportation_maritime_shipping
+    name: Maritime Shipping
+    parent_sector: transportation
+    keywords: [shipping, vessel, cargo ship]
+    description: Maritime shipping operations
+
+  - id: transportation_maritime_ferry
+    name: Ferry Services
+    parent_sector: transportation
+    keywords: [ferry, passenger ferry, vehicle ferry]
+    description: Ferry transportation services
+
+  - id: transportation_maritime_navigation
+    name: Maritime Navigation
+    parent_sector: transportation
+    keywords: [navigation, VTS, vessel traffic]
+    description: Maritime navigation systems
+
+  - id: transportation_waterway_inland
+    name: Inland Waterways
+    parent_sector: transportation
+    keywords: [inland waterway, river transport, canal]
+    description: Inland waterway transportation
+
+  - id: transportation_waterway_locks
+    name: Navigation Locks
+    parent_sector: transportation
+    keywords: [lock, ship lock, canal lock]
+    description: Navigation lock systems
+
+  - id: transportation_pipeline_oil
+    name: Oil Pipelines
+    parent_sector: transportation
+    keywords: [oil pipeline, crude pipeline, petroleum pipeline]
+    description: Oil pipeline transportation
+
+  - id: transportation_pipeline_gas
+    name: Gas Pipelines
+    parent_sector: transportation
+    keywords: [gas pipeline, natural gas pipeline]
+    description: Natural gas pipeline transportation
+
+  - id: transportation_pipeline_products
+    name: Product Pipelines
+    parent_sector: transportation
+    keywords: [product pipeline, refined products]
+    description: Refined product pipeline transportation
+
+  - id: transportation_logistics_warehouse
+    name: Logistics Warehouses
+    parent_sector: transportation
+    keywords: [warehouse, distribution center, logistics]
+    description: Logistics warehouse facilities
+
+  - id: transportation_logistics_intermodal
+    name: Intermodal Facilities
+    parent_sector: transportation
+    keywords: [intermodal, transload, transfer facility]
+    description: Intermodal transfer facilities
+
+  - id: transportation_parking
+    name: Parking Infrastructure
+    parent_sector: transportation
+    keywords: [parking, parking garage, park and ride]
+    description: Parking facilities
+
+  - id: transportation_electric_vehicle
+    name: EV Infrastructure
+    parent_sector: transportation
+    keywords: [EV charging, electric vehicle, charging station]
+    description: Electric vehicle charging infrastructure
+
+  # ============================================================================
+  # TELECOMMUNICATIONS SECTOR - 32 subsectors
+  # ============================================================================
+
+  - id: telecom_mobile_5g
+    name: 5G Mobile Networks
+    parent_sector: telecommunications
+    keywords: [5G, mobile network, cellular]
+    description: 5G mobile network infrastructure
+
+  - id: telecom_mobile_4g
+    name: 4G/LTE Networks
+    parent_sector: telecommunications
+    keywords: [4G, LTE, mobile broadband]
+    description: 4G LTE mobile networks
+
+  - id: telecom_mobile_tower
+    name: Cell Tower Infrastructure
+    parent_sector: telecommunications
+    keywords: [cell tower, base station, cell site]
+    description: Cell tower and base station infrastructure
+
+  - id: telecom_mobile_small_cell
+    name: Small Cell Networks
+    parent_sector: telecommunications
+    keywords: [small cell, microcell, femtocell]
+    description: Small cell network infrastructure
+
+  - id: telecom_fiber_backbone
+    name: Fiber Backbone Networks
+    parent_sector: telecommunications
+    keywords: [fiber backbone, optical network, long haul]
+    description: Fiber optic backbone networks
+
+  - id: telecom_fiber_metro
+    name: Metropolitan Fiber
+    parent_sector: telecommunications
+    keywords: [metro fiber, metropolitan network]
+    description: Metropolitan area fiber networks
+
+  - id: telecom_fiber_access
+    name: Fiber Access Networks
+    parent_sector: telecommunications
+    keywords: [fiber access, FTTH, fiber to home]
+    description: Fiber to the home access networks
+
+  - id: telecom_cable_coax
+    name: Cable Networks
+    parent_sector: telecommunications
+    keywords: [cable network, coaxial, CATV]
+    description: Cable television networks
+
+  - id: telecom_cable_hybrid
+    name: Hybrid Fiber-Coax
+    parent_sector: telecommunications
+    keywords: [HFC, hybrid fiber coax, DOCSIS]
+    description: Hybrid fiber-coaxial networks
+
+  - id: telecom_dsl
+    name: DSL Networks
+    parent_sector: telecommunications
+    keywords: [DSL, digital subscriber line, copper]
+    description: DSL broadband networks
+
+  - id: telecom_satellite_geo
+    name: Geostationary Satellites
+    parent_sector: telecommunications
+    keywords: [GEO satellite, geostationary, satellite communications]
+    description: Geostationary satellite systems
+
+  - id: telecom_satellite_leo
+    name: LEO Satellite Constellations
+    parent_sector: telecommunications
+    keywords: [LEO satellite, low earth orbit, satellite constellation]
+    description: Low earth orbit satellite networks
+
+  - id: telecom_satellite_ground
+    name: Satellite Ground Stations
+    parent_sector: telecommunications
+    keywords: [ground station, earth station, satellite terminal]
+    description: Satellite ground station facilities
+
+  - id: telecom_microwave
+    name: Microwave Links
+    parent_sector: telecommunications
+    keywords: [microwave, point to point, wireless backhaul]
+    description: Microwave communication links
+
+  - id: telecom_data_center
+    name: Telecommunications Data Centers
+    parent_sector: telecommunications
+    keywords: [data center, telecom DC, carrier hotel]
+    description: Telecommunications data centers
+
+  - id: telecom_internet_exchange
+    name: Internet Exchange Points
+    parent_sector: telecommunications
+    keywords: [IXP, internet exchange, peering]
+    description: Internet exchange point facilities
+
+  - id: telecom_core_network
+    name: Core Network Infrastructure
+    parent_sector: telecommunications
+    keywords: [core network, network core, transport]
+    description: Core network infrastructure
+
+  - id: telecom_edge_computing
+    name: Edge Computing Infrastructure
+    parent_sector: telecommunications
+    keywords: [edge computing, MEC, edge data center]
+    description: Edge computing infrastructure
+
+  - id: telecom_cdn
+    name: Content Delivery Networks
+    parent_sector: telecommunications
+    keywords: [CDN, content delivery, edge cache]
+    description: Content delivery network infrastructure
+
+  - id: telecom_dns
+    name: DNS Infrastructure
+    parent_sector: telecommunications
+    keywords: [DNS, domain name system, name server]
+    description: DNS infrastructure
+
+  - id: telecom_network_operations
+    name: Network Operations Centers
+    parent_sector: telecommunications
+    keywords: [NOC, network operations, monitoring]
+    description: Network operations centers
+
+  - id: telecom_submarine_cable
+    name: Submarine Cable Systems
+    parent_sector: telecommunications
+    keywords: [submarine cable, undersea cable, transoceanic]
+    description: Submarine cable infrastructure
+
+  - id: telecom_cable_landing
+    name: Cable Landing Stations
+    parent_sector: telecommunications
+    keywords: [cable landing station, CLS, beach manhole]
+    description: Cable landing station facilities
+
+  - id: telecom_switching
+    name: Switching Centers
+    parent_sector: telecommunications
+    keywords: [switching center, central office, exchange]
+    description: Telecommunications switching centers
+
+  - id: telecom_voip
+    name: VoIP Infrastructure
+    parent_sector: telecommunications
+    keywords: [VoIP, voice over IP, SIP]
+    description: Voice over IP infrastructure
+
+  - id: telecom_iptv
+    name: IPTV Systems
+    parent_sector: telecommunications
+    keywords: [IPTV, internet TV, streaming]
+    description: IPTV delivery systems
+
+  - id: telecom_emergency
+    name: Emergency Communications
+    parent_sector: telecommunications
+    keywords: [emergency communications, 911, E911]
+    description: Emergency communication systems
+
+  - id: telecom_radio_broadcast
+    name: Radio Broadcasting
+    parent_sector: telecommunications
+    keywords: [radio broadcast, FM, AM]
+    description: Radio broadcasting infrastructure
+
+  - id: telecom_tv_broadcast
+    name: Television Broadcasting
+    parent_sector: telecommunications
+    keywords: [TV broadcast, television, transmitter]
+    description: Television broadcasting infrastructure
+
+  - id: telecom_wireless_backhaul
+    name: Wireless Backhaul
+    parent_sector: telecommunications
+    keywords: [wireless backhaul, backhaul network]
+    description: Wireless backhaul networks
+
+  - id: telecom_network_security
+    name: Network Security Infrastructure
+    parent_sector: telecommunications
+    keywords: [network security, firewall, DDoS protection]
+    description: Network security infrastructure
+
+  - id: telecom_billing
+    name: Billing Systems
+    parent_sector: telecommunications
+    keywords: [billing, charging, OSS BSS]
+    description: Telecommunications billing systems
+
+  # ============================================================================
+  # FINANCIAL SECTOR - 28 subsectors
+  # ============================================================================
+
+  - id: financial_banking_retail
+    name: Retail Banking
+    parent_sector: financial
+    keywords: [retail bank, consumer banking, branch]
+    description: Retail banking services
+
+  - id: financial_banking_commercial
+    name: Commercial Banking
+    parent_sector: financial
+    keywords: [commercial bank, business banking]
+    description: Commercial banking services
+
+  - id: financial_banking_investment
+    name: Investment Banking
+    parent_sector: financial
+    keywords: [investment bank, underwriting, M&A]
+    description: Investment banking services
+
+  - id: financial_banking_private
+    name: Private Banking
+    parent_sector: financial
+    keywords: [private bank, wealth management, UHNW]
+    description: Private banking services
+
+  - id: financial_central_bank
+    name: Central Banking
+    parent_sector: financial
+    keywords: [central bank, federal reserve, monetary policy]
+    description: Central banking operations
+
+  - id: financial_payment_card
+    name: Card Payment Networks
+    parent_sector: financial
+    keywords: [card network, credit card, debit card]
+    description: Card payment processing networks
+
+  - id: financial_payment_ach
+    name: ACH Systems
+    parent_sector: financial
+    keywords: [ACH, automated clearing house, direct deposit]
+    description: ACH payment systems
+
+  - id: financial_payment_wire
+    name: Wire Transfer Systems
+    parent_sector: financial
+    keywords: [wire transfer, SWIFT, international payment]
+    description: Wire transfer systems
+
+  - id: financial_payment_digital
+    name: Digital Payment Systems
+    parent_sector: financial
+    keywords: [digital payment, mobile payment, e-wallet]
+    description: Digital payment platforms
+
+  - id: financial_payment_clearing
+    name: Payment Clearing Houses
+    parent_sector: financial
+    keywords: [clearing house, settlement, interbank]
+    description: Payment clearing and settlement
+
+  - id: financial_securities_exchange
+    name: Securities Exchanges
+    parent_sector: financial
+    keywords: [stock exchange, securities exchange, trading]
+    description: Securities exchange operations
+
+  - id: financial_securities_trading
+    name: Securities Trading Systems
+    parent_sector: financial
+    keywords: [trading platform, electronic trading]
+    description: Securities trading platforms
+
+  - id: financial_securities_clearing
+    name: Securities Clearing
+    parent_sector: financial
+    keywords: [securities clearing, CCP, clearinghouse]
+    description: Securities clearing operations
+
+  - id: financial_securities_custody
+    name: Securities Custody
+    parent_sector: financial
+    keywords: [custody, custodian, safekeeping]
+    description: Securities custody services
+
+  - id: financial_derivatives
+    name: Derivatives Trading
+    parent_sector: financial
+    keywords: [derivatives, futures, options]
+    description: Derivatives trading systems
+
+  - id: financial_forex
+    name: Foreign Exchange
+    parent_sector: financial
+    keywords: [forex, FX, currency exchange]
+    description: Foreign exchange systems
+
+  - id: financial_insurance_life
+    name: Life Insurance
+    parent_sector: financial
+    keywords: [life insurance, term life, whole life]
+    description: Life insurance operations
+
+  - id: financial_insurance_property
+    name: Property & Casualty Insurance
+    parent_sector: financial
+    keywords: [P&C insurance, property insurance, casualty]
+    description: Property and casualty insurance
+
+  - id: financial_insurance_health
+    name: Health Insurance
+    parent_sector: financial
+    keywords: [health insurance, medical insurance]
+    description: Health insurance operations
+
+  - id: financial_insurance_reinsurance
+    name: Reinsurance
+    parent_sector: financial
+    keywords: [reinsurance, treaty, facultative]
+    description: Reinsurance operations
+
+  - id: financial_asset_management
+    name: Asset Management
+    parent_sector: financial
+    keywords: [asset management, fund management, investment]
+    description: Asset management services
+
+  - id: financial_hedge_fund
+    name: Hedge Funds
+    parent_sector: financial
+    keywords: [hedge fund, alternative investment]
+    description: Hedge fund operations
+
+  - id: financial_private_equity
+    name: Private Equity
+    parent_sector: financial
+    keywords: [private equity, PE, buyout]
+    description: Private equity operations
+
+  - id: financial_venture_capital
+    name: Venture Capital
+    parent_sector: financial
+    keywords: [venture capital, VC, startup funding]
+    description: Venture capital operations
+
+  - id: financial_credit_rating
+    name: Credit Rating Agencies
+    parent_sector: financial
+    keywords: [credit rating, rating agency, credit analysis]
+    description: Credit rating services
+
+  - id: financial_atm
+    name: ATM Networks
+    parent_sector: financial
+    keywords: [ATM, cash machine, automated teller]
+    description: ATM network infrastructure
+
+  - id: financial_pos
+    name: Point of Sale Systems
+    parent_sector: financial
+    keywords: [POS, point of sale, payment terminal]
+    description: Point of sale systems
+
+  - id: financial_risk_management
+    name: Financial Risk Management
+    parent_sector: financial
+    keywords: [risk management, credit risk, market risk]
+    description: Financial risk management systems
+
+  # ============================================================================
+  # HEALTHCARE SECTOR - 30 subsectors
+  # ============================================================================
+
+  - id: healthcare_hospital_general
+    name: General Hospitals
+    parent_sector: healthcare
+    keywords: [hospital, general hospital, medical center]
+    description: General hospital facilities
+
+  - id: healthcare_hospital_specialty
+    name: Specialty Hospitals
+    parent_sector: healthcare
+    keywords: [specialty hospital, cardiac hospital, cancer center]
+    description: Specialty hospital facilities
+
+  - id: healthcare_hospital_teaching
+    name: Teaching Hospitals
+    parent_sector: healthcare
+    keywords: [teaching hospital, academic medical center]
+    description: Teaching hospital facilities
+
+  - id: healthcare_hospital_psychiatric
+    name: Psychiatric Hospitals
+    parent_sector: healthcare
+    keywords: [psychiatric hospital, mental health, behavioral health]
+    description: Psychiatric hospital facilities
+
+  - id: healthcare_emergency_department
+    name: Emergency Departments
+    parent_sector: healthcare
+    keywords: [emergency department, ER, emergency room]
+    description: Hospital emergency departments
+
+  - id: healthcare_trauma_center
+    name: Trauma Centers
+    parent_sector: healthcare
+    keywords: [trauma center, trauma, level 1 trauma]
+    description: Trauma center facilities
+
+  - id: healthcare_intensive_care
+    name: Intensive Care Units
+    parent_sector: healthcare
+    keywords: [ICU, intensive care, critical care]
+    description: Intensive care units
+
+  - id: healthcare_surgical_center
+    name: Surgical Centers
+    parent_sector: healthcare
+    keywords: [surgery center, operating room, surgical suite]
+    description: Surgical center facilities
+
+  - id: healthcare_outpatient_clinic
+    name: Outpatient Clinics
+    parent_sector: healthcare
+    keywords: [clinic, outpatient, ambulatory care]
+    description: Outpatient clinic facilities
+
+  - id: healthcare_urgent_care
+    name: Urgent Care Centers
+    parent_sector: healthcare
+    keywords: [urgent care, walk-in clinic]
+    description: Urgent care facilities
+
+  - id: healthcare_primary_care
+    name: Primary Care Practices
+    parent_sector: healthcare
+    keywords: [primary care, family practice, general practice]
+    description: Primary care medical practices
+
+  - id: healthcare_imaging
+    name: Medical Imaging Centers
+    parent_sector: healthcare
+    keywords: [imaging, radiology, MRI, CT scan]
+    description: Medical imaging facilities
+
+  - id: healthcare_laboratory
+    name: Clinical Laboratories
+    parent_sector: healthcare
+    keywords: [laboratory, clinical lab, medical testing]
+    description: Clinical laboratory facilities
+
+  - id: healthcare_pharmacy_retail
+    name: Retail Pharmacies
+    parent_sector: healthcare
+    keywords: [pharmacy, drugstore, retail pharmacy]
+    description: Retail pharmacy operations
+
+  - id: healthcare_pharmacy_hospital
+    name: Hospital Pharmacies
+    parent_sector: healthcare
+    keywords: [hospital pharmacy, inpatient pharmacy]
+    description: Hospital pharmacy operations
+
+  - id: healthcare_pharmacy_mail
+    name: Mail-Order Pharmacies
+    parent_sector: healthcare
+    keywords: [mail order pharmacy, online pharmacy]
+    description: Mail-order pharmacy operations
+
+  - id: healthcare_dialysis
+    name: Dialysis Centers
+    parent_sector: healthcare
+    keywords: [dialysis, hemodialysis, renal]
+    description: Dialysis treatment facilities
+
+  - id: healthcare_rehabilitation
+    name: Rehabilitation Centers
+    parent_sector: healthcare
+    keywords: [rehabilitation, physical therapy, rehab]
+    description: Rehabilitation facilities
+
+  - id: healthcare_long_term_care
+    name: Long-Term Care Facilities
+    parent_sector: healthcare
+    keywords: [nursing home, long term care, skilled nursing]
+    description: Long-term care facilities
+
+  - id: healthcare_assisted_living
+    name: Assisted Living Facilities
+    parent_sector: healthcare
+    keywords: [assisted living, senior living]
+    description: Assisted living facilities
+
+  - id: healthcare_hospice
+    name: Hospice Care
+    parent_sector: healthcare
+    keywords: [hospice, palliative care, end of life]
+    description: Hospice care services
+
+  - id: healthcare_home_health
+    name: Home Healthcare
+    parent_sector: healthcare
+    keywords: [home health, home care, visiting nurse]
+    description: Home healthcare services
+
+  - id: healthcare_ambulance
+    name: Ambulance Services
+    parent_sector: healthcare
+    keywords: [ambulance, EMS, emergency medical services]
+    description: Ambulance and EMS operations
+
+  - id: healthcare_blood_bank
+    name: Blood Banks
+    parent_sector: healthcare
+    keywords: [blood bank, blood donation, transfusion]
+    description: Blood bank operations
+
+  - id: healthcare_medical_records
+    name: Medical Records Systems
+    parent_sector: healthcare
+    keywords: [EHR, EMR, electronic health records]
+    description: Medical records systems
+
+  - id: healthcare_telehealth
+    name: Telehealth Services
+    parent_sector: healthcare
+    keywords: [telehealth, telemedicine, virtual care]
+    description: Telehealth platforms
+
+  - id: healthcare_medical_devices
+    name: Medical Device Services
+    parent_sector: healthcare
+    keywords: [medical device, biomedical equipment]
+    description: Medical device maintenance services
+
+  - id: healthcare_sterile_processing
+    name: Sterile Processing
+    parent_sector: healthcare
+    keywords: [sterile processing, sterilization, SPD]
+    description: Sterile processing departments
+
+  - id: healthcare_vaccine_distribution
+    name: Vaccine Distribution
+    parent_sector: healthcare
+    keywords: [vaccine, immunization, cold chain]
+    description: Vaccine distribution systems
+
+  - id: healthcare_tissue_bank
+    name: Tissue Banks
+    parent_sector: healthcare
+    keywords: [tissue bank, organ donation, transplant]
+    description: Tissue and organ bank operations
+
+  # ============================================================================
+  # INFORMATION TECHNOLOGY SECTOR - 35 subsectors
+  # ============================================================================
+
+  - id: it_data_center_hyperscale
+    name: Hyperscale Data Centers
+    parent_sector: information_technology
+    keywords: [hyperscale, data center, cloud infrastructure]
+    description: Hyperscale data center facilities
+
+  - id: it_data_center_enterprise
+    name: Enterprise Data Centers
+    parent_sector: information_technology
+    keywords: [enterprise data center, corporate DC]
+    description: Enterprise data center facilities
+
+  - id: it_data_center_colocation
+    name: Colocation Facilities
+    parent_sector: information_technology
+    keywords: [colocation, colo, data center hosting]
+    description: Colocation data center facilities
+
+  - id: it_data_center_edge
+    name: Edge Data Centers
+    parent_sector: information_technology
+    keywords: [edge data center, edge computing, micro DC]
+    description: Edge data center facilities
+
+  - id: it_cloud_iaas
+    name: Cloud Infrastructure (IaaS)
+    parent_sector: information_technology
+    keywords: [IaaS, cloud infrastructure, compute]
+    description: Infrastructure as a Service platforms
+
+  - id: it_cloud_paas
+    name: Cloud Platform (PaaS)
+    parent_sector: information_technology
+    keywords: [PaaS, platform as a service, application platform]
+    description: Platform as a Service offerings
+
+  - id: it_cloud_saas
+    name: Cloud Software (SaaS)
+    parent_sector: information_technology
+    keywords: [SaaS, cloud software, web application]
+    description: Software as a Service applications
+
+  - id: it_cloud_storage
+    name: Cloud Storage
+    parent_sector: information_technology
+    keywords: [cloud storage, object storage, block storage]
+    description: Cloud storage services
+
+  - id: it_cloud_database
+    name: Cloud Database Services
+    parent_sector: information_technology
+    keywords: [cloud database, DBaaS, managed database]
+    description: Cloud database services
+
+  - id: it_server_physical
+    name: Physical Servers
+    parent_sector: information_technology
+    keywords: [server, physical server, rack server]
+    description: Physical server infrastructure
+
+  - id: it_server_virtual
+    name: Virtual Server Infrastructure
+    parent_sector: information_technology
+    keywords: [virtualization, virtual server, hypervisor]
+    description: Virtual server infrastructure
+
+  - id: it_storage_san
+    name: Storage Area Networks
+    parent_sector: information_technology
+    keywords: [SAN, storage area network, fibre channel]
+    description: SAN storage systems
+
+  - id: it_storage_nas
+    name: Network Attached Storage
+    parent_sector: information_technology
+    keywords: [NAS, network storage, file server]
+    description: NAS storage systems
+
+  - id: it_backup_recovery
+    name: Backup and Recovery
+    parent_sector: information_technology
+    keywords: [backup, disaster recovery, data protection]
+    description: Backup and recovery systems
+
+  - id: it_network_lan
+    name: Local Area Networks
+    parent_sector: information_technology
+    keywords: [LAN, local network, ethernet]
+    description: Local area network infrastructure
+
+  - id: it_network_wan
+    name: Wide Area Networks
+    parent_sector: information_technology
+    keywords: [WAN, wide area network, MPLS]
+    description: Wide area network infrastructure
+
+  - id: it_network_wireless
+    name: Wireless Networks
+    parent_sector: information_technology
+    keywords: [WiFi, wireless LAN, WLAN]
+    description: Wireless network infrastructure
+
+  - id: it_network_router
+    name: Routing Infrastructure
+    parent_sector: information_technology
+    keywords: [router, routing, BGP]
+    description: Network routing infrastructure
+
+  - id: it_network_switch
+    name: Switching Infrastructure
+    parent_sector: information_technology
+    keywords: [switch, network switch, layer 2]
+    description: Network switching infrastructure
+
+  - id: it_security_firewall
+    name: Firewall Systems
+    parent_sector: information_technology
+    keywords: [firewall, network security, perimeter]
+    description: Firewall security systems
+
+  - id: it_security_ids_ips
+    name: Intrusion Detection/Prevention
+    parent_sector: information_technology
+    keywords: [IDS, IPS, intrusion detection]
+    description: Intrusion detection and prevention systems
+
+  - id: it_security_siem
+    name: Security Information Management
+    parent_sector: information_technology
+    keywords: [SIEM, security monitoring, log management]
+    description: SIEM systems
+
+  - id: it_security_endpoint
+    name: Endpoint Security
+    parent_sector: information_technology
+    keywords: [endpoint security, antivirus, EDR]
+    description: Endpoint security systems
+
+  - id: it_security_identity
+    name: Identity and Access Management
+    parent_sector: information_technology
+    keywords: [IAM, identity management, SSO]
+    description: IAM systems
+
+  - id: it_security_encryption
+    name: Encryption Systems
+    parent_sector: information_technology
+    keywords: [encryption, cryptography, key management]
+    description: Encryption infrastructure
+
+  - id: it_database_relational
+    name: Relational Databases
+    parent_sector: information_technology
+    keywords: [relational database, SQL, RDBMS]
+    description: Relational database systems
+
+  - id: it_database_nosql
+    name: NoSQL Databases
+    parent_sector: information_technology
+    keywords: [NoSQL, document database, key value]
+    description: NoSQL database systems
+
+  - id: it_application_web
+    name: Web Applications
+    parent_sector: information_technology
+    keywords: [web application, web app, web server]
+    description: Web application infrastructure
+
+  - id: it_application_mobile
+    name: Mobile Applications
+    parent_sector: information_technology
+    keywords: [mobile app, mobile application, app backend]
+    description: Mobile application backend infrastructure
+
+  - id: it_api_gateway
+    name: API Gateways
+    parent_sector: information_technology
+    keywords: [API gateway, API management, REST API]
+    description: API gateway infrastructure
+
+  - id: it_load_balancer
+    name: Load Balancers
+    parent_sector: information_technology
+    keywords: [load balancer, traffic distribution, application delivery]
+    description: Load balancing systems
+
+  - id: it_monitoring
+    name: IT Monitoring Systems
+    parent_sector: information_technology
+    keywords: [monitoring, observability, APM]
+    description: IT monitoring and observability
+
+  - id: it_service_desk
+    name: IT Service Desk
+    parent_sector: information_technology
+    keywords: [service desk, help desk, ITSM]
+    description: IT service desk operations
+
+  - id: it_container
+    name: Container Infrastructure
+    parent_sector: information_technology
+    keywords: [container, docker, kubernetes, orchestration]
+    description: Container orchestration infrastructure
+
+  - id: it_devops
+    name: DevOps Infrastructure
+    parent_sector: information_technology
+    keywords: [DevOps, CI CD, pipeline, automation]
+    description: DevOps and CI/CD infrastructure
+
+  # ============================================================================
+  # GOVERNMENT SECTOR - 25 subsectors
+  # ============================================================================
+
+  - id: government_federal_executive
+    name: Federal Executive Agencies
+    parent_sector: government
+    keywords: [federal agency, executive branch, federal government]
+    description: Federal executive agency operations
+
+  - id: government_federal_legislative
+    name: Federal Legislative Operations
+    parent_sector: government
+    keywords: [congress, senate, house, legislative]
+    description: Federal legislative operations
+
+  - id: government_federal_judicial
+    name: Federal Judicial System
+    parent_sector: government
+    keywords: [federal court, judiciary, judicial]
+    description: Federal judicial system operations
+
+  - id: government_state_executive
+    name: State Executive Agencies
+    parent_sector: government
+    keywords: [state agency, state government, governor]
+    description: State executive agency operations
+
+  - id: government_state_legislative
+    name: State Legislative Operations
+    parent_sector: government
+    keywords: [state legislature, state assembly, state senate]
+    description: State legislative operations
+
+  - id: government_state_judicial
+    name: State Judicial System
+    parent_sector: government
+    keywords: [state court, state judiciary]
+    description: State judicial system operations
+
+  - id: government_local_municipal
+    name: Municipal Government
+    parent_sector: government
+    keywords: [city government, municipal, mayor, city council]
+    description: Municipal government operations
+
+  - id: government_local_county
+    name: County Government
+    parent_sector: government
+    keywords: [county, county government, county commission]
+    description: County government operations
+
+  - id: government_emergency_management
+    name: Emergency Management
+    parent_sector: government
+    keywords: [emergency management, FEMA, disaster response]
+    description: Emergency management operations
+
+  - id: government_law_enforcement_federal
+    name: Federal Law Enforcement
+    parent_sector: government
+    keywords: [FBI, federal law enforcement, federal agent]
+    description: Federal law enforcement agencies
+
+  - id: government_law_enforcement_state
+    name: State Law Enforcement
+    parent_sector: government
+    keywords: [state police, state patrol, state trooper]
+    description: State law enforcement agencies
+
+  - id: government_law_enforcement_local
+    name: Local Law Enforcement
+    parent_sector: government
+    keywords: [police, sheriff, local law enforcement]
+    description: Local police departments
+
+  - id: government_fire_services
+    name: Fire Services
+    parent_sector: government
+    keywords: [fire department, fire service, firefighter]
+    description: Fire department operations
+
+  - id: government_public_health
+    name: Public Health Agencies
+    parent_sector: government
+    keywords: [public health, health department, CDC]
+    description: Public health agency operations
+
+  - id: government_education_k12
+    name: K-12 Public Education
+    parent_sector: government
+    keywords: [school, K-12, public education, school district]
+    description: K-12 public education systems
+
+  - id: government_education_higher
+    name: Public Higher Education
+    parent_sector: government
+    keywords: [university, college, public university]
+    description: Public higher education institutions
+
+  - id: government_social_services
+    name: Social Services
+    parent_sector: government
+    keywords: [social services, welfare, public assistance]
+    description: Social service programs
+
+  - id: government_corrections
+    name: Corrections Systems
+    parent_sector: government
+    keywords: [prison, jail, corrections, incarceration]
+    description: Corrections facility operations
+
+  - id: government_military_base
+    name: Military Installations
+    parent_sector: government
+    keywords: [military base, installation, army, navy, air force]
+    description: Military installation operations
+
+  - id: government_veterans_affairs
+    name: Veterans Affairs
+    parent_sector: government
+    keywords: [VA, veterans affairs, veterans hospital]
+    description: Veterans affairs operations
+
+  - id: government_postal
+    name: Postal Services
+    parent_sector: government
+    keywords: [postal service, mail, post office]
+    description: Postal service operations
+
+  - id: government_taxation
+    name: Tax Administration
+    parent_sector: government
+    keywords: [tax, IRS, revenue, taxation]
+    description: Tax administration systems
+
+  - id: government_regulatory
+    name: Regulatory Agencies
+    parent_sector: government
+    keywords: [regulatory, regulation, compliance, agency]
+    description: Regulatory agency operations
+
+  - id: government_public_works
+    name: Public Works
+    parent_sector: government
+    keywords: [public works, infrastructure, maintenance]
+    description: Public works operations
+
+  - id: government_parks_recreation
+    name: Parks and Recreation
+    parent_sector: government
+    keywords: [parks, recreation, park service]
+    description: Parks and recreation facilities
+
+  # ============================================================================
+  # EMERGENCY SERVICES SECTOR - 20 subsectors
+  # ============================================================================
+
+  - id: emergency_911_dispatch
+    name: 911 Dispatch Centers
+    parent_sector: emergency_services
+    keywords: [911, dispatch, PSAP, emergency call]
+    description: 911 emergency dispatch operations
+
+  - id: emergency_ems_ambulance
+    name: EMS Ambulance Services
+    parent_sector: emergency_services
+    keywords: [EMS, ambulance, paramedic, EMT]
+    description: Emergency medical services
+
+  - id: emergency_ems_air
+    name: Air Ambulance Services
+    parent_sector: emergency_services
+    keywords: [air ambulance, medevac, helicopter EMS]
+    description: Air ambulance operations
+
+  - id: emergency_fire_suppression
+    name: Fire Suppression
+    parent_sector: emergency_services
+    keywords: [fire suppression, firefighting, fire attack]
+    description: Fire suppression operations
+
+  - id: emergency_fire_prevention
+    name: Fire Prevention
+    parent_sector: emergency_services
+    keywords: [fire prevention, fire inspection, fire code]
+    description: Fire prevention services
+
+  - id: emergency_hazmat
+    name: Hazardous Materials Response
+    parent_sector: emergency_services
+    keywords: [hazmat, hazardous materials, chemical spill]
+    description: Hazmat response operations
+
+  - id: emergency_search_rescue
+    name: Search and Rescue
+    parent_sector: emergency_services
+    keywords: [search and rescue, SAR, rescue]
+    description: Search and rescue operations
+
+  - id: emergency_bomb_squad
+    name: Bomb Squad Operations
+    parent_sector: emergency_services
+    keywords: [bomb squad, explosive ordnance, EOD]
+    description: Bomb disposal operations
+
+  - id: emergency_swat
+    name: SWAT Teams
+    parent_sector: emergency_services
+    keywords: [SWAT, tactical, special weapons]
+    description: SWAT team operations
+
+  - id: emergency_marine_rescue
+    name: Marine Rescue
+    parent_sector: emergency_services
+    keywords: [coast guard, marine rescue, water rescue]
+    description: Marine rescue operations
+
+  - id: emergency_mountain_rescue
+    name: Mountain Rescue
+    parent_sector: emergency_services
+    keywords: [mountain rescue, alpine rescue, wilderness]
+    description: Mountain rescue operations
+
+  - id: emergency_disaster_response
+    name: Disaster Response
+    parent_sector: emergency_services
+    keywords: [disaster response, disaster relief, emergency response]
+    description: Disaster response operations
+
+  - id: emergency_urban_search_rescue
+    name: Urban Search and Rescue
+    parent_sector: emergency_services
+    keywords: [USAR, urban search and rescue, collapse rescue]
+    description: Urban search and rescue operations
+
+  - id: emergency_wildfire
+    name: Wildfire Response
+    parent_sector: emergency_services
+    keywords: [wildfire, forest fire, wildland firefighting]
+    description: Wildfire response operations
+
+  - id: emergency_mass_casualty
+    name: Mass Casualty Response
+    parent_sector: emergency_services
+    keywords: [mass casualty, MCI, triage]
+    description: Mass casualty incident response
+
+  - id: emergency_emergency_management
+    name: Emergency Management Centers
+    parent_sector: emergency_services
+    keywords: [EOC, emergency operations center, emergency management]
+    description: Emergency operations centers
+
+  - id: emergency_crisis_communication
+    name: Emergency Communications
+    parent_sector: emergency_services
+    keywords: [emergency communications, public warning, alert]
+    description: Emergency communication systems
+
+  - id: emergency_evacuation
+    name: Evacuation Operations
+    parent_sector: emergency_services
+    keywords: [evacuation, shelter, mass evacuation]
+    description: Emergency evacuation operations
+
+  - id: emergency_emergency_shelter
+    name: Emergency Shelters
+    parent_sector: emergency_services
+    keywords: [emergency shelter, refuge, evacuation center]
+    description: Emergency shelter operations
+
+  - id: emergency_emergency_medical
+    name: Emergency Medical Operations
+    parent_sector: emergency_services
+    keywords: [emergency medicine, trauma, critical care]
+    description: Emergency medical operations
+
+  # ============================================================================
+  # FOOD AND AGRICULTURE SECTOR - 33 subsectors
+  # ============================================================================
+
+  - id: agriculture_crop_farming_grains
+    name: Grain Farming
+    parent_sector: food_agriculture
+    keywords: [grain, wheat, corn, soybean, farming]
+    description: Grain crop farming operations
+
+  - id: agriculture_crop_farming_vegetables
+    name: Vegetable Farming
+    parent_sector: food_agriculture
+    keywords: [vegetable, produce, horticulture]
+    description: Vegetable farming operations
+
+  - id: agriculture_crop_farming_fruits
+    name: Fruit Farming
+    parent_sector: food_agriculture
+    keywords: [fruit, orchard, citrus, berries]
+    description: Fruit farming operations
+
+  - id: agriculture_livestock_cattle
+    name: Cattle Ranching
+    parent_sector: food_agriculture
+    keywords: [cattle, beef, dairy, livestock]
+    description: Cattle ranching operations
+
+  - id: agriculture_livestock_poultry
+    name: Poultry Farming
+    parent_sector: food_agriculture
+    keywords: [poultry, chicken, turkey, eggs]
+    description: Poultry farming operations
+
+  - id: agriculture_livestock_swine
+    name: Swine Farming
+    parent_sector: food_agriculture
+    keywords: [swine, pig, pork, hog]
+    description: Swine farming operations
+
+  - id: agriculture_aquaculture
+    name: Aquaculture Operations
+    parent_sector: food_agriculture
+    keywords: [aquaculture, fish farm, shrimp farm]
+    description: Aquaculture farming operations
+
+  - id: agriculture_greenhouse
+    name: Greenhouse Operations
+    parent_sector: food_agriculture
+    keywords: [greenhouse, controlled environment, hydroponic]
+    description: Greenhouse farming operations
+
+  - id: agriculture_irrigation_systems
+    name: Irrigation Systems
+    parent_sector: food_agriculture
+    keywords: [irrigation, drip irrigation, pivot irrigation]
+    description: Agricultural irrigation infrastructure
+
+  - id: agriculture_grain_storage
+    name: Grain Storage Facilities
+    parent_sector: food_agriculture
+    keywords: [grain elevator, silo, grain storage]
+    description: Grain storage facilities
+
+  - id: agriculture_cold_storage
+    name: Cold Storage Facilities
+    parent_sector: food_agriculture
+    keywords: [cold storage, refrigerated warehouse, produce storage]
+    description: Agricultural cold storage facilities
+
+  - id: food_processing_meat
+    name: Meat Processing Plants
+    parent_sector: food_agriculture
+    keywords: [meat processing, slaughterhouse, meat packing]
+    description: Meat processing facilities
+
+  - id: food_processing_dairy
+    name: Dairy Processing Plants
+    parent_sector: food_agriculture
+    keywords: [dairy processing, milk processing, cheese plant]
+    description: Dairy processing facilities
+
+  - id: food_processing_grain_milling
+    name: Grain Milling
+    parent_sector: food_agriculture
+    keywords: [flour mill, grain mill, milling]
+    description: Grain milling operations
+
+  - id: food_processing_bakery
+    name: Commercial Bakeries
+    parent_sector: food_agriculture
+    keywords: [bakery, bread, commercial baking]
+    description: Commercial bakery operations
+
+  - id: food_processing_canning
+    name: Canning Operations
+    parent_sector: food_agriculture
+    keywords: [canning, food preservation, cannery]
+    description: Food canning operations
+
+  - id: food_processing_frozen
+    name: Frozen Food Processing
+    parent_sector: food_agriculture
+    keywords: [frozen food, quick freeze, blast freezing]
+    description: Frozen food processing
+
+  - id: food_processing_beverage
+    name: Beverage Processing
+    parent_sector: food_agriculture
+    keywords: [beverage, bottling, juice processing]
+    description: Beverage processing facilities
+
+  - id: food_distribution_wholesale
+    name: Food Wholesale Distribution
+    parent_sector: food_agriculture
+    keywords: [food wholesale, food distributor, foodservice]
+    description: Food wholesale distribution
+
+  - id: food_distribution_retail
+    name: Food Retail Distribution
+    parent_sector: food_agriculture
+    keywords: [grocery, supermarket, food retail]
+    description: Food retail distribution
+
+  - id: food_distribution_restaurant
+    name: Restaurant Supply
+    parent_sector: food_agriculture
+    keywords: [restaurant supply, foodservice, commercial kitchen]
+    description: Restaurant supply chains
+
+  - id: food_safety_inspection
+    name: Food Safety Inspection
+    parent_sector: food_agriculture
+    keywords: [food safety, USDA, FDA, inspection]
+    description: Food safety inspection systems
+
+  - id: food_quality_testing
+    name: Food Quality Testing
+    parent_sector: food_agriculture
+    keywords: [food testing, quality control, food lab]
+    description: Food quality testing laboratories
+
+  - id: agriculture_fertilizer
+    name: Fertilizer Production
+    parent_sector: food_agriculture
+    keywords: [fertilizer, nitrogen, phosphate, potash]
+    description: Fertilizer manufacturing
+
+  - id: agriculture_pesticide
+    name: Pesticide Production
+    parent_sector: food_agriculture
+    keywords: [pesticide, herbicide, insecticide]
+    description: Pesticide manufacturing
+
+  - id: agriculture_feed_mill
+    name: Animal Feed Mills
+    parent_sector: food_agriculture
+    keywords: [animal feed, feed mill, livestock feed]
+    description: Animal feed manufacturing
+
+  - id: agriculture_seed_production
+    name: Seed Production
+    parent_sector: food_agriculture
+    keywords: [seed, seed production, seed treatment]
+    description: Seed production operations
+
+  - id: agriculture_farm_equipment
+    name: Farm Equipment Services
+    parent_sector: food_agriculture
+    keywords: [farm equipment, tractor, harvester, agricultural machinery]
+    description: Farm equipment maintenance and services
+
+  - id: food_traceability
+    name: Food Traceability Systems
+    parent_sector: food_agriculture
+    keywords: [traceability, food tracking, blockchain]
+    description: Food traceability systems
+
+  - id: agriculture_precision_farming
+    name: Precision Agriculture
+    parent_sector: food_agriculture
+    keywords: [precision agriculture, GPS farming, smart farming]
+    description: Precision agriculture systems
+
+  - id: agriculture_commodity_trading
+    name: Agricultural Commodity Trading
+    parent_sector: food_agriculture
+    keywords: [commodity trading, grain trading, futures]
+    description: Agricultural commodity trading
+
+  - id: food_import_export
+    name: Food Import/Export
+    parent_sector: food_agriculture
+    keywords: [food import, food export, customs, border]
+    description: Food import and export operations
+
+  - id: agriculture_veterinary
+    name: Veterinary Services
+    parent_sector: food_agriculture
+    keywords: [veterinary, animal health, livestock health]
+    description: Agricultural veterinary services
+
+  # ============================================================================
+  # CHEMICAL SECTOR - 22 subsectors
+  # ============================================================================
+
+  - id: chemical_basic_petrochemicals
+    name: Basic Petrochemicals
+    parent_sector: chemical
+    keywords: [petrochemical, ethylene, propylene, aromatics]
+    description: Basic petrochemical production
+
+  - id: chemical_industrial_gases
+    name: Industrial Gases
+    parent_sector: chemical
+    keywords: [industrial gas, oxygen, nitrogen, hydrogen]
+    description: Industrial gas production
+
+  - id: chemical_fertilizer_nitrogen
+    name: Nitrogen Fertilizers
+    parent_sector: chemical
+    keywords: [nitrogen fertilizer, ammonia, urea]
+    description: Nitrogen fertilizer production
+
+  - id: chemical_fertilizer_phosphate
+    name: Phosphate Fertilizers
+    parent_sector: chemical
+    keywords: [phosphate, phosphoric acid, DAP]
+    description: Phosphate fertilizer production
+
+  - id: chemical_chlor_alkali
+    name: Chlor-Alkali Production
+    parent_sector: chemical
+    keywords: [chlorine, caustic soda, sodium hydroxide]
+    description: Chlor-alkali chemical production
+
+  - id: chemical_acids
+    name: Industrial Acids
+    parent_sector: chemical
+    keywords: [sulfuric acid, nitric acid, hydrochloric acid]
+    description: Industrial acid production
+
+  - id: chemical_polymers
+    name: Polymer Production
+    parent_sector: chemical
+    keywords: [polymer, polyethylene, polypropylene, PVC]
+    description: Polymer manufacturing
+
+  - id: chemical_specialty_chemicals
+    name: Specialty Chemicals
+    parent_sector: chemical
+    keywords: [specialty chemical, fine chemical, additives]
+    description: Specialty chemical production
+
+  - id: chemical_agrochemicals
+    name: Agrochemical Production
+    parent_sector: chemical
+    keywords: [agrochemical, pesticide, herbicide]
+    description: Agrochemical manufacturing
+
+  - id: chemical_pharmaceuticals_api
+    name: Pharmaceutical APIs
+    parent_sector: chemical
+    keywords: [API, active pharmaceutical ingredient, pharma]
+    description: Pharmaceutical API production
+
+  - id: chemical_paints_coatings
+    name: Paints and Coatings
+    parent_sector: chemical
+    keywords: [paint, coating, resin]
+    description: Paint and coating manufacturing
+
+  - id: chemical_adhesives_sealants
+    name: Adhesives and Sealants
+    parent_sector: chemical
+    keywords: [adhesive, sealant, glue]
+    description: Adhesive and sealant production
+
+  - id: chemical_surfactants
+    name: Surfactant Production
+    parent_sector: chemical
+    keywords: [surfactant, detergent, soap]
+    description: Surfactant manufacturing
+
+  - id: chemical_explosives
+    name: Explosives Manufacturing
+    parent_sector: chemical
+    keywords: [explosive, blasting, ammonium nitrate]
+    description: Explosives production facilities
+
+  - id: chemical_water_treatment
+    name: Water Treatment Chemicals
+    parent_sector: chemical
+    keywords: [water treatment chemical, coagulant, flocculant]
+    description: Water treatment chemical production
+
+  - id: chemical_storage
+    name: Chemical Storage Facilities
+    parent_sector: chemical
+    keywords: [chemical storage, tank farm, chemical terminal]
+    description: Chemical storage infrastructure
+
+  - id: chemical_distribution
+    name: Chemical Distribution
+    parent_sector: chemical
+    keywords: [chemical distribution, chemical logistics]
+    description: Chemical distribution operations
+
+  - id: chemical_hazmat_transport
+    name: Hazardous Materials Transport
+    parent_sector: chemical
+    keywords: [hazmat transport, chemical transport, dangerous goods]
+    description: Hazmat transportation services
+
+  - id: chemical_waste_management
+    name: Chemical Waste Management
+    parent_sector: chemical
+    keywords: [chemical waste, hazardous waste, waste treatment]
+    description: Chemical waste management facilities
+
+  - id: chemical_process_safety
+    name: Chemical Process Safety
+    parent_sector: chemical
+    keywords: [process safety, safety systems, PSM]
+    description: Chemical process safety systems
+
+  - id: chemical_laboratory
+    name: Chemical Laboratories
+    parent_sector: chemical
+    keywords: [chemical lab, analytical lab, testing lab]
+    description: Chemical testing laboratories
+
+  - id: chemical_research_development
+    name: Chemical R&D Facilities
+    parent_sector: chemical
+    keywords: [chemical R&D, research, pilot plant]
+    description: Chemical research and development facilities
+
+  # ============================================================================
+  # DEFENSE INDUSTRIAL BASE SECTOR - 30 subsectors
+  # ============================================================================
+
+  - id: defense_weapons_systems
+    name: Weapons Systems
+    parent_sector: defense_industrial_base
+    keywords: [weapons, missile, artillery, firearms]
+    description: Weapons systems manufacturing
+
+  - id: defense_aircraft_military
+    name: Military Aircraft
+    parent_sector: defense_industrial_base
+    keywords: [fighter jet, military aircraft, bomber]
+    description: Military aircraft manufacturing
+
+  - id: defense_aircraft_unmanned
+    name: Unmanned Aerial Systems
+    parent_sector: defense_industrial_base
+    keywords: [UAV, drone, unmanned aircraft]
+    description: Military drone manufacturing
+
+  - id: defense_helicopters
+    name: Military Helicopters
+    parent_sector: defense_industrial_base
+    keywords: [military helicopter, attack helicopter, transport helicopter]
+    description: Military helicopter manufacturing
+
+  - id: defense_ground_vehicles
+    name: Military Ground Vehicles
+    parent_sector: defense_industrial_base
+    keywords: [tank, armored vehicle, military vehicle]
+    description: Military ground vehicle manufacturing
+
+  - id: defense_naval_ships
+    name: Naval Vessels
+    parent_sector: defense_industrial_base
+    keywords: [naval ship, warship, aircraft carrier, submarine]
+    description: Naval vessel construction
+
+  - id: defense_naval_submarines
+    name: Submarines
+    parent_sector: defense_industrial_base
+    keywords: [submarine, nuclear submarine, attack submarine]
+    description: Submarine manufacturing
+
+  - id: defense_space_systems
+    name: Military Space Systems
+    parent_sector: defense_industrial_base
+    keywords: [military satellite, space defense, orbital]
+    description: Military space systems
+
+  - id: defense_cyber_warfare
+    name: Cyber Warfare Systems
+    parent_sector: defense_industrial_base
+    keywords: [cyber warfare, cyber defense, offensive cyber]
+    description: Cyber warfare capabilities
+
+  - id: defense_electronic_warfare
+    name: Electronic Warfare
+    parent_sector: defense_industrial_base
+    keywords: [electronic warfare, EW, jamming, countermeasures]
+    description: Electronic warfare systems
+
+  - id: defense_radar_systems
+    name: Military Radar Systems
+    parent_sector: defense_industrial_base
+    keywords: [military radar, surveillance radar, fire control]
+    description: Military radar systems
+
+  - id: defense_communications
+    name: Military Communications
+    parent_sector: defense_industrial_base
+    keywords: [military communications, tactical radio, secure communications]
+    description: Military communication systems
+
+  - id: defense_surveillance
+    name: Surveillance Systems
+    parent_sector: defense_industrial_base
+    keywords: [surveillance, ISR, reconnaissance, intelligence]
+    description: Military surveillance systems
+
+  - id: defense_ballistic_missiles
+    name: Ballistic Missiles
+    parent_sector: defense_industrial_base
+    keywords: [ballistic missile, ICBM, strategic missile]
+    description: Ballistic missile systems
+
+  - id: defense_missile_defense
+    name: Missile Defense Systems
+    parent_sector: defense_industrial_base
+    keywords: [missile defense, anti-missile, interceptor]
+    description: Missile defense systems
+
+  - id: defense_ammunition
+    name: Ammunition Production
+    parent_sector: defense_industrial_base
+    keywords: [ammunition, ordnance, munitions]
+    description: Ammunition manufacturing
+
+  - id: defense_explosives
+    name: Military Explosives
+    parent_sector: defense_industrial_base
+    keywords: [military explosive, warhead, bomb]
+    description: Military explosives production
+
+  - id: defense_propellants
+    name: Propellant Production
+    parent_sector: defense_industrial_base
+    keywords: [propellant, rocket fuel, solid fuel]
+    description: Military propellant manufacturing
+
+  - id: defense_body_armor
+    name: Body Armor Systems
+    parent_sector: defense_industrial_base
+    keywords: [body armor, ballistic protection, personal protection]
+    description: Body armor manufacturing
+
+  - id: defense_night_vision
+    name: Night Vision Systems
+    parent_sector: defense_industrial_base
+    keywords: [night vision, thermal imaging, infrared]
+    description: Night vision equipment
+
+  - id: defense_nuclear_weapons
+    name: Nuclear Weapons Systems
+    parent_sector: defense_industrial_base
+    keywords: [nuclear weapon, warhead, nuclear arsenal]
+    description: Nuclear weapons systems
+
+  - id: defense_chemical_biological
+    name: Chemical/Biological Defense
+    parent_sector: defense_industrial_base
+    keywords: [CBRN, chemical defense, biological defense]
+    description: CBRN defense systems
+
+  - id: defense_training_simulation
+    name: Training and Simulation
+    parent_sector: defense_industrial_base
+    keywords: [military simulation, training system, simulator]
+    description: Military training systems
+
+  - id: defense_logistics
+    name: Defense Logistics
+    parent_sector: defense_industrial_base
+    keywords: [military logistics, defense supply chain]
+    description: Defense logistics operations
+
+  - id: defense_maintenance
+    name: Defense Maintenance Operations
+    parent_sector: defense_industrial_base
+    keywords: [depot maintenance, overhaul, military maintenance]
+    description: Defense equipment maintenance
+
+  - id: defense_shipyard
+    name: Naval Shipyards
+    parent_sector: defense_industrial_base
+    keywords: [shipyard, naval shipyard, ship repair]
+    description: Naval shipyard operations
+
+  - id: defense_arsenal
+    name: Defense Arsenals
+    parent_sector: defense_industrial_base
+    keywords: [arsenal, armory, ammunition depot]
+    description: Defense arsenal facilities
+
+  - id: defense_research_development
+    name: Defense R&D
+    parent_sector: defense_industrial_base
+    keywords: [defense R&D, military research, DARPA]
+    description: Defense research and development
+
+  - id: defense_testing_range
+    name: Defense Testing Ranges
+    parent_sector: defense_industrial_base
+    keywords: [test range, proving ground, weapons testing]
+    description: Defense testing facilities
+
+  - id: defense_intelligence_systems
+    name: Intelligence Systems
+    parent_sector: defense_industrial_base
+    keywords: [intelligence, SIGINT, HUMINT, intelligence system]
+    description: Military intelligence systems
+
+  # ============================================================================
+  # CRITICAL MANUFACTURING SECTOR - 25 subsectors (additional to general manufacturing)
+  # ============================================================================
+
+  - id: critical_manufacturing_energy_equipment
+    name: Energy Equipment Manufacturing
+    parent_sector: critical_manufacturing
+    keywords: [turbine, generator, transformer, energy equipment]
+    description: Critical energy equipment manufacturing
+
+  - id: critical_manufacturing_water_equipment
+    name: Water Treatment Equipment
+    parent_sector: critical_manufacturing
+    keywords: [water treatment equipment, pumps, valves]
+    description: Water infrastructure equipment manufacturing
+
+  - id: critical_manufacturing_transportation_equipment
+    name: Transportation Equipment
+    parent_sector: critical_manufacturing
+    keywords: [transportation equipment, rail equipment, transit vehicles]
+    description: Critical transportation equipment
+
+  - id: critical_manufacturing_communications_equipment
+    name: Communications Equipment
+    parent_sector: critical_manufacturing
+    keywords: [communications equipment, network equipment, telecom hardware]
+    description: Communications equipment manufacturing
+
+  - id: critical_manufacturing_control_systems
+    name: Industrial Control Systems
+    parent_sector: critical_manufacturing
+    keywords: [ICS, SCADA equipment, PLC, industrial control]
+    description: Industrial control system manufacturing
+
+  - id: critical_manufacturing_medical_equipment
+    name: Critical Medical Equipment
+    parent_sector: critical_manufacturing
+    keywords: [ventilator, medical equipment, diagnostic equipment]
+    description: Critical medical equipment manufacturing
+
+  - id: critical_manufacturing_emergency_equipment
+    name: Emergency Response Equipment
+    parent_sector: critical_manufacturing
+    keywords: [emergency equipment, first responder, emergency vehicle]
+    description: Emergency response equipment manufacturing
+
+  - id: critical_manufacturing_security_equipment
+    name: Security Equipment
+    parent_sector: critical_manufacturing
+    keywords: [security equipment, surveillance, access control]
+    description: Security equipment manufacturing
+
+  - id: critical_manufacturing_cyber_hardware
+    name: Cybersecurity Hardware
+    parent_sector: critical_manufacturing
+    keywords: [security hardware, encryption device, secure communications]
+    description: Cybersecurity hardware manufacturing
+
+  - id: critical_manufacturing_semiconductor_equipment
+    name: Semiconductor Manufacturing Equipment
+    parent_sector: critical_manufacturing
+    keywords: [semiconductor equipment, lithography, chip equipment]
+    description: Semiconductor equipment manufacturing
+
+  - id: critical_manufacturing_precision_instruments
+    name: Precision Instruments
+    parent_sector: critical_manufacturing
+    keywords: [precision instrument, measurement, calibration]
+    description: Precision instrument manufacturing
+
+  - id: critical_manufacturing_aerospace_components
+    name: Critical Aerospace Components
+    parent_sector: critical_manufacturing
+    keywords: [aerospace components, avionics, flight systems]
+    description: Critical aerospace component manufacturing
+
+  - id: critical_manufacturing_naval_components
+    name: Naval Components
+    parent_sector: critical_manufacturing
+    keywords: [naval components, ship systems, marine equipment]
+    description: Naval component manufacturing
+
+  - id: critical_manufacturing_nuclear_components
+    name: Nuclear Components
+    parent_sector: critical_manufacturing
+    keywords: [nuclear components, reactor components, nuclear equipment]
+    description: Nuclear component manufacturing
+
+  - id: critical_manufacturing_critical_materials
+    name: Critical Materials Production
+    parent_sector: critical_manufacturing
+    keywords: [rare earth, critical materials, strategic materials]
+    description: Critical materials production
+
+  - id: critical_manufacturing_advanced_materials
+    name: Advanced Materials
+    parent_sector: critical_manufacturing
+    keywords: [advanced materials, composites, nanomaterials]
+    description: Advanced materials manufacturing
+
+  - id: critical_manufacturing_precision_machining
+    name: Precision Machining
+    parent_sector: critical_manufacturing
+    keywords: [precision machining, tight tolerance, critical machining]
+    description: Precision machining operations
+
+  - id: critical_manufacturing_clean_room
+    name: Clean Room Manufacturing
+    parent_sector: critical_manufacturing
+    keywords: [clean room, controlled environment, contamination control]
+    description: Clean room manufacturing facilities
+
+  - id: critical_manufacturing_testing_calibration
+    name: Testing and Calibration
+    parent_sector: critical_manufacturing
+    keywords: [testing, calibration, metrology, standards]
+    description: Testing and calibration facilities
+
+  - id: critical_manufacturing_quality_assurance
+    name: Critical Quality Assurance
+    parent_sector: critical_manufacturing
+    keywords: [quality assurance, inspection, non-destructive testing]
+    description: Critical manufacturing quality assurance
+
+  - id: critical_manufacturing_supply_chain
+    name: Critical Supply Chain
+    parent_sector: critical_manufacturing
+    keywords: [supply chain, critical parts, just in time]
+    description: Critical manufacturing supply chain
+
+  - id: critical_manufacturing_reverse_engineering
+    name: Reverse Engineering
+    parent_sector: critical_manufacturing
+    keywords: [reverse engineering, obsolescence, legacy systems]
+    description: Reverse engineering capabilities
+
+  - id: critical_manufacturing_additive_manufacturing
+    name: Critical Additive Manufacturing
+    parent_sector: critical_manufacturing
+    keywords: [additive manufacturing, 3D printing, rapid prototyping]
+    description: Critical additive manufacturing
+
+  - id: critical_manufacturing_specialized_tooling
+    name: Specialized Tooling
+    parent_sector: critical_manufacturing
+    keywords: [specialized tooling, custom tooling, manufacturing tools]
+    description: Specialized tooling manufacturing
+
+  - id: critical_manufacturing_prototype_development
+    name: Prototype Development
+    parent_sector: critical_manufacturing
+    keywords: [prototype, development, proof of concept]
+    description: Critical prototype development
+
+# ============================================================================
+# SUMMARY STATISTICS
+# ============================================================================
+# Total subsectors: 388
+# Energy: 50
+# Water: 35
+# Manufacturing: 40
+# Transportation: 38
+# Telecommunications: 32
+# Financial: 28
+# Healthcare: 30
+# Information Technology: 35
+# Government: 25
+# Emergency Services: 20
+# Food and Agriculture: 33
+# Chemical: 22
+# Defense Industrial Base: 30
+# Critical Manufacturing: 25

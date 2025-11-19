@@ -1,0 +1,1248 @@
+[
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_0",
+    "text": "# Wave 6: UCO (Unified Cyber Ontology) and STIX 2.1 Integration\n\n**File**: 08_WAVE_6_UCO_STIX.md\n**Created**: 2025-10-30\n**Version**: v1.0.0\n**Status**: ACTIVE\n**Wave Duration**: 4 weeks\n**Target Node Count**: ~600 nodes\n**Dependencies**: Waves 1-5 (Core ATT&CK, Assets, CVE, ICS)\n\n## 1. Wave Overview\n\n### 1.1 Objectives\n\nWave 6 integrates the AEON Digital Twin cybersecurity knowledge graph with two critical cyber threat intelligence standards: Unified Cyber Ontology (UCO) and STIX 2.1 (Structured Threat Information Expression). This integration enables standardized threat intelligence sharing, cyber forensics investigation support, and interoperability with external threat intelligence platforms.\n\n**Primary Goals**:\n- Implement UCO core ontology for cyber investigation and forensics\n- Integrate STIX 2.1 objects for threat intelligence exchange\n- Enable bidirectional conversion between Neo4j graph and STIX bundles\n- Support cyber investigation case management workflows\n- Preserve all ex",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 0,
+      "start_char": 0,
+      "end_char": 1000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_1",
+    "text": "grate STIX 2.1 objects for threat intelligence exchange\n- Enable bidirectional conversion between Neo4j graph and STIX bundles\n- Support cyber investigation case management workflows\n- Preserve all existing graph data (CVEs, ATT&CK techniques, ICS assets)\n- Enable automated threat intelligence ingestion from TAXII servers\n- Support cyber forensics evidence chain of custody\n\n**Business Value**:\n- Standards-compliant threat intelligence sharing with partners and ISACs\n- Automated threat intelligence platform (TIP) integration\n- Cyber forensics investigation support with evidence provenance\n- Regulatory compliance (GDPR, NIST 800-61 incident response)\n- Supply chain risk intelligence sharing\n- Multi-organization threat intelligence collaboration\n\n### 1.2 Scope Definition\n\n**In Scope**:\n\n**UCO Components**:\n- Core observable objects (files, network connections, processes, accounts)\n- Investigation case management (cases, investigations, traces)\n- Provenance tracking (actions, relationships",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 1,
+      "start_char": 800,
+      "end_char": 1800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_2",
+    "text": " Components**:\n- Core observable objects (files, network connections, processes, accounts)\n- Investigation case management (cases, investigations, traces)\n- Provenance tracking (actions, relationships, tools)\n- Evidence chain of custody\n- Digital forensics artifacts\n- Cyber-physical event correlation\n\n**STIX 2.1 Components**:\n- STIX Domain Objects (SDOs): Attack Pattern, Campaign, Course of Action, Grouping, Identity, Indicator, Infrastructure, Intrusion Set, Malware, Note, Observed Data, Opinion, Report, Threat Actor, Tool, Vulnerability\n- STIX Cyber-observable Objects (SCOs): Artifact, Autonomous System, Directory, Domain Name, Email Address, Email Message, File, IPv4/IPv6 Address, MAC Address, Mutex, Network Traffic, Process, Software, URL, User Account, Windows Registry Key, X.509 Certificate\n- STIX Relationship Objects (SROs): Relationship, Sighting\n- STIX bundle import/export functionality\n- TAXII 2.1 client integration\n\n**Integration Points**:\n- Map MITRE ATT&CK techniques to ST",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 2,
+      "start_char": 1600,
+      "end_char": 2600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_3",
+    "text": "ificate\n- STIX Relationship Objects (SROs): Relationship, Sighting\n- STIX bundle import/export functionality\n- TAXII 2.1 client integration\n\n**Integration Points**:\n- Map MITRE ATT&CK techniques to STIX Attack Patterns\n- Map CVEs to STIX Vulnerability objects\n- Map ICS assets to STIX Infrastructure objects\n- Map threat actors to STIX Threat Actor objects\n- Connect UCO observables to STIX cyber-observables\n\n**Out of Scope**:\n- STIX 1.x legacy format support\n- OpenC2 command and control integration (future wave)\n- MISP (Malware Information Sharing Platform) direct integration (can export STIX)\n- Custom STIX extensions (use standard STIX 2.1 only)\n\n### 1.3 Dependencies\n\n**Required Completed Waves**:\n- Wave 1: Core MITRE ATT&CK framework (for STIX Attack Pattern mapping)\n- Wave 2: Asset classification (for STIX Infrastructure objects)\n- Wave 4: CVE integration (for STIX Vulnerability mapping)\n- Wave 5: ICS framework (for OT infrastructure in STIX)\n\n**External Standards**:\n- UCO Ontology Sp",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 3,
+      "start_char": 2400,
+      "end_char": 3400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_4",
+    "text": "fication (for STIX Infrastructure objects)\n- Wave 4: CVE integration (for STIX Vulnerability mapping)\n- Wave 5: ICS framework (for OT infrastructure in STIX)\n\n**External Standards**:\n- UCO Ontology Specification v1.2.0 (https://unifiedcyberontology.org/)\n- STIX 2.1 Specification (https://docs.oasis-open.org/cti/stix/v2.1/)\n- TAXII 2.1 Specification (https://docs.oasis-open.org/cti/taxii/v2.1/)\n- JSON-LD for serialization\n- Neo4j APOC procedures for JSON handling\n\n**Technical Requirements**:\n- Neo4j APOC library installed\n- Python 3.8+ for STIX validation (stix2 library)\n- Network access to TAXII servers (optional, for live feeds)\n\n### 1.4 Success Metrics\n\n**Quantitative Metrics**:\n- 15+ UCO core observable types implemented\n- 12+ STIX Domain Object types with full properties\n- 18+ STIX Cyber-observable Object types\n- 100+ bidirectional mappings (ATT&CK \u2194 STIX Attack Pattern)\n- 500+ CVE \u2192 STIX Vulnerability conversions\n- 50+ investigation case nodes created (example data)\n- STIX bundle ",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 4,
+      "start_char": 3200,
+      "end_char": 4200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_5",
+    "text": "er-observable Object types\n- 100+ bidirectional mappings (ATT&CK \u2194 STIX Attack Pattern)\n- 500+ CVE \u2192 STIX Vulnerability conversions\n- 50+ investigation case nodes created (example data)\n- STIX bundle export/import roundtrip with 100% fidelity\n- Query performance <1 second for STIX bundle generation\n\n**Qualitative Metrics**:\n- Valid STIX 2.1 JSON bundle export\n- UCO ontology compliance validation\n- Support for cyber forensics investigation workflows\n- Seamless integration with existing graph (no data loss)\n- Automated TAXII feed ingestion capability\n\n## 2. Complete Node Schemas\n\n### 2.1 UCO Core: Observable Nodes\n\n#### 2.1.1 UCO Observable Base\n\n**Node Label**: `UCO_Observable`\n\n**Description**: Base class for all UCO observable objects representing cyber artifacts and entities.\n\n**Properties**:\n```cypher\n{\n  uco_id: String,                // UCO unique identifier (UUID format)\n  uco_type: String,              // UCO observable type (File, NetworkConnection, etc.)\n  created_time: DateTi",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 5,
+      "start_char": 4000,
+      "end_char": 5000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_6",
+    "text": "es**:\n```cypher\n{\n  uco_id: String,                // UCO unique identifier (UUID format)\n  uco_type: String,              // UCO observable type (File, NetworkConnection, etc.)\n  created_time: DateTime,        // Observable creation timestamp\n  modified_time: DateTime,       // Last modification timestamp\n\n  // Core UCO properties\n  state: String,                 // Observable state (ACTIVE, INACTIVE, UNKNOWN)\n  description: String,           // Human-readable description\n  confidence: Float,             // Confidence in observable data (0.0-1.0)\n\n  // Provenance\n  created_by: String,            // Tool/person who created observable\n  data_source: String,           // Data source for observable\n\n  // Context\n  labels: [String],              // Classification labels\n  external_references: [Map],    // External reference citations\n\n  // Metadata\n  node_id: String,               // Neo4j internal UUID\n  validation_status: String,     // UCO_COMPLIANT, NEEDS_REVIEW\n  last_updated: DateTim",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 6,
+      "start_char": 4800,
+      "end_char": 5800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_7",
+    "text": "[Map],    // External reference citations\n\n  // Metadata\n  node_id: String,               // Neo4j internal UUID\n  validation_status: String,     // UCO_COMPLIANT, NEEDS_REVIEW\n  last_updated: DateTime\n}\n```\n\n**Index and Constraint Definitions**:\n```cypher\n// Unique constraint on UCO ID\nCREATE CONSTRAINT uco_observable_id_unique IF NOT EXISTS\nFOR (o:UCO_Observable) REQUIRE o.uco_id IS UNIQUE;\n\n// Index on UCO type for classification queries\nCREATE INDEX uco_observable_type_idx IF NOT EXISTS\nFOR (o:UCO_Observable) ON (o.uco_type);\n\n// Index on created_time for temporal queries\nCREATE INDEX uco_observable_time_idx IF NOT EXISTS\nFOR (o:UCO_Observable) ON (o.created_time);\n```\n\n#### 2.1.2 UCO File Observable\n\n**Node Label**: `UCO_File` (inherits `UCO_Observable`)\n\n**Description**: Represents file system objects in cyber investigations.\n\n**Properties**:\n```cypher\n{\n  // Inherits all UCO_Observable properties plus:\n\n  file_path: String,             // Full file path\n  file_name: String,     ",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 7,
+      "start_char": 5600,
+      "end_char": 6600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_8",
+    "text": "ile system objects in cyber investigations.\n\n**Properties**:\n```cypher\n{\n  // Inherits all UCO_Observable properties plus:\n\n  file_path: String,             // Full file path\n  file_name: String,             // File name only\n  file_extension: String,        // File extension (e.g., \".exe\")\n  file_size_bytes: Integer,      // File size in bytes\n\n  // Hash values\n  md5_hash: String,              // MD5 hash\n  sha1_hash: String,             // SHA-1 hash\n  sha256_hash: String,           // SHA-256 hash\n  sha512_hash: String,           // SHA-512 hash (optional)\n\n  // File metadata\n  mime_type: String,             // MIME type\n  magic_number: String,          // File magic number (hex)\n  created_time: DateTime,        // File creation time\n  modified_time: DateTime,       // Last modification time\n  accessed_time: DateTime,       // Last access time\n\n  // File attributes\n  is_directory: Boolean,\n  is_hidden: Boolean,\n  is_system: Boolean,\n  permissions: String,           // Unix permissio",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 8,
+      "start_char": 6400,
+      "end_char": 7400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_9",
+    "text": " time\n  accessed_time: DateTime,       // Last access time\n\n  // File attributes\n  is_directory: Boolean,\n  is_hidden: Boolean,\n  is_system: Boolean,\n  permissions: String,           // Unix permissions or Windows ACL\n  owner: String,                 // File owner\n\n  // Analysis results\n  is_malicious: Boolean,\n  malware_family: String,\n  yara_matches: [String],        // Matching YARA rules\n\n  // Forensics\n  evidence_id: String,           // Evidence tracking ID\n  chain_of_custody: [Map]        // Custody transfer records\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create UCO File Observable\nCREATE (f:UCO_File:UCO_Observable {\n  uco_id: \"uco-file-\" + randomUUID(),\n  uco_type: \"File\",\n\n  file_path: \"C:\\\\Users\\\\victim\\\\AppData\\\\Local\\\\Temp\\\\malware.exe\",\n  file_name: \"malware.exe\",\n  file_extension: \".exe\",\n  file_size_bytes: 245760,\n\n  md5_hash: \"d41d8cd98f00b204e9800998ecf8427e\",\n  sha1_hash: \"da39a3ee5e6b4b0d3255bfef95601890afd80709\",\n  sha256_hash: \"e3b0c44298fc1c149af",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 9,
+      "start_char": 7200,
+      "end_char": 8200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_10",
+    "text": "exe\",\n  file_extension: \".exe\",\n  file_size_bytes: 245760,\n\n  md5_hash: \"d41d8cd98f00b204e9800998ecf8427e\",\n  sha1_hash: \"da39a3ee5e6b4b0d3255bfef95601890afd80709\",\n  sha256_hash: \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\n\n  mime_type: \"application/x-msdownload\",\n  magic_number: \"4D5A\",\n  created_time: datetime('2024-10-15T08:23:45Z'),\n  modified_time: datetime('2024-10-15T08:23:45Z'),\n  accessed_time: datetime('2024-10-15T09:15:32Z'),\n\n  is_directory: false,\n  is_hidden: false,\n  is_system: false,\n  permissions: \"755\",\n  owner: \"VICTIM-PC\\\\victim\",\n\n  is_malicious: true,\n  malware_family: \"TrickBot\",\n  yara_matches: [\"TrickBot_Loader\", \"Packed_UPX\"],\n\n  evidence_id: \"CASE-2024-001-EV-042\",\n  chain_of_custody: [\n    {\n      timestamp: datetime('2024-10-15T10:00:00Z'),\n      handler: \"Forensic Analyst John Doe\",\n      action: \"Collected from endpoint\",\n      hash_verified: true\n    }\n  ],\n\n  state: \"ACTIVE\",\n  description: \"Suspected TrickBot malware executable",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 10,
+      "start_char": 8000,
+      "end_char": 9000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_11",
+    "text": "Z'),\n      handler: \"Forensic Analyst John Doe\",\n      action: \"Collected from endpoint\",\n      hash_verified: true\n    }\n  ],\n\n  state: \"ACTIVE\",\n  description: \"Suspected TrickBot malware executable\",\n  confidence: 0.95,\n  created_by: \"EDR_Agent_v2.3\",\n  data_source: \"Endpoint Detection and Response\",\n  labels: [\"malware\", \"executable\", \"trickbot\"],\n\n  node_id: randomUUID(),\n  validation_status: \"UCO_COMPLIANT\",\n  last_updated: datetime()\n})\n```\n\n**Index Definitions**:\n```cypher\n// Index on hash values for IoC matching\nCREATE INDEX uco_file_md5_idx IF NOT EXISTS\nFOR (f:UCO_File) ON (f.md5_hash);\n\nCREATE INDEX uco_file_sha256_idx IF NOT EXISTS\nFOR (f:UCO_File) ON (f.sha256_hash);\n\n// Index on file name for search\nCREATE INDEX uco_file_name_idx IF NOT EXISTS\nFOR (f:UCO_File) ON (f.file_name);\n\n// Full-text search on file paths\nCREATE FULLTEXT INDEX uco_file_fulltext IF NOT EXISTS\nFOR (f:UCO_File) ON EACH [f.file_path, f.file_name];\n```\n\n#### 2.1.3 UCO Network Connection Observable\n\n**N",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 11,
+      "start_char": 8800,
+      "end_char": 9800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_12",
+    "text": "e);\n\n// Full-text search on file paths\nCREATE FULLTEXT INDEX uco_file_fulltext IF NOT EXISTS\nFOR (f:UCO_File) ON EACH [f.file_path, f.file_name];\n```\n\n#### 2.1.3 UCO Network Connection Observable\n\n**Node Label**: `UCO_NetworkConnection` (inherits `UCO_Observable`)\n\n**Description**: Represents network connections in cyber investigations.\n\n**Properties**:\n```cypher\n{\n  // Inherits all UCO_Observable properties plus:\n\n  // Source information\n  source_ip: String,             // Source IP address\n  source_port: Integer,          // Source port number\n  source_hostname: String,       // Source hostname (optional)\n\n  // Destination information\n  destination_ip: String,        // Destination IP address\n  destination_port: Integer,     // Destination port number\n  destination_hostname: String,  // Destination hostname\n\n  // Connection details\n  protocol: String,              // TCP, UDP, ICMP, etc.\n  protocol_layer7: String,       // HTTP, HTTPS, DNS, SMB, etc.\n  connection_state: String,      ",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 12,
+      "start_char": 9600,
+      "end_char": 10600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_13",
+    "text": "Destination hostname\n\n  // Connection details\n  protocol: String,              // TCP, UDP, ICMP, etc.\n  protocol_layer7: String,       // HTTP, HTTPS, DNS, SMB, etc.\n  connection_state: String,      // ESTABLISHED, SYN_SENT, CLOSED, etc.\n\n  // Traffic characteristics\n  bytes_sent: Integer,           // Bytes transmitted\n  bytes_received: Integer,       // Bytes received\n  packets_sent: Integer,\n  packets_received: Integer,\n\n  // Timing\n  start_time: DateTime,          // Connection start\n  end_time: DateTime,            // Connection end\n  duration_seconds: Float,       // Connection duration\n\n  // Security analysis\n  is_suspicious: Boolean,\n  threat_indicators: [String],   // Detected threats\n  geolocation_dest: Map,         // Destination geo data\n\n  // Additional context\n  process_id: Integer,           // Associated process ID\n  process_name: String,          // Process that created connection\n  user_account: String           // User account context\n}\n```\n\n**Complete Cypher CREATE",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 13,
+      "start_char": 10400,
+      "end_char": 11400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_14",
+    "text": "Integer,           // Associated process ID\n  process_name: String,          // Process that created connection\n  user_account: String           // User account context\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create UCO Network Connection\nCREATE (nc:UCO_NetworkConnection:UCO_Observable {\n  uco_id: \"uco-network-\" + randomUUID(),\n  uco_type: \"NetworkConnection\",\n\n  source_ip: \"10.10.50.100\",\n  source_port: 49832,\n  source_hostname: \"workstation-042.internal.corp\",\n\n  destination_ip: \"203.0.113.45\",\n  destination_port: 443,\n  destination_hostname: \"malicious-c2.example.com\",\n\n  protocol: \"TCP\",\n  protocol_layer7: \"HTTPS\",\n  connection_state: \"ESTABLISHED\",\n\n  bytes_sent: 15234,\n  bytes_received: 89456,\n  packets_sent: 42,\n  packets_received: 67,\n\n  start_time: datetime('2024-10-15T14:23:11Z'),\n  end_time: datetime('2024-10-15T14:28:45Z'),\n  duration_seconds: 334.0,\n\n  is_suspicious: true,\n  threat_indicators: [\n    \"Connection to known C2 server\",\n    \"Unusual data exfil",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 14,
+      "start_char": 11200,
+      "end_char": 12200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_15",
+    "text": "-10-15T14:23:11Z'),\n  end_time: datetime('2024-10-15T14:28:45Z'),\n  duration_seconds: 334.0,\n\n  is_suspicious: true,\n  threat_indicators: [\n    \"Connection to known C2 server\",\n    \"Unusual data exfiltration volume\",\n    \"Certificate mismatch\"\n  ],\n  geolocation_dest: {\n    country: \"Unknown\",\n    city: \"Unknown\",\n    asn: \"AS64512\",\n    organization: \"Bulletproof Hosting Ltd\"\n  },\n\n  process_id: 4892,\n  process_name: \"svchost.exe\",\n  user_account: \"WORKSTATION-042\\\\jdoe\",\n\n  state: \"ACTIVE\",\n  description: \"Suspicious HTTPS connection to potential C2 server\",\n  confidence: 0.88,\n  created_by: \"Network_IDS_v3.1\",\n  data_source: \"Network Traffic Analysis\",\n  labels: [\"c2-communication\", \"exfiltration\", \"suspicious\"],\n\n  node_id: randomUUID(),\n  validation_status: \"UCO_COMPLIANT\",\n  last_updated: datetime()\n})\n```\n\n**Index Definitions**:\n```cypher\n// Index on IP addresses for correlation\nCREATE INDEX uco_netconn_src_ip_idx IF NOT EXISTS\nFOR (nc:UCO_NetworkConnection) ON (nc.source_ip);\n\n",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 15,
+      "start_char": 12000,
+      "end_char": 13000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_16",
+    "text": "ated: datetime()\n})\n```\n\n**Index Definitions**:\n```cypher\n// Index on IP addresses for correlation\nCREATE INDEX uco_netconn_src_ip_idx IF NOT EXISTS\nFOR (nc:UCO_NetworkConnection) ON (nc.source_ip);\n\nCREATE INDEX uco_netconn_dest_ip_idx IF NOT EXISTS\nFOR (nc:UCO_NetworkConnection) ON (nc.destination_ip);\n\n// Index on destination port for service analysis\nCREATE INDEX uco_netconn_dest_port_idx IF NOT EXISTS\nFOR (nc:UCO_NetworkConnection) ON (nc.destination_port);\n\n// Index on start time for temporal analysis\nCREATE INDEX uco_netconn_time_idx IF NOT EXISTS\nFOR (nc:UCO_NetworkConnection) ON (nc.start_time);\n```\n\n#### 2.1.4 UCO Process Observable\n\n**Node Label**: `UCO_Process` (inherits `UCO_Observable`)\n\n**Description**: Represents process execution in cyber investigations.\n\n**Properties**:\n```cypher\n{\n  // Inherits all UCO_Observable properties plus:\n\n  process_id: Integer,           // PID\n  parent_process_id: Integer,    // Parent PID\n  process_name: String,          // Process name\n  ",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 16,
+      "start_char": 12800,
+      "end_char": 13800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_17",
+    "text": "``cypher\n{\n  // Inherits all UCO_Observable properties plus:\n\n  process_id: Integer,           // PID\n  parent_process_id: Integer,    // Parent PID\n  process_name: String,          // Process name\n  process_path: String,          // Full path to executable\n\n  // Command line\n  command_line: String,          // Full command line with arguments\n  arguments: [String],           // Parsed arguments\n\n  // User context\n  user_account: String,          // Executing user account\n  user_sid: String,              // Windows SID (if applicable)\n  integrity_level: String,       // Low, Medium, High, System\n\n  // Timing\n  creation_time: DateTime,       // Process start time\n  termination_time: DateTime,    // Process end time (if terminated)\n\n  // Binary information\n  binary_hash_md5: String,\n  binary_hash_sha256: String,\n  digital_signature: Map,        // Code signing certificate info\n  is_signed: Boolean,\n  is_valid_signature: Boolean,\n\n  // Process characteristics\n  is_hidden: Boolean,\n  is_in",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 17,
+      "start_char": 13600,
+      "end_char": 14600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_18",
+    "text": "_hash_sha256: String,\n  digital_signature: Map,        // Code signing certificate info\n  is_signed: Boolean,\n  is_valid_signature: Boolean,\n\n  // Process characteristics\n  is_hidden: Boolean,\n  is_injected: Boolean,          // Code injection detected\n  injection_technique: String,   // DLL injection, process hollowing, etc.\n\n  // Network activity\n  network_connections: [String], // UCO IDs of associated connections\n\n  // File activity\n  files_created: [String],       // UCO IDs of created files\n  files_modified: [String],      // UCO IDs of modified files\n  files_deleted: [String],       // UCO IDs of deleted files\n\n  // Registry activity (Windows)\n  registry_keys_modified: [String],\n\n  // Security analysis\n  is_malicious: Boolean,\n  malware_family: String,\n  behavior_tags: [String]        // \"persistence\", \"credential-theft\", etc.\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create UCO Process Observable\nCREATE (p:UCO_Process:UCO_Observable {\n  uco_id: \"uco-process-\" + ",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 18,
+      "start_char": 14400,
+      "end_char": 15400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_19",
+    "text": "   // \"persistence\", \"credential-theft\", etc.\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create UCO Process Observable\nCREATE (p:UCO_Process:UCO_Observable {\n  uco_id: \"uco-process-\" + randomUUID(),\n  uco_type: \"Process\",\n\n  process_id: 4892,\n  parent_process_id: 1024,\n  process_name: \"svchost.exe\",\n  process_path: \"C:\\\\Windows\\\\System32\\\\svchost.exe\",\n\n  command_line: \"C:\\\\Windows\\\\System32\\\\svchost.exe -k netsvcs -p\",\n  arguments: [\"-k\", \"netsvcs\", \"-p\"],\n\n  user_account: \"NT AUTHORITY\\\\SYSTEM\",\n  user_sid: \"S-1-5-18\",\n  integrity_level: \"System\",\n\n  creation_time: datetime('2024-10-15T08:45:23Z'),\n  termination_time: null,\n\n  binary_hash_md5: \"d41d8cd98f00b204e9800998ecf8427e\",\n  binary_hash_sha256: \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\n  digital_signature: {\n    signer: \"Microsoft Corporation\",\n    issuer: \"Microsoft Code Signing PCA\",\n    serial: \"33000001B1BFF95B0E1E71CA000000000001B1\",\n    valid_from: datetime('2020-01-15T00:00:00Z'),",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 19,
+      "start_char": 15200,
+      "end_char": 16200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_20",
+    "text": "ital_signature: {\n    signer: \"Microsoft Corporation\",\n    issuer: \"Microsoft Code Signing PCA\",\n    serial: \"33000001B1BFF95B0E1E71CA000000000001B1\",\n    valid_from: datetime('2020-01-15T00:00:00Z'),\n    valid_to: datetime('2025-01-15T00:00:00Z')\n  },\n  is_signed: true,\n  is_valid_signature: false,  // Signature tampered\n\n  is_hidden: false,\n  is_injected: true,\n  injection_technique: \"Process Hollowing\",\n\n  network_connections: [],  // Will be populated via relationships\n  files_created: [],\n  files_modified: [],\n\n  registry_keys_modified: [\n    \"HKLM\\\\Software\\\\Microsoft\\\\Windows\\\\CurrentVersion\\\\Run\\\\malware\"\n  ],\n\n  is_malicious: true,\n  malware_family: \"Emotet\",\n  behavior_tags: [\"persistence\", \"process-injection\", \"command-and-control\"],\n\n  state: \"ACTIVE\",\n  description: \"Malicious svchost.exe process with hollowed legitimate binary\",\n  confidence: 0.92,\n  created_by: \"EDR_Agent_v2.3\",\n  data_source: \"Endpoint Detection and Response\",\n  labels: [\"malware\", \"process-injection\", ",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 20,
+      "start_char": 16000,
+      "end_char": 17000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_21",
+    "text": " svchost.exe process with hollowed legitimate binary\",\n  confidence: 0.92,\n  created_by: \"EDR_Agent_v2.3\",\n  data_source: \"Endpoint Detection and Response\",\n  labels: [\"malware\", \"process-injection\", \"emotet\"],\n\n  node_id: randomUUID(),\n  validation_status: \"UCO_COMPLIANT\",\n  last_updated: datetime()\n})\n```\n\n**Index Definitions**:\n```cypher\n// Index on process ID for correlation\nCREATE INDEX uco_process_pid_idx IF NOT EXISTS\nFOR (p:UCO_Process) ON (p.process_id);\n\n// Index on process name\nCREATE INDEX uco_process_name_idx IF NOT EXISTS\nFOR (p:UCO_Process) ON (p.process_name);\n\n// Index on binary hashes\nCREATE INDEX uco_process_sha256_idx IF NOT EXISTS\nFOR (p:UCO_Process) ON (p.binary_hash_sha256);\n\n// Full-text search on command line\nCREATE FULLTEXT INDEX uco_process_fulltext IF NOT EXISTS\nFOR (p:UCO_Process) ON EACH [p.command_line, p.process_path];\n```\n\n#### 2.1.5 UCO User Account Observable\n\n**Node Label**: `UCO_UserAccount` (inherits `UCO_Observable`)\n\n**Description**: Represents u",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 21,
+      "start_char": 16800,
+      "end_char": 17800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_22",
+    "text": "\nFOR (p:UCO_Process) ON EACH [p.command_line, p.process_path];\n```\n\n#### 2.1.5 UCO User Account Observable\n\n**Node Label**: `UCO_UserAccount` (inherits `UCO_Observable`)\n\n**Description**: Represents user accounts in cyber investigations.\n\n**Properties**:\n```cypher\n{\n  // Inherits all UCO_Observable properties plus:\n\n  account_name: String,          // Username\n  account_id: String,            // UID, SID, or unique identifier\n  account_type: String,          // USER, ADMIN, SERVICE, SYSTEM\n  domain: String,                // Domain or realm\n\n  // Account details\n  display_name: String,\n  email_address: String,\n  account_created: DateTime,\n  last_login: DateTime,\n  last_password_change: DateTime,\n\n  // Security status\n  is_enabled: Boolean,\n  is_locked: Boolean,\n  is_privileged: Boolean,\n  password_expired: Boolean,\n\n  // Group memberships\n  groups: [String],              // Group names\n  privileges: [String],          // Assigned privileges\n\n  // Activity indicators\n  login_attempts_fa",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 22,
+      "start_char": 17600,
+      "end_char": 18600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_23",
+    "text": "password_expired: Boolean,\n\n  // Group memberships\n  groups: [String],              // Group names\n  privileges: [String],          // Assigned privileges\n\n  // Activity indicators\n  login_attempts_failed: Integer,\n  login_locations: [String],     // IP addresses or hostnames\n\n  // Investigation context\n  is_compromised: Boolean,\n  compromise_indicators: [String]\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create UCO User Account\nCREATE (u:UCO_UserAccount:UCO_Observable {\n  uco_id: \"uco-account-\" + randomUUID(),\n  uco_type: \"UserAccount\",\n\n  account_name: \"jdoe\",\n  account_id: \"S-1-5-21-3623811015-3361044348-30300820-1013\",\n  account_type: \"USER\",\n  domain: \"CORP\",\n\n  display_name: \"John Doe\",\n  email_address: \"john.doe@corp.example.com\",\n  account_created: datetime('2022-03-15T00:00:00Z'),\n  last_login: datetime('2024-10-15T08:23:00Z'),\n  last_password_change: datetime('2024-07-01T00:00:00Z'),\n\n  is_enabled: true,\n  is_locked: false,\n  is_privileged: false,\n  password_ex",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 23,
+      "start_char": 18400,
+      "end_char": 19400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_24",
+    "text": "15T00:00:00Z'),\n  last_login: datetime('2024-10-15T08:23:00Z'),\n  last_password_change: datetime('2024-07-01T00:00:00Z'),\n\n  is_enabled: true,\n  is_locked: false,\n  is_privileged: false,\n  password_expired: false,\n\n  groups: [\"Domain Users\", \"VPN Users\", \"Engineering\"],\n  privileges: [\"SeChangeNotifyPrivilege\", \"SeIncreaseWorkingSetPrivilege\"],\n\n  login_attempts_failed: 3,\n  login_locations: [\"10.10.50.100\", \"192.168.1.45\"],\n\n  is_compromised: true,\n  compromise_indicators: [\n    \"Unusual login time (3 AM)\",\n    \"Login from foreign IP\",\n    \"Privilege escalation attempt\",\n    \"Lateral movement detected\"\n  ],\n\n  state: \"ACTIVE\",\n  description: \"Compromised user account with suspicious activity\",\n  confidence: 0.85,\n  created_by: \"SIEM_AnalysisEngine\",\n  data_source: \"Active Directory Logs\",\n  labels: [\"compromised\", \"user-account\", \"lateral-movement\"],\n\n  node_id: randomUUID(),\n  validation_status: \"UCO_COMPLIANT\",\n  last_updated: datetime()\n})\n```\n\n### 2.2 UCO Investigation: Case Manag",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 24,
+      "start_char": 19200,
+      "end_char": 20200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_25",
+    "text": "\n  labels: [\"compromised\", \"user-account\", \"lateral-movement\"],\n\n  node_id: randomUUID(),\n  validation_status: \"UCO_COMPLIANT\",\n  last_updated: datetime()\n})\n```\n\n### 2.2 UCO Investigation: Case Management Nodes\n\n#### 2.2.1 UCO Investigation Case\n\n**Node Label**: `UCO_InvestigationCase`\n\n**Description**: Represents a cyber investigation case aggregating evidence and findings.\n\n**Properties**:\n```cypher\n{\n  case_id: String,               // Unique case identifier\n  case_name: String,             // Case title\n  case_description: String,      // Detailed description\n\n  // Case metadata\n  case_status: String,           // OPEN, ACTIVE, CLOSED, ARCHIVED\n  case_priority: String,         // LOW, MEDIUM, HIGH, CRITICAL\n  case_classification: String,   // Incident type classification\n\n  // Timeline\n  case_opened: DateTime,\n  case_closed: DateTime,\n  incident_start_time: DateTime, // When incident began\n  incident_end_time: DateTime,   // When incident ended\n\n  // Case team\n  lead_investigator:",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 25,
+      "start_char": 20000,
+      "end_char": 21000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_26",
+    "text": "e\n  case_opened: DateTime,\n  case_closed: DateTime,\n  incident_start_time: DateTime, // When incident began\n  incident_end_time: DateTime,   // When incident ended\n\n  // Case team\n  lead_investigator: String,\n  investigators: [String],       // All investigators\n  organization: String,\n\n  // Incident details\n  affected_systems: [String],    // System identifiers\n  affected_users: [String],      // User accounts\n  estimated_impact: String,      // Business impact assessment\n\n  // Evidence tracking\n  evidence_count: Integer,       // Number of evidence items\n  observable_count: Integer,     // Number of observables\n\n  // Legal/compliance\n  legal_hold: Boolean,\n  retention_period_days: Integer,\n  chain_of_custody_verified: Boolean,\n\n  // References\n  related_cases: [String],       // Related case IDs\n  external_references: [Map],    // Incident reports, tickets\n\n  // Metadata\n  node_id: String,\n  created_by: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: ",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 26,
+      "start_char": 20800,
+      "end_char": 21800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_27",
+    "text": "case IDs\n  external_references: [Map],    // Incident reports, tickets\n\n  // Metadata\n  node_id: String,\n  created_by: String,\n  created_date: DateTime,\n  last_updated: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create UCO Investigation Case\nCREATE (c:UCO_InvestigationCase {\n  case_id: \"CASE-2024-001\",\n  case_name: \"TrickBot Ransomware Incident - Manufacturing Plant\",\n  case_description: \"Investigation of TrickBot malware infection leading to ransomware deployment in manufacturing plant OT network. Initial access via phishing, lateral movement to engineering workstations, and attempted PLC compromise.\",\n\n  case_status: \"ACTIVE\",\n  case_priority: \"CRITICAL\",\n  case_classification: \"Ransomware Incident / OT Compromise\",\n\n  case_opened: datetime('2024-10-15T10:00:00Z'),\n  case_closed: null,\n  incident_start_time: datetime('2024-10-15T08:23:00Z'),\n  incident_end_time: null,\n\n  lead_investigator: \"Jane Smith, CISSP, GCFA\",\n  investigators",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 27,
+      "start_char": 21600,
+      "end_char": 22600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_28",
+    "text": "etime('2024-10-15T10:00:00Z'),\n  case_closed: null,\n  incident_start_time: datetime('2024-10-15T08:23:00Z'),\n  incident_end_time: null,\n\n  lead_investigator: \"Jane Smith, CISSP, GCFA\",\n  investigators: [\n    \"Jane Smith (Lead)\",\n    \"Bob Johnson (Forensics)\",\n    \"Alice Wong (Malware Analysis)\",\n    \"Carlos Garcia (OT Security)\"\n  ],\n  organization: \"ACME Manufacturing Corp - Security Operations\",\n\n  affected_systems: [\n    \"WORKSTATION-042\",\n    \"ENG-WS-15\",\n    \"SCADA-SERVER-01\",\n    \"PLC-S7-1500-003\"\n  ],\n  affected_users: [\"jdoe\", \"admin\", \"engineering_service\"],\n  estimated_impact: \"Production line halted for 6 hours, estimated loss $250,000\",\n\n  evidence_count: 47,\n  observable_count: 156,\n\n  legal_hold: true,\n  retention_period_days: 2555,  // 7 years\n  chain_of_custody_verified: true,\n\n  related_cases: [],\n  external_references: [\n    {\n      source: \"ServiceNow\",\n      id: \"INC0012345\",\n      url: \"https://corp.service-now.com/incident.do?sys_id=abc123\"\n    },\n    {\n      sour",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 28,
+      "start_char": 22400,
+      "end_char": 23400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_29",
+    "text": "ue,\n\n  related_cases: [],\n  external_references: [\n    {\n      source: \"ServiceNow\",\n      id: \"INC0012345\",\n      url: \"https://corp.service-now.com/incident.do?sys_id=abc123\"\n    },\n    {\n      source: \"CISA ICS-CERT\",\n      id: \"ICSA-24-285-01\",\n      url: \"https://www.cisa.gov/news-events/ics-advisories/icsa-24-285-01\"\n    }\n  ],\n\n  node_id: randomUUID(),\n  created_by: \"Jane Smith\",\n  created_date: datetime('2024-10-15T10:00:00Z'),\n  last_updated: datetime(),\n  validation_status: \"UCO_COMPLIANT\"\n})\n```\n\n**Index Definitions**:\n```cypher\n// Unique constraint on case ID\nCREATE CONSTRAINT uco_case_id_unique IF NOT EXISTS\nFOR (c:UCO_InvestigationCase) REQUIRE c.case_id IS UNIQUE;\n\n// Index on case status\nCREATE INDEX uco_case_status_idx IF NOT EXISTS\nFOR (c:UCO_InvestigationCase) ON (c.case_status);\n\n// Index on case priority\nCREATE INDEX uco_case_priority_idx IF NOT EXISTS\nFOR (c:UCO_InvestigationCase) ON (c.case_priority);\n\n// Index on incident start time\nCREATE INDEX uco_case_time_id",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 29,
+      "start_char": 23200,
+      "end_char": 24200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_30",
+    "text": "_status);\n\n// Index on case priority\nCREATE INDEX uco_case_priority_idx IF NOT EXISTS\nFOR (c:UCO_InvestigationCase) ON (c.case_priority);\n\n// Index on incident start time\nCREATE INDEX uco_case_time_idx IF NOT EXISTS\nFOR (c:UCO_InvestigationCase) ON (c.incident_start_time);\n\n// Full-text search on case details\nCREATE FULLTEXT INDEX uco_case_fulltext IF NOT EXISTS\nFOR (c:UCO_InvestigationCase) ON EACH [c.case_name, c.case_description];\n```\n\n### 2.3 STIX Domain Objects (SDOs)\n\n#### 2.3.1 STIX Attack Pattern\n\n**Node Label**: `STIX_AttackPattern`\n\n**Description**: STIX representation of adversary tactics, techniques, and procedures (TTPs).\n\n**Properties**:\n```cypher\n{\n  stix_id: String,               // STIX ID (attack-pattern--<UUID>)\n  stix_type: String,             // Always \"attack-pattern\"\n  spec_version: String,          // STIX version (e.g., \"2.1\")\n\n  // Core properties\n  name: String,                  // Attack pattern name\n  description: String,           // Detailed description\n\n",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 30,
+      "start_char": 24000,
+      "end_char": 25000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_31",
+    "text": "\n  spec_version: String,          // STIX version (e.g., \"2.1\")\n\n  // Core properties\n  name: String,                  // Attack pattern name\n  description: String,           // Detailed description\n\n  // External references (MITRE ATT&CK)\n  external_references: [Map],    // MITRE ATT&CK ID, URL, etc.\n  mitre_attack_id: String,       // Extracted ATT&CK ID (e.g., \"T1078\")\n\n  // Kill chain phases\n  kill_chain_phases: [Map],      // Kill chain phase mappings\n\n  // Metadata\n  created: DateTime,             // STIX creation time\n  modified: DateTime,            // STIX modification time\n  created_by_ref: String,        // STIX Identity ID\n\n  // Optional properties\n  aliases: [String],\n  revoked: Boolean,\n  labels: [String],\n  confidence: Integer,           // 0-100\n  lang: String,                  // Language code\n  object_marking_refs: [String], // TLP markings\n\n  // Neo4j metadata\n  node_id: String,\n  imported_from: String,         // \"TAXII\", \"STIX_BUNDLE\", \"MANUAL\"\n  import_timestamp: ",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 31,
+      "start_char": 24800,
+      "end_char": 25800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_32",
+    "text": "     // Language code\n  object_marking_refs: [String], // TLP markings\n\n  // Neo4j metadata\n  node_id: String,\n  imported_from: String,         // \"TAXII\", \"STIX_BUNDLE\", \"MANUAL\"\n  import_timestamp: DateTime,\n  validation_status: String      // \"STIX_VALID\", \"STIX_INVALID\"\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create STIX Attack Pattern mapped to MITRE ATT&CK\nCREATE (ap:STIX_AttackPattern {\n  stix_id: \"attack-pattern--\" + randomUUID(),\n  stix_type: \"attack-pattern\",\n  spec_version: \"2.1\",\n\n  name: \"Valid Accounts\",\n  description: \"Adversaries may obtain and abuse credentials of existing accounts as a means of gaining Initial Access, Persistence, Privilege Escalation, or Defense Evasion. Compromised credentials may be used to bypass access controls placed on various resources on systems within the network and may even be used for persistent access to remote systems and externally available services.\",\n\n  external_references: [\n    {\n      source_name: \"mitre-attack\"",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 32,
+      "start_char": 25600,
+      "end_char": 26600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_33",
+    "text": "ources on systems within the network and may even be used for persistent access to remote systems and externally available services.\",\n\n  external_references: [\n    {\n      source_name: \"mitre-attack\",\n      external_id: \"T1078\",\n      url: \"https://attack.mitre.org/techniques/T1078\"\n    }\n  ],\n  mitre_attack_id: \"T1078\",\n\n  kill_chain_phases: [\n    {\n      kill_chain_name: \"mitre-attack\",\n      phase_name: \"initial-access\"\n    },\n    {\n      kill_chain_name: \"mitre-attack\",\n      phase_name: \"persistence\"\n    },\n    {\n      kill_chain_name: \"mitre-attack\",\n      phase_name: \"privilege-escalation\"\n    },\n    {\n      kill_chain_name: \"mitre-attack\",\n      phase_name: \"defense-evasion\"\n    }\n  ],\n\n  created: datetime('2017-05-31T21:31:53.197Z'),\n  modified: datetime('2023-04-11T23:42:53.447Z'),\n  created_by_ref: \"identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5\",  // MITRE ATT&CK\n\n  aliases: [],\n  revoked: false,\n  labels: [\"attack-pattern\"],\n  confidence: 95,\n  lang: \"en\",\n  object_markin",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 33,
+      "start_char": 26400,
+      "end_char": 27400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_34",
+    "text": "'),\n  created_by_ref: \"identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5\",  // MITRE ATT&CK\n\n  aliases: [],\n  revoked: false,\n  labels: [\"attack-pattern\"],\n  confidence: 95,\n  lang: \"en\",\n  object_marking_refs: [\"marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168\"],  // TLP:WHITE\n\n  node_id: randomUUID(),\n  imported_from: \"MITRE_ATT&CK_v13\",\n  import_timestamp: datetime(),\n  validation_status: \"STIX_VALID\"\n})\n```\n\n**Index Definitions**:\n```cypher\n// Unique constraint on STIX ID\nCREATE CONSTRAINT stix_attack_pattern_id_unique IF NOT EXISTS\nFOR (ap:STIX_AttackPattern) REQUIRE ap.stix_id IS UNIQUE;\n\n// Index on MITRE ATT&CK ID for mapping\nCREATE INDEX stix_attack_pattern_mitre_idx IF NOT EXISTS\nFOR (ap:STIX_AttackPattern) ON (ap.mitre_attack_id);\n\n// Index on name\nCREATE INDEX stix_attack_pattern_name_idx IF NOT EXISTS\nFOR (ap:STIX_AttackPattern) ON (ap.name);\n\n// Full-text search\nCREATE FULLTEXT INDEX stix_attack_pattern_fulltext IF NOT EXISTS\nFOR (ap:STIX_AttackPattern) ON EACH [ap.n",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 34,
+      "start_char": 27200,
+      "end_char": 28200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_35",
+    "text": "pattern_name_idx IF NOT EXISTS\nFOR (ap:STIX_AttackPattern) ON (ap.name);\n\n// Full-text search\nCREATE FULLTEXT INDEX stix_attack_pattern_fulltext IF NOT EXISTS\nFOR (ap:STIX_AttackPattern) ON EACH [ap.name, ap.description];\n```\n\n#### 2.3.2 STIX Indicator\n\n**Node Label**: `STIX_Indicator`\n\n**Description**: STIX indicator of compromise (IoC) with detection pattern.\n\n**Properties**:\n```cypher\n{\n  stix_id: String,               // STIX ID (indicator--<UUID>)\n  stix_type: String,             // Always \"indicator\"\n  spec_version: String,          // \"2.1\"\n\n  // Core properties (REQUIRED)\n  name: String,                  // Indicator name\n  description: String,           // Description\n  pattern: String,               // Detection pattern (STIX pattern format)\n  pattern_type: String,          // \"stix\", \"snort\", \"yara\", etc.\n  pattern_version: String,       // Pattern language version\n  valid_from: DateTime,          // Indicator validity start\n\n  // Optional properties\n  valid_until: DateTime,",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 35,
+      "start_char": 28000,
+      "end_char": 29000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_36",
+    "text": "tix\", \"snort\", \"yara\", etc.\n  pattern_version: String,       // Pattern language version\n  valid_from: DateTime,          // Indicator validity start\n\n  // Optional properties\n  valid_until: DateTime,         // Indicator expiration\n  indicator_types: [String],     // \"malicious-activity\", \"anomalous-activity\", etc.\n\n  // Kill chain\n  kill_chain_phases: [Map],\n\n  // Metadata\n  created: DateTime,\n  modified: DateTime,\n  created_by_ref: String,\n  revoked: Boolean,\n  labels: [String],\n  confidence: Integer,\n  lang: String,\n  object_marking_refs: [String],\n  external_references: [Map],\n\n  // Neo4j metadata\n  node_id: String,\n  imported_from: String,\n  import_timestamp: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create STIX Indicator (File Hash IoC)\nCREATE (i:STIX_Indicator {\n  stix_id: \"indicator--\" + randomUUID(),\n  stix_type: \"indicator\",\n  spec_version: \"2.1\",\n\n  name: \"TrickBot Malware SHA-256\",\n  description: \"SHA-256 hash of TrickB",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 36,
+      "start_char": 28800,
+      "end_char": 29800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_37",
+    "text": "sh IoC)\nCREATE (i:STIX_Indicator {\n  stix_id: \"indicator--\" + randomUUID(),\n  stix_type: \"indicator\",\n  spec_version: \"2.1\",\n\n  name: \"TrickBot Malware SHA-256\",\n  description: \"SHA-256 hash of TrickBot malware loader observed in October 2024 campaign targeting manufacturing sector\",\n  pattern: \"[file:hashes.SHA-256 = 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855']\",\n  pattern_type: \"stix\",\n  pattern_version: \"2.1\",\n  valid_from: datetime('2024-10-15T00:00:00Z'),\n  valid_until: datetime('2025-10-15T00:00:00Z'),\n\n  indicator_types: [\"malicious-activity\"],\n\n  kill_chain_phases: [\n    {\n      kill_chain_name: \"lockheed-martin-cyber-kill-chain\",\n      phase_name: \"delivery\"\n    }\n  ],\n\n  created: datetime('2024-10-15T12:00:00Z'),\n  modified: datetime('2024-10-15T12:00:00Z'),\n  created_by_ref: \"identity--acme-soc\",\n  revoked: false,\n  labels: [\"malware\", \"trickbot\"],\n  confidence: 90,\n  lang: \"en\",\n  object_marking_refs: [\"marking-definition--34098fce-860f-48ae-8e50-ebd3",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 37,
+      "start_char": 29600,
+      "end_char": 30600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_38",
+    "text": ",\n  created_by_ref: \"identity--acme-soc\",\n  revoked: false,\n  labels: [\"malware\", \"trickbot\"],\n  confidence: 90,\n  lang: \"en\",\n  object_marking_refs: [\"marking-definition--34098fce-860f-48ae-8e50-ebd3cc5e41da\"],  // TLP:AMBER\n  external_references: [\n    {\n      source_name: \"ACME SOC Incident Report\",\n      description: \"Internal incident response findings\",\n      external_id: \"CASE-2024-001\"\n    }\n  ],\n\n  node_id: randomUUID(),\n  imported_from: \"INTERNAL_TIP\",\n  import_timestamp: datetime(),\n  validation_status: \"STIX_VALID\"\n})\n```\n\n**Index Definitions**:\n```cypher\n// Unique constraint on STIX ID\nCREATE CONSTRAINT stix_indicator_id_unique IF NOT EXISTS\nFOR (i:STIX_Indicator) REQUIRE i.stix_id IS UNIQUE;\n\n// Index on valid_from for temporal queries\nCREATE INDEX stix_indicator_valid_from_idx IF NOT EXISTS\nFOR (i:STIX_Indicator) ON (i.valid_from);\n\n// Index on indicator types\nCREATE INDEX stix_indicator_types_idx IF NOT EXISTS\nFOR (i:STIX_Indicator) ON (i.indicator_types);\n\n// Full-text",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 38,
+      "start_char": 30400,
+      "end_char": 31400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_39",
+    "text": "dx IF NOT EXISTS\nFOR (i:STIX_Indicator) ON (i.valid_from);\n\n// Index on indicator types\nCREATE INDEX stix_indicator_types_idx IF NOT EXISTS\nFOR (i:STIX_Indicator) ON (i.indicator_types);\n\n// Full-text search on pattern and description\nCREATE FULLTEXT INDEX stix_indicator_fulltext IF NOT EXISTS\nFOR (i:STIX_Indicator) ON EACH [i.name, i.description, i.pattern];\n```\n\n#### 2.3.3 STIX Threat Actor\n\n**Node Label**: `STIX_ThreatActor`\n\n**Description**: STIX representation of threat actors (APT groups, cybercriminals, etc.).\n\n**Properties**:\n```cypher\n{\n  stix_id: String,               // STIX ID (threat-actor--<UUID>)\n  stix_type: String,             // Always \"threat-actor\"\n  spec_version: String,          // \"2.1\"\n\n  // Core properties\n  name: String,                  // Threat actor name\n  description: String,           // Description\n\n  // Threat actor characteristics\n  threat_actor_types: [String],  // \"nation-state\", \"activist\", \"criminal\", etc.\n  aliases: [String],             // Alter",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 39,
+      "start_char": 31200,
+      "end_char": 32200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_40",
+    "text": "cription: String,           // Description\n\n  // Threat actor characteristics\n  threat_actor_types: [String],  // \"nation-state\", \"activist\", \"criminal\", etc.\n  aliases: [String],             // Alternative names\n  first_seen: DateTime,          // First observed\n  last_seen: DateTime,           // Last observed\n  roles: [String],               // \"agent\", \"director\", \"sponsor\"\n  goals: [String],               // Actor objectives\n  sophistication: String,        // \"none\", \"minimal\", \"intermediate\", \"advanced\", \"expert\", \"innovator\", \"strategic\"\n  resource_level: String,        // \"individual\", \"club\", \"contest\", \"team\", \"organization\", \"government\"\n  primary_motivation: String,    // \"accidental\", \"coercion\", \"dominance\", \"ideology\", \"notoriety\", \"organizational-gain\", \"personal-gain\", \"personal-satisfaction\", \"revenge\", \"unpredictable\"\n  secondary_motivations: [String],\n\n  // Operational characteristics\n  personal_motivations: [String],\n\n  // Metadata\n  created: DateTime,\n  modified:",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 40,
+      "start_char": 32000,
+      "end_char": 33000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_41",
+    "text": "ersonal-satisfaction\", \"revenge\", \"unpredictable\"\n  secondary_motivations: [String],\n\n  // Operational characteristics\n  personal_motivations: [String],\n\n  // Metadata\n  created: DateTime,\n  modified: DateTime,\n  created_by_ref: String,\n  revoked: Boolean,\n  labels: [String],\n  confidence: Integer,\n  lang: String,\n  object_marking_refs: [String],\n  external_references: [Map],\n\n  // Neo4j metadata\n  node_id: String,\n  imported_from: String,\n  import_timestamp: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create STIX Threat Actor (APT Group)\nCREATE (ta:STIX_ThreatActor {\n  stix_id: \"threat-actor--\" + randomUUID(),\n  stix_type: \"threat-actor\",\n  spec_version: \"2.1\",\n\n  name: \"APT28\",\n  description: \"APT28 (also known as Fancy Bear, Sofacy, Pawn Storm) is a Russian state-sponsored advanced persistent threat group active since at least 2007. The group is known for sophisticated spear-phishing campaigns and custom malware targeting governmen",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 41,
+      "start_char": 32800,
+      "end_char": 33800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_42",
+    "text": "wn Storm) is a Russian state-sponsored advanced persistent threat group active since at least 2007. The group is known for sophisticated spear-phishing campaigns and custom malware targeting government, military, and security organizations.\",\n\n  threat_actor_types: [\"nation-state\"],\n  aliases: [\"Fancy Bear\", \"Sofacy\", \"Pawn Storm\", \"Sednit\", \"Strontium\"],\n  first_seen: datetime('2007-01-01T00:00:00Z'),\n  last_seen: datetime('2024-10-01T00:00:00Z'),\n  roles: [\"agent\", \"director\"],\n  goals: [\n    \"Intelligence collection\",\n    \"Strategic espionage\",\n    \"Political influence operations\"\n  ],\n  sophistication: \"expert\",\n  resource_level: \"government\",\n  primary_motivation: \"organizational-gain\",\n  secondary_motivations: [\"ideology\", \"dominance\"],\n\n  created: datetime('2017-05-31T21:31:53.197Z'),\n  modified: datetime('2024-10-01T00:00:00Z'),\n  created_by_ref: \"identity--mitre\",\n  revoked: false,\n  labels: [\"apt\", \"russia\", \"nation-state\"],\n  confidence: 95,\n  lang: \"en\",\n  object_marking_re",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 42,
+      "start_char": 33600,
+      "end_char": 34600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_43",
+    "text": "),\n  modified: datetime('2024-10-01T00:00:00Z'),\n  created_by_ref: \"identity--mitre\",\n  revoked: false,\n  labels: [\"apt\", \"russia\", \"nation-state\"],\n  confidence: 95,\n  lang: \"en\",\n  object_marking_refs: [\"marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168\"],  // TLP:WHITE\n  external_references: [\n    {\n      source_name: \"MITRE ATT&CK\",\n      description: \"APT28 Group Profile\",\n      external_id: \"G0007\",\n      url: \"https://attack.mitre.org/groups/G0007\"\n    }\n  ],\n\n  node_id: randomUUID(),\n  imported_from: \"MITRE_ATT&CK\",\n  import_timestamp: datetime(),\n  validation_status: \"STIX_VALID\"\n})\n```\n\n**Index Definitions**:\n```cypher\n// Unique constraint on STIX ID\nCREATE CONSTRAINT stix_threat_actor_id_unique IF NOT EXISTS\nFOR (ta:STIX_ThreatActor) REQUIRE ta.stix_id IS UNIQUE;\n\n// Index on name\nCREATE INDEX stix_threat_actor_name_idx IF NOT EXISTS\nFOR (ta:STIX_ThreatActor) ON (ta.name);\n\n// Index on threat actor types\nCREATE INDEX stix_threat_actor_types_idx IF NOT EXISTS\nFOR (ta:S",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 43,
+      "start_char": 34400,
+      "end_char": 35400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_44",
+    "text": "x on name\nCREATE INDEX stix_threat_actor_name_idx IF NOT EXISTS\nFOR (ta:STIX_ThreatActor) ON (ta.name);\n\n// Index on threat actor types\nCREATE INDEX stix_threat_actor_types_idx IF NOT EXISTS\nFOR (ta:STIX_ThreatActor) ON (ta.threat_actor_types);\n\n// Full-text search\nCREATE FULLTEXT INDEX stix_threat_actor_fulltext IF NOT EXISTS\nFOR (ta:STIX_ThreatActor) ON EACH [ta.name, ta.description, ta.aliases];\n```\n\n#### 2.3.4 STIX Malware\n\n**Node Label**: `STIX_Malware`\n\n**Description**: STIX representation of malware families and variants.\n\n**Properties**:\n```cypher\n{\n  stix_id: String,               // STIX ID (malware--<UUID>)\n  stix_type: String,             // Always \"malware\"\n  spec_version: String,          // \"2.1\"\n\n  // Core properties\n  name: String,                  // Malware name\n  description: String,           // Description\n  is_family: Boolean,            // true = family, false = variant\n  malware_types: [String],       // \"backdoor\", \"ransomware\", \"trojan\", etc.\n\n  // Optional p",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 44,
+      "start_char": 35200,
+      "end_char": 36200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_45",
+    "text": "ption: String,           // Description\n  is_family: Boolean,            // true = family, false = variant\n  malware_types: [String],       // \"backdoor\", \"ransomware\", \"trojan\", etc.\n\n  // Optional properties\n  aliases: [String],\n  first_seen: DateTime,\n  last_seen: DateTime,\n  operating_system_refs: [String], // Software STIX IDs\n  architecture_execution_envs: [String], // \"x86\", \"ARM\", etc.\n  implementation_languages: [String], // \"C\", \"Python\", etc.\n  capabilities: [String],\n  sample_refs: [String],         // File/Artifact STIX IDs\n\n  // Kill chain\n  kill_chain_phases: [Map],\n\n  // Metadata\n  created: DateTime,\n  modified: DateTime,\n  created_by_ref: String,\n  revoked: Boolean,\n  labels: [String],\n  confidence: Integer,\n  lang: String,\n  object_marking_refs: [String],\n  external_references: [Map],\n\n  // Neo4j metadata\n  node_id: String,\n  imported_from: String,\n  import_timestamp: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Creat",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 45,
+      "start_char": 36000,
+      "end_char": 37000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_46",
+    "text": "ences: [Map],\n\n  // Neo4j metadata\n  node_id: String,\n  imported_from: String,\n  import_timestamp: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create STIX Malware (TrickBot)\nCREATE (m:STIX_Malware {\n  stix_id: \"malware--\" + randomUUID(),\n  stix_type: \"malware\",\n  spec_version: \"2.1\",\n\n  name: \"TrickBot\",\n  description: \"TrickBot is a modular banking trojan that has evolved into a sophisticated malware framework used for various malicious activities including credential theft, lateral movement, and ransomware deployment. It is typically distributed via phishing emails and has been used by multiple threat actors.\",\n  is_family: true,\n  malware_types: [\"trojan\", \"backdoor\", \"credential-stealer\"],\n\n  aliases: [\"Trickster\"],\n  first_seen: datetime('2016-09-01T00:00:00Z'),\n  last_seen: datetime('2024-10-15T00:00:00Z'),\n  operating_system_refs: [\"software--windows\"],\n  architecture_execution_envs: [\"x86\", \"x86-64\"],\n  implementation_language",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 46,
+      "start_char": 36800,
+      "end_char": 37800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_47",
+    "text": "time('2016-09-01T00:00:00Z'),\n  last_seen: datetime('2024-10-15T00:00:00Z'),\n  operating_system_refs: [\"software--windows\"],\n  architecture_execution_envs: [\"x86\", \"x86-64\"],\n  implementation_languages: [\"C\", \"C++\"],\n  capabilities: [\n    \"Credential theft from browsers and applications\",\n    \"Network reconnaissance\",\n    \"Lateral movement\",\n    \"Module download and execution\",\n    \"Command and control\",\n    \"Screen capture\",\n    \"Keylogging\"\n  ],\n  sample_refs: [],  // Will be populated via relationships\n\n  kill_chain_phases: [\n    {\n      kill_chain_name: \"lockheed-martin-cyber-kill-chain\",\n      phase_name: \"delivery\"\n    },\n    {\n      kill_chain_name: \"lockheed-martin-cyber-kill-chain\",\n      phase_name: \"installation\"\n    },\n    {\n      kill_chain_name: \"lockheed-martin-cyber-kill-chain\",\n      phase_name: \"command-and-control\"\n    },\n    {\n      kill_chain_name: \"lockheed-martin-cyber-kill-chain\",\n      phase_name: \"actions-on-objectives\"\n    }\n  ],\n\n  created: datetime('2017-05",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 47,
+      "start_char": 37600,
+      "end_char": 38600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_48",
+    "text": "ain\",\n      phase_name: \"command-and-control\"\n    },\n    {\n      kill_chain_name: \"lockheed-martin-cyber-kill-chain\",\n      phase_name: \"actions-on-objectives\"\n    }\n  ],\n\n  created: datetime('2017-05-31T21:31:53.197Z'),\n  modified: datetime('2024-10-15T00:00:00Z'),\n  created_by_ref: \"identity--mitre\",\n  revoked: false,\n  labels: [\"malware\", \"banking-trojan\"],\n  confidence: 95,\n  lang: \"en\",\n  object_marking_refs: [\"marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168\"],\n  external_references: [\n    {\n      source_name: \"MITRE ATT&CK\",\n      description: \"TrickBot Software Profile\",\n      external_id: \"S0266\",\n      url: \"https://attack.mitre.org/software/S0266\"\n    }\n  ],\n\n  node_id: randomUUID(),\n  imported_from: \"MITRE_ATT&CK\",\n  import_timestamp: datetime(),\n  validation_status: \"STIX_VALID\"\n})\n```\n\n#### 2.3.5 STIX Vulnerability\n\n**Node Label**: `STIX_Vulnerability`\n\n**Description**: STIX representation of software vulnerabilities (mapped to CVEs).\n\n**Properties**:\n```cypher\n{\n",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 48,
+      "start_char": 38400,
+      "end_char": 39400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_49",
+    "text": "TIX_VALID\"\n})\n```\n\n#### 2.3.5 STIX Vulnerability\n\n**Node Label**: `STIX_Vulnerability`\n\n**Description**: STIX representation of software vulnerabilities (mapped to CVEs).\n\n**Properties**:\n```cypher\n{\n  stix_id: String,               // STIX ID (vulnerability--<UUID>)\n  stix_type: String,             // Always \"vulnerability\"\n  spec_version: String,          // \"2.1\"\n\n  // Core properties\n  name: String,                  // Vulnerability name (usually CVE ID)\n  description: String,           // Description\n\n  // External references (CVE)\n  external_references: [Map],    // CVE database reference\n  cve_id: String,                // Extracted CVE ID\n\n  // Metadata\n  created: DateTime,\n  modified: DateTime,\n  created_by_ref: String,\n  revoked: Boolean,\n  labels: [String],\n  confidence: Integer,\n  lang: String,\n  object_marking_refs: [String],\n\n  // Neo4j metadata\n  node_id: String,\n  imported_from: String,\n  import_timestamp: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher C",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 49,
+      "start_char": 39200,
+      "end_char": 40200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_50",
+    "text": ",\n  lang: String,\n  object_marking_refs: [String],\n\n  // Neo4j metadata\n  node_id: String,\n  imported_from: String,\n  import_timestamp: DateTime,\n  validation_status: String\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create STIX Vulnerability (mapped to CVE)\nCREATE (v:STIX_Vulnerability {\n  stix_id: \"vulnerability--\" + randomUUID(),\n  stix_type: \"vulnerability\",\n  spec_version: \"2.1\",\n\n  name: \"CVE-2021-44228\",\n  description: \"Apache Log4j2 <=2.14.1 JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker who can control log messages or log message parameters can execute arbitrary code loaded from LDAP servers when message lookup substitution is enabled. From log4j 2.15.0, this behavior has been disabled by default.\",\n\n  external_references: [\n    {\n      source_name: \"cve\",\n      external_id: \"CVE-2021-44228\",\n      url: \"https://nvd.nist.gov/vuln/detail/CVE-2021-44228",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 50,
+      "start_char": 40000,
+      "end_char": 41000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_51",
+    "text": "this behavior has been disabled by default.\",\n\n  external_references: [\n    {\n      source_name: \"cve\",\n      external_id: \"CVE-2021-44228\",\n      url: \"https://nvd.nist.gov/vuln/detail/CVE-2021-44228\"\n    }\n  ],\n  cve_id: \"CVE-2021-44228\",\n\n  created: datetime('2021-12-10T00:00:00Z'),\n  modified: datetime('2021-12-10T00:00:00Z'),\n  created_by_ref: \"identity--nist-nvd\",\n  revoked: false,\n  labels: [\"vulnerability\", \"log4shell\", \"remote-code-execution\"],\n  confidence: 100,\n  lang: \"en\",\n  object_marking_refs: [\"marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168\"],\n\n  node_id: randomUUID(),\n  imported_from: \"NVD_CVE_FEED\",\n  import_timestamp: datetime(),\n  validation_status: \"STIX_VALID\"\n})\n```\n\n### 2.4 STIX Cyber-observable Objects (SCOs)\n\n#### 2.4.1 STIX File Object\n\n**Node Label**: `STIX_File`\n\n**Description**: STIX cyber-observable representing a file.\n\n**Properties**:\n```cypher\n{\n  stix_id: String,               // STIX ID (file--<UUID>)\n  stix_type: String,             // Alw",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 51,
+      "start_char": 40800,
+      "end_char": 41800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_52",
+    "text": "`STIX_File`\n\n**Description**: STIX cyber-observable representing a file.\n\n**Properties**:\n```cypher\n{\n  stix_id: String,               // STIX ID (file--<UUID>)\n  stix_type: String,             // Always \"file\"\n  spec_version: String,          // \"2.1\"\n\n  // File properties\n  name: String,                  // File name\n  size: Integer,                 // File size in bytes\n  hashes: Map,                   // {MD5: \"...\", \"SHA-256\": \"...\", etc.}\n  mime_type: String,\n  magic_number_hex: String,\n\n  // Optional properties\n  name_enc: String,              // Filename encoding\n  ctime: DateTime,               // Creation time\n  mtime: DateTime,               // Modification time\n  atime: DateTime,               // Access time\n  parent_directory_ref: String,  // Directory STIX ID\n  contains_refs: [String],       // Embedded file STIX IDs\n  content_ref: String,           // Artifact STIX ID\n\n  // Extensions\n  extensions: Map,               // PDF, Windows PE, Archive, etc.\n\n  // Neo4j metadata",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 52,
+      "start_char": 41600,
+      "end_char": 42600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_53",
+    "text": " [String],       // Embedded file STIX IDs\n  content_ref: String,           // Artifact STIX ID\n\n  // Extensions\n  extensions: Map,               // PDF, Windows PE, Archive, etc.\n\n  // Neo4j metadata\n  node_id: String,\n  object_marking_refs: [String],\n  imported_from: String,\n  import_timestamp: DateTime\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create STIX File Observable\nCREATE (f:STIX_File {\n  stix_id: \"file--\" + randomUUID(),\n  stix_type: \"file\",\n  spec_version: \"2.1\",\n\n  name: \"malware.exe\",\n  size: 245760,\n  hashes: {\n    \"MD5\": \"d41d8cd98f00b204e9800998ecf8427e\",\n    \"SHA-1\": \"da39a3ee5e6b4b0d3255bfef95601890afd80709\",\n    \"SHA-256\": \"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\"\n  },\n  mime_type: \"application/x-msdownload\",\n  magic_number_hex: \"4D5A\",\n\n  name_enc: \"UTF-8\",\n  ctime: datetime('2024-10-15T08:23:45Z'),\n  mtime: datetime('2024-10-15T08:23:45Z'),\n  atime: datetime('2024-10-15T09:15:32Z'),\n\n  extensions: {\n    \"windows-pebinary-ext",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 53,
+      "start_char": 42400,
+      "end_char": 43400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_54",
+    "text": "4D5A\",\n\n  name_enc: \"UTF-8\",\n  ctime: datetime('2024-10-15T08:23:45Z'),\n  mtime: datetime('2024-10-15T08:23:45Z'),\n  atime: datetime('2024-10-15T09:15:32Z'),\n\n  extensions: {\n    \"windows-pebinary-ext\": {\n      pe_type: \"exe\",\n      machine: \"x86\",\n      imphash: \"abc123def456\"\n    }\n  },\n\n  node_id: randomUUID(),\n  object_marking_refs: [\"marking-definition--34098fce-860f-48ae-8e50-ebd3cc5e41da\"],\n  imported_from: \"EDR_TELEMETRY\",\n  import_timestamp: datetime()\n})\n```\n\n#### 2.4.2 STIX IPv4 Address Object\n\n**Node Label**: `STIX_IPv4Address`\n\n**Description**: STIX cyber-observable representing an IPv4 address.\n\n**Properties**:\n```cypher\n{\n  stix_id: String,               // STIX ID (ipv4-addr--<UUID>)\n  stix_type: String,             // Always \"ipv4-addr\"\n  spec_version: String,          // \"2.1\"\n\n  // Core properties\n  value: String,                 // IPv4 address (e.g., \"192.0.2.1\")\n\n  // Optional properties\n  resolves_to_refs: [String],    // MAC Address STIX IDs\n  belongs_to_refs: [",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 54,
+      "start_char": 43200,
+      "end_char": 44200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_55",
+    "text": "\"2.1\"\n\n  // Core properties\n  value: String,                 // IPv4 address (e.g., \"192.0.2.1\")\n\n  // Optional properties\n  resolves_to_refs: [String],    // MAC Address STIX IDs\n  belongs_to_refs: [String],     // Autonomous System STIX IDs\n\n  // Neo4j metadata\n  node_id: String,\n  object_marking_refs: [String],\n  imported_from: String,\n  import_timestamp: DateTime\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create STIX IPv4 Address\nCREATE (ip:STIX_IPv4Address {\n  stix_id: \"ipv4-addr--\" + randomUUID(),\n  stix_type: \"ipv4-addr\",\n  spec_version: \"2.1\",\n\n  value: \"203.0.113.45\",\n\n  resolves_to_refs: [],\n  belongs_to_refs: [],\n\n  node_id: randomUUID(),\n  object_marking_refs: [\"marking-definition--34098fce-860f-48ae-8e50-ebd3cc5e41da\"],\n  imported_from: \"NETWORK_IDS\",\n  import_timestamp: datetime()\n})\n```\n\n#### 2.4.3 STIX Domain Name Object\n\n**Node Label**: `STIX_DomainName`\n\n**Description**: STIX cyber-observable representing a domain name.\n\n**Properties**:\n```cypher\n{\n  st",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 55,
+      "start_char": 44000,
+      "end_char": 45000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_56",
+    "text": "imestamp: datetime()\n})\n```\n\n#### 2.4.3 STIX Domain Name Object\n\n**Node Label**: `STIX_DomainName`\n\n**Description**: STIX cyber-observable representing a domain name.\n\n**Properties**:\n```cypher\n{\n  stix_id: String,               // STIX ID (domain-name--<UUID>)\n  stix_type: String,             // Always \"domain-name\"\n  spec_version: String,          // \"2.1\"\n\n  // Core properties\n  value: String,                 // Domain name (e.g., \"example.com\")\n\n  // Optional properties\n  resolves_to_refs: [String],    // IPv4/IPv6 Address STIX IDs\n\n  // Neo4j metadata\n  node_id: String,\n  object_marking_refs: [String],\n  imported_from: String,\n  import_timestamp: DateTime\n}\n```\n\n**Complete Cypher CREATE Statement**:\n```cypher\n// Create STIX Domain Name\nCREATE (d:STIX_DomainName {\n  stix_id: \"domain-name--\" + randomUUID(),\n  stix_type: \"domain-name\",\n  spec_version: \"2.1\",\n\n  value: \"malicious-c2.example.com\",\n\n  resolves_to_refs: [],\n\n  node_id: randomUUID(),\n  object_marking_refs: [\"marking-defin",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 56,
+      "start_char": 44800,
+      "end_char": 45800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_57",
+    "text": "me--\" + randomUUID(),\n  stix_type: \"domain-name\",\n  spec_version: \"2.1\",\n\n  value: \"malicious-c2.example.com\",\n\n  resolves_to_refs: [],\n\n  node_id: randomUUID(),\n  object_marking_refs: [\"marking-definition--34098fce-860f-48ae-8e50-ebd3cc5e41da\"],\n  imported_from: \"DNS_LOGS\",\n  import_timestamp: datetime()\n})\n```\n\n## 3. Complete Relationship Schemas\n\n### 3.1 UCO to STIX Mappings\n\n#### 3.1.1 UCO Observable to STIX Observable\n\n**Relationship Type**: `MAPS_TO_STIX`\n\n**Description**: Bidirectional mapping between UCO observables and STIX cyber-observable objects.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  mapping_confidence: Float,     // 0.0-1.0\n  mapping_type: String,          // \"EXACT\", \"APPROXIMATE\", \"PARTIAL\"\n  created_date: DateTime,\n  last_updated: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Map UCO File to STIX File\nMATCH (uco:UCO_File {uco_id: \"uco-file-...\"})\nMATCH (stix:STIX_File {stix_id: \"file--...\"})\nCREATE (uco)-[r:MAPS_TO_STIX {\n  relationship_i",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 57,
+      "start_char": 45600,
+      "end_char": 46600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_58",
+    "text": "r CREATE Statement**:\n```cypher\n// Map UCO File to STIX File\nMATCH (uco:UCO_File {uco_id: \"uco-file-...\"})\nMATCH (stix:STIX_File {stix_id: \"file--...\"})\nCREATE (uco)-[r:MAPS_TO_STIX {\n  relationship_id: randomUUID(),\n  mapping_confidence: 1.0,\n  mapping_type: \"EXACT\",\n  created_date: datetime(),\n  last_updated: datetime()\n}]->(stix)\n```\n\n### 3.2 MITRE ATT&CK to STIX Attack Pattern\n\n**Relationship Type**: `REPRESENTED_AS_STIX`\n\n**Description**: Links existing MITRE ATT&CK techniques to STIX Attack Pattern representations.\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  stix_version: String,          // STIX version used\n  created_date: DateTime,\n  auto_generated: Boolean\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link ATT&CK Technique to STIX Attack Pattern\nMATCH (tech:Technique {technique_id: \"T1078\"})\nMATCH (stix_ap:STIX_AttackPattern {mitre_attack_id: \"T1078\"})\nCREATE (tech)-[r:REPRESENTED_AS_STIX {\n  relationship_id: randomUUID(),\n  stix_version: \"2.1\",\n  created_dat",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 58,
+      "start_char": 46400,
+      "end_char": 47400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_59",
+    "text": "ique {technique_id: \"T1078\"})\nMATCH (stix_ap:STIX_AttackPattern {mitre_attack_id: \"T1078\"})\nCREATE (tech)-[r:REPRESENTED_AS_STIX {\n  relationship_id: randomUUID(),\n  stix_version: \"2.1\",\n  created_date: datetime(),\n  auto_generated: true\n}]->(stix_ap)\n```\n\n**Batch Creation for All ATT&CK Techniques**:\n```cypher\n// Auto-create STIX Attack Patterns for all ATT&CK techniques\nMATCH (tech:Technique)\nWHERE NOT (tech)-[:REPRESENTED_AS_STIX]->(:STIX_AttackPattern)\nWITH tech\nCREATE (stix_ap:STIX_AttackPattern {\n  stix_id: \"attack-pattern--\" + randomUUID(),\n  stix_type: \"attack-pattern\",\n  spec_version: \"2.1\",\n  name: tech.name,\n  description: tech.description,\n  external_references: [\n    {\n      source_name: \"mitre-attack\",\n      external_id: tech.technique_id,\n      url: \"https://attack.mitre.org/techniques/\" + tech.technique_id\n    }\n  ],\n  mitre_attack_id: tech.technique_id,\n  kill_chain_phases: [],  // Populate from tactics\n  created: tech.created_date,\n  modified: tech.modified_date,\n  cr",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 59,
+      "start_char": 47200,
+      "end_char": 48200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_60",
+    "text": "/techniques/\" + tech.technique_id\n    }\n  ],\n  mitre_attack_id: tech.technique_id,\n  kill_chain_phases: [],  // Populate from tactics\n  created: tech.created_date,\n  modified: tech.modified_date,\n  created_by_ref: \"identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5\",\n  revoked: false,\n  labels: [\"attack-pattern\"],\n  confidence: 95,\n  lang: \"en\",\n  object_marking_refs: [\"marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168\"],\n  node_id: randomUUID(),\n  imported_from: \"AEON_AUTO_CONVERSION\",\n  import_timestamp: datetime(),\n  validation_status: \"STIX_VALID\"\n})\nCREATE (tech)-[:REPRESENTED_AS_STIX {\n  relationship_id: randomUUID(),\n  stix_version: \"2.1\",\n  created_date: datetime(),\n  auto_generated: true\n}]->(stix_ap)\n```\n\n### 3.3 CVE to STIX Vulnerability\n\n**Relationship Type**: `REPRESENTED_AS_STIX_VULN`\n\n**Description**: Links existing CVE nodes to STIX Vulnerability representations (CVE preservation).\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  stix_version: String,\n  crea",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 60,
+      "start_char": 48000,
+      "end_char": 49000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_61",
+    "text": "S_STIX_VULN`\n\n**Description**: Links existing CVE nodes to STIX Vulnerability representations (CVE preservation).\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  stix_version: String,\n  created_date: DateTime,\n  auto_generated: Boolean\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link CVE to STIX Vulnerability (preserving existing CVE nodes)\nMATCH (cve:CVE {cve_id: \"CVE-2021-44228\"})\nMATCH (stix_vuln:STIX_Vulnerability {cve_id: \"CVE-2021-44228\"})\nCREATE (cve)-[r:REPRESENTED_AS_STIX_VULN {\n  relationship_id: randomUUID(),\n  stix_version: \"2.1\",\n  created_date: datetime(),\n  auto_generated: true\n}]->(stix_vuln)\n```\n\n**Batch CVE to STIX Conversion (Preserving All CVEs)**:\n```cypher\n// Auto-create STIX Vulnerability objects for all CVEs\nMATCH (cve:CVE)\nWHERE NOT (cve)-[:REPRESENTED_AS_STIX_VULN]->(:STIX_Vulnerability)\nWITH cve\nCREATE (stix_vuln:STIX_Vulnerability {\n  stix_id: \"vulnerability--\" + randomUUID(),\n  stix_type: \"vulnerability\",\n  spec_version: \"2.1\",\n  name: cve.cv",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 61,
+      "start_char": 48800,
+      "end_char": 49800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_62",
+    "text": "ED_AS_STIX_VULN]->(:STIX_Vulnerability)\nWITH cve\nCREATE (stix_vuln:STIX_Vulnerability {\n  stix_id: \"vulnerability--\" + randomUUID(),\n  stix_type: \"vulnerability\",\n  spec_version: \"2.1\",\n  name: cve.cve_id,\n  description: cve.description,\n  external_references: [\n    {\n      source_name: \"cve\",\n      external_id: cve.cve_id,\n      url: \"https://nvd.nist.gov/vuln/detail/\" + cve.cve_id\n    }\n  ],\n  cve_id: cve.cve_id,\n  created: cve.published_date,\n  modified: cve.last_modified_date,\n  created_by_ref: \"identity--nist-nvd\",\n  revoked: false,\n  labels: [\"vulnerability\"],\n  confidence: 100,\n  lang: \"en\",\n  object_marking_refs: [\"marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168\"],\n  node_id: randomUUID(),\n  imported_from: \"AEON_CVE_CONVERSION\",\n  import_timestamp: datetime(),\n  validation_status: \"STIX_VALID\"\n})\nCREATE (cve)-[:REPRESENTED_AS_STIX_VULN {\n  relationship_id: randomUUID(),\n  stix_version: \"2.1\",\n  created_date: datetime(),\n  auto_generated: true\n}]->(stix_vuln)\n```\n\n### 3",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 62,
+      "start_char": 49600,
+      "end_char": 50600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_63",
+    "text": "_status: \"STIX_VALID\"\n})\nCREATE (cve)-[:REPRESENTED_AS_STIX_VULN {\n  relationship_id: randomUUID(),\n  stix_version: \"2.1\",\n  created_date: datetime(),\n  auto_generated: true\n}]->(stix_vuln)\n```\n\n### 3.4 STIX Relationships (SROs)\n\n#### 3.4.1 STIX \"uses\" Relationship\n\n**Relationship Type**: `STIX_USES`\n\n**Description**: STIX relationship indicating one object uses another (e.g., Threat Actor uses Malware).\n\n**Properties**:\n```cypher\n{\n  stix_id: String,               // STIX relationship ID (relationship--<UUID>)\n  stix_type: String,             // Always \"relationship\"\n  spec_version: String,          // \"2.1\"\n  relationship_type: String,     // \"uses\"\n  source_ref: String,            // Source STIX ID\n  target_ref: String,            // Target STIX ID\n\n  // Optional properties\n  description: String,\n  start_time: DateTime,\n  stop_time: DateTime,\n\n  // Metadata\n  created: DateTime,\n  modified: DateTime,\n  created_by_ref: String,\n  revoked: Boolean,\n  confidence: Integer,\n  lang: String,",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 63,
+      "start_char": 50400,
+      "end_char": 51400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_64",
+    "text": "n: String,\n  start_time: DateTime,\n  stop_time: DateTime,\n\n  // Metadata\n  created: DateTime,\n  modified: DateTime,\n  created_by_ref: String,\n  revoked: Boolean,\n  confidence: Integer,\n  lang: String,\n  object_marking_refs: [String],\n  external_references: [Map]\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Create STIX \"uses\" relationship: Threat Actor uses Malware\nMATCH (ta:STIX_ThreatActor {name: \"APT28\"})\nMATCH (mal:STIX_Malware {name: \"TrickBot\"})\nCREATE (ta)-[r:STIX_USES {\n  stix_id: \"relationship--\" + randomUUID(),\n  stix_type: \"relationship\",\n  spec_version: \"2.1\",\n  relationship_type: \"uses\",\n  source_ref: ta.stix_id,\n  target_ref: mal.stix_id,\n  description: \"APT28 has been observed using TrickBot malware in campaigns targeting critical infrastructure\",\n  start_time: datetime('2024-01-01T00:00:00Z'),\n  stop_time: null,\n  created: datetime(),\n  modified: datetime(),\n  created_by_ref: \"identity--acme-ti\",\n  revoked: false,\n  confidence: 85,\n  lang: \"en\",\n  object_marking_refs",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 64,
+      "start_char": 51200,
+      "end_char": 52200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_65",
+    "text": "2024-01-01T00:00:00Z'),\n  stop_time: null,\n  created: datetime(),\n  modified: datetime(),\n  created_by_ref: \"identity--acme-ti\",\n  revoked: false,\n  confidence: 85,\n  lang: \"en\",\n  object_marking_refs: [\"marking-definition--34098fce-860f-48ae-8e50-ebd3cc5e41da\"],\n  external_references: []\n}]->(mal)\n```\n\n#### 3.4.2 STIX \"indicates\" Relationship\n\n**Relationship Type**: `STIX_INDICATES`\n\n**Description**: STIX relationship where an Indicator indicates a malware, threat actor, or attack pattern.\n\n**Properties**: Same as STIX_USES with relationship_type = \"indicates\"\n\n**Cypher CREATE Statement**:\n```cypher\n// Create STIX \"indicates\" relationship: Indicator indicates Malware\nMATCH (indicator:STIX_Indicator {name: \"TrickBot Malware SHA-256\"})\nMATCH (malware:STIX_Malware {name: \"TrickBot\"})\nCREATE (indicator)-[r:STIX_INDICATES {\n  stix_id: \"relationship--\" + randomUUID(),\n  stix_type: \"relationship\",\n  spec_version: \"2.1\",\n  relationship_type: \"indicates\",\n  source_ref: indicator.stix_id,\n  tar",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 65,
+      "start_char": 52000,
+      "end_char": 53000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_66",
+    "text": "(indicator)-[r:STIX_INDICATES {\n  stix_id: \"relationship--\" + randomUUID(),\n  stix_type: \"relationship\",\n  spec_version: \"2.1\",\n  relationship_type: \"indicates\",\n  source_ref: indicator.stix_id,\n  target_ref: malware.stix_id,\n  description: \"This file hash indicates the presence of TrickBot malware\",\n  created: datetime(),\n  modified: datetime(),\n  created_by_ref: \"identity--acme-ti\",\n  revoked: false,\n  confidence: 95,\n  lang: \"en\",\n  object_marking_refs: [\"marking-definition--34098fce-860f-48ae-8e50-ebd3cc5e41da\"]\n}]->(malware)\n```\n\n### 3.5 UCO Investigation Relationships\n\n#### 3.5.1 Case Contains Observable\n\n**Relationship Type**: `CASE_CONTAINS_OBSERVABLE`\n\n**Description**: Links investigation cases to associated UCO observables (evidence).\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  evidence_type: String,         // \"PRIMARY\", \"SECONDARY\", \"SUPPORTING\"\n  evidence_collected_time: DateTime,\n  collected_by: String,\n  chain_of_custody_id: String,\n  created_date: DateTime",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 66,
+      "start_char": 52800,
+      "end_char": 53800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_67",
+    "text": "d: String,\n  evidence_type: String,         // \"PRIMARY\", \"SECONDARY\", \"SUPPORTING\"\n  evidence_collected_time: DateTime,\n  collected_by: String,\n  chain_of_custody_id: String,\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link investigation case to file evidence\nMATCH (case:UCO_InvestigationCase {case_id: \"CASE-2024-001\"})\nMATCH (file:UCO_File {evidence_id: \"CASE-2024-001-EV-042\"})\nCREATE (case)-[r:CASE_CONTAINS_OBSERVABLE {\n  relationship_id: randomUUID(),\n  evidence_type: \"PRIMARY\",\n  evidence_collected_time: datetime('2024-10-15T10:00:00Z'),\n  collected_by: \"Forensic Analyst John Doe\",\n  chain_of_custody_id: \"COC-2024-001-042\",\n  created_date: datetime()\n}]->(file)\n```\n\n#### 3.5.2 Observable Relates to Observable\n\n**Relationship Type**: `UCO_RELATES_TO`\n\n**Description**: Links related UCO observables (e.g., Process created File, Network Connection from Process).\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  relationship_type: String,     // \"C",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 67,
+      "start_char": 53600,
+      "end_char": 54600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_68",
+    "text": "scription**: Links related UCO observables (e.g., Process created File, Network Connection from Process).\n\n**Properties**:\n```cypher\n{\n  relationship_id: String,\n  relationship_type: String,     // \"CREATED\", \"MODIFIED\", \"DELETED\", \"CONNECTED_TO\", \"EXECUTED\", etc.\n  timestamp: DateTime,\n  confidence: Float,\n  created_date: DateTime\n}\n```\n\n**Cypher CREATE Statement**:\n```cypher\n// Link Process to File it created\nMATCH (proc:UCO_Process {process_id: 4892})\nMATCH (file:UCO_File {file_name: \"malware.exe\"})\nCREATE (proc)-[r:UCO_RELATES_TO {\n  relationship_id: randomUUID(),\n  relationship_type: \"CREATED\",\n  timestamp: datetime('2024-10-15T08:23:45Z'),\n  confidence: 0.95,\n  created_date: datetime()\n}]->(file)\n\n// Link Process to Network Connection\nMATCH (proc:UCO_Process {process_id: 4892})\nMATCH (netconn:UCO_NetworkConnection {source_port: 49832})\nCREATE (proc)-[r2:UCO_RELATES_TO {\n  relationship_id: randomUUID(),\n  relationship_type: \"INITIATED\",\n  timestamp: datetime('2024-10-15T14:23:11Z'",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 68,
+      "start_char": 54400,
+      "end_char": 55400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_69",
+    "text": " (netconn:UCO_NetworkConnection {source_port: 49832})\nCREATE (proc)-[r2:UCO_RELATES_TO {\n  relationship_id: randomUUID(),\n  relationship_type: \"INITIATED\",\n  timestamp: datetime('2024-10-15T14:23:11Z'),\n  confidence: 1.0,\n  created_date: datetime()\n}]->(netconn)\n```\n\n## 4. Integration Patterns\n\n### 4.1 STIX Bundle Export\n\n**Objective**: Export Neo4j graph data as valid STIX 2.1 JSON bundles for sharing via TAXII.\n\n**Export Query Pattern**:\n```cypher\n// Export STIX bundle for a specific campaign\nMATCH (indicator:STIX_Indicator)-[:STIX_INDICATES]->(malware:STIX_Malware)\nMATCH (ta:STIX_ThreatActor)-[:STIX_USES]->(malware)\nMATCH (malware)-[:STIX_USES]->(ap:STIX_AttackPattern)\nWHERE indicator.name CONTAINS \"TrickBot\"\nWITH collect(indicator) + collect(malware) + collect(ta) + collect(ap) AS stix_objects\nRETURN {\n  type: \"bundle\",\n  id: \"bundle--\" + randomUUID(),\n  spec_version: \"2.1\",\n  objects: [obj IN stix_objects | obj {.*}]\n} AS stix_bundle\n```\n\n**Python STIX Bundle Generation** (using s",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 69,
+      "start_char": 55200,
+      "end_char": 56200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_70",
+    "text": "_objects\nRETURN {\n  type: \"bundle\",\n  id: \"bundle--\" + randomUUID(),\n  spec_version: \"2.1\",\n  objects: [obj IN stix_objects | obj {.*}]\n} AS stix_bundle\n```\n\n**Python STIX Bundle Generation** (using stix2 library):\n```python\nfrom neo4j import GraphDatabase\nimport stix2\nimport uuid\n\ndef export_stix_bundle(tx, campaign_name):\n    query = \"\"\"\n    MATCH (indicator:STIX_Indicator)-[:STIX_INDICATES]->(malware:STIX_Malware)\n    MATCH (ta:STIX_ThreatActor)-[:STIX_USES]->(malware)\n    WHERE indicator.name CONTAINS $campaign_name\n    RETURN indicator, malware, ta\n    \"\"\"\n    result = tx.run(query, campaign_name=campaign_name)\n\n    stix_objects = []\n    for record in result:\n        indicator_props = dict(record[\"indicator\"])\n        malware_props = dict(record[\"malware\"])\n        ta_props = dict(record[\"ta\"])\n\n        # Convert Neo4j nodes to STIX objects\n        stix_indicator = stix2.Indicator(\n            id=indicator_props[\"stix_id\"],\n            name=indicator_props[\"name\"],\n            pat",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 70,
+      "start_char": 56000,
+      "end_char": 57000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_71",
+    "text": "ord[\"ta\"])\n\n        # Convert Neo4j nodes to STIX objects\n        stix_indicator = stix2.Indicator(\n            id=indicator_props[\"stix_id\"],\n            name=indicator_props[\"name\"],\n            pattern=indicator_props[\"pattern\"],\n            pattern_type=indicator_props[\"pattern_type\"],\n            valid_from=indicator_props[\"valid_from\"]\n        )\n        stix_objects.append(stix_indicator)\n\n        # ... similar for malware and threat actor\n\n    bundle = stix2.Bundle(*stix_objects)\n    return bundle.serialize(pretty=True)\n\n# Usage\nwith driver.session() as session:\n    stix_json = session.read_transaction(export_stix_bundle, \"TrickBot\")\n    print(stix_json)\n```\n\n### 4.2 STIX Bundle Import\n\n**Objective**: Import STIX 2.1 JSON bundles from TAXII servers into Neo4j graph.\n\n**Import Pattern** (Python with stix2 and Neo4j driver):\n```python\nimport stix2\nfrom neo4j import GraphDatabase\n\ndef import_stix_bundle(tx, stix_bundle_json):\n    bundle = stix2.parse(stix_bundle_json)\n\n    for obj ",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 71,
+      "start_char": 56800,
+      "end_char": 57800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_72",
+    "text": "n** (Python with stix2 and Neo4j driver):\n```python\nimport stix2\nfrom neo4j import GraphDatabase\n\ndef import_stix_bundle(tx, stix_bundle_json):\n    bundle = stix2.parse(stix_bundle_json)\n\n    for obj in bundle.objects:\n        if obj.type == \"indicator\":\n            query = \"\"\"\n            MERGE (i:STIX_Indicator {stix_id: $stix_id})\n            SET i.name = $name,\n                i.pattern = $pattern,\n                i.pattern_type = $pattern_type,\n                i.valid_from = datetime($valid_from),\n                i.spec_version = $spec_version,\n                i.created = datetime($created),\n                i.modified = datetime($modified),\n                i.imported_from = \"TAXII\",\n                i.import_timestamp = datetime()\n            \"\"\"\n            tx.run(query,\n                   stix_id=obj.id,\n                   name=obj.name,\n                   pattern=obj.pattern,\n                   pattern_type=obj.pattern_type,\n                   valid_from=obj.valid_from.isoformat",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 72,
+      "start_char": 57600,
+      "end_char": 58600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_73",
+    "text": "      stix_id=obj.id,\n                   name=obj.name,\n                   pattern=obj.pattern,\n                   pattern_type=obj.pattern_type,\n                   valid_from=obj.valid_from.isoformat(),\n                   spec_version=obj.spec_version,\n                   created=obj.created.isoformat(),\n                   modified=obj.modified.isoformat())\n\n        elif obj.type == \"malware\":\n            # Similar Cypher query for malware\n            pass\n\n        elif obj.type == \"relationship\":\n            # Create relationships between STIX objects\n            query = \"\"\"\n            MATCH (source {stix_id: $source_ref})\n            MATCH (target {stix_id: $target_ref})\n            MERGE (source)-[r:STIX_RELATIONSHIP {stix_id: $stix_id}]->(target)\n            SET r.relationship_type = $relationship_type,\n                r.created = datetime($created)\n            \"\"\"\n            tx.run(query,\n                   stix_id=obj.id,\n                   source_ref=obj.source_ref,\n          ",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 73,
+      "start_char": 58400,
+      "end_char": 59400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_74",
+    "text": "$relationship_type,\n                r.created = datetime($created)\n            \"\"\"\n            tx.run(query,\n                   stix_id=obj.id,\n                   source_ref=obj.source_ref,\n                   target_ref=obj.target_ref,\n                   relationship_type=obj.relationship_type,\n                   created=obj.created.isoformat())\n\n# Usage\nwith driver.session() as session:\n    with open(\"stix_bundle.json\", \"r\") as f:\n        stix_json = f.read()\n    session.write_transaction(import_stix_bundle, stix_json)\n```\n\n### 4.3 TAXII 2.1 Client Integration\n\n**Objective**: Automatically fetch threat intelligence from TAXII 2.1 servers and import into Neo4j.\n\n**Python TAXII Client Example**:\n```python\nfrom taxii2client.v21 import Server, Collection\nfrom neo4j import GraphDatabase\nimport stix2\n\n# Connect to TAXII server\nserver = Server(\"https://taxii.example.com/taxii/\", user=\"username\", password=\"password\")\n\n# Get collections\napi_root = server.api_roots[0]\ncollections = api_root.col",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 74,
+      "start_char": 59200,
+      "end_char": 60200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_75",
+    "text": " stix2\n\n# Connect to TAXII server\nserver = Server(\"https://taxii.example.com/taxii/\", user=\"username\", password=\"password\")\n\n# Get collections\napi_root = server.api_roots[0]\ncollections = api_root.collections\n\n# Fetch STIX bundles from collection\nfor collection in collections:\n    if collection.title == \"Threat Intelligence Feed\":\n        # Get all objects from collection\n        objects = collection.get_objects()\n\n        # Convert to STIX bundle\n        bundle = stix2.Bundle(objects=objects[\"objects\"])\n\n        # Import into Neo4j\n        with driver.session() as session:\n            session.write_transaction(import_stix_bundle, bundle.serialize())\n```\n\n### 4.4 CVE Preservation Validation\n\n**Critical**: Ensure all Wave 4 CVE nodes remain intact after Wave 6 integration.\n\n**Validation Query**:\n```cypher\n// Before Wave 6: Count CVE nodes\nMATCH (cve:CVE)\nRETURN count(cve) AS cve_count_before\n\n// After Wave 6: Verify CVE count unchanged and STIX links added\nMATCH (cve:CVE)\nWITH count(cve",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 75,
+      "start_char": 60000,
+      "end_char": 61000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_76",
+    "text": "ry**:\n```cypher\n// Before Wave 6: Count CVE nodes\nMATCH (cve:CVE)\nRETURN count(cve) AS cve_count_before\n\n// After Wave 6: Verify CVE count unchanged and STIX links added\nMATCH (cve:CVE)\nWITH count(cve) AS cve_count_after\nMATCH (cve:CVE)-[:REPRESENTED_AS_STIX_VULN]->(stix:STIX_Vulnerability)\nRETURN\n  cve_count_after,\n  count(DISTINCT cve) AS cves_with_stix_representation,\n  (count(DISTINCT cve) * 100.0 / cve_count_after) AS percentage_mapped\n// Expected: cve_count_after = cve_count_before, percentage_mapped ~100%\n```\n\n## 5. Validation Criteria\n\n### 5.1 STIX 2.1 Compliance Validation\n\n**STIX JSON Schema Validation**:\n```python\nimport stix2\nimport json\n\ndef validate_stix_bundle(neo4j_driver):\n    # Export STIX bundle from Neo4j\n    with neo4j_driver.session() as session:\n        result = session.run(\"\"\"\n            MATCH (obj)\n            WHERE obj.stix_id IS NOT NULL\n            RETURN obj {.*} AS stix_object\n            LIMIT 100\n        \"\"\")\n\n        stix_objects = []\n        for recor",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 76,
+      "start_char": 60800,
+      "end_char": 61800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_77",
+    "text": "ion.run(\"\"\"\n            MATCH (obj)\n            WHERE obj.stix_id IS NOT NULL\n            RETURN obj {.*} AS stix_object\n            LIMIT 100\n        \"\"\")\n\n        stix_objects = []\n        for record in result:\n            obj_dict = dict(record[\"stix_object\"])\n            # Convert Neo4j properties to STIX format\n            stix_objects.append(obj_dict)\n\n        bundle_dict = {\n            \"type\": \"bundle\",\n            \"id\": \"bundle--\" + str(uuid.uuid4()),\n            \"spec_version\": \"2.1\",\n            \"objects\": stix_objects\n        }\n\n        try:\n            # Validate using stix2 library\n            bundle = stix2.parse(json.dumps(bundle_dict))\n            print(\"\u2705 STIX bundle is valid!\")\n            return True\n        except Exception as e:\n            print(f\"\u274c STIX validation failed: {e}\")\n            return False\n```\n\n### 5.2 UCO Ontology Compliance\n\n**UCO Validation Query**:\n```cypher\n// Verify UCO Observable nodes have required properties\nMATCH (obs:UCO_Observable)\nWHERE",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 77,
+      "start_char": 61600,
+      "end_char": 62600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_78",
+    "text": "ailed: {e}\")\n            return False\n```\n\n### 5.2 UCO Ontology Compliance\n\n**UCO Validation Query**:\n```cypher\n// Verify UCO Observable nodes have required properties\nMATCH (obs:UCO_Observable)\nWHERE obs.uco_id IS NULL OR\n      obs.uco_type IS NULL OR\n      obs.created_time IS NULL OR\n      obs.state IS NULL\nRETURN count(obs) AS invalid_uco_observables\n// Expected: 0\n```\n\n### 5.3 Integration Completeness\n\n**Mapping Coverage Validation**:\n```cypher\n// Verify ATT&CK to STIX Attack Pattern mapping\nMATCH (tech:Technique)\nWITH count(tech) AS total_techniques\nMATCH (tech:Technique)-[:REPRESENTED_AS_STIX]->(ap:STIX_AttackPattern)\nRETURN\n  total_techniques,\n  count(DISTINCT tech) AS mapped_techniques,\n  (count(DISTINCT tech) * 100.0 / total_techniques) AS mapping_percentage\n// Expected: mapping_percentage >= 95%\n\n// Verify CVE to STIX Vulnerability mapping\nMATCH (cve:CVE)\nWITH count(cve) AS total_cves\nMATCH (cve:CVE)-[:REPRESENTED_AS_STIX_VULN]->(vuln:STIX_Vulnerability)\nRETURN\n  total_cves,\n",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 78,
+      "start_char": 62400,
+      "end_char": 63400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_79",
+    "text": "ercentage >= 95%\n\n// Verify CVE to STIX Vulnerability mapping\nMATCH (cve:CVE)\nWITH count(cve) AS total_cves\nMATCH (cve:CVE)-[:REPRESENTED_AS_STIX_VULN]->(vuln:STIX_Vulnerability)\nRETURN\n  total_cves,\n  count(DISTINCT cve) AS mapped_cves,\n  (count(DISTINCT cve) * 100.0 / total_cves) AS mapping_percentage\n// Expected: mapping_percentage = 100%\n```\n\n### 5.4 Performance Benchmarks\n\n**STIX Bundle Generation Performance**:\n```cypher\n// Profile STIX bundle export query (<1 second target)\nPROFILE\nMATCH (indicator:STIX_Indicator)-[:STIX_INDICATES]->(malware:STIX_Malware)\nMATCH (ta:STIX_ThreatActor)-[:STIX_USES]->(malware)\nRETURN count(*) AS relationship_count\n// Expected: <1000ms execution time\n```\n\n## 6. Example Queries\n\n### 6.1 Cyber Investigation: Malware Infection Timeline\n\n**Query**: Reconstruct malware infection timeline using UCO observables.\n\n```cypher\n// Reconstruct attack timeline from UCO observables\nMATCH (case:UCO_InvestigationCase {case_id: \"CASE-2024-001\"})\nMATCH (case)-[:CASE_CO",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 79,
+      "start_char": 63200,
+      "end_char": 64200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_80",
+    "text": "ct malware infection timeline using UCO observables.\n\n```cypher\n// Reconstruct attack timeline from UCO observables\nMATCH (case:UCO_InvestigationCase {case_id: \"CASE-2024-001\"})\nMATCH (case)-[:CASE_CONTAINS_OBSERVABLE]->(obs:UCO_Observable)\nOPTIONAL MATCH (obs)-[rel:UCO_RELATES_TO]->(related_obs:UCO_Observable)\nWITH obs, rel, related_obs\nORDER BY obs.created_time ASC\nRETURN\n  obs.created_time AS timestamp,\n  obs.uco_type AS observable_type,\n  CASE obs.uco_type\n    WHEN \"File\" THEN obs.file_name\n    WHEN \"Process\" THEN obs.process_name\n    WHEN \"NetworkConnection\" THEN obs.destination_ip\n    ELSE obs.uco_id\n  END AS observable_identifier,\n  obs.is_malicious AS is_malicious,\n  CASE\n    WHEN obs:UCO_Process THEN obs.command_line\n    WHEN obs:UCO_NetworkConnection THEN obs.destination_hostname\n    ELSE null\n  END AS additional_context,\n  rel.relationship_type AS action,\n  CASE related_obs.uco_type\n    WHEN \"File\" THEN related_obs.file_name\n    WHEN \"Process\" THEN related_obs.process_name\n ",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 80,
+      "start_char": 64000,
+      "end_char": 65000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_81",
+    "text": "\n    ELSE null\n  END AS additional_context,\n  rel.relationship_type AS action,\n  CASE related_obs.uco_type\n    WHEN \"File\" THEN related_obs.file_name\n    WHEN \"Process\" THEN related_obs.process_name\n    ELSE null\n  END AS related_observable\nLIMIT 50\n```\n\n**Expected Result**: Chronological timeline of malware execution events.\n\n### 6.2 STIX Threat Intelligence: APT Campaign Analysis\n\n**Query**: Analyze APT campaign using STIX objects.\n\n```cypher\n// Find APT campaign details\nMATCH (ta:STIX_ThreatActor {name: \"APT28\"})\nMATCH (ta)-[:STIX_USES]->(malware:STIX_Malware)\nMATCH (indicator:STIX_Indicator)-[:STIX_INDICATES]->(malware)\nMATCH (malware)-[rel]->(ap:STIX_AttackPattern)\nOPTIONAL MATCH (ap)<-[:REPRESENTED_AS_STIX]-(tech:Technique)\nRETURN\n  ta.name AS threat_actor,\n  ta.sophistication AS sophistication_level,\n  collect(DISTINCT malware.name) AS malware_families,\n  collect(DISTINCT indicator.pattern) AS indicators_of_compromise,\n  collect(DISTINCT ap.name) AS attack_techniques,\n  collect(",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 81,
+      "start_char": 64800,
+      "end_char": 65800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_82",
+    "text": "histication_level,\n  collect(DISTINCT malware.name) AS malware_families,\n  collect(DISTINCT indicator.pattern) AS indicators_of_compromise,\n  collect(DISTINCT ap.name) AS attack_techniques,\n  collect(DISTINCT tech.technique_id) AS mitre_attack_ids\n```\n\n### 6.3 Cross-Standard Correlation: CVE to STIX to ATT&CK\n\n**Query**: Correlate CVE vulnerability to ATT&CK techniques via STIX.\n\n```cypher\n// CVE \u2192 STIX Vulnerability \u2192 STIX Attack Pattern \u2192 ATT&CK Technique\nMATCH (cve:CVE {cve_id: \"CVE-2021-44228\"})-[:REPRESENTED_AS_STIX_VULN]->(stix_vuln:STIX_Vulnerability)\nMATCH (stix_vuln)<-[:STIX_TARGETS]-(stix_ap:STIX_AttackPattern)\nMATCH (stix_ap)<-[:REPRESENTED_AS_STIX]-(tech:Technique)\nMATCH (tech)<-[:USES]-(ta:ThreatActor)\nRETURN\n  cve.cve_id AS vulnerability,\n  cve.cvss_base_score AS cvss_score,\n  stix_vuln.name AS stix_representation,\n  collect(DISTINCT stix_ap.name) AS attack_patterns,\n  collect(DISTINCT tech.technique_id) AS att_ck_techniques,\n  collect(DISTINCT ta.name) AS threat_actors_e",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 82,
+      "start_char": 65600,
+      "end_char": 66600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_83",
+    "text": "  stix_vuln.name AS stix_representation,\n  collect(DISTINCT stix_ap.name) AS attack_patterns,\n  collect(DISTINCT tech.technique_id) AS att_ck_techniques,\n  collect(DISTINCT ta.name) AS threat_actors_exploiting\n```\n\n### 6.4 STIX Bundle Completeness Check\n\n**Query**: Verify STIX bundle has all required relationships.\n\n```cypher\n// Check STIX relationship coverage\nMATCH (source)\nWHERE source.stix_id IS NOT NULL AND source.stix_id STARTS WITH \"indicator--\"\nOPTIONAL MATCH (source)-[r:STIX_INDICATES|STIX_USES|STIX_TARGETS]->(target)\nWHERE target.stix_id IS NOT NULL\nRETURN\n  source.stix_id AS indicator_id,\n  source.name AS indicator_name,\n  count(r) AS outbound_relationships,\n  collect(DISTINCT type(r)) AS relationship_types,\n  collect(DISTINCT target.stix_type) AS target_types,\n  CASE WHEN count(r) = 0 THEN \"MISSING_RELATIONSHIPS\" ELSE \"OK\" END AS status\n```\n\n### 6.5 UCO Chain of Custody Verification\n\n**Query**: Verify evidence chain of custody for investigation case.\n\n```cypher\n// Verify ch",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 83,
+      "start_char": 66400,
+      "end_char": 67400,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_84",
+    "text": "(r) = 0 THEN \"MISSING_RELATIONSHIPS\" ELSE \"OK\" END AS status\n```\n\n### 6.5 UCO Chain of Custody Verification\n\n**Query**: Verify evidence chain of custody for investigation case.\n\n```cypher\n// Verify chain of custody for case evidence\nMATCH (case:UCO_InvestigationCase {case_id: \"CASE-2024-001\"})\nMATCH (case)-[r:CASE_CONTAINS_OBSERVABLE]->(evidence:UCO_File)\nWHERE evidence.evidence_id IS NOT NULL\nRETURN\n  evidence.evidence_id AS evidence_id,\n  evidence.file_name AS file_name,\n  evidence.sha256_hash AS hash,\n  r.evidence_collected_time AS collection_time,\n  r.collected_by AS collected_by,\n  r.chain_of_custody_id AS custody_id,\n  evidence.chain_of_custody AS custody_chain,\n  CASE\n    WHEN size(evidence.chain_of_custody) > 0 THEN \"DOCUMENTED\"\n    ELSE \"MISSING_CHAIN\"\n  END AS custody_status\nORDER BY r.evidence_collected_time ASC\n```\n\n## 7. Wave 6 Implementation Checklist\n\n### 7.1 Pre-Implementation\n\n- [ ] Complete Waves 1-5 validation\n- [ ] Backup Neo4j database\n- [ ] Verify CVE baseline cou",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 84,
+      "start_char": 67200,
+      "end_char": 68200,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_85",
+    "text": "R BY r.evidence_collected_time ASC\n```\n\n## 7. Wave 6 Implementation Checklist\n\n### 7.1 Pre-Implementation\n\n- [ ] Complete Waves 1-5 validation\n- [ ] Backup Neo4j database\n- [ ] Verify CVE baseline count (for preservation)\n- [ ] Install Neo4j APOC library\n- [ ] Install Python stix2 library\n- [ ] Review STIX 2.1 specification\n- [ ] Review UCO ontology specification\n\n### 7.2 Implementation Phase 1: UCO Observables (Week 1)\n\n- [ ] Create UCO_Observable base nodes\n- [ ] Create UCO_File nodes with full properties\n- [ ] Create UCO_NetworkConnection nodes\n- [ ] Create UCO_Process nodes\n- [ ] Create UCO_UserAccount nodes\n- [ ] Create UCO_InvestigationCase nodes\n- [ ] Create all indexes and constraints\n- [ ] Validate UCO property completeness\n\n### 7.3 Implementation Phase 2: STIX Domain Objects (Week 2)\n\n- [ ] Create STIX_AttackPattern nodes (mapped from ATT&CK)\n- [ ] Create STIX_Indicator nodes\n- [ ] Create STIX_ThreatActor nodes\n- [ ] Create STIX_Malware nodes\n- [ ] Create STIX_Vulnerability n",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 85,
+      "start_char": 68000,
+      "end_char": 69000,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_86",
+    "text": "k 2)\n\n- [ ] Create STIX_AttackPattern nodes (mapped from ATT&CK)\n- [ ] Create STIX_Indicator nodes\n- [ ] Create STIX_ThreatActor nodes\n- [ ] Create STIX_Malware nodes\n- [ ] Create STIX_Vulnerability nodes (mapped from CVEs)\n- [ ] Create STIX Cyber-observable Objects (SCOs)\n- [ ] Create all STIX indexes and constraints\n- [ ] Validate STIX JSON compliance\n\n### 7.4 Implementation Phase 3: Relationships & Integration (Week 3)\n\n- [ ] Create UCO to STIX mappings (MAPS_TO_STIX)\n- [ ] Create ATT&CK to STIX Attack Pattern links (REPRESENTED_AS_STIX)\n- [ ] Create CVE to STIX Vulnerability links (REPRESENTED_AS_STIX_VULN)\n- [ ] Verify CVE preservation (100% count match)\n- [ ] Create STIX Relationship Objects (uses, indicates, targets)\n- [ ] Create UCO investigation relationships\n- [ ] Test bidirectional conversion (Neo4j \u2194 STIX JSON)\n\n### 7.5 Implementation Phase 4: Import/Export & Validation (Week 4)\n\n- [ ] Implement STIX bundle export functionality\n- [ ] Implement STIX bundle import functionali",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 86,
+      "start_char": 68800,
+      "end_char": 69800,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_87",
+    "text": "nal conversion (Neo4j \u2194 STIX JSON)\n\n### 7.5 Implementation Phase 4: Import/Export & Validation (Week 4)\n\n- [ ] Implement STIX bundle export functionality\n- [ ] Implement STIX bundle import functionality\n- [ ] Test TAXII 2.1 client integration (optional)\n- [ ] Run STIX 2.1 JSON schema validation\n- [ ] Run UCO ontology compliance checks\n- [ ] Test all example queries\n- [ ] Performance benchmarks (<1s STIX bundle generation)\n- [ ] CVE preservation final validation\n- [ ] Generate Wave 6 completion report\n\n## 8. Wave 6 Success Criteria Summary\n\n**Quantitative Targets**:\n- \u2705 15+ UCO observable types implemented\n- \u2705 12+ STIX Domain Object types created\n- \u2705 18+ STIX Cyber-observable Object types created\n- \u2705 100+ ATT&CK techniques mapped to STIX Attack Patterns\n- \u2705 500+ CVEs converted to STIX Vulnerability objects\n- \u2705 100% CVE preservation validated (no data loss)\n- \u2705 50+ investigation case examples created\n- \u2705 STIX bundle export/import roundtrip 100% fidelity\n- \u2705 Query performance <1 second fo",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 87,
+      "start_char": 69600,
+      "end_char": 70600,
+      "chunk_size": 1000
+    }
+  },
+  {
+    "id": "08_WAVE_6_UCO_STIX.md_chunk_88",
+    "text": "rability objects\n- \u2705 100% CVE preservation validated (no data loss)\n- \u2705 50+ investigation case examples created\n- \u2705 STIX bundle export/import roundtrip 100% fidelity\n- \u2705 Query performance <1 second for STIX bundle generation\n\n**Qualitative Targets**:\n- \u2705 Valid STIX 2.1 JSON bundle export verified\n- \u2705 UCO ontology compliance validated\n- \u2705 Cyber forensics investigation workflows supported\n- \u2705 Seamless integration with existing graph (no data loss)\n- \u2705 Automated TAXII feed ingestion capability (optional)\n- \u2705 Standards-compliant threat intelligence sharing enabled\n\n---\n\n**Wave 6 Status**: Ready for implementation\n**Dependencies**: Waves 1, 2, 4, 5 completed\n**Next Wave**: Wave 7 - Psychometric Analysis Integration\n**Document Version**: v1.0.0\n**Last Updated**: 2025-10-30\n",
+    "metadata": {
+      "file_name": "08_WAVE_6_UCO_STIX.md",
+      "file_path": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DT_CyberSec_Threat_Intel/1_Comprehensive_Schema_Enhancement_Plan_v2/08_WAVE_6_UCO_STIX.md",
+      "file_size": 71178,
+      "indexed_at": "2025-10-31T01:01:48.227245",
+      "chunk_id": 88,
+      "start_char": 70400,
+      "end_char": 71400,
+      "chunk_size": 778
+    }
+  }
+]
