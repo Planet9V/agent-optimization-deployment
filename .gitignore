@@ -99,3 +99,8 @@ backups/**/neo4j/neo4j-data/schema/index/
 *.kmz
 5_Downer_Group_CRL_NZ.zip
 
+
+# All Neo4j backup directories (data only - keep schema/cypher)
+backups/**/neo4j/neo4j-data/
+**/pre-commit-*/
+
