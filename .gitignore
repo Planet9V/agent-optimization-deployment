@@ -85,3 +85,17 @@ omega_current_state.md
 AEON_Training_data_NER10/10_Ontologies/AEON_DR_Cybersec_Threat_Intelv2/exports/metadata_export_*/cve_node_properties.csv
 AEON_Training_data_NER10/10_Ontologies/AEON_DR_Cybersec_Threat_Intelv2/exports/metadata_export_*/cve_node_properties.json  
 1_AEON_Cyber_DTv3_2025-11-19/data/level6_generated_data.json
+
+# Neo4j Backup Data (Keep schema/queries, exclude data)
+backups/**/neo4j/neo4j-data/databases/
+backups/**/neo4j/neo4j-data/transactions/
+backups/**/neo4j/neo4j-data/schema/index/
+**/neostore.*.db
+**/neostore.transaction.*
+
+# Large sector data files
+**/*_Transmission_Lines*.kmz
+**/*_CRL_*.zip
+*.kmz
+5_Downer_Group_CRL_NZ.zip
+
