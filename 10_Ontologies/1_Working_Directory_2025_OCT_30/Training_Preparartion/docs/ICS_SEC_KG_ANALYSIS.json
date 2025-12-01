@@ -1,0 +1,146 @@
+{
+  "CAPEC": {
+    "name": "CAPEC",
+    "file": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/ICS-SEC-KG/dumps/capec/capec_latest.ttl",
+    "size_mb": 3.65,
+    "predicates": {},
+    "classes": {},
+    "namespaces": [
+      "cwe:http://w3id.org/sepses/vocab/ref/cwe#",
+      "rdf:http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "capec:http://w3id.org/sepses/vocab/ref/capec#",
+      "rdfs:http://www.w3.org/2000/01/rdf-schema#",
+      "cve:http://w3id.org/sepses/vocab/ref/cve#",
+      "cvss:http://w3id.org/sepses/vocab/ref/cvss#",
+      "owl:http://www.w3.org/2002/07/owl#",
+      "dct:http://purl.org/dc/terms/",
+      "cpe:http://w3id.org/sepses/vocab/ref/cpe#"
+    ],
+    "attack_chain_relevance": {
+      "chain_mappings": [],
+      "linking_properties": [],
+      "score": 0
+    },
+    "ner_training_potential": {
+      "entity_types": [],
+      "extraction_targets": [],
+      "score": 0
+    },
+    "sample_entities": []
+  },
+  "ATT&CK": {
+    "name": "ATT&CK",
+    "file": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/ICS-SEC-KG/dumps/cat/enterprise-attack.ttl",
+    "size_mb": 6.11,
+    "predicates": {},
+    "classes": {},
+    "namespaces": [],
+    "attack_chain_relevance": {
+      "chain_mappings": [],
+      "linking_properties": [],
+      "score": 0
+    },
+    "ner_training_potential": {
+      "entity_types": [],
+      "extraction_targets": [],
+      "score": 0
+    },
+    "sample_entities": []
+  },
+  "CWE": {
+    "name": "CWE",
+    "file": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/ICS-SEC-KG/dumps/cwe/cwec_latest.ttl",
+    "size_mb": 10.95,
+    "predicates": {},
+    "classes": {},
+    "namespaces": [
+      "cwe:http://w3id.org/sepses/vocab/ref/cwe#",
+      "rdf:http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "capec:http://w3id.org/sepses/vocab/ref/capec#",
+      "rdfs:http://www.w3.org/2000/01/rdf-schema#",
+      "cve:http://w3id.org/sepses/vocab/ref/cve#",
+      "cvss:http://w3id.org/sepses/vocab/ref/cvss#",
+      "owl:http://www.w3.org/2002/07/owl#",
+      "dct:http://purl.org/dc/terms/",
+      "cpe:http://w3id.org/sepses/vocab/ref/cpe#"
+    ],
+    "attack_chain_relevance": {
+      "chain_mappings": [],
+      "linking_properties": [],
+      "score": 0
+    },
+    "ner_training_potential": {
+      "entity_types": [],
+      "extraction_targets": [],
+      "score": 0
+    },
+    "sample_entities": []
+  },
+  "CVE-2023": {
+    "name": "CVE-2023",
+    "file": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/ICS-SEC-KG/dumps/cve/nvd_cve_2023.ttl",
+    "size_mb": 175.87,
+    "predicates": {},
+    "classes": {},
+    "namespaces": [],
+    "attack_chain_relevance": {
+      "chain_mappings": [],
+      "linking_properties": [],
+      "score": 0
+    },
+    "ner_training_potential": {
+      "entity_types": [],
+      "extraction_targets": [],
+      "score": 0
+    },
+    "sample_entities": []
+  },
+  "CPE": {
+    "name": "CPE",
+    "file": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/ICS-SEC-KG/dumps/cpe/cpe_dictionary.ttl",
+    "size_mb": 9.72,
+    "predicates": {},
+    "classes": {},
+    "namespaces": [
+      "cwe:http://w3id.org/sepses/vocab/ref/cwe#",
+      "rdf:http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+      "capec:http://w3id.org/sepses/vocab/ref/capec#",
+      "rdfs:http://www.w3.org/2000/01/rdf-schema#",
+      "cve:http://w3id.org/sepses/vocab/ref/cve#",
+      "cvss:http://w3id.org/sepses/vocab/ref/cvss#",
+      "owl:http://www.w3.org/2002/07/owl#",
+      "dct:http://purl.org/dc/terms/",
+      "cpe:http://w3id.org/sepses/vocab/ref/cpe#"
+    ],
+    "attack_chain_relevance": {
+      "chain_mappings": [],
+      "linking_properties": [],
+      "score": 0
+    },
+    "ner_training_potential": {
+      "entity_types": [],
+      "extraction_targets": [],
+      "score": 0
+    },
+    "sample_entities": []
+  },
+  "ICSA": {
+    "name": "ICSA",
+    "file": "/home/jim/2_OXOT_Projects_Dev/10_Ontologies/ICS-SEC-KG/dumps/icsa/icsa_advisories.ttl",
+    "size_mb": 7.92,
+    "predicates": {},
+    "classes": {},
+    "namespaces": [],
+    "attack_chain_relevance": {
+      "chain_mappings": [],
+      "linking_properties": [],
+      "score": 0
+    },
+    "ner_training_potential": {
+      "entity_types": [],
+      "extraction_targets": [],
+      "score": 0
+    },
+    "sample_entities": []
+  }
+}

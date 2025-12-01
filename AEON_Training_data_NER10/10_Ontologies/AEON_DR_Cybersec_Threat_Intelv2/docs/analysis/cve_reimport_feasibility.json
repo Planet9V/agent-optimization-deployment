@@ -1,0 +1,932 @@
+{
+  "timestamp": "2025-11-01T21:55:50.527328",
+  "incoming_relationships": [
+    {
+      "source_labels": [
+        "CVE",
+        "CybersecurityKB.CVE",
+        "VULNERABILITY",
+        "CVE_Database",
+        "Threat_Intelligence"
+      ],
+      "relationship_type": "PRECEDES",
+      "count": 107738
+    },
+    {
+      "source_labels": [
+        "CVE",
+        "CybersecurityKB.CVE",
+        "VULNERABILITY",
+        "CVE_Database",
+        "Threat_Intelligence"
+      ],
+      "relationship_type": "PROPAGATES_TO",
+      "count": 100000
+    },
+    {
+      "source_labels": [
+        "Device"
+      ],
+      "relationship_type": "VULNERABLE_TO",
+      "count": 17000
+    },
+    {
+      "source_labels": [
+        "SoftwareComponent",
+        "Asset",
+        "SBOM",
+        "Software_Component"
+      ],
+      "relationship_type": "MAY_HAVE_VULNERABILITY",
+      "count": 12207
+    },
+    {
+      "source_labels": [
+        "SoftwareComponent",
+        "Firmware",
+        "Asset",
+        "SBOM",
+        "Software_Component"
+      ],
+      "relationship_type": "ECOSYSTEM_VULNERABILITY",
+      "count": 6406
+    },
+    {
+      "source_labels": [
+        "Package",
+        "SoftwareComponent",
+        "Asset",
+        "SBOM",
+        "Software_Component"
+      ],
+      "relationship_type": "ECOSYSTEM_VULNERABILITY",
+      "count": 5594
+    },
+    {
+      "source_labels": [
+        "Package",
+        "SoftwareComponent",
+        "Asset",
+        "SBOM",
+        "Software_Component"
+      ],
+      "relationship_type": "HAS_VULNERABILITY",
+      "count": 5349
+    },
+    {
+      "source_labels": [
+        "SoftwareComponent",
+        "Asset",
+        "SBOM",
+        "Software_Component"
+      ],
+      "relationship_type": "HAS_VULNERABILITY",
+      "count": 4651
+    },
+    {
+      "source_labels": [
+        "Device",
+        "EnergyDevice",
+        "Energy",
+        "Monitoring",
+        "ENERGY",
+        "Energy_Distribution"
+      ],
+      "relationship_type": "THREATENS_GRID_STABILITY",
+      "count": 3000
+    },
+    {
+      "source_labels": [
+        "SoftwareComponent",
+        "Library",
+        "Asset",
+        "SBOM",
+        "Software_Component"
+      ],
+      "relationship_type": "MAY_HAVE_VULNERABILITY",
+      "count": 2793
+    },
+    {
+      "source_labels": [
+        "Device",
+        "WaterDevice",
+        "Monitoring",
+        "WATER",
+        "Water_Distribution"
+      ],
+      "relationship_type": "VULNERABLE_TO",
+      "count": 2500
+    },
+    {
+      "source_labels": [
+        "Process",
+        "Device",
+        "WaterDevice",
+        "WATER",
+        "Water_Treatment"
+      ],
+      "relationship_type": "VULNERABLE_TO",
+      "count": 2500
+    },
+    {
+      "source_labels": [
+        "Control",
+        "Device",
+        "WaterDevice",
+        "WATER",
+        "Water_Distribution"
+      ],
+      "relationship_type": "VULNERABLE_TO",
+      "count": 2500
+    },
+    {
+      "source_labels": [
+        "NetworkDevice",
+        "IT_INFRASTRUCTURE",
+        "Asset",
+        "IT_Hardware"
+      ],
+      "relationship_type": "HAS_VULNERABILITY",
+      "count": 125
+    },
+    {
+      "source_labels": [
+        "STIX_Object",
+        "STIX_Domain_Object",
+        "THREAT_INTEL_SHARING"
+      ],
+      "relationship_type": "VULNERABLE_TO",
+      "count": 100
+    },
+    {
+      "source_labels": [
+        "Equipment"
+      ],
+      "relationship_type": "VULNERABLE_TO",
+      "count": 34
+    },
+    {
+      "source_labels": [
+        "System"
+      ],
+      "relationship_type": "VULNERABLE_TO",
+      "count": 30
+    }
+  ],
+  "outgoing_relationships": [
+    {
+      "target_labels": [
+        "CAPEC",
+        "ICS_THREAT_INTEL"
+      ],
+      "relationship_type": "ENABLES_ATTACK_PATTERN",
+      "count": 1168814
+    },
+    {
+      "target_labels": [
+        "CWE",
+        "ICS_THREAT_INTEL"
+      ],
+      "relationship_type": "EXPLOITS_WEAKNESS",
+      "count": 244501
+    },
+    {
+      "target_labels": [
+        "CWE",
+        "ICS_THREAT_INTEL"
+      ],
+      "relationship_type": "EXPLOITS",
+      "count": 134405
+    },
+    {
+      "target_labels": [
+        "CVE",
+        "CybersecurityKB.CVE",
+        "VULNERABILITY",
+        "CVE_Database",
+        "Threat_Intelligence"
+      ],
+      "relationship_type": "PRECEDES",
+      "count": 107738
+    },
+    {
+      "target_labels": [
+        "CVE",
+        "CybersecurityKB.CVE",
+        "VULNERABILITY",
+        "CVE_Database",
+        "Threat_Intelligence"
+      ],
+      "relationship_type": "PROPAGATES_TO",
+      "count": 100000
+    },
+    {
+      "target_labels": [
+        "CWE",
+        "CybersecurityKB.CWE",
+        "ICS_THREAT_INTEL"
+      ],
+      "relationship_type": "EXPLOITS",
+      "count": 37392
+    },
+    {
+      "target_labels": [
+        "STIX_Object",
+        "STIX_Domain_Object",
+        "THREAT_INTEL_SHARING"
+      ],
+      "relationship_type": "MAPS_TO_STIX",
+      "count": 100
+    },
+    {
+      "target_labels": [
+        "Equipment"
+      ],
+      "relationship_type": "AFFECTS",
+      "count": 34
+    },
+    {
+      "target_labels": [
+        "System"
+      ],
+      "relationship_type": "AFFECTS_SYSTEM",
+      "count": 30
+    }
+  ],
+  "relationship_properties": {
+    "INCOMING_VULNERABLE_TO": [
+      "discovered_date",
+      "confidence_score",
+      "phase",
+      "evidence",
+      "relationship_type",
+      "cve_id"
+    ],
+    "INCOMING_HAS_VULNERABILITY": [
+      "age_days",
+      "discovered_date",
+      "confidence_score",
+      "phase",
+      "evidence",
+      "tier",
+      "original_confidence",
+      "temporal_confidence",
+      "match_type"
+    ],
+    "INCOMING_THREATENS_GRID_STABILITY": [
+      "patchVersion",
+      "mitigationStatus",
+      "populationImpact",
+      "cascadeRisk",
+      "patchAvailable",
+      "isExploited",
+      "discoveredDate",
+      "exploitabilityScore",
+      "gridImpact",
+      "affectedFirmwareVersions"
+    ],
+    "OUTGOING_MAPS_TO_STIX": [
+      "relationship_id",
+      "confidence_score",
+      "mapping_type",
+      "created_date"
+    ],
+    "OUTGOING_EXPLOITS_WEAKNESS": [
+      "discovered"
+    ]
+  },
+  "node_counts": {
+    "SBOM": 12,
+    "Software": 0,
+    "Vulnerability": 0,
+    "Weakness": 0,
+    "Product": 0
+  },
+  "sample_relationships": {},
+  "orphan_risk": [],
+  "reconstruction_complexity": {},
+  "sample_cve_nodes": [
+    {
+      "id": null,
+      "cve_id": "CVE-2016-1846",
+      "properties": [
+        "modified_date",
+        "cvss_version",
+        "description",
+        "namespace",
+        "year",
+        "published_date",
+        "cvss_score",
+        "severity",
+        "cve_id",
+        "cwe_ids",
+        "last_updated",
+        "cvss_vector"
+      ]
+    },
+    {
+      "id": null,
+      "cve_id": "CVE-2016-1847",
+      "properties": [
+        "modified_date",
+        "cvss_version",
+        "description",
+        "namespace",
+        "year",
+        "published_date",
+        "cvss_score",
+        "severity",
+        "cve_id",
+        "cwe_ids",
+        "last_updated",
+        "cvss_vector"
+      ]
+    },
+    {
+      "id": null,
+      "cve_id": "CVE-2016-1848",
+      "properties": [
+        "modified_date",
+        "cvss_version",
+        "description",
+        "namespace",
+        "year",
+        "published_date",
+        "cvss_score",
+        "severity",
+        "cve_id",
+        "cwe_ids",
+        "last_updated",
+        "cvss_vector"
+      ]
+    },
+    {
+      "id": null,
+      "cve_id": "CVE-2016-1849",
+      "properties": [
+        "modified_date",
+        "cvss_version",
+        "description",
+        "namespace",
+        "year",
+        "published_date",
+        "cvss_score",
+        "severity",
+        "cve_id",
+        "cwe_ids",
+        "last_updated",
+        "cvss_vector"
+      ]
+    },
+    {
+      "id": null,
+      "cve_id": "CVE-2016-1850",
+      "properties": [
+        "modified_date",
+        "cvss_version",
+        "description",
+        "namespace",
+        "year",
+        "published_date",
+        "cvss_score",
+        "severity",
+        "cve_id",
+        "cwe_ids",
+        "last_updated",
+        "cvss_vector"
+      ]
+    },
+    {
+      "id": null,
+      "cve_id": "CVE-2016-1851",
+      "properties": [
+        "modified_date",
+        "cvss_version",
+        "description",
+        "namespace",
+        "year",
+        "published_date",
+        "cvss_score",
+        "severity",
+        "cve_id",
+        "cwe_ids",
+        "last_updated",
+        "cvss_vector"
+      ]
+    },
+    {
+      "id": null,
+      "cve_id": "CVE-2016-1852",
+      "properties": [
+        "modified_date",
+        "cvss_version",
+        "description",
+        "namespace",
+        "year",
+        "published_date",
+        "cvss_score",
+        "severity",
+        "cve_id",
+        "cwe_ids",
+        "last_updated",
+        "cvss_vector"
+      ]
+    },
+    {
+      "id": null,
+      "cve_id": "CVE-2016-1853",
+      "properties": [
+        "modified_date",
+        "cvss_version",
+        "description",
+        "namespace",
+        "year",
+        "published_date",
+        "cvss_score",
+        "severity",
+        "cve_id",
+        "cwe_ids",
+        "last_updated",
+        "cvss_vector"
+      ]
+    },
+    {
+      "id": null,
+      "cve_id": "CVE-2016-1854",
+      "properties": [
+        "modified_date",
+        "cvss_version",
+        "description",
+        "namespace",
+        "year",
+        "published_date",
+        "cvss_score",
+        "severity",
+        "cve_id",
+        "cwe_ids",
+        "last_updated",
+        "cvss_vector"
+      ]
+    },
+    {
+      "id": null,
+      "cve_id": "CVE-2016-1855",
+      "properties": [
+        "modified_date",
+        "cvss_version",
+        "description",
+        "namespace",
+        "year",
+        "published_date",
+        "cvss_score",
+        "severity",
+        "cve_id",
+        "cwe_ids",
+        "last_updated",
+        "cvss_vector"
+      ]
+    }
+  ],
+  "cve_id_references": [
+    {
+      "node_type": [
+        "Vulnerability"
+      ],
+      "cve_properties": [
+        "cve_id"
+      ],
+      "count": 43,
+      "reconstruction_potential": "HIGH - Can use CVE ID properties"
+    },
+    {
+      "node_type": [
+        "Incident"
+      ],
+      "cve_properties": [
+        "cve_id"
+      ],
+      "count": 1,
+      "reconstruction_potential": "HIGH - Can use CVE ID properties"
+    },
+    {
+      "node_type": [
+        "SoftwareComponent",
+        "Asset",
+        "SBOM",
+        "Software_Component"
+      ],
+      "cve_properties": [
+        "specVersion"
+      ],
+      "count": 20000,
+      "reconstruction_potential": "HIGH - Can use CVE ID properties"
+    },
+    {
+      "node_type": [
+        "Dependency",
+        "DependencyTree",
+        "SBOM",
+        "Relationship"
+      ],
+      "cve_properties": [
+        "specVersion"
+      ],
+      "count": 8000,
+      "reconstruction_potential": "HIGH - Can use CVE ID properties"
+    }
+  ],
+  "nvd_import_timeline": {
+    "total_cves": 267487,
+    "api_key_available": true,
+    "requests_per_30s": 50,
+    "batch_size": 2000,
+    "total_requests": 134,
+    "estimated_seconds": 90,
+    "estimated_hours": 0.03,
+    "estimated_days": 0.0,
+    "recommendation": "Acceptable timeline with API key"
+  },
+  "final_report": {
+    "executive_summary": {
+      "total_cve_nodes": 267487,
+      "malformed_ids": 267487,
+      "needs_normalization": 179522,
+      "analysis_timestamp": "2025-11-01T21:55:50.527328"
+    },
+    "dependency_analysis": {
+      "incoming_relationships": [
+        {
+          "source_labels": [
+            "CVE",
+            "CybersecurityKB.CVE",
+            "VULNERABILITY",
+            "CVE_Database",
+            "Threat_Intelligence"
+          ],
+          "relationship_type": "PRECEDES",
+          "count": 107738
+        },
+        {
+          "source_labels": [
+            "CVE",
+            "CybersecurityKB.CVE",
+            "VULNERABILITY",
+            "CVE_Database",
+            "Threat_Intelligence"
+          ],
+          "relationship_type": "PROPAGATES_TO",
+          "count": 100000
+        },
+        {
+          "source_labels": [
+            "Device"
+          ],
+          "relationship_type": "VULNERABLE_TO",
+          "count": 17000
+        },
+        {
+          "source_labels": [
+            "SoftwareComponent",
+            "Asset",
+            "SBOM",
+            "Software_Component"
+          ],
+          "relationship_type": "MAY_HAVE_VULNERABILITY",
+          "count": 12207
+        },
+        {
+          "source_labels": [
+            "SoftwareComponent",
+            "Firmware",
+            "Asset",
+            "SBOM",
+            "Software_Component"
+          ],
+          "relationship_type": "ECOSYSTEM_VULNERABILITY",
+          "count": 6406
+        },
+        {
+          "source_labels": [
+            "Package",
+            "SoftwareComponent",
+            "Asset",
+            "SBOM",
+            "Software_Component"
+          ],
+          "relationship_type": "ECOSYSTEM_VULNERABILITY",
+          "count": 5594
+        },
+        {
+          "source_labels": [
+            "Package",
+            "SoftwareComponent",
+            "Asset",
+            "SBOM",
+            "Software_Component"
+          ],
+          "relationship_type": "HAS_VULNERABILITY",
+          "count": 5349
+        },
+        {
+          "source_labels": [
+            "SoftwareComponent",
+            "Asset",
+            "SBOM",
+            "Software_Component"
+          ],
+          "relationship_type": "HAS_VULNERABILITY",
+          "count": 4651
+        },
+        {
+          "source_labels": [
+            "Device",
+            "EnergyDevice",
+            "Energy",
+            "Monitoring",
+            "ENERGY",
+            "Energy_Distribution"
+          ],
+          "relationship_type": "THREATENS_GRID_STABILITY",
+          "count": 3000
+        },
+        {
+          "source_labels": [
+            "SoftwareComponent",
+            "Library",
+            "Asset",
+            "SBOM",
+            "Software_Component"
+          ],
+          "relationship_type": "MAY_HAVE_VULNERABILITY",
+          "count": 2793
+        },
+        {
+          "source_labels": [
+            "Device",
+            "WaterDevice",
+            "Monitoring",
+            "WATER",
+            "Water_Distribution"
+          ],
+          "relationship_type": "VULNERABLE_TO",
+          "count": 2500
+        },
+        {
+          "source_labels": [
+            "Process",
+            "Device",
+            "WaterDevice",
+            "WATER",
+            "Water_Treatment"
+          ],
+          "relationship_type": "VULNERABLE_TO",
+          "count": 2500
+        },
+        {
+          "source_labels": [
+            "Control",
+            "Device",
+            "WaterDevice",
+            "WATER",
+            "Water_Distribution"
+          ],
+          "relationship_type": "VULNERABLE_TO",
+          "count": 2500
+        },
+        {
+          "source_labels": [
+            "NetworkDevice",
+            "IT_INFRASTRUCTURE",
+            "Asset",
+            "IT_Hardware"
+          ],
+          "relationship_type": "HAS_VULNERABILITY",
+          "count": 125
+        },
+        {
+          "source_labels": [
+            "STIX_Object",
+            "STIX_Domain_Object",
+            "THREAT_INTEL_SHARING"
+          ],
+          "relationship_type": "VULNERABLE_TO",
+          "count": 100
+        },
+        {
+          "source_labels": [
+            "Equipment"
+          ],
+          "relationship_type": "VULNERABLE_TO",
+          "count": 34
+        },
+        {
+          "source_labels": [
+            "System"
+          ],
+          "relationship_type": "VULNERABLE_TO",
+          "count": 30
+        }
+      ],
+      "outgoing_relationships": [
+        {
+          "target_labels": [
+            "CAPEC",
+            "ICS_THREAT_INTEL"
+          ],
+          "relationship_type": "ENABLES_ATTACK_PATTERN",
+          "count": 1168814
+        },
+        {
+          "target_labels": [
+            "CWE",
+            "ICS_THREAT_INTEL"
+          ],
+          "relationship_type": "EXPLOITS_WEAKNESS",
+          "count": 244501
+        },
+        {
+          "target_labels": [
+            "CWE",
+            "ICS_THREAT_INTEL"
+          ],
+          "relationship_type": "EXPLOITS",
+          "count": 134405
+        },
+        {
+          "target_labels": [
+            "CVE",
+            "CybersecurityKB.CVE",
+            "VULNERABILITY",
+            "CVE_Database",
+            "Threat_Intelligence"
+          ],
+          "relationship_type": "PRECEDES",
+          "count": 107738
+        },
+        {
+          "target_labels": [
+            "CVE",
+            "CybersecurityKB.CVE",
+            "VULNERABILITY",
+            "CVE_Database",
+            "Threat_Intelligence"
+          ],
+          "relationship_type": "PROPAGATES_TO",
+          "count": 100000
+        },
+        {
+          "target_labels": [
+            "CWE",
+            "CybersecurityKB.CWE",
+            "ICS_THREAT_INTEL"
+          ],
+          "relationship_type": "EXPLOITS",
+          "count": 37392
+        },
+        {
+          "target_labels": [
+            "STIX_Object",
+            "STIX_Domain_Object",
+            "THREAT_INTEL_SHARING"
+          ],
+          "relationship_type": "MAPS_TO_STIX",
+          "count": 100
+        },
+        {
+          "target_labels": [
+            "Equipment"
+          ],
+          "relationship_type": "AFFECTS",
+          "count": 34
+        },
+        {
+          "target_labels": [
+            "System"
+          ],
+          "relationship_type": "AFFECTS_SYSTEM",
+          "count": 30
+        }
+      ],
+      "relationship_metadata": {
+        "INCOMING_VULNERABLE_TO": [
+          "discovered_date",
+          "confidence_score",
+          "phase",
+          "evidence",
+          "relationship_type",
+          "cve_id"
+        ],
+        "INCOMING_HAS_VULNERABILITY": [
+          "age_days",
+          "discovered_date",
+          "confidence_score",
+          "phase",
+          "evidence",
+          "tier",
+          "original_confidence",
+          "temporal_confidence",
+          "match_type"
+        ],
+        "INCOMING_THREATENS_GRID_STABILITY": [
+          "patchVersion",
+          "mitigationStatus",
+          "populationImpact",
+          "cascadeRisk",
+          "patchAvailable",
+          "isExploited",
+          "discoveredDate",
+          "exploitabilityScore",
+          "gridImpact",
+          "affectedFirmwareVersions"
+        ],
+        "OUTGOING_MAPS_TO_STIX": [
+          "relationship_id",
+          "confidence_score",
+          "mapping_type",
+          "created_date"
+        ],
+        "OUTGOING_EXPLOITS_WEAKNESS": [
+          "discovered"
+        ]
+      }
+    },
+    "impact_assessment": {
+      "affected_node_counts": {
+        "SBOM": 12,
+        "Software": 0,
+        "Vulnerability": 0,
+        "Weakness": 0,
+        "Product": 0
+      },
+      "orphan_risk": [],
+      "reconstruction_potential": [
+        {
+          "node_type": [
+            "Vulnerability"
+          ],
+          "cve_properties": [
+            "cve_id"
+          ],
+          "count": 43,
+          "reconstruction_potential": "HIGH - Can use CVE ID properties"
+        },
+        {
+          "node_type": [
+            "Incident"
+          ],
+          "cve_properties": [
+            "cve_id"
+          ],
+          "count": 1,
+          "reconstruction_potential": "HIGH - Can use CVE ID properties"
+        },
+        {
+          "node_type": [
+            "SoftwareComponent",
+            "Asset",
+            "SBOM",
+            "Software_Component"
+          ],
+          "cve_properties": [
+            "specVersion"
+          ],
+          "count": 20000,
+          "reconstruction_potential": "HIGH - Can use CVE ID properties"
+        },
+        {
+          "node_type": [
+            "Dependency",
+            "DependencyTree",
+            "SBOM",
+            "Relationship"
+          ],
+          "cve_properties": [
+            "specVersion"
+          ],
+          "count": 8000,
+          "reconstruction_potential": "HIGH - Can use CVE ID properties"
+        }
+      ]
+    },
+    "import_timeline": {
+      "total_cves": 267487,
+      "api_key_available": true,
+      "requests_per_30s": 50,
+      "batch_size": 2000,
+      "total_requests": 134,
+      "estimated_seconds": 90,
+      "estimated_hours": 0.03,
+      "estimated_days": 0.0,
+      "recommendation": "Acceptable timeline with API key"
+    },
+    "recommendations": [
+      {
+        "priority": "MEDIUM",
+        "action": "Implement relationship reconstruction from CVE ID properties",
+        "reason": "Multiple node types contain CVE ID references for reconstruction"
+      }
+    ],
+    "critical_blockers": [],
+    "risk_level": "MEDIUM"
+  }
+}

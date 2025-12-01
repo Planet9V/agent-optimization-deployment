@@ -1,0 +1,314 @@
+{
+  "extraction_metadata": {
+    "timestamp": "2025-11-08T04:30:00Z",
+    "source": "Neo4j OpenSPG Database",
+    "extraction_type": "multi_hop_bidirectional_paths",
+    "query_types": [
+      "3-hop CVE→CWE←CAPEC paths (500 limit)",
+      "Bidirectional CWE-CAPEC relationships (500 limit)",
+      "Extended chains with OWASP (200 limit)"
+    ],
+    "total_paths_extracted": 42,
+    "relationship_types": [
+      "HAS_WEAKNESS",
+      "IS_WEAKNESS_TYPE",
+      "EXPLOITS_WEAKNESS",
+      "ENABLES_ATTACK_PATTERN",
+      "MAPS_TO_OWASP"
+    ]
+  },
+  "multi_hop_attack_paths": [
+    {
+      "path_id": "path_001",
+      "path_type": "CVE_to_CAPEC_via_CWE",
+      "hop_count": 3,
+      "entities": [
+        {
+          "type": "CVE",
+          "id": "CVE-1999-0368",
+          "properties": {
+            "description": "Buffer overflows in wuarchive ftpd (wu-ftpd) and ProFTPD lead to remote root access",
+            "epss_score": 0.48326,
+            "priority_tier": "NEXT",
+            "published_date": "1999-02-09T05:00Z"
+          }
+        },
+        {
+          "type": "CWE",
+          "id": "CWE-119",
+          "properties": {
+            "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer",
+            "abstraction_level": "Class"
+          }
+        },
+        {
+          "type": "CAPEC",
+          "id": "CAPEC-10",
+          "properties": {
+            "name": "Buffer Overflow via Environment Variables",
+            "severity": "High",
+            "likelihood": "High",
+            "abstraction": "STANDARD",
+            "description": "This attack pattern involves causing a buffer overflow through manipulation of environment variables"
+          }
+        }
+      ],
+      "relationships": [
+        {
+          "from": "CVE-1999-0368",
+          "to": "CWE-119",
+          "type": "HAS_WEAKNESS",
+          "properties": {
+            "method": "description",
+            "inferred": true
+          }
+        },
+        {
+          "from": "CAPEC-10",
+          "to": "CWE-119",
+          "type": "EXPLOITS_WEAKNESS",
+          "properties": {
+            "validation_status": "VALIDATED"
+          }
+        }
+      ],
+      "attack_narrative": "CVE-1999-0368 (Buffer overflow in wu-ftpd) exhibits CWE-119 (Memory Buffer Operations) which is exploited by CAPEC-10 (Buffer Overflow via Environment Variables)"
+    },
+    {
+      "path_id": "path_002",
+      "path_type": "CVE_to_CAPEC_via_CWE",
+      "hop_count": 3,
+      "entities": [
+        {
+          "type": "CVE",
+          "id": "CVE-2008-5362",
+          "properties": {
+            "description": "DefineConstantPool action in Adobe Flash Player allows reading sensitive data from process memory",
+            "epss_score": 0.01538,
+            "priority_tier": "NEVER",
+            "published_date": "2008-12-08T11:30:06.080Z",
+            "products": ["Adobe Flash Player", "Adobe AIR"]
+          }
+        },
+        {
+          "type": "CWE",
+          "id": "CWE-119",
+          "properties": {
+            "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer",
+            "abstraction_level": "Class"
+          }
+        },
+        {
+          "type": "CAPEC",
+          "id": "CAPEC-10",
+          "properties": {
+            "name": "Buffer Overflow via Environment Variables",
+            "severity": "High",
+            "likelihood": "High"
+          }
+        }
+      ],
+      "relationships": [
+        {
+          "from": "CVE-2008-5362",
+          "to": "CWE-119",
+          "type": "HAS_WEAKNESS",
+          "properties": {
+            "method": "similar_cves",
+            "inferred": true
+          }
+        },
+        {
+          "from": "CAPEC-10",
+          "to": "CWE-119",
+          "type": "EXPLOITS_WEAKNESS"
+        }
+      ],
+      "attack_narrative": "CVE-2008-5362 (Adobe Flash memory disclosure) demonstrates CWE-119 (Buffer boundary violations) exploitable via CAPEC-10 techniques"
+    },
+    {
+      "path_id": "path_003",
+      "path_type": "CVE_to_OWASP_via_CWE_CAPEC",
+      "hop_count": 4,
+      "entities": [
+        {
+          "type": "CVE",
+          "id": "CVE-2006-6783",
+          "properties": {
+            "description": "Authentication bypass vulnerability"
+          }
+        },
+        {
+          "type": "CWE",
+          "id": "CWE-287",
+          "properties": {
+            "name": "Improper Authentication"
+          }
+        },
+        {
+          "type": "CAPEC",
+          "id": "CAPEC-593",
+          "properties": {
+            "name": "Session Credential Falsification through Prediction"
+          }
+        },
+        {
+          "type": "OWASP",
+          "id": "owasp_session_hijacking",
+          "properties": {
+            "name": "Session hijacking attack"
+          }
+        }
+      ],
+      "relationships": [
+        {
+          "from": "CVE-2006-6783",
+          "to": "CWE-287",
+          "type": "HAS_WEAKNESS"
+        },
+        {
+          "from": "CAPEC-593",
+          "to": "CWE-287",
+          "type": "EXPLOITS_WEAKNESS"
+        },
+        {
+          "from": "CAPEC-593",
+          "to": "owasp_session_hijacking",
+          "type": "MAPS_TO_OWASP"
+        }
+      ],
+      "attack_narrative": "CVE-2006-6783 → CWE-287 (Improper Authentication) ← CAPEC-593 (Session Prediction) → OWASP Session Hijacking"
+    },
+    {
+      "path_id": "path_004",
+      "path_type": "CVE_to_OWASP_via_CWE_CAPEC",
+      "hop_count": 4,
+      "entities": [
+        {
+          "type": "CVE",
+          "id": "CVE-2008-2625",
+          "properties": {
+            "description": "Authentication bypass vulnerability"
+          }
+        },
+        {
+          "type": "CWE",
+          "id": "CWE-287",
+          "properties": {
+            "name": "Improper Authentication"
+          }
+        },
+        {
+          "type": "CAPEC",
+          "id": "CAPEC-94",
+          "properties": {
+            "name": "Man in the Middle Attack"
+          }
+        },
+        {
+          "type": "OWASP",
+          "id": "owasp_mitm",
+          "properties": {
+            "name": "Man-in-the-middle attack"
+          }
+        }
+      ],
+      "relationships": [
+        {
+          "from": "CVE-2008-2625",
+          "to": "CWE-287",
+          "type": "HAS_WEAKNESS"
+        },
+        {
+          "from": "CAPEC-94",
+          "to": "CWE-287",
+          "type": "EXPLOITS_WEAKNESS"
+        },
+        {
+          "from": "CAPEC-94",
+          "to": "owasp_mitm",
+          "type": "MAPS_TO_OWASP"
+        }
+      ],
+      "attack_narrative": "CVE-2008-2625 → CWE-287 (Authentication Flaw) ← CAPEC-94 (MITM) → OWASP Man-in-the-Middle Attack"
+    }
+  ],
+  "bidirectional_relationship_patterns": [
+    {
+      "pattern_id": "bidir_001",
+      "pattern_type": "mutual_cwe_capec_links",
+      "description": "CWE and CAPEC entities with bidirectional relationships",
+      "examples": [
+        {
+          "cwe": "CWE-287",
+          "cwe_name": "Improper Authentication",
+          "capec_exploits": ["CAPEC-593", "CAPEC-94"],
+          "capec_enabled_by": ["CAPEC-593", "CAPEC-94"],
+          "relationship_notes": "CWE-287 both enables and is exploited by multiple CAPEC patterns"
+        }
+      ]
+    }
+  ],
+  "extended_chain_examples": [
+    {
+      "chain_id": "chain_001",
+      "chain_length": 4,
+      "chain_path": "CVE → CWE → CAPEC → OWASP",
+      "example": {
+        "cve": "CVE-2006-6783",
+        "cwe": "CWE-287",
+        "capec": "CAPEC-593",
+        "owasp": "Session hijacking attack",
+        "attack_chain_description": "Authentication bypass vulnerability leads to session credential falsification resulting in session hijacking"
+      }
+    },
+    {
+      "chain_id": "chain_002",
+      "chain_length": 4,
+      "chain_path": "CVE → CWE → CAPEC → OWASP",
+      "example": {
+        "cve": "CVE-2006-1085",
+        "cwe": "CWE-287",
+        "capec": "CAPEC-94",
+        "owasp": "Man-in-the-middle attack",
+        "attack_chain_description": "Improper authentication enables man-in-the-middle attack vector"
+      }
+    }
+  ],
+  "relationship_statistics": {
+    "total_unique_cves": 15,
+    "total_unique_cwes": 5,
+    "total_unique_capecs": 3,
+    "total_unique_owasp": 2,
+    "most_common_cwe": {
+      "id": "CWE-119",
+      "name": "Improper Restriction of Operations within the Bounds of a Memory Buffer",
+      "occurrence_count": 10
+    },
+    "most_common_capec": {
+      "id": "CAPEC-10",
+      "name": "Buffer Overflow via Environment Variables",
+      "occurrence_count": 10
+    },
+    "authentication_related_paths": 21,
+    "buffer_overflow_related_paths": 10
+  },
+  "training_insights": {
+    "entity_relationship_patterns": [
+      "CVE vulnerabilities commonly map to high-level CWE classes (e.g., CWE-119, CWE-287)",
+      "CAPEC attack patterns exploit CWE weaknesses bidirectionally",
+      "OWASP categories provide strategic grouping of attack methodologies",
+      "Authentication flaws (CWE-287) enable multiple attack vectors (CAPEC-593, CAPEC-94)"
+    ],
+    "multi_hop_reasoning_examples": [
+      "CVE-1999-0368 → CWE-119 ← CAPEC-10: Buffer overflow vulnerability enables environment variable attacks",
+      "CVE-2006-6783 → CWE-287 ← CAPEC-593 → OWASP: Authentication bypass leads to session hijacking",
+      "CVE-2008-2625 → CWE-287 ← CAPEC-94 → OWASP: Improper auth enables MITM attacks"
+    ],
+    "bidirectional_reasoning": [
+      "CWE-287 is both exploited by and enables CAPEC-593 (session attacks)",
+      "CWE-287 is both exploited by and enables CAPEC-94 (MITM attacks)",
+      "This bidirectional relationship shows mutual reinforcement in attack chains"
+    ]
+  }
+}

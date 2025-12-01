@@ -1,0 +1,29 @@
+# Python Dependencies for NVD Daily Sync Automation
+#
+# File: requirements.txt
+# Created: 2025-11-01
+# Version: 1.0.0
+#
+# Installation:
+#   pip install -r requirements.txt
+#
+# For virtual environment:
+#   python3 -m venv venv
+#   source venv/bin/activate
+#   pip install -r requirements.txt
+
+# Core dependencies
+requests>=2.31.0         # HTTP requests for NVD, EPSS, CISA KEV APIs
+neo4j>=5.12.0           # Neo4j Python driver
+PyYAML>=6.0.1           # YAML configuration parsing
+
+# Optional dependencies (recommended)
+urllib3>=2.0.0          # HTTP client library (used by requests)
+certifi>=2023.7.22      # SSL certificate bundle
+
+# Data processing (optional, for advanced features)
+# pandas>=2.1.0         # Data manipulation (if needed for CSV processing)
+# python-dateutil>=2.8.2 # Enhanced date parsing
+
+# Logging and monitoring (optional)
+# python-json-logger>=2.0.7  # JSON log formatting for structured logging

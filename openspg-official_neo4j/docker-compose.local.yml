@@ -1,0 +1,209 @@
+version: "3.8"
+
+# ============================================================================
+# AEON CYBER DIGITAL TWIN - LOCAL DEPLOYMENT
+# ============================================================================
+# Uses locally available images (no external registry pulls)
+# Combines: OpenSPG Core + Neo4j + Qdrant + Redis
+# Created: 2025-11-26
+# ============================================================================
+
+services:
+  # ==========================================================================
+  # NEO4J - PRIMARY KNOWLEDGE GRAPH DATABASE
+  # ==========================================================================
+  neo4j:
+    image: neo4j:5.26-community
+    container_name: openspg-neo4j
+    restart: unless-stopped
+    ports:
+      - "7474:7474"  # HTTP Browser
+      - "7687:7687"  # Bolt Protocol
+    environment:
+      - TZ=America/Chicago
+      - NEO4J_AUTH=neo4j/neo4j@openspg
+      - NEO4J_PLUGINS=["apoc"]
+      - NEO4J_server_memory_heap_initial__size=1G
+      - NEO4J_server_memory_heap_max__size=4G
+      - NEO4J_server_memory_pagecache_size=1G
+      - NEO4J_apoc_export_file_enabled=true
+      - NEO4J_apoc_import_file_enabled=true
+      - NEO4J_dbms_security_procedures_unrestricted=*
+      - NEO4J_dbms_security_procedures_allowlist=*
+    volumes:
+      - neo4j-data:/data
+      - neo4j-logs:/logs
+      - neo4j-import:/var/lib/neo4j/import
+    networks:
+      - aeon-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:7474"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  # ==========================================================================
+  # MYSQL - OPENSPG METADATA STORE
+  # ==========================================================================
+  mysql:
+    image: spg-registry.cn-hangzhou.cr.aliyuncs.com/spg/openspg-mysql:latest
+    container_name: openspg-mysql
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      - TZ=America/Chicago
+      - LANG=C.UTF-8
+      - MYSQL_ROOT_PASSWORD=openspg
+      - MYSQL_DATABASE=openspg
+    command:
+      - '--character-set-server=utf8mb4'
+      - '--collation-server=utf8mb4_general_ci'
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - aeon-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-popenspg"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+
+  # ==========================================================================
+  # OPENSPG SERVER - SEMANTIC PROPERTY GRAPH ENGINE
+  # ==========================================================================
+  server:
+    image: spg-registry.cn-hangzhou.cr.aliyuncs.com/spg/openspg-server:latest
+    container_name: openspg-server
+    restart: unless-stopped
+    ports:
+      - "8887:8887"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      neo4j:
+        condition: service_healthy
+    environment:
+      - TZ=America/Chicago
+      - LANG=C.UTF-8
+    command: [
+      "java",
+      "-Dfile.encoding=UTF-8",
+      "-Xms2048m",
+      "-Xmx8192m",
+      "-jar",
+      "arks-sofaboot-0.0.1-SNAPSHOT-executable.jar",
+      '--server.repository.impl.jdbc.host=openspg-mysql',
+      '--server.repository.impl.jdbc.password=openspg',
+      '--builder.model.execute.num=20',
+      '--cloudext.graphstore.url=neo4j://openspg-neo4j:7687?user=neo4j&password=neo4j@openspg&database=neo4j',
+      '--cloudext.searchengine.url=neo4j://openspg-neo4j:7687?user=neo4j&password=neo4j@openspg&database=neo4j'
+    ]
+    networks:
+      - aeon-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8887/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 120s
+
+  # ==========================================================================
+  # MINIO - OBJECT STORAGE
+  # ==========================================================================
+  minio:
+    image: minio/minio:latest
+    container_name: openspg-minio
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      - MINIO_ACCESS_KEY=minio
+      - MINIO_SECRET_KEY=minio@openspg
+      - TZ=America/Chicago
+    command: server --console-address ":9001" /data
+    volumes:
+      - minio-data:/data
+    networks:
+      - aeon-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  # ==========================================================================
+  # QDRANT - VECTOR DATABASE
+  # ==========================================================================
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: openspg-qdrant
+    restart: unless-stopped
+    ports:
+      - "6333:6333"  # HTTP API
+      - "6334:6334"  # gRPC API
+    environment:
+      - TZ=America/Chicago
+      - QDRANT__LOG_LEVEL=INFO
+    volumes:
+      - qdrant-data:/qdrant/storage
+    networks:
+      - aeon-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6333/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  # ==========================================================================
+  # REDIS - CACHE LAYER
+  # ==========================================================================
+  redis:
+    image: redis:7-alpine
+    container_name: openspg-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data
+    networks:
+      - aeon-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+# ==============================================================================
+# NETWORKS
+# ==============================================================================
+networks:
+  aeon-network:
+    driver: bridge
+    name: aeon-network
+
+# ==============================================================================
+# VOLUMES
+# ==============================================================================
+volumes:
+  neo4j-data:
+    name: aeon-neo4j-data
+  neo4j-logs:
+    name: aeon-neo4j-logs
+  neo4j-import:
+    name: aeon-neo4j-import
+  mysql-data:
+    name: aeon-mysql-data
+  minio-data:
+    name: aeon-minio-data
+  qdrant-data:
+    name: aeon-qdrant-data
+  redis-data:
+    name: aeon-redis-data

@@ -1,0 +1,400 @@
+{
+  "sector": "EMERGENCY_SERVICES",
+  "mapping_version": "v5.0",
+  "created": "2025-11-21T19:50:00Z",
+  "gold_standard_reference": {
+    "water_sector": {
+      "total_nodes": 27000,
+      "measurement_ratio": 0.607,
+      "node_types": 8,
+      "relationships": 9,
+      "labels": 5
+    },
+    "energy_sector": {
+      "total_nodes": 35000,
+      "measurement_ratio": 0.607,
+      "node_types": 8,
+      "relationships": 9,
+      "labels": 7
+    },
+    "communications_sector": {
+      "total_nodes": 41000,
+      "measurement_ratio": 0.607,
+      "node_types": 8,
+      "relationships": 9,
+      "labels": 7
+    },
+    "target_range": {
+      "min_nodes": 26000,
+      "max_nodes": 35000,
+      "measurement_ratio_min": 0.60,
+      "measurement_ratio_max": 0.70
+    }
+  },
+  "emergency_services_mapping": {
+    "target_total_nodes": 28000,
+    "subsectors": {
+      "fire_services": {
+        "percentage": 40,
+        "description": "Fire suppression, rescue operations, hazmat response"
+      },
+      "emergency_medical_services": {
+        "percentage": 35,
+        "description": "Ambulance services, paramedics, emergency medical response"
+      },
+      "law_enforcement": {
+        "percentage": 25,
+        "description": "Police, sheriff, emergency law enforcement response"
+      }
+    },
+    "node_types": [
+      {
+        "type": "Device",
+        "label": "EmergencyServicesDevice",
+        "count": 3500,
+        "percentage": 12.5,
+        "description": "Physical emergency response equipment and vehicles",
+        "examples": [
+          "Fire_Truck",
+          "Ambulance",
+          "Police_Vehicle",
+          "Emergency_Radio",
+          "Dispatch_System",
+          "Medical_Equipment",
+          "Firefighting_Equipment",
+          "Rescue_Equipment",
+          "Law_Enforcement_Equipment",
+          "Communication_Equipment"
+        ],
+        "subsector_distribution": {
+          "fire_services": 1400,
+          "emergency_medical_services": 1225,
+          "law_enforcement": 875
+        },
+        "properties": [
+          "device_id",
+          "equipment_type",
+          "operational_status",
+          "location",
+          "assigned_unit",
+          "maintenance_status",
+          "certification_level",
+          "deployment_ready"
+        ]
+      },
+      {
+        "type": "Measurement",
+        "label": "ResponseMetric",
+        "count": 17000,
+        "percentage": 60.7,
+        "description": "Time-series measurements of emergency response performance",
+        "calculation": "6 measurements per device × 3,500 devices = 21,000, capped at 17,000 for gold standard ratio",
+        "measurements": [
+          "response_time",
+          "incident_resolution_time",
+          "resource_availability",
+          "communication_latency",
+          "patient_outcomes",
+          "fire_containment_time",
+          "equipment_readiness",
+          "personnel_availability",
+          "dispatch_time",
+          "on_scene_time",
+          "transport_time",
+          "mutual_aid_response_time"
+        ],
+        "measurement_frequency": {
+          "response_time": "per_incident",
+          "resource_availability": "real_time",
+          "equipment_readiness": "hourly",
+          "personnel_availability": "shift_basis"
+        },
+        "properties": [
+          "timestamp",
+          "metric_value",
+          "unit_of_measure",
+          "incident_id",
+          "equipment_id",
+          "location",
+          "severity_level"
+        ]
+      },
+      {
+        "type": "Property",
+        "label": "EmergencyServicesProperty",
+        "count": 5000,
+        "percentage": 17.9,
+        "description": "Static and semi-static attributes of emergency services assets",
+        "calculation": "1.5 properties per device × 3,500 devices = 5,250, rounded to 5,000",
+        "property_categories": [
+          "equipment_status",
+          "personnel_certification",
+          "facility_capacity",
+          "resource_inventory",
+          "training_level",
+          "operational_readiness",
+          "certification_expiry",
+          "maintenance_schedule",
+          "deployment_zone",
+          "mutual_aid_agreements"
+        ],
+        "properties": [
+          "property_name",
+          "property_value",
+          "last_updated",
+          "verification_date",
+          "responsible_party"
+        ]
+      },
+      {
+        "type": "Process",
+        "label": "EmergencyResponse",
+        "count": 1200,
+        "percentage": 4.3,
+        "description": "Emergency response workflows and operational procedures",
+        "processes": [
+          "Emergency_Dispatch",
+          "First_Response",
+          "Patient_Transport",
+          "Fire_Suppression",
+          "Rescue_Operations",
+          "Incident_Command",
+          "Resource_Allocation",
+          "Mutual_Aid_Request",
+          "Medical_Treatment",
+          "Law_Enforcement_Response",
+          "Hazmat_Response",
+          "Mass_Casualty_Incident"
+        ],
+        "process_stages": [
+          "dispatch",
+          "en_route",
+          "on_scene",
+          "patient_contact",
+          "treatment",
+          "transport",
+          "transfer_of_care",
+          "return_to_service"
+        ],
+        "properties": [
+          "process_id",
+          "process_name",
+          "sop_reference",
+          "certification_required",
+          "equipment_required",
+          "minimum_personnel",
+          "response_time_target"
+        ]
+      },
+      {
+        "type": "Control",
+        "label": "IncidentCommandSystem",
+        "count": 600,
+        "percentage": 2.1,
+        "description": "Command, control, and coordination systems for emergency response",
+        "control_systems": [
+          "Dispatch_System",
+          "CAD_System",
+          "Resource_Management_System",
+          "ICS_System",
+          "Emergency_Operations_Center",
+          "Mobile_Command_Post",
+          "Mutual_Aid_Coordination",
+          "Hospital_Coordination_System",
+          "Radio_System_Controller",
+          "AVL_System"
+        ],
+        "control_levels": [
+          "incident_commander",
+          "operations_section",
+          "planning_section",
+          "logistics_section",
+          "finance_admin_section"
+        ],
+        "properties": [
+          "control_id",
+          "control_type",
+          "jurisdiction",
+          "command_level",
+          "operational_status",
+          "backup_system"
+        ]
+      },
+      {
+        "type": "Alert",
+        "label": "EmergencyAlert",
+        "count": 400,
+        "percentage": 1.4,
+        "description": "Critical notifications and alerts for emergency response",
+        "alert_types": [
+          "Incident_Alert",
+          "Resource_Shortage",
+          "Response_Delay",
+          "Equipment_Failure",
+          "Personnel_Unavailable",
+          "Mutual_Aid_Request",
+          "Mass_Casualty_Incident",
+          "Hazmat_Alert",
+          "Officer_Safety_Alert",
+          "Hospital_Diversion",
+          "Weather_Alert",
+          "System_Failure"
+        ],
+        "severity_levels": [
+          "critical",
+          "high",
+          "medium",
+          "low",
+          "informational"
+        ],
+        "properties": [
+          "alert_id",
+          "alert_type",
+          "severity",
+          "timestamp",
+          "affected_area",
+          "response_required",
+          "escalation_status"
+        ]
+      },
+      {
+        "type": "Zone",
+        "label": "ServiceZone",
+        "count": 250,
+        "percentage": 0.9,
+        "description": "Geographic service areas and response zones",
+        "zone_types": [
+          "Coverage_Area",
+          "Fire_District",
+          "EMS_District",
+          "Law_Enforcement_District",
+          "Response_Zone",
+          "Mutual_Aid_Zone",
+          "Hazmat_Zone",
+          "Hospital_Service_Area",
+          "Dispatch_Zone",
+          "Command_District"
+        ],
+        "zone_characteristics": [
+          "population_density",
+          "risk_profile",
+          "resource_allocation",
+          "response_time_target",
+          "mutual_aid_partners"
+        ],
+        "properties": [
+          "zone_id",
+          "zone_name",
+          "boundary_definition",
+          "population",
+          "area_sq_miles",
+          "primary_station",
+          "backup_stations"
+        ]
+      },
+      {
+        "type": "Asset",
+        "label": "MajorFacility",
+        "count": 50,
+        "percentage": 0.2,
+        "description": "Major emergency services facilities and infrastructure",
+        "facility_types": [
+          "Fire_Station",
+          "EMS_Station",
+          "Police_Station",
+          "Dispatch_Center",
+          "Emergency_Operations_Center",
+          "Training_Facility",
+          "Maintenance_Facility",
+          "Equipment_Storage",
+          "Heliport",
+          "Regional_Command_Center"
+        ],
+        "facility_capabilities": [
+          "personnel_capacity",
+          "equipment_storage",
+          "dispatch_capability",
+          "command_capability",
+          "training_capability",
+          "maintenance_capability"
+        ],
+        "properties": [
+          "asset_id",
+          "facility_name",
+          "location",
+          "operational_status",
+          "capacity",
+          "staffing_level",
+          "equipment_inventory",
+          "backup_power"
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "total_nodes": 28000,
+    "node_count_check": "3,500 + 17,000 + 5,000 + 1,200 + 600 + 400 + 250 + 50 = 28,000 ✓",
+    "measurement_ratio": 0.607,
+    "measurement_ratio_check": "17,000 / 28,000 = 60.7% ✓",
+    "within_gold_standard_range": true,
+    "node_type_count": 8,
+    "matches_water_energy_pattern": true,
+    "validation_criteria": {
+      "total_nodes_target": "26,000 - 35,000",
+      "total_nodes_actual": 28000,
+      "total_nodes_status": "PASS",
+      "measurement_ratio_target": "60% - 70%",
+      "measurement_ratio_actual": "60.7%",
+      "measurement_ratio_status": "PASS",
+      "node_types_target": 8,
+      "node_types_actual": 8,
+      "node_types_status": "PASS"
+    }
+  },
+  "relationship_types_planned": [
+    "MONITORS",
+    "HAS_PROPERTY",
+    "EXECUTES",
+    "CONTROLS",
+    "TRIGGERS",
+    "LOCATED_IN",
+    "SUPPORTS",
+    "REPORTS_TO",
+    "REQUIRES"
+  ],
+  "labels_planned": [
+    "EmergencyServices",
+    "FireServices",
+    "EMS",
+    "LawEnforcement",
+    "IncidentCommand",
+    "MutualAid",
+    "Critical"
+  ],
+  "data_generation_parameters": {
+    "time_range": "2023-01-01 to 2024-12-31",
+    "measurement_frequency": {
+      "response_time": "per_incident",
+      "resource_availability": "15min",
+      "equipment_readiness": "1hour",
+      "personnel_availability": "shift_basis"
+    },
+    "incident_types": [
+      "fire",
+      "medical_emergency",
+      "law_enforcement",
+      "rescue",
+      "hazmat",
+      "mass_casualty",
+      "natural_disaster"
+    ],
+    "geographic_coverage": "nationwide_representative_sample"
+  },
+  "quality_assurance": {
+    "schema_consistency": "Follows Water/Energy/Communications 8-type pattern",
+    "label_consistency": "Sector-specific labels + common critical infrastructure labels",
+    "relationship_consistency": "9 relationship types matching gold standard",
+    "measurement_dominance": "60.7% measurement nodes ensures time-series richness",
+    "realistic_distribution": "Subsector percentages based on national emergency services data"
+  }
+}

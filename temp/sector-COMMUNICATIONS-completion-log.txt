@@ -1,0 +1,66 @@
+[2025-11-21 19:35:05] ============================================================
+[2025-11-21 19:35:05] COMMUNICATIONS SECTOR COMPLETION DEPLOYMENT
+[2025-11-21 19:35:05] ============================================================
+[2025-11-21 19:35:05] 
+--- CREATING MISSING NODE TYPES ---
+
+[2025-11-21 19:35:05] Creating 1000 RoutingProcess nodes...
+[2025-11-21 19:35:05]   Created 500/1000 RoutingProcess nodes
+[2025-11-21 19:35:05]   Created 1000/1000 RoutingProcess nodes
+[2025-11-21 19:35:05] ✅ Created 1000 RoutingProcess nodes
+[2025-11-21 19:35:05] Creating 500 NetworkManagementSystem nodes...
+[2025-11-21 19:35:06]   Created 250/500 NetworkManagementSystem nodes
+[2025-11-21 19:35:06]   Created 500/500 NetworkManagementSystem nodes
+[2025-11-21 19:35:06] ✅ Created 500 NetworkManagementSystem nodes
+[2025-11-21 19:35:06] Creating 300 CommunicationsAlert nodes...
+[2025-11-21 19:35:06] ✅ Created 300 CommunicationsAlert nodes
+[2025-11-21 19:35:06] Creating 150 CommunicationsZone nodes...
+[2025-11-21 19:35:06] ✅ Created 150 CommunicationsZone nodes
+[2025-11-21 19:35:06] Creating 50 MajorAsset nodes...
+[2025-11-21 19:35:06] ✅ Created 50 MajorAsset nodes
+[2025-11-21 19:35:06] 
+--- CREATING RELATIONSHIPS ---
+
+[2025-11-21 19:35:06] Creating HAS_PROPERTY relationships...
+[2025-11-21 19:35:25] ✅ Created 2300 HAS_PROPERTY relationships
+[2025-11-21 19:35:25] Creating CONTROLS relationships...
+[2025-11-21 19:35:29] ✅ Created 4500 CONTROLS relationships
+[2025-11-21 19:35:29] Creating CONTAINS relationships...
+[2025-11-21 19:35:30] ✅ Created 0 CONTAINS relationships
+[2025-11-21 19:35:30] Creating ROUTES_THROUGH relationships...
+[2025-11-21 19:35:30] ✅ Created 0 ROUTES_THROUGH relationships
+[2025-11-21 19:35:30] Creating CONNECTS_TO_NETWORK relationships...
+[2025-11-21 19:35:31] ✅ Created 0 CONNECTS_TO_NETWORK relationships
+[2025-11-21 19:35:31] Creating MANAGED_BY_NMS relationships...
+[2025-11-21 19:35:32] ✅ Created 0 MANAGED_BY_NMS relationships
+[2025-11-21 19:35:32] Creating USES_DEVICE relationships...
+[2025-11-21 19:35:36] ✅ Created 0 USES_DEVICE relationships
+[2025-11-21 19:35:36] 
+=== VERIFICATION ===
+[2025-11-21 19:35:37] Total COMMUNICATIONS nodes: 40759
+[2025-11-21 19:35:37] Unique node types: 8
+[2025-11-21 19:35:37] Types: ['NetworkMeasurement', 'CommunicationsProperty', 'CommunicationsDevice', 'RoutingProcess', 'NetworkManagementSystem', 'CommunicationsAlert', 'CommunicationsZone', 'MajorAsset']
+[2025-11-21 19:35:37] 
+Node counts by type:
+[2025-11-21 19:35:37]   CommunicationsDevice: 2300
+[2025-11-21 19:35:37]   CommunicationsProperty: 5000
+[2025-11-21 19:35:37]   NetworkMeasurement: 27458
+[2025-11-21 19:35:37]   RoutingProcess: 3000
+[2025-11-21 19:35:37]   NetworkManagementSystem: 1500
+[2025-11-21 19:35:37]   CommunicationsAlert: 900
+[2025-11-21 19:35:37]   CommunicationsZone: 450
+[2025-11-21 19:35:37]   MajorAsset: 150
+[2025-11-21 19:35:37] 
+Total relationships: 8945
+[2025-11-21 19:35:37] 
+Relationships by type:
+[2025-11-21 19:35:37]   CONTROLS: 4503
+[2025-11-21 19:35:37]   HAS_PROPERTY: 2302
+[2025-11-21 19:35:37]   HAS_MEASUREMENT: 2136
+[2025-11-21 19:35:37]   ROUTES_THROUGH: 4
+[2025-11-21 19:35:37] 
+============================================================
+[2025-11-21 19:35:37] DEPLOYMENT COMPLETE
+[2025-11-21 19:35:37] Total Nodes: 40759
+[2025-11-21 19:35:37] Total Relationships: 8945
+[2025-11-21 19:35:37] ============================================================

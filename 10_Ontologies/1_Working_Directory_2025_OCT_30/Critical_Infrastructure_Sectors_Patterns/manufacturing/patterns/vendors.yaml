@@ -1,0 +1,256 @@
+# Manufacturing Sector - Vendor Patterns
+# Extracted from 5 vendor files: Siemens, Rockwell Automation, Mitsubishi, Omron
+# Source: /home/jim/2_OXOT_Projects_Dev/Import 1 NOV 2025/13_Critical_Sector_IACS/Sector - Manufacturing/vendors/
+
+patterns:
+  # Major Vendors
+  - label: "VENDOR"
+    pattern: "Siemens AG"
+  - label: "VENDOR"
+    pattern: "Siemens"
+  - label: "VENDOR"
+    pattern: "Rockwell Automation"
+  - label: "VENDOR"
+    pattern: "Allen-Bradley"
+  - label: "VENDOR"
+    pattern: "Mitsubishi Electric"
+  - label: "VENDOR"
+    pattern: "Mitsubishi Electric Corporation"
+  - label: "VENDOR"
+    pattern: "Omron Corporation"
+  - label: "VENDOR"
+    pattern: "Omron"
+
+  # PLC Product Lines - Siemens
+  - label: "EQUIPMENT"
+    pattern: "SIMATIC S7-1500"
+  - label: "EQUIPMENT"
+    pattern: "SIMATIC S7-1200"
+  - label: "EQUIPMENT"
+    pattern: "SIMATIC S7-300"
+  - label: "EQUIPMENT"
+    pattern: "SIMATIC S7-400"
+  - label: "EQUIPMENT"
+    pattern: "TIA Portal"
+
+  # PLC Product Lines - Rockwell
+  - label: "EQUIPMENT"
+    pattern: "ControlLogix"
+  - label: "EQUIPMENT"
+    pattern: "CompactLogix"
+  - label: "EQUIPMENT"
+    pattern: "MicroLogix"
+  - label: "EQUIPMENT"
+    pattern: "GuardLogix"
+  - label: "EQUIPMENT"
+    pattern: "FlexLogix"
+  - label: "EQUIPMENT"
+    pattern: "SLC 500"
+
+  # PLC Product Lines - Mitsubishi
+  - label: "EQUIPMENT"
+    pattern: "MELSEC iQ-R"
+  - label: "EQUIPMENT"
+    pattern: "MELSEC iQ-F"
+  - label: "EQUIPMENT"
+    pattern: "MELSEC Q Series"
+  - label: "EQUIPMENT"
+    pattern: "MELSEC L Series"
+  - label: "EQUIPMENT"
+    pattern: "MELSEC FX Series"
+
+  # PLC Product Lines - Omron
+  - label: "EQUIPMENT"
+    pattern: "NX1/NJ1 Series"
+  - label: "EQUIPMENT"
+    pattern: "Sysmac"
+  - label: "EQUIPMENT"
+    pattern: "CP Series"
+  - label: "EQUIPMENT"
+    pattern: "CJ Series"
+
+  # HMI Products - Siemens
+  - label: "EQUIPMENT"
+    pattern: "SIMATIC HMI Comfort Panels"
+  - label: "EQUIPMENT"
+    pattern: "SIMATIC Mobile Panels"
+  - label: "EQUIPMENT"
+    pattern: "SIMATIC Basic Panels"
+
+  # HMI Products - Rockwell
+  - label: "EQUIPMENT"
+    pattern: "PanelView Plus"
+  - label: "EQUIPMENT"
+    pattern: "PanelView 500"
+  - label: "EQUIPMENT"
+    pattern: "PanelView 700"
+  - label: "EQUIPMENT"
+    pattern: "FactoryTalk ViewPoint"
+
+  # HMI Products - Mitsubishi
+  - label: "EQUIPMENT"
+    pattern: "GOT Series"
+  - label: "EQUIPMENT"
+    pattern: "GOT2000"
+  - label: "EQUIPMENT"
+    pattern: "GOT1000"
+
+  # HMI Products - Omron
+  - label: "EQUIPMENT"
+    pattern: "NS Series HMI"
+
+  # Drive Systems - Siemens
+  - label: "EQUIPMENT"
+    pattern: "SINAMETRO"
+  - label: "EQUIPMENT"
+    pattern: "SIMOTION"
+
+  # Drive Systems - Rockwell
+  - label: "EQUIPMENT"
+    pattern: "PowerFlex"
+  - label: "EQUIPMENT"
+    pattern: "Kinetix"
+  - label: "EQUIPMENT"
+    pattern: "Ultra3000"
+
+  # Drive Systems - Mitsubishi
+  - label: "EQUIPMENT"
+    pattern: "MELSERVO"
+  - label: "EQUIPMENT"
+    pattern: "MELFA"
+
+  # Drive Systems - Omron
+  - label: "EQUIPMENT"
+    pattern: "GA700 Series"
+  - label: "EQUIPMENT"
+    pattern: "G5 Series"
+  - label: "EQUIPMENT"
+    pattern: "R88D Series"
+
+  # Software Platforms - Siemens
+  - label: "SOFTWARE"
+    pattern: "TIA Portal"
+  - label: "SOFTWARE"
+    pattern: "MindSphere"
+
+  # Software Platforms - Rockwell
+  - label: "SOFTWARE"
+    pattern: "FactoryTalk"
+  - label: "SOFTWARE"
+    pattern: "FactoryTalk View"
+  - label: "SOFTWARE"
+    pattern: "FactoryTalk SE"
+  - label: "SOFTWARE"
+    pattern: "FactoryTalk Analytics"
+  - label: "SOFTWARE"
+    pattern: "RSLogix 5000"
+  - label: "SOFTWARE"
+    pattern: "Studio 5000"
+
+  # Software Platforms - Mitsubishi
+  - label: "SOFTWARE"
+    pattern: "Mitsubishi Motion Works"
+  - label: "SOFTWARE"
+    pattern: "GOT Designer"
+
+  # Software Platforms - Omron
+  - label: "SOFTWARE"
+    pattern: "Sysmac Studio"
+  - label: "SOFTWARE"
+    pattern: "CX-One"
+
+  # Industrial Communication Protocols
+  - label: "PROTOCOL"
+    pattern: "PROFINET"
+  - label: "PROTOCOL"
+    pattern: "PROFIBUS"
+  - label: "PROTOCOL"
+    pattern: "EtherNet/IP"
+  - label: "PROTOCOL"
+    pattern: "ControlNet"
+  - label: "PROTOCOL"
+    pattern: "DeviceNet"
+  - label: "PROTOCOL"
+    pattern: "CC-Link"
+  - label: "PROTOCOL"
+    pattern: "CC-Link IE Field"
+  - label: "PROTOCOL"
+    pattern: "EtherCAT"
+  - label: "PROTOCOL"
+    pattern: "Modbus TCP/IP"
+  - label: "PROTOCOL"
+    pattern: "OPC UA"
+  - label: "PROTOCOL"
+    pattern: "DH+"
+  - label: "PROTOCOL"
+    pattern: "DH-485"
+
+  # Network Equipment
+  - label: "EQUIPMENT"
+    pattern: "SCALANCE"
+  - label: "EQUIPMENT"
+    pattern: "Stratix"
+
+  # Industrial Components
+  - label: "EQUIPMENT"
+    pattern: "I/O Modules"
+  - label: "EQUIPMENT"
+    pattern: "Power Supplies"
+  - label: "EQUIPMENT"
+    pattern: "Industrial Switches"
+  - label: "EQUIPMENT"
+    pattern: "Safety Components"
+  - label: "EQUIPMENT"
+    pattern: "Safety Relays"
+  - label: "EQUIPMENT"
+    pattern: "Safety PLCs"
+
+  # Cloud Platforms
+  - label: "CLOUD_PLATFORM"
+    pattern: "MindSphere"
+  - label: "CLOUD_PLATFORM"
+    pattern: "FactoryTalk Analytics"
+  - label: "CLOUD_PLATFORM"
+    pattern: "Mitsubishi Electric Cloud"
+  - label: "CLOUD_PLATFORM"
+    pattern: "Omron IoT Platform"
+  - label: "CLOUD_PLATFORM"
+    pattern: "Azure IoT"
+  - label: "CLOUD_PLATFORM"
+    pattern: "AWS IoT"
+
+  # Standards and Certifications
+  - label: "STANDARD"
+    pattern: "IEC 62443"
+  - label: "STANDARD"
+    pattern: "IEC 61508"
+  - label: "STANDARD"
+    pattern: "IEC 62061"
+  - label: "STANDARD"
+    pattern: "EN ISO 13849-1"
+  - label: "STANDARD"
+    pattern: "NIST SP 800-82"
+  - label: "STANDARD"
+    pattern: "IEC 61800-5-1"
+  - label: "STANDARD"
+    pattern: "IEC 61800-5-2"
+  - label: "STANDARD"
+    pattern: "ISA-95"
+  - label: "STANDARD"
+    pattern: "OAGi"
+
+  # Safety Categories
+  - label: "SAFETY_LEVEL"
+    pattern: "Category 2"
+  - label: "SAFETY_LEVEL"
+    pattern: "Category 3"
+  - label: "SAFETY_LEVEL"
+    pattern: "Category 4"
+  - label: "SAFETY_LEVEL"
+    pattern: "PL d"
+  - label: "SAFETY_LEVEL"
+    pattern: "PL e"
+  - label: "SAFETY_LEVEL"
+    pattern: "SIL 2"
+  - label: "SAFETY_LEVEL"
+    pattern: "SIL 3"

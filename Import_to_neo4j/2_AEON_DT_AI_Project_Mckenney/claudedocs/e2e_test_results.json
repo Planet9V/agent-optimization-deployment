@@ -1,0 +1,104 @@
+{
+  "timestamp": "2025-11-05T08:30:56.107055",
+  "test_status": "SUCCESS",
+  "classifier_output": {
+    "sector": "unknown",
+    "subsector": "unknown",
+    "confidence": null
+  },
+  "ner_output": {
+    "entity_count": 17,
+    "precision_estimate": 0.85,
+    "by_type": {
+      "ORGANIZATION": 16,
+      "COMPONENT": 1
+    },
+    "sample_entities": [
+      {
+        "text": "The Siemens S7-1500 PLC",
+        "label": "ORGANIZATION",
+        "confidence": 0.85
+      },
+      {
+        "text": "ABB",
+        "label": "ORGANIZATION",
+        "confidence": 0.85
+      },
+      {
+        "text": "Profinet",
+        "label": "ORGANIZATION",
+        "confidence": 0.85
+      },
+      {
+        "text": "IEC",
+        "label": "ORGANIZATION",
+        "confidence": 0.85
+      },
+      {
+        "text": "Foundation Fieldbus",
+        "label": "ORGANIZATION",
+        "confidence": 0.85
+      },
+      {
+        "text": "Yokogawa",
+        "label": "ORGANIZATION",
+        "confidence": 0.85
+      },
+      {
+        "text": "Purdue",
+        "label": "ORGANIZATION",
+        "confidence": 0.85
+      },
+      {
+        "text": "The Schneider Electric Unity Pro",
+        "label": "ORGANIZATION",
+        "confidence": 0.85
+      },
+      {
+        "text": "PLC",
+        "label": "ORGANIZATION",
+        "confidence": 0.85
+      },
+      {
+        "text": "Honeywell DCS",
+        "label": "ORGANIZATION",
+        "confidence": 0.85
+      },
+      {
+        "text": "L3",
+        "label": "ORGANIZATION",
+        "confidence": 0.85
+      },
+      {
+        "text": "OPC UA",
+        "label": "ORGANIZATION",
+        "confidence": 0.85
+      },
+      {
+        "text": "DCS",
+        "label": "ORGANIZATION",
+        "confidence": 0.85
+      },
+      {
+        "text": "MES",
+        "label": "ORGANIZATION",
+        "confidence": 0.85
+      },
+      {
+        "text": "HP",
+        "label": "ORGANIZATION",
+        "confidence": 0.85
+      },
+      {
+        "text": "F",
+        "label": "COMPONENT",
+        "confidence": 0.85
+      },
+      {
+        "text": "Maximum",
+        "label": "ORGANIZATION",
+        "confidence": 0.85
+      }
+    ]
+  }
+}

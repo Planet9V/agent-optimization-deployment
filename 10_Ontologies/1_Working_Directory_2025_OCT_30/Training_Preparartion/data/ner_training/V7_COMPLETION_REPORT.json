@@ -1,0 +1,122 @@
+{
+  "dataset_version": "v7",
+  "completion_date": "2025-11-08T18:10:00Z",
+  "status": "complete",
+  "summary": {
+    "total_examples": 2731,
+    "improvement_over_v6": {
+      "absolute": 990,
+      "percentage": 56.9
+    },
+    "entity_coverage": "100.0%",
+    "avg_text_length": 296
+  },
+  "data_sources": {
+    "existing_capec": {
+      "files": [
+        "CAPEC_NER_TRAINING_DATA.json",
+        "CAPEC_NER_ENTITY_RICH.json",
+        "CAPEC_NER_DETAILED.json",
+        "CAPEC_NER_GOLDEN_BRIDGES.json",
+        "CAPEC_NER_META.json"
+      ],
+      "total_unique": 1552
+    },
+    "cve_cwe_extraction": {
+      "source": "cve_cwe_data.json",
+      "records_processed": 1150,
+      "examples_added": 1178
+    },
+    "capec_attack_extraction": {
+      "source": "capec_attack_data.json",
+      "records_processed": 238,
+      "examples_added": 1,
+      "note": "Most CAPEC descriptions were already in existing dataset (deduplication working correctly)"
+    }
+  },
+  "entity_type_distribution": {
+    "CWE": 5275,
+    "CAPEC": 1553,
+    "CVE": 1057,
+    "VULNERABILITY": 1057,
+    "ATTACK_TECHNIQUE": 806,
+    "OWASP": 133,
+    "WASC": 122,
+    "WEAKNESS": 121,
+    "ATTACK": 1,
+    "ATTACK_PATTERN": 1,
+    "TECHNIQUE": 1
+  },
+  "context_distribution": {
+    "cve_description": 1057,
+    "prerequisite": 624,
+    "description": 544,
+    "example_instance": 204,
+    "extended_description": 180,
+    "cwe_description": 121,
+    "capec_attack_mapping": 1
+  },
+  "quality_metrics": {
+    "validation_passed": true,
+    "no_duplicate_texts": true,
+    "all_entities_valid": true,
+    "coverage_percentage": 100.0,
+    "avg_text_length": 296,
+    "min_entity_type_count": 1,
+    "max_entity_type_count": 5275
+  },
+  "underrepresented_types": {
+    "WASC": {
+      "count": 122,
+      "target": 200,
+      "gap": 78
+    },
+    "OWASP": {
+      "count": 133,
+      "target": 200,
+      "gap": 67
+    },
+    "WEAKNESS": {
+      "count": 121,
+      "target": 200,
+      "gap": 79
+    },
+    "ATTACK_PATTERN": {
+      "count": 1,
+      "target": 200,
+      "gap": 199,
+      "note": "Needs additional CAPEC-ATTACK mapping data with unique descriptions"
+    },
+    "ATTACK": {
+      "count": 1,
+      "target": 200,
+      "gap": 199,
+      "note": "Needs additional ATT&CK technique descriptions"
+    },
+    "TECHNIQUE": {
+      "count": 1,
+      "target": 200,
+      "gap": 199,
+      "note": "Needs additional ATT&CK technique descriptions"
+    }
+  },
+  "recommendations": {
+    "for_v8": [
+      "Extract more WASC examples from WASC database",
+      "Extract OWASP Top 10 examples from OWASP documentation",
+      "Add WEAKNESS examples from CWE extended descriptions",
+      "Extract ATT&CK technique descriptions directly from ATT&CK framework",
+      "Create synthetic examples for underrepresented entity types",
+      "Add multi-hop reasoning examples (CVE -> CWE -> CAPEC -> ATT&CK chains)"
+    ]
+  },
+  "output_files": {
+    "training_data": "data/ner_training/V7_NER_TRAINING_DATA.json",
+    "statistics": "data/ner_training/V7_STATISTICS.json",
+    "completion_report": "data/ner_training/V7_COMPLETION_REPORT.json"
+  },
+  "memory_hooks": {
+    "swarm_v7_dataset_complete": "stored",
+    "v7_dataset_creation": "task_completed"
+  }
+}

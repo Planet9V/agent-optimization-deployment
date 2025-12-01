@@ -1,0 +1,28 @@
+{"timestamp": "2025-10-31T15:21:47.198820", "operation": "wave_7_execution_started", "details": {"timestamp": "2025-10-31T15:21:47.198781"}}
+{"timestamp": "2025-10-31T15:21:47.198989", "operation": "phase_started", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T15:21:47.241510", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT personality_trait_id_unique IF NOT EXISTS FOR (p:Personality_T..."}}
+{"timestamp": "2025-10-31T15:21:47.281830", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT cognitive_bias_id_unique IF NOT EXISTS FOR (c:Cognitive_Bias) ..."}}
+{"timestamp": "2025-10-31T15:21:47.323739", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT motivation_factor_id_unique IF NOT EXISTS FOR (m:Motivation_Fa..."}}
+{"timestamp": "2025-10-31T15:21:47.366697", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT insider_threat_indicator_id_unique IF NOT EXISTS FOR (i:Inside..."}}
+{"timestamp": "2025-10-31T15:21:47.406844", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT social_engineering_tactic_id_unique IF NOT EXISTS FOR (s:Socia..."}}
+{"timestamp": "2025-10-31T15:21:47.448627", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT behavioral_pattern_id_unique IF NOT EXISTS FOR (b:Behavioral_P..."}}
+{"timestamp": "2025-10-31T15:21:47.460865", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX personality_trait_category_idx IF NOT EXISTS FOR (p:Personality_Tra..."}}
+{"timestamp": "2025-10-31T15:21:47.469963", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX cognitive_bias_impact_idx IF NOT EXISTS FOR (c:Cognitive_Bias) ON (..."}}
+{"timestamp": "2025-10-31T15:21:47.478334", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX insider_threat_severity_idx IF NOT EXISTS FOR (i:Insider_Threat_Ind..."}}
+{"timestamp": "2025-10-31T15:21:47.497505", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX social_engineering_success_idx IF NOT EXISTS FOR (s:Social_Engineer..."}}
+{"timestamp": "2025-10-31T15:21:47.504087", "operation": "phase_completed", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T15:21:47.504277", "operation": "phase_started", "details": {"phase": "create_psychometric_nodes"}}
+{"timestamp": "2025-10-31T15:21:47.569188", "operation": "personality_traits_created", "details": {"count": 8}}
+{"timestamp": "2025-10-31T15:21:47.608396", "operation": "cognitive_biases_created", "details": {"count": 7}}
+{"timestamp": "2025-10-31T15:21:47.644804", "operation": "motivation_factors_created", "details": {"count": 4}}
+{"timestamp": "2025-10-31T15:21:47.694538", "operation": "insider_threat_indicators_created", "details": {"count": 11}}
+{"timestamp": "2025-10-31T15:21:47.734174", "operation": "social_engineering_tactics_created", "details": {"count": 7}}
+{"timestamp": "2025-10-31T15:21:47.776353", "operation": "behavioral_patterns_created", "details": {"count": 20}}
+{"timestamp": "2025-10-31T15:21:47.776535", "operation": "phase_completed", "details": {"phase": "create_psychometric_nodes", "nodes_created": 57}}
+{"timestamp": "2025-10-31T15:21:47.776595", "operation": "phase_started", "details": {"phase": "create_relationships"}}
+{"timestamp": "2025-10-31T15:21:47.827615", "operation": "relationships_created", "details": {"type": "INFLUENCES_BEHAVIOR", "count": 25}}
+{"timestamp": "2025-10-31T15:21:47.886183", "operation": "relationships_created", "details": {"type": "EXPLOITED_BY", "count": 3}}
+{"timestamp": "2025-10-31T15:21:47.951963", "operation": "relationships_created", "details": {"type": "MOTIVATES", "count": 7}}
+{"timestamp": "2025-10-31T15:21:47.989928", "operation": "relationships_created", "details": {"type": "ENABLES_TECHNIQUE", "count": 12}}
+{"timestamp": "2025-10-31T15:21:47.990049", "operation": "phase_completed", "details": {"phase": "create_relationships", "total_relationships": 47}}
+{"timestamp": "2025-10-31T15:21:47.990121", "operation": "wave_7_execution_completed", "details": {"timestamp": "2025-10-31T15:21:47.990118", "nodes_created": 57, "relationships_created": 47}}

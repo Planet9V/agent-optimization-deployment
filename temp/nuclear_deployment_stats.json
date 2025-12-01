@@ -1,0 +1,49 @@
+{
+  "sector": "NUCLEAR",
+  "total_nodes": 28000,
+  "node_types": {
+    "Device": 3000,
+    "Measurement": 18000,
+    "Property": 5000,
+    "Process": 1000,
+    "Control": 500,
+    "Alert": 300,
+    "Zone": 150,
+    "Asset": 50
+  },
+  "start_time": "2025-11-22T04:01:33.563787+00:00",
+  "subsectors": {
+    "Nuclear_Power": {
+      "Device": 1800,
+      "Measurement": 10800,
+      "Property": 3000,
+      "Process": 600,
+      "Control": 300,
+      "Alert": 180,
+      "Zone": 90,
+      "Asset": 30
+    },
+    "Research_Reactors": {
+      "Device": 750,
+      "Measurement": 4500,
+      "Property": 1250,
+      "Process": 250,
+      "Control": 125,
+      "Alert": 75,
+      "Zone": 37,
+      "Asset": 12
+    },
+    "Waste_Management": {
+      "Device": 450,
+      "Measurement": 2700,
+      "Property": 750,
+      "Process": 150,
+      "Control": 75,
+      "Alert": 45,
+      "Zone": 22,
+      "Asset": 7
+    }
+  },
+  "end_time": "2025-11-22T04:01:35.216270+00:00",
+  "execution_seconds": 1.65
+}

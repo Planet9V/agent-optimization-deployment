@@ -1,0 +1,94 @@
+{"timestamp": "2025-10-31T16:56:13.979650", "operation": "wave_9_cloud_execution_started", "details": {"timestamp": "2025-10-31T16:56:13.979624"}}
+{"timestamp": "2025-10-31T16:56:14.132558", "operation": "cloud_accounts_batch_1", "details": {"aws": 30, "azure": 20}}
+{"timestamp": "2025-10-31T16:56:14.238241", "operation": "cloud_accounts_batch_2", "details": {"gcp": 20, "others": 30}}
+{"timestamp": "2025-10-31T16:56:14.260782", "operation": "cloud_accounts_verification", "details": {"total": 100, "unique_ids": 100, "providers": ["aws", "azure", "gcp", "alibaba_cloud", "ibm_cloud", "oracle_cloud"]}}
+{"timestamp": "2025-10-31T16:56:14.261054", "operation": "wave_9_cloud_execution_error", "details": {"error": "name 'idx' is not defined"}}
+{"timestamp": "2025-10-31T16:57:03.287159", "operation": "wave_9_cloud_execution_started", "details": {"timestamp": "2025-10-31T16:57:03.287134"}}
+{"timestamp": "2025-10-31T16:57:03.310162", "operation": "cloud_accounts_batch_1", "details": {"aws": 30, "azure": 20}}
+{"timestamp": "2025-10-31T16:57:03.325265", "operation": "cloud_accounts_batch_2", "details": {"gcp": 20, "others": 30}}
+{"timestamp": "2025-10-31T16:57:03.331160", "operation": "cloud_accounts_verification", "details": {"total": 100, "unique_ids": 100, "providers": ["aws", "azure", "gcp", "alibaba_cloud", "ibm_cloud", "oracle_cloud"]}}
+{"timestamp": "2025-10-31T16:57:03.471218", "operation": "vm_instances_batch_1_aws_ec2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:03.501493", "operation": "vm_instances_batch_2_aws_ec2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:03.533453", "operation": "vm_instances_batch_3_aws_ec2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:03.551385", "operation": "wave_9_cloud_execution_error", "details": {"error": "{neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Variable `batch_num` not defined (line 18, column 71 (offset: 1214))\n\"                  publicIP: CASE idx % 4 WHEN 0 THEN \"20.\" + toString(batch_num) + \".\" + toString(idx / 250) + \".\" + toString(idx % 250) ELSE null END,\"\n                                                                       ^} {gql_status: 50N42} {gql_status_description: error: general processing exception - unexpected error. Unexpected error has occurred. See debug log for details.}"}}
+{"timestamp": "2025-10-31T16:58:08.159356", "operation": "wave_9_cloud_execution_started", "details": {"timestamp": "2025-10-31T16:58:08.159331"}}
+{"timestamp": "2025-10-31T16:58:08.170470", "operation": "cloud_accounts_batch_1", "details": {"aws": 30, "azure": 20}}
+{"timestamp": "2025-10-31T16:58:08.185117", "operation": "cloud_accounts_batch_2", "details": {"gcp": 20, "others": 30}}
+{"timestamp": "2025-10-31T16:58:08.193730", "operation": "cloud_accounts_verification", "details": {"total": 100, "unique_ids": 100, "providers": ["aws", "azure", "gcp", "alibaba_cloud", "ibm_cloud", "oracle_cloud"]}}
+{"timestamp": "2025-10-31T16:58:08.195410", "operation": "vm_instances_batch_1_aws_ec2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:08.202338", "operation": "vm_instances_batch_2_aws_ec2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:08.210844", "operation": "vm_instances_batch_3_aws_ec2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:08.307398", "operation": "vm_instances_batch_4_azure", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:08.337018", "operation": "vm_instances_batch_5_azure", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:08.422867", "operation": "vm_instances_batch_6_gcp", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:08.551079", "operation": "container_instances_batch", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:08.576008", "operation": "vm_instances_verification", "details": {"total": 350, "unique_ids": 350, "providers": ["aws", "azure", "gcp"]}}
+{"timestamp": "2025-10-31T16:58:08.576330", "operation": "wave_9_cloud_execution_error", "details": {"error": "Expected 300 VirtualMachineInstance nodes, got 350"}}
+{"timestamp": "2025-10-31T16:58:57.185366", "operation": "wave_9_cloud_execution_started", "details": {"timestamp": "2025-10-31T16:58:57.185340"}}
+{"timestamp": "2025-10-31T16:58:57.205027", "operation": "cloud_accounts_batch_1", "details": {"aws": 30, "azure": 20}}
+{"timestamp": "2025-10-31T16:58:57.217821", "operation": "cloud_accounts_batch_2", "details": {"gcp": 20, "others": 30}}
+{"timestamp": "2025-10-31T16:58:57.225139", "operation": "cloud_accounts_verification", "details": {"total": 100, "unique_ids": 100, "providers": ["aws", "azure", "gcp", "alibaba_cloud", "ibm_cloud", "oracle_cloud"]}}
+{"timestamp": "2025-10-31T16:58:57.226530", "operation": "vm_instances_batch_1_aws_ec2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:57.233492", "operation": "vm_instances_batch_2_aws_ec2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:57.241539", "operation": "vm_instances_batch_4_azure", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:57.249421", "operation": "vm_instances_batch_5_azure", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:57.257426", "operation": "vm_instances_batch_6_gcp", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:57.265775", "operation": "container_instances_batch", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:57.273036", "operation": "vm_instances_verification", "details": {"total": 300, "unique_ids": 300, "providers": ["aws", "azure", "gcp"]}}
+{"timestamp": "2025-10-31T16:58:57.361417", "operation": "cloud_storage_batch_1_S3", "details": {"count": 40}}
+{"timestamp": "2025-10-31T16:58:57.387610", "operation": "cloud_storage_batch_1_S3", "details": {"count": 40}}
+{"timestamp": "2025-10-31T16:58:57.460963", "operation": "cloud_storage_batch_2_AZSTOR", "details": {"count": 35}}
+{"timestamp": "2025-10-31T16:58:57.487391", "operation": "cloud_storage_batch_2_AZSTOR", "details": {"count": 35}}
+{"timestamp": "2025-10-31T16:58:57.560361", "operation": "cloud_storage_batch_3_GCS", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:57.586398", "operation": "cloud_storage_verification", "details": {"total": 200, "unique_ids": 200, "providers": ["s3", "azure_storage", "gcs"]}}
+{"timestamp": "2025-10-31T16:58:57.639910", "operation": "virtual_networks_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:57.659189", "operation": "virtual_networks_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:57.676332", "operation": "virtual_networks_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:57.693275", "operation": "virtual_networks_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:57.713176", "operation": "virtual_networks_verification", "details": {"total": 200, "unique_ids": 200}}
+{"timestamp": "2025-10-31T16:58:57.800009", "operation": "serverless_functions_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:57.822523", "operation": "serverless_functions_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:57.845359", "operation": "serverless_functions_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:57.867542", "operation": "serverless_functions_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:57.889897", "operation": "serverless_functions_verification", "details": {"total": 200, "unique_ids": 200, "runtimes": ["nodejs16.x", "java11", "dotnet6", "go1.x", "python3.9"]}}
+{"timestamp": "2025-10-31T16:58:57.909323", "operation": "final_verification_CloudAccount", "details": {"count": 100}}
+{"timestamp": "2025-10-31T16:58:57.909600", "operation": "final_verification_CloudStorageAccount", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:58:57.909697", "operation": "final_verification_ServerlessFunction", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:58:57.909776", "operation": "final_verification_VirtualMachineInstance", "details": {"count": 300}}
+{"timestamp": "2025-10-31T16:58:57.909851", "operation": "final_verification_VirtualNetwork", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:58:57.909981", "operation": "cloud_total_verification", "details": {"total_nodes": 1000, "status": "PASSED"}}
+{"timestamp": "2025-10-31T16:58:57.910097", "operation": "wave_9_cloud_execution_completed", "details": {"timestamp": "2025-10-31T16:58:57.910093", "total_nodes": 1000, "cloud_accounts": 100, "vm_instances": 300, "cloud_storage": 200, "virtual_networks": 200, "serverless_functions": 200, "status": "SUCCESS"}}
+{"timestamp": "2025-10-31T16:59:21.067787", "operation": "wave_9_cloud_execution_started", "details": {"timestamp": "2025-10-31T16:59:21.067762"}}
+{"timestamp": "2025-10-31T16:59:21.078587", "operation": "cloud_accounts_batch_1", "details": {"aws": 30, "azure": 20}}
+{"timestamp": "2025-10-31T16:59:21.091862", "operation": "cloud_accounts_batch_2", "details": {"gcp": 20, "others": 30}}
+{"timestamp": "2025-10-31T16:59:21.097578", "operation": "cloud_accounts_verification", "details": {"total": 100, "unique_ids": 100, "providers": ["aws", "azure", "gcp", "alibaba_cloud", "ibm_cloud", "oracle_cloud"]}}
+{"timestamp": "2025-10-31T16:59:21.099006", "operation": "vm_instances_batch_1_aws_ec2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:21.110443", "operation": "vm_instances_batch_2_aws_ec2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:21.118755", "operation": "vm_instances_batch_4_azure", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:21.125894", "operation": "vm_instances_batch_5_azure", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:21.133245", "operation": "vm_instances_batch_6_gcp", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:21.140929", "operation": "container_instances_batch", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:21.149380", "operation": "vm_instances_verification", "details": {"total": 300, "unique_ids": 300, "providers": ["aws", "azure", "gcp"]}}
+{"timestamp": "2025-10-31T16:59:21.150763", "operation": "cloud_storage_batch_1_S3", "details": {"count": 40}}
+{"timestamp": "2025-10-31T16:59:21.157459", "operation": "cloud_storage_batch_1_S3", "details": {"count": 40}}
+{"timestamp": "2025-10-31T16:59:21.162524", "operation": "cloud_storage_batch_2_AZSTOR", "details": {"count": 35}}
+{"timestamp": "2025-10-31T16:59:21.168967", "operation": "cloud_storage_batch_2_AZSTOR", "details": {"count": 35}}
+{"timestamp": "2025-10-31T16:59:21.175619", "operation": "cloud_storage_batch_3_GCS", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:21.183340", "operation": "cloud_storage_verification", "details": {"total": 200, "unique_ids": 200, "providers": ["s3", "azure_storage", "gcs"]}}
+{"timestamp": "2025-10-31T16:59:21.184427", "operation": "virtual_networks_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:21.191825", "operation": "virtual_networks_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:21.198599", "operation": "virtual_networks_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:21.205625", "operation": "virtual_networks_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:21.213539", "operation": "virtual_networks_verification", "details": {"total": 200, "unique_ids": 200}}
+{"timestamp": "2025-10-31T16:59:21.215144", "operation": "serverless_functions_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:21.222078", "operation": "serverless_functions_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:21.228522", "operation": "serverless_functions_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:21.235112", "operation": "serverless_functions_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:21.242194", "operation": "serverless_functions_verification", "details": {"total": 200, "unique_ids": 200, "runtimes": ["nodejs16.x", "java11", "dotnet6", "go1.x", "python3.9"]}}
+{"timestamp": "2025-10-31T16:59:21.243697", "operation": "final_verification_CloudAccount", "details": {"count": 100}}
+{"timestamp": "2025-10-31T16:59:21.243873", "operation": "final_verification_CloudStorageAccount", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:59:21.243971", "operation": "final_verification_ServerlessFunction", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:59:21.244070", "operation": "final_verification_VirtualMachineInstance", "details": {"count": 300}}
+{"timestamp": "2025-10-31T16:59:21.244154", "operation": "final_verification_VirtualNetwork", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:59:21.244286", "operation": "cloud_total_verification", "details": {"total_nodes": 1000, "status": "PASSED"}}
+{"timestamp": "2025-10-31T16:59:21.244441", "operation": "wave_9_cloud_execution_completed", "details": {"timestamp": "2025-10-31T16:59:21.244436", "total_nodes": 1000, "cloud_accounts": 100, "vm_instances": 300, "cloud_storage": 200, "virtual_networks": 200, "serverless_functions": 200, "status": "SUCCESS"}}

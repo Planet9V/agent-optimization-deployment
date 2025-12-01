@@ -1,0 +1,190 @@
+{
+  "validation_report": {
+    "sector_name": "EMERGENCY_SERVICES",
+    "timestamp": "2025-11-21T19:50:00Z",
+    "validator_version": "3.0",
+    "validation_status": "FAIL",
+    "overall_compliance": false,
+    "total_checks_performed": 7,
+    "total_checks_passed": 0,
+    "total_checks_failed": 7,
+    "pass_percentage": 0.0
+  },
+  "detailed_validations": {
+    "check_1_total_nodes": {
+      "check_name": "Total Nodes Count Validation",
+      "status": "FAIL",
+      "description": "Validates that total node count falls within acceptable range",
+      "governance_rule": "Must be 26,000-35,000 nodes",
+      "sector_value": 0,
+      "minimum_threshold": 26000,
+      "maximum_threshold": 35000,
+      "target_value": 28000,
+      "variance": "0 (expected 26,000-35,000)",
+      "assessment": "Outside acceptable range",
+      "evidence": ""
+    },
+    "check_2_node_types": {
+      "check_name": "Core Node Types Validation",
+      "status": "FAIL",
+      "description": "Validates presence of 8+ core node types",
+      "governance_rule": "Must have Device, Measurement, Property, Process, Control, Alert, Zone, Asset",
+      "required_types": 8,
+      "sector_types": 0,
+      "types_present": [
+        {
+          "type": "Device",
+          "status": "MISSING"
+        },
+        {
+          "type": "Measurement",
+          "status": "MISSING"
+        },
+        {
+          "type": "Property",
+          "status": "MISSING"
+        },
+        {
+          "type": "Process",
+          "status": "MISSING"
+        },
+        {
+          "type": "Control",
+          "status": "MISSING"
+        },
+        {
+          "type": "Alert",
+          "status": "MISSING"
+        },
+        {
+          "type": "Zone",
+          "status": "MISSING"
+        },
+        {
+          "type": "Asset",
+          "status": "MISSING"
+        }
+      ],
+      "total_type_count": 0,
+      "assessment": "Missing 8 required node types"
+    },
+    "check_3_label_patterns": {
+      "check_name": "Label Pattern Compliance",
+      "status": "FAIL",
+      "description": "Validates multi-label pattern compliance against registry template",
+      "governance_rule": "Labels must follow [NodeType, SectorSpecificType, Domain?, Monitoring, SECTOR, Subsector]",
+      "registry_template": "[NodeType]:[SectorSpecificType]:[Domain]:[Monitoring]:[SECTOR]:[Subsector]",
+      "sample_validations": [],
+      "pattern_compliance_percentage": 0.0,
+      "assessment": "PENDING"
+    },
+    "check_4_multi_label_distribution": {
+      "check_name": "Multi-Label Average Validation",
+      "status": "FAIL",
+      "description": "Validates average labels per node falls within optimal range",
+      "governance_rule": "Target: 5.5; Acceptable: 5.0-7.0",
+      "sector_value": 0.0,
+      "water_reference": 4.32,
+      "energy_reference": 4.94,
+      "communications_reference": 5.8,
+      "minimum_threshold": 5.0,
+      "target_threshold": 5.5,
+      "maximum_threshold": 7.0,
+      "variance": "Outside range (0.00 vs target 5.0-7.0)",
+      "assessment": "Labels per node distribution outside acceptable range"
+    },
+    "check_5_relationships": {
+      "check_name": "Relationship Validation",
+      "status": "FAIL",
+      "description": "Validates presence of required relationships",
+      "governance_rule": "Must have common + sector-specific relationships",
+      "common_relationships": [
+        "VULNERABLE_TO",
+        "HAS_MEASUREMENT",
+        "HAS_PROPERTY",
+        "CONTROLS",
+        "CONTAINS",
+        "USES_DEVICE"
+      ],
+      "sector_specific_relationships": [
+        "RESPONDS_TO_INCIDENT",
+        "MANAGED_BY_ICS",
+        "DEPLOYED_AT_FACILITY"
+      ],
+      "relationships_found": [
+        {
+          "relationship": "VULNERABLE_TO",
+          "status": "MISSING"
+        },
+        {
+          "relationship": "HAS_MEASUREMENT",
+          "status": "MISSING"
+        },
+        {
+          "relationship": "HAS_PROPERTY",
+          "status": "MISSING"
+        },
+        {
+          "relationship": "CONTROLS",
+          "status": "MISSING"
+        },
+        {
+          "relationship": "CONTAINS",
+          "status": "MISSING"
+        },
+        {
+          "relationship": "USES_DEVICE",
+          "status": "MISSING"
+        },
+        {
+          "relationship": "RESPONDS_TO_INCIDENT",
+          "status": "MISSING"
+        },
+        {
+          "relationship": "MANAGED_BY_ICS",
+          "status": "MISSING"
+        },
+        {
+          "relationship": "DEPLOYED_AT_FACILITY",
+          "status": "MISSING"
+        }
+      ],
+      "assessment": "Missing required relationships (0 of 9)"
+    },
+    "check_6_cross_sector_queries": {
+      "check_name": "Cross-Sector Query Compatibility",
+      "status": "FAIL",
+      "description": "Tests query compatibility across sectors",
+      "query_tests": [
+        {
+          "query": "label ENDS WITH 'Device'",
+          "expected": "EmergencyServicesDevice",
+          "found": false,
+          "status": "FAIL"
+        },
+        {
+          "query": "n:Measurement",
+          "expected": "Measurement node type",
+          "found": false,
+          "status": "FAIL"
+        },
+        {
+          "query": "'EMERGENCY_SERVICES' IN labels(n)",
+          "expected": "All nodes have EMERGENCY_SERVICES label",
+          "found": true,
+          "status": "PASS"
+        }
+      ],
+      "assessment": "Query compatibility issues (1/3)"
+    },
+    "check_7_subsectors": {
+      "check_name": "Subsector Distribution Validation",
+      "status": "FAIL",
+      "description": "Validates subsector distribution across nodes",
+      "governance_rule": "Must have 2+ subsectors with clear distribution",
+      "subsectors": [],
+      "total_subsectors": 0,
+      "assessment": "Insufficient subsector distribution (0 subsectors, need 2+)"
+    }
+  }
+}

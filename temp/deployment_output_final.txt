@@ -1,0 +1,70 @@
+Received notification from DBMS server: <GqlStatusObject gql_status='01N02', status_description='warn: feature deprecated without replacement. id is deprecated and will be removed without a replacement.', position=<SummaryInputPosition line=9, column=17, offset=378>, raw_classification='DEPRECATION', classification=<NotificationClassification.DEPRECATION: 'DEPRECATION'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'DEPRECATION', '_severity': 'WARNING', '_position': {'offset': 378, 'line': 9, 'column': 17}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: "\n        MATCH (d1:CommunicationsDevice)\n        WHERE 'COMMUNICATIONS' IN labels(d1) AND d1.device_type IN ['Router', 'Switch', 'Gateway']\n        WITH d1 LIMIT 1000\n        MATCH (d2:CommunicationsDevice)\n        WHERE 'COMMUNICATIONS' IN labels(d2)\n            AND d2.device_type IN ['Router', 'Switch', 'Gateway']\n            AND d1.subsector = d2.subsector\n            AND id(d1) < id(d2)\n        WITH d1, d2 ORDER BY rand() LIMIT 4\n        MERGE (d1)-[r:ROUTES_THROUGH]->(d2)\n        SET r.bandwidth_mbps = toFloat(rand() * 10000),\n            r.latency_ms = toFloat(rand() * 100),\n            r.established_at = datetime()\n        RETURN count(r) as created\n        "
+Received notification from DBMS server: <GqlStatusObject gql_status='01N02', status_description='warn: feature deprecated without replacement. id is deprecated and will be removed without a replacement.', position=<SummaryInputPosition line=9, column=26, offset=387>, raw_classification='DEPRECATION', classification=<NotificationClassification.DEPRECATION: 'DEPRECATION'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'DEPRECATION', '_severity': 'WARNING', '_position': {'offset': 387, 'line': 9, 'column': 26}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: "\n        MATCH (d1:CommunicationsDevice)\n        WHERE 'COMMUNICATIONS' IN labels(d1) AND d1.device_type IN ['Router', 'Switch', 'Gateway']\n        WITH d1 LIMIT 1000\n        MATCH (d2:CommunicationsDevice)\n        WHERE 'COMMUNICATIONS' IN labels(d2)\n            AND d2.device_type IN ['Router', 'Switch', 'Gateway']\n            AND d1.subsector = d2.subsector\n            AND id(d1) < id(d2)\n        WITH d1, d2 ORDER BY rand() LIMIT 4\n        MERGE (d1)-[r:ROUTES_THROUGH]->(d2)\n        SET r.bandwidth_mbps = toFloat(rand() * 10000),\n            r.latency_ms = toFloat(rand() * 100),\n            r.established_at = datetime()\n        RETURN count(r) as created\n        "
+[2025-11-21 19:33:24] ============================================================
+[2025-11-21 19:33:24] COMMUNICATIONS SECTOR COMPLETION DEPLOYMENT
+[2025-11-21 19:33:24] ============================================================
+[2025-11-21 19:33:24] 
+--- CREATING MISSING NODE TYPES ---
+
+[2025-11-21 19:33:24] Creating 1000 RoutingProcess nodes...
+[2025-11-21 19:33:24]   Created 500/1000 RoutingProcess nodes
+[2025-11-21 19:33:24]   Created 1000/1000 RoutingProcess nodes
+[2025-11-21 19:33:24] ✅ Created 1000 RoutingProcess nodes
+[2025-11-21 19:33:24] Creating 500 NetworkManagementSystem nodes...
+[2025-11-21 19:33:24]   Created 250/500 NetworkManagementSystem nodes
+[2025-11-21 19:33:24]   Created 500/500 NetworkManagementSystem nodes
+[2025-11-21 19:33:24] ✅ Created 500 NetworkManagementSystem nodes
+[2025-11-21 19:33:24] Creating 300 CommunicationsAlert nodes...
+[2025-11-21 19:33:24] ✅ Created 300 CommunicationsAlert nodes
+[2025-11-21 19:33:24] Creating 150 CommunicationsZone nodes...
+[2025-11-21 19:33:24] ✅ Created 150 CommunicationsZone nodes
+[2025-11-21 19:33:24] Creating 50 MajorAsset nodes...
+[2025-11-21 19:33:24] ✅ Created 50 MajorAsset nodes
+[2025-11-21 19:33:24] 
+--- CREATING RELATIONSHIPS ---
+
+[2025-11-21 19:33:24] Creating HAS_PROPERTY relationships...
+[2025-11-21 19:33:38] ✅ Created 1 HAS_PROPERTY relationships
+[2025-11-21 19:33:38] Creating CONTROLS relationships...
+[2025-11-21 19:33:40] ✅ Created 3 CONTROLS relationships
+[2025-11-21 19:33:40] Creating CONTAINS relationships...
+[2025-11-21 19:33:41] ✅ Created 0 CONTAINS relationships
+[2025-11-21 19:33:41] Creating ROUTES_THROUGH relationships...
+[2025-11-21 19:33:41] ✅ Created 4 ROUTES_THROUGH relationships
+[2025-11-21 19:33:41] Creating CONNECTS_TO_NETWORK relationships...
+[2025-11-21 19:33:41] ✅ Created 0 CONNECTS_TO_NETWORK relationships
+[2025-11-21 19:33:41] Creating MANAGED_BY_NMS relationships...
+[2025-11-21 19:33:42] ✅ Created 0 MANAGED_BY_NMS relationships
+[2025-11-21 19:33:42] Creating USES_DEVICE relationships...
+[2025-11-21 19:33:42] ✅ Created 0 USES_DEVICE relationships
+[2025-11-21 19:33:42] 
+=== VERIFICATION ===
+[2025-11-21 19:33:42] Total COMMUNICATIONS nodes: 38759
+[2025-11-21 19:33:43] Unique node types: 8
+[2025-11-21 19:33:43] Types: ['NetworkMeasurement', 'CommunicationsProperty', 'CommunicationsDevice', 'RoutingProcess', 'NetworkManagementSystem', 'CommunicationsAlert', 'CommunicationsZone', 'MajorAsset']
+[2025-11-21 19:33:43] 
+Node counts by type:
+[2025-11-21 19:33:43]   CommunicationsDevice: 2300
+[2025-11-21 19:33:43]   CommunicationsProperty: 5000
+[2025-11-21 19:33:43]   NetworkMeasurement: 27458
+[2025-11-21 19:33:43]   RoutingProcess: 2000
+[2025-11-21 19:33:43]   NetworkManagementSystem: 1000
+[2025-11-21 19:33:43]   CommunicationsAlert: 600
+[2025-11-21 19:33:43]   CommunicationsZone: 300
+[2025-11-21 19:33:43]   MajorAsset: 100
+[2025-11-21 19:33:43] 
+Total relationships: 2145
+[2025-11-21 19:33:43] 
+Relationships by type:
+[2025-11-21 19:33:43]   HAS_MEASUREMENT: 2136
+[2025-11-21 19:33:43]   ROUTES_THROUGH: 4
+[2025-11-21 19:33:43]   CONTROLS: 3
+[2025-11-21 19:33:43]   HAS_PROPERTY: 2
+[2025-11-21 19:33:43] 
+============================================================
+[2025-11-21 19:33:43] DEPLOYMENT COMPLETE
+[2025-11-21 19:33:43] Total Nodes: 38759
+[2025-11-21 19:33:43] Total Relationships: 2145
+[2025-11-21 19:33:43] ============================================================
+
+✅ Log saved to: temp/sector-COMMUNICATIONS-completion-log.txt

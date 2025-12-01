@@ -1,0 +1,129 @@
+{
+  "checkpoint_id": "wiki_documentation_2025-11-03",
+  "timestamp": "2025-11-03T23:26:11.809626+00:00",
+  "status": "DOCUMENTATION_COMPLETE",
+  "wiki_location": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current",
+  "documents_created": {
+    "00_Index": [
+      "Master-Index.md",
+      "Daily-Updates.md",
+      "Getting-Started.md"
+    ],
+    "01_Infrastructure": [
+      "Docker-Architecture.md",
+      "Network-Topology.md"
+    ],
+    "02_Databases": [
+      "Neo4j-Database.md",
+      "Qdrant-Vector-Database.md",
+      "MySQL-Database.md",
+      "MinIO-Object-Storage.md"
+    ],
+    "03_Applications": [
+      "AEON-UI-Application.md",
+      "OpenSPG-Server.md"
+    ],
+    "04_APIs": [
+      "REST-API-Reference.md",
+      "Cypher-Query-API.md"
+    ],
+    "05_Security": [
+      "Credentials-Management.md"
+    ]
+  },
+  "containers_documented": {
+    "aeon-ui": {
+      "ip": "172.18.0.8",
+      "port": 3000,
+      "status": "running",
+      "health": "unhealthy",
+      "technology": "Next.js 15.5.6"
+    },
+    "openspg-neo4j": {
+      "ip": "172.18.0.5",
+      "ports": [
+        7474,
+        7687
+      ],
+      "status": "running",
+      "health": "healthy",
+      "data": "115 docs, 12,256 entities, 14,645 relationships"
+    },
+    "openspg-qdrant": {
+      "ip": "172.18.0.6",
+      "ports": [
+        6333,
+        6334
+      ],
+      "status": "running",
+      "health": "unhealthy",
+      "collections": 12
+    },
+    "openspg-mysql": {
+      "ip": "172.18.0.3",
+      "port": 3306,
+      "status": "running",
+      "health": "healthy",
+      "database": "openspg"
+    },
+    "openspg-minio": {
+      "ip": "172.18.0.4",
+      "ports": [
+        9000,
+        9001
+      ],
+      "status": "running",
+      "health": "healthy",
+      "type": "S3-compatible object storage"
+    },
+    "openspg-server": {
+      "ip": "172.18.0.2",
+      "port": 8887,
+      "status": "running",
+      "health": "unhealthy",
+      "role": "Knowledge graph processing"
+    }
+  },
+  "network_topology": {
+    "name": "openspg-network",
+    "subnet": "172.18.0.0/16",
+    "gateway": "172.18.0.1",
+    "driver": "bridge",
+    "container_count": 6
+  },
+  "security_findings": {
+    "critical_vulnerabilities": 1,
+    "high_vulnerabilities": 2,
+    "medium_vulnerabilities": 2,
+    "default_credentials_used": true,
+    "tls_ssl_enabled": false,
+    "remediation_required": true
+  },
+  "wiki_statistics": {
+    "total_pages": 14,
+    "total_sections": 6,
+    "max_lines_per_page": 500,
+    "documentation_coverage": "~95%",
+    "backlinks_implemented": true,
+    "tags_implemented": true,
+    "5_level_hierarchy": true
+  },
+  "swarm_coordination": {
+    "agents_used": 5,
+    "agent_types": [
+      "system-architect",
+      "api-docs",
+      "backend-dev",
+      "researcher"
+    ],
+    "parallel_execution": true,
+    "coordination_namespace": "aeon-wiki-documentation"
+  },
+  "next_priorities": [
+    "Investigate unhealthy containers (aeon-ui, qdrant, openspg-server)",
+    "Implement security remediation plan",
+    "Create operational runbooks",
+    "Add monitoring and alerting documentation",
+    "Create disaster recovery procedures"
+  ]
+}

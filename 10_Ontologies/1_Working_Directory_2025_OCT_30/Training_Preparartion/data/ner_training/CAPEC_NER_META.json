@@ -1,0 +1,4812 @@
+[
+  {
+    "text": "In this attack, some asset (information, functionality, identity, etc.) is protected by a finite secret value. The attacker attempts to gain access to this asset by using trial-and-error to exhaustively explore all the possible secret values in the hope of finding the secret (or a value that is functionally equivalent) that will unlock the asset.",
+    "context": "description",
+    "capec_id": "112",
+    "capec_name": "Brute Force",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "112",
+          "Brute Force"
+        ]
+      ],
+      "CWE": [
+        "330",
+        "326",
+        "521"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1110"
+      ],
+      "WASC": [
+        "11"
+      ],
+      "OWASP": [
+        "Brute force attack"
+      ]
+    },
+    "entity_count": 7
+  },
+  {
+    "text": "Examples of secrets can include, but are not limited to, passwords, encryption keys, database lookup keys, and initial values to one-way functions. The key factor in this attack is the attackers' ability to explore the possible secret space rapidly. This, in turn, is a function of the size of the secret space and the computational power the attacker is able to bring to bear on the problem. If the attacker has modest resources and the secret space is large, the challenge facing the attacker is intractable. Assuming a finite secret space, a brute force attack will eventually succeed. The defender must rely on making sure that the time and resources necessary to do so will exceed the value of the information.",
+    "context": "extended_description",
+    "capec_id": "112",
+    "capec_name": "Brute Force",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "112",
+          "Brute Force"
+        ]
+      ],
+      "CWE": [
+        "330",
+        "326",
+        "521"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1110"
+      ],
+      "WASC": [
+        "11"
+      ],
+      "OWASP": [
+        "Brute force attack"
+      ]
+    },
+    "entity_count": 7
+  },
+  {
+    "text": "The attacker must be able to determine when they have successfully guessed the secret. As such, one-time pads are immune to this type of attack since there is no way to determine when a guess is correct.",
+    "context": "prerequisite",
+    "capec_id": "112",
+    "capec_name": "Brute Force",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "112",
+          "Brute Force"
+        ]
+      ],
+      "CWE": [
+        "330",
+        "326",
+        "521"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1110"
+      ],
+      "WASC": [
+        "11"
+      ],
+      "OWASP": [
+        "Brute force attack"
+      ]
+    },
+    "entity_count": 7
+  },
+  {
+    "text": "An adversary manipulates the use or processing of an interface (e.g. Application Programming Interface (API) or System-on-Chip (SoC)) resulting in an adverse impact upon the security of the system implementing the interface. This can allow the adversary to bypass access control and/or execute functionality not intended by the interface implementation, possibly compromising the system which integrates the interface. Interface manipulation can take on a number of forms including forcing the unexpected use of an interface or the use of an interface in an unintended way.",
+    "context": "description",
+    "capec_id": "113",
+    "capec_name": "Interface Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "113",
+          "Interface Manipulation"
+        ]
+      ],
+      "CWE": [
+        "1192"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The target system must expose interface functionality in a manner that can be discovered and manipulated by an adversary. This may require reverse engineering the interface or decrypting/de-obfuscating client-server exchanges.",
+    "context": "prerequisite",
+    "capec_id": "113",
+    "capec_name": "Interface Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "113",
+          "Interface Manipulation"
+        ]
+      ],
+      "CWE": [
+        "1192"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An adversary may make a request to an application that leverages a non-standard API that is known to incorrectly validate its data and thus it may be manipulated by supplying metacharacters or alternate encodings as input, resulting in any number of injection flaws, including SQL injection, cross-site scripting, or command execution.",
+    "context": "example_instance",
+    "capec_id": "113",
+    "capec_name": "Interface Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "113",
+          "Interface Manipulation"
+        ]
+      ],
+      "CWE": [
+        "1192"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "API methods not intended for production, such as debugging or testing APIs, may not be disabled when deploying in a production environment. As a result, dangerous functionality can be exposed within the production environment, which an adversary can leverage to execute additional attacks.",
+    "context": "example_instance",
+    "capec_id": "113",
+    "capec_name": "Interface Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "113",
+          "Interface Manipulation"
+        ]
+      ],
+      "CWE": [
+        "1192"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "SoC components contain insufficient identifiers, which allows an adversary to reset the device at will or read sensitive data from the device.",
+    "context": "example_instance",
+    "capec_id": "113",
+    "capec_name": "Interface Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "113",
+          "Interface Manipulation"
+        ]
+      ],
+      "CWE": [
+        "1192"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An attacker obtains unauthorized access to an application, service or device either through knowledge of the inherent weaknesses of an authentication mechanism, or by exploiting a flaw in the authentication scheme's implementation. In such an attack an authentication mechanism is functioning but a carefully controlled sequence of events causes the mechanism to grant access to the attacker.",
+    "context": "description",
+    "capec_id": "114",
+    "capec_name": "Authentication Abuse",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "114",
+          "Authentication Abuse"
+        ]
+      ],
+      "CWE": [
+        "287",
+        "1244"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1548"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 4
+  },
+  {
+    "text": "This attack may exploit assumptions made by the target's authentication procedures, such as assumptions regarding trust relationships or assumptions regarding the generation of secret values. This attack differs from Authentication Bypass attacks in that Authentication Abuse allows the attacker to be certified as a valid user through illegitimate means, while Authentication Bypass allows the user to access protected material without ever being certified as an authenticated user. This attack does not rely on prior sessions established by successfully authenticating users, as relied upon for the \"Exploitation of Session Variables, Resource IDs and other Trusted Credentials\" attack patterns.",
+    "context": "extended_description",
+    "capec_id": "114",
+    "capec_name": "Authentication Abuse",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "114",
+          "Authentication Abuse"
+        ]
+      ],
+      "CWE": [
+        "287",
+        "1244"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1548"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 4
+  },
+  {
+    "text": "An authentication mechanism or subsystem implementing some form of authentication such as passwords, digest authentication, security certificates, etc. which is flawed in some way.",
+    "context": "prerequisite",
+    "capec_id": "114",
+    "capec_name": "Authentication Abuse",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "114",
+          "Authentication Abuse"
+        ]
+      ],
+      "CWE": [
+        "287",
+        "1244"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1548"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 4
+  },
+  {
+    "text": "An attacker gains access to application, service, or device with the privileges of an authorized or privileged user by evading or circumventing an authentication mechanism. The attacker is therefore able to access protected data without authentication ever having taken place.",
+    "context": "description",
+    "capec_id": "115",
+    "capec_name": "Authentication Bypass",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "115",
+          "Authentication Bypass"
+        ]
+      ],
+      "CWE": [
+        "287"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1548"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "This refers to an attacker gaining access equivalent to an authenticated user without ever going through an authentication procedure. This is usually the result of the attacker using an unexpected access procedure that does not go through the proper checkpoints where authentication should occur. For example, a web site might assume that all users will click through a given link in order to get to secure material and simply authenticate everyone that clicks the link. However, an attacker might be able to reach secured web content by explicitly entering the path to the content rather than clicking through the authentication link, thereby avoiding the check entirely. This attack pattern differs from other authentication attacks in that attacks of this pattern avoid authentication entirely, rather than faking authentication by exploiting flaws or by stealing credentials from legitimate users.",
+    "context": "extended_description",
+    "capec_id": "115",
+    "capec_name": "Authentication Bypass",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "115",
+          "Authentication Bypass"
+        ]
+      ],
+      "CWE": [
+        "287"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1548"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "An authentication mechanism or subsystem implementing some form of authentication such as passwords, digest authentication, security certificates, etc.",
+    "context": "prerequisite",
+    "capec_id": "115",
+    "capec_name": "Authentication Bypass",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "115",
+          "Authentication Bypass"
+        ]
+      ],
+      "CWE": [
+        "287"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1548"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "An adversary actively probes the target in a manner that is designed to solicit information that could be leveraged for malicious purposes.",
+    "context": "description",
+    "capec_id": "116",
+    "capec_name": "Excavation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "116",
+          "Excavation"
+        ]
+      ],
+      "CWE": [
+        "200",
+        "1243"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "This is achieved by exploring the target via ordinary interactions for the purpose of gathering intelligence about the target, or by sending data that is syntactically invalid or non-standard in an attempt to produce a response that contains the desired data. As a result of these interactions, the adversary is able to obtain information from the target that aids the attacker in making inferences about its security, configuration, or potential vulnerabilities. Examplar exchanges with the target may trigger unhandled exceptions or verbose error messages that reveal information like stack traces, configuration information, path information, or database design. This type of attack also includes the manipulation of query strings in a URI to produce invalid SQL queries, or by trying alternative path values in the hope that the server will return useful information.",
+    "context": "extended_description",
+    "capec_id": "116",
+    "capec_name": "Excavation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "116",
+          "Excavation"
+        ]
+      ],
+      "CWE": [
+        "200",
+        "1243"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "An adversary requires some way of interacting with the system.",
+    "context": "prerequisite",
+    "capec_id": "116",
+    "capec_name": "Excavation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "116",
+          "Excavation"
+        ]
+      ],
+      "CWE": [
+        "200",
+        "1243"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "An adversary monitors data streams to or from the target for information gathering purposes. This attack may be undertaken to solely gather sensitive information or to support a further attack against the target. This attack pattern can involve sniffing network traffic as well as other types of data streams (e.g. radio). The adversary can attempt to initiate the establishment of a data stream or passively observe the communications as they unfold. In all variants of this attack, the adversary is not the intended recipient of the data stream. In contrast to other means of gathering information (e.g., targeting data leaks), the adversary must actively position themself so as to observe explicit data channels (e.g. network traffic) and read the content. However, this attack differs from a Adversary-In-the-Middle (CAPEC-94) attack, as the adversary does not alter the content of the communications nor forward data to the intended recipient.",
+    "context": "description",
+    "capec_id": "117",
+    "capec_name": "Interception",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "117",
+          "Interception"
+        ]
+      ],
+      "CWE": [
+        "319"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The target must transmit data over a medium that is accessible to the adversary.",
+    "context": "prerequisite",
+    "capec_id": "117",
+    "capec_name": "Interception",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "117",
+          "Interception"
+        ]
+      ],
+      "CWE": [
+        "319"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An adversary is able to exploit features of the target that should be reserved for privileged users or administrators but are exposed to use by lower or non-privileged accounts. Access to sensitive information and functionality must be controlled to ensure that only authorized users are able to access these resources.",
+    "context": "description",
+    "capec_id": "122",
+    "capec_name": "Privilege Abuse",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "122",
+          "Privilege Abuse"
+        ]
+      ],
+      "CWE": [
+        "269",
+        "732",
+        "1317"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1548"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 5
+  },
+  {
+    "text": "If access control mechanisms are absent or misconfigured, a user may be able to access resources that are intended only for higher level users. An adversary may be able to exploit this to utilize a less trusted account to gain information and perform activities reserved for more trusted accounts.",
+    "context": "extended_description",
+    "capec_id": "122",
+    "capec_name": "Privilege Abuse",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "122",
+          "Privilege Abuse"
+        ]
+      ],
+      "CWE": [
+        "269",
+        "732",
+        "1317"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1548"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 5
+  },
+  {
+    "text": "This attack differs from privilege escalation and other privilege stealing attacks in that the adversary never actually escalates their privileges but instead is able to use a lesser degree of privilege to access resources that should be (but are not) reserved for higher privilege accounts. Likewise, the adversary does not exploit trust or subvert systems - all control functionality is working as configured but the configuration does not adequately protect sensitive resources at an appropriate level.",
+    "context": "extended_description",
+    "capec_id": "122",
+    "capec_name": "Privilege Abuse",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "122",
+          "Privilege Abuse"
+        ]
+      ],
+      "CWE": [
+        "269",
+        "732",
+        "1317"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1548"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 5
+  },
+  {
+    "text": "The target must have misconfigured their access control mechanisms such that sensitive information, which should only be accessible to more trusted users, remains accessible to less trusted users.",
+    "context": "prerequisite",
+    "capec_id": "122",
+    "capec_name": "Privilege Abuse",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "122",
+          "Privilege Abuse"
+        ]
+      ],
+      "CWE": [
+        "269",
+        "732",
+        "1317"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1548"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 5
+  },
+  {
+    "text": "The adversary must have access to the target, albeit with an account that is less privileged than would be appropriate for the targeted resources.",
+    "context": "prerequisite",
+    "capec_id": "122",
+    "capec_name": "Privilege Abuse",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "122",
+          "Privilege Abuse"
+        ]
+      ],
+      "CWE": [
+        "269",
+        "732",
+        "1317"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1548"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 5
+  },
+  {
+    "text": "An adversary manipulates an application's interaction with a buffer in an attempt to read or modify data they shouldn't have access to. Buffer attacks are distinguished in that it is the buffer space itself that is the target of the attack rather than any code responsible for interpreting the content of the buffer. In virtually all buffer attacks the content that is placed in the buffer is immaterial. Instead, most buffer attacks involve retrieving or providing more input than can be stored in the allocated buffer, resulting in the reading or overwriting of other unintended program memory.",
+    "context": "description",
+    "capec_id": "123",
+    "capec_name": "Buffer Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "123",
+          "Buffer Manipulation"
+        ]
+      ],
+      "CWE": [
+        "119"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The adversary must identify a programmatic means for interacting with a buffer, such as vulnerable C code, and be able to provide input to this interaction.",
+    "context": "prerequisite",
+    "capec_id": "123",
+    "capec_name": "Buffer Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "123",
+          "Buffer Manipulation"
+        ]
+      ],
+      "CWE": [
+        "119"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An adversary exploits a resource shared between multiple applications, an application pool or hardware pin multiplexing to affect behavior. Resources may be shared between multiple applications or between multiple threads of a single application. Resource sharing is usually accomplished through mutual access to a single memory location or multiplexed hardware pins. If an adversary can manipulate this shared resource (usually by co-opting one of the applications or threads) the other applications or threads using the shared resource will often continue to trust the validity of the compromised shared resource and use it in their calculations. This can result in invalid trust assumptions, corruption of additional data through the normal operations of the other users of the shared resource, or even cause a crash or compromise of the sharing applications.",
+    "context": "description",
+    "capec_id": "124",
+    "capec_name": "Shared Resource Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "124",
+          "Shared Resource Manipulation"
+        ]
+      ],
+      "CWE": [
+        "1189",
+        "1331"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "The target applications, threads or functions must share resources between themselves.",
+    "context": "prerequisite",
+    "capec_id": "124",
+    "capec_name": "Shared Resource Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "124",
+          "Shared Resource Manipulation"
+        ]
+      ],
+      "CWE": [
+        "1189",
+        "1331"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "The adversary must be able to manipulate some piece of the shared resource either directly or indirectly and the other users of the data must accept the changed data as valid. Usually this requires that the adversary be able to compromise one of the sharing applications or threads in order to manipulate the shared data.",
+    "context": "prerequisite",
+    "capec_id": "124",
+    "capec_name": "Shared Resource Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "124",
+          "Shared Resource Manipulation"
+        ]
+      ],
+      "CWE": [
+        "1189",
+        "1331"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "An adversary consumes the resources of a target by rapidly engaging in a large number of interactions with the target. This type of attack generally exposes a weakness in rate limiting or flow. When successful this attack prevents legitimate users from accessing the service and can cause the target to crash. This attack differs from resource depletion through leaks or allocations in that the latter attacks do not rely on the volume of requests made to the target but instead focus on manipulation of the target's operations. The key factor in a flooding attack is the number of requests the adversary can make in a given period of time. The greater this number, the more likely an attack is to succeed against a given target.",
+    "context": "description",
+    "capec_id": "125",
+    "capec_name": "Flooding",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "125",
+          "Flooding"
+        ]
+      ],
+      "CWE": [
+        "404",
+        "770"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1498.001",
+        "1499"
+      ],
+      "WASC": [
+        "10"
+      ],
+      "OWASP": [
+        "Traffic flood"
+      ]
+    },
+    "entity_count": 7
+  },
+  {
+    "text": "Any target that services requests is vulnerable to this attack on some level of scale.",
+    "context": "prerequisite",
+    "capec_id": "125",
+    "capec_name": "Flooding",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "125",
+          "Flooding"
+        ]
+      ],
+      "CWE": [
+        "404",
+        "770"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1498.001",
+        "1499"
+      ],
+      "WASC": [
+        "10"
+      ],
+      "OWASP": [
+        "Traffic flood"
+      ]
+    },
+    "entity_count": 7
+  },
+  {
+    "text": "This attack pattern involves an adversary manipulating a pointer within a target application resulting in the application accessing an unintended memory location. This can result in the crashing of the application or, for certain pointer values, access to data that would not normally be possible or the execution of arbitrary code. Since pointers are simply integer variables, Integer Attacks may often be used in Pointer Attacks.",
+    "context": "description",
+    "capec_id": "129",
+    "capec_name": "Pointer Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "129",
+          "Pointer Manipulation"
+        ]
+      ],
+      "CWE": [
+        "682",
+        "822",
+        "823"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 4
+  },
+  {
+    "text": "The target application must have a pointer variable that the attacker can influence to hold an arbitrary value.",
+    "context": "prerequisite",
+    "capec_id": "129",
+    "capec_name": "Pointer Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "129",
+          "Pointer Manipulation"
+        ]
+      ],
+      "CWE": [
+        "682",
+        "822",
+        "823"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 4
+  },
+  {
+    "text": "An adversary causes the target to allocate excessive resources to servicing the attackers' request, thereby reducing the resources available for legitimate services and degrading or denying services. Usually, this attack focuses on memory allocation, but any finite resource on the target could be the attacked, including bandwidth, processing cycles, or other resources. This attack does not attempt to force this allocation through a large number of requests (that would be Resource Depletion through Flooding) but instead uses one or a small number of requests that are carefully formatted to force the target to allocate excessive resources to service this request(s). Often this attack takes advantage of a bug in the target to cause the target to allocate resources vastly beyond what would be needed for a normal request.",
+    "context": "description",
+    "capec_id": "130",
+    "capec_name": "Excessive Allocation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "130",
+          "Excessive Allocation"
+        ]
+      ],
+      "CWE": [
+        "404",
+        "770",
+        "1325"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1499.003"
+      ],
+      "WASC": [
+        "10"
+      ],
+      "OWASP": []
+    },
+    "entity_count": 6
+  },
+  {
+    "text": "The target must accept service requests from the attacker and the adversary must be able to control the resource allocation associated with this request to be in excess of the normal allocation. The latter is usually accomplished through the presence of a bug on the target that allows the adversary to manipulate variables used in the allocation.",
+    "context": "prerequisite",
+    "capec_id": "130",
+    "capec_name": "Excessive Allocation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "130",
+          "Excessive Allocation"
+        ]
+      ],
+      "CWE": [
+        "404",
+        "770",
+        "1325"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1499.003"
+      ],
+      "WASC": [
+        "10"
+      ],
+      "OWASP": []
+    },
+    "entity_count": 6
+  },
+  {
+    "text": "In an Integer Attack, the adversary could cause a variable that controls allocation for a request to hold an excessively large value. Excessive allocation of resources can render a service degraded or unavailable to legitimate users and can even lead to crashing of the target.",
+    "context": "example_instance",
+    "capec_id": "130",
+    "capec_name": "Excessive Allocation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "130",
+          "Excessive Allocation"
+        ]
+      ],
+      "CWE": [
+        "404",
+        "770",
+        "1325"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1499.003"
+      ],
+      "WASC": [
+        "10"
+      ],
+      "OWASP": []
+    },
+    "entity_count": 6
+  },
+  {
+    "text": "An adversary utilizes a resource leak on the target to deplete the quantity of the resource available to service legitimate requests.",
+    "context": "description",
+    "capec_id": "131",
+    "capec_name": "Resource Leak Exposure",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "131",
+          "Resource Leak Exposure"
+        ]
+      ],
+      "CWE": [
+        "404"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1499"
+      ],
+      "WASC": [
+        "10"
+      ],
+      "OWASP": []
+    },
+    "entity_count": 4
+  },
+  {
+    "text": "Resource leaks most often come in the form of memory leaks where memory is allocated but never released after it has served its purpose, however, theoretically, any other resource that can be reserved can be targeted if the target fails to release the reservation when the reserved resource block is no longer needed.",
+    "context": "extended_description",
+    "capec_id": "131",
+    "capec_name": "Resource Leak Exposure",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "131",
+          "Resource Leak Exposure"
+        ]
+      ],
+      "CWE": [
+        "404"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1499"
+      ],
+      "WASC": [
+        "10"
+      ],
+      "OWASP": []
+    },
+    "entity_count": 4
+  },
+  {
+    "text": "In this attack, the adversary determines what activity results in leaked resources and then triggers that activity on the target. Since some leaks may be small, this may require a large number of requests by the adversary. However, this attack differs from a flooding attack in that the rate of requests is generally not significant. This is because the lost resources due to the leak accumulate until the target is reset, usually by restarting it. Thus, a resource-poor adversary who would be unable to flood the target can still utilize this attack.",
+    "context": "extended_description",
+    "capec_id": "131",
+    "capec_name": "Resource Leak Exposure",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "131",
+          "Resource Leak Exposure"
+        ]
+      ],
+      "CWE": [
+        "404"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1499"
+      ],
+      "WASC": [
+        "10"
+      ],
+      "OWASP": []
+    },
+    "entity_count": 4
+  },
+  {
+    "text": "Resource depletion through leak differs from resource depletion through allocation in that, in the former, the adversary may not be able to control the size of each leaked allocation, but instead allows the leak to accumulate until it is large enough to affect the target's performance. When depleting resources through allocation, the allocated resource may eventually be released by the target so the attack relies on making sure that the allocation size itself is prohibitive of normal operations by the target.",
+    "context": "extended_description",
+    "capec_id": "131",
+    "capec_name": "Resource Leak Exposure",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "131",
+          "Resource Leak Exposure"
+        ]
+      ],
+      "CWE": [
+        "404"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1499"
+      ],
+      "WASC": [
+        "10"
+      ],
+      "OWASP": []
+    },
+    "entity_count": 4
+  },
+  {
+    "text": "The target must have a resource leak that the adversary can repeatedly trigger.",
+    "context": "prerequisite",
+    "capec_id": "131",
+    "capec_name": "Resource Leak Exposure",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "131",
+          "Resource Leak Exposure"
+        ]
+      ],
+      "CWE": [
+        "404"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1499"
+      ],
+      "WASC": [
+        "10"
+      ],
+      "OWASP": []
+    },
+    "entity_count": 4
+  },
+  {
+    "text": "An adversary manipulates the content of request parameters for the purpose of undermining the security of the target. Some parameter encodings use text characters as separators. For example, parameters in a HTTP GET message are encoded as name-value pairs separated by an ampersand (&). If an attacker can supply text strings that are used to fill in these parameters, then they can inject special characters used in the encoding scheme to add or modify parameters. For example, if user input is fed directly into an HTTP GET request and the user provides the value \"myInput&new_param=myValue\", then the input parameter is set to myInput, but a new parameter (new_param) is also added with a value of myValue. This can significantly change the meaning of the query that is processed by the server. Any encoding scheme where parameters are identified and separated by text characters is potentially vulnerable to this attack - the HTTP GET encoding used above is just one example.",
+    "context": "description",
+    "capec_id": "137",
+    "capec_name": "Parameter Injection",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "137",
+          "Parameter Injection"
+        ]
+      ],
+      "CWE": [
+        "88"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The target application must use a parameter encoding where separators and parameter identifiers are expressed in regular text.",
+    "context": "prerequisite",
+    "capec_id": "137",
+    "capec_name": "Parameter Injection",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "137",
+          "Parameter Injection"
+        ]
+      ],
+      "CWE": [
+        "88"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The target application must accept a string as user input, fail to sanitize characters that have a special meaning in the parameter encoding, and insert the user-supplied string in an encoding which is then processed.",
+    "context": "prerequisite",
+    "capec_id": "137",
+    "capec_name": "Parameter Injection",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "137",
+          "Parameter Injection"
+        ]
+      ],
+      "CWE": [
+        "88"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An adversary modifies content to make it contain something other than what the original content producer intended while keeping the apparent source of the content unchanged. The term content spoofing is most often used to describe modification of web pages hosted by a target to display the adversary's content instead of the owner's content. However, any content can be spoofed, including the content of email messages, file transfers, or the content of other network communication protocols. Content can be modified at the source (e.g. modifying the source file for a web page) or in transit (e.g. intercepting and modifying a message between the sender and recipient). Usually, the adversary will attempt to hide the fact that the content has been modified, but in some cases, such as with web site defacement, this is not necessary. Content Spoofing can lead to malware exposure, financial fraud (if the content governs financial transactions), privacy violations, and other unwanted outcomes.",
+    "context": "description",
+    "capec_id": "148",
+    "capec_name": "Content Spoofing",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "148",
+          "Content Spoofing"
+        ]
+      ],
+      "CWE": [
+        "345"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1491"
+      ],
+      "WASC": [
+        "12"
+      ],
+      "OWASP": [
+        "Content Spoofing"
+      ]
+    },
+    "entity_count": 5
+  },
+  {
+    "text": "The target must provide content but fail to adequately protect it against modification.The adversary must have the means to alter data to which they are not authorized. If the content is to be modified in transit, the adversary must be able to intercept the targeted messages.",
+    "context": "prerequisite",
+    "capec_id": "148",
+    "capec_name": "Content Spoofing",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "148",
+          "Content Spoofing"
+        ]
+      ],
+      "CWE": [
+        "345"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1491"
+      ],
+      "WASC": [
+        "12"
+      ],
+      "OWASP": [
+        "Content Spoofing"
+      ]
+    },
+    "entity_count": 5
+  },
+  {
+    "text": "Identity Spoofing refers to the action of assuming (i.e., taking on) the identity of some other entity (human or non-human) and then using that identity to accomplish a goal. An adversary may craft messages that appear to come from a different principle or use stolen / spoofed authentication credentials.",
+    "context": "description",
+    "capec_id": "151",
+    "capec_name": "Identity Spoofing",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "151",
+          "Identity Spoofing"
+        ]
+      ],
+      "CWE": [
+        "287"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "Alternatively, an adversary may intercept a message from a legitimate sender and attempt to make it look like the message comes from them without changing its content. The latter form of this attack can be used to hijack credentials from legitimate users. Identity Spoofing attacks need not be limited to transmitted messages - any resource that is associated with an identity (for example, a file with a signature) can be the target of an attack where the adversary attempts to change the apparent identity. This attack differs from Content Spoofing attacks where the adversary does not wish to change the apparent identity of the message but instead wishes to change what the message says. In an Identity Spoofing attack, the adversary is attempting to change the identity of the content.",
+    "context": "extended_description",
+    "capec_id": "151",
+    "capec_name": "Identity Spoofing",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "151",
+          "Identity Spoofing"
+        ]
+      ],
+      "CWE": [
+        "287"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The identity associated with the message or resource must be removable or modifiable in an undetectable way.",
+    "context": "prerequisite",
+    "capec_id": "151",
+    "capec_name": "Identity Spoofing",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "151",
+          "Identity Spoofing"
+        ]
+      ],
+      "CWE": [
+        "287"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An attacker exploits a weakness in input validation by controlling the format, structure, and composition of data to an input-processing interface. By supplying input of a non-standard or unexpected form an attacker can adversely impact the security of the target.",
+    "context": "description",
+    "capec_id": "153",
+    "capec_name": "Input Data Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "153",
+          "Input Data Manipulation"
+        ]
+      ],
+      "CWE": [
+        "20"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "For example, using a different character encoding might cause dangerous text to be treated as safe text. Alternatively, the attacker may use certain flags, such as file extensions, to make a target application believe that provided data should be handled using a certain interpreter when the data is not actually of the appropriate type. This can lead to bypassing protection mechanisms, forcing the target to use specific components for input processing, or otherwise causing the user's data to be handled differently than might otherwise be expected. This attack differs from Variable Manipulation in that Variable Manipulation attempts to subvert the target's processing through the value of the input while Input Data Manipulation seeks to control how the input is processed.",
+    "context": "extended_description",
+    "capec_id": "153",
+    "capec_name": "Input Data Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "153",
+          "Input Data Manipulation"
+        ]
+      ],
+      "CWE": [
+        "20"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The target must accept user data for processing and the manner in which this data is processed must depend on some aspect of the format or flags that the attacker can control.",
+    "context": "prerequisite",
+    "capec_id": "153",
+    "capec_name": "Input Data Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "153",
+          "Input Data Manipulation"
+        ]
+      ],
+      "CWE": [
+        "20"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An adversary deceives an application or user and convinces them to request a resource from an unintended location. By spoofing the location, the adversary can cause an alternate resource to be used, often one that the adversary controls and can be used to help them achieve their malicious goals.",
+    "context": "description",
+    "capec_id": "154",
+    "capec_name": "Resource Location Spoofing",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "154",
+          "Resource Location Spoofing"
+        ]
+      ],
+      "CWE": [
+        "451"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "None. All applications rely on file paths and therefore, in theory, they or their resources could be affected by this type of attack.",
+    "context": "prerequisite",
+    "capec_id": "154",
+    "capec_name": "Resource Location Spoofing",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "154",
+          "Resource Location Spoofing"
+        ]
+      ],
+      "CWE": [
+        "451"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An attacker exploits characteristics of the infrastructure of a network entity in order to perpetrate attacks or information gathering on network objects or effect a change in the ordinary information flow between network objects. Most often, this involves manipulation of the routing of network messages so, instead of arriving at their proper destination, they are directed towards an entity of the attackers' choosing, usually a server controlled by the attacker. The victim is often unaware that their messages are not being processed correctly. For example, a targeted client may believe they are connecting to their own bank but, in fact, be connecting to a Pharming site controlled by the attacker which then collects the user's login information in order to hijack the actual bank account.",
+    "context": "description",
+    "capec_id": "161",
+    "capec_name": "Infrastructure Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "161",
+          "Infrastructure Manipulation"
+        ]
+      ],
+      "CWE": [
+        "923"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The targeted client must access the site via infrastructure that the attacker has co-opted and must fail to adequately verify that the communication channel is operating correctly (e.g. by verifying that they are, in fact, connected to the site they intended.)",
+    "context": "prerequisite",
+    "capec_id": "161",
+    "capec_name": "Infrastructure Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "161",
+          "Infrastructure Manipulation"
+        ]
+      ],
+      "CWE": [
+        "923"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An attacker modifies file contents or attributes (such as extensions or names) of files in a manner to cause incorrect processing by an application. Attackers use this class of attacks to cause applications to enter unstable states, overwrite or expose sensitive information, and even execute arbitrary code with the application's privileges. This class of attacks differs from attacks on configuration information (even if file-based) in that file manipulation causes the file processing to result in non-standard behaviors, such as buffer overflows or use of the incorrect interpreter. Configuration attacks rely on the application interpreting files correctly in order to insert harmful configuration information. Likewise, resource location attacks rely on controlling an application's ability to locate files, whereas File Manipulation attacks do not require the application to look in a non-default location, although the two classes of attacks are often combined.",
+    "context": "description",
+    "capec_id": "165",
+    "capec_name": "File Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "165",
+          "File Manipulation"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [
+        "1036.003"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The target must use the affected file without verifying its integrity.",
+    "context": "prerequisite",
+    "capec_id": "165",
+    "capec_name": "File Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "165",
+          "File Manipulation"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [
+        "1036.003"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An adversary engages in probing and exploration activities to identify constituents and properties of the target.",
+    "context": "description",
+    "capec_id": "169",
+    "capec_name": "Footprinting",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "169",
+          "Footprinting"
+        ]
+      ],
+      "CWE": [
+        "200"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1217",
+        "1592",
+        "1595"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 5
+  },
+  {
+    "text": "Footprinting is a general term to describe a variety of information gathering techniques, often used by attackers in preparation for some attack. It consists of using tools to learn as much as possible about the composition, configuration, and security mechanisms of the targeted application, system or network. Information that might be collected during a footprinting effort could include open ports, applications and their versions, network topology, and similar information. Although similar to fingerprinting, footprinting aims to get a more holistic view of a system or network, whereas fingerprinting is more targeted to a specific application or operating system. While footprinting is not intended to be damaging (although certain activities, such as network scans, can sometimes cause disruptions to vulnerable applications inadvertently) it may often pave the way for more damaging attacks.",
+    "context": "extended_description",
+    "capec_id": "169",
+    "capec_name": "Footprinting",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "169",
+          "Footprinting"
+        ]
+      ],
+      "CWE": [
+        "200"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1217",
+        "1592",
+        "1595"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 5
+  },
+  {
+    "text": "An application must publicize identifiable information about the system or application through voluntary or involuntary means. Certain identification details of information systems are visible on communication networks (e.g., if an adversary uses a sniffer to inspect the traffic) due to their inherent structure and protocol standards. Any system or network that can be detected can be footprinted. However, some configuration choices may limit the useful information that can be collected during a footprinting attack.",
+    "context": "prerequisite",
+    "capec_id": "169",
+    "capec_name": "Footprinting",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "169",
+          "Footprinting"
+        ]
+      ],
+      "CWE": [
+        "200"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1217",
+        "1592",
+        "1595"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 5
+  },
+  {
+    "text": "In this example let us look at the website http://www.example.com to get much information we can about Alice. From the website, we find that Alice also runs foobar.org. We type in www example.com into the prompt of the Name Lookup window in a tool, and our result is this IP address: 192.173.28.130 We type the domain into the Name Lookup prompt and we are given the same IP. We can safely say that example and foobar.org are hosted on the same box. But if we were to do a reverse name lookup on the IP, which domain will come up? www.example.com or foobar.org? Neither, the result is nijasvspirates.org. So nijasvspirates.org is the name of the box hosting 31337squirrel.org and foobar.org. So now that we have the IP, let's check to see if nijasvspirates is awake. We type the IP into the prompt in the Ping window. We'll set the interval between packets to 1 millisecond. We'll set the number of seconds to wait until a ping times out to 5. We'll set the ping size to 500 bytes and we'll send ten pings. Ten packets sent and ten packets received. nijasvspirates.org returned a message to my computer within an average of 0.35 seconds for every packet sent. nijasvspirates is alive. We open the Whois window and type nijasvspirates.org into the Query prompt, and whois.networksolutions.com into the Server prompt. This means we'll be asking Network Solutions to tell us everything they know about nijasvspirates.org. The result is this laundry list of info: Registrant: FooBar (nijasvspirates -DOM) p.o.box 11111 SLC, UT 84151 US Domain Name: nijasvspirates.ORG Administrative Contact, Billing Contact: Smith, John jsmith@anonymous.net FooBar p.o.box 11111 SLC, UT 84151 555-555-6103 Technical Contact: Johnson, Ken kj@fierymonkey.org fierymonkey p.o.box 11111 SLC, UT 84151 555-555-3849 Record last updated on 17-Aug-2001. Record expires on 11-Aug-2002. Record created on 11-Aug-2000. Database last updated on 12-Dec-2001 04:06:00 EST. Domain servers in listed order: NS1. fierymonkey.ORG 192.173.28.130 NS2. fierymonkey.ORG 64.192.168.80 A corner stone of footprinting is Port Scanning. Let's port scan nijasvspirates.org and see what kind of services are running on that box. We type in the nijasvspirates IP into the Host prompt of the Port Scan window. We'll start searching from port number 1, and we'll stop at the default Sub7 port, 27374. Our results are: 21 TCP ftp 22 TCP ssh SSH-1.99-OpenSSH_2.30 25 TCP smtp 53 TCP domain 80 TCP www 110 TCP pop3 111 TCP sunrpc 113 TCP ident Just by this we know that Alice is running a website and email, using POP3, SUNRPC (SUN Remote Procedure Call), and ident.",
+    "context": "example_instance",
+    "capec_id": "169",
+    "capec_name": "Footprinting",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "169",
+          "Footprinting"
+        ]
+      ],
+      "CWE": [
+        "200"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1217",
+        "1592",
+        "1595"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 5
+  },
+  {
+    "text": "This attack pattern has been deprecated as it is a duplicate of the existing attack pattern \"CAPEC-77 : Manipulating User-Controlled Variables\". Please refer to this other CAPEC going forward.",
+    "context": "description",
+    "capec_id": "171",
+    "capec_name": "DEPRECATED: Variable Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "171",
+          "DEPRECATED: Variable Manipulation"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "An adversary is able to disguise one action for another and therefore trick a user into initiating one type of action when they intend to initiate a different action. For example, a user might be led to believe that clicking a button will submit a query, but in fact it downloads software. Adversaries may perform this attack through social means, such as by simply convincing a victim to perform the action or relying on a user's natural inclination to do so, or through technical means, such as a clickjacking attack where a user sees one interface but is actually interacting with a second, invisible, interface.",
+    "context": "description",
+    "capec_id": "173",
+    "capec_name": "Action Spoofing",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "173",
+          "Action Spoofing"
+        ]
+      ],
+      "CWE": [
+        "451"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The adversary must convince the victim into performing the decoy action.",
+    "context": "prerequisite",
+    "capec_id": "173",
+    "capec_name": "Action Spoofing",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "173",
+          "Action Spoofing"
+        ]
+      ],
+      "CWE": [
+        "451"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The adversary must have the means to control a user's interface to present them with a decoy action as well as the actual malicious action. Simple versions of this attack can be performed using web pages requiring only that the adversary be able to host (or control) content that the user visits.",
+    "context": "prerequisite",
+    "capec_id": "173",
+    "capec_name": "Action Spoofing",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "173",
+          "Action Spoofing"
+        ]
+      ],
+      "CWE": [
+        "451"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An adversary exploits a weakness on the target to force arbitrary code to be retrieved locally or from a remote location and executed. This differs from code injection in that code injection involves the direct inclusion of code while code inclusion involves the addition or replacement of a reference to a code file, which is subsequently loaded by the target and used as part of the code of some application.",
+    "context": "description",
+    "capec_id": "175",
+    "capec_name": "Code Inclusion",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "175",
+          "Code Inclusion"
+        ]
+      ],
+      "CWE": [
+        "829"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The target application must include external code/libraries that are executed when the application runs and the adversary must be able to influence the specific files that get included.",
+    "context": "prerequisite",
+    "capec_id": "175",
+    "capec_name": "Code Inclusion",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "175",
+          "Code Inclusion"
+        ]
+      ],
+      "CWE": [
+        "829"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The victim must run the targeted application, possibly using the crafted parameters that the adversary uses to identify the code to include.",
+    "context": "prerequisite",
+    "capec_id": "175",
+    "capec_name": "Code Inclusion",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "175",
+          "Code Inclusion"
+        ]
+      ],
+      "CWE": [
+        "829"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "One example of this type of attack pattern is PHP file include attacks where the parameter of an include() function is set by a variable that an attacker is able to control. The result is that arbitrary code could be loaded into the PHP application and executed.",
+    "context": "example_instance",
+    "capec_id": "175",
+    "capec_name": "Code Inclusion",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "175",
+          "Code Inclusion"
+        ]
+      ],
+      "CWE": [
+        "829"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An attacker manipulates files or settings external to a target application which affect the behavior of that application. For example, many applications use external configuration files and libraries - modification of these entities or otherwise affecting the application's ability to use them would constitute a configuration/environment manipulation attack.",
+    "context": "description",
+    "capec_id": "176",
+    "capec_name": "Configuration/Environment Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "176",
+          "Configuration/Environment Manipulation"
+        ]
+      ],
+      "CWE": [
+        "15",
+        "1233",
+        "1234",
+        "1304",
+        "1328"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": [
+        "Setting Manipulation"
+      ]
+    },
+    "entity_count": 7
+  },
+  {
+    "text": "The target application must consult external files or configuration controls to control its execution. All but the very simplest applications meet this requirement.",
+    "context": "prerequisite",
+    "capec_id": "176",
+    "capec_name": "Configuration/Environment Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "176",
+          "Configuration/Environment Manipulation"
+        ]
+      ],
+      "CWE": [
+        "15",
+        "1233",
+        "1234",
+        "1304",
+        "1328"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": [
+        "Setting Manipulation"
+      ]
+    },
+    "entity_count": 7
+  },
+  {
+    "text": "An attacker initiates a series of events designed to cause a user, program, server, or device to perform actions which undermine the integrity of software code, device data structures, or device firmware, achieving the modification of the target's integrity to achieve an insecure state.",
+    "context": "description",
+    "capec_id": "184",
+    "capec_name": "Software Integrity Attack",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "184",
+          "Software Integrity Attack"
+        ]
+      ],
+      "CWE": [
+        "494"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An adversary discovers the structure, function, and composition of an object, resource, or system by using a variety of analysis techniques to effectively determine how the analyzed entity was constructed or operates. The goal of reverse engineering is often to duplicate the function, or a part of the function, of an object in order to duplicate or \"back engineer\" some aspect of its functioning. Reverse engineering techniques can be applied to mechanical objects, electronic devices, or software, although the methodology and techniques involved in each type of analysis differ widely.",
+    "context": "description",
+    "capec_id": "188",
+    "capec_name": "Reverse Engineering",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "188",
+          "Reverse Engineering"
+        ]
+      ],
+      "CWE": [
+        "1278"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "Access to targeted system, resources, and information.",
+    "context": "prerequisite",
+    "capec_id": "188",
+    "capec_name": "Reverse Engineering",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "188",
+          "Reverse Engineering"
+        ]
+      ],
+      "CWE": [
+        "1278"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "When adversaries are reverse engineering software, methodologies fall into two broad categories, 'white box' and 'black box.' White box techniques involve methods which can be applied to a piece of software when an executable or some other compiled object can be directly subjected to analysis, revealing at least a portion of its machine instructions that can be observed upon execution. 'Black Box' methods involve interacting with the software indirectly, in the absence of the ability to measure, instrument, or analyze an executable object directly. Such analysis typically involves interacting with the software at the boundaries of where the software interfaces with a larger execution environment, such as input-output vectors, libraries, or APIs.",
+    "context": "example_instance",
+    "capec_id": "188",
+    "capec_name": "Reverse Engineering",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "188",
+          "Reverse Engineering"
+        ]
+      ],
+      "CWE": [
+        "1278"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An adversary engages in activities to decipher and/or decode protocol information for a network or application communication protocol used for transmitting information between interconnected nodes or systems on a packet-switched data network. While this type of analysis involves the analysis of a networking protocol inherently, it does not require the presence of an actual or physical network.",
+    "context": "description",
+    "capec_id": "192",
+    "capec_name": "Protocol Analysis",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "192",
+          "Protocol Analysis"
+        ]
+      ],
+      "CWE": [
+        "326"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "Although certain techniques for protocol analysis benefit from manipulating live 'on-the-wire' interactions between communicating components, static or dynamic analysis techniques applied to executables as well as to device drivers, such as network interface drivers, can also be used to reveal the function and characteristics of a communication protocol implementation. Depending upon the methods used the process may involve observing, interacting, and modifying actual communications occurring between hosts. The goal of protocol analysis is to derive the data transmission syntax, as well as to extract the meaningful content, including packet or content delimiters used by the protocol. This type of analysis is often performed on closed-specification protocols, or proprietary protocols, but is also useful for analyzing publicly available specifications to determine how particular implementations deviate from published specifications.",
+    "context": "extended_description",
+    "capec_id": "192",
+    "capec_name": "Protocol Analysis",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "192",
+          "Protocol Analysis"
+        ]
+      ],
+      "CWE": [
+        "326"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The ability to observe and interact with a communication channel between communicating processes.",
+    "context": "prerequisite",
+    "capec_id": "192",
+    "capec_name": "Protocol Analysis",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "192",
+          "Protocol Analysis"
+        ]
+      ],
+      "CWE": [
+        "326"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "",
+    "context": "description",
+    "capec_id": "21",
+    "capec_name": "Exploitation of Trusted Identifiers",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "21",
+          "Exploitation of Trusted Identifiers"
+        ]
+      ],
+      "CWE": [
+        "290",
+        "302",
+        "346",
+        "539",
+        "6",
+        "384",
+        "664",
+        "602",
+        "642"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1134",
+        "1528",
+        "1539"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 13
+  },
+  {
+    "text": "Attacks leveraging trusted identifiers typically result in the adversary laterally moving within the local network, since users are often allowed to authenticate to systems/applications within the network using the same identifier. This allows the adversary to obtain sensitive data, download/install malware on the system, pose as a legitimate user for social engineering purposes, and more.",
+    "context": "extended_description",
+    "capec_id": "21",
+    "capec_name": "Exploitation of Trusted Identifiers",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "21",
+          "Exploitation of Trusted Identifiers"
+        ]
+      ],
+      "CWE": [
+        "290",
+        "302",
+        "346",
+        "539",
+        "6",
+        "384",
+        "664",
+        "602",
+        "642"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1134",
+        "1528",
+        "1539"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 13
+  },
+  {
+    "text": "Attacks on trusted identifiers take advantage of the fact that some software accepts user input without verifying its authenticity. Many server side processes are vulnerable to these attacks because the server to server communications have not been analyzed from a security perspective or the processes \"trust\" other systems because they are behind a firewall. Similarly, servers that use easy to guess or spoofable schemes for representing digital identity can also be vulnerable. Such systems frequently use schemes without cryptography and digital signatures (or with broken cryptography). Identifiers may be guessed or obtained due to insufficient randomness, poor protection (passed/stored in the clear), lack of integrity (unsigned), or improper correlation with access control policy enforcement points. Exposed configuration and properties files that contain sensitive data may additionally provide an adversary with the information needed to obtain these identifiers. An adversary may also \"ride\" an identifier via a malicious link, as is the case in Cross Site Request Forgery (CSRF) attacks.",
+    "context": "extended_description",
+    "capec_id": "21",
+    "capec_name": "Exploitation of Trusted Identifiers",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "21",
+          "Exploitation of Trusted Identifiers"
+        ]
+      ],
+      "CWE": [
+        "290",
+        "302",
+        "346",
+        "539",
+        "6",
+        "384",
+        "664",
+        "602",
+        "642"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1134",
+        "1528",
+        "1539"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 13
+  },
+  {
+    "text": "Regardless of the attack vector, successful spoofing and impersonation of trusted credentials can lead to an adversary breaking authentication, authorization, and audit controls with the target system or application.",
+    "context": "extended_description",
+    "capec_id": "21",
+    "capec_name": "Exploitation of Trusted Identifiers",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "21",
+          "Exploitation of Trusted Identifiers"
+        ]
+      ],
+      "CWE": [
+        "290",
+        "302",
+        "346",
+        "539",
+        "6",
+        "384",
+        "664",
+        "602",
+        "642"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1134",
+        "1528",
+        "1539"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 13
+  },
+  {
+    "text": "Server software must rely on weak identifier proof and/or verification schemes.",
+    "context": "prerequisite",
+    "capec_id": "21",
+    "capec_name": "Exploitation of Trusted Identifiers",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "21",
+          "Exploitation of Trusted Identifiers"
+        ]
+      ],
+      "CWE": [
+        "290",
+        "302",
+        "346",
+        "539",
+        "6",
+        "384",
+        "664",
+        "602",
+        "642"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1134",
+        "1528",
+        "1539"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 13
+  },
+  {
+    "text": "Identifiers must have long lifetimes and potential for reusability.",
+    "context": "prerequisite",
+    "capec_id": "21",
+    "capec_name": "Exploitation of Trusted Identifiers",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "21",
+          "Exploitation of Trusted Identifiers"
+        ]
+      ],
+      "CWE": [
+        "290",
+        "302",
+        "346",
+        "539",
+        "6",
+        "384",
+        "664",
+        "602",
+        "642"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1134",
+        "1528",
+        "1539"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 13
+  },
+  {
+    "text": "Server software must allow concurrent sessions to exist.",
+    "context": "prerequisite",
+    "capec_id": "21",
+    "capec_name": "Exploitation of Trusted Identifiers",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "21",
+          "Exploitation of Trusted Identifiers"
+        ]
+      ],
+      "CWE": [
+        "290",
+        "302",
+        "346",
+        "539",
+        "6",
+        "384",
+        "664",
+        "602",
+        "642"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1134",
+        "1528",
+        "1539"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 13
+  },
+  {
+    "text": "For example, in a message queuing system that allows service requesters to post messages to its queue through an open channel (such as anonymous FTP), authorization is done through checking group or role membership contained in the posted message. However, there is no proof that the message itself, the information in the message (such group or role membership), or the process that wrote the message to the queue is authentic and authorized to do so.",
+    "context": "example_instance",
+    "capec_id": "21",
+    "capec_name": "Exploitation of Trusted Identifiers",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "21",
+          "Exploitation of Trusted Identifiers"
+        ]
+      ],
+      "CWE": [
+        "290",
+        "302",
+        "346",
+        "539",
+        "6",
+        "384",
+        "664",
+        "602",
+        "642"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1134",
+        "1528",
+        "1539"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 13
+  },
+  {
+    "text": "An adversary leverages a legitimate capability of an application in such a way as to achieve a negative technical impact. The system functionality is not altered or modified but used in a way that was not intended. This is often accomplished through the overuse of a specific functionality or by leveraging functionality with design flaws that enables the adversary to gain access to unauthorized, sensitive data.",
+    "context": "description",
+    "capec_id": "212",
+    "capec_name": "Functionality Misuse",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "212",
+          "Functionality Misuse"
+        ]
+      ],
+      "CWE": [
+        "1242",
+        "1246",
+        "1281"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 4
+  },
+  {
+    "text": "The adversary has the capability to interact with the application directly.The target system does not adequately implement safeguards to prevent misuse of authorized actions/processes.",
+    "context": "prerequisite",
+    "capec_id": "212",
+    "capec_name": "Functionality Misuse",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "212",
+          "Functionality Misuse"
+        ]
+      ],
+      "CWE": [
+        "1242",
+        "1246",
+        "1281"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 4
+  },
+  {
+    "text": "An adversary manipulates a setting or parameter on communications channel in order to compromise its security. This can result in information exposure, insertion/removal of information from the communications stream, and/or potentially system compromise.",
+    "context": "description",
+    "capec_id": "216",
+    "capec_name": "Communication Channel Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "216",
+          "Communication Channel Manipulation"
+        ]
+      ],
+      "CWE": [
+        "306"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The target application must leverage an open communications channel.",
+    "context": "prerequisite",
+    "capec_id": "216",
+    "capec_name": "Communication Channel Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "216",
+          "Communication Channel Manipulation"
+        ]
+      ],
+      "CWE": [
+        "306"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The channel on which the target communicates must be vulnerable to interception (e.g., adversary in the middle attack - CAPEC-94).",
+    "context": "prerequisite",
+    "capec_id": "216",
+    "capec_name": "Communication Channel Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "216",
+          "Communication Channel Manipulation"
+        ]
+      ],
+      "CWE": [
+        "306"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An attack of this type exploits vulnerabilities in client/server communication channel authentication and data integrity. It leverages the implicit trust a server places in the client, or more importantly, that which the server believes is the client. An attacker executes this type of attack by communicating directly with the server where the server believes it is communicating only with a valid client. There are numerous variations of this type of attack.",
+    "context": "description",
+    "capec_id": "22",
+    "capec_name": "Exploiting Trust in Client",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "22",
+          "Exploiting Trust in Client"
+        ]
+      ],
+      "CWE": [
+        "290",
+        "287",
+        "20",
+        "200",
+        "693"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 6
+  },
+  {
+    "text": "Server software must rely on client side formatted and validated values, and not reinforce these checks on the server side.",
+    "context": "prerequisite",
+    "capec_id": "22",
+    "capec_name": "Exploiting Trust in Client",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "22",
+          "Exploiting Trust in Client"
+        ]
+      ],
+      "CWE": [
+        "290",
+        "287",
+        "20",
+        "200",
+        "693"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 6
+  },
+  {
+    "text": "Web applications may use JavaScript to perform client side validation, request encoding/formatting, and other security functions, which provides some usability benefits and eliminates some client-server round-tripping. However, the web server cannot assume that the requests it receives have been subject to those validations, because an attacker can use an alternate method for crafting the HTTP Request and submit data that contains poisoned values designed to spoof a user and/or get the web server to disclose information.",
+    "context": "example_instance",
+    "capec_id": "22",
+    "capec_name": "Exploiting Trust in Client",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "22",
+          "Exploiting Trust in Client"
+        ]
+      ],
+      "CWE": [
+        "290",
+        "287",
+        "20",
+        "200",
+        "693"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 6
+  },
+  {
+    "text": "Web 2.0 style applications may be particularly vulnerable because they in large part rely on existing infrastructure which provides scalability without the ability to govern the clients. Attackers identify vulnerabilities that either assume the client side is responsible for some security services (without the requisite ability to ensure enforcement of these checks) and/or the lack of a hardened, default deny server configuration that allows for an attacker probing for weaknesses in unexpected ways. Client side validation, request formatting and other services may be performed, but these are strictly usability enhancements not security enhancements.",
+    "context": "example_instance",
+    "capec_id": "22",
+    "capec_name": "Exploiting Trust in Client",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "22",
+          "Exploiting Trust in Client"
+        ]
+      ],
+      "CWE": [
+        "290",
+        "287",
+        "20",
+        "200",
+        "693"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 6
+  },
+  {
+    "text": "Many web applications use client side scripting like JavaScript to enforce authentication, authorization, session state and other variables, but at the end of day they all make requests to the server. These client side checks may provide usability and performance gains, but they lack integrity in terms of the http request. It is possible for an attacker to post variables directly to the server without using any of the client script security checks and customize the patterns to impersonate other users or probe for more information.",
+    "context": "example_instance",
+    "capec_id": "22",
+    "capec_name": "Exploiting Trust in Client",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "22",
+          "Exploiting Trust in Client"
+        ]
+      ],
+      "CWE": [
+        "290",
+        "287",
+        "20",
+        "200",
+        "693"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 6
+  },
+  {
+    "text": "Many message oriented middleware systems like MQ Series are rely on information that is passed along with the message request for making authorization decisions, for example what group or role the request should be passed. However, if the message server does not or cannot authenticate the authorization information in the request then the server's policy decisions about authorization are trivial to subvert because the client process can simply elevate privilege by passing in elevated group or role information which the message server accepts and acts on.",
+    "context": "example_instance",
+    "capec_id": "22",
+    "capec_name": "Exploiting Trust in Client",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "22",
+          "Exploiting Trust in Client"
+        ]
+      ],
+      "CWE": [
+        "290",
+        "287",
+        "20",
+        "200",
+        "693"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 6
+  },
+  {
+    "text": "An adversary compares output from a target system to known indicators that uniquely identify specific details about the target. Most commonly, fingerprinting is done to determine operating system and application versions. Fingerprinting can be done passively as well as actively. Fingerprinting by itself is not usually detrimental to the target. However, the information gathered through fingerprinting often enables an adversary to discover existing weaknesses in the target.",
+    "context": "description",
+    "capec_id": "224",
+    "capec_name": "Fingerprinting",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "224",
+          "Fingerprinting"
+        ]
+      ],
+      "CWE": [
+        "200"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [
+        "45"
+      ],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "A means by which to interact with the target system directly.",
+    "context": "prerequisite",
+    "capec_id": "224",
+    "capec_name": "Fingerprinting",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "224",
+          "Fingerprinting"
+        ]
+      ],
+      "CWE": [
+        "200"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [
+        "45"
+      ],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "An adversary attempts to deny legitimate users access to a resource by continually engaging a specific resource in an attempt to keep the resource tied up as long as possible. The adversary's primary goal is not to crash or flood the target, which would alert defenders; rather it is to repeatedly perform actions or abuse algorithmic flaws such that a given resource is tied up and not available to a legitimate user. By carefully crafting a requests that keep the resource engaged through what is seemingly benign requests, legitimate users are limited or completely denied access to the resource.",
+    "context": "description",
+    "capec_id": "227",
+    "capec_name": "Sustained Client Engagement",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "227",
+          "Sustained Client Engagement"
+        ]
+      ],
+      "CWE": [
+        "400"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1499"
+      ],
+      "WASC": [
+        "10"
+      ],
+      "OWASP": []
+    },
+    "entity_count": 4
+  },
+  {
+    "text": "The degree to which the attack is successful depends upon the adversary's ability to sustain resource requests over time with a volume that exceeds the normal usage by legitimate users, as well as other mitigating circumstances such as the target's ability to shift load or acquire additional resources to deal with the depletion. This attack differs from a flooding attack as it is not entirely dependent upon large volumes of requests, and it differs from resource leak exposures which tend to exploit the surrounding environment needed for the resource to function. The key factor in a sustainment attack are the repeated requests that take longer to process than usual.",
+    "context": "extended_description",
+    "capec_id": "227",
+    "capec_name": "Sustained Client Engagement",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "227",
+          "Sustained Client Engagement"
+        ]
+      ],
+      "CWE": [
+        "400"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1499"
+      ],
+      "WASC": [
+        "10"
+      ],
+      "OWASP": []
+    },
+    "entity_count": 4
+  },
+  {
+    "text": "This pattern of attack requires a temporal aspect to the servicing of a given request. Success can be achieved if the adversary can make requests that collectively take more time to complete than legitimate user requests within the same time frame.",
+    "context": "prerequisite",
+    "capec_id": "227",
+    "capec_name": "Sustained Client Engagement",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "227",
+          "Sustained Client Engagement"
+        ]
+      ],
+      "CWE": [
+        "400"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1499"
+      ],
+      "WASC": [
+        "10"
+      ],
+      "OWASP": []
+    },
+    "entity_count": 4
+  },
+  {
+    "text": "An adversary exploits a weakness enabling them to elevate their privilege and perform an action that they are not supposed to be authorized to perform.",
+    "context": "description",
+    "capec_id": "233",
+    "capec_name": "Privilege Escalation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "233",
+          "Privilege Escalation"
+        ]
+      ],
+      "CWE": [
+        "269",
+        "1264",
+        "1311"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1548"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 5
+  },
+  {
+    "text": "An adversary exploits weaknesses in input validation by manipulating resource identifiers enabling the unintended modification or specification of a resource.",
+    "context": "description",
+    "capec_id": "240",
+    "capec_name": "Resource Injection",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "240",
+          "Resource Injection"
+        ]
+      ],
+      "CWE": [
+        "99"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": [
+        "Resource Injection"
+      ]
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "The target application allows the user to both specify the identifier used to access a system resource. Through this permission, the user gains the capability to perform actions on that resource (e.g., overwrite the file)",
+    "context": "prerequisite",
+    "capec_id": "240",
+    "capec_name": "Resource Injection",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "240",
+          "Resource Injection"
+        ]
+      ],
+      "CWE": [
+        "99"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": [
+        "Resource Injection"
+      ]
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "This attack pattern has been deprecated as it is a duplicate of the existing attack pattern \"CAPEC-242 : Code Injection\". Please refer to this other CAPEC going forward.",
+    "context": "description",
+    "capec_id": "241",
+    "capec_name": "DEPRECATED: Code Injection",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "241",
+          "DEPRECATED: Code Injection"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "An adversary exploits a weakness in input validation on the target to inject new code into that which is currently executing. This differs from code inclusion in that code inclusion involves the addition or replacement of a reference to a code file, which is subsequently loaded by the target and used as part of the code of some application.",
+    "context": "description",
+    "capec_id": "242",
+    "capec_name": "Code Injection",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "242",
+          "Code Injection"
+        ]
+      ],
+      "CWE": [
+        "94"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": [
+        "Code Injection"
+      ]
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "The target software does not validate user-controlled input such that the execution of a process may be altered by sending code in through legitimate data channels, using no other mechanism.",
+    "context": "prerequisite",
+    "capec_id": "242",
+    "capec_name": "Code Injection",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "242",
+          "Code Injection"
+        ]
+      ],
+      "CWE": [
+        "94"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": [
+        "Code Injection"
+      ]
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "An adversary looking to execute a command of their choosing, injects new items into an existing command thus modifying interpretation away from what was intended. Commands in this context are often standalone strings that are interpreted by a downstream component and cause specific responses. This type of attack is possible when untrusted values are used to build these command strings. Weaknesses in input validation or command construction can enable the attack and lead to successful exploitation.",
+    "context": "description",
+    "capec_id": "248",
+    "capec_name": "Command Injection",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "248",
+          "Command Injection"
+        ]
+      ],
+      "CWE": [
+        "77"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": [
+        "Command Injection"
+      ]
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "The target application must accept input from the user and then use this input in the construction of commands to be executed. In virtually all cases, this is some form of string input that is concatenated to a constant string defined by the application to form the full command to be executed.",
+    "context": "prerequisite",
+    "capec_id": "248",
+    "capec_name": "Command Injection",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "248",
+          "Command Injection"
+        ]
+      ],
+      "CWE": [
+        "77"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": [
+        "Command Injection"
+      ]
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "The adversary triggers and exploits a deadlock condition in the target software to cause a denial of service. A deadlock can occur when two or more competing actions are waiting for each other to finish, and thus neither ever does. Deadlock conditions can be difficult to detect.",
+    "context": "description",
+    "capec_id": "25",
+    "capec_name": "Forced Deadlock",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "25",
+          "Forced Deadlock"
+        ]
+      ],
+      "CWE": [
+        "412",
+        "567",
+        "662",
+        "667",
+        "833",
+        "1322"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1499.004"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 8
+  },
+  {
+    "text": "The target host has a deadlock condition. There are four conditions for a deadlock to occur, known as the Coffman conditions. [REF-101]",
+    "context": "prerequisite",
+    "capec_id": "25",
+    "capec_name": "Forced Deadlock",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "25",
+          "Forced Deadlock"
+        ]
+      ],
+      "CWE": [
+        "412",
+        "567",
+        "662",
+        "667",
+        "833",
+        "1322"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1499.004"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 8
+  },
+  {
+    "text": "The target host exposes an API to the user.",
+    "context": "prerequisite",
+    "capec_id": "25",
+    "capec_name": "Forced Deadlock",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "25",
+          "Forced Deadlock"
+        ]
+      ],
+      "CWE": [
+        "412",
+        "567",
+        "662",
+        "667",
+        "833",
+        "1322"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1499.004"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 8
+  },
+  {
+    "text": "An example of a deadlock which may occur in database products is the following. Client applications using the database may require exclusive access to a table, and in order to gain exclusive access they ask for a lock. If one client application holds a lock on a table and attempts to obtain the lock on a second table that is already held by a second client application, this may lead to deadlock if the second application then attempts to obtain the lock that is held by the first application (Source: Wikipedia, http://en.wikipedia.org/wiki/Deadlock)",
+    "context": "example_instance",
+    "capec_id": "25",
+    "capec_name": "Forced Deadlock",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "25",
+          "Forced Deadlock"
+        ]
+      ],
+      "CWE": [
+        "412",
+        "567",
+        "662",
+        "667",
+        "833",
+        "1322"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1499.004"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 8
+  },
+  {
+    "text": "This attack pattern has been deprecated as it was deemed not to be a legitimate attack pattern.",
+    "context": "description",
+    "capec_id": "257",
+    "capec_name": "DEPRECATED: Abuse of Transaction Data Structure",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "257",
+          "DEPRECATED: Abuse of Transaction Data Structure"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "The adversary targets a race condition occurring when multiple processes access and manipulate the same resource concurrently, and the outcome of the execution depends on the particular order in which the access takes place. The adversary can leverage a race condition by \"running the race\", modifying the resource and modifying the normal execution flow. For instance, a race condition can occur while accessing a file: the adversary can trick the system by replacing the original file with their version and cause the system to read the malicious file.",
+    "context": "description",
+    "capec_id": "26",
+    "capec_name": "Leveraging Race Conditions",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "26",
+          "Leveraging Race Conditions"
+        ]
+      ],
+      "CWE": [
+        "368",
+        "363",
+        "366",
+        "370",
+        "362",
+        "662",
+        "689",
+        "667",
+        "665",
+        "1223",
+        "1254",
+        "1298"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 13
+  },
+  {
+    "text": "A resource is accessed/modified concurrently by multiple processes such that a race condition exists.",
+    "context": "prerequisite",
+    "capec_id": "26",
+    "capec_name": "Leveraging Race Conditions",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "26",
+          "Leveraging Race Conditions"
+        ]
+      ],
+      "CWE": [
+        "368",
+        "363",
+        "366",
+        "370",
+        "362",
+        "662",
+        "689",
+        "667",
+        "665",
+        "1223",
+        "1254",
+        "1298"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 13
+  },
+  {
+    "text": "The adversary has the ability to modify the resource.",
+    "context": "prerequisite",
+    "capec_id": "26",
+    "capec_name": "Leveraging Race Conditions",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "26",
+          "Leveraging Race Conditions"
+        ]
+      ],
+      "CWE": [
+        "368",
+        "363",
+        "366",
+        "370",
+        "362",
+        "662",
+        "689",
+        "667",
+        "665",
+        "1223",
+        "1254",
+        "1298"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 13
+  },
+  {
+    "text": "The Net Direct client for Linux before 6.0.5 in Nortel Application Switch 2424, VPN 3050 and 3070, and SSL VPN Module 1000 extracts and executes files with insecure permissions, which allows local users to exploit a race condition to replace a world-writable file in /tmp/NetClient and cause another user to execute arbitrary code when attempting to execute this client, as demonstrated by replacing /tmp/NetClient/client. See also: CVE-2007-1057",
+    "context": "example_instance",
+    "capec_id": "26",
+    "capec_name": "Leveraging Race Conditions",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "26",
+          "Leveraging Race Conditions"
+        ]
+      ],
+      "CWE": [
+        "368",
+        "363",
+        "366",
+        "370",
+        "362",
+        "662",
+        "689",
+        "667",
+        "665",
+        "1223",
+        "1254",
+        "1298"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 13
+  },
+  {
+    "text": "This attack pattern has been deprecated as it is a duplicate of the existing attack pattern \"CAPEC-13 : Subverting Environment Variable Values\". Please refer to this other CAPEC going forward.",
+    "context": "description",
+    "capec_id": "264",
+    "capec_name": "DEPRECATED: Environment Variable Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "264",
+          "DEPRECATED: Environment Variable Manipulation"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "This attack pattern has been deprecated as it is a duplicate of the existing attack pattern \"CAPEC-77 : Manipulating User-Controlled Variables\". Please refer to this other CAPEC going forward.",
+    "context": "description",
+    "capec_id": "265",
+    "capec_name": "DEPRECATED: Global variable manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "265",
+          "DEPRECATED: Global variable manipulation"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "This attack pattern has been deprecated.",
+    "context": "description",
+    "capec_id": "266",
+    "capec_name": "DEPRECATED: Manipulate Canonicalization",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "266",
+          "DEPRECATED: Manipulate Canonicalization"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "This pattern has been deprecated as it was determined to be a duplicate of another pattern. Please refer to the pattern CAPEC-203 : Manipulate Application Registry Values going forward.",
+    "context": "description",
+    "capec_id": "269",
+    "capec_name": "DEPRECATED: Registry Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "269",
+          "DEPRECATED: Registry Manipulation"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "An adversary subverts a communications protocol to perform an attack. This type of attack can allow an adversary to impersonate others, discover sensitive information, control the outcome of a session, or perform other attacks. This type of attack targets invalid assumptions that may be inherent in implementers of the protocol, incorrect implementations of the protocol, or vulnerabilities in the protocol itself.",
+    "context": "description",
+    "capec_id": "272",
+    "capec_name": "Protocol Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "272",
+          "Protocol Manipulation"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "The protocol or implementations thereof must contain bugs that an adversary can exploit.",
+    "context": "prerequisite",
+    "capec_id": "272",
+    "capec_name": "Protocol Manipulation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "272",
+          "Protocol Manipulation"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "In this attack pattern, the adversary leverages fuzzing to try to identify weaknesses in the system. Fuzzing is a software security and functionality testing method that feeds randomly constructed input to the system and looks for an indication that a failure in response to that input has occurred. Fuzzing treats the system as a black box and is totally free from any preconceptions or assumptions about the system. Fuzzing can help an attacker discover certain assumptions made about user input in the system. Fuzzing gives an attacker a quick way of potentially uncovering some of these assumptions despite not necessarily knowing anything about the internals of the system. These assumptions can then be turned against the system by specially crafting user input that may allow an attacker to achieve their goals.",
+    "context": "description",
+    "capec_id": "28",
+    "capec_name": "Fuzzing",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "28",
+          "Fuzzing"
+        ]
+      ],
+      "CWE": [
+        "74",
+        "20"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "A fuzz test reveals that when data length for a particular field exceeds certain length, the input validation filter fails and lets the user data in unfiltered. This provides an attacker with an injection vector to deliver the malicious payload into the system.",
+    "context": "example_instance",
+    "capec_id": "28",
+    "capec_name": "Fuzzing",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "28",
+          "Fuzzing"
+        ]
+      ],
+      "CWE": [
+        "74",
+        "20"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "This attack pattern has been deprecated as it is a duplicate of the existing attack pattern \"CAPEC-285\". Please refer to this other CAPEC going forward.",
+    "context": "description",
+    "capec_id": "288",
+    "capec_name": "DEPRECATED: ICMP Echo Request Ping",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "288",
+          "DEPRECATED: ICMP Echo Request Ping"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "This attack pattern has been deprecated as it was determined to be an unnecessary layer of abstraction. Please refer to the meta level pattern CAPEC-169 : going forward, or to any of its children patterns.",
+    "context": "description",
+    "capec_id": "289",
+    "capec_name": "DEPRECATED: Infrastructure-based footprinting",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "289",
+          "DEPRECATED: Infrastructure-based footprinting"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "Facilities often used layered models for physical security such as traditional locks, Electronic-based card entry systems, coupled with physical alarms. Hardware security mechanisms range from the use of computer case and cable locks as well as RFID tags for tracking computer assets. This layered approach makes it difficult for random physical security breaches to go unnoticed, but is less effective at stopping deliberate and carefully planned break-ins. Avoiding detection begins with evading building security and surveillance and methods for bypassing the electronic or physical locks which secure entry points.",
+    "context": "description",
+    "capec_id": "390",
+    "capec_name": "Bypassing Physical Security",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "390",
+          "Bypassing Physical Security"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "This attack pattern has been deprecated as it was deemed not to be a legitimate attack pattern. Please refer to CAPEC-118 : Collect and Analyze Information.",
+    "context": "description",
+    "capec_id": "404",
+    "capec_name": "DEPRECATED: Social Information Gathering Attacks",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "404",
+          "DEPRECATED: Social Information Gathering Attacks"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "This attack pattern has been deprecated as it was deemed not to be a legitimate attack pattern. Please refer to CAPEC-118 : Collect and Analyze Information.",
+    "context": "description",
+    "capec_id": "405",
+    "capec_name": "DEPRECATED: Social Information Gathering via Research",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "405",
+          "DEPRECATED: Social Information Gathering via Research"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "This attack pattern has been deprecated as it was deemed not to be a legitimate attack pattern. Please refer to CAPEC-118 : Collect and Analyze Information.",
+    "context": "description",
+    "capec_id": "408",
+    "capec_name": "DEPRECATED: Information Gathering from Traditional Sources",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "408",
+          "DEPRECATED: Information Gathering from Traditional Sources"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "This attack pattern has been deprecated as it was deemed not to be a legitimate attack pattern. Please refer to CAPEC-118 : Collect and Analyze Information.",
+    "context": "description",
+    "capec_id": "409",
+    "capec_name": "DEPRECATED: Information Gathering from Non-Traditional Sources",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "409",
+          "DEPRECATED: Information Gathering from Non-Traditional Sources"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "An adversary engages an individual using any combination of social engineering methods for the purpose of extracting information. Accurate contextual and environmental queues, such as knowing important information about the target company or individual can greatly increase the success of the attack and the quality of information gathered. Authentic mimicry combined with detailed knowledge increases the success of elicitation attacks.",
+    "context": "description",
+    "capec_id": "410",
+    "capec_name": "Information Elicitation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "410",
+          "Information Elicitation"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "This attack pattern has been deprecated as it is a duplicate of the existing attack pattern \"CAPEC-407 : Social Information Gathering via Pretexting\". Please refer to this other CAPEC going forward.",
+    "context": "description",
+    "capec_id": "411",
+    "capec_name": "DEPRECATED: Pretexting",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "411",
+          "DEPRECATED: Pretexting"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "An adversary exploits inherent human psychological predisposition to influence a targeted individual or group to solicit information or manipulate the target into performing an action that serves the adversary's interests. Many interpersonal social engineering techniques do not involve outright deception, although they can; many are subtle ways of manipulating a target to remove barriers, make the target feel comfortable, and produce an exchange in which the target is either more likely to share information directly, or let key information slip out unintentionally. A skilled adversary uses these techniques when appropriate to produce the desired outcome. Manipulation techniques vary from the overt, such as pretending to be a supervisor to a help desk, to the subtle, such as making the target feel comfortable with the adversary's speech and thought patterns.",
+    "context": "description",
+    "capec_id": "416",
+    "capec_name": "Manipulate Human Behavior",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "416",
+          "Manipulate Human Behavior"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "The adversary must have the means and knowledge of how to communicate with the target in some manner.",
+    "context": "prerequisite",
+    "capec_id": "416",
+    "capec_name": "Manipulate Human Behavior",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "416",
+          "Manipulate Human Behavior"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "This attack pattern has been deprecated as it was deemed not to be a legitimate pattern.",
+    "context": "description",
+    "capec_id": "419",
+    "capec_name": "DEPRECATED: Target Influence via Perception of Concession",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "419",
+          "DEPRECATED: Target Influence via Perception of Concession"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "An attacker modifies a technology, product, or component during a stage in its manufacture for the purpose of carrying out an attack against some entity involved in the supply chain lifecycle. There are an almost limitless number of ways an attacker can modify a technology when they are involved in its manufacture, as the attacker has potential inroads to the software composition, hardware design and assembly, firmware, or basic design mechanics. Additionally, manufacturing of key components is often outsourced with the final product assembled by the primary manufacturer. The greatest risk, however, is deliberate manipulation of design specifications to produce malicious hardware or devices. There are billions of transistors in a single integrated circuit and studies have shown that fewer than 10 transistors are required to create malicious functionality.",
+    "context": "description",
+    "capec_id": "438",
+    "capec_name": "Modification During Manufacture",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "438",
+          "Modification During Manufacture"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [
+        "1195"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An attacker undermines the integrity of a product, software, or technology at some stage of the distribution channel. The core threat of modification or manipulation during distribution arise from the many stages of distribution, as a product may traverse multiple suppliers and integrators as the final asset is delivered. Components and services provided from a manufacturer to a supplier may be tampered with during integration or packaging.",
+    "context": "description",
+    "capec_id": "439",
+    "capec_name": "Manipulation During Distribution",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "439",
+          "Manipulation During Distribution"
+        ]
+      ],
+      "CWE": [
+        "1269"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1195"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "A malicious OEM provider, or OEM provider employee or contractor, may install software, or modify existing code, during distribution.",
+    "context": "example_instance",
+    "capec_id": "439",
+    "capec_name": "Manipulation During Distribution",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "439",
+          "Manipulation During Distribution"
+        ]
+      ],
+      "CWE": [
+        "1269"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1195"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "External contractors involved in the packaging or testing of products or components may install software, or modify existing code, during distribution.",
+    "context": "example_instance",
+    "capec_id": "439",
+    "capec_name": "Manipulation During Distribution",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "439",
+          "Manipulation During Distribution"
+        ]
+      ],
+      "CWE": [
+        "1269"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1195"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "An adversary exploits a weakness in the system maintenance process and causes a change to be made to a technology, product, component, or sub-component or a new one installed during its deployed use at the victim location for the purpose of carrying out an attack.",
+    "context": "description",
+    "capec_id": "440",
+    "capec_name": "Hardware Integrity Attack",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "440",
+          "Hardware Integrity Attack"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [
+        "1195.003",
+        "1200"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "Influence over the deployed system at a victim location.",
+    "context": "prerequisite",
+    "capec_id": "440",
+    "capec_name": "Hardware Integrity Attack",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "440",
+          "Hardware Integrity Attack"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [
+        "1195.003",
+        "1200"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "An adversary installs or adds malicious logic (also known as malware) into a seemingly benign component of a fielded system. This logic is often hidden from the user of the system and works behind the scenes to achieve negative impacts. With the proliferation of mass digital storage and inexpensive multimedia devices, Bluetooth and 802.11 support, new attack vectors for spreading malware are emerging for things we once thought of as innocuous greeting cards, picture frames, or digital projectors. This pattern of attack focuses on systems already fielded and used in operation as opposed to systems and their components that are still under development and part of the supply chain.",
+    "context": "description",
+    "capec_id": "441",
+    "capec_name": "Malicious Logic Insertion",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "441",
+          "Malicious Logic Insertion"
+        ]
+      ],
+      "CWE": [
+        "284"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "Access to the component currently deployed at a victim location.",
+    "context": "prerequisite",
+    "capec_id": "441",
+    "capec_name": "Malicious Logic Insertion",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "441",
+          "Malicious Logic Insertion"
+        ]
+      ],
+      "CWE": [
+        "284"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An adversary gains physical access to a system or device through theft of the item. Possession of a system or device enables a number of unique attacks to be executed and often provides the adversary with an extended timeframe for which to perform an attack. Most protections put in place to secure sensitive information can be defeated when an adversary has physical access and enough time.",
+    "context": "description",
+    "capec_id": "507",
+    "capec_name": "Physical Theft",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "507",
+          "Physical Theft"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "This type of attack requires the existence of a physical target that an adversary believes hosts something of value.",
+    "context": "prerequisite",
+    "capec_id": "507",
+    "capec_name": "Physical Theft",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "507",
+          "Physical Theft"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "An adversary contaminates organizational information systems (including devices and networks) by causing them to handle information of a classification/sensitivity for which they have not been authorized. When this happens, the contaminated information system, device, or network must be brought offline to investigate and mitigate the data spill, which denies availability of the system until the investigation is complete.",
+    "context": "description",
+    "capec_id": "548",
+    "capec_name": "Contaminate Resource",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "548",
+          "Contaminate Resource"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "The adversary needs to have real or fake classified/sensitive information to place on a system",
+    "context": "prerequisite",
+    "capec_id": "548",
+    "capec_name": "Contaminate Resource",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "548",
+          "Contaminate Resource"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "An adversary installs and executes malicious code on the target system in an effort to achieve a negative technical impact. Examples include rootkits, ransomware, spyware, adware, and others.",
+    "context": "description",
+    "capec_id": "549",
+    "capec_name": "Local Execution of Code",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "549",
+          "Local Execution of Code"
+        ]
+      ],
+      "CWE": [
+        "829"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "Knowledge of the target system's vulnerabilities that can be capitalized on with malicious code.The adversary must be able to place the malicious code on the target system.",
+    "context": "prerequisite",
+    "capec_id": "549",
+    "capec_name": "Local Execution of Code",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "549",
+          "Local Execution of Code"
+        ]
+      ],
+      "CWE": [
+        "829"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "BlueBorne refers to a set of nine vulnerabilities on different platforms (Linux, Windows, Android, iOS) that offer an adversary the ability to install and execute malicious code on a system if they were close in proximity to a Bluetooth enabled device. One vulnerability affecting iOS versions 7 through 9 allowed an attacker to overflow the Low Energy Audio Protocol since commands sent over this protocol are improperly validated and gain the elevated permissions of the Bluetooth stack. These vulnerabilities were a result of poor validation and were patched shortly after their exposure in 2017, but many non-updated devices remain vulnerable.",
+    "context": "example_instance",
+    "capec_id": "549",
+    "capec_name": "Local Execution of Code",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "549",
+          "Local Execution of Code"
+        ]
+      ],
+      "CWE": [
+        "829"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An adversary attacks a system by bypassing some or all functionality intended to protect it. Often, a system user will think that protection is in place, but the functionality behind those protections has been disabled by the adversary.",
+    "context": "description",
+    "capec_id": "554",
+    "capec_name": "Functionality Bypass",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "554",
+          "Functionality Bypass"
+        ]
+      ],
+      "CWE": [
+        "424",
+        "1299"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 3
+  },
+  {
+    "text": "",
+    "context": "description",
+    "capec_id": "560",
+    "capec_name": "Use of Known Domain Credentials",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "560",
+          "Use of Known Domain Credentials"
+        ]
+      ],
+      "CWE": [
+        "522",
+        "307",
+        "308",
+        "309",
+        "262",
+        "263",
+        "654",
+        "1273"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1078"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 10
+  },
+  {
+    "text": "Attacks leveraging trusted credentials typically result in the adversary laterally moving within the local network, since users are often allowed to login to systems/applications within the network using the same password. This further allows the adversary to obtain sensitive data, download/install malware on the system, pose as a legitimate user for social engineering purposes, and more.",
+    "context": "extended_description",
+    "capec_id": "560",
+    "capec_name": "Use of Known Domain Credentials",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "560",
+          "Use of Known Domain Credentials"
+        ]
+      ],
+      "CWE": [
+        "522",
+        "307",
+        "308",
+        "309",
+        "262",
+        "263",
+        "654",
+        "1273"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1078"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 10
+  },
+  {
+    "text": "Attacks on known passwords generally rely on the primary fact that users often reuse the same username/password combination for a variety of systems, applications, and services, coupled with poor password policies on the target system or application. Adversaries can also utilize known passwords to target Single Sign On (SSO) or cloud-based applications and services, which often don't verify the authenticity of the user's input. Known credentials are usually obtained by an adversary via a system/application breach and/or by purchasing dumps of credentials on the dark web. These credentials may be further gleaned via exposed configuration and properties files that contain system passwords, database connection strings, and other sensitive data.",
+    "context": "extended_description",
+    "capec_id": "560",
+    "capec_name": "Use of Known Domain Credentials",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "560",
+          "Use of Known Domain Credentials"
+        ]
+      ],
+      "CWE": [
+        "522",
+        "307",
+        "308",
+        "309",
+        "262",
+        "263",
+        "654",
+        "1273"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1078"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 10
+  },
+  {
+    "text": "The system/application uses one factor password based authentication, SSO, and/or cloud-based authentication.",
+    "context": "prerequisite",
+    "capec_id": "560",
+    "capec_name": "Use of Known Domain Credentials",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "560",
+          "Use of Known Domain Credentials"
+        ]
+      ],
+      "CWE": [
+        "522",
+        "307",
+        "308",
+        "309",
+        "262",
+        "263",
+        "654",
+        "1273"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1078"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 10
+  },
+  {
+    "text": "The system/application does not have a sound password policy that is being enforced.",
+    "context": "prerequisite",
+    "capec_id": "560",
+    "capec_name": "Use of Known Domain Credentials",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "560",
+          "Use of Known Domain Credentials"
+        ]
+      ],
+      "CWE": [
+        "522",
+        "307",
+        "308",
+        "309",
+        "262",
+        "263",
+        "654",
+        "1273"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1078"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 10
+  },
+  {
+    "text": "The system/application does not implement an effective password throttling mechanism.",
+    "context": "prerequisite",
+    "capec_id": "560",
+    "capec_name": "Use of Known Domain Credentials",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "560",
+          "Use of Known Domain Credentials"
+        ]
+      ],
+      "CWE": [
+        "522",
+        "307",
+        "308",
+        "309",
+        "262",
+        "263",
+        "654",
+        "1273"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1078"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 10
+  },
+  {
+    "text": "The adversary possesses a list of known user accounts and corresponding passwords that may exist on the target.",
+    "context": "prerequisite",
+    "capec_id": "560",
+    "capec_name": "Use of Known Domain Credentials",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "560",
+          "Use of Known Domain Credentials"
+        ]
+      ],
+      "CWE": [
+        "522",
+        "307",
+        "308",
+        "309",
+        "262",
+        "263",
+        "654",
+        "1273"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1078"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 10
+  },
+  {
+    "text": "Throughout 2015 and 2016, APT28 \u2014 also known as Pawn Storm, Sednit, Fancy Bear, Sofacy, and STRONTIUM \u2014 leveraged stolen credentials to infiltrate the Democratic National Committee (DNC), the United States Army, the World Anti-Doping Agency (WADA), the Court of Arbitration for Sport (TAS-CAS), and more. In most cases, the legitimate credentials were obtained via calculated spearphishing, tabnabbing, and DNS attacks targeted at corporate webmail systems. APT28 also executed several watering hole attacks, in addition to exploiting several zero-day vulnerabilities within Flash and Windows. The stolen credentials were then utilized to maintain authenticated access, laterally move within the local network, and exfiltrate sensitive information including DNC emails and personal medical records of numerous athletes. [REF-571]",
+    "context": "example_instance",
+    "capec_id": "560",
+    "capec_name": "Use of Known Domain Credentials",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "560",
+          "Use of Known Domain Credentials"
+        ]
+      ],
+      "CWE": [
+        "522",
+        "307",
+        "308",
+        "309",
+        "262",
+        "263",
+        "654",
+        "1273"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1078"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 10
+  },
+  {
+    "text": "In early 2019, FIN6 exploited stolen credentials from an organization within the engineering industry to laterally move within an environment via the Windows\u2019 Remote Desktop Protocol (RDP). Multiple servers were subsequently infected with malware to create malware distribution servers, which were used to distribute the LockerGoga ransomware. [REF-573]",
+    "context": "example_instance",
+    "capec_id": "560",
+    "capec_name": "Use of Known Domain Credentials",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "560",
+          "Use of Known Domain Credentials"
+        ]
+      ],
+      "CWE": [
+        "522",
+        "307",
+        "308",
+        "309",
+        "262",
+        "263",
+        "654",
+        "1273"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1078"
+      ],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 10
+  },
+  {
+    "text": "An adversary attempts to exploit an application by injecting additional, malicious content during its processing of serialized objects. Developers leverage serialization in order to convert data or state into a static, binary format for saving to disk or transferring over a network. These objects are then deserialized when needed to recover the data/state. By injecting a malformed object into a vulnerable application, an adversary can potentially compromise the application by manipulating the deserialization process. This can result in a number of unwanted outcomes, including remote code execution.",
+    "context": "description",
+    "capec_id": "586",
+    "capec_name": "Object Injection",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "586",
+          "Object Injection"
+        ]
+      ],
+      "CWE": [
+        "502"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The target application must unserialize data before validation.",
+    "context": "prerequisite",
+    "capec_id": "586",
+    "capec_name": "Object Injection",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "586",
+          "Object Injection"
+        ]
+      ],
+      "CWE": [
+        "502"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "An adversary injects traffic into the target's network connection. The adversary is therefore able to degrade or disrupt the connection, and potentially modify the content. This is not a flooding attack, as the adversary is not focusing on exhausting resources. Instead, the adversary is crafting a specific input to affect the system in a particular way.",
+    "context": "description",
+    "capec_id": "594",
+    "capec_name": "Traffic Injection",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "594",
+          "Traffic Injection"
+        ]
+      ],
+      "CWE": [
+        "940"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The target application must leverage an open communications channel.",
+    "context": "prerequisite",
+    "capec_id": "594",
+    "capec_name": "Traffic Injection",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "594",
+          "Traffic Injection"
+        ]
+      ],
+      "CWE": [
+        "940"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The channel on which the target communicates must be vulnerable to interception (e.g., adversary in the middle attack - CAPEC-94).",
+    "context": "prerequisite",
+    "capec_id": "594",
+    "capec_name": "Traffic Injection",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "594",
+          "Traffic Injection"
+        ]
+      ],
+      "CWE": [
+        "940"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "This attack pattern has been deprecated.",
+    "context": "description",
+    "capec_id": "602",
+    "capec_name": "DEPRECATED: Degradation",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "602",
+          "DEPRECATED: Degradation"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "An attacker obstructs the interactions between system components. By interrupting or disabling these interactions, an adversary can often force the system into a degraded state or cause the system to stop working as intended. This can cause the system components to be unavailable until the obstruction mitigated.",
+    "context": "description",
+    "capec_id": "607",
+    "capec_name": "Obstruction",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "607",
+          "Obstruction"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "The adversary uses disruptive signals or events, or alters the physical environment a device operates in, to cause faulty behavior in electronic devices. This can include electromagnetic pulses, laser pulses, clock glitches, ambient temperature extremes, and more. When performed in a controlled manner on devices performing cryptographic operations, this faulty behavior can be exploited to derive secret key information.",
+    "context": "description",
+    "capec_id": "624",
+    "capec_name": "Hardware Fault Injection",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "624",
+          "Hardware Fault Injection"
+        ]
+      ],
+      "CWE": [
+        "1247",
+        "1248",
+        "1256",
+        "1319",
+        "1332",
+        "1334",
+        "1338",
+        "1351"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 9
+  },
+  {
+    "text": "The adversary must be cognizant of where fault injection vulnerabilities exist in the system in order to leverage them for exploitation.",
+    "context": "prerequisite",
+    "capec_id": "624",
+    "capec_name": "Hardware Fault Injection",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "624",
+          "Hardware Fault Injection"
+        ]
+      ],
+      "CWE": [
+        "1247",
+        "1248",
+        "1256",
+        "1319",
+        "1332",
+        "1334",
+        "1338",
+        "1351"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 9
+  },
+  {
+    "text": "",
+    "context": "description",
+    "capec_id": "690",
+    "capec_name": "Metadata Spoofing",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "690",
+          "Metadata Spoofing"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "One approach to this attack entails the adversary altering a maliciously modified resource's metadata in order to hide their malicious activity. Another approach involves altering the metadata of an adversary-created resource to make the source appear more credible. Adversaries may spoof a variety of metadata across a number of resources, such as the following:",
+    "context": "extended_description",
+    "capec_id": "690",
+    "capec_name": "Metadata Spoofing",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "690",
+          "Metadata Spoofing"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "The ultimate goal of a Metadata Spoofing attack is to trick victims into believing the malicious resource being provided originates from a reputable source. However, the victim instead leverages the malicious resource, which could result in a number of negative technical impacts.",
+    "context": "extended_description",
+    "capec_id": "690",
+    "capec_name": "Metadata Spoofing",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "690",
+          "Metadata Spoofing"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "Identification of a resource whose metadata is to be spoofed",
+    "context": "prerequisite",
+    "capec_id": "690",
+    "capec_name": "Metadata Spoofing",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "690",
+          "Metadata Spoofing"
+        ]
+      ],
+      "CWE": [],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 1
+  },
+  {
+    "text": "An Adversary can eavesdrop on the content of an external monitor through the air without modifying any cable or installing software, just capturing this signal emitted by the cable or video port, with this the attacker will be able to impact the confidentiality of the data without being detected by traditional security tools",
+    "context": "description",
+    "capec_id": "699",
+    "capec_name": "Eavesdropping on a Monitor",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "699",
+          "Eavesdropping on a Monitor"
+        ]
+      ],
+      "CWE": [
+        "1300"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "This attack gives the adversary the ability to view an external monitor with an insignificant delay. There is also no indicator of compromise from the victim visible on the monitor.",
+    "context": "extended_description",
+    "capec_id": "699",
+    "capec_name": "Eavesdropping on a Monitor",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "699",
+          "Eavesdropping on a Monitor"
+        ]
+      ],
+      "CWE": [
+        "1300"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "The eavesdrop is possible due to a signal leakage, that is produced at different points of the connection, including the source port, the connection between the cable and PC, the cable itself, and the connection between the cable and the monitor. That signal leakage can be captured near any of the leak points, but also in a near location, like the next room or a few meters away, using an SDR (Software-defined Radio) device and the correspondent software, that process and interpret the signal to show attackers what the monitor is displaying.",
+    "context": "extended_description",
+    "capec_id": "699",
+    "capec_name": "Eavesdropping on a Monitor",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "699",
+          "Eavesdropping on a Monitor"
+        ]
+      ],
+      "CWE": [
+        "1300"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "From the victim\u2019s point of view, this specified attack might cause a high risk, and from the other hand, from the attacker\u2019s point of view, the attack is excellent, since the specified attack method can be used without investing too much effort or require too many skills, as long as the right attack tool is in right place, this allows attackers to completely compromise the confidentiality of the data; also giving the attacker the advantage of being undetectable by not only traditional security products but also from bug sweep because the SDR device is acting in passive mode.",
+    "context": "extended_description",
+    "capec_id": "699",
+    "capec_name": "Eavesdropping on a Monitor",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "699",
+          "Eavesdropping on a Monitor"
+        ]
+      ],
+      "CWE": [
+        "1300"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "Victim should use an external monitor device",
+    "context": "prerequisite",
+    "capec_id": "699",
+    "capec_name": "Eavesdropping on a Monitor",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "699",
+          "Eavesdropping on a Monitor"
+        ]
+      ],
+      "CWE": [
+        "1300"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "Physical access to the target location and devices",
+    "context": "prerequisite",
+    "capec_id": "699",
+    "capec_name": "Eavesdropping on a Monitor",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "699",
+          "Eavesdropping on a Monitor"
+        ]
+      ],
+      "CWE": [
+        "1300"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 2
+  },
+  {
+    "text": "",
+    "context": "description",
+    "capec_id": "74",
+    "capec_name": "Manipulating State",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "74",
+          "Manipulating State"
+        ]
+      ],
+      "CWE": [
+        "372",
+        "315",
+        "353",
+        "693",
+        "1245",
+        "1253",
+        "1265",
+        "1271"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 9
+  },
+  {
+    "text": "User state is maintained at least in some way in user-controllable locations, such as cookies or URL parameters.",
+    "context": "prerequisite",
+    "capec_id": "74",
+    "capec_name": "Manipulating State",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "74",
+          "Manipulating State"
+        ]
+      ],
+      "CWE": [
+        "372",
+        "315",
+        "353",
+        "693",
+        "1245",
+        "1253",
+        "1265",
+        "1271"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 9
+  },
+  {
+    "text": "There is a faulty finite state machine in the hardware logic that can be exploited.",
+    "context": "prerequisite",
+    "capec_id": "74",
+    "capec_name": "Manipulating State",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "74",
+          "Manipulating State"
+        ]
+      ],
+      "CWE": [
+        "372",
+        "315",
+        "353",
+        "693",
+        "1245",
+        "1253",
+        "1265",
+        "1271"
+      ],
+      "ATTACK_TECHNIQUE": [],
+      "WASC": [],
+      "OWASP": []
+    },
+    "entity_count": 9
+  },
+  {
+    "text": "",
+    "context": "description",
+    "capec_id": "94",
+    "capec_name": "Adversary in the Middle (AiTM)",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "94",
+          "Adversary in the Middle (AiTM)"
+        ]
+      ],
+      "CWE": [
+        "300",
+        "290",
+        "593",
+        "287",
+        "294"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1557"
+      ],
+      "WASC": [],
+      "OWASP": [
+        "Man-in-the-middle attack"
+      ]
+    },
+    "entity_count": 8
+  },
+  {
+    "text": "Whenever one component attempts to communicate with the other (data flow, authentication challenges, etc.), the data first flows through the adversary, who has the opportunity to observe or alter it, before being passed on to the intended recipient as if it was never observed. This interposition is transparent leaving the two compromised components unaware of the potential corruption or leakage of their communications. The potential for these attacks yields an implicit lack of trust in communication or identify between two components.",
+    "context": "extended_description",
+    "capec_id": "94",
+    "capec_name": "Adversary in the Middle (AiTM)",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "94",
+          "Adversary in the Middle (AiTM)"
+        ]
+      ],
+      "CWE": [
+        "300",
+        "290",
+        "593",
+        "287",
+        "294"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1557"
+      ],
+      "WASC": [],
+      "OWASP": [
+        "Man-in-the-middle attack"
+      ]
+    },
+    "entity_count": 8
+  },
+  {
+    "text": "These attacks differ from Sniffing Attacks (CAPEC-157) since these attacks often modify the communications prior to delivering it to the intended recipient.",
+    "context": "extended_description",
+    "capec_id": "94",
+    "capec_name": "Adversary in the Middle (AiTM)",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "94",
+          "Adversary in the Middle (AiTM)"
+        ]
+      ],
+      "CWE": [
+        "300",
+        "290",
+        "593",
+        "287",
+        "294"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1557"
+      ],
+      "WASC": [],
+      "OWASP": [
+        "Man-in-the-middle attack"
+      ]
+    },
+    "entity_count": 8
+  },
+  {
+    "text": "There are two components communicating with each other.",
+    "context": "prerequisite",
+    "capec_id": "94",
+    "capec_name": "Adversary in the Middle (AiTM)",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "94",
+          "Adversary in the Middle (AiTM)"
+        ]
+      ],
+      "CWE": [
+        "300",
+        "290",
+        "593",
+        "287",
+        "294"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1557"
+      ],
+      "WASC": [],
+      "OWASP": [
+        "Man-in-the-middle attack"
+      ]
+    },
+    "entity_count": 8
+  },
+  {
+    "text": "An attacker is able to identify the nature and mechanism of communication between the two target components.",
+    "context": "prerequisite",
+    "capec_id": "94",
+    "capec_name": "Adversary in the Middle (AiTM)",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "94",
+          "Adversary in the Middle (AiTM)"
+        ]
+      ],
+      "CWE": [
+        "300",
+        "290",
+        "593",
+        "287",
+        "294"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1557"
+      ],
+      "WASC": [],
+      "OWASP": [
+        "Man-in-the-middle attack"
+      ]
+    },
+    "entity_count": 8
+  },
+  {
+    "text": "An attacker can eavesdrop on the communication between the target components.",
+    "context": "prerequisite",
+    "capec_id": "94",
+    "capec_name": "Adversary in the Middle (AiTM)",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "94",
+          "Adversary in the Middle (AiTM)"
+        ]
+      ],
+      "CWE": [
+        "300",
+        "290",
+        "593",
+        "287",
+        "294"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1557"
+      ],
+      "WASC": [],
+      "OWASP": [
+        "Man-in-the-middle attack"
+      ]
+    },
+    "entity_count": 8
+  },
+  {
+    "text": "Strong mutual authentication is not used between the two target components yielding opportunity for attacker interposition.",
+    "context": "prerequisite",
+    "capec_id": "94",
+    "capec_name": "Adversary in the Middle (AiTM)",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "94",
+          "Adversary in the Middle (AiTM)"
+        ]
+      ],
+      "CWE": [
+        "300",
+        "290",
+        "593",
+        "287",
+        "294"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1557"
+      ],
+      "WASC": [],
+      "OWASP": [
+        "Man-in-the-middle attack"
+      ]
+    },
+    "entity_count": 8
+  },
+  {
+    "text": "The communication occurs in clear (not encrypted) or with insufficient and spoofable encryption.",
+    "context": "prerequisite",
+    "capec_id": "94",
+    "capec_name": "Adversary in the Middle (AiTM)",
+    "abstraction": "Meta",
+    "entities": {
+      "CAPEC": [
+        [
+          "94",
+          "Adversary in the Middle (AiTM)"
+        ]
+      ],
+      "CWE": [
+        "300",
+        "290",
+        "593",
+        "287",
+        "294"
+      ],
+      "ATTACK_TECHNIQUE": [
+        "1557"
+      ],
+      "WASC": [],
+      "OWASP": [
+        "Man-in-the-middle attack"
+      ]
+    },
+    "entity_count": 8
+  }
+]

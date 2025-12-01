@@ -1,0 +1,1170 @@
+openapi: 3.0.3
+info:
+  title: McKenney-Lacan Calculus API
+  description: |
+    Unified API for the AEON Digital Twin Psychohistory Engine implementing
+    McKenney-Lacan Calculus for predictive cyber-social dynamics.
+
+    ## Core Capabilities
+    - **Ising Dynamics**: Social network energy and magnetization
+    - **Granovetter Cascades**: Threshold-based adoption propagation
+    - **Critical Slowing Down**: Early Warning System metrics
+    - **Bifurcation Detection**: Seldon Crisis prediction
+    - **Epidemic R0**: Malware/information spread modeling
+    - **Psychometric Tensor**: DISC × OCEAN personality dynamics
+    - **Lacanian Registers**: Real-Symbolic-Imaginary analysis
+    - **Musical Calculus**: Event stream to score notation
+
+  version: 1.0.0
+  contact:
+    name: AEON Research Division
+    email: aeon-research@internal
+  license:
+    name: PROPRIETARY
+
+servers:
+  - url: https://api.aeon.internal/v1
+    description: Production
+  - url: https://api-staging.aeon.internal/v1
+    description: Staging
+
+tags:
+  - name: Ising
+    description: Ising model dynamics and spin operations
+  - name: Cascade
+    description: Granovetter cascade prediction and simulation
+  - name: EWS
+    description: Early Warning System and critical slowing down
+  - name: Bifurcation
+    description: Seldon Crisis and bifurcation detection
+  - name: Epidemic
+    description: R0 calculation and epidemic spread
+  - name: Psychometric
+    description: DISC × OCEAN tensor and Lacanian registers
+  - name: Musical
+    description: Musical calculus notation and score generation
+  - name: Group
+    description: Monad, Dyad, Triad group dynamics
+  - name: Schema
+    description: Neo4j schema operations
+
+paths:
+  # ============================================================================
+  # ISING MODEL ENDPOINTS
+  # ============================================================================
+
+  /ising/hamiltonian:
+    get:
+      tags: [Ising]
+      summary: Calculate total system Hamiltonian
+      description: |
+        Computes the total energy of the social network using the Ising model:
+        H = -Σ J_ij σ_i σ_j - Σ h_i σ_i
+      parameters:
+        - name: subgraph
+          in: query
+          description: Filter to specific subgraph (e.g., community_id)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Hamiltonian calculation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  interaction_term:
+                    type: number
+                    description: -Σ J_ij σ_i σ_j
+                  field_term:
+                    type: number
+                    description: -Σ h_i σ_i
+                  total_hamiltonian:
+                    type: number
+                  actor_count:
+                    type: integer
+                  timestamp:
+                    type: string
+                    format: date-time
+              example:
+                interaction_term: -45.6
+                field_term: -12.3
+                total_hamiltonian: -57.9
+                actor_count: 150
+                timestamp: "2025-11-30T10:15:00Z"
+
+  /ising/magnetization:
+    get:
+      tags: [Ising]
+      summary: Calculate system magnetization
+      description: |
+        Computes average spin alignment: m = (1/N) Σ σ_i
+        - m ≈ 1: Strong positive consensus
+        - m ≈ -1: Strong negative consensus
+        - m ≈ 0: Divided/disordered system
+      parameters:
+        - name: subgraph
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Magnetization result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  magnetization:
+                    type: number
+                    minimum: -1
+                    maximum: 1
+                  spin_variance:
+                    type: number
+                  actor_count:
+                    type: integer
+                  consensus_status:
+                    type: string
+                    enum: [STRONG_POSITIVE, STRONG_NEGATIVE, DIVIDED, DISORDERED]
+
+  /ising/step:
+    post:
+      tags: [Ising]
+      summary: Execute Monte Carlo simulation step
+      description: |
+        Performs one Monte Carlo step using Glauber dynamics.
+        Each actor may flip spin with probability P(flip) = 1/(1 + exp(2σh_eff/T))
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                temperature:
+                  type: number
+                  description: Global temperature override (uses actor volatility if null)
+                external_field:
+                  type: number
+                  description: Global external field modifier
+                subgraph:
+                  type: string
+                  description: Limit to specific subgraph
+      responses:
+        '200':
+          description: Step execution result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  flipped_count:
+                    type: integer
+                  new_hamiltonian:
+                    type: number
+                  new_magnetization:
+                    type: number
+                  flipped_actors:
+                    type: array
+                    items:
+                      type: string
+
+  /ising/flip-candidates:
+    get:
+      tags: [Ising]
+      summary: Get actors likely to flip
+      description: Returns actors with flip probability > 0.5
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: Flip candidates
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    actor_id:
+                      type: string
+                    name:
+                      type: string
+                    current_spin:
+                      type: integer
+                    effective_field:
+                      type: number
+                    flip_probability:
+                      type: number
+
+  # ============================================================================
+  # CASCADE ENDPOINTS
+  # ============================================================================
+
+  /cascade/granovetter/check:
+    get:
+      tags: [Cascade]
+      summary: Check actors ready to activate
+      description: |
+        Identifies actors meeting Granovetter threshold:
+        (active_neighbors / degree) >= threshold
+      responses:
+        '200':
+          description: Activation-ready actors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    actor_id:
+                      type: string
+                    threshold:
+                      type: number
+                    active_neighbors:
+                      type: integer
+                    total_neighbors:
+                      type: integer
+                    activation_fraction:
+                      type: number
+                    margin:
+                      type: number
+                      description: How far above threshold
+
+  /cascade/granovetter/step:
+    post:
+      tags: [Cascade]
+      summary: Execute one cascade step
+      description: Activates all actors meeting threshold condition
+      responses:
+        '200':
+          description: Step result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  newly_activated:
+                    type: integer
+                  total_active:
+                    type: integer
+                  cascade_complete:
+                    type: boolean
+
+  /cascade/simulate:
+    post:
+      tags: [Cascade]
+      summary: Simulate full cascade from seeds
+      description: |
+        Runs cascade simulation to completion or max_steps.
+        Returns activation sequence and final state.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [seed_actors]
+              properties:
+                seed_actors:
+                  type: array
+                  items:
+                    type: string
+                  description: Actor IDs to start as active
+                max_steps:
+                  type: integer
+                  default: 100
+                threshold_distribution:
+                  type: string
+                  enum: [uniform, normal, power_law]
+                  default: uniform
+      responses:
+        '200':
+          description: Cascade simulation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cascade_id:
+                    type: string
+                  final_size:
+                    type: integer
+                  steps_executed:
+                    type: integer
+                  activation_sequence:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        step:
+                          type: integer
+                        activated_actors:
+                          type: array
+                          items:
+                            type: string
+                  tipping_point_step:
+                    type: integer
+                    description: Step where cascade became inevitable
+
+  /cascade/blockers:
+    get:
+      tags: [Cascade]
+      summary: Identify cascade blockers (firebreaks)
+      description: Actors with high thresholds who stop propagation
+      parameters:
+        - name: min_threshold
+          in: query
+          schema:
+            type: number
+            default: 0.7
+      responses:
+        '200':
+          description: Blocker actors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    actor_id:
+                      type: string
+                    threshold:
+                      type: number
+                    buffer:
+                      type: number
+                      description: Gap between threshold and current fraction
+
+  # ============================================================================
+  # EWS (EARLY WARNING SYSTEM) ENDPOINTS
+  # ============================================================================
+
+  /ews/metrics/{entityType}/{entityId}:
+    get:
+      tags: [EWS]
+      summary: Get EWS metrics for entity
+      parameters:
+        - name: entityType
+          in: path
+          required: true
+          schema:
+            type: string
+            enum: [actor, asset, group]
+        - name: entityId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: EWS metrics
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  entity_id:
+                    type: string
+                  entity_type:
+                    type: string
+                  variance:
+                    type: number
+                    description: σ² - increases before collapse
+                  autocorrelation:
+                    type: number
+                    description: ρ(t,t-1) - approaches 1 before collapse
+                  critical_distance:
+                    type: number
+                    description: √|μ| - distance to bifurcation
+                  alert_level:
+                    type: string
+                    enum: [NORMAL, ELEVATED, HIGH, CRITICAL, IMMINENT]
+                  last_updated:
+                    type: string
+                    format: date-time
+
+  /ews/system:
+    get:
+      tags: [EWS]
+      summary: Get system-wide EWS metrics
+      responses:
+        '200':
+          description: System EWS state
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  system_variance:
+                    type: number
+                  system_autocorrelation:
+                    type: number
+                  average_critical_distance:
+                    type: number
+                  critical_actor_count:
+                    type: integer
+                  psychohistory_status:
+                    type: string
+                    enum: [GOLDEN_ROUTE_STABLE, LOCALIZED_CRISIS, CRISIS_WARNING, SELDON_CRISIS_IMMINENT]
+
+  /ews/stream:
+    get:
+      tags: [EWS]
+      summary: Subscribe to EWS alert stream (WebSocket)
+      description: |
+        WebSocket endpoint for real-time EWS alerts.
+        Connect with `ws://` protocol.
+      responses:
+        '101':
+          description: WebSocket upgrade
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  event_type:
+                    type: string
+                    enum: [THRESHOLD_BREACH, CRITICAL_SLOWING, BIFURCATION_APPROACH]
+                  entity_id:
+                    type: string
+                  entity_type:
+                    type: string
+                  metrics:
+                    type: object
+                  timestamp:
+                    type: string
+                    format: date-time
+
+  /ews/update:
+    post:
+      tags: [EWS]
+      summary: Trigger EWS metric recalculation
+      description: Batch update EWS metrics for all entities
+      responses:
+        '202':
+          description: Update job accepted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  job_id:
+                    type: string
+                  estimated_completion:
+                    type: string
+                    format: date-time
+
+  # ============================================================================
+  # BIFURCATION ENDPOINTS
+  # ============================================================================
+
+  /bifurcation/distance:
+    get:
+      tags: [Bifurcation]
+      summary: Calculate bifurcation distance for entities
+      description: |
+        Distance ∝ √|μ| where μ is control parameter.
+        Smaller distance = closer to collapse.
+      parameters:
+        - name: entity_type
+          in: query
+          schema:
+            type: string
+            enum: [asset, actor]
+            default: asset
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+      responses:
+        '200':
+          description: Bifurcation distances
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    entity_id:
+                      type: string
+                    name:
+                      type: string
+                    control_parameter:
+                      type: number
+                    bifurcation_distance:
+                      type: number
+                    status:
+                      type: string
+                      enum: [STABLE, WARNING, CRITICAL, POST_BIFURCATION]
+
+  /bifurcation/seldon-crisis:
+    get:
+      tags: [Bifurcation]
+      summary: Seldon Crisis probability assessment
+      description: |
+        Comprehensive system-wide crisis probability based on:
+        - EWS metrics aggregation
+        - Bifurcation distances
+        - Cascade potential
+        - Network topology vulnerabilities
+      parameters:
+        - name: domain
+          in: query
+          schema:
+            type: string
+            enum: [cyber, economic, political, infrastructure, all]
+            default: all
+        - name: time_horizon
+          in: query
+          schema:
+            type: string
+            enum: [24h, 7d, 30d, 90d]
+            default: 7d
+      responses:
+        '200':
+          description: Seldon Crisis assessment
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  crisis_probability:
+                    type: number
+                    minimum: 0
+                    maximum: 1
+                  bifurcation_distance:
+                    type: number
+                  time_to_crisis:
+                    type: string
+                    description: Estimated time if trajectory continues
+                  contributing_factors:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        factor:
+                          type: string
+                        weight:
+                          type: number
+                        current_value:
+                          type: number
+                  recommended_interventions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        action:
+                          type: string
+                        target_entity:
+                          type: string
+                        expected_impact:
+                          type: number
+                  golden_route:
+                    type: object
+                    description: Optimal path through crisis
+                    properties:
+                      probability:
+                        type: number
+                      key_decisions:
+                        type: array
+                        items:
+                          type: string
+
+  # ============================================================================
+  # EPIDEMIC ENDPOINTS
+  # ============================================================================
+
+  /epidemic/r0:
+    get:
+      tags: [Epidemic]
+      summary: Calculate R0 for vulnerabilities
+      description: |
+        R0 = (β/γ) × λ_max(A)
+        - β: infection rate
+        - γ: recovery rate
+        - λ_max: maximum eigenvalue of adjacency matrix
+      parameters:
+        - name: cve_id
+          in: query
+          schema:
+            type: string
+          description: Specific CVE (or all if omitted)
+      responses:
+        '200':
+          description: R0 calculations
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    cve_id:
+                      type: string
+                    name:
+                      type: string
+                    infection_rate:
+                      type: number
+                    recovery_rate:
+                      type: number
+                    lambda_max:
+                      type: number
+                    R0:
+                      type: number
+                    outbreak_status:
+                      type: string
+                      enum: [CONTAINED, EPIDEMIC]
+
+  /epidemic/super-spreaders:
+    get:
+      tags: [Epidemic]
+      summary: Identify super-spreader nodes
+      description: Nodes with high eigenvector centrality
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 10
+      responses:
+        '200':
+          description: Super-spreader assets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    asset_id:
+                      type: string
+                    name:
+                      type: string
+                    eigenvector_centrality:
+                      type: number
+                    criticality:
+                      type: number
+                    priority_score:
+                      type: number
+
+  /epidemic/simulate:
+    post:
+      tags: [Epidemic]
+      summary: Simulate epidemic spread
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [cve_id]
+              properties:
+                cve_id:
+                  type: string
+                initial_infected:
+                  type: array
+                  items:
+                    type: string
+                max_steps:
+                  type: integer
+                  default: 100
+      responses:
+        '200':
+          description: Epidemic simulation result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  peak_infected:
+                    type: integer
+                  time_to_peak:
+                    type: integer
+                  total_infected:
+                    type: integer
+                  infection_curve:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        step:
+                          type: integer
+                        susceptible:
+                          type: integer
+                        infected:
+                          type: integer
+                        recovered:
+                          type: integer
+
+  # ============================================================================
+  # PSYCHOMETRIC ENDPOINTS
+  # ============================================================================
+
+  /psychometric/tensor/{actorId}:
+    get:
+      tags: [Psychometric]
+      summary: Get psychometric tensor for actor
+      description: Returns DISC × OCEAN tensor and Lacanian registers
+      parameters:
+        - name: actorId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Psychometric tensor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actor_id:
+                    type: string
+                  disc:
+                    type: object
+                    properties:
+                      d: {type: number}
+                      i: {type: number}
+                      s: {type: number}
+                      c: {type: number}
+                  ocean:
+                    type: object
+                    properties:
+                      o: {type: number}
+                      c: {type: number}
+                      e: {type: number}
+                      a: {type: number}
+                      n: {type: number}
+                  tensor_flat:
+                    type: array
+                    items:
+                      type: number
+                    description: 4x5 = 20 element flattened tensor
+                  lacan:
+                    type: object
+                    properties:
+                      real: {type: number}
+                      symbolic: {type: number}
+                      imaginary: {type: number}
+                  cb5t_derived:
+                    type: object
+                    properties:
+                      stability: {type: number}
+                      plasticity: {type: number}
+
+  /psychometric/tensor:
+    post:
+      tags: [Psychometric]
+      summary: Compute psychometric tensor from scores
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [disc, ocean]
+              properties:
+                disc:
+                  type: object
+                  properties:
+                    d: {type: number, minimum: 0, maximum: 1}
+                    i: {type: number, minimum: 0, maximum: 1}
+                    s: {type: number, minimum: 0, maximum: 1}
+                    c: {type: number, minimum: 0, maximum: 1}
+                ocean:
+                  type: object
+                  properties:
+                    o: {type: number, minimum: 0, maximum: 1}
+                    c: {type: number, minimum: 0, maximum: 1}
+                    e: {type: number, minimum: 0, maximum: 1}
+                    a: {type: number, minimum: 0, maximum: 1}
+                    n: {type: number, minimum: 0, maximum: 1}
+      responses:
+        '200':
+          description: Computed tensor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PsychometricTensor'
+
+  /psychometric/dissonance:
+    get:
+      tags: [Psychometric]
+      summary: Get dissonance between actor pairs
+      description: |
+        D_ij = ||B_i - B_j||² + γ(d/dt)(B_i · B_j)
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+        - name: min_dissonance
+          in: query
+          schema:
+            type: number
+            default: 0
+      responses:
+        '200':
+          description: Dissonance pairs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    actor1: {type: string}
+                    actor2: {type: string}
+                    lacan_distance_sq: {type: number}
+                    dissonance: {type: number}
+                    relationship_quality:
+                      type: string
+                      enum: [HARMONIOUS, MODERATE, TENSION, HIGH_CONFLICT]
+
+  /psychometric/lacanian/filter:
+    post:
+      tags: [Psychometric]
+      summary: Apply Lacanian filter to actor
+      description: |
+        Computes B_i(t) = L(P_i, t)
+        Transforms psychometric tensor through Lacanian registers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [actor_id]
+              properties:
+                actor_id:
+                  type: string
+                time_context:
+                  type: string
+                  description: Contextual timestamp for temporal effects
+      responses:
+        '200':
+          description: Lacanian filter result
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actor_id: {type: string}
+                  bias_vector:
+                    type: object
+                    properties:
+                      real: {type: number}
+                      symbolic: {type: number}
+                      imaginary: {type: number}
+                  bias_well_depth: {type: number}
+                  discourse_position: {type: string}
+
+  # ============================================================================
+  # MUSICAL CALCULUS ENDPOINTS
+  # ============================================================================
+
+  /musical/score:
+    get:
+      tags: [Musical]
+      summary: Generate musical score from events
+      description: |
+        Converts event stream to musical notation.
+        Note N = (Pitch, Duration, Volume, Timbre)
+        - Pitch: Severity → MIDI note
+        - Duration: Event duration
+        - Volume: Impact score → velocity
+        - Timbre: DISC → instrument family
+      parameters:
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: format
+          in: query
+          schema:
+            type: string
+            enum: [json, midi, musicxml]
+            default: json
+      responses:
+        '200':
+          description: Musical score
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  tempo:
+                    type: integer
+                  time_signature:
+                    type: string
+                  notes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        timestamp: {type: string, format: date-time}
+                        event_id: {type: string}
+                        pitch: {type: integer}
+                        note_name: {type: string}
+                        duration: {type: number}
+                        velocity: {type: integer}
+                        instrument: {type: string}
+                        register: {type: string}
+            audio/midi:
+              schema:
+                type: string
+                format: binary
+
+  /musical/dissonance:
+    get:
+      tags: [Musical]
+      summary: Detect dissonance patterns in event stream
+      description: Identifies tritones, minor seconds, and other dissonant intervals
+      parameters:
+        - name: from
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: to
+          in: query
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: Dissonance analysis
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total_intervals:
+                    type: integer
+                  dissonant_count:
+                    type: integer
+                  dissonance_ratio:
+                    type: number
+                  dissonant_intervals:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        event1_id: {type: string}
+                        event2_id: {type: string}
+                        interval_semitones: {type: integer}
+                        interval_name: {type: string}
+                        consonance: {type: string}
+
+  # ============================================================================
+  # GROUP DYNAMICS ENDPOINTS
+  # ============================================================================
+
+  /group/dyad/{actor1Id}/{actor2Id}:
+    get:
+      tags: [Group]
+      summary: Analyze dyad dynamics
+      parameters:
+        - name: actor1Id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: actor2Id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Dyad analysis
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  actor1: {type: string}
+                  actor2: {type: string}
+                  spin1: {type: integer}
+                  spin2: {type: integer}
+                  coupling: {type: number}
+                  interaction_energy: {type: number}
+                  alignment: {type: string}
+                  stability: {type: string}
+                  dissonance: {type: number}
+
+  /group/triads:
+    get:
+      tags: [Group]
+      summary: List all triads with stability analysis
+      description: |
+        Heider balance: product of spins > 0 = balanced
+      parameters:
+        - name: stability
+          in: query
+          schema:
+            type: string
+            enum: [balanced, unbalanced, all]
+            default: all
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 50
+      responses:
+        '200':
+          description: Triad analysis
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    actor1: {type: string}
+                    actor2: {type: string}
+                    actor3: {type: string}
+                    triad_product: {type: integer}
+                    heider_balance: {type: string}
+
+  /group/{groupId}/metrics:
+    get:
+      tags: [Group]
+      summary: Get group collective metrics
+      parameters:
+        - name: groupId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Group metrics
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  group_id: {type: string}
+                  name: {type: string}
+                  type: {type: string}
+                  member_count: {type: integer}
+                  magnetization: {type: number}
+                  cohesion: {type: number}
+                  diversity_index: {type: number}
+                  segregation_index: {type: number}
+
+# ============================================================================
+# COMPONENTS
+# ============================================================================
+
+components:
+  schemas:
+    PsychometricTensor:
+      type: object
+      properties:
+        disc:
+          type: object
+          properties:
+            d: {type: number}
+            i: {type: number}
+            s: {type: number}
+            c: {type: number}
+        ocean:
+          type: object
+          properties:
+            o: {type: number}
+            c: {type: number}
+            e: {type: number}
+            a: {type: number}
+            n: {type: number}
+        tensor_flat:
+          type: array
+          items:
+            type: number
+        lacan:
+          type: object
+          properties:
+            real: {type: number}
+            symbolic: {type: number}
+            imaginary: {type: number}
+        cb5t:
+          type: object
+          properties:
+            stability: {type: number}
+            plasticity: {type: number}
+
+    Actor:
+      type: object
+      properties:
+        id: {type: string}
+        name: {type: string}
+        type: {type: string}
+        spin: {type: integer}
+        threshold: {type: number}
+        volatility: {type: number}
+        external_field: {type: number}
+        psychometric: {$ref: '#/components/schemas/PsychometricTensor'}
+        ews:
+          type: object
+          properties:
+            variance: {type: number}
+            autocorrelation: {type: number}
+            critical_distance: {type: number}
+
+    Asset:
+      type: object
+      properties:
+        id: {type: string}
+        name: {type: string}
+        type: {type: string}
+        criticality: {type: number}
+        risk_score: {type: number}
+        eigenvector_centrality: {type: number}
+
+    Event:
+      type: object
+      properties:
+        id: {type: string}
+        timestamp: {type: string, format: date-time}
+        type: {type: string}
+        severity: {type: number}
+        musical:
+          type: object
+          properties:
+            pitch: {type: integer}
+            duration: {type: number}
+            volume: {type: integer}
+            timbre: {type: string}
+        register: {type: string}
+
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
+
+security:
+  - bearerAuth: []
+  - apiKeyAuth: []

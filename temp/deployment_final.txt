@@ -1,0 +1,77 @@
+Received notification from DBMS server: <GqlStatusObject gql_status='01N00', status_description='warn: feature deprecated. CALL subquery without a variable scope clause is deprecated. Use CALL (d) { ... }', position=<SummaryInputPosition line=5, column=9, offset=107>, raw_classification='DEPRECATION', classification=<NotificationClassification.DEPRECATION: 'DEPRECATION'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'DEPRECATION', '_severity': 'WARNING', '_position': {'offset': 107, 'line': 5, 'column': 9}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: "\n        MATCH (d:CommunicationsDevice)\n        WHERE 'COMMUNICATIONS' IN labels(d)\n        WITH d\n        CALL {\n            WITH d\n            MATCH (p:CommunicationsProperty)\n            WHERE 'COMMUNICATIONS' IN labels(p) AND p.subsector = d.subsector\n            RETURN p ORDER BY rand() LIMIT 1\n        }\n        MERGE (d)-[r:HAS_PROPERTY]->(p)\n        ON CREATE SET r.created_at = datetime()\n        RETURN count(r) as created\n        "
+Received notification from DBMS server: <GqlStatusObject gql_status='01N00', status_description='warn: feature deprecated. CALL subquery without a variable scope clause is deprecated. Use CALL (rp) { ... }', position=<SummaryInputPosition line=5, column=9, offset=104>, raw_classification='DEPRECATION', classification=<NotificationClassification.DEPRECATION: 'DEPRECATION'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'DEPRECATION', '_severity': 'WARNING', '_position': {'offset': 104, 'line': 5, 'column': 9}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: "\n        MATCH (rp:RoutingProcess)\n        WHERE 'COMMUNICATIONS' IN labels(rp)\n        WITH rp\n        CALL {\n            WITH rp\n            MATCH (p:CommunicationsProperty)\n            WHERE 'COMMUNICATIONS' IN labels(p) AND p.subsector = rp.subsector\n            RETURN p ORDER BY rand() LIMIT 2\n        }\n        MERGE (rp)-[r:HAS_PROPERTY]->(p)\n        ON CREATE SET r.created_at = datetime()\n        RETURN count(r) as created\n        "
+Received notification from DBMS server: <GqlStatusObject gql_status='01N00', status_description='warn: feature deprecated. CALL subquery without a variable scope clause is deprecated. Use CALL (nms) { ... }', position=<SummaryInputPosition line=5, column=9, offset=116>, raw_classification='DEPRECATION', classification=<NotificationClassification.DEPRECATION: 'DEPRECATION'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'DEPRECATION', '_severity': 'WARNING', '_position': {'offset': 116, 'line': 5, 'column': 9}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: "\n        MATCH (nms:NetworkManagementSystem)\n        WHERE 'COMMUNICATIONS' IN labels(nms)\n        WITH nms\n        CALL {\n            WITH nms\n            MATCH (d:CommunicationsDevice)\n            WHERE 'COMMUNICATIONS' IN labels(d) AND d.subsector = nms.subsector\n            RETURN d ORDER BY rand() LIMIT 5\n        }\n        MERGE (nms)-[r:CONTROLS]->(d)\n        ON CREATE SET r.control_type = 'monitoring',\n            r.established_at = datetime()\n        RETURN count(r) as created\n        "
+Received notification from DBMS server: <GqlStatusObject gql_status='01N00', status_description='warn: feature deprecated. CALL subquery without a variable scope clause is deprecated. Use CALL (nms) { ... }', position=<SummaryInputPosition line=5, column=9, offset=116>, raw_classification='DEPRECATION', classification=<NotificationClassification.DEPRECATION: 'DEPRECATION'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'DEPRECATION', '_severity': 'WARNING', '_position': {'offset': 116, 'line': 5, 'column': 9}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: "\n        MATCH (nms:NetworkManagementSystem)\n        WHERE 'COMMUNICATIONS' IN labels(nms)\n        WITH nms\n        CALL {\n            WITH nms\n            MATCH (rp:RoutingProcess)\n            WHERE 'COMMUNICATIONS' IN labels(rp) AND rp.subsector = nms.subsector\n            RETURN rp ORDER BY rand() LIMIT 3\n        }\n        MERGE (nms)-[r:CONTROLS]->(rp)\n        ON CREATE SET r.control_type = 'process_management',\n            r.established_at = datetime()\n        RETURN count(r) as created\n        "
+Received notification from DBMS server: <GqlStatusObject gql_status='01N00', status_description='warn: feature deprecated. CALL subquery without a variable scope clause is deprecated. Use CALL (z) { ... }', position=<SummaryInputPosition line=5, column=9, offset=105>, raw_classification='DEPRECATION', classification=<NotificationClassification.DEPRECATION: 'DEPRECATION'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'DEPRECATION', '_severity': 'WARNING', '_position': {'offset': 105, 'line': 5, 'column': 9}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: "\n        MATCH (z:CommunicationsZone)\n        WHERE 'COMMUNICATIONS' IN labels(z)\n        WITH z\n        CALL {\n            WITH z\n            MATCH (d:CommunicationsDevice)\n            WHERE 'COMMUNICATIONS' IN labels(d) AND d.subsector = z.subsector\n            RETURN d ORDER BY rand() LIMIT 15\n        }\n        MERGE (z)-[r:CONTAINS]->(d)\n        ON CREATE SET r.placement_date = datetime()\n        RETURN count(r) as created\n        "
+Received notification from DBMS server: <GqlStatusObject gql_status='01N00', status_description='warn: feature deprecated. CALL subquery without a variable scope clause is deprecated. Use CALL (d1) { ... }', position=<SummaryInputPosition line=5, column=9, offset=164>, raw_classification='DEPRECATION', classification=<NotificationClassification.DEPRECATION: 'DEPRECATION'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'DEPRECATION', '_severity': 'WARNING', '_position': {'offset': 164, 'line': 5, 'column': 9}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: "\n        MATCH (d1:CommunicationsDevice)\n        WHERE 'COMMUNICATIONS' IN labels(d1) AND d1.device_type IN ['Router', 'Switch', 'Gateway']\n        WITH d1\n        CALL {\n            WITH d1\n            MATCH (d2:CommunicationsDevice)\n            WHERE 'COMMUNICATIONS' IN labels(d2)\n                AND d2.device_type IN ['Router', 'Switch', 'Gateway']\n                AND d1.subsector = d2.subsector\n                AND d1.uid <> d2.uid\n            RETURN d2 ORDER BY rand() LIMIT 2\n        }\n        MERGE (d1)-[r:ROUTES_THROUGH]->(d2)\n        ON CREATE SET r.bandwidth_mbps = toFloat(rand() * 10000),\n            r.latency_ms = toFloat(rand() * 100),\n            r.established_at = datetime()\n        RETURN count(r) as created\n        "
+Received notification from DBMS server: <GqlStatusObject gql_status='01N00', status_description='warn: feature deprecated. CALL subquery without a variable scope clause is deprecated. Use CALL (d) { ... }', position=<SummaryInputPosition line=5, column=9, offset=107>, raw_classification='DEPRECATION', classification=<NotificationClassification.DEPRECATION: 'DEPRECATION'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'DEPRECATION', '_severity': 'WARNING', '_position': {'offset': 107, 'line': 5, 'column': 9}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: "\n        MATCH (d:CommunicationsDevice)\n        WHERE 'COMMUNICATIONS' IN labels(d)\n        WITH d\n        CALL {\n            WITH d\n            MATCH (z:CommunicationsZone)\n            WHERE 'COMMUNICATIONS' IN labels(z) AND z.subsector = d.subsector\n            RETURN z ORDER BY rand() LIMIT 1\n        }\n        MERGE (d)-[r:CONNECTS_TO_NETWORK]->(z)\n        ON CREATE SET r.connection_type = ['Primary', 'Secondary', 'Backup'][toInteger(rand() * 3)],\n            r.established_at = datetime()\n        RETURN count(r) as created\n        "
+Received notification from DBMS server: <GqlStatusObject gql_status='01N00', status_description='warn: feature deprecated. CALL subquery without a variable scope clause is deprecated. Use CALL (d) { ... }', position=<SummaryInputPosition line=5, column=9, offset=107>, raw_classification='DEPRECATION', classification=<NotificationClassification.DEPRECATION: 'DEPRECATION'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'DEPRECATION', '_severity': 'WARNING', '_position': {'offset': 107, 'line': 5, 'column': 9}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: "\n        MATCH (d:CommunicationsDevice)\n        WHERE 'COMMUNICATIONS' IN labels(d)\n        WITH d\n        CALL {\n            WITH d\n            MATCH (nms:NetworkManagementSystem)\n            WHERE 'COMMUNICATIONS' IN labels(nms) AND nms.subsector = d.subsector\n            RETURN nms ORDER BY rand() LIMIT 1\n        }\n        MERGE (d)-[r:MANAGED_BY_NMS]->(nms)\n        ON CREATE SET r.management_protocol = ['SNMP', 'NetFlow', 'sFlow'][toInteger(rand() * 3)],\n            r.established_at = datetime()\n        RETURN count(r) as created\n        "
+Received notification from DBMS server: <GqlStatusObject gql_status='01N00', status_description='warn: feature deprecated. CALL subquery without a variable scope clause is deprecated. Use CALL (rp) { ... }', position=<SummaryInputPosition line=5, column=9, offset=104>, raw_classification='DEPRECATION', classification=<NotificationClassification.DEPRECATION: 'DEPRECATION'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'DEPRECATION', '_severity': 'WARNING', '_position': {'offset': 104, 'line': 5, 'column': 9}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: "\n        MATCH (rp:RoutingProcess)\n        WHERE 'COMMUNICATIONS' IN labels(rp)\n        WITH rp\n        CALL {\n            WITH rp\n            MATCH (d:CommunicationsDevice)\n            WHERE 'COMMUNICATIONS' IN labels(d)\n                AND d.device_type IN ['Router', 'Switch', 'Gateway']\n                AND d.subsector = rp.subsector\n            RETURN d ORDER BY rand() LIMIT 2\n        }\n        MERGE (rp)-[r:USES_DEVICE]->(d)\n        ON CREATE SET r.usage_type = 'routing',\n            r.established_at = datetime()\n        RETURN count(r) as created\n        "
+[2025-11-21 19:35:05] ============================================================
+[2025-11-21 19:35:05] COMMUNICATIONS SECTOR COMPLETION DEPLOYMENT
+[2025-11-21 19:35:05] ============================================================
+[2025-11-21 19:35:05] 
+--- CREATING MISSING NODE TYPES ---
+
+[2025-11-21 19:35:05] Creating 1000 RoutingProcess nodes...
+[2025-11-21 19:35:05]   Created 500/1000 RoutingProcess nodes
+[2025-11-21 19:35:05]   Created 1000/1000 RoutingProcess nodes
+[2025-11-21 19:35:05] ✅ Created 1000 RoutingProcess nodes
+[2025-11-21 19:35:05] Creating 500 NetworkManagementSystem nodes...
+[2025-11-21 19:35:06]   Created 250/500 NetworkManagementSystem nodes
+[2025-11-21 19:35:06]   Created 500/500 NetworkManagementSystem nodes
+[2025-11-21 19:35:06] ✅ Created 500 NetworkManagementSystem nodes
+[2025-11-21 19:35:06] Creating 300 CommunicationsAlert nodes...
+[2025-11-21 19:35:06] ✅ Created 300 CommunicationsAlert nodes
+[2025-11-21 19:35:06] Creating 150 CommunicationsZone nodes...
+[2025-11-21 19:35:06] ✅ Created 150 CommunicationsZone nodes
+[2025-11-21 19:35:06] Creating 50 MajorAsset nodes...
+[2025-11-21 19:35:06] ✅ Created 50 MajorAsset nodes
+[2025-11-21 19:35:06] 
+--- CREATING RELATIONSHIPS ---
+
+[2025-11-21 19:35:06] Creating HAS_PROPERTY relationships...
+[2025-11-21 19:35:25] ✅ Created 2300 HAS_PROPERTY relationships
+[2025-11-21 19:35:25] Creating CONTROLS relationships...
+[2025-11-21 19:35:29] ✅ Created 4500 CONTROLS relationships
+[2025-11-21 19:35:29] Creating CONTAINS relationships...
+[2025-11-21 19:35:30] ✅ Created 0 CONTAINS relationships
+[2025-11-21 19:35:30] Creating ROUTES_THROUGH relationships...
+[2025-11-21 19:35:30] ✅ Created 0 ROUTES_THROUGH relationships
+[2025-11-21 19:35:30] Creating CONNECTS_TO_NETWORK relationships...
+[2025-11-21 19:35:31] ✅ Created 0 CONNECTS_TO_NETWORK relationships
+[2025-11-21 19:35:31] Creating MANAGED_BY_NMS relationships...
+[2025-11-21 19:35:32] ✅ Created 0 MANAGED_BY_NMS relationships
+[2025-11-21 19:35:32] Creating USES_DEVICE relationships...
+[2025-11-21 19:35:36] ✅ Created 0 USES_DEVICE relationships
+[2025-11-21 19:35:36] 
+=== VERIFICATION ===
+[2025-11-21 19:35:37] Total COMMUNICATIONS nodes: 40759
+[2025-11-21 19:35:37] Unique node types: 8
+[2025-11-21 19:35:37] Types: ['NetworkMeasurement', 'CommunicationsProperty', 'CommunicationsDevice', 'RoutingProcess', 'NetworkManagementSystem', 'CommunicationsAlert', 'CommunicationsZone', 'MajorAsset']
+[2025-11-21 19:35:37] 
+Node counts by type:
+[2025-11-21 19:35:37]   CommunicationsDevice: 2300
+[2025-11-21 19:35:37]   CommunicationsProperty: 5000
+[2025-11-21 19:35:37]   NetworkMeasurement: 27458
+[2025-11-21 19:35:37]   RoutingProcess: 3000
+[2025-11-21 19:35:37]   NetworkManagementSystem: 1500
+[2025-11-21 19:35:37]   CommunicationsAlert: 900
+[2025-11-21 19:35:37]   CommunicationsZone: 450
+[2025-11-21 19:35:37]   MajorAsset: 150
+[2025-11-21 19:35:37] 
+Total relationships: 8945
+[2025-11-21 19:35:37] 
+Relationships by type:
+[2025-11-21 19:35:37]   CONTROLS: 4503
+[2025-11-21 19:35:37]   HAS_PROPERTY: 2302
+[2025-11-21 19:35:37]   HAS_MEASUREMENT: 2136
+[2025-11-21 19:35:37]   ROUTES_THROUGH: 4
+[2025-11-21 19:35:37] 
+============================================================
+[2025-11-21 19:35:37] DEPLOYMENT COMPLETE
+[2025-11-21 19:35:37] Total Nodes: 40759
+[2025-11-21 19:35:37] Total Relationships: 8945
+[2025-11-21 19:35:37] ============================================================
+
+✅ Log saved to: temp/sector-COMMUNICATIONS-completion-log.txt

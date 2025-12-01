@@ -1,0 +1,34 @@
+{
+  "total_examples": 2731,
+  "by_entity_type": {
+    "CAPEC": 1553,
+    "CWE": 5275,
+    "ATTACK_TECHNIQUE": 806,
+    "WASC": 122,
+    "OWASP": 133,
+    "CVE": 1057,
+    "VULNERABILITY": 1057,
+    "WEAKNESS": 121,
+    "ATTACK_PATTERN": 1,
+    "ATTACK": 1,
+    "TECHNIQUE": 1
+  },
+  "by_context": {
+    "description": 544,
+    "prerequisite": 624,
+    "example_instance": 204,
+    "extended_description": 180,
+    "cve_description": 1057,
+    "cwe_description": 121,
+    "capec_attack_mapping": 1
+  },
+  "entity_coverage": {
+    "examples_with_entities": 2731,
+    "coverage_percentage": 100.0
+  },
+  "dataset_quality": {
+    "avg_text_length": 295.8370560234346,
+    "min_entity_type_count": 1,
+    "max_entity_type_count": 5275
+  }
+}

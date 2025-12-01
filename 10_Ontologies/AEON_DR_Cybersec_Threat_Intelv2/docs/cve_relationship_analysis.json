@@ -1,0 +1,612 @@
+{
+  "relationship_types": [
+    {
+      "relationship_type": "ENABLES_ATTACK_PATTERN",
+      "target_label": "CAPEC",
+      "count": 1168814,
+      "direction": "OUTGOING"
+    },
+    {
+      "relationship_type": "EXPLOITS_WEAKNESS",
+      "target_label": "CWE",
+      "count": 244501,
+      "direction": "OUTGOING"
+    },
+    {
+      "relationship_type": "EXPLOITS",
+      "target_label": "CWE",
+      "count": 171797,
+      "direction": "OUTGOING"
+    },
+    {
+      "relationship_type": "PRECEDES",
+      "target_label": "CVE",
+      "count": 107738,
+      "direction": "OUTGOING"
+    },
+    {
+      "relationship_type": "PROPAGATES_TO",
+      "target_label": "CVE",
+      "count": 100000,
+      "direction": "OUTGOING"
+    },
+    {
+      "relationship_type": "MAPS_TO_STIX",
+      "target_label": "STIX_Object",
+      "count": 100,
+      "direction": "OUTGOING"
+    },
+    {
+      "relationship_type": "AFFECTS",
+      "target_label": "Equipment",
+      "count": 34,
+      "direction": "OUTGOING"
+    },
+    {
+      "relationship_type": "AFFECTS_SYSTEM",
+      "target_label": "System",
+      "count": 30,
+      "direction": "OUTGOING"
+    },
+    {
+      "relationship_type": "PRECEDES",
+      "source_label": "CVE",
+      "count": 107738,
+      "direction": "INCOMING"
+    },
+    {
+      "relationship_type": "PROPAGATES_TO",
+      "source_label": "CVE",
+      "count": 100000,
+      "direction": "INCOMING"
+    },
+    {
+      "relationship_type": "VULNERABLE_TO",
+      "source_label": "Device",
+      "count": 19500,
+      "direction": "INCOMING"
+    },
+    {
+      "relationship_type": "MAY_HAVE_VULNERABILITY",
+      "source_label": "SoftwareComponent",
+      "count": 15000,
+      "direction": "INCOMING"
+    },
+    {
+      "relationship_type": "ECOSYSTEM_VULNERABILITY",
+      "source_label": "SoftwareComponent",
+      "count": 6406,
+      "direction": "INCOMING"
+    },
+    {
+      "relationship_type": "ECOSYSTEM_VULNERABILITY",
+      "source_label": "Package",
+      "count": 5594,
+      "direction": "INCOMING"
+    },
+    {
+      "relationship_type": "HAS_VULNERABILITY",
+      "source_label": "Package",
+      "count": 5349,
+      "direction": "INCOMING"
+    },
+    {
+      "relationship_type": "HAS_VULNERABILITY",
+      "source_label": "SoftwareComponent",
+      "count": 4651,
+      "direction": "INCOMING"
+    },
+    {
+      "relationship_type": "THREATENS_GRID_STABILITY",
+      "source_label": "Device",
+      "count": 3000,
+      "direction": "INCOMING"
+    },
+    {
+      "relationship_type": "VULNERABLE_TO",
+      "source_label": "Process",
+      "count": 2500,
+      "direction": "INCOMING"
+    },
+    {
+      "relationship_type": "VULNERABLE_TO",
+      "source_label": "Control",
+      "count": 2500,
+      "direction": "INCOMING"
+    },
+    {
+      "relationship_type": "HAS_VULNERABILITY",
+      "source_label": "NetworkDevice",
+      "count": 125,
+      "direction": "INCOMING"
+    },
+    {
+      "relationship_type": "VULNERABLE_TO",
+      "source_label": "STIX_Object",
+      "count": 100,
+      "direction": "INCOMING"
+    },
+    {
+      "relationship_type": "VULNERABLE_TO",
+      "source_label": "Equipment",
+      "count": 34,
+      "direction": "INCOMING"
+    },
+    {
+      "relationship_type": "VULNERABLE_TO",
+      "source_label": "System",
+      "count": 30,
+      "direction": "INCOMING"
+    }
+  ],
+  "relationship_properties": [
+    {
+      "relationship_type": "VULNERABLE_TO",
+      "properties": [
+        "evidence",
+        "phase",
+        "relationship_type",
+        "discovered_date",
+        "cve_id",
+        "confidence_score",
+        "discoveredDate",
+        "mitigationStatus",
+        "severity",
+        "waterSpecificRisk"
+      ]
+    },
+    {
+      "relationship_type": "MAPS_TO_STIX",
+      "properties": [
+        "confidence_score",
+        "mapping_type",
+        "created_date",
+        "relationship_id"
+      ]
+    },
+    {
+      "relationship_type": "EXPLOITS_WEAKNESS",
+      "properties": [
+        "discovered"
+      ]
+    },
+    {
+      "relationship_type": "HAS_VULNERABILITY",
+      "properties": [
+        "temporal_confidence",
+        "original_confidence",
+        "evidence",
+        "discovered_date",
+        "confidence_score",
+        "phase",
+        "tier",
+        "match_type",
+        "age_days",
+        "relationship_type"
+      ]
+    },
+    {
+      "relationship_type": "THREATENS_GRID_STABILITY",
+      "properties": [
+        "discoveredDate",
+        "affectedFirmwareVersions",
+        "exploitabilityScore",
+        "cascadeRisk",
+        "populationImpact",
+        "patchVersion",
+        "mitigationStatus",
+        "isExploited",
+        "gridImpact",
+        "patchAvailable"
+      ]
+    },
+    {
+      "relationship_type": "MAY_HAVE_VULNERABILITY",
+      "properties": [
+        "temporal_confidence",
+        "original_confidence",
+        "evidence",
+        "discovered_date",
+        "age_days",
+        "confidence_score",
+        "phase",
+        "tier",
+        "match_type"
+      ]
+    },
+    {
+      "relationship_type": "ECOSYSTEM_VULNERABILITY",
+      "properties": [
+        "temporal_confidence",
+        "original_confidence",
+        "evidence",
+        "discovered_date",
+        "confidence_score",
+        "phase",
+        "tier",
+        "match_type",
+        "age_days"
+      ]
+    },
+    {
+      "relationship_type": "PRECEDES",
+      "properties": [
+        "evidence",
+        "phase",
+        "relationship_type",
+        "discovered_date",
+        "confidence_score",
+        "days_between",
+        "temporal_window_days"
+      ]
+    },
+    {
+      "relationship_type": "PROPAGATES_TO",
+      "properties": [
+        "phase",
+        "relationship_type",
+        "discovered_date",
+        "confidence_score",
+        "shared_weakness_id",
+        "propagation_type",
+        "evidence"
+      ]
+    },
+    {
+      "relationship_type": "AFFECTS_SYSTEM",
+      "properties": [
+        "component",
+        "source",
+        "systemType",
+        "mitigationStatus",
+        "namespace",
+        "zone"
+      ]
+    },
+    {
+      "relationship_type": "EXPLOITS",
+      "properties": [
+        "confidence",
+        "created",
+        "evidence"
+      ]
+    },
+    {
+      "relationship_type": "AFFECTS",
+      "properties": [
+        "confidence",
+        "created",
+        "evidence"
+      ]
+    }
+  ],
+  "external_references": [
+    {
+      "node_label": "CVE",
+      "count": 267150,
+      "properties": [
+        "modified_date",
+        "cvss_version",
+        "description",
+        "namespace",
+        "year",
+        "published_date",
+        "cvss_score",
+        "severity",
+        "cve_id",
+        "cwe_ids",
+        "last_updated",
+        "cvss_vector"
+      ]
+    },
+    {
+      "node_label": "Vulnerability",
+      "count": 43,
+      "properties": [
+        "uco_class",
+        "uco_enriched_date",
+        "cve_id",
+        "exploited_by",
+        "date_exploited",
+        "product",
+        "uco_uri",
+        "cvss_score",
+        "severity"
+      ]
+    },
+    {
+      "node_label": "Incident",
+      "count": 1,
+      "properties": [
+        "cvss_score",
+        "severity",
+        "discovery_method",
+        "cve_id",
+        "description",
+        "attack_duration",
+        "impact_scope",
+        "id",
+        "status",
+        "name",
+        "date"
+      ]
+    }
+  ],
+  "sample_data": [
+    {
+      "cve_id": null,
+      "relationship_type": "MAPS_TO_STIX",
+      "relationship_properties": {
+        "mapping_type": "vulnerability",
+        "confidence_score": 1.0,
+        "relationship_id": "de727176-b4a6-4af9-93f5-df272d907d7f",
+        "created_date": "2025-10-31T15:20:14.773000000+00:00"
+      },
+      "target_label": "STIX_Object",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "EXPLOITS_WEAKNESS",
+      "relationship_properties": {
+        "discovered": "2025-10-29T21:16:39.228000000+00:00"
+      },
+      "target_label": "CWE",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "MAPS_TO_STIX",
+      "relationship_properties": {
+        "mapping_type": "vulnerability",
+        "confidence_score": 1.0,
+        "relationship_id": "6e2bfd74-c613-46c3-96b1-b8f251d3b598",
+        "created_date": "2025-10-31T15:20:14.773000000+00:00"
+      },
+      "target_label": "STIX_Object",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "EXPLOITS_WEAKNESS",
+      "relationship_properties": {
+        "discovered": "2025-10-29T21:16:39.235000000+00:00"
+      },
+      "target_label": "CWE",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "MAPS_TO_STIX",
+      "relationship_properties": {
+        "mapping_type": "vulnerability",
+        "confidence_score": 1.0,
+        "relationship_id": "4838ba3c-c7c5-4741-8f79-a51a550997fc",
+        "created_date": "2025-10-31T15:20:14.773000000+00:00"
+      },
+      "target_label": "STIX_Object",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "EXPLOITS_WEAKNESS",
+      "relationship_properties": {
+        "discovered": "2025-10-29T21:16:39.243000000+00:00"
+      },
+      "target_label": "CWE",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "MAPS_TO_STIX",
+      "relationship_properties": {
+        "mapping_type": "vulnerability",
+        "confidence_score": 1.0,
+        "relationship_id": "4a982b56-6b6f-467d-8a24-0c6e8905eabd",
+        "created_date": "2025-10-31T15:20:14.773000000+00:00"
+      },
+      "target_label": "STIX_Object",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "EXPLOITS_WEAKNESS",
+      "relationship_properties": {
+        "discovered": "2025-10-29T21:16:39.252000000+00:00"
+      },
+      "target_label": "CWE",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "MAPS_TO_STIX",
+      "relationship_properties": {
+        "mapping_type": "vulnerability",
+        "confidence_score": 1.0,
+        "relationship_id": "bc8e30e7-13b2-483e-ba09-e2da0ce7973c",
+        "created_date": "2025-10-31T15:20:14.773000000+00:00"
+      },
+      "target_label": "STIX_Object",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "EXPLOITS_WEAKNESS",
+      "relationship_properties": {
+        "discovered": "2025-10-29T21:16:39.260000000+00:00"
+      },
+      "target_label": "CWE",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "MAPS_TO_STIX",
+      "relationship_properties": {
+        "mapping_type": "vulnerability",
+        "confidence_score": 1.0,
+        "relationship_id": "d313d1f2-14a8-4b28-97f0-8f2146ec3ebf",
+        "created_date": "2025-10-31T15:20:14.773000000+00:00"
+      },
+      "target_label": "STIX_Object",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "EXPLOITS_WEAKNESS",
+      "relationship_properties": {
+        "discovered": "2025-10-29T21:16:39.273000000+00:00"
+      },
+      "target_label": "CWE",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "MAPS_TO_STIX",
+      "relationship_properties": {
+        "mapping_type": "vulnerability",
+        "confidence_score": 1.0,
+        "relationship_id": "cb27f43b-8e60-4607-9f1f-3c485c3d4a8d",
+        "created_date": "2025-10-31T15:20:14.773000000+00:00"
+      },
+      "target_label": "STIX_Object",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "MAPS_TO_STIX",
+      "relationship_properties": {
+        "mapping_type": "vulnerability",
+        "confidence_score": 1.0,
+        "relationship_id": "da6b7b30-5a15-402e-a720-cdfd9a74e3f9",
+        "created_date": "2025-10-31T15:20:14.773000000+00:00"
+      },
+      "target_label": "STIX_Object",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "EXPLOITS_WEAKNESS",
+      "relationship_properties": {
+        "discovered": "2025-10-29T21:16:39.280000000+00:00"
+      },
+      "target_label": "CWE",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "MAPS_TO_STIX",
+      "relationship_properties": {
+        "mapping_type": "vulnerability",
+        "confidence_score": 1.0,
+        "relationship_id": "1883187b-322c-4eb0-ba88-1f4261752b4c",
+        "created_date": "2025-10-31T15:20:14.773000000+00:00"
+      },
+      "target_label": "STIX_Object",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "EXPLOITS_WEAKNESS",
+      "relationship_properties": {
+        "discovered": "2025-10-29T21:16:39.290000000+00:00"
+      },
+      "target_label": "CWE",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "MAPS_TO_STIX",
+      "relationship_properties": {
+        "mapping_type": "vulnerability",
+        "confidence_score": 1.0,
+        "relationship_id": "97f68b88-5d52-473c-9e28-68bcef1f90ab",
+        "created_date": "2025-10-31T15:20:14.773000000+00:00"
+      },
+      "target_label": "STIX_Object",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "EXPLOITS_WEAKNESS",
+      "relationship_properties": {
+        "discovered": "2025-10-29T21:16:39.297000000+00:00"
+      },
+      "target_label": "CWE",
+      "target_id": null
+    },
+    {
+      "cve_id": null,
+      "relationship_type": "MAPS_TO_STIX",
+      "relationship_properties": {
+        "mapping_type": "vulnerability",
+        "confidence_score": 1.0,
+        "relationship_id": "0c1d12ed-7f31-4c47-83f0-0bcae7db2f17",
+        "created_date": "2025-10-31T15:20:14.773000000+00:00"
+      },
+      "target_label": "STIX_Object",
+      "target_id": null
+    }
+  ],
+  "risk_assessment": {
+    "total_relationships": 23,
+    "relationship_types_count": 13,
+    "properties_with_potential_cve_refs": 1,
+    "external_nodes_with_cve_refs": 3,
+    "cve_id_format_distribution": {
+      "CVE-YYYY-NNNNN": 100
+    },
+    "vulnerable_to_cve_id_property_usage": 50,
+    "vulnerable_to_mismatches": 0,
+    "risk_level": "CRITICAL",
+    "recommendations": [
+      "CRITICAL: VULNERABLE_TO relationships store cve_id property (50 instances found)",
+      "REQUIRED: Update all VULNERABLE_TO.cve_id properties after normalizing CVE.id"
+    ]
+  },
+  "vulnerable_to_cve_id_analysis": {
+    "sample_count": 50,
+    "mismatches": [],
+    "samples": [
+      {
+        "relationship_cve_id": "cve-CVE-2019-10583",
+        "node_cve_id": "cve-CVE-2019-10583"
+      },
+      {
+        "relationship_cve_id": "cve-CVE-2019-14044",
+        "node_cve_id": "cve-CVE-2019-14044"
+      },
+      {
+        "relationship_cve_id": "cve-CVE-2013-1601",
+        "node_cve_id": "cve-CVE-2013-1601"
+      },
+      {
+        "relationship_cve_id": "cve-CVE-2013-1602",
+        "node_cve_id": "cve-CVE-2013-1602"
+      },
+      {
+        "relationship_cve_id": "cve-CVE-2013-1599",
+        "node_cve_id": "cve-CVE-2013-1599"
+      },
+      {
+        "relationship_cve_id": "cve-CVE-2013-1603",
+        "node_cve_id": "cve-CVE-2013-1603"
+      },
+      {
+        "relationship_cve_id": "cve-CVE-2019-10579",
+        "node_cve_id": "cve-CVE-2019-10579"
+      },
+      {
+        "relationship_cve_id": "cve-CVE-2013-1600",
+        "node_cve_id": "cve-CVE-2013-1600"
+      },
+      {
+        "relationship_cve_id": "cve-CVE-2020-8649",
+        "node_cve_id": "cve-CVE-2020-8649"
+      },
+      {
+        "relationship_cve_id": "cve-CVE-2013-2569",
+        "node_cve_id": "cve-CVE-2013-2569"
+      }
+    ]
+  }
+}

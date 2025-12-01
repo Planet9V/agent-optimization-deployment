@@ -1,0 +1,502 @@
+[
+  {
+    "id": 20,
+    "candidate": {
+      "Navigation": "Hybrid_Dual_Mode",
+      "Audio": "Data_Sonification_Raw",
+      "Visuals": "Wireframe",
+      "Data_Ingest": "Batch_Process",
+      "Interaction": "First_Person_Fly"
+    },
+    "avg_score": 272.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 250,
+      "Beta (Engineer)": 275.0,
+      "Gamma (Gamer)": 275.0,
+      "Delta (Academic)": 260.0,
+      "Omega (Synthesizer)": 300.0
+    },
+    "debate": [
+      "Alpha (Visionary): 250.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Batch_Process -> 50.0', 'Interaction:First_Person_Fly -> 50.0']",
+      "Beta (Engineer): 275.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Batch_Process -> 75.0', 'Interaction:First_Person_Fly -> 50.0']",
+      "Gamma (Gamer): 275.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Batch_Process -> 50.0', 'Interaction:First_Person_Fly -> 75.0']",
+      "Delta (Academic): 260.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Batch_Process -> 60.0', 'Interaction:First_Person_Fly -> 50.0']",
+      "Omega (Synthesizer): 300.0 | ['Navigation:Hybrid_Dual_Mode -> 90.0', 'Audio:Data_Sonification_Raw -> 60.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Batch_Process -> 50.0', 'Interaction:First_Person_Fly -> 50.0']"
+    ]
+  },
+  {
+    "id": 17,
+    "candidate": {
+      "Navigation": "3D_Cosmology",
+      "Audio": "Silent",
+      "Visuals": "Trauma_Shader_GLSL",
+      "Data_Ingest": "Batch_Process",
+      "Interaction": "VR_Hands"
+    },
+    "avg_score": 269.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 310.0,
+      "Beta (Engineer)": 245.0,
+      "Gamma (Gamer)": 290.0,
+      "Delta (Academic)": 250.0,
+      "Omega (Synthesizer)": 250
+    },
+    "debate": [
+      "Alpha (Visionary): 310.0 | ['Navigation:3D_Cosmology -> 75.0', 'Audio:Silent -> 50.0', 'Visuals:Trauma_Shader_GLSL -> 75.0', 'Data_Ingest:Batch_Process -> 50.0', 'Interaction:VR_Hands -> 60.0']",
+      "Beta (Engineer): 245.0 | ['Navigation:3D_Cosmology -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Trauma_Shader_GLSL -> 50.0', 'Data_Ingest:Batch_Process -> 75.0', 'Interaction:VR_Hands -> 20.0']",
+      "Gamma (Gamer): 290.0 | ['Navigation:3D_Cosmology -> 65.0', 'Audio:Silent -> 50.0', 'Visuals:Trauma_Shader_GLSL -> 50.0', 'Data_Ingest:Batch_Process -> 50.0', 'Interaction:VR_Hands -> 75.0']",
+      "Delta (Academic): 250.0 | ['Navigation:3D_Cosmology -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Trauma_Shader_GLSL -> 40.0', 'Data_Ingest:Batch_Process -> 60.0', 'Interaction:VR_Hands -> 50.0']",
+      "Omega (Synthesizer): 250.0 | ['Navigation:3D_Cosmology -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Trauma_Shader_GLSL -> 50.0', 'Data_Ingest:Batch_Process -> 50.0', 'Interaction:VR_Hands -> 50.0']"
+    ]
+  },
+  {
+    "id": 5,
+    "candidate": {
+      "Navigation": "3D_Cosmology",
+      "Audio": "Pre_Recorded_Loops",
+      "Visuals": "Standard_Material",
+      "Data_Ingest": "Static_Dump",
+      "Interaction": "First_Person_Fly"
+    },
+    "avg_score": 267.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 250.0,
+      "Beta (Engineer)": 275.0,
+      "Gamma (Gamer)": 290.0,
+      "Delta (Academic)": 270.0,
+      "Omega (Synthesizer)": 250
+    },
+    "debate": [
+      "Alpha (Visionary): 250.0 | ['Navigation:3D_Cosmology -> 75.0', 'Audio:Pre_Recorded_Loops -> 50.0', 'Visuals:Standard_Material -> 50.0', 'Data_Ingest:Static_Dump -> 25.0', 'Interaction:First_Person_Fly -> 50.0']",
+      "Beta (Engineer): 275.0 | ['Navigation:3D_Cosmology -> 50.0', 'Audio:Pre_Recorded_Loops -> 50.0', 'Visuals:Standard_Material -> 75.0', 'Data_Ingest:Static_Dump -> 50.0', 'Interaction:First_Person_Fly -> 50.0']",
+      "Gamma (Gamer): 290.0 | ['Navigation:3D_Cosmology -> 65.0', 'Audio:Pre_Recorded_Loops -> 50.0', 'Visuals:Standard_Material -> 50.0', 'Data_Ingest:Static_Dump -> 50.0', 'Interaction:First_Person_Fly -> 75.0']",
+      "Delta (Academic): 270.0 | ['Navigation:3D_Cosmology -> 50.0', 'Audio:Pre_Recorded_Loops -> 50.0', 'Visuals:Standard_Material -> 50.0', 'Data_Ingest:Static_Dump -> 70.0', 'Interaction:First_Person_Fly -> 50.0']",
+      "Omega (Synthesizer): 250.0 | ['Navigation:3D_Cosmology -> 50.0', 'Audio:Pre_Recorded_Loops -> 50.0', 'Visuals:Standard_Material -> 50.0', 'Data_Ingest:Static_Dump -> 50.0', 'Interaction:First_Person_Fly -> 50.0']"
+    ]
+  },
+  {
+    "id": 3,
+    "candidate": {
+      "Navigation": "3D_Cosmology",
+      "Audio": "Silent",
+      "Visuals": "Point_Cloud",
+      "Data_Ingest": "On_Demand_Query",
+      "Interaction": "VR_Hands"
+    },
+    "avg_score": 264.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 285.0,
+      "Beta (Engineer)": 220.0,
+      "Gamma (Gamer)": 290.0,
+      "Delta (Academic)": 250,
+      "Omega (Synthesizer)": 275.0
+    },
+    "debate": [
+      "Alpha (Visionary): 285.0 | ['Navigation:3D_Cosmology -> 75.0', 'Audio:Silent -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:VR_Hands -> 60.0']",
+      "Beta (Engineer): 220.0 | ['Navigation:3D_Cosmology -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:VR_Hands -> 20.0']",
+      "Gamma (Gamer): 290.0 | ['Navigation:3D_Cosmology -> 65.0', 'Audio:Silent -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:VR_Hands -> 75.0']",
+      "Delta (Academic): 250.0 | ['Navigation:3D_Cosmology -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:VR_Hands -> 50.0']",
+      "Omega (Synthesizer): 275.0 | ['Navigation:3D_Cosmology -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:On_Demand_Query -> 75.0', 'Interaction:VR_Hands -> 50.0']"
+    ]
+  },
+  {
+    "id": 11,
+    "candidate": {
+      "Navigation": "3D_Cosmology",
+      "Audio": "Silent",
+      "Visuals": "Wireframe",
+      "Data_Ingest": "On_Demand_Query",
+      "Interaction": "Text_Command_Line"
+    },
+    "avg_score": 262.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 275.0,
+      "Beta (Engineer)": 250,
+      "Gamma (Gamer)": 235.0,
+      "Delta (Academic)": 275.0,
+      "Omega (Synthesizer)": 275.0
+    },
+    "debate": [
+      "Alpha (Visionary): 275.0 | ['Navigation:3D_Cosmology -> 75.0', 'Audio:Silent -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:Text_Command_Line -> 50.0']",
+      "Beta (Engineer): 250.0 | ['Navigation:3D_Cosmology -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:Text_Command_Line -> 50.0']",
+      "Gamma (Gamer): 235.0 | ['Navigation:3D_Cosmology -> 65.0', 'Audio:Silent -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:Text_Command_Line -> 20.0']",
+      "Delta (Academic): 275.0 | ['Navigation:3D_Cosmology -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:Text_Command_Line -> 75.0']",
+      "Omega (Synthesizer): 275.0 | ['Navigation:3D_Cosmology -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:On_Demand_Query -> 75.0', 'Interaction:Text_Command_Line -> 50.0']"
+    ]
+  },
+  {
+    "id": 15,
+    "candidate": {
+      "Navigation": "Text_Search",
+      "Audio": "Silent",
+      "Visuals": "Standard_Material",
+      "Data_Ingest": "Batch_Process",
+      "Interaction": "VR_Hands"
+    },
+    "avg_score": 262.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 260.0,
+      "Beta (Engineer)": 270.0,
+      "Gamma (Gamer)": 245.0,
+      "Delta (Academic)": 285.0,
+      "Omega (Synthesizer)": 250
+    },
+    "debate": [
+      "Alpha (Visionary): 260.0 | ['Navigation:Text_Search -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Standard_Material -> 50.0', 'Data_Ingest:Batch_Process -> 50.0', 'Interaction:VR_Hands -> 60.0']",
+      "Beta (Engineer): 270.0 | ['Navigation:Text_Search -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Standard_Material -> 75.0', 'Data_Ingest:Batch_Process -> 75.0', 'Interaction:VR_Hands -> 20.0']",
+      "Gamma (Gamer): 245.0 | ['Navigation:Text_Search -> 20.0', 'Audio:Silent -> 50.0', 'Visuals:Standard_Material -> 50.0', 'Data_Ingest:Batch_Process -> 50.0', 'Interaction:VR_Hands -> 75.0']",
+      "Delta (Academic): 285.0 | ['Navigation:Text_Search -> 75.0', 'Audio:Silent -> 50.0', 'Visuals:Standard_Material -> 50.0', 'Data_Ingest:Batch_Process -> 60.0', 'Interaction:VR_Hands -> 50.0']",
+      "Omega (Synthesizer): 250.0 | ['Navigation:Text_Search -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Standard_Material -> 50.0', 'Data_Ingest:Batch_Process -> 50.0', 'Interaction:VR_Hands -> 50.0']"
+    ]
+  },
+  {
+    "id": 18,
+    "candidate": {
+      "Navigation": "Hybrid_Dual_Mode",
+      "Audio": "Silent",
+      "Visuals": "Point_Cloud",
+      "Data_Ingest": "On_Demand_Query",
+      "Interaction": "Text_Command_Line"
+    },
+    "avg_score": 262.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 250,
+      "Beta (Engineer)": 250,
+      "Gamma (Gamer)": 220.0,
+      "Delta (Academic)": 275.0,
+      "Omega (Synthesizer)": 315.0
+    },
+    "debate": [
+      "Alpha (Visionary): 250.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:Text_Command_Line -> 50.0']",
+      "Beta (Engineer): 250.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:Text_Command_Line -> 50.0']",
+      "Gamma (Gamer): 220.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:Text_Command_Line -> 20.0']",
+      "Delta (Academic): 275.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:Text_Command_Line -> 75.0']",
+      "Omega (Synthesizer): 315.0 | ['Navigation:Hybrid_Dual_Mode -> 90.0', 'Audio:Silent -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:On_Demand_Query -> 75.0', 'Interaction:Text_Command_Line -> 50.0']"
+    ]
+  },
+  {
+    "id": 19,
+    "candidate": {
+      "Navigation": "Hybrid_Dual_Mode",
+      "Audio": "Data_Sonification_Raw",
+      "Visuals": "Trauma_Shader_GLSL",
+      "Data_Ingest": "Real_Time_Stream",
+      "Interaction": "VR_Hands"
+    },
+    "avg_score": 260.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 285.0,
+      "Beta (Engineer)": 200.0,
+      "Gamma (Gamer)": 275.0,
+      "Delta (Academic)": 240.0,
+      "Omega (Synthesizer)": 300.0
+    },
+    "debate": [
+      "Alpha (Visionary): 285.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Trauma_Shader_GLSL -> 75.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:VR_Hands -> 60.0']",
+      "Beta (Engineer): 200.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Trauma_Shader_GLSL -> 50.0', 'Data_Ingest:Real_Time_Stream -> 30.0', 'Interaction:VR_Hands -> 20.0']",
+      "Gamma (Gamer): 275.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Trauma_Shader_GLSL -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:VR_Hands -> 75.0']",
+      "Delta (Academic): 240.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Trauma_Shader_GLSL -> 40.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:VR_Hands -> 50.0']",
+      "Omega (Synthesizer): 300.0 | ['Navigation:Hybrid_Dual_Mode -> 90.0', 'Audio:Data_Sonification_Raw -> 60.0', 'Visuals:Trauma_Shader_GLSL -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:VR_Hands -> 50.0']"
+    ]
+  },
+  {
+    "id": 12,
+    "candidate": {
+      "Navigation": "Hybrid_Dual_Mode",
+      "Audio": "Data_Sonification_Raw",
+      "Visuals": "Point_Cloud",
+      "Data_Ingest": "Static_Dump",
+      "Interaction": "Text_Command_Line"
+    },
+    "avg_score": 258.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 225.0,
+      "Beta (Engineer)": 250,
+      "Gamma (Gamer)": 220.0,
+      "Delta (Academic)": 295.0,
+      "Omega (Synthesizer)": 300.0
+    },
+    "debate": [
+      "Alpha (Visionary): 225.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Static_Dump -> 25.0', 'Interaction:Text_Command_Line -> 50.0']",
+      "Beta (Engineer): 250.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Static_Dump -> 50.0', 'Interaction:Text_Command_Line -> 50.0']",
+      "Gamma (Gamer): 220.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Static_Dump -> 50.0', 'Interaction:Text_Command_Line -> 20.0']",
+      "Delta (Academic): 295.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Static_Dump -> 70.0', 'Interaction:Text_Command_Line -> 75.0']",
+      "Omega (Synthesizer): 300.0 | ['Navigation:Hybrid_Dual_Mode -> 90.0', 'Audio:Data_Sonification_Raw -> 60.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Static_Dump -> 50.0', 'Interaction:Text_Command_Line -> 50.0']"
+    ]
+  },
+  {
+    "id": 14,
+    "candidate": {
+      "Navigation": "Hybrid_Dual_Mode",
+      "Audio": "Silent",
+      "Visuals": "Wireframe",
+      "Data_Ingest": "Static_Dump",
+      "Interaction": "VR_Hands"
+    },
+    "avg_score": 258.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 235.0,
+      "Beta (Engineer)": 220.0,
+      "Gamma (Gamer)": 275.0,
+      "Delta (Academic)": 270.0,
+      "Omega (Synthesizer)": 290.0
+    },
+    "debate": [
+      "Alpha (Visionary): 235.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Static_Dump -> 25.0', 'Interaction:VR_Hands -> 60.0']",
+      "Beta (Engineer): 220.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Static_Dump -> 50.0', 'Interaction:VR_Hands -> 20.0']",
+      "Gamma (Gamer): 275.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Static_Dump -> 50.0', 'Interaction:VR_Hands -> 75.0']",
+      "Delta (Academic): 270.0 | ['Navigation:Hybrid_Dual_Mode -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Static_Dump -> 70.0', 'Interaction:VR_Hands -> 50.0']",
+      "Omega (Synthesizer): 290.0 | ['Navigation:Hybrid_Dual_Mode -> 90.0', 'Audio:Silent -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Static_Dump -> 50.0', 'Interaction:VR_Hands -> 50.0']"
+    ]
+  },
+  {
+    "id": 1,
+    "candidate": {
+      "Navigation": "Text_Search",
+      "Audio": "Data_Sonification_Raw",
+      "Visuals": "Standard_Material",
+      "Data_Ingest": "Real_Time_Stream",
+      "Interaction": "First_Person_Fly"
+    },
+    "avg_score": 257.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 250,
+      "Beta (Engineer)": 255.0,
+      "Gamma (Gamer)": 245.0,
+      "Delta (Academic)": 275.0,
+      "Omega (Synthesizer)": 260.0
+    },
+    "debate": [
+      "Alpha (Visionary): 250.0 | ['Navigation:Text_Search -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Standard_Material -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:First_Person_Fly -> 50.0']",
+      "Beta (Engineer): 255.0 | ['Navigation:Text_Search -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Standard_Material -> 75.0', 'Data_Ingest:Real_Time_Stream -> 30.0', 'Interaction:First_Person_Fly -> 50.0']",
+      "Gamma (Gamer): 245.0 | ['Navigation:Text_Search -> 20.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Standard_Material -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:First_Person_Fly -> 75.0']",
+      "Delta (Academic): 275.0 | ['Navigation:Text_Search -> 75.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Standard_Material -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:First_Person_Fly -> 50.0']",
+      "Omega (Synthesizer): 260.0 | ['Navigation:Text_Search -> 50.0', 'Audio:Data_Sonification_Raw -> 60.0', 'Visuals:Standard_Material -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:First_Person_Fly -> 50.0']"
+    ]
+  },
+  {
+    "id": 16,
+    "candidate": {
+      "Navigation": "Text_Search",
+      "Audio": "Data_Sonification_Raw",
+      "Visuals": "Point_Cloud",
+      "Data_Ingest": "Batch_Process",
+      "Interaction": "Text_Command_Line"
+    },
+    "avg_score": 257.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 250,
+      "Beta (Engineer)": 275.0,
+      "Gamma (Gamer)": 190.0,
+      "Delta (Academic)": 310.0,
+      "Omega (Synthesizer)": 260.0
+    },
+    "debate": [
+      "Alpha (Visionary): 250.0 | ['Navigation:Text_Search -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Batch_Process -> 50.0', 'Interaction:Text_Command_Line -> 50.0']",
+      "Beta (Engineer): 275.0 | ['Navigation:Text_Search -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Batch_Process -> 75.0', 'Interaction:Text_Command_Line -> 50.0']",
+      "Gamma (Gamer): 190.0 | ['Navigation:Text_Search -> 20.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Batch_Process -> 50.0', 'Interaction:Text_Command_Line -> 20.0']",
+      "Delta (Academic): 310.0 | ['Navigation:Text_Search -> 75.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Batch_Process -> 60.0', 'Interaction:Text_Command_Line -> 75.0']",
+      "Omega (Synthesizer): 260.0 | ['Navigation:Text_Search -> 50.0', 'Audio:Data_Sonification_Raw -> 60.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Batch_Process -> 50.0', 'Interaction:Text_Command_Line -> 50.0']"
+    ]
+  },
+  {
+    "id": 7,
+    "candidate": {
+      "Navigation": "Text_Search",
+      "Audio": "Data_Sonification_Raw",
+      "Visuals": "Point_Cloud",
+      "Data_Ingest": "Static_Dump",
+      "Interaction": "First_Person_Fly"
+    },
+    "avg_score": 255.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 225.0,
+      "Beta (Engineer)": 250,
+      "Gamma (Gamer)": 245.0,
+      "Delta (Academic)": 295.0,
+      "Omega (Synthesizer)": 260.0
+    },
+    "debate": [
+      "Alpha (Visionary): 225.0 | ['Navigation:Text_Search -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Static_Dump -> 25.0', 'Interaction:First_Person_Fly -> 50.0']",
+      "Beta (Engineer): 250.0 | ['Navigation:Text_Search -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Static_Dump -> 50.0', 'Interaction:First_Person_Fly -> 50.0']",
+      "Gamma (Gamer): 245.0 | ['Navigation:Text_Search -> 20.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Static_Dump -> 50.0', 'Interaction:First_Person_Fly -> 75.0']",
+      "Delta (Academic): 295.0 | ['Navigation:Text_Search -> 75.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Static_Dump -> 70.0', 'Interaction:First_Person_Fly -> 50.0']",
+      "Omega (Synthesizer): 260.0 | ['Navigation:Text_Search -> 50.0', 'Audio:Data_Sonification_Raw -> 60.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Static_Dump -> 50.0', 'Interaction:First_Person_Fly -> 50.0']"
+    ]
+  },
+  {
+    "id": 8,
+    "candidate": {
+      "Navigation": "3D_Cosmology",
+      "Audio": "Generative_ToneJS",
+      "Visuals": "Point_Cloud",
+      "Data_Ingest": "Real_Time_Stream",
+      "Interaction": "First_Person_Fly"
+    },
+    "avg_score": 255.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 300.0,
+      "Beta (Engineer)": 205.0,
+      "Gamma (Gamer)": 290.0,
+      "Delta (Academic)": 230.0,
+      "Omega (Synthesizer)": 250
+    },
+    "debate": [
+      "Alpha (Visionary): 300.0 | ['Navigation:3D_Cosmology -> 75.0', 'Audio:Generative_ToneJS -> 75.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:First_Person_Fly -> 50.0']",
+      "Beta (Engineer): 205.0 | ['Navigation:3D_Cosmology -> 50.0', 'Audio:Generative_ToneJS -> 25.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Real_Time_Stream -> 30.0', 'Interaction:First_Person_Fly -> 50.0']",
+      "Gamma (Gamer): 290.0 | ['Navigation:3D_Cosmology -> 65.0', 'Audio:Generative_ToneJS -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:First_Person_Fly -> 75.0']",
+      "Delta (Academic): 230.0 | ['Navigation:3D_Cosmology -> 50.0', 'Audio:Generative_ToneJS -> 30.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:First_Person_Fly -> 50.0']",
+      "Omega (Synthesizer): 250.0 | ['Navigation:3D_Cosmology -> 50.0', 'Audio:Generative_ToneJS -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:First_Person_Fly -> 50.0']"
+    ]
+  },
+  {
+    "id": 13,
+    "candidate": {
+      "Navigation": "2D_Dashboard",
+      "Audio": "Generative_ToneJS",
+      "Visuals": "Wireframe",
+      "Data_Ingest": "On_Demand_Query",
+      "Interaction": "God_Mode_Orbit"
+    },
+    "avg_score": 254.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 250.0,
+      "Beta (Engineer)": 235.0,
+      "Gamma (Gamer)": 270.0,
+      "Delta (Academic)": 230.0,
+      "Omega (Synthesizer)": 285.0
+    },
+    "debate": [
+      "Alpha (Visionary): 250.0 | ['Navigation:2D_Dashboard -> 25.0', 'Audio:Generative_ToneJS -> 75.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:God_Mode_Orbit -> 50.0']",
+      "Beta (Engineer): 235.0 | ['Navigation:2D_Dashboard -> 60.0', 'Audio:Generative_ToneJS -> 25.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:God_Mode_Orbit -> 50.0']",
+      "Gamma (Gamer): 270.0 | ['Navigation:2D_Dashboard -> 50.0', 'Audio:Generative_ToneJS -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:God_Mode_Orbit -> 70.0']",
+      "Delta (Academic): 230.0 | ['Navigation:2D_Dashboard -> 50.0', 'Audio:Generative_ToneJS -> 30.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:God_Mode_Orbit -> 50.0']",
+      "Omega (Synthesizer): 285.0 | ['Navigation:2D_Dashboard -> 50.0', 'Audio:Generative_ToneJS -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:On_Demand_Query -> 75.0', 'Interaction:God_Mode_Orbit -> 60.0']"
+    ]
+  },
+  {
+    "id": 2,
+    "candidate": {
+      "Navigation": "2D_Dashboard",
+      "Audio": "Silent",
+      "Visuals": "Wireframe",
+      "Data_Ingest": "Batch_Process",
+      "Interaction": "Text_Command_Line"
+    },
+    "avg_score": 253.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 225.0,
+      "Beta (Engineer)": 285.0,
+      "Gamma (Gamer)": 220.0,
+      "Delta (Academic)": 285.0,
+      "Omega (Synthesizer)": 250
+    },
+    "debate": [
+      "Alpha (Visionary): 225.0 | ['Navigation:2D_Dashboard -> 25.0', 'Audio:Silent -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Batch_Process -> 50.0', 'Interaction:Text_Command_Line -> 50.0']",
+      "Beta (Engineer): 285.0 | ['Navigation:2D_Dashboard -> 60.0', 'Audio:Silent -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Batch_Process -> 75.0', 'Interaction:Text_Command_Line -> 50.0']",
+      "Gamma (Gamer): 220.0 | ['Navigation:2D_Dashboard -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Batch_Process -> 50.0', 'Interaction:Text_Command_Line -> 20.0']",
+      "Delta (Academic): 285.0 | ['Navigation:2D_Dashboard -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Batch_Process -> 60.0', 'Interaction:Text_Command_Line -> 75.0']",
+      "Omega (Synthesizer): 250.0 | ['Navigation:2D_Dashboard -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Batch_Process -> 50.0', 'Interaction:Text_Command_Line -> 50.0']"
+    ]
+  },
+  {
+    "id": 4,
+    "candidate": {
+      "Navigation": "2D_Dashboard",
+      "Audio": "Generative_ToneJS",
+      "Visuals": "Point_Cloud",
+      "Data_Ingest": "On_Demand_Query",
+      "Interaction": "First_Person_Fly"
+    },
+    "avg_score": 253.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 250.0,
+      "Beta (Engineer)": 235.0,
+      "Gamma (Gamer)": 275.0,
+      "Delta (Academic)": 230.0,
+      "Omega (Synthesizer)": 275.0
+    },
+    "debate": [
+      "Alpha (Visionary): 250.0 | ['Navigation:2D_Dashboard -> 25.0', 'Audio:Generative_ToneJS -> 75.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:First_Person_Fly -> 50.0']",
+      "Beta (Engineer): 235.0 | ['Navigation:2D_Dashboard -> 60.0', 'Audio:Generative_ToneJS -> 25.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:First_Person_Fly -> 50.0']",
+      "Gamma (Gamer): 275.0 | ['Navigation:2D_Dashboard -> 50.0', 'Audio:Generative_ToneJS -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:First_Person_Fly -> 75.0']",
+      "Delta (Academic): 230.0 | ['Navigation:2D_Dashboard -> 50.0', 'Audio:Generative_ToneJS -> 30.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:On_Demand_Query -> 50.0', 'Interaction:First_Person_Fly -> 50.0']",
+      "Omega (Synthesizer): 275.0 | ['Navigation:2D_Dashboard -> 50.0', 'Audio:Generative_ToneJS -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:On_Demand_Query -> 75.0', 'Interaction:First_Person_Fly -> 50.0']"
+    ]
+  },
+  {
+    "id": 9,
+    "candidate": {
+      "Navigation": "2D_Dashboard",
+      "Audio": "Data_Sonification_Raw",
+      "Visuals": "Standard_Material",
+      "Data_Ingest": "Real_Time_Stream",
+      "Interaction": "VR_Hands"
+    },
+    "avg_score": 251.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 235.0,
+      "Beta (Engineer)": 235.0,
+      "Gamma (Gamer)": 275.0,
+      "Delta (Academic)": 250,
+      "Omega (Synthesizer)": 260.0
+    },
+    "debate": [
+      "Alpha (Visionary): 235.0 | ['Navigation:2D_Dashboard -> 25.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Standard_Material -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:VR_Hands -> 60.0']",
+      "Beta (Engineer): 235.0 | ['Navigation:2D_Dashboard -> 60.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Standard_Material -> 75.0', 'Data_Ingest:Real_Time_Stream -> 30.0', 'Interaction:VR_Hands -> 20.0']",
+      "Gamma (Gamer): 275.0 | ['Navigation:2D_Dashboard -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Standard_Material -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:VR_Hands -> 75.0']",
+      "Delta (Academic): 250.0 | ['Navigation:2D_Dashboard -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Standard_Material -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:VR_Hands -> 50.0']",
+      "Omega (Synthesizer): 260.0 | ['Navigation:2D_Dashboard -> 50.0', 'Audio:Data_Sonification_Raw -> 60.0', 'Visuals:Standard_Material -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:VR_Hands -> 50.0']"
+    ]
+  },
+  {
+    "id": 10,
+    "candidate": {
+      "Navigation": "2D_Dashboard",
+      "Audio": "Data_Sonification_Raw",
+      "Visuals": "Wireframe",
+      "Data_Ingest": "Real_Time_Stream",
+      "Interaction": "God_Mode_Orbit"
+    },
+    "avg_score": 251.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 225.0,
+      "Beta (Engineer)": 240.0,
+      "Gamma (Gamer)": 270.0,
+      "Delta (Academic)": 250,
+      "Omega (Synthesizer)": 270.0
+    },
+    "debate": [
+      "Alpha (Visionary): 225.0 | ['Navigation:2D_Dashboard -> 25.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:God_Mode_Orbit -> 50.0']",
+      "Beta (Engineer): 240.0 | ['Navigation:2D_Dashboard -> 60.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Real_Time_Stream -> 30.0', 'Interaction:God_Mode_Orbit -> 50.0']",
+      "Gamma (Gamer): 270.0 | ['Navigation:2D_Dashboard -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:God_Mode_Orbit -> 70.0']",
+      "Delta (Academic): 250.0 | ['Navigation:2D_Dashboard -> 50.0', 'Audio:Data_Sonification_Raw -> 50.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:God_Mode_Orbit -> 50.0']",
+      "Omega (Synthesizer): 270.0 | ['Navigation:2D_Dashboard -> 50.0', 'Audio:Data_Sonification_Raw -> 60.0', 'Visuals:Wireframe -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:God_Mode_Orbit -> 60.0']"
+    ]
+  },
+  {
+    "id": 6,
+    "candidate": {
+      "Navigation": "Text_Search",
+      "Audio": "Silent",
+      "Visuals": "Point_Cloud",
+      "Data_Ingest": "Real_Time_Stream",
+      "Interaction": "VR_Hands"
+    },
+    "avg_score": 246.0,
+    "agent_scores": {
+      "Alpha (Visionary)": 260.0,
+      "Beta (Engineer)": 200.0,
+      "Gamma (Gamer)": 245.0,
+      "Delta (Academic)": 275.0,
+      "Omega (Synthesizer)": 250
+    },
+    "debate": [
+      "Alpha (Visionary): 260.0 | ['Navigation:Text_Search -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:VR_Hands -> 60.0']",
+      "Beta (Engineer): 200.0 | ['Navigation:Text_Search -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Real_Time_Stream -> 30.0', 'Interaction:VR_Hands -> 20.0']",
+      "Gamma (Gamer): 245.0 | ['Navigation:Text_Search -> 20.0', 'Audio:Silent -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:VR_Hands -> 75.0']",
+      "Delta (Academic): 275.0 | ['Navigation:Text_Search -> 75.0', 'Audio:Silent -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:VR_Hands -> 50.0']",
+      "Omega (Synthesizer): 250.0 | ['Navigation:Text_Search -> 50.0', 'Audio:Silent -> 50.0', 'Visuals:Point_Cloud -> 50.0', 'Data_Ingest:Real_Time_Stream -> 50.0', 'Interaction:VR_Hands -> 50.0']"
+    ]
+  }
+]

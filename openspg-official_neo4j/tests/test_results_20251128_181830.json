@@ -1,0 +1,375 @@
+{
+  "test_suite": "Neo4j Comprehensive Validation",
+  "timestamp": "2025-11-29 00:18:30 UTC",
+  "summary": {
+    "total_tests": 40,
+    "passed": 0,
+    "failed": 0,
+    "errors": 40,
+    "pass_rate": "0.00%",
+    "target_pass_rate": "95%",
+    "target_met": false
+  },
+  "tests": [
+    {
+      "test_id": "TEST_001",
+      "test_name": "TEST_001_DATABASE_POPULATED",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (n)\nWITH count(n) AS total_nodes\nRETURN 'TEST_001_DATABASE_POPULATED' AS test_name,\n       'Database has nodes' AS test_description,\n       0 AS expected_greater_than,\n       total_nodes AS actu..."
+    },
+    {
+      "test_id": "TEST_002",
+      "test_name": "TEST_002_SELDON_CRISES",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (crisis:SeldonCrisis)\nRETURN 'TEST_002_SELDON_CRISES' AS test_name,\n       'All 3 Seldon Crises exist' AS test_description,\n       3 AS expected_count,\n       count(crisis) AS actual_count,\n    ..."
+    },
+    {
+      "test_id": "TEST_003",
+      "test_name": "TEST_003_CRISIS_RESIGNATION",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (crisis:SeldonCrisis)\nWHERE crisis.name = 'Great Resignation Cascade'\nRETURN 'TEST_003_CRISIS_RESIGNATION' AS test_name,\n       'Great Resignation Cascade queryable' AS test_description,\n       ..."
+    },
+    {
+      "test_id": "TEST_004",
+      "test_name": "TEST_004_CRISIS_SUPPLY_CHAIN",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (crisis:SeldonCrisis)\nWHERE crisis.name = 'Supply Chain Collapse'\nRETURN 'TEST_004_CRISIS_SUPPLY_CHAIN' AS test_name,\n       'Supply Chain Collapse queryable' AS test_description,\n       1 AS ex..."
+    },
+    {
+      "test_id": "TEST_005",
+      "test_name": "TEST_005_CRISIS_PANDEMIC",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (crisis:SeldonCrisis)\nWHERE crisis.name = 'Medical Device Pandemic'\nRETURN 'TEST_005_CRISIS_PANDEMIC' AS test_name,\n       'Medical Device Pandemic queryable' AS test_description,\n       1 AS ex..."
+    },
+    {
+      "test_id": "TEST_006",
+      "test_name": "TEST_006_TIER_PROPERTY",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (n)\nWHERE n.tier IS NOT NULL\nWITH count(n) AS nodes_with_tier\nRETURN 'TEST_006_TIER_PROPERTY' AS test_name,\n       'Nodes have tier property' AS test_description,\n       0 AS expected_greater_th..."
+    },
+    {
+      "test_id": "TEST_007",
+      "test_name": "TEST_007_TIER_DISTRIBUTION",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (n)\nWHERE n.tier IS NOT NULL\nWITH DISTINCT n.tier AS tier\nWITH collect(tier) AS tiers\nRETURN 'TEST_007_TIER_DISTRIBUTION' AS test_name,\n       'Multiple tiers present (T5-T9)' AS test_descriptio..."
+    },
+    {
+      "test_id": "TEST_008",
+      "test_name": "TEST_008_TIER_T5_COUNT",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (n)\nWHERE n.tier = 5\nRETURN 'TEST_008_TIER_T5_COUNT' AS test_name,\n       'T5 tier nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(n) AS actual_count,\n       CA..."
+    },
+    {
+      "test_id": "TEST_009",
+      "test_name": "TEST_009_TIER_T7_COUNT",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (n)\nWHERE n.tier = 7\nRETURN 'TEST_009_TIER_T7_COUNT' AS test_name,\n       'T7 tier nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(n) AS actual_count,\n       CA..."
+    },
+    {
+      "test_id": "TEST_010",
+      "test_name": "TEST_010_TIER_T8_COUNT",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (n)\nWHERE n.tier = 8\nRETURN 'TEST_010_TIER_T8_COUNT' AS test_name,\n       'T8 tier nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(n) AS actual_count,\n       CA..."
+    },
+    {
+      "test_id": "TEST_011",
+      "test_name": "TEST_011_TIER_T9_COUNT",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (n)\nWHERE n.tier = 9\nRETURN 'TEST_011_TIER_T9_COUNT' AS test_name,\n       'T9 tier nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(n) AS actual_count,\n       CA..."
+    },
+    {
+      "test_id": "TEST_012",
+      "test_name": "TEST_012_ATTACKPATTERN_EXISTS",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (a:AttackPattern)\nRETURN 'TEST_012_ATTACKPATTERN_EXISTS' AS test_name,\n       'AttackPattern nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(a) AS actual_count,..."
+    },
+    {
+      "test_id": "TEST_013",
+      "test_name": "TEST_013_CONTROL_EXISTS",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (c:Control)\nRETURN 'TEST_013_CONTROL_EXISTS' AS test_name,\n       'Control nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(c) AS actual_count,\n       CASE WHEN ..."
+    },
+    {
+      "test_id": "TEST_014",
+      "test_name": "TEST_014_THREATACTOR_EXISTS",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (t:ThreatActor)\nRETURN 'TEST_014_THREATACTOR_EXISTS' AS test_name,\n       'ThreatActor nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(t) AS actual_count,\n     ..."
+    },
+    {
+      "test_id": "TEST_015",
+      "test_name": "TEST_015_INDICATOR_EXISTS",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (i:Indicator)\nRETURN 'TEST_015_INDICATOR_EXISTS' AS test_name,\n       'Indicator nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(i) AS actual_count,\n       CASE..."
+    },
+    {
+      "test_id": "TEST_016",
+      "test_name": "TEST_016_EVENT_EXISTS",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (e:Event)\nRETURN 'TEST_016_EVENT_EXISTS' AS test_name,\n       'Event nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(e) AS actual_count,\n       CASE WHEN count(..."
+    },
+    {
+      "test_id": "TEST_017",
+      "test_name": "TEST_017_ECONOMICMETRIC_EXISTS",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (em:EconomicMetric)\nRETURN 'TEST_017_ECONOMICMETRIC_EXISTS' AS test_name,\n       'EconomicMetric nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(em) AS actual_c..."
+    },
+    {
+      "test_id": "TEST_018",
+      "test_name": "TEST_018_ASSET_EXISTS",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (a:Asset)\nRETURN 'TEST_018_ASSET_EXISTS' AS test_name,\n       'Asset nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(a) AS actual_count,\n       CASE WHEN count(..."
+    },
+    {
+      "test_id": "TEST_019",
+      "test_name": "TEST_019_VULNERABILITY_EXISTS",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (v:Vulnerability)\nRETURN 'TEST_019_VULNERABILITY_EXISTS' AS test_name,\n       'Vulnerability nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(v) AS actual_count,..."
+    },
+    {
+      "test_id": "TEST_020",
+      "test_name": "TEST_020_CAMPAIGN_EXISTS",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (c:Campaign)\nRETURN 'TEST_020_CAMPAIGN_EXISTS' AS test_name,\n       'Campaign nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(c) AS actual_count,\n       CASE WH..."
+    },
+    {
+      "test_id": "TEST_021",
+      "test_name": "TEST_021_MALWARE_EXISTS",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (m:Malware)\nRETURN 'TEST_021_MALWARE_EXISTS' AS test_name,\n       'Malware nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(m) AS actual_count,\n       CASE WHEN ..."
+    },
+    {
+      "test_id": "TEST_022",
+      "test_name": "TEST_022_PSYCHTRAIT_EXISTS",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (p:PsychTrait)\nRETURN 'TEST_022_PSYCHTRAIT_EXISTS' AS test_name,\n       'PsychTrait nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(p) AS actual_count,\n       C..."
+    },
+    {
+      "test_id": "TEST_023",
+      "test_name": "TEST_023_SOFTWARE_EXISTS",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (s:Software)\nRETURN 'TEST_023_SOFTWARE_EXISTS' AS test_name,\n       'Software nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(s) AS actual_count,\n       CASE WH..."
+    },
+    {
+      "test_id": "TEST_024",
+      "test_name": "TEST_024_PROTOCOL_EXISTS",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (p:Protocol)\nRETURN 'TEST_024_PROTOCOL_EXISTS' AS test_name,\n       'Protocol nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(p) AS actual_count,\n       CASE WH..."
+    },
+    {
+      "test_id": "TEST_025",
+      "test_name": "TEST_025_ORGANIZATION_EXISTS",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (o:Organization)\nRETURN 'TEST_025_ORGANIZATION_EXISTS' AS test_name,\n       'Organization nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(o) AS actual_count,\n  ..."
+    },
+    {
+      "test_id": "TEST_026",
+      "test_name": "TEST_026_LOCATION_EXISTS",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (l:Location)\nRETURN 'TEST_026_LOCATION_EXISTS' AS test_name,\n       'Location nodes exist' AS test_description,\n       0 AS expected_greater_than,\n       count(l) AS actual_count,\n       CASE WH..."
+    },
+    {
+      "test_id": "TEST_027",
+      "test_name": "TEST_027_RELATIONSHIPS_EXIST",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH ()-[r]->()\nRETURN 'TEST_027_RELATIONSHIPS_EXIST' AS test_name,\n       'Relationships exist in database' AS test_description,\n       0 AS expected_greater_than,\n       count(r) AS actual_count,\n ..."
+    },
+    {
+      "test_id": "TEST_028",
+      "test_name": "TEST_028_RELATIONSHIP_TYPES",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH ()-[r]->()\nWITH DISTINCT type(r) AS rel_type\nRETURN 'TEST_028_RELATIONSHIP_TYPES' AS test_name,\n       'Multiple relationship types exist' AS test_description,\n       3 AS expected_min_types,\n  ..."
+    },
+    {
+      "test_id": "TEST_029",
+      "test_name": "TEST_029_NODES_HAVE_NAMES",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (n)\nWHERE n.name IS NOT NULL\nWITH count(n) AS nodes_with_names\nRETURN 'TEST_029_NODES_HAVE_NAMES' AS test_name,\n       'Nodes have name property' AS test_description,\n       0 AS expected_greate..."
+    },
+    {
+      "test_id": "TEST_030",
+      "test_name": "Unknown",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (crisis:SeldonCrisis)\nWHERE crisis.name IS NOT NULL\n  AND crisis.predicted_time IS NOT NULL\n  AND crisis.actual_time IS NOT NULL\nRETURN 'TEST_030_CRISIS_PROPERTIES' AS test_name,\n       'Seldon ..."
+    },
+    {
+      "test_id": "TEST_031",
+      "test_name": "TEST_031_FUNC_DEVIATION",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (crisis:SeldonCrisis)\nWHERE crisis.predicted_time IS NOT NULL AND crisis.actual_time IS NOT NULL\nWITH crisis,\n     abs(crisis.predicted_time - crisis.actual_time) AS deviation\nWITH avg(deviation..."
+    },
+    {
+      "test_id": "TEST_032",
+      "test_name": "TEST_032_FUNC_TIMING",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (crisis:SeldonCrisis)\nWITH crisis,\n     crisis.predicted_time AS predicted,\n     crisis.actual_time AS actual,\n     abs(crisis.predicted_time - crisis.actual_time) AS timing_error\nRETURN 'TEST_0..."
+    },
+    {
+      "test_id": "TEST_033",
+      "test_name": "TEST_033_DISC_TIER",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (n)\nWHERE n.tier IS NOT NULL\nWITH n.tier AS tier, count(n) AS entity_count\nWITH collect({tier: tier, count: entity_count}) AS tier_distribution\nRETURN 'TEST_033_DISC_TIER' AS test_name,\n       '..."
+    },
+    {
+      "test_id": "TEST_034",
+      "test_name": "TEST_034_DISC_LABEL",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (n)\nWITH DISTINCT labels(n)[0] AS label, count(n) AS entity_count\nWHERE label IS NOT NULL\nRETURN 'TEST_034_DISC_LABEL' AS test_name,\n       'Discriminator: Entities by label' AS test_description..."
+    },
+    {
+      "test_id": "TEST_035",
+      "test_name": "TEST_035_DATA_COMPLETE",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (n:SeldonCrisis)\nWHERE n.name IS NOT NULL\nWITH count(n) AS complete_crises\nMATCH (n:SeldonCrisis)\nWITH complete_crises, count(n) AS total_crises\nRETURN 'TEST_035_DATA_COMPLETE' AS test_name,\n   ..."
+    },
+    {
+      "test_id": "TEST_036",
+      "test_name": "TEST_036_SAMPLE_T5_ATTACK",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (a:AttackPattern)\nWHERE a.tier = 5\nRETURN 'TEST_036_SAMPLE_T5_ATTACK' AS test_name,\n       'T5 sample: AttackPattern entities' AS test_description,\n       0 AS expected_greater_than,\n       coun..."
+    },
+    {
+      "test_id": "TEST_037",
+      "test_name": "TEST_037_SAMPLE_T7_CONTROL",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (c:Control)\nWHERE c.tier = 7\nRETURN 'TEST_037_SAMPLE_T7_CONTROL' AS test_name,\n       'T7 sample: Control entities' AS test_description,\n       0 AS expected_greater_than,\n       count(c) AS act..."
+    },
+    {
+      "test_id": "TEST_038",
+      "test_name": "TEST_038_SAMPLE_T8_THREAT",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (t:ThreatActor)\nWHERE t.tier = 8\nRETURN 'TEST_038_SAMPLE_T8_THREAT' AS test_name,\n       'T8 sample: ThreatActor entities' AS test_description,\n       0 AS expected_greater_than,\n       count(t)..."
+    },
+    {
+      "test_id": "TEST_039",
+      "test_name": "TEST_039_SAMPLE_T9_INDICATOR",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH (i:Indicator)\nWHERE i.tier = 9\nRETURN 'TEST_039_SAMPLE_T9_INDICATOR' AS test_name,\n       'T9 sample: Indicator entities' AS test_description,\n       0 AS expected_greater_than,\n       count(i) ..."
+    },
+    {
+      "test_id": "TEST_040",
+      "test_name": "TEST_040_REL_INTEGRITY",
+      "test_description": "",
+      "expected": "N/A",
+      "actual": "N/A",
+      "status": "ERROR",
+      "query": "MATCH ()-[r]->()\nWHERE startNode(r) IS NOT NULL AND endNode(r) IS NOT NULL\nWITH count(r) AS valid_relationships\nMATCH ()-[r]->()\nWITH valid_relationships, count(r) AS total_relationships\nRETURN 'TEST_..."
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+{
+  "all_relationship_types": [
+    "RELATED_TO",
+    "EXPLOITS",
+    "IMPLEMENTS",
+    "SUB_TECHNIQUE_OF",
+    "MITIGATED_BY",
+    "LEADS_TO",
+    "REQUIRES_DATA_SOURCE",
+    "AFFECTS_SYSTEM",
+    "HAS_ZONE",
+    "HAS_SYSTEM",
+    "DEPLOYED_IN",
+    "HAS_THREAT_MODEL",
+    "PROTECTS",
+    "HAS_ASSESSMENT",
+    "ATTRIBUTED_TO",
+    "CONDUCTS",
+    "USES_TTP",
+    "DEPLOYS",
+    "TARGETS",
+    "CONTROLS",
+    "LEVERAGES",
+    "COLLABORATES_WITH",
+    "EVOLVES_TO",
+    "RELEASES_GUIDANCE",
+    "PROVIDES",
+    "CHILDOF",
+    "CANPRECEDE",
+    "PEEROF",
+    "CANALSOBE",
+    "CANFOLLOW",
+    "MAPS_TO_ATTACK",
+    "SUPPORTS",
+    "INTEGRATES_WITH",
+    "COMPATIBLE_WITH",
+    "SUCCESSOR_OF",
+    "SUPPORTS_PROTOCOL",
+    "EMPHASIZES_REGISTER",
+    "OPERATES_IN_REGISTER",
+    "MANIFESTS_IN_DISCOURSE",
+    "INCLUDES_COMPONENT",
+    "POSITIONED_IN",
+    "EXHIBITS_REGISTER",
+    "EXHIBITS_PATTERN",
+    "DEPENDS_CRITICALLY_ON",
+    "CASCADES_TO",
+    "REDUNDANT_WITH",
+    "ISOLATES",
+    "IMPACTS",
+    "COMPOSED_OF",
+    "HAS_COMPONENT",
+    "DEPENDS_ON",
+    "HAS_VULNERABILITY",
+    "CONTAINS_EQUIPMENT",
+    "ENABLES_ATTACK_PATTERN",
+    "METADATA_FOR",
+    "CONTAINS_ENTITY",
+    "RELATIONSHIP",
+    "OWNS_EQUIPMENT",
+    "MANAGES_EQUIPMENT",
+    "HAS_ORGANIZATION",
+    "HAS_PROPERTY",
+    "HAS_MEASUREMENT",
+    "OFFERS_SERVICE",
+    "HAS_FUNCTION",
+    "HAS_COMMAND",
+    "VULNERABLE_TO",
+    "USES_DEVICE",
+    "CONTAINS",
+    "TRIGGERED_BY",
+    "EXTENDS_SAREF_DEVICE",
+    "GENERATES_MEASUREMENT",
+    "CONNECTS_SUBSTATIONS",
+    "CONTROLLED_BY_EMS",
+    "CONNECTED_TO_GRID",
+    "COMPLIES_WITH_NERC_CIP",
+    "INSTALLED_AT_SUBSTATION",
+    "HAS_ENERGY_PROPERTY",
+    "DEPENDS_ON_ENERGY",
+    "ORCHESTRATES_CAMPAIGN",
+    "USES_ATTACK_PATTERN",
+    "DETECTS",
+    "MITIGATES",
+    "INDICATES",
+    "PART_OF_CAMPAIGN",
+    "CONTAINS_ICS_TECHNIQUE",
+    "TARGETS_ICS_ASSET",
+    "USES_PROTOCOL",
+    "DEPLOYS_ASSET",
+    "EXPLOITS_PROTOCOL",
+    "MAPS_TO_STIX",
+    "EQUIVALENT_TO_STIX",
+    "CONTAINS_EVIDENCE",
+    "INFLUENCES_BEHAVIOR",
+    "EXPLOITED_BY",
+    "MOTIVATES",
+    "ENABLES_TECHNIQUE",
+    "CONNECTED_TO_SEGMENT",
+    "ROUTES_TO",
+    "GRANTS_PHYSICAL_ACCESS_TO",
+    "MONITORS",
+    "HOSTS",
+    "PHYSICALLY_LOCATED_IN",
+    "ENABLES_LATERAL_MOVEMENT",
+    "RUNS_SOFTWARE",
+    "LOCATED_IN",
+    "EXHIBITS_PERSONALITY_TRAIT",
+    "DEPLOYED_AT",
+    "SBOM_CONTAINS",
+    "OWNS",
+    "SHARED_WITH",
+    "HAS_TAG",
+    "IS_WEAKNESS_TYPE",
+    "USES_TECHNIQUE",
+    "BELONGS_TO_TACTIC"
+  ],
+  "cve_relationships": [
+    {
+      "rel_type": "VULNERABLE_TO",
+      "count": 3107235
+    },
+    {
+      "rel_type": "IS_WEAKNESS_TYPE",
+      "count": 430
+    }
+  ],
+  "cwe_relationships": [
+    {
+      "rel_type": "RELATED_TO",
+      "count": 5212
+    },
+    {
+      "rel_type": "ENABLES_ATTACK_PATTERN",
+      "count": 1208
+    },
+    {
+      "rel_type": "IS_WEAKNESS_TYPE",
+      "count": 430
+    }
+  ],
+  "capec_relationships": [
+    {
+      "rel_type": "ENABLES_ATTACK_PATTERN",
+      "count": 1208
+    },
+    {
+      "rel_type": "IMPLEMENTS",
+      "count": 270
+    },
+    {
+      "rel_type": "USES_TECHNIQUE",
+      "count": 270
+    },
+    {
+      "rel_type": "TARGETS",
+      "count": 84
+    }
+  ],
+  "cve_to_cwe": [
+    {
+      "rel_type": "IS_WEAKNESS_TYPE",
+      "count": 430
+    }
+  ],
+  "cwe_to_capec": [
+    {
+      "rel_type": "ENABLES_ATTACK_PATTERN",
+      "count": 1208
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "timestamp": "2025-11-05T07:22:52.546460",
+  "sequential": {
+    "mode": "sequential",
+    "total_time": 6.000467300415039,
+    "agents": [
+      {
+        "agent": "Classifier",
+        "duration": 2.000126838684082,
+        "start": 1762348960.4953628,
+        "end": 1762348962.4954896
+      },
+      {
+        "agent": "NER",
+        "duration": 2.000128984451294,
+        "start": 1762348962.4955258,
+        "end": 1762348964.4956548
+      },
+      {
+        "agent": "Ingestion",
+        "duration": 2.00010347366333,
+        "start": 1762348964.4956937,
+        "end": 1762348966.4957972
+      }
+    ]
+  },
+  "parallel": {
+    "mode": "parallel",
+    "total_time": 4.000409364700317,
+    "agents": [
+      {
+        "agent": "Classifier",
+        "duration": 2.0,
+        "start": 1762348966.4958491,
+        "end": 1762348968.4958491,
+        "parallel": true
+      },
+      {
+        "agent": "NER",
+        "duration": 2.0,
+        "start": 1762348966.4958491,
+        "end": 1762348968.4958491,
+        "parallel": true
+      },
+      {
+        "agent": "Ingestion",
+        "duration": 2.0001649856567383,
+        "start": 1762348968.4960322,
+        "end": 1762348970.4961972
+      }
+    ]
+  },
+  "speedup": {
+    "sequential_time": 6.000467300415039,
+    "parallel_time": 4.000409364700317,
+    "time_saved": 2.0000579357147217,
+    "speedup_percent": 33.33170294214222,
+    "speedup_ratio": 1.4999633170953124,
+    "target_met": true
+  },
+  "security": {
+    "baseline_time": 2.0,
+    "validation_overhead": 0.05,
+    "total_time": 2.050135612487793,
+    "overhead_percent": 2.5,
+    "target_met": true
+  },
+  "validation": {
+    "all_passed": true,
+    "parallelization_target_met": true,
+    "security_target_met": true
+  }
+}

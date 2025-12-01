@@ -1,0 +1,34 @@
+=== COMMUNICATIONS SECTOR VALIDATION ===
+
+1. Total COMMUNICATIONS nodes:
+total
+34759
+
+2. CommunicationsDevice count:
+devices
+2300
+
+3. NetworkMeasurement count:
+measurements
+27458
+
+4. CommunicationsProperty count:
+properties
+5000
+
+5. RoutingProcess count:
+processes
+0
+
+6. Relationship type breakdown:
+rel_type, cnt
+"HAS_MEASUREMENT", 1558
+
+7. Subsector distribution:
+The property existence syntax `... exists(variable.property)` is no longer supported. Please use `variable.property IS NOT NULL` instead. (line 1, column 51 (offset: 50))
+"MATCH (n) WHERE 'COMMUNICATIONS' IN labels(n) AND exists(n.subsector) WITH n.subsector as subsector, count(*) as cnt RETURN subsector, cnt ORDER BY cnt DESC"
+                                                   ^
+
+8. Total relationships:
+total_rels
+1565

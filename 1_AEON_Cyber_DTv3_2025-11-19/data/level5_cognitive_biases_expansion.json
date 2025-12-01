@@ -1,0 +1,942 @@
+{
+  "metadata": {
+    "generated": "2025-11-23T18:32:17Z",
+    "expansion_type": "LEVEL5_COGNITIVE_BIASES",
+    "version": "1.0.0",
+    "original_count": 7,
+    "expanded_count": 30,
+    "new_biases_added": 23,
+    "architecture_source": "04_Level5_PreValidated_Architecture.json",
+    "status": "COMPLETE"
+  },
+  "expansion_summary": {
+    "existing_biases": [
+      "availability_bias",
+      "confirmation_bias",
+      "anchoring_bias",
+      "framing_effect",
+      "groupthink",
+      "fundamental_attribution_error",
+      "outcome_bias"
+    ],
+    "new_biases": [
+      "recency_bias",
+      "normalcy_bias",
+      "authority_bias",
+      "bandwagon_effect",
+      "hindsight_bias",
+      "planning_fallacy",
+      "sunk_cost_fallacy",
+      "status_quo_bias",
+      "zero_risk_bias",
+      "neglect_of_probability",
+      "clustering_illusion",
+      "gambler_fallacy",
+      "hot_hand_fallacy",
+      "illusion_of_control",
+      "overconfidence_bias",
+      "pessimism_bias",
+      "optimism_bias",
+      "self_serving_bias",
+      "attribution_bias",
+      "halo_effect",
+      "horn_effect",
+      "contrast_effect",
+      "primacy_effect"
+    ],
+    "category_distribution": {
+      "PERCEPTION": 7,
+      "MEMORY": 3,
+      "DECISION": 12,
+      "SOCIAL": 8
+    }
+  },
+  "cognitive_biases": [
+    {
+      "biasId": "CB-001",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "availability_bias",
+      "category": "PERCEPTION",
+      "activationThreshold": 6.5,
+      "currentLevel": 7.2,
+      "affectedDecisions": [
+        "risk_assessment",
+        "budget_allocation",
+        "incident_prioritization"
+      ],
+      "mitigationStrategies": [
+        "data_driven_analysis",
+        "historical_comparison",
+        "statistical_baselines"
+      ],
+      "sectorSusceptibility": {
+        "Healthcare": 0.82,
+        "Financial Services": 0.75,
+        "Retail": 0.88,
+        "Government": 0.68
+      }
+    },
+    {
+      "biasId": "CB-002",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "confirmation_bias",
+      "category": "DECISION",
+      "activationThreshold": 5.8,
+      "currentLevel": 6.4,
+      "affectedDecisions": [
+        "threat_hunting",
+        "vendor_selection",
+        "technology_adoption"
+      ],
+      "mitigationStrategies": [
+        "red_team_review",
+        "devil_advocate",
+        "blind_analysis"
+      ],
+      "sectorSusceptibility": {
+        "Information Technology": 0.71,
+        "Defense Industrial Base": 0.65,
+        "Energy": 0.77
+      }
+    },
+    {
+      "biasId": "CB-003",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "recency_bias",
+      "category": "MEMORY",
+      "activationThreshold": 6.0,
+      "currentLevel": 8.1,
+      "affectedDecisions": [
+        "security_investment",
+        "control_implementation",
+        "training_focus"
+      ],
+      "mitigationStrategies": [
+        "long_term_trend_analysis",
+        "periodic_review",
+        "balanced_scorecard"
+      ],
+      "sectorSusceptibility": {
+        "Retail": 0.85,
+        "E-commerce": 0.89,
+        "Healthcare": 0.73
+      }
+    },
+    {
+      "biasId": "CB-004",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "normalcy_bias",
+      "category": "PERCEPTION",
+      "activationThreshold": 7.2,
+      "currentLevel": 5.6,
+      "affectedDecisions": [
+        "disaster_planning",
+        "business_continuity",
+        "crisis_response"
+      ],
+      "mitigationStrategies": [
+        "scenario_planning",
+        "tabletop_exercises",
+        "stress_testing"
+      ],
+      "sectorSusceptibility": {
+        "Financial Services": 0.68,
+        "Critical Manufacturing": 0.79,
+        "Transportation": 0.81
+      }
+    },
+    {
+      "biasId": "CB-005",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "authority_bias",
+      "category": "SOCIAL",
+      "activationThreshold": 5.5,
+      "currentLevel": 6.8,
+      "affectedDecisions": [
+        "vendor_trust",
+        "expert_reliance",
+        "compliance_interpretation"
+      ],
+      "mitigationStrategies": [
+        "independent_verification",
+        "peer_review",
+        "evidence_validation"
+      ],
+      "sectorSusceptibility": {
+        "Government": 0.76,
+        "Healthcare": 0.72,
+        "Education": 0.83
+      }
+    },
+    {
+      "biasId": "CB-006",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "bandwagon_effect",
+      "category": "SOCIAL",
+      "activationThreshold": 6.3,
+      "currentLevel": 7.5,
+      "affectedDecisions": [
+        "technology_adoption",
+        "security_trends",
+        "industry_standards"
+      ],
+      "mitigationStrategies": [
+        "business_case_analysis",
+        "fit_assessment",
+        "pilot_testing"
+      ],
+      "sectorSusceptibility": {
+        "Information Technology": 0.88,
+        "Financial Services": 0.79,
+        "Retail": 0.84
+      }
+    },
+    {
+      "biasId": "CB-007",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "hindsight_bias",
+      "category": "MEMORY",
+      "activationThreshold": 5.9,
+      "currentLevel": 6.2,
+      "affectedDecisions": [
+        "incident_review",
+        "blame_attribution",
+        "lesson_learning"
+      ],
+      "mitigationStrategies": [
+        "blameless_postmortem",
+        "timeline_reconstruction",
+        "objective_documentation"
+      ],
+      "sectorSusceptibility": {
+        "All_Sectors": 0.75
+      }
+    },
+    {
+      "biasId": "CB-008",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "planning_fallacy",
+      "category": "DECISION",
+      "activationThreshold": 6.7,
+      "currentLevel": 7.8,
+      "affectedDecisions": [
+        "project_timeline",
+        "implementation_schedule",
+        "resource_estimation"
+      ],
+      "mitigationStrategies": [
+        "historical_data",
+        "buffer_inclusion",
+        "monte_carlo_simulation"
+      ],
+      "sectorSusceptibility": {
+        "Information Technology": 0.91,
+        "Government": 0.87,
+        "Defense Industrial Base": 0.83
+      }
+    },
+    {
+      "biasId": "CB-009",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "sunk_cost_fallacy",
+      "category": "DECISION",
+      "activationThreshold": 6.4,
+      "currentLevel": 5.9,
+      "affectedDecisions": [
+        "project_continuation",
+        "legacy_system_retirement",
+        "vendor_switching"
+      ],
+      "mitigationStrategies": [
+        "incremental_evaluation",
+        "roi_recalculation",
+        "exit_criteria"
+      ],
+      "sectorSusceptibility": {
+        "Government": 0.86,
+        "Large_Enterprise": 0.82,
+        "Financial Services": 0.78
+      }
+    },
+    {
+      "biasId": "CB-010",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "status_quo_bias",
+      "category": "DECISION",
+      "activationThreshold": 5.7,
+      "currentLevel": 7.1,
+      "affectedDecisions": [
+        "change_management",
+        "modernization",
+        "process_improvement"
+      ],
+      "mitigationStrategies": [
+        "change_champions",
+        "incremental_approach",
+        "risk_quantification"
+      ],
+      "sectorSusceptibility": {
+        "Government": 0.89,
+        "Healthcare": 0.85,
+        "Financial Services": 0.81
+      }
+    },
+    {
+      "biasId": "CB-011",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "zero_risk_bias",
+      "category": "DECISION",
+      "activationThreshold": 6.8,
+      "currentLevel": 6.5,
+      "affectedDecisions": [
+        "risk_acceptance",
+        "control_selection",
+        "resource_allocation"
+      ],
+      "mitigationStrategies": [
+        "residual_risk_acceptance",
+        "cost_benefit_analysis",
+        "risk_tolerance_framework"
+      ],
+      "sectorSusceptibility": {
+        "Healthcare": 0.87,
+        "Nuclear": 0.92,
+        "Financial Services": 0.79
+      }
+    },
+    {
+      "biasId": "CB-012",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "neglect_of_probability",
+      "category": "PERCEPTION",
+      "activationThreshold": 6.1,
+      "currentLevel": 7.4,
+      "affectedDecisions": [
+        "likelihood_assessment",
+        "impact_focus",
+        "scenario_planning"
+      ],
+      "mitigationStrategies": [
+        "quantitative_risk_assessment",
+        "monte_carlo",
+        "actuarial_analysis"
+      ],
+      "sectorSusceptibility": {
+        "Retail": 0.84,
+        "E-commerce": 0.86,
+        "Media": 0.81
+      }
+    },
+    {
+      "biasId": "CB-013",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "clustering_illusion",
+      "category": "PERCEPTION",
+      "activationThreshold": 5.8,
+      "currentLevel": 6.7,
+      "affectedDecisions": [
+        "pattern_detection",
+        "threat_correlation",
+        "anomaly_interpretation"
+      ],
+      "mitigationStrategies": [
+        "statistical_validation",
+        "baseline_comparison",
+        "hypothesis_testing"
+      ],
+      "sectorSusceptibility": {
+        "Information Technology": 0.73,
+        "Financial Services": 0.76
+      }
+    },
+    {
+      "biasId": "CB-014",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "gambler_fallacy",
+      "category": "DECISION",
+      "activationThreshold": 6.2,
+      "currentLevel": 5.4,
+      "affectedDecisions": [
+        "incident_prediction",
+        "attack_likelihood",
+        "control_timing"
+      ],
+      "mitigationStrategies": [
+        "independent_event_analysis",
+        "probability_education",
+        "statistical_training"
+      ],
+      "sectorSusceptibility": {
+        "Financial Services": 0.69,
+        "Gaming": 0.88
+      }
+    },
+    {
+      "biasId": "CB-015",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "hot_hand_fallacy",
+      "category": "DECISION",
+      "activationThreshold": 6.5,
+      "currentLevel": 5.8,
+      "affectedDecisions": [
+        "analyst_trust",
+        "tool_reliability",
+        "control_effectiveness"
+      ],
+      "mitigationStrategies": [
+        "continuous_validation",
+        "performance_metrics",
+        "regression_testing"
+      ],
+      "sectorSusceptibility": {
+        "Information Technology": 0.71,
+        "Financial Services": 0.68
+      }
+    },
+    {
+      "biasId": "CB-016",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "illusion_of_control",
+      "category": "PERCEPTION",
+      "activationThreshold": 6.9,
+      "currentLevel": 6.3,
+      "affectedDecisions": [
+        "control_effectiveness",
+        "security_posture",
+        "risk_acceptance"
+      ],
+      "mitigationStrategies": [
+        "external_audit",
+        "penetration_testing",
+        "red_team_assessment"
+      ],
+      "sectorSusceptibility": {
+        "Information Technology": 0.82,
+        "Financial Services": 0.77,
+        "Healthcare": 0.74
+      }
+    },
+    {
+      "biasId": "CB-017",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "overconfidence_bias",
+      "category": "DECISION",
+      "activationThreshold": 6.6,
+      "currentLevel": 7.2,
+      "affectedDecisions": [
+        "capability_assessment",
+        "project_estimation",
+        "incident_handling"
+      ],
+      "mitigationStrategies": [
+        "peer_review",
+        "historical_comparison",
+        "humility_training"
+      ],
+      "sectorSusceptibility": {
+        "Information Technology": 0.85,
+        "Startups": 0.91,
+        "Financial Services": 0.79
+      }
+    },
+    {
+      "biasId": "CB-018",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "pessimism_bias",
+      "category": "DECISION",
+      "activationThreshold": 5.9,
+      "currentLevel": 6.1,
+      "affectedDecisions": [
+        "risk_overestimation",
+        "investment_paralysis",
+        "innovation_resistance"
+      ],
+      "mitigationStrategies": [
+        "balanced_assessment",
+        "success_tracking",
+        "positive_framing"
+      ],
+      "sectorSusceptibility": {
+        "Government": 0.74,
+        "Large_Enterprise": 0.71
+      }
+    },
+    {
+      "biasId": "CB-019",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "optimism_bias",
+      "category": "DECISION",
+      "activationThreshold": 6.3,
+      "currentLevel": 5.7,
+      "affectedDecisions": [
+        "risk_underestimation",
+        "control_gaps",
+        "timeline_compression"
+      ],
+      "mitigationStrategies": [
+        "pre_mortem_analysis",
+        "risk_register",
+        "conservative_planning"
+      ],
+      "sectorSusceptibility": {
+        "Startups": 0.89,
+        "Technology": 0.83,
+        "Retail": 0.76
+      }
+    },
+    {
+      "biasId": "CB-020",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "self_serving_bias",
+      "category": "SOCIAL",
+      "activationThreshold": 5.6,
+      "currentLevel": 6.6,
+      "affectedDecisions": [
+        "blame_attribution",
+        "credit_assignment",
+        "performance_evaluation"
+      ],
+      "mitigationStrategies": [
+        "objective_metrics",
+        "360_feedback",
+        "blameless_culture"
+      ],
+      "sectorSusceptibility": {
+        "All_Sectors": 0.78
+      }
+    },
+    {
+      "biasId": "CB-021",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "attribution_bias",
+      "category": "SOCIAL",
+      "activationThreshold": 6.0,
+      "currentLevel": 6.8,
+      "affectedDecisions": [
+        "incident_causation",
+        "vendor_blame",
+        "user_fault_finding"
+      ],
+      "mitigationStrategies": [
+        "root_cause_analysis",
+        "system_thinking",
+        "human_factors_analysis"
+      ],
+      "sectorSusceptibility": {
+        "All_Sectors": 0.76
+      }
+    },
+    {
+      "biasId": "CB-022",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "halo_effect",
+      "category": "SOCIAL",
+      "activationThreshold": 6.4,
+      "currentLevel": 7.3,
+      "affectedDecisions": [
+        "vendor_selection",
+        "technology_evaluation",
+        "expert_credibility"
+      ],
+      "mitigationStrategies": [
+        "structured_evaluation",
+        "blind_testing",
+        "criteria_weighting"
+      ],
+      "sectorSusceptibility": {
+        "Information Technology": 0.81,
+        "Financial Services": 0.77,
+        "Healthcare": 0.74
+      }
+    },
+    {
+      "biasId": "CB-023",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "horn_effect",
+      "category": "SOCIAL",
+      "activationThreshold": 6.1,
+      "currentLevel": 5.9,
+      "affectedDecisions": [
+        "vendor_dismissal",
+        "technology_rejection",
+        "user_stereotyping"
+      ],
+      "mitigationStrategies": [
+        "objective_reevaluation",
+        "second_opinions",
+        "fresh_start_protocol"
+      ],
+      "sectorSusceptibility": {
+        "All_Sectors": 0.72
+      }
+    },
+    {
+      "biasId": "CB-024",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "contrast_effect",
+      "category": "PERCEPTION",
+      "activationThreshold": 5.7,
+      "currentLevel": 6.4,
+      "affectedDecisions": [
+        "severity_assessment",
+        "priority_ranking",
+        "impact_evaluation"
+      ],
+      "mitigationStrategies": [
+        "absolute_scales",
+        "normalized_scoring",
+        "independent_assessment"
+      ],
+      "sectorSusceptibility": {
+        "All_Sectors": 0.74
+      }
+    },
+    {
+      "biasId": "CB-025",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "primacy_effect",
+      "category": "MEMORY",
+      "activationThreshold": 6.2,
+      "currentLevel": 6.7,
+      "affectedDecisions": [
+        "first_impression",
+        "initial_assessment",
+        "early_evidence_weighting"
+      ],
+      "mitigationStrategies": [
+        "deliberate_reevaluation",
+        "evidence_chronology",
+        "final_review"
+      ],
+      "sectorSusceptibility": {
+        "All_Sectors": 0.73
+      }
+    },
+    {
+      "biasId": "CB-026",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "anchoring_bias",
+      "category": "DECISION",
+      "activationThreshold": 6.5,
+      "currentLevel": 7.1,
+      "affectedDecisions": [
+        "budget_setting",
+        "risk_scoring",
+        "impact_estimation"
+      ],
+      "mitigationStrategies": [
+        "multiple_estimates",
+        "bottom_up_analysis",
+        "anchor_avoidance"
+      ],
+      "sectorSusceptibility": {
+        "Financial Services": 0.84,
+        "Government": 0.79,
+        "All_Sectors": 0.77
+      }
+    },
+    {
+      "biasId": "CB-027",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "framing_effect",
+      "category": "PERCEPTION",
+      "activationThreshold": 6.3,
+      "currentLevel": 7.5,
+      "affectedDecisions": [
+        "risk_communication",
+        "budget_justification",
+        "stakeholder_presentation"
+      ],
+      "mitigationStrategies": [
+        "multiple_framings",
+        "neutral_language",
+        "data_visualization"
+      ],
+      "sectorSusceptibility": {
+        "All_Sectors": 0.81
+      }
+    },
+    {
+      "biasId": "CB-028",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "groupthink",
+      "category": "SOCIAL",
+      "activationThreshold": 7.0,
+      "currentLevel": 6.2,
+      "affectedDecisions": [
+        "committee_decisions",
+        "consensus_building",
+        "team_assessment"
+      ],
+      "mitigationStrategies": [
+        "devil_advocate",
+        "anonymous_voting",
+        "diverse_teams"
+      ],
+      "sectorSusceptibility": {
+        "Government": 0.85,
+        "Large_Enterprise": 0.82,
+        "Healthcare": 0.78
+      }
+    },
+    {
+      "biasId": "CB-029",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "fundamental_attribution_error",
+      "category": "SOCIAL",
+      "activationThreshold": 6.1,
+      "currentLevel": 6.9,
+      "affectedDecisions": [
+        "user_blame",
+        "insider_threat_assessment",
+        "security_culture"
+      ],
+      "mitigationStrategies": [
+        "situational_analysis",
+        "human_factors",
+        "just_culture"
+      ],
+      "sectorSusceptibility": {
+        "All_Sectors": 0.79
+      }
+    },
+    {
+      "biasId": "CB-030",
+      "labels": [
+        "CognitiveBias",
+        "Psychology",
+        "Decision",
+        "Level4",
+        "Level5"
+      ],
+      "biasName": "outcome_bias",
+      "category": "DECISION",
+      "activationThreshold": 6.4,
+      "currentLevel": 6.1,
+      "affectedDecisions": [
+        "decision_quality_assessment",
+        "process_evaluation",
+        "retrospective_judgment"
+      ],
+      "mitigationStrategies": [
+        "process_focus",
+        "decision_journaling",
+        "outcome_independence"
+      ],
+      "sectorSusceptibility": {
+        "All_Sectors": 0.76
+      }
+    }
+  ],
+  "schema_definition": {
+    "labels": [
+      "CognitiveBias",
+      "Psychology",
+      "Decision",
+      "Level4",
+      "Level5"
+    ],
+    "required_properties": [
+      "biasId",
+      "biasName",
+      "category",
+      "activationThreshold",
+      "currentLevel",
+      "affectedDecisions",
+      "mitigationStrategies",
+      "sectorSusceptibility"
+    ],
+    "categories": {
+      "PERCEPTION": "Biases affecting how we perceive and interpret information",
+      "MEMORY": "Biases affecting how we remember and recall information",
+      "DECISION": "Biases affecting decision-making processes",
+      "SOCIAL": "Biases affecting social judgments and interactions"
+    }
+  },
+  "validation": {
+    "total_biases": 30,
+    "expected_biases": 30,
+    "status": "PASSED",
+    "all_biases_have_required_fields": true,
+    "category_coverage": {
+      "PERCEPTION": 7,
+      "MEMORY": 3,
+      "DECISION": 12,
+      "SOCIAL": 8
+    }
+  }
+}

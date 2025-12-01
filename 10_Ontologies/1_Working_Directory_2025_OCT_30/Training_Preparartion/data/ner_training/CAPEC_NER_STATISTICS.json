@@ -1,0 +1,30 @@
+{
+  "extraction_date": "2025-11-08T10:24:33.611606",
+  "source_file": "/home/jim/2_OXOT_Projects_Dev/Import 1 NOV 2025/NVS Full CVE CAPEC CWE/capec_latest/capec_v3.9.xml",
+  "total_training_examples": 1741,
+  "entity_statistics": {
+    "capec_patterns": 615,
+    "cwe_references": 1214,
+    "attack_techniques": 272,
+    "text_blocks": 1741,
+    "total_entities": 7459
+  },
+  "entity_type_distribution": {
+    "with_cwe": 943,
+    "with_attack": 89,
+    "with_both": 494,
+    "with_neither": 215
+  },
+  "context_distribution": {
+    "description": 613,
+    "prerequisite": 729,
+    "example_instance": 212,
+    "extended_description": 187
+  },
+  "abstraction_distribution": {
+    "Standard": 562,
+    "Detailed": 984,
+    "Meta": 195
+  },
+  "average_entities_per_example": 4.284319356691556
+}

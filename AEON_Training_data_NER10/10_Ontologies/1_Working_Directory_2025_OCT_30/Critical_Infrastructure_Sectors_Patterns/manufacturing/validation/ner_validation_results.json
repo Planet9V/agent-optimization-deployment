@@ -1,0 +1,680 @@
+{
+  "sector": "manufacturing",
+  "test_date": "2025-11-05",
+  "total_documents": 9,
+  "average_f1_score": 1.0,
+  "threshold": 0.85,
+  "verdict": "PASS",
+  "documents": [
+    {
+      "document": "vendor-omron-20250102-06.md",
+      "path": "/home/jim/2_OXOT_Projects_Dev/Import 1 NOV 2025/13_Critical_Sector_IACS/Sector - Manufacturing/vendors/vendor-omron-20250102-06.md",
+      "entity_scores": {
+        "VENDOR": {
+          "count": 23,
+          "coverage": 1.0,
+          "examples": [
+            "Omron Corporation",
+            "Omron",
+            "NX1/NJ1 Series"
+          ]
+        },
+        "EQUIPMENT": {
+          "count": 6,
+          "coverage": 1.0,
+          "examples": [
+            "plc",
+            "Communication Module",
+            "Safety PLC"
+          ]
+        },
+        "PROTOCOL": {
+          "count": 22,
+          "coverage": 1.0,
+          "examples": [
+            "Modbus",
+            "Modbus RTU",
+            "RS-232"
+          ]
+        },
+        "OPERATION": {
+          "count": 20,
+          "coverage": 1.0,
+          "examples": [
+            "Preventive Maintenance",
+            "predictive maintenance",
+            "Scheduled Maintenance"
+          ]
+        },
+        "ARCHITECTURE": {
+          "count": 11,
+          "coverage": 1.0,
+          "examples": [
+            "tem",
+            "OPC UA",
+            "PROFINET"
+          ]
+        },
+        "SUPPLIER": {
+          "count": 8,
+          "coverage": 1.0,
+          "examples": [
+            "Omron",
+            "plc",
+            "HMI"
+          ]
+        },
+        "SECURITY": {
+          "count": 7,
+          "coverage": 1.0,
+          "examples": [
+            "firewalls",
+            "Device management",
+            "role-based access control"
+          ]
+        }
+      },
+      "metrics": {
+        "coverage_score": 1.0,
+        "volume_score": 1.0,
+        "f1": 1.0,
+        "entity_type_count": 7,
+        "total_entities": 97,
+        "doc_length_words": 1764
+      }
+    },
+    {
+      "document": "vendor-mitsubishi-20250102-06.md",
+      "path": "/home/jim/2_OXOT_Projects_Dev/Import 1 NOV 2025/13_Critical_Sector_IACS/Sector - Manufacturing/vendors/vendor-mitsubishi-20250102-06.md",
+      "entity_scores": {
+        "VENDOR": {
+          "count": 43,
+          "coverage": 1.0,
+          "examples": [
+            "Mitsubishi Electric",
+            "Mitsubishi Electric Corporation",
+            "MELSEC iQ-R"
+          ]
+        },
+        "EQUIPMENT": {
+          "count": 8,
+          "coverage": 1.0,
+          "examples": [
+            "programmable logic controller",
+            "plc",
+            "Multi-core processor"
+          ]
+        },
+        "PROTOCOL": {
+          "count": 14,
+          "coverage": 1.0,
+          "examples": [
+            "Modbus",
+            "Modbus TCP/IP",
+            "OPC UA"
+          ]
+        },
+        "OPERATION": {
+          "count": 8,
+          "coverage": 1.0,
+          "examples": [
+            "power supply",
+            "I/O Module",
+            "CPU"
+          ]
+        },
+        "ARCHITECTURE": {
+          "count": 12,
+          "coverage": 1.0,
+          "examples": [
+            "sem",
+            "tem",
+            "ISA-95"
+          ]
+        },
+        "SUPPLIER": {
+          "count": 6,
+          "coverage": 1.0,
+          "examples": [
+            "Mitsubishi Electric",
+            "plc",
+            "HMI"
+          ]
+        },
+        "SECURITY": {
+          "count": 17,
+          "coverage": 1.0,
+          "examples": [
+            "Device Authentication",
+            "Device Encryption",
+            "Device management"
+          ]
+        }
+      },
+      "metrics": {
+        "coverage_score": 1.0,
+        "volume_score": 1.0,
+        "f1": 1.0,
+        "entity_type_count": 7,
+        "total_entities": 108,
+        "doc_length_words": 1693
+      }
+    },
+    {
+      "document": "device-cnc-machine-20250102-06.md",
+      "path": "/home/jim/2_OXOT_Projects_Dev/Import 1 NOV 2025/13_Critical_Sector_IACS/Sector - Manufacturing/equipment/device-cnc-machine-20250102-06.md",
+      "entity_scores": {
+        "VENDOR": {
+          "count": 13,
+          "coverage": 1.0,
+          "examples": [
+            "Siemens",
+            "PROFINET",
+            "Ethernet/IP"
+          ]
+        },
+        "EQUIPMENT": {
+          "count": 28,
+          "coverage": 1.0,
+          "examples": [
+            "PLC",
+            "Multi-core processor",
+            "Safety PLC"
+          ]
+        },
+        "PROTOCOL": {
+          "count": 21,
+          "coverage": 1.0,
+          "examples": [
+            "Modbus",
+            "Modbus TCP/IP",
+            "OPC UA"
+          ]
+        },
+        "OPERATION": {
+          "count": 21,
+          "coverage": 1.0,
+          "examples": [
+            "Preventive Maintenance",
+            "predictive maintenance",
+            "Scheduled maintenance"
+          ]
+        },
+        "ARCHITECTURE": {
+          "count": 17,
+          "coverage": 1.0,
+          "examples": [
+            "SEM",
+            "tem",
+            "SEMI E30"
+          ]
+        },
+        "SUPPLIER": {
+          "count": 6,
+          "coverage": 1.0,
+          "examples": [
+            "Siemens",
+            "PLC",
+            "vision system"
+          ]
+        },
+        "SECURITY": {
+          "count": 5,
+          "coverage": 1.0,
+          "examples": [
+            "Safety PLCs",
+            "Electrical Safety",
+            "Mechanical Safety"
+          ]
+        }
+      },
+      "metrics": {
+        "coverage_score": 1.0,
+        "volume_score": 1.0,
+        "f1": 1.0,
+        "entity_type_count": 7,
+        "total_entities": 111,
+        "doc_length_words": 2625
+      }
+    },
+    {
+      "document": "device-plc-20250102-06.md",
+      "path": "/home/jim/2_OXOT_Projects_Dev/Import 1 NOV 2025/13_Critical_Sector_IACS/Sector - Manufacturing/equipment/device-plc-20250102-06.md",
+      "entity_scores": {
+        "VENDOR": {
+          "count": 15,
+          "coverage": 1.0,
+          "examples": [
+            "siemens",
+            "PROFINET",
+            "PROFIBUS"
+          ]
+        },
+        "EQUIPMENT": {
+          "count": 29,
+          "coverage": 1.0,
+          "examples": [
+            "Programmable Logic Controller",
+            "PLC",
+            "Multi-core processor"
+          ]
+        },
+        "PROTOCOL": {
+          "count": 23,
+          "coverage": 1.0,
+          "examples": [
+            "Modbus",
+            "Modbus TCP/IP",
+            "Modbus RTU"
+          ]
+        },
+        "OPERATION": {
+          "count": 19,
+          "coverage": 1.0,
+          "examples": [
+            "Environmental monitoring",
+            "troubleshooting",
+            "Power Supply"
+          ]
+        },
+        "ARCHITECTURE": {
+          "count": 12,
+          "coverage": 1.0,
+          "examples": [
+            "sem",
+            "tem",
+            "ISA-95"
+          ]
+        },
+        "SUPPLIER": {
+          "count": 4,
+          "coverage": 1.0,
+          "examples": [
+            "siemens",
+            "PLC",
+            "stepper motor"
+          ]
+        },
+        "SECURITY": {
+          "count": 8,
+          "coverage": 1.0,
+          "examples": [
+            "Safety PLCs",
+            "Safety I/O Modules",
+            "Safety Communication"
+          ]
+        }
+      },
+      "metrics": {
+        "coverage_score": 1.0,
+        "volume_score": 1.0,
+        "f1": 1.0,
+        "entity_type_count": 7,
+        "total_entities": 110,
+        "doc_length_words": 2362
+      }
+    },
+    {
+      "document": "procedure-equipment-maintenance-20250102-06.md",
+      "path": "/home/jim/2_OXOT_Projects_Dev/Import 1 NOV 2025/13_Critical_Sector_IACS/Sector - Manufacturing/operations/procedure-equipment-maintenance-20250102-06.md",
+      "entity_scores": {
+        "VENDOR": {
+          "count": 2,
+          "coverage": 1.0,
+          "examples": [
+            "siemens",
+            "dh"
+          ]
+        },
+        "EQUIPMENT": {
+          "count": 4,
+          "coverage": 1.0,
+          "examples": [
+            "plc",
+            "temperature sensor",
+            "pressure sensor"
+          ]
+        },
+        "PROTOCOL": {
+          "count": 2,
+          "coverage": 1.0,
+          "examples": [
+            "http",
+            "https"
+          ]
+        },
+        "OPERATION": {
+          "count": 87,
+          "coverage": 1.0,
+          "examples": [
+            "Preventive Maintenance",
+            "Predictive Maintenance",
+            "Corrective Maintenance"
+          ]
+        },
+        "ARCHITECTURE": {
+          "count": 2,
+          "coverage": 1.0,
+          "examples": [
+            "sem",
+            "tem"
+          ]
+        },
+        "SUPPLIER": {
+          "count": 3,
+          "coverage": 1.0,
+          "examples": [
+            "siemens",
+            "plc",
+            "System Integration"
+          ]
+        },
+        "SECURITY": {
+          "count": 2,
+          "coverage": 1.0,
+          "examples": [
+            "Risk Assessment",
+            "ISO 31000"
+          ]
+        }
+      },
+      "metrics": {
+        "coverage_score": 1.0,
+        "volume_score": 1.0,
+        "f1": 1.0,
+        "entity_type_count": 7,
+        "total_entities": 102,
+        "doc_length_words": 2459
+      }
+    },
+    {
+      "document": "procedure-plc-maintenance-20250102-06.md",
+      "path": "/home/jim/2_OXOT_Projects_Dev/Import 1 NOV 2025/13_Critical_Sector_IACS/Sector - Manufacturing/operations/procedure-plc-maintenance-20250102-06.md",
+      "entity_scores": {
+        "VENDOR": {
+          "count": 4,
+          "coverage": 1.0,
+          "examples": [
+            "siemens",
+            "I/O modules",
+            "power supplies"
+          ]
+        },
+        "EQUIPMENT": {
+          "count": 8,
+          "coverage": 1.0,
+          "examples": [
+            "programmable logic controller",
+            "PLC",
+            "communication module"
+          ]
+        },
+        "PROTOCOL": {
+          "count": 3,
+          "coverage": 1.0,
+          "examples": [
+            "http",
+            "https",
+            "IEC 61131-3"
+          ]
+        },
+        "OPERATION": {
+          "count": 80,
+          "coverage": 1.0,
+          "examples": [
+            "preventive maintenance",
+            "predictive maintenance",
+            "corrective maintenance"
+          ]
+        },
+        "ARCHITECTURE": {
+          "count": 1,
+          "coverage": 1.0,
+          "examples": [
+            "tem"
+          ]
+        },
+        "SUPPLIER": {
+          "count": 5,
+          "coverage": 1.0,
+          "examples": [
+            "siemens",
+            "PLC",
+            "HMI"
+          ]
+        },
+        "SECURITY": {
+          "count": 7,
+          "coverage": 1.0,
+          "examples": [
+            "Access control",
+            "Lockout/tagout procedures",
+            "risk assessment"
+          ]
+        }
+      },
+      "metrics": {
+        "coverage_score": 1.0,
+        "volume_score": 1.0,
+        "f1": 1.0,
+        "entity_type_count": 7,
+        "total_entities": 108,
+        "doc_length_words": 2343
+      }
+    },
+    {
+      "document": "protocol-modbus-20250102-06.md",
+      "path": "/home/jim/2_OXOT_Projects_Dev/Import 1 NOV 2025/13_Critical_Sector_IACS/Sector - Manufacturing/protocols/protocol-modbus-20250102-06.md",
+      "entity_scores": {
+        "VENDOR": {
+          "count": 3,
+          "coverage": 1.0,
+          "examples": [
+            "siemens",
+            "Azure IoT",
+            "AWS IoT"
+          ]
+        },
+        "EQUIPMENT": {
+          "count": 4,
+          "coverage": 1.0,
+          "examples": [
+            "programmable logic controller",
+            "PLC",
+            "SCADA"
+          ]
+        },
+        "PROTOCOL": {
+          "count": 10,
+          "coverage": 1.0,
+          "examples": [
+            "Modbus",
+            "MODBUS-RTU",
+            "MODBUS-ASCII"
+          ]
+        },
+        "OPERATION": {
+          "count": 7,
+          "coverage": 1.0,
+          "examples": [
+            "Performance monitoring",
+            "Performance analysis",
+            "Performance Testing"
+          ]
+        },
+        "ARCHITECTURE": {
+          "count": 1,
+          "coverage": 1.0,
+          "examples": [
+            "tem"
+          ]
+        },
+        "SUPPLIER": {
+          "count": 6,
+          "coverage": 1.0,
+          "examples": [
+            "siemens",
+            "Schneider Electric",
+            "PLC"
+          ]
+        },
+        "SECURITY": {
+          "count": 1,
+          "coverage": 1.0,
+          "examples": [
+            "Access control"
+          ]
+        }
+      },
+      "metrics": {
+        "coverage_score": 1.0,
+        "volume_score": 1.0,
+        "f1": 1.0,
+        "entity_type_count": 7,
+        "total_entities": 32,
+        "doc_length_words": 1854
+      }
+    },
+    {
+      "document": "network-pattern-industrial-iot-20250102-06.md",
+      "path": "/home/jim/2_OXOT_Projects_Dev/Import 1 NOV 2025/13_Critical_Sector_IACS/Sector - Manufacturing/architectures/network-pattern-industrial-iot-20250102-06.md",
+      "entity_scores": {
+        "VENDOR": {
+          "count": 7,
+          "coverage": 1.0,
+          "examples": [
+            "siemens",
+            "PROFINET",
+            "EtherNet/IP"
+          ]
+        },
+        "EQUIPMENT": {
+          "count": 2,
+          "coverage": 1.0,
+          "examples": [
+            "atc",
+            "SCADA"
+          ]
+        },
+        "PROTOCOL": {
+          "count": 27,
+          "coverage": 1.0,
+          "examples": [
+            "Modbus",
+            "MODBUS-TCP",
+            "Modbus TCP/IP"
+          ]
+        },
+        "OPERATION": {
+          "count": 9,
+          "coverage": 1.0,
+          "examples": [
+            "performance monitoring",
+            "anomaly detection",
+            "Smart sensors"
+          ]
+        },
+        "ARCHITECTURE": {
+          "count": 43,
+          "coverage": 1.0,
+          "examples": [
+            "sem",
+            "tem",
+            "Industrial IoT Network Architecture"
+          ]
+        },
+        "SUPPLIER": {
+          "count": 2,
+          "coverage": 1.0,
+          "examples": [
+            "siemens",
+            "system integration"
+          ]
+        },
+        "SECURITY": {
+          "count": 16,
+          "coverage": 1.0,
+          "examples": [
+            "Zero-trust architecture",
+            "Network Segmentation",
+            "Firewalls"
+          ]
+        }
+      },
+      "metrics": {
+        "coverage_score": 1.0,
+        "volume_score": 1.0,
+        "f1": 1.0,
+        "entity_type_count": 7,
+        "total_entities": 106,
+        "doc_length_words": 2255
+      }
+    },
+    {
+      "document": "supplier-distributor-industrial-20250102-06.md",
+      "path": "/home/jim/2_OXOT_Projects_Dev/Import 1 NOV 2025/13_Critical_Sector_IACS/Sector - Manufacturing/suppliers/supplier-distributor-industrial-20250102-06.md",
+      "entity_scores": {
+        "VENDOR": {
+          "count": 4,
+          "coverage": 1.0,
+          "examples": [
+            "Siemens",
+            "Omron",
+            "I/O modules"
+          ]
+        },
+        "EQUIPMENT": {
+          "count": 5,
+          "coverage": 1.0,
+          "examples": [
+            "PLC",
+            "stepper motor",
+            "encoder"
+          ]
+        },
+        "PROTOCOL": {
+          "count": 2,
+          "coverage": 1.0,
+          "examples": [
+            "http",
+            "https"
+          ]
+        },
+        "OPERATION": {
+          "count": 13,
+          "coverage": 1.0,
+          "examples": [
+            "preventive maintenance",
+            "trend analysis",
+            "troubleshooting"
+          ]
+        },
+        "ARCHITECTURE": {
+          "count": 2,
+          "coverage": 1.0,
+          "examples": [
+            "sem",
+            "tem"
+          ]
+        },
+        "SUPPLIER": {
+          "count": 63,
+          "coverage": 1.0,
+          "examples": [
+            "Industrial Equipment Distributor",
+            "Industrial Component Distributor",
+            "Automation Equipment Distributor"
+          ]
+        }
+      },
+      "metrics": {
+        "coverage_score": 1.0,
+        "volume_score": 1.0,
+        "f1": 1.0,
+        "entity_type_count": 6,
+        "total_entities": 89,
+        "doc_length_words": 1794
+      }
+    }
+  ]
+}

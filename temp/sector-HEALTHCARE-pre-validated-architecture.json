@@ -1,0 +1,587 @@
+{
+  "sector_name": "HEALTHCARE",
+  "version": "5.0",
+  "created": "2025-11-21T12:00:00Z",
+  "target_node_count": 28000,
+  "gold_standard_compliance": true,
+
+  "metadata": {
+    "description": "Healthcare and Public Health critical infrastructure sector",
+    "standards": ["HIPAA", "HITECH", "FDA 21 CFR Part 11", "HL7", "FHIR", "DICOM", "IHE", "HITRUST CSF"],
+    "regulatory_bodies": ["HHS", "FDA", "CMS", "ONC", "CDC"],
+    "key_threats": ["Ransomware", "Medical device vulnerabilities", "PHI data breaches", "Supply chain attacks"],
+    "complexity_level": "High (patient safety critical)"
+  },
+
+  "subsectors": {
+    "Hospitals_Clinical_Care": {
+      "percentage": 0.50,
+      "node_count": 14000,
+      "description": "Acute care hospitals, emergency departments, surgical centers, ICUs",
+      "key_equipment": ["EHR systems", "Medical imaging", "Patient monitors", "Surgical robots", "HVAC/BAS"],
+      "processes": ["Patient admission", "Clinical documentation", "Surgery", "Pharmacy", "Laboratory testing"]
+    },
+    "Ambulatory_Outpatient": {
+      "percentage": 0.30,
+      "node_count": 8400,
+      "description": "Clinics, physician offices, urgent care, dialysis centers, imaging centers",
+      "key_equipment": ["Ambulatory EHR", "Diagnostic equipment", "Point-of-care devices", "Telehealth platforms"],
+      "processes": ["Outpatient visits", "Diagnostic imaging", "Laboratory specimen collection", "Telehealth consultations"]
+    },
+    "Public_Health_Infrastructure": {
+      "percentage": 0.20,
+      "node_count": 5600,
+      "description": "Public health departments, blood banks, pharmaceutical manufacturing, medical device manufacturing",
+      "key_equipment": ["Blood bank refrigeration", "Manufacturing SCADA", "Laboratory information systems", "Environmental monitoring"],
+      "processes": ["Disease surveillance", "Blood product management", "Pharmaceutical production", "Quality control testing"]
+    }
+  },
+
+  "node_types": {
+    "Measurement": {
+      "count": 18200,
+      "percentage": 65.0,
+      "labels": ["Measurement", "HealthcareMeasurement", "Monitoring", "HEALTHCARE", "{subsector}"],
+      "description": "Patient vitals, medical device telemetry, environmental monitoring, equipment status",
+      "examples": [
+        "Heart rate monitoring", "Blood pressure readings", "SpO2 levels", "Temperature sensors",
+        "Ventilator measurements", "Infusion pump rates", "Room temperature/humidity",
+        "Medical gas pressure", "HVAC airflow", "Sterilization temperature logs",
+        "Medication refrigerator temperature", "CT scanner performance metrics"
+      ],
+      "measurement_types": {
+        "patient_vitals": 6000,
+        "medical_device_telemetry": 5500,
+        "environmental_monitoring": 3200,
+        "equipment_performance": 2000,
+        "laboratory_results": 1500
+      },
+      "properties": {
+        "measurement_type": "string",
+        "unit_of_measure": "string",
+        "normal_range_min": "float",
+        "normal_range_max": "float",
+        "critical_threshold": "float",
+        "sampling_frequency_seconds": "integer",
+        "retention_period_days": "integer",
+        "hl7_observation_code": "string",
+        "loinc_code": "string"
+      }
+    },
+
+    "Property": {
+      "count": 5000,
+      "percentage": 17.9,
+      "labels": ["Property", "HealthcareProperty", "Healthcare", "Monitoring", "HEALTHCARE", "{subsector}"],
+      "description": "Device characteristics, patient attributes, equipment specifications, facility properties",
+      "examples": [
+        "MRI scanner field strength", "Ventilator tidal volume capacity", "X-ray tube voltage",
+        "Patient allergy list", "Medication dosage", "Blood type", "Device FDA classification",
+        "Equipment calibration status", "Sterilization cycle parameters"
+      ],
+      "property_categories": {
+        "device_specifications": 1800,
+        "patient_demographics": 1200,
+        "medication_attributes": 800,
+        "facility_characteristics": 600,
+        "clinical_parameters": 600
+      },
+      "properties": {
+        "property_name": "string",
+        "property_value": "string",
+        "property_type": "string",
+        "data_type": "string",
+        "is_phi": "boolean",
+        "hipaa_minimum_necessary": "boolean",
+        "fhir_resource_type": "string"
+      }
+    },
+
+    "Device": {
+      "count": 2800,
+      "percentage": 10.0,
+      "labels": ["Device", "HealthcareDevice", "Healthcare", "Monitoring", "HEALTHCARE", "{subsector}"],
+      "description": "Medical devices, imaging equipment, patient monitors, infusion pumps, surgical robots, IoMT devices",
+      "examples": [
+        "GE Signa MRI scanner", "Philips IntelliVue patient monitor", "Baxter infusion pump",
+        "da Vinci surgical robot", "Siemens CT scanner", "Ventilator", "Defibrillator",
+        "Anesthesia machine", "Dialysis machine", "Blood gas analyzer"
+      ],
+      "device_categories": {
+        "medical_imaging": 600,
+        "patient_monitoring": 500,
+        "life_support": 400,
+        "surgical_equipment": 350,
+        "laboratory_analyzers": 300,
+        "infusion_therapy": 250,
+        "diagnostic_equipment": 200,
+        "therapeutic_devices": 200
+      },
+      "properties": {
+        "device_name": "string",
+        "manufacturer": "string",
+        "model_number": "string",
+        "serial_number": "string",
+        "fda_class": "string",
+        "fda_510k_number": "string",
+        "udi_di": "string",
+        "ip_address": "string",
+        "mac_address": "string",
+        "firmware_version": "string",
+        "last_calibration_date": "date",
+        "next_pm_date": "date",
+        "location": "string",
+        "department": "string",
+        "asset_id": "string",
+        "criticality_level": "string",
+        "network_segment": "string",
+        "dicom_ae_title": "string",
+        "hl7_integration": "boolean"
+      }
+    },
+
+    "Process": {
+      "count": 1200,
+      "percentage": 4.3,
+      "labels": ["Process", "HealthcareProcess", "Healthcare", "HEALTHCARE", "{subsector}"],
+      "description": "Clinical workflows, administrative processes, diagnostic procedures, treatment protocols",
+      "examples": [
+        "Patient admission workflow", "Medication administration", "Surgical procedure protocol",
+        "Laboratory specimen processing", "Radiology image acquisition", "EHR documentation",
+        "Discharge planning", "Pharmacy dispensing", "Blood transfusion process"
+      ],
+      "process_categories": {
+        "clinical_workflows": 400,
+        "administrative_processes": 250,
+        "diagnostic_procedures": 200,
+        "therapeutic_interventions": 150,
+        "pharmacy_operations": 100,
+        "laboratory_procedures": 100
+      },
+      "properties": {
+        "process_name": "string",
+        "process_type": "string",
+        "standard_operating_procedure": "string",
+        "clinical_guideline": "string",
+        "average_duration_minutes": "integer",
+        "requires_physician_order": "boolean",
+        "requires_informed_consent": "boolean",
+        "cpt_code": "string",
+        "icd10_procedure_code": "string",
+        "quality_measure_applicable": "boolean"
+      }
+    },
+
+    "Control": {
+      "count": 500,
+      "percentage": 1.8,
+      "labels": ["Control", "HealthcareControlSystem", "Healthcare", "HEALTHCARE", "{subsector}"],
+      "description": "Medical device control systems, HVAC/BAS, nurse call systems, access control, pharmacy automation",
+      "examples": [
+        "Hospital building automation system", "Nurse call system", "Pneumatic tube system controller",
+        "Pharmacy robotic dispensing system", "OR scheduling system", "Patient flow management",
+        "Medical gas alarm system", "Fire suppression control panel"
+      ],
+      "control_categories": {
+        "building_automation": 150,
+        "medical_automation": 120,
+        "access_control": 80,
+        "nurse_call_systems": 60,
+        "pharmacy_automation": 50,
+        "patient_flow_management": 40
+      },
+      "properties": {
+        "control_system_name": "string",
+        "manufacturer": "string",
+        "controller_type": "string",
+        "communication_protocol": "string",
+        "ip_address": "string",
+        "number_of_controlled_devices": "integer",
+        "failover_capability": "boolean",
+        "backup_power_source": "string",
+        "last_maintenance_date": "date"
+      }
+    },
+
+    "Alert": {
+      "count": 200,
+      "percentage": 0.7,
+      "labels": ["HealthcareAlert", "Alert", "Monitoring", "HEALTHCARE", "{subsector}"],
+      "description": "Clinical alerts, equipment alarms, system notifications, patient safety alerts",
+      "examples": [
+        "Critical lab value alert", "Drug interaction warning", "Patient deterioration alarm",
+        "Medical device malfunction alert", "Environmental out-of-range alarm",
+        "Sepsis prediction alert", "Fall risk notification"
+      ],
+      "alert_categories": {
+        "clinical_alerts": 80,
+        "equipment_alarms": 50,
+        "patient_safety_alerts": 40,
+        "environmental_alarms": 20,
+        "cybersecurity_alerts": 10
+      },
+      "properties": {
+        "alert_type": "string",
+        "severity": "string",
+        "alert_source": "string",
+        "alert_message": "string",
+        "actionable": "boolean",
+        "escalation_required": "boolean",
+        "acknowledgement_required": "boolean",
+        "alert_timestamp": "datetime"
+      }
+    },
+
+    "Zone": {
+      "count": 80,
+      "percentage": 0.3,
+      "labels": ["HealthcareZone", "Zone", "Asset", "HEALTHCARE", "{subsector}"],
+      "description": "Hospital units, departments, operating rooms, isolation rooms, pharmacy areas",
+      "examples": [
+        "Intensive Care Unit", "Emergency Department", "Operating Room 3",
+        "Cardiac Catheterization Lab", "Central Pharmacy", "Radiology Department",
+        "Neonatal ICU", "Isolation Room", "Clean room (pharmaceutical manufacturing)"
+      ],
+      "zone_categories": {
+        "patient_care_units": 30,
+        "procedural_areas": 20,
+        "support_services": 15,
+        "administrative_areas": 10,
+        "manufacturing_cleanrooms": 5
+      },
+      "properties": {
+        "zone_name": "string",
+        "zone_type": "string",
+        "capacity_beds": "integer",
+        "airborne_infection_isolation": "boolean",
+        "positive_pressure": "boolean",
+        "access_control_level": "string",
+        "emergency_power": "boolean",
+        "medical_gas_outlets": "integer"
+      }
+    },
+
+    "Asset": {
+      "count": 20,
+      "percentage": 0.1,
+      "labels": ["MajorAsset", "Asset", "Healthcare", "HEALTHCARE", "{subsector}"],
+      "description": "Major healthcare facilities, data centers, pharmaceutical plants, distribution centers",
+      "examples": [
+        "Level I Trauma Center", "Regional Medical Center", "Pharmaceutical Manufacturing Plant",
+        "Medical Device Sterilization Facility", "Blood Bank Regional Center",
+        "Healthcare Data Center", "Central Sterile Processing Department"
+      ],
+      "asset_categories": {
+        "hospital_facilities": 8,
+        "manufacturing_plants": 5,
+        "data_centers": 4,
+        "distribution_centers": 3
+      },
+      "properties": {
+        "asset_name": "string",
+        "asset_type": "string",
+        "total_beds": "integer",
+        "trauma_level": "string",
+        "teaching_hospital": "boolean",
+        "geo_location": "coordinates",
+        "emergency_designation": "boolean",
+        "cms_certification": "string"
+      }
+    }
+  },
+
+  "relationships": [
+    {
+      "type": "VULNERABLE_TO",
+      "description": "Links devices to CVE vulnerabilities (auto-generated from CVE database)",
+      "source_types": ["Device", "Control"],
+      "target_types": ["CVE"],
+      "estimated_count": 850000,
+      "properties": {
+        "cvss_score": "float",
+        "exploitability": "string",
+        "patch_available": "boolean",
+        "medical_device_specific": "boolean"
+      }
+    },
+    {
+      "type": "HAS_MEASUREMENT",
+      "description": "Device generates measurements (patient vitals, telemetry, environmental)",
+      "source_types": ["Device"],
+      "target_types": ["Measurement"],
+      "estimated_count": 18000,
+      "cardinality": "1:many",
+      "properties": {
+        "measurement_interval_seconds": "integer",
+        "data_transmission_protocol": "string",
+        "encryption_enabled": "boolean"
+      }
+    },
+    {
+      "type": "HAS_PROPERTY",
+      "description": "Device or process has associated properties",
+      "source_types": ["Device", "Process"],
+      "target_types": ["Property"],
+      "estimated_count": 5000,
+      "cardinality": "1:many",
+      "properties": {
+        "property_category": "string",
+        "modifiable": "boolean"
+      }
+    },
+    {
+      "type": "CONTROLS",
+      "description": "Control system manages devices or zones",
+      "source_types": ["Control"],
+      "target_types": ["Device", "Zone"],
+      "estimated_count": 2000,
+      "properties": {
+        "control_mode": "string",
+        "failover_enabled": "boolean",
+        "remote_access_enabled": "boolean"
+      }
+    },
+    {
+      "type": "CONTAINS",
+      "description": "Zone contains devices or assets",
+      "source_types": ["Zone", "Asset"],
+      "target_types": ["Device", "Zone"],
+      "estimated_count": 500,
+      "properties": {
+        "installation_date": "date",
+        "primary_use": "boolean"
+      }
+    },
+    {
+      "type": "USES_DEVICE",
+      "description": "Clinical process utilizes specific medical devices",
+      "source_types": ["Process"],
+      "target_types": ["Device"],
+      "estimated_count": 3000,
+      "properties": {
+        "required_for_process": "boolean",
+        "setup_time_minutes": "integer"
+      }
+    },
+    {
+      "type": "INTEGRATES_WITH_EHR",
+      "description": "Medical device integrates with EHR system via HL7/FHIR",
+      "source_types": ["Device"],
+      "target_types": ["Device"],
+      "estimated_count": 1200,
+      "properties": {
+        "integration_protocol": "string",
+        "hl7_message_types": "array",
+        "fhir_resources": "array",
+        "bidirectional": "boolean"
+      }
+    },
+    {
+      "type": "REQUIRES_STERILIZATION",
+      "description": "Surgical device requires sterilization process",
+      "source_types": ["Device"],
+      "target_types": ["Process"],
+      "estimated_count": 350,
+      "properties": {
+        "sterilization_method": "string",
+        "cycle_time_minutes": "integer",
+        "biological_indicator_required": "boolean"
+      }
+    },
+    {
+      "type": "TRIGGERED_BY",
+      "description": "Alert triggered by measurement threshold or device condition",
+      "source_types": ["Alert"],
+      "target_types": ["Measurement", "Device"],
+      "estimated_count": 400,
+      "properties": {
+        "trigger_condition": "string",
+        "threshold_value": "float",
+        "auto_escalation": "boolean"
+      }
+    }
+  ],
+
+  "standards_compliance": {
+    "HIPAA": {
+      "security_rule": "164.308, 164.310, 164.312",
+      "privacy_rule": "164.502, 164.504, 164.506",
+      "breach_notification": "164.400-164.414",
+      "phi_protection": "Minimum necessary standard, encryption at rest and in transit"
+    },
+    "HITECH": {
+      "meaningful_use": "Stage 3 requirements for EHR certification",
+      "breach_penalties": "Tiered penalty structure",
+      "business_associate": "Expanded BA liability"
+    },
+    "FDA": {
+      "medical_device_classification": "Class I, II, III devices",
+      "510k_clearance": "Premarket notification",
+      "cybersecurity_guidance": "Postmarket cybersecurity management",
+      "software_as_medical_device": "SaMD regulatory framework"
+    },
+    "HL7": {
+      "v2_messaging": "ADT, ORM, ORU, MDM messages",
+      "FHIR_R4": "RESTful API, USCDI data classes",
+      "CDA": "Clinical document architecture"
+    },
+    "DICOM": {
+      "imaging_standard": "DICOM 3.0",
+      "modalities": "CT, MRI, US, XR, NM, PET",
+      "security": "TLS encryption, ATNA audit trails"
+    },
+    "HITRUST_CSF": {
+      "control_framework": "14 control categories",
+      "certification_levels": "i1, r2, e1",
+      "assessment_frequency": "Annual validation"
+    }
+  },
+
+  "equipment_taxonomy": {
+    "medical_imaging": [
+      "CT scanners", "MRI systems", "X-ray machines", "Ultrasound systems",
+      "Nuclear medicine cameras", "PET scanners", "Fluoroscopy systems",
+      "Mammography units", "PACS workstations", "3D imaging systems"
+    ],
+    "patient_monitoring": [
+      "Central monitoring stations", "Bedside monitors", "Telemetry systems",
+      "Pulse oximeters", "ECG machines", "Holter monitors", "Fetal monitors",
+      "Continuous glucose monitors", "Respiratory monitors"
+    ],
+    "life_support": [
+      "Ventilators", "ECMO systems", "Dialysis machines", "Heart-lung machines",
+      "Intra-aortic balloon pumps", "Continuous renal replacement therapy",
+      "Hypothermia therapy systems"
+    ],
+    "surgical_equipment": [
+      "Surgical robots", "Electrosurgical units", "Anesthesia machines",
+      "Operating room tables", "Surgical lights", "Endoscopy towers",
+      "Laser systems", "Ultrasonic surgical aspirators"
+    ],
+    "laboratory": [
+      "Clinical chemistry analyzers", "Hematology analyzers", "Blood gas analyzers",
+      "Microbiology culture systems", "PCR machines", "Mass spectrometers",
+      "Automated immunoassay systems", "Laboratory information systems"
+    ],
+    "infusion_therapy": [
+      "Infusion pumps", "Syringe pumps", "Patient-controlled analgesia pumps",
+      "Enteral feeding pumps", "Volumetric pumps", "Ambulatory infusion pumps"
+    ],
+    "ehr_systems": [
+      "Epic EHR", "Cerner Millennium", "MEDITECH", "Allscripts", "athenahealth",
+      "NextGen", "eClinicalWorks", "Practice Fusion"
+    ],
+    "building_systems": [
+      "HVAC controllers", "Medical gas systems", "Nurse call systems",
+      "Building automation systems", "Fire alarm systems", "Access control",
+      "Environmental monitoring", "Pneumatic tube systems"
+    ]
+  },
+
+  "clinical_processes": {
+    "patient_care": [
+      "Admission/registration", "Triage assessment", "Physician examination",
+      "Nursing care", "Medication administration", "Vital signs monitoring",
+      "Patient education", "Discharge planning"
+    ],
+    "diagnostics": [
+      "Laboratory testing", "Medical imaging", "Pathology examination",
+      "Cardiac testing", "Pulmonary function tests", "Endoscopy procedures"
+    ],
+    "therapeutics": [
+      "Surgical procedures", "Radiation therapy", "Chemotherapy administration",
+      "Physical therapy", "Dialysis treatment", "Blood transfusion"
+    ],
+    "pharmacy": [
+      "Medication dispensing", "IV compounding", "Pharmacokinetic monitoring",
+      "Medication reconciliation", "Drug utilization review"
+    ],
+    "administrative": [
+      "Appointment scheduling", "Insurance verification", "Medical coding",
+      "Claims submission", "Revenue cycle management", "Quality reporting"
+    ]
+  },
+
+  "threat_landscape": {
+    "top_threats": [
+      "Ransomware targeting hospitals",
+      "Medical device vulnerabilities",
+      "PHI data breaches",
+      "Supply chain attacks on medical devices",
+      "Insider threats",
+      "IoMT device exploitation",
+      "Phishing targeting healthcare staff",
+      "Legacy system vulnerabilities",
+      "Third-party vendor risks",
+      "Cloud security misconfiguration"
+    ],
+    "attack_vectors": [
+      "Unpatched medical devices",
+      "Weak authentication on IoMT",
+      "Unsegmented clinical networks",
+      "VPN vulnerabilities",
+      "Email phishing",
+      "USB malware propagation",
+      "Wireless network attacks",
+      "Legacy Windows systems"
+    ]
+  },
+
+  "validation_criteria": {
+    "total_nodes": {
+      "min": 26000,
+      "max": 35000,
+      "target": 28000
+    },
+    "node_type_distribution": {
+      "Measurement": {"min": 60, "max": 70, "target": 65},
+      "Property": {"min": 15, "max": 20, "target": 17.9},
+      "Device": {"min": 5, "max": 15, "target": 10},
+      "Process": {"min": 2, "max": 5, "target": 4.3},
+      "Control": {"min": 1, "max": 3, "target": 1.8},
+      "Alert": {"min": 0.5, "max": 2, "target": 0.7},
+      "Zone": {"min": 0.2, "max": 1, "target": 0.3},
+      "Asset": {"min": 0.05, "max": 0.5, "target": 0.1}
+    },
+    "multi_label_requirement": {
+      "min_labels_per_node": 5,
+      "max_labels_per_node": 7,
+      "target_average": 5.8
+    },
+    "relationship_requirements": {
+      "min_relationship_types": 6,
+      "target_relationship_types": 9,
+      "required_relationships": [
+        "VULNERABLE_TO",
+        "HAS_MEASUREMENT",
+        "HAS_PROPERTY",
+        "CONTROLS",
+        "CONTAINS",
+        "USES_DEVICE"
+      ]
+    },
+    "subsector_distribution_tolerance": 2.0
+  },
+
+  "deployment_notes": {
+    "data_sensitivity": "CRITICAL - Contains PHI (Protected Health Information)",
+    "regulatory_compliance": "Must comply with HIPAA, HITECH, FDA, state regulations",
+    "patient_safety_impact": "HIGH - Medical device failures can result in patient harm",
+    "business_continuity": "CRITICAL - Healthcare delivery depends on IT systems",
+    "network_segmentation": "REQUIRED - Clinical, administrative, IoMT, guest networks",
+    "backup_requirements": "Daily backups, HIPAA retention (6 years minimum)",
+    "disaster_recovery": "RTO < 4 hours for critical systems, RPO < 15 minutes",
+    "audit_logging": "HIPAA audit trail requirements, 7-year retention"
+  },
+
+  "gold_standard_comparison": {
+    "water_sector_nodes": 26000,
+    "energy_sector_nodes": 35000,
+    "healthcare_target_nodes": 28000,
+    "complexity_match": "100% - Matches Water/Energy gold standard",
+    "node_types_match": "8 core types + sector-specific (✓)",
+    "multi_label_match": "5-7 labels per node (✓)",
+    "relationship_complexity": "9 relationship types (✓)",
+    "measurement_ratio": "65% (Water: 76%, Energy: 51%, Healthcare: 65%) (✓)"
+  }
+}

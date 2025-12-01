@@ -1,0 +1,25 @@
+{
+  "document": "Energy_Sector/COMPLETION_REPORT.md",
+  "total_entities": 7,
+  "unique_types": 3,
+  "entities_by_type": {
+    "EQUIPMENT": 2,
+    "PROTOCOL": 4,
+    "TACTIC": 1
+  },
+  "sample_entities": {
+    "EQUIPMENT": [
+      "8000H",
+      "SEL-3530"
+    ],
+    "PROTOCOL": [
+      "DNP3",
+      "IEC 61850",
+      "GOOSE",
+      "NERC CIP-002"
+    ],
+    "TACTIC": [
+      "impact"
+    ]
+  }
+}

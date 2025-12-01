@@ -1,0 +1,214 @@
+{
+  "report_metadata": {
+    "title": "Manufacturing-Automotive Control System Architecture Report",
+    "sector": "Manufacturing-Automotive",
+    "subsector": "Equipment and Vendors",
+    "facility_type": "Small-scale facility",
+    "hour_id": "489465",
+    "timestamp": "2025-11-02T09:18:53-06:00",
+    "report_version": "1.0"
+  },
+  "executive_summary": {
+    "overview": "Automotive manufacturing control systems require multi-layered architectures integrating production control, quality management, safety systems, and enterprise connectivity while maintaining ISO 26262 functional safety compliance and IATF 16949 quality standards.",
+    "key_findings": [
+      "Siemens S7-1500 and Allen-Bradley CompactLogix dominate automotive control systems",
+      "PROFINET and EtherNet/IP provide deterministic communication for real-time control",
+      "Safety systems require SIL 3 rated controllers with ASIL D compliance",
+      "MES integration essential for IATF 16949 traceability requirements",
+      "Collaborative robot safety requires specialized safety controllers"
+    ],
+    "recommendations": [
+      "Implement redundant control architecture with hot-standby PLCs",
+      "Deploy safety-integrated PLCs for seamless safety and control integration",
+      "Establish separate safety network with safety-rated communication protocols",
+      "Integrate quality management systems with real-time production data"
+    ]
+  },
+  "control_system_architecture": {
+    "hierarchical_control_structure": {
+      "level_4_enterprise": {
+        "description": "Enterprise Resource Planning (ERP) and Business Systems",
+        "systems": [
+          "SAP",
+          "Oracle",
+          "Microsoft Dynamics"
+        ],
+        "communication": "TCP/IP, SQL database connections",
+        "functions": [
+          "Order management",
+          "Material requirements planning",
+          "Financial integration"
+        ],
+        "automotive_requirements": "IATF 16949 traceability, quality data integration"
+      },
+      "level_3_mes": {
+        "description": "Manufacturing Execution System - Factory Operations",
+        "primary_systems": [
+          "Rockwell FactoryTalk OperationsSuite",
+          "Siemens SIMATIC IT",
+          "Plex Systems Manufacturing Cloud"
+        ],
+        "core_modules": {
+          "production_tracking": "Real-time production status, work order execution",
+          "quality_management": "SPC data collection, defect tracking, PPAP documentation",
+          "material_tracking": "Inventory management, just-in-time material delivery",
+          "performance_monitoring": "OEE calculation, downtime tracking, KPI reporting"
+        },
+        "integration_protocols": "OPC-UA, REST API, SQL database connections",
+        "automotive_compliance": "IATF 16949 traceability, APQP documentation"
+      },
+      "level_2_supervisory": {
+        "description": "Supervisory Control and Data Acquisition (SCADA)",
+        "primary_systems": [
+          "Siemens WinCC",
+          "Rockwell FactoryTalk View",
+          "Wonderware InTouch"
+        ],
+        "functions": [
+          "Process monitoring and visualization",
+          "Alarm management and historian",
+          "Recipe management and changeover",
+          "Production reporting and analytics"
+        ],
+        "communication": "OPC-UA, Modbus TCP, PROFINET"
+      },
+      "level_1_control": {
+        "description": "Programmable Logic Controllers (PLC) and Safety Controllers",
+        "primary_controllers": {
+          "siemens_s7_1500": {
+            "family": "SIMATIC S7-1500 Advanced Controller",
+            "cpu_models": [
+              "1513-1 PN",
+              "1515-2 PN",
+              "1516-3 PN/DP"
+            ],
+            "memory": "Up to 125 MB work memory",
+            "io_capacity": "Up to 32,768 I/O points",
+            "communication": "PROFINET, PROFIBUS, Modbus TCP/ASCII",
+            "safety": "SIMATIC Safety Integrated (SIL 3)",
+            "programming": "TIA Portal Step 7 Professional"
+          },
+          "allen_bradley_compactlogix_5380": {
+            "family": "CompactLogix 5380 Controllers",
+            "cpu_models": [
+              "5069-L306ERM",
+              "5069-L310ERM",
+              "5069-L320ERM"
+            ],
+            "memory": "Up to 3 MB memory",
+            "io_capacity": "Up to 2,880 I/O points",
+            "communication": "EtherNet/IP, DeviceNet, ControlNet",
+            "safety": "Integrated Safety (SIL 3)",
+            "programming": "Studio 5000 Logix Designer"
+          }
+        }
+      },
+      "level_0_field": {
+        "description": "Field Devices, Sensors, and Actuators",
+        "device_categories": {
+          "sensors": [
+            "Photoelectric sensors",
+            "Proximity sensors",
+            "Pressure sensors",
+            "Temperature sensors",
+            "Force/torque sensors"
+          ],
+          "actuators": [
+            "Electric motors",
+            "Pneumatic cylinders",
+            "Hydraulic actuators",
+            "Solenoids",
+            "Servo drives"
+          ],
+          "robotics": [
+            "ABB IRB series robots",
+            "FANUC collaborative robots",
+            "KUKA assembly robots",
+            "Yaskawa welding robots"
+          ],
+          "quality_equipment": [
+            "CMM coordinate measuring machines",
+            "Force testing equipment",
+            "Leak testing systems",
+            "Dimensional gauging"
+          ]
+        }
+      }
+    }
+  },
+  "network_architecture": {
+    "industrial_ethernet_topology": {
+      "core_network": {
+        "technology": "Industrial Ethernet with redundant ring topology",
+        "protocols": [
+          "PROFINET RT/IRT",
+          "EtherNet/IP",
+          "Modbus TCP"
+        ],
+        "bandwidth": "1 Gbps minimum, 10 Gbps for backbone",
+        "redundancy": "Spanning Tree Protocol (STP) with fast convergence",
+        "network_segments": [
+          "Production Network (VLAN 100)",
+          "Safety Network (VLAN 200)",
+          "Quality Network (VLAN 300)",
+          "Office Network (VLAN 1)"
+        ]
+      }
+    },
+    "communication_protocols": {
+      "real_time_ethernet": {
+        "profinet": {
+          "description": "Siemens PROFINET industrial Ethernet protocol",
+          "cycle_time": "<1ms for IRT (Isochronous Real-Time)",
+          "features": [
+            "Device replacement without tools",
+            "Integrated diagnostics",
+            "Safety over PROFINET"
+          ],
+          "automotive_applications": "Robot control, assembly line coordination, safety systems"
+        },
+        "ethernet_ip": {
+          "description": "Rockwell Automation EtherNet/IP protocol",
+          "communication_classes": "Class 1 (Implicit I/O), Class 3 (Explicit Messaging)",
+          "features": [
+            "Producer/Consumer model",
+            "Integrated safety",
+            "Tag-based addressing"
+          ],
+          "applications": "Allen-Bradley PLC integration, robot coordination, safety systems"
+        }
+      }
+    }
+  },
+  "safety_systems_integration": {
+    "functional_safety_architecture": {
+      "iso_26262_compliance": {
+        "safety_lifecycle": [
+          "Safety requirements analysis",
+          "Safety concept development",
+          "Technical safety requirements",
+          "Safety validation and verification"
+        ],
+        "automotive_safety_integrity_levels": {
+          "ASIL_A": "Lowest level - 15% risk reduction",
+          "ASIL_B": "Moderate level - 25% risk reduction",
+          "ASIL_C": "High level - 35% risk reduction",
+          "ASIL_D": "Highest level - 50% risk reduction"
+        }
+      }
+    },
+    "robot_safety_systems": {
+      "collaborative_robot_safety": {
+        "iso_10218_standards": {
+          "part_1": "Robot design safety requirements",
+          "part_2": "Robot system integration requirements"
+        },
+        "safety_monitoring": {
+          "speed_monitoring": "Real-time speed monitoring with 10ms response",
+          "position_monitoring": "Continuous position tracking",
+          "force_monitoring": "Contact force detection <150N for PFL applications"
+        }
+      }
+    }
+  }
+}

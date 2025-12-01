@@ -1,0 +1,12 @@
+Beat,Timestamp,Actor,Role,Instrument,Pitch,Duration,Dynamics,Text,Lacan,Calculus_Function,GNN_State,Environment
+1.0,10:00:00,System,Orchestrator,Harp,G4,4.0,mp,"(The SOC is quiet. Traffic is normal.)",Symbolic (Order),"$\nu = \nu_{base}$",Stable,SOC_Dashboard
+1.0,10:00:05,Bob,Developer,Flute (I),E5,0.5,mf,"Hey Alice, can I deploy this fix? It's urgent.",Imaginary (Desire),"$\nu = \nu_{base} + \alpha \cdot 0.8$",Risk_Low,Slack_Channel
+1.5,10:00:10,Alice,CISO,Snare (C),C4,0.25,f,"Did you run the scan?",Symbolic (Law),"$\Delta t = 1 / S_{entropy}$",Risk_Low,Slack_Channel
+2.0,10:00:15,Bob,Developer,Flute (I),D5,0.5,mp,"Uh, not yet. But it's a tiny change.",Imaginary (Ego),"$\nu = \nu_{base} - \beta \cdot 0.5$",Risk_Med,Slack_Channel
+2.5,10:00:20,Alice,CISO,Trumpet (D),G3,1.0,ff,"NO. No scan, no deploy.",Symbolic (Law),"$A = A_{base} \cdot (1 + \gamma \cdot D)$",Risk_Med,Slack_Channel
+3.0,10:00:25,Eve,Attacker,Synthesizer,F#4 (Tritone),0.1,pp,"(Injects payload into 'tiny change')",Real (Trauma),"$\nu = \nu_{base} + \text{Tritone}$",Risk_High,GitHub_Repo
+3.1,10:00:25,System,Monitor,Timpani,C2,0.1,p,"(File Hash Changed)",Real (Data),"$\Delta t \to 0$",Risk_High,CI_CD_Pipeline
+4.0,10:00:30,Bob,Developer,Flute (I),F5,0.5,mf,"Fine. Running scan now.",Imaginary (Compliance),"$\nu = \nu_{base} + \alpha \cdot 0.2$",Risk_High,Slack_Channel
+5.0,10:00:45,System,Scanner,Trombone,Bb2,2.0,fff,"CRITICAL VULNERABILITY DETECTED",Symbolic (Judgment),"$A \to \infty$",Breach_Prevented,CI_CD_Pipeline
+6.0,10:01:00,Alice,CISO,Trumpet (D),C5,4.0,f,"See? This is why we scan.",Symbolic (Vindication),"$\nu = \nu_{base} + \alpha \cdot 1.0$",Stable,Slack_Channel
+7.0,10:01:10,System,Orchestrator,Harp,G4,4.0,mp,"(The SOC returns to G Major.)",Symbolic (Order),"$\nu \to \nu_{base}$",Stable,SOC_Dashboard

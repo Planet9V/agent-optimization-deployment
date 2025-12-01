@@ -1,0 +1,28 @@
+
+METADATA EXPORT SUMMARY
+=======================
+Export Timestamp: 2025-11-01_22-06-17
+Export Directory: /home/jim/2_OXOT_Projects_Dev/10_Ontologies/AEON_DR_Cybersec_Threat_Intelv2/exports/metadata_export_2025-11-01_22-06-17
+
+Exported Data:
+- THREATENS_GRID_STABILITY relationships: 3,000
+- VULNERABLE_TO relationships: 24,664
+- All CVE relationships with cve_id: 164
+- CVE node properties: 179,843
+
+Database Statistics:
+- Total CVE nodes: 267,487
+- Total relationships: 2,065,541
+- NULL IDs: 87,644
+- Malformed IDs: 179,522
+- Correct IDs: 321
+
+Files Created:
+- threatens_grid_stability.csv & .json
+- vulnerable_to_relationships.csv & .json
+- all_cve_relationships.csv & .json
+- cve_node_properties.csv & .json
+- database_statistics.json
+- EXPORT_SUMMARY.txt
+
+Status: EXPORT COMPLETE ✅

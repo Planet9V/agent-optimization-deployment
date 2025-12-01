@@ -1,0 +1,55 @@
+{
+  "title": "Ontology-Aware Swarm Agent Usage Guide",
+  "overview": "Leverage domain-specific ontology knowledge for Neo4j operations",
+  "quick_start": {
+    "step_1": "Query Qdrant: swarm/ontology/activation_instructions",
+    "step_2": "Identify your domain: energy_grid, industrial_controls, cybersecurity, smart_city",
+    "step_3": "Spawn relevant agent from swarm/agents/ontology/<agent_name>",
+    "step_4": "Agent provides ontology-aware recommendations"
+  },
+  "use_cases": {
+    "cypher_query_optimization": {
+      "agent": "cypher_optimization_agent",
+      "capability": "Analyze queries against ontology patterns",
+      "example": "Optimize CVE-to-Device relationship queries using SAREF patterns"
+    },
+    "schema_validation": {
+      "agent": "schema_validator_agent",
+      "capability": "Validate schema against SAREF/UCO/ICS-SEC standards",
+      "example": "Ensure Device nodes conform to SAREF Energy ontology"
+    },
+    "vulnerability_analysis": {
+      "agent": "cybersecurity_ontology_agent",
+      "capability": "UCO-compliant CVE relationship analysis",
+      "example": "Identify missing CVE relationships per UCO ontology"
+    },
+    "grid_stability": {
+      "agent": "energy_grid_ontology_agent",
+      "capability": "SAREF Smart Grid compliance validation",
+      "example": "Validate grid stability relationships against SAREF patterns"
+    },
+    "ics_security": {
+      "agent": "ics_security_ontology_agent",
+      "capability": "ICS-SEC ontology-compliant security analysis",
+      "example": "Validate Purdue model architecture in Neo4j"
+    }
+  },
+  "memory_keys": {
+    "catalog": "swarm/ontology/catalog",
+    "schema": "swarm/ontology/neo4j_schema",
+    "mappings": "swarm/ontology/domain_mappings",
+    "agents": "swarm/ontology/specialized_agents",
+    "registry": "swarm/agents/ontology/registry",
+    "instructions": "swarm/ontology/activation_instructions"
+  },
+  "ontology_resources": {
+    "path": "/home/jim/2_OXOT_Projects_Dev/Import_to_neo4j/6_Ontologies",
+    "count": 23,
+    "types": [
+      "SAREF (13)",
+      "Cybersecurity (3)",
+      "Infrastructure (4)",
+      "ETSI Standards (3)"
+    ]
+  }
+}

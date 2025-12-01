@@ -1,0 +1,101 @@
+# NVD Daily Sync Configuration
+#
+# File: config.yaml
+# Created: 2025-11-01
+# Version: 1.0.0
+# Author: Automation Agent
+# Purpose: Configuration template for NVD sync automation
+# Status: ACTIVE
+
+# ============================================
+# Neo4j Database Configuration
+# ============================================
+neo4j:
+  uri: "bolt://localhost:7687"
+  user: "neo4j"
+  password: "neo4j@openspg"
+  database: "neo4j"  # Default database name
+
+# ============================================
+# NVD API Configuration
+# ============================================
+# API Key: Obtain from https://nvd.nist.gov/developers/request-an-api-key
+# Rate limits:
+#   - With API key: 50 requests per 30 seconds
+#   - Without API key: 5 requests per 30 seconds
+nvd_api_key: "534786f5-5359-40b8-8e54-b28eb742de7c"
+
+# ============================================
+# VulnCheck API Configuration (Optional)
+# ============================================
+# Required for XDB (exploit database) enrichment
+# Obtain token from: https://vulncheck.com
+vulncheck_api_token: null  # Set via environment variable VULNCHECK_API_TOKEN
+
+# ============================================
+# Logging Configuration
+# ============================================
+log_level: "INFO"  # Options: DEBUG, INFO, WARNING, ERROR, CRITICAL
+log_file: "logs/nvd_sync.log"
+enrichment_log_file: "logs/enrichment.log"
+
+# ============================================
+# Sync Configuration
+# ============================================
+sync:
+  # Hours to look back for NVD modifications (default: 24)
+  hours_back: 24
+
+  # Batch size for NVD API requests (max: 2000)
+  batch_size: 2000
+
+  # Maximum CVEs to process per enrichment run (null = unlimited)
+  enrichment_limit: null
+
+# ============================================
+# Priority Framework Configuration
+# ============================================
+priority:
+  # NOW tier thresholds
+  now:
+    in_cisa_kev: true  # Automatically NOW if in CISA KEV
+    epss_threshold: 0.7
+    cvss_threshold: 7.0
+
+  # NEXT tier thresholds
+  next:
+    epss_threshold: 0.2
+    cvss_threshold: 7.0
+
+# ============================================
+# Notification Configuration (Optional)
+# ============================================
+notifications:
+  email:
+    enabled: false
+    smtp_host: "smtp.example.com"
+    smtp_port: 587
+    smtp_user: "user@example.com"
+    smtp_password: "YOUR_SMTP_PASSWORD"
+    from_address: "nvd-sync@example.com"
+    to_addresses:
+      - "admin@example.com"
+
+  # Slack notifications (optional)
+  slack:
+    enabled: false
+    webhook_url: "https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
+
+# ============================================
+# Performance Tuning
+# ============================================
+performance:
+  # Neo4j batch size for bulk updates
+  neo4j_batch_size: 1000
+
+  # Request timeout in seconds
+  request_timeout: 30
+
+  # Retry configuration
+  max_retries: 3
+  retry_delay: 5  # seconds

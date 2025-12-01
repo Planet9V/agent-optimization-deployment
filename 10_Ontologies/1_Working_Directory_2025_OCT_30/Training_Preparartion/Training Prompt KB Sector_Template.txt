@@ -1,0 +1,982 @@
+Training Prompt KB {{TARGET_SECTOR}}
+
+## Research Depth 
+0. **DISCOVERY MODE**: Breadth-first exploration, find new repos/tools/feeds, catalog options, initial surveys
+1. **TECHNICAL MODE**: Deep implementation details, code analysis, configuration examples, architecture diagrams
+2. **OPERATIONAL MODE**: Deployment guides, scaling strategies, maintenance procedures, troubleshooting, real-world usage
+3. **INTEGRATION MODE**: Cross-domain connections, tool chaining, unified architectures, data flow designs
+
+## Sector Detail Focus 
+{{TARGET_SECTOR}}
+
+## Search Strategy 
+5. GitHub: `[SECTOR] monitoring control system architecture` + sort by recently updated
+6. GitHub: `[SECTOR] network diagram equipment vendor` + sort by relevance
+7. GitHub: `neo4j graph analytics big data 100k nodes` + sort by stars
+
+## Query Angle 
+0. Tool/Platform Features: capabilities, limitations, tech stack, dependencies, scalability
+1. Implementation Patterns: code examples, configurations, deployment architectures, best practices
+2. Vendor/Equipment Deep Dive: manufacturers, specific models, protocols, interfaces, specifications
+3. Architecture/Design Patterns: facility layouts, network topologies, system integration, redundancy
+4. Operations/Maintenance: procedures, monitoring, troubleshooting, lifecycle management, upgrades
+5. Security/Vulnerabilities: known CVEs, threat actors, attack vectors, mitigations, hardening
+
+## Research Execution
+
+### STEP 1:  Discovery (Target: 6-8 repos)
+Execute curl commands to GitHub API:
+
+For each result:
+- Extract: name, description, stars, last_push_date, main_language, topics
+- Identify: key features, use cases, installation, configuration, examples
+- Note vendor names, equipment types, protocols, standards mentioned
+
+### STEP 2: Documentation Deep Dive (Target: 4-6 sources)
+For selected high-value sources:
+````
+
+````
+
+Extract:
+- Technical architecture details
+- Configuration templates
+- Integration points
+- Scaling considerations for large graphs (300k+ nodes)
+- Multi-label handling techniques
+- Relationship type management
+- Query optimization for complex Cypher
+
+### STEP 3: Threat Intelligence & Vulnerability Research (Target: 3-4 sources)
+Rotate through:
+````
+curl https://cve.mitre.org/data/downloads/allitems.csv
+curl https://nvd.nist.gov/feeds/json/cve/1.1/nvdcve-1.1-recent.json
+curl https://www.cisa.gov/known-exploited-vulnerabilities-catalog [if accessible]
+````
+
+Focus on:
+- ICS/SCADA/OT specific vulnerabilities
+- [SECTOR]-related CVEs
+- Vendor-specific advisories
+- Exploit availability
+- Mitigation strategies
+
+### STEP 4: Vendor & Equipment Research (Target: 5-7 vendors)
+For current sector, research:
+- Primary equipment manufacturers
+- Specific product lines and models
+- Technical specifications (protocols: Modbus, DNP3, IEC 61850, OPC UA, BACnet)
+- Network architectures (typical VLAN designs, segmentation)
+- Engineering design standards (ISA-95, IEC 62443, NIST 800-82)
+- Supply chain (distributors, integrators, support providers)
+
+### STEP 5: Knowledge Base Page Generation (TARGET: 22-27 pages)
+
+**MANDATORY COMPREHENSIVE REPORTS (2 pages - ALWAYS GENERATE FOR SECTOR RESEARCH):**
+
+When Domain = 3-6 (Critical Infrastructure), **ALWAYS** create these two detailed architectural reports:
+
+#### Report 1: Facility Architecture Report
+**Filename**: `kb/sectors/[SECTOR]/architectures/facility-[FACILITY_TYPE]-[YYYYMMDD-HH].md`
+
+**Required Content Structure** (Minimum 2000 words):
+````markdown
+---
+title: [SECTOR] [Facility Type] Architecture
+date: [YYYY-MM-DD HH:MM:SS]
+category: sectors
+subcategory: [sector-name]
+sector: [sector-name]
+tags: [sector, facility, architecture, design, infrastructure]
+sources: [industry-standards, engineering-manuals, vendor-docs, public-records]
+confidence: [high/medium/low]
+---
+
+## Summary
+[Comprehensive 3-4 paragraph overview of facility type, scale, purpose, and operational characteristics]
+
+## Key Information
+- **Facility Type**: [Specific classification]
+- **Typical Capacity**: [Production/service capacity metrics]
+- **Facility Size**: [Physical dimensions, acreage]
+- **Staffing**: [Typical operational staff counts]
+- **Operational Model**: [24/7, daytime, automated, etc.]
+- **Regulatory Framework**: [Key regulations and standards]
+
+## Facility Overview
+### Purpose and Function
+[Detailed description of what this facility does, its role in the sector]
+
+### Typical Scale and Variants
+[Different sizes: small/medium/large facilities]
+[Regional variants and design differences]
+[Technology evolution: legacy vs modern designs]
+
+## Physical Architecture
+### Site Layout
+[Detailed description of physical layout]
+[Major zones and areas]
+[Spatial relationships between systems]
+[Security perimeters and access zones]
+
+### Building/Structure Design
+[Construction specifications]
+[Materials and standards]
+[Environmental considerations]
+[Safety features and redundancy]
+
+### Major System Components
+#### [System 1 Name] (e.g., Generation Systems, Processing Units)
+- **Function**: [Primary purpose]
+- **Components**: [Major equipment]
+- **Capacity**: [Design specifications]
+- **Vendors**: [Typical manufacturers with 3-5 specific companies]
+- **Models**: [Common equipment models/series]
+- **Interconnections**: [How this integrates with other systems]
+
+#### [System 2 Name] (e.g., Distribution Systems, Safety Systems)
+[Repeat structure for 4-6 major systems]
+
+#### [System 3 Name]
+[Continue...]
+
+## Operational Systems
+### Control and Monitoring
+[Control room layout and capabilities]
+[Monitoring systems and displays]
+[Operator interfaces and workstations]
+[Data collection and logging]
+
+### Automation Systems
+[Level of automation]
+[Automated sequences and interlocks]
+[Manual override capabilities]
+[Failsafe mechanisms]
+
+### Support Systems
+#### Electrical Power
+- Primary power supply and capacity
+- Backup power systems (generators, UPS)
+- Power distribution architecture
+- Typical voltage levels
+
+#### HVAC and Environmental
+- Climate control requirements
+- Air quality monitoring
+- Temperature/humidity specifications
+- Ventilation and exhaust systems
+
+#### Fire Protection
+- Detection systems
+- Suppression systems (type and coverage)
+- Emergency response integration
+
+#### Communications
+- Internal communication systems
+- External connectivity
+- Emergency communications
+- Radio/telephone systems
+
+## Engineering Design Patterns
+### Standard Configurations
+[Industry-standard design templates]
+[Common layouts and variations]
+[Capacity planning rules of thumb]
+
+### Redundancy Strategies
+[N+1, 2N, or other redundancy models]
+[Critical single points of failure]
+[Failover mechanisms]
+[Geographic distribution for resilience]
+
+### Network Architecture
+[IT/OT network topology]
+[Segregation and segmentation]
+[Industrial protocols used]
+[Communication pathways between systems]
+```mermaid
+graph TD
+    A[Main Description] --> B[System 1]
+    A --> C[System 2]
+    B --> D[Subsystem 1.1]
+    B --> E[Subsystem 1.2]
+    C --> F[Subsystem 2.1]
+    [Detailed mermaid diagram showing facility layout and system relationships]
+```
+
+## Equipment and Vendors
+### Primary Equipment Categories
+[For each major equipment type:]
+
+#### [Equipment Category 1]
+**Major Vendors:**
+- **[Vendor 1 Name]**: [Market position, product lines, typical models]
+  - Product Series: [Model numbers/series]
+  - Market Share: [Approximate percentage]
+  - Key Features: [Distinguishing capabilities]
+  
+- **[Vendor 2 Name]**: [Similar detail]
+- **[Vendor 3 Name]**: [Similar detail]
+
+**Specifications:**
+- Capacity ranges: [Min-max specifications]
+- Communication protocols: [Supported protocols]
+- Control interfaces: [Available interface types]
+- Lifecycle: [Typical lifespan, maintenance intervals]
+
+[Repeat for 5-7 equipment categories]
+
+### Supply Chain
+- **OEMs**: [Original equipment manufacturers]
+- **System Integrators**: [Companies that integrate systems]
+- **Distributors**: [Equipment distribution channels]
+- **Service Providers**: [Maintenance and support vendors]
+
+## Operational Procedures
+### Normal Operations
+[Typical operational workflow]
+[Shift patterns and staffing]
+[Routine monitoring tasks]
+[Performance optimization]
+
+### Startup Procedures
+[Step-by-step startup sequence]
+[Pre-startup checks]
+[System synchronization]
+[Typical duration and critical steps]
+
+### Shutdown Procedures
+[Normal shutdown sequence]
+[Emergency shutdown protocols]
+[Cooldown requirements]
+[Safety verifications]
+
+### Maintenance Protocols
+- **Preventive Maintenance**: [Scheduled activities and intervals]
+- **Predictive Maintenance**: [Condition monitoring approaches]
+- **Corrective Maintenance**: [Typical failure modes and repairs]
+- **Outage Planning**: [Scheduled maintenance windows]
+
+## Design Variations
+### Regional Differences
+[How designs vary by geography]
+[Climate adaptations]
+[Regulatory variations]
+[Local code requirements]
+
+### Technology Generations
+[Legacy designs (pre-2000)]
+[Modern designs (2000-2015)]
+[Contemporary designs (2015+)]
+[Future trends and innovations]
+
+### Capacity Variants
+[Small-scale facilities: specifications]
+[Medium-scale facilities: specifications]
+[Large-scale facilities: specifications]
+[Distributed vs centralized approaches]
+
+## Integration with Other Facilities
+[How this facility type connects to others in the sector]
+[Data exchange requirements]
+[Coordination mechanisms]
+[Grid/network integration points]
+
+## Security Considerations
+### Physical Security
+- Perimeter security systems
+- Access control points
+- Surveillance coverage
+- Security staffing and patrols
+
+### Cybersecurity
+- Network segmentation requirements
+- Critical control systems protection
+- Remote access security
+- Security monitoring systems
+
+### Safety Systems
+- Emergency shutdown systems
+- Evacuation procedures
+- Hazard monitoring and alarms
+- Safety interlocks and permissives
+
+## Related Topics
+- [Link to control system architecture report]
+- [Links to 5-7 related equipment, protocol, or vendor pages]
+
+## References
+- [Standard 1]: [URL] - [Description]
+- [Standard 2]: [URL] - [Description]
+- [Engineering Guide]: [URL] - [Description]
+- [Vendor Documentation]: [URL] - [Description]
+- [Industry Association]: [URL] - [Description]
+[Minimum 8-10 authoritative references]
+
+## Metadata
+- Last Updated: [TIMESTAMP]
+- Research Session: [HOUR_ID]
+- Completeness: [70-95%]
+- Next Actions: [Specific areas needing deeper research]
+````
+
+#### Report 2: Control System Architecture Report
+**Filename**: `kb/sectors/[SECTOR]/control-systems/[SECTOR]-control-system-[YYYYMMDD-HH].md`
+
+**Required Content Structure** (Minimum 2000 words):
+````markdown
+---
+title: [SECTOR] Control System Architecture
+date: [YYYY-MM-DD HH:MM:SS]
+category: sectors
+subcategory: [sector-name]
+sector: [sector-name]
+tags: [sector, control-systems, scada, architecture, industrial-control, automation]
+sources: [industry-standards, vendor-docs, engineering-manuals, protocol-specs]
+confidence: [high/medium/low]
+---
+
+## Summary
+[Comprehensive 3-4 paragraph overview explaining the control system architecture, its purpose, complexity, and critical role in sector operations]
+
+## Key Information
+- **System Type**: [e.g., Distributed Control System, SCADA, Hybrid]
+- **Control Hierarchy**: [Number of layers in architecture]
+- **Primary Protocols**: [3-5 main communication protocols]
+- **Redundancy Model**: [N+1, 2N, geographic redundancy]
+- **Security Architecture**: [IT/OT separation model, security zones]
+- **Typical Vendor Mix**: [Single-vendor vs multi-vendor]
+
+## Hierarchical Architecture
+
+### Complete Layer Breakdown
+[Describe 3-5 architectural layers in detail:]
+
+#### Level 0: Physical Process Layer
+- **Function**: [Physical processes being controlled]
+- **Components**: [Sensors, actuators, field devices]
+- **Typical Count**: [Number of I/O points in various facility sizes]
+- **Network**: [Field-level network type]
+- **Protocols**: [Device-level protocols]
+- **Vendors**: [Sensor and actuator manufacturers]
+- **Security**: [Physical and device security measures]
+
+#### Level 1: Device Control Layer  
+- **Function**: [Real-time control loops, automation]
+- **Systems**: [PLCs, RTUs, local controllers]
+- **Processing**: [Scan times, control algorithms]
+- **Network**: [Control network type and topology]
+- **Protocols**: [Industrial control protocols used]
+- **Redundancy**: [Controller redundancy approach]
+- **Programming**: [Languages and tools used]
+- **Security**: [Controller security and hardening]
+
+#### Level 2: Supervisory Control Layer
+- **Function**: [SCADA, HMI, centralized monitoring]
+- **Systems**: [SCADA servers, HMI workstations, historians]
+- **Operator Interface**: [Screen counts, layout, capabilities]
+- **Network**: [SCADA network architecture]
+- **Protocols**: [Supervisory protocols]
+- **Data Management**: [Historian, databases, retention]
+- **Security**: [Access control, network protection]
+- **Vendors**: [Major SCADA platform providers with specifics]
+
+#### Level 3: Operations Management Layer
+- **Function**: [Production management, optimization, reporting]
+- **Systems**: [MES, asset management, optimization engines]
+- **Network**: [Manufacturing/operations network]
+- **Protocols**: [Business-to-OT protocols]
+- **Integration**: [ERP integration points]
+- **Security**: [DMZ architecture, data diodes]
+
+#### Level 4: Enterprise Layer
+- **Function**: [Business operations, analytics, planning]
+- **Systems**: [ERP, business intelligence, enterprise databases]
+- **Network**: [Corporate IT network]
+- **Protocols**: [Enterprise protocols (HTTP, SQL, etc.)]
+- **Security**: [Enterprise security controls]
+
+## Network Architecture
+### Topology Design
+[Detailed description of network topology]
+[Physical vs logical topology]
+[Star, ring, mesh, or hybrid designs]
+
+### Network Segments
+[Define each network segment:]
+
+#### Segment 1: [Name] (e.g., Field Network)
+- **Purpose**: [What this segment does]
+- **Technology**: [Ethernet, serial, wireless, fieldbus]
+- **Speed**: [Bandwidth specifications]
+- **Devices**: [What connects to this segment]
+- **Protocols**: [Allowed protocols]
+- **Redundancy**: [Network redundancy design]
+- **Security**: [Segmentation and access controls]
+
+[Repeat for 4-6 network segments]
+
+### Network Diagram
+```mermaid
+graph TD
+    A[Enterprise Network] ---|Firewall| B[DMZ]
+    B ---|Data Diode| C[SCADA Network]
+    C ---|Industrial Firewall| D[Control Network]
+    D ---|Protocol Gateway| E[Field Network Level 1]
+    D ---|Protocol Gateway| F[Field Network Level 2]
+    E --> G[Device Level]
+    
+    A --> H[ERP Systems]
+    A --> I[Business Analytics]
+    B --> J[Data Historian Replica]
+    B --> K[Jump Server]
+    C --> L[SCADA Server 1]
+    C --> M[SCADA Server 2 - Redundant]
+    C --> N[Engineering Workstation]
+    C --> O[HMI Workstations]
+    D --> P[PLC 1 - Primary]
+    D --> Q[PLC 1 - Backup]
+    D --> R[RTU Array]
+    E --> S[I/O Modules]
+    E --> T[Smart Sensors]
+    
+    style A fill:#ccf
+    style C fill:#fcc
+    style D fill:#ffc
+    style E fill:#cfc
+```
+
+## Communication Protocols
+
+### Protocol Suite Overview
+[High-level overview of all protocols used]
+[Protocol selection rationale]
+[Inter-protocol gateways and translation]
+
+### Detailed Protocol Analysis
+[For each major protocol - 4-6 protocols:]
+
+#### [Protocol 1 Name] (e.g., Modbus TCP)
+- **OSI Layers**: [Which OSI layers it operates on]
+- **Usage Context**: [Where in architecture it's deployed]
+- **Architecture**: [Master-slave, peer-to-peer, publish-subscribe]
+- **Data Types**: [What data it carries]
+- **Advantages**: [Why it's used in this sector]
+- **Limitations**: [Known constraints]
+- **Security**: [Built-in security features or lack thereof]
+- **Typical Configuration**: [Common setup parameters]
+- **Vendors Supporting**: [Equipment vendors using this protocol]
+
+[Repeat detailed analysis for each protocol]
+
+### Protocol Security Considerations
+[Security analysis of each protocol]
+[Known vulnerabilities and CVEs]
+[Mitigation strategies]
+[Encrypted vs plaintext]
+
+## Control System Components
+
+### Hardware Components
+[Detailed breakdown of all hardware:]
+
+#### Programmable Logic Controllers (PLCs)
+- **Vendor Options**: 
+  - [Vendor 1]: [Specific product lines, models, capabilities]
+  - [Vendor 2]: [Specific product lines, models, capabilities]
+  - [Vendor 3]: [Specific product lines, models, capabilities]
+- **Typical Specifications**:
+  - CPU speed and processing power
+  - I/O capacity (digital, analog)
+  - Memory capacity
+  - Communication ports and protocols
+  - Environmental ratings (temperature, vibration)
+  - MTBF ratings
+- **Redundancy Configuration**: [Hot-standby, bumpless transfer details]
+- **Programming**: [IEC 61131-3 languages supported]
+- **Typical Cost**: [Order of magnitude pricing]
+
+#### Remote Terminal Units (RTUs)
+[Similar detailed breakdown]
+
+#### Human-Machine Interfaces (HMIs)
+[Similar detailed breakdown]
+
+#### Network Equipment
+- **Industrial Switches**: [Managed vs unmanaged, vendors, models]
+- **Industrial Routers**: [Vendors, models, capabilities]
+- **Protocol Gateways**: [Vendors, supported translations]
+- **Media Converters**: [Fiber/copper conversion]
+- **Network Taps/Aggregators**: [Monitoring equipment]
+
+#### Servers and Workstations
+- **SCADA Servers**: [Specifications, OS, redundancy]
+- **Historians**: [Data storage architecture, vendors]
+- **Engineering Workstations**: [Specifications and security]
+- **HMI Operator Workstations**: [Specifications and deployment]
+
+### Software Components
+[Detailed breakdown of all software:]
+
+#### SCADA Systems
+- **Major Platforms**:
+  - [Platform 1 Name] by [Vendor]: [Features, licensing, market share]
+  - [Platform 2 Name] by [Vendor]: [Features, licensing, market share]
+  - [Platform 3 Name] by [Vendor]: [Features, licensing, market share]
+- **Core Capabilities**:
+  - Real-time data acquisition rates
+  - Alarm management (priority levels, escalation)
+  - Historical data logging and retention
+  - Trending and analytics
+  - Reporting capabilities
+  - Remote access features
+- **User Interface**: [Screen design, usability, customization]
+- **Scalability**: [Point counts, concurrent users, geographic distribution]
+
+#### Control Software
+- **PLC Programming Environments**: [Tools and languages]
+- **Control Algorithms**: [PID, fuzzy logic, model predictive control]
+- **Sequence Control**: [Sequential function charts, ladder logic]
+- **Interlock Logic**: [Safety interlocks, permissives]
+- **Version Control**: [Source control for logic]
+
+#### Database Systems
+- **Time-Series Databases**: [Vendors, performance specifications]
+- **Relational Databases**: [SQL databases for configuration/audit]
+- **Data Historians**: [Purpose-built industrial historians]
+- **Data Retention**: [Policies and storage requirements]
+
+## Integration Patterns
+
+### System Integration Architecture
+[How all components integrate]
+
+#### Vertical Integration
+[Integration from field devices to enterprise]
+[Data flow upwards]
+[Command flow downwards]
+[Protocol translations at each level]
+
+#### Horizontal Integration
+[Integration across peer systems]
+[Coordination between control systems]
+[Data sharing mechanisms]
+[Synchronization approaches]
+
+### Third-Party System Integration
+- **ERP Integration**: [SAP, Oracle, etc. - integration methods]
+- **Asset Management**: [CMMS integration patterns]
+- **Safety Systems**: [SIS integration with DCS/SCADA]
+- **Security Systems**: [Physical security integration]
+- **Environmental Monitoring**: [External systems integration]
+
+### Data Exchange Methods
+- **OPC UA**: [Modern standard usage]
+- **OPC DA/HDA**: [Legacy OPC usage]
+- **Database Replication**: [SQL replication to enterprise]
+- **File Transfer**: [Batch data exchange]
+- **REST APIs**: [Modern API integration]
+- **Message Queuing**: [MQTT, AMQP usage]
+
+## Deployment Patterns
+
+### Centralized Control Architecture
+- **Description**: [Single control room model]
+- **Advantages**: [Centralized expertise, consistent operations]
+- **Disadvantages**: [Single point of failure, communication dependencies]
+- **Typical Use Cases**: [When centralized is appropriate]
+- **Geographic Scope**: [Maximum practical distance]
+
+### Distributed Control Architecture
+- **Description**: [Multiple local control points]
+- **Advantages**: [Resilience, local autonomy]
+- **Disadvantages**: [Complexity, consistency challenges]
+- **Typical Use Cases**: [When distributed is appropriate]
+- **Coordination**: [How distributed sites coordinate]
+
+### Hybrid Architectures
+- **Description**: [Combination approaches]
+- **Local vs Central Authority**: [Decision-making distribution]
+- **Failover Modes**: [Behavior during communication loss]
+
+## Redundancy and Resilience
+
+### Controller Redundancy
+- **Primary-Backup Configuration**: [Hot standby details]
+- **Bumpless Transfer**: [Seamless failover mechanisms]
+- **State Synchronization**: [How state is maintained]
+- **Switchover Time**: [Typical failover duration]
+- **Health Monitoring**: [Redundancy health checks]
+
+### Network Redundancy
+- **Ring Topologies**: [Self-healing rings]
+- **Dual Networks**: [Parallel network paths]
+- **Protocol-Level Redundancy**: [HSR, PRP protocols]
+- **Failover Mechanisms**: [Automatic vs manual switching]
+
+### Server Redundancy
+- **Active-Active**: [Load-balanced configurations]
+- **Active-Standby**: [Hot standby servers]
+- **Clustering**: [Server cluster architectures]
+- **Geographic Distribution**: [Disaster recovery sites]
+
+### Power Redundancy
+- **UPS Systems**: [Battery backup capacity and runtime]
+- **Generator Backup**: [Capacity and fuel supply]
+- **Dual Power Feeds**: [A/B power distribution]
+- **Power Conditioning**: [Voltage regulation, surge protection]
+
+## Cybersecurity Architecture
+
+### Security Zones
+```mermaid
+graph TD
+    A[Enterprise Zone - Level 5] -.->|Strictly Controlled| B[DMZ - Level 4]
+    B -.->|Data Diode/Firewall| C[Operations Zone - Level 3]
+    C -.->|Industrial Firewall| D[Control Zone - Level 2]
+    D -.->|Protocol Filter| E[Field Zone - Level 1]
+    E --> F[Device Zone - Level 0]
+    
+    style A fill:#9cf
+    style B fill:#fc9
+    style C fill:#fcf
+    style D fill:#fcc
+    style E fill:#ffc
+    style F fill:#cfc
+```
+
+### Defense-in-Depth Strategy
+[Layered security approach]
+
+#### Perimeter Security
+- **Firewalls**: [Industrial firewall vendors and models]
+- **Intrusion Detection**: [IDS/IPS for industrial protocols]
+- **Secure Remote Access**: [VPN, jump servers, multifactor auth]
+- **Network Segmentation**: [VLAN and subnet design]
+
+#### Endpoint Security
+- **Application Whitelisting**: [Only approved applications run]
+- **Antivirus**: [Industrial-appropriate AV solutions]
+- **Patch Management**: [Controlled update procedures]
+- **Configuration Management**: [Baseline configurations]
+
+#### Access Control
+- **Authentication**: [User authentication mechanisms]
+- **Authorization**: [Role-based access control]
+- **Audit Logging**: [Comprehensive activity logging]
+- **Privileged Access**: [Administrative access controls]
+
+#### Monitoring and Detection
+- **Security Information and Event Management (SIEM)**: [Log aggregation and analysis]
+- **Continuous Monitoring**: [Real-time security monitoring]
+- **Anomaly Detection**: [Behavioral analysis tools]
+- **Protocol Analysis**: [Deep packet inspection for industrial protocols]
+
+### IEC 62443 Alignment
+[How architecture aligns with IEC 62443]
+[Security levels achieved]
+[Compensating controls]
+[Compliance gaps]
+
+## Operational Considerations
+
+### System Administration
+- **User Management**: [Account provisioning and deactivation]
+- **Backup Procedures**: [System and data backup strategies]
+- **Change Management**: [Controlled change procedures]
+- **Patch Management**: [Security update procedures]
+- **Capacity Planning**: [Growth management]
+
+### Performance Monitoring
+- **Key Performance Indicators**: [System health metrics]
+- **Response Time Monitoring**: [Control loop performance]
+- **Network Performance**: [Bandwidth utilization, latency]
+- **Database Performance**: [Query times, storage growth]
+
+### Troubleshooting Procedures
+- **Diagnostic Tools**: [Available troubleshooting tools]
+- **Common Issues**: [Typical problems and solutions]
+- **Escalation Procedures**: [Vendor support engagement]
+- **Recovery Procedures**: [System recovery from failures]
+
+## Lifecycle Management
+
+### System Lifecycle
+- **Typical Lifespan**: [Expected service life: 15-25 years]
+- **Technology Refresh**: [Planned upgrade cycles: 5-7 years]
+- **End-of-Life Planning**: [Vendor sunset management]
+
+### Upgrade Strategies
+- **In-Place Upgrades**: [Upgrade existing systems]
+- **Parallel Migration**: [New system parallel to old]
+- **Phased Replacement**: [Incremental replacement approach]
+- **Testing Requirements**: [Factory acceptance, site acceptance tests]
+
+## Vendor Ecosystem
+
+### Primary Control System Vendors
+[For each major vendor - 4-6 vendors:]
+
+#### [Vendor 1 Name] (e.g., Siemens)
+- **Market Position**: [Market share, reputation]
+- **Product Portfolio**:
+  - SCADA Platform: [Product name, versions, capabilities]
+  - PLC/RTU Lines: [Specific models and series]
+  - HMI Products: [Available offerings]
+  - Network Equipment: [Switches, routers if offered]
+- **Strengths**: [What they excel at]
+- **Weaknesses**: [Known limitations]
+- **Typical Use Cases**: [Where commonly deployed in this sector]
+- **Support Model**: [Support availability, costs]
+- **Training**: [Training programs and certifications]
+
+[Repeat for each major vendor]
+
+### System Integrators
+- **Role**: [What system integrators provide]
+- **Major Players**: [Top integration firms in this sector]
+- **Services**: [Engineering, commissioning, support]
+- **Vendor Partnerships**: [Which vendors they typically work with]
+
+### Support Ecosystem
+- **Direct Vendor Support**: [OEM support models]
+- **Third-Party Support**: [Independent support providers]
+- **Spare Parts**: [Parts availability and lifecycle]
+- **Training Providers**: [Certification and training options]
+
+## Industry Standards and Compliance
+
+### Applicable Standards
+[Comprehensive list of relevant standards:]
+
+- **IEC 62443**: [Industrial automation and control systems security]
+  - Part 1: [General concepts and models]
+  - Part 2: [Policies and procedures]
+  - Part 3: [System requirements]
+  - Part 4: [Component requirements]
+  
+- **NIST SP 800-82**: [Guide to Industrial Control Systems Security]
+  - Key requirements
+  - Implementation guidance
+  
+- **IEC 61850**: [Substation automation and communication - if applicable]
+- **ISA-95**: [Enterprise-Control System Integration - if applicable]
+- **NERC CIP**: [Critical Infrastructure Protection - if Energy sector]
+- **FDA 21 CFR Part 11**: [If pharmaceutical/healthcare]
+- **[Sector-Specific Regulations]**: [Any unique sector requirements]
+
+### Compliance Requirements
+[How systems must comply]
+[Audit and certification processes]
+[Documentation requirements]
+
+## Case Studies and Examples
+
+### Typical Deployment Example 1: [Small Facility]
+- **Facility Size**: [Specifications]
+- **Control System Scope**: [Points, controllers, HMIs]
+- **Architecture Choice**: [Why this architecture]
+- **Vendors Selected**: [Who and why]
+- **Cost Range**: [Order of magnitude]
+
+### Typical Deployment Example 2: [Large Facility]
+[Similar structure]
+
+### Lessons Learned
+[Common deployment challenges]
+[Best practices identified]
+[Pitfalls to avoid]
+
+## Future Trends
+
+### Technology Evolution
+- **Cloud Integration**: [Hybrid cloud-edge architectures]
+- **Industrial IoT**: [Sensor proliferation and edge computing]
+- **Advanced Analytics**: [AI/ML for predictive maintenance]
+- **Wireless Technologies**: [5G, Wi-Fi 6, WirelessHART adoption]
+- **Virtualization**: [Virtual PLCs and controllers]
+
+### Security Evolution
+- **Zero Trust**: [Zero trust architecture for OT]
+- **Quantum-Safe**: [Post-quantum cryptography preparation]
+- **AI-Powered Security**: [ML-based threat detection]
+
+## Security Considerations
+[Cross-reference to security architecture section above]
+[Known vulnerabilities specific to this sector]
+[Recent security incidents and lessons]
+[Threat actors targeting this sector]
+
+## Related Topics
+- [Link to facility architecture report]
+- [Link to 8-10 related protocol, equipment, vendor, or security pages]
+
+## References
+- NIST SP 800-82: [URL] - Guide to ICS Security
+- IEC 62443: [URL] - Industrial Automation Security Standards
+- ISA-95: [URL] - Enterprise-Control System Integration
+- [Protocol Specification 1]: [URL] - [Description]
+- [Protocol Specification 2]: [URL] - [Description]
+- [Vendor Documentation 1]: [URL] - [Description]
+- [Vendor Documentation 2]: [URL] - [Description]
+- [Industry Standard 1]: [URL] - [Description]
+- [Industry Standard 2]: [URL] - [Description]
+- [Trade Association]: [URL] - [Description]
+[Minimum 12-15 authoritative references]
+
+## Metadata
+- Last Updated: [TIMESTAMP]
+- Research Session: [HOUR_ID]
+- Completeness: [75-95%]
+- Next Actions: [Specific protocols, vendors, or integration patterns needing deeper research]
+````
+
+---
+
+**STANDARD KB PAGES (20-25 additional pages):**
+
+Create the remaining 20-25 pages following the original structure, distributed across these categories:
+
+#### Neo4j Technical Pages (if Domain 0-1):
+1-10. [As defined in original prompt]
+
+#### Threat Intelligence Pages (if Domain 2):
+11-16. [As defined in original prompt]
+
+#### Critical Infrastructure Supporting Pages (if Domain 3-6):
+17. `kb/sectors/[SECTOR]/vendors/vendor-[COMPANY]-[YYYYMMDD-HH].md` - Vendor profile
+18. `kb/sectors/[SECTOR]/equipment/device-[MODEL]-[YYYYMMDD-HH].md` - Equipment specification
+19. `kb/sectors/[SECTOR]/equipment/product-line-[SERIES]-[YYYYMMDD-HH].md` - Product family
+20. `kb/sectors/[SECTOR]/protocols/protocol-[NAME]-[YYYYMMDD-HH].md` - Protocol specification
+21. `kb/sectors/[SECTOR]/operations/procedure-[TASK]-[YYYYMMDD-HH].md` - Operational procedure
+22. `kb/sectors/[SECTOR]/suppliers/supplier-[COMPANY]-[YYYYMMDD-HH].md` - Supply chain entity
+23. `kb/sectors/[SECTOR]/standards/standard-[ID]-[YYYYMMDD-HH].md` - Industry standard
+24. `kb/sectors/[SECTOR]/security/vulnerability-[CVE]-[YYYYMMDD-HH].md` - Security vulnerability
+25. `kb/sectors/[SECTOR]/security/threat-actor-[GROUP]-[YYYYMMDD-HH].md` - Threat actor profile
+
+### Standard Page Template:
+[Use template from original prompt for pages 17-25]
+
+## STEP 6: Cross-Referencing and Validation
+
+### Mandatory Cross-References
+The two comprehensive reports MUST reference each other:
+- Facility Architecture report links to Control System Architecture report
+- Control System Architecture report links to Facility Architecture report
+- Both link to relevant equipment, protocol, vendor, and security pages created
+
+### Content Validation Checklist
+For the two comprehensive reports, verify:
+- [ ] Minimum 2000 words each (excluding code/diagrams)
+- [ ] 3+ Mermaid diagrams per report
+- [ ] 8-15 authoritative references
+- [ ] 5-7 vendor/manufacturer mentions with specific models
+- [ ] 4-6 protocols detailed with specifications
+- [ ] Hierarchical architecture with 3-5 levels
+- [ ] Security considerations section substantial (500+ words)
+- [ ] Network architecture diagram included
+- [ ] Equipment specifications with vendor details
+- [ ] Integration patterns clearly described
+
+## STEP 7: Tracking & Deduplication
+
+Create/Update: `kb/tracking/session-[HOUR_ID].json`
+````json
+{
+  "session_id": [HOUR_ID],
+  "timestamp": "[ISO8601]",
+  "rotation_indices": {
+    "domain": [0-6],
+    "depth": [0-3],
+    "sector": [0-12],
+    "strategy": [0-7],
+    "angle": [0-5]
+  },
+  "comprehensive_reports_generated": {
+    "facility_architecture": "[filename]",
+    "control_system_architecture": "[filename]",
+    "word_count_facility": [count],
+    "word_count_control": [count]
+  },
+  "research_completed": {
+    "github_repos": ["owner/repo1", "owner/repo2", ...],
+    "urls_visited": ["url1", "url2", ...],
+    "vendors_documented": ["Vendor1", "Vendor2", ...],
+    "equipment_documented": ["Model1", "Model2", ...],
+    "protocols_analyzed": ["Protocol1", "Protocol2", ...],
+    "pages_created": 25,
+    "neo4j_tools": 5,
+    "threat_sources": 3,
+    "infrastructure_items": 17,
+    "comprehensive_reports": 2
+  },
+  "topics_covered": ["topic1", "topic2", ...],
+  "next_cycle_preview": {
+    "domain": "[NEXT DOMAIN]",
+    "sector": "[NEXT SECTOR]",
+    "recommended_focus": ["area1", "area2"]
+  }
+}
+````
+
+Update: `kb/tracking/master-index.json`
+````json
+{
+  "total_sessions": N,
+  "total_pages": N,
+  "comprehensive_reports": {
+    "total": N,
+    "by_sector": {
+      "Energy": {"facility": N, "control": N},
+      "Chemical": {"facility": N, "control": N},
+      [...]
+    }
+  },
+  "all_repos_processed": ["repo1", "repo2", ...],
+  "all_urls_visited": ["url1", "url2", ...],
+  "vendors_catalog": ["Vendor1", "Vendor2", ...],
+  "sectors_coverage": {
+    "Energy": {
+      "pages": N, 
+      "vendors": N, 
+      "equipment": N,
+      "comprehensive_reports": N
+    },
+    [...]
+  },
+  "neo4j_tools_catalog": ["tool1", "tool2", ...],
+  "threat_intel_sources": ["source1", "source2", ...],
+  "last_updated": "[TIMESTAMP]"
+}
+````
+
+## Quality Checklist
+- [ ] **22-27 new KB pages** created with unique timestamps
+- [ ] **2 comprehensive reports** (facility + control system) if sector research
+- [ ] Each comprehensive report **2000+ words** with substantial technical depth
+- [ ] Each comprehensive report has **3+ Mermaid diagrams**
+- [ ] Each comprehensive report has **8-15 references**
+- [ ] Each standard page has **3+ source URLs** documented
+- [ ] **No duplicate content** (check against tracking index)
+- [ ] All GitHub repos have README content extracted
+- [ ] Vendor/equipment pages include **specific models and protocols**
+- [ ] Architecture pages describe **network topology and system integration**
+- [ ] Neo4j pages address **300k+ node scale, 12+ domains, 20+ relationships**
+- [ ] Visualization pages explain **Cypher query capabilities**
+- [ ] Threat intel pages include **actionable IOCs or CVE details**
+- [ ] All URLs logged in session tracking file
+- [ ] Master index updated with new entities
+- [ ] **Cross-references** added between all related pages
+- [ ] Comprehensive reports **cross-reference each other**
+
+
+Recommended focus areas for next cycle:
+[Analyze gaps in master index, suggest 3-5 specific topics to prioritize]
+[If sector research next cycle, plan facility types and control approaches to cover]
+
+---
+END OF RESEARCH SESSION
+Total Expected Output: 22-27 markdown files in kb/ directory structure
+- 2 comprehensive architectural reports (2000+ words each)
+- 20-25 standard KB pages

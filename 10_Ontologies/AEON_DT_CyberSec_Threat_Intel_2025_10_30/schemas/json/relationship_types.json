@@ -1,0 +1,216 @@
+{
+  "relationshipTypes": {
+    "OPERATES": {
+      "from": "Organization",
+      "to": "Site",
+      "cardinality": "1:N",
+      "properties": ["since", "contractExpiry", "operationalRole", "responsibilityLevel"],
+      "description": "Organization operates one or more Sites",
+      "examples": 5
+    },
+    "HOSTS": {
+      "from": "Site",
+      "to": "Train",
+      "cardinality": "N:M",
+      "properties": ["frequency", "capacity", "serviceType"],
+      "description": "Site hosts multiple Trains",
+      "examples": 40
+    },
+    "HAS_COMPONENT": {
+      "from": ["Train", "Site"],
+      "to": "Component",
+      "cardinality": "1:N",
+      "properties": ["installDate", "location", "isRedundant", "maintenanceResponsibility"],
+      "description": "Assets contain Components",
+      "examples": 200
+    },
+    "RUNS_SOFTWARE": {
+      "from": "Component",
+      "to": "Software",
+      "cardinality": "N:M",
+      "properties": ["installDate", "configurationId", "isActive", "startupOrder"],
+      "description": "Component runs Software packages",
+      "examples": 300
+    },
+    "DEPENDS_ON": {
+      "from": "Software",
+      "to": "Library",
+      "cardinality": "N:M",
+      "properties": ["versionConstraint", "dependencyType", "isTransitive", "declaredIn"],
+      "description": "Software depends on Libraries",
+      "examples": 150
+    },
+    "HAS_VULNERABILITY": {
+      "from": ["Software", "Component", "Library"],
+      "to": "CVE",
+      "cardinality": "N:M",
+      "properties": ["discoveredDate", "affectedVersions", "exploited", "patchedInVersion", "mitigationStatus", "riskScore"],
+      "description": "Assets have known Vulnerabilities",
+      "examples": 100,
+      "critical": true
+    },
+    "HAS_INTERFACE": {
+      "from": "Component",
+      "to": "NetworkInterface",
+      "cardinality": "1:N",
+      "properties": ["purpose", "isManagement", "isPrimary"],
+      "description": "Component has Network Interfaces",
+      "examples": 150
+    },
+    "BELONGS_TO": {
+      "from": "NetworkInterface",
+      "to": "NetworkSegment",
+      "cardinality": "N:1",
+      "properties": ["assignedDate", "isStatic", "priority"],
+      "description": "Interface belongs to Network Segment",
+      "examples": 150
+    },
+    "CONNECTS_TO": {
+      "from": "NetworkSegment",
+      "to": "NetworkSegment",
+      "cardinality": "N:M",
+      "properties": ["connectionType", "bandwidth", "latency", "isEncrypted", "routingProtocol"],
+      "description": "Network Segments interconnect",
+      "examples": 30
+    },
+    "PROTECTED_BY": {
+      "from": "NetworkSegment",
+      "to": "FirewallRule",
+      "cardinality": "N:M",
+      "properties": ["appliedDate", "enforced", "effectiveFrom", "effectiveUntil"],
+      "description": "Segment protected by Firewall Rules",
+      "examples": 100
+    },
+    "USES_PROTOCOL": {
+      "from": ["Component", "Software"],
+      "to": "Protocol",
+      "cardinality": "N:M",
+      "properties": ["purpose", "isRequired", "configuredSecurely", "alternativeAvailable"],
+      "description": "Assets use network Protocols",
+      "examples": 200
+    },
+    "EXPLOITS": {
+      "from": "ThreatActor",
+      "to": "CVE",
+      "cardinality": "N:M",
+      "properties": ["firstObserved", "lastObserved", "frequency", "successRate", "technique"],
+      "description": "ThreatActor exploits Vulnerabilities",
+      "examples": 10,
+      "critical": true
+    },
+    "TARGETS": {
+      "from": "ThreatActor",
+      "to": "Organization",
+      "cardinality": "N:M",
+      "properties": ["firstTargeted", "lastActivity", "isActive", "motivation", "objective", "successfulBreaches"],
+      "description": "ThreatActor targets Organizations",
+      "examples": 15,
+      "critical": true
+    },
+    "CONDUCTS": {
+      "from": "ThreatActor",
+      "to": "Campaign",
+      "cardinality": "N:M",
+      "properties": ["role", "attribution", "evidenceType"],
+      "description": "ThreatActor conducts Campaigns",
+      "examples": 10
+    },
+    "USES": {
+      "from": ["ThreatActor", "Campaign"],
+      "to": "AttackTechnique",
+      "cardinality": "N:M",
+      "properties": ["frequency", "firstObserved", "lastObserved", "effectiveness"],
+      "description": "Actors use Attack Techniques",
+      "examples": 80
+    },
+    "TARGETS_SECTOR": {
+      "from": "Campaign",
+      "to": "Organization",
+      "cardinality": "N:M",
+      "properties": ["sector", "targetCount", "successRate"],
+      "description": "Campaign targets industry sectors",
+      "examples": 10
+    },
+    "MENTIONS": {
+      "from": "Document",
+      "to": ["CVE", "ThreatActor", "Campaign"],
+      "cardinality": "N:M",
+      "properties": ["context", "relevance", "pageNumber", "section"],
+      "description": "Document mentions security entities",
+      "examples": 40
+    },
+    "DESCRIBES": {
+      "from": "Document",
+      "to": "AttackTechnique",
+      "cardinality": "N:M",
+      "properties": ["description", "detailLevel", "actionable"],
+      "description": "Document describes Attack Techniques",
+      "examples": 30
+    },
+    "ATTACK_PATH_STEP": {
+      "from": ["NetworkSegment", "Component"],
+      "to": ["NetworkSegment", "Component"],
+      "cardinality": "N:M",
+      "properties": ["stepNumber", "attackTechnique", "likelihood", "impact", "detectionDifficulty", "requiredCapabilities"],
+      "description": "Attack path progression steps",
+      "examples": 10,
+      "critical": true
+    },
+    "MITIGATES": {
+      "from": ["FirewallRule", "Component"],
+      "to": ["CVE", "ThreatActor"],
+      "cardinality": "N:M",
+      "properties": ["effectiveness", "implementationDate", "cost", "verified"],
+      "description": "Controls mitigate threats",
+      "examples": 50
+    },
+    "MONITORS": {
+      "from": "Component",
+      "to": ["Component", "NetworkSegment"],
+      "cardinality": "N:M",
+      "properties": ["monitoringType", "frequency", "alertThreshold", "lastCheck"],
+      "description": "Monitoring system watches assets",
+      "examples": 100
+    },
+    "AUTHENTICATES": {
+      "from": "Component",
+      "to": "Component",
+      "cardinality": "N:M",
+      "properties": ["authMethod", "protocol", "mfaEnabled", "lastAuth"],
+      "description": "Authentication between systems",
+      "examples": 50
+    },
+    "SUPPLIES": {
+      "from": "Organization",
+      "to": ["Component", "Software"],
+      "cardinality": "1:N",
+      "properties": ["supplyDate", "contractNumber", "warrantyPeriod", "supportLevel"],
+      "description": "Vendor supplies assets",
+      "examples": 150
+    },
+    "REQUIRES_UPDATE": {
+      "from": ["Component", "Software"],
+      "to": "CVE",
+      "cardinality": "N:M",
+      "properties": ["updateType", "urgency", "availableVersion", "scheduledDate", "requiresDowntime"],
+      "description": "Asset requires update for CVE",
+      "examples": 75,
+      "critical": true
+    },
+    "COMMUNICATES_WITH": {
+      "from": "Component",
+      "to": "Component",
+      "cardinality": "N:M",
+      "properties": ["protocol", "frequency", "dataType", "isEncrypted", "bandwidth", "lastCommunication"],
+      "description": "Components communicate",
+      "examples": 200
+    }
+  },
+  "summary": {
+    "totalRelationshipTypes": 25,
+    "totalRelationships": "~2000+",
+    "criticalRelationshipTypes": 5,
+    "mostCommonRelationship": "COMMUNICATES_WITH",
+    "securityFocusedRelationships": ["HAS_VULNERABILITY", "EXPLOITS", "TARGETS", "ATTACK_PATH_STEP", "REQUIRES_UPDATE"]
+  }
+}

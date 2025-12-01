@@ -1,0 +1,29 @@
+# DNP3 Protocol for Energy Sector SCADA Systems
+
+## Protocol Overview
+
+DNP3 IEEE 1815-2012 standard defines Distributed Network Protocol Level 3 for SCADA telemetry with master-outstation architecture supporting serial and TCP/IP transport layers. Triangle MicroWorks SCADA Data Gateway implements DNP3 protocol stack with conformance testing achieving Level 3 compliance with file transfer, secure authentication, and dataset objects. TMW .NET Protocol Components provide C# implementation supporting DNP3 Secure Authentication Version 5 with HMAC-SHA256 algorithms. OpenDNP3 library delivers open-source C++ stack with master and outstation functionality supporting Linux and Windows platforms.
+
+Protocol analyzers include Frontline ComProbe DNP3 analyzer capturing serial communication at baud rates from 300 to 230,400 bps with protocol decode displaying application layer fragments. Total Phase Beagle I2C/SPI Protocol Analyzer monitors DNP3 over RS-485 displaying data link frames, transport segments, and application layer objects. Wireshark network protocol analyzer decodes DNP3 over TCP/IP displaying function codes, internal indication flags, and variation-specific object data. QualityLogic DNP3 Source Code Library provides protocol conformance testing with automated test suites validating 500+ test cases.
+
+Hardware implementations include SEL-3530 RTAC with DNP3 master and outstation roles supporting 10,000 data points and 50 simultaneous TCP connections. Kepware KEPServerEX OPC server bridges DNP3 outstations to OPC clients supporting both serial and Ethernet connectivity with automatic point discovery. Cogent Real-Time Systems DataHub enables DNP3-to-Modbus protocol conversion with data mapping between different object types. Matrikon DNP3 OPC Server provides DNP3 Level 3 implementation with unsolicited response handling and time synchronization.
+
+RTU firmware includes GE MDS Mercury DNP3 with configurable deadbands from 0.1% to 10% of full scale preventing unnecessary transmission of analog measurements. ABB RTU560 supports DNP3 point-on-wave data objects transmitting disturbance records with millisecond timestamps. Motorola ACE3600 RTU provides DNP3 dataset objects grouping related measurements for efficient transmission. Schneider Electric SCADAPack 47x RTU delivers DNP3 file transfer supporting firmware updates and configuration file downloads over SCADA networks.
+
+## Technical Specifications
+
+Data link layer implements CRC-16 error detection with polynomial 0xA6BC detecting transmission errors on serial media. Transport function provides message segmentation and reassembly with sequence numbers 0-63 supporting application layer messages up to 2048 bytes. Application layer defines object library including binary inputs (Object Group 1), analog inputs (Object Group 30), binary outputs (Object Group 10), and analog outputs (Object Group 40). Function codes include Read (0x01), Write (0x02), Select (0x03), Operate (0x04), Direct Operate (0x05), and Freeze (0x07).
+
+DNP3 Secure Authentication employs challenge-response mechanisms with Update Key Change Request/Response preventing replay attacks through session key rotation. HMAC algorithms compute message authentication codes using SHA-1 or SHA-256 hash functions with 128-bit or 256-bit key lengths. Critical ASDU Authentication requires digital signatures on control operations preventing unauthorized breaker trips or setpoint changes. User authentication implements role-based access with user numbers 1-65535 and configurable authentication timeout from 1 to 86400 seconds.
+
+## Operational Characteristics
+
+Class polling strategies define Class 0 for static data, Class 1 for high-priority events, Class 2 for medium-priority events, and Class 3 for low-priority events. Unsolicited responses enable outstations to spontaneously report critical events without waiting for master poll reducing latency from seconds to milliseconds. Deadband configuration prevents transmission of analog changes smaller than specified threshold with separate deadbands for metering and telemetry applications. Time synchronization uses either DNP3 time objects (Object Group 50) or external NTP servers maintaining timestamp accuracy within 10 milliseconds.
+
+Event buffering stores up to 1000 timestamped events in RTU memory during communication outages with first-in-first-out queue management. Freeze commands capture instantaneous snapshots of analog counters supporting demand metering and energy accounting applications. Binary output controls use Select-Before-Operate sequence preventing accidental operations with configurable operate timeout from 1 to 60 seconds. Analog output commands set voltage regulator taps, capacitor bank positions, or generator setpoints with 16-bit resolution.
+
+## Integration Architecture
+
+Multi-drop serial networks support up to 65,519 outstation addresses with RS-485 physical layer operating at 9600, 19,200, or 38,400 baud. TCP/IP connectivity uses port 20000 with persistent TCP connections supporting keep-alive messages every 30 seconds detecting communication failures. UDP transport provides connectionless datagram service for applications requiring minimal latency with broadcast capability. TLS encryption secures DNP3 over TCP using X.509 certificates and TLS 1.2 protocol with AES-128-GCM cipher suites.
+
+Gateway devices translate DNP3 to IEC 60870-5-104 enabling interoperability between North American and European SCADA systems. Protocol mediation maps DNP3 variation 32-1 (32-bit analog input with flag) to IEC 104 M_ME_NC_1 (short floating point measurement). OPC UA integration exposes DNP3 data points through information model with historical access enabling trend analysis. Historian systems archive DNP3 events at native resolution with compression algorithms achieving 10:1 storage reduction while maintaining retrieval accuracy.

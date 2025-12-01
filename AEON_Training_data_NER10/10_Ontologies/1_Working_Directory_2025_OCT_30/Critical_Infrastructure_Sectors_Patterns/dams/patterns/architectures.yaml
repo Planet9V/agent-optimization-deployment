@@ -1,0 +1,104 @@
+# Dam Control System Architecture Patterns
+# Extracted from: dam-control-system-20250102-05.md, facility-hydroelectric-20250102-05.md
+# Date: 2025-11-05
+
+patterns:
+  # Architecture Types
+  - label: "ARCHITECTURE"
+    pattern: "Dam Control System Architecture"
+  - label: "ARCHITECTURE"
+    pattern: "Cyber-Physical System"
+  - label: "ARCHITECTURE"
+    pattern: "Hierarchical Architecture"
+  - label: "ARCHITECTURE"
+    pattern: "Network Architecture"
+  - label: "ARCHITECTURE"
+    pattern: "Hydroelectric Dam Facility Architecture"
+
+  # Control System Layers
+  - label: "ARCHITECTURE_LAYER"
+    pattern: "Enterprise/Corporate Layer"
+  - label: "ARCHITECTURE_LAYER"
+    pattern: "Supervisory Control Layer"
+  - label: "ARCHITECTURE_LAYER"
+    pattern: "Field Control Layer"
+  - label: "ARCHITECTURE_LAYER"
+    pattern: "Device Layer"
+
+  # Network Components
+  - label: "NETWORK_COMPONENT"
+    pattern: "Enterprise Network"
+  - label: "NETWORK_COMPONENT"
+    pattern: "DMZ"
+  - label: "NETWORK_COMPONENT"
+    pattern: "SCADA Network"
+  - label: "NETWORK_COMPONENT"
+    pattern: "Control Network"
+  - label: "NETWORK_COMPONENT"
+    pattern: "Field Network"
+  - label: "NETWORK_COMPONENT"
+    pattern: "Industrial Network"
+
+  # Control System Components
+  - label: "CONTROL_SYSTEM"
+    pattern: "PLC"
+  - label: "CONTROL_SYSTEM"
+    pattern: "Programmable Logic Controller"
+  - label: "CONTROL_SYSTEM"
+    pattern: "RTU"
+  - label: "CONTROL_SYSTEM"
+    pattern: "Remote Terminal Unit"
+  - label: "CONTROL_SYSTEM"
+    pattern: "HMI"
+  - label: "CONTROL_SYSTEM"
+    pattern: "Human-Machine Interface"
+  - label: "CONTROL_SYSTEM"
+    pattern: "SCADA System"
+
+  # Facility Structures
+  - label: "FACILITY_COMPONENT"
+    pattern: "Water Intake Structure"
+  - label: "FACILITY_COMPONENT"
+    pattern: "Power House Structure"
+  - label: "FACILITY_COMPONENT"
+    pattern: "Electrical System"
+  - label: "FACILITY_COMPONENT"
+    pattern: "Turbine Hall"
+  - label: "FACILITY_COMPONENT"
+    pattern: "Generator Room"
+  - label: "FACILITY_COMPONENT"
+    pattern: "Control Room"
+  - label: "FACILITY_COMPONENT"
+    pattern: "Switchyard"
+
+  # Communication Protocols
+  - label: "PROTOCOL"
+    pattern: "Modbus"
+  - label: "PROTOCOL"
+    pattern: "DNP3"
+  - label: "PROTOCOL"
+    pattern: "IEC 61850"
+  - label: "PROTOCOL"
+    pattern: "OPC UA"
+  - label: "PROTOCOL"
+    pattern: "Modbus TCP"
+  - label: "PROTOCOL"
+    pattern: "Modbus RTU"
+  - label: "PROTOCOL"
+    pattern: "IEC 60870-5-104"
+
+  # Security Zones
+  - label: "SECURITY_ZONE"
+    pattern: "IT/OT Separation"
+  - label: "SECURITY_ZONE"
+    pattern: "Demilitarized Zone"
+  - label: "SECURITY_ZONE"
+    pattern: "Security Zones"
+
+  # Redundancy Types
+  - label: "REDUNDANCY_TYPE"
+    pattern: "N+1 Redundancy"
+  - label: "REDUNDANCY_TYPE"
+    pattern: "Dual Redundancy"
+  - label: "REDUNDANCY_TYPE"
+    pattern: "Geographic Distribution"

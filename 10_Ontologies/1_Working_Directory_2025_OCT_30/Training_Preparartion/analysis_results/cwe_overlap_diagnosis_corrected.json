@@ -1,0 +1,306 @@
+{
+  "summary": {
+    "cve_connected_cwes": 111,
+    "capec_connected_cwes": 46,
+    "exact_overlap": 0,
+    "case_insensitive_overlap": 0,
+    "numeric_overlap": 0
+  },
+  "null_id_counts": {
+    "cve_null_ids": 0,
+    "cwe_null_ids": 1088,
+    "capec_null_ids": 613
+  },
+  "cve_cwe_format_analysis": {
+    "cwe-###": {
+      "count": 100,
+      "examples": [
+        "cwe-1",
+        "cwe-1067",
+        "cwe-1103",
+        "cwe-1104",
+        "cwe-121",
+        "cwe-123",
+        "cwe-1236",
+        "cwe-124",
+        "cwe-126",
+        "cwe-1284"
+      ]
+    }
+  },
+  "capec_cwe_format_analysis": {
+    "cwe-###": {
+      "count": 46,
+      "examples": [
+        "cwe-1192",
+        "cwe-1193",
+        "cwe-1209",
+        "cwe-1232",
+        "cwe-1239",
+        "cwe-1243",
+        "cwe-1248",
+        "cwe-1252",
+        "cwe-1266",
+        "cwe-1267"
+      ]
+    }
+  },
+  "overlap_details": {
+    "exact_match": [],
+    "case_insensitive_match": [],
+    "numeric_match": []
+  },
+  "sample_cve_cwe_relationships": [
+    {
+      "cve_id": "CVE-2011-0662",
+      "cwe_id": "cwe-1",
+      "cwe_name": "DEPRECATED: Location"
+    },
+    {
+      "cve_id": "CVE-2011-0665",
+      "cwe_id": "cwe-1",
+      "cwe_name": "DEPRECATED: Location"
+    },
+    {
+      "cve_id": "CVE-2011-0666",
+      "cwe_id": "cwe-1",
+      "cwe_name": "DEPRECATED: Location"
+    },
+    {
+      "cve_id": "CVE-2011-0667",
+      "cwe_id": "cwe-1",
+      "cwe_name": "DEPRECATED: Location"
+    },
+    {
+      "cve_id": "CVE-2011-0670",
+      "cwe_id": "cwe-1",
+      "cwe_name": "DEPRECATED: Location"
+    },
+    {
+      "cve_id": "CVE-2011-0671",
+      "cwe_id": "cwe-1",
+      "cwe_name": "DEPRECATED: Location"
+    },
+    {
+      "cve_id": "CVE-2011-0672",
+      "cwe_id": "cwe-1",
+      "cwe_name": "DEPRECATED: Location"
+    },
+    {
+      "cve_id": "CVE-2011-0674",
+      "cwe_id": "cwe-1",
+      "cwe_name": "DEPRECATED: Location"
+    },
+    {
+      "cve_id": "CVE-2011-0675",
+      "cwe_id": "cwe-1",
+      "cwe_name": "DEPRECATED: Location"
+    },
+    {
+      "cve_id": "CVE-2011-0676",
+      "cwe_id": "cwe-2",
+      "cwe_name": "7PK - Environment"
+    },
+    {
+      "cve_id": "CVE-2011-0677",
+      "cwe_id": "cwe-2",
+      "cwe_name": "7PK - Environment"
+    },
+    {
+      "cve_id": "CVE-2011-1225",
+      "cwe_id": "cwe-2",
+      "cwe_name": "7PK - Environment"
+    },
+    {
+      "cve_id": "CVE-2011-1226",
+      "cwe_id": "cwe-2",
+      "cwe_name": "7PK - Environment"
+    },
+    {
+      "cve_id": "CVE-2011-1227",
+      "cwe_id": "cwe-2",
+      "cwe_name": "7PK - Environment"
+    },
+    {
+      "cve_id": "CVE-2011-1228",
+      "cwe_id": "cwe-2",
+      "cwe_name": "7PK - Environment"
+    },
+    {
+      "cve_id": "CVE-2011-1229",
+      "cwe_id": "cwe-2",
+      "cwe_name": "7PK - Environment"
+    },
+    {
+      "cve_id": "CVE-2011-1230",
+      "cwe_id": "cwe-2",
+      "cwe_name": "7PK - Environment"
+    },
+    {
+      "cve_id": "CVE-2011-1231",
+      "cwe_id": "cwe-2",
+      "cwe_name": "7PK - Environment"
+    },
+    {
+      "cve_id": "CVE-2011-1232",
+      "cwe_id": "cwe-2",
+      "cwe_name": "7PK - Environment"
+    },
+    {
+      "cve_id": "CVE-2011-1233",
+      "cwe_id": "cwe-2",
+      "cwe_name": "7PK - Environment"
+    }
+  ],
+  "sample_cwe_capec_relationships": [],
+  "cve_connected_cwe_ids_sample": [
+    "cwe-1",
+    "cwe-1067",
+    "cwe-1103",
+    "cwe-1104",
+    "cwe-121",
+    "cwe-123",
+    "cwe-1236",
+    "cwe-124",
+    "cwe-126",
+    "cwe-1284",
+    "cwe-1287",
+    "cwe-1336",
+    "cwe-1385",
+    "cwe-1389",
+    "cwe-1390",
+    "cwe-1392",
+    "cwe-1394",
+    "cwe-1395",
+    "cwe-17",
+    "cwe-170",
+    "cwe-178",
+    "cwe-19",
+    "cwe-191",
+    "cwe-193",
+    "cwe-2",
+    "cwe-213",
+    "cwe-214",
+    "cwe-228",
+    "cwe-248",
+    "cwe-252",
+    "cwe-255",
+    "cwe-256",
+    "cwe-258",
+    "cwe-259",
+    "cwe-264",
+    "cwe-266",
+    "cwe-268",
+    "cwe-273",
+    "cwe-274",
+    "cwe-275",
+    "cwe-280",
+    "cwe-286",
+    "cwe-29",
+    "cwe-297",
+    "cwe-304",
+    "cwe-305",
+    "cwe-310",
+    "cwe-313",
+    "cwe-316",
+    "cwe-320",
+    "cwe-321",
+    "cwe-324",
+    "cwe-334",
+    "cwe-338",
+    "cwe-340",
+    "cwe-35",
+    "cwe-358",
+    "cwe-364",
+    "cwe-369",
+    "cwe-379",
+    "cwe-406",
+    "cwe-409",
+    "cwe-415",
+    "cwe-416",
+    "cwe-420",
+    "cwe-428",
+    "cwe-44",
+    "cwe-457",
+    "cwe-459",
+    "cwe-476",
+    "cwe-501",
+    "cwe-526",
+    "cwe-528",
+    "cwe-588",
+    "cwe-598",
+    "cwe-613",
+    "cwe-617",
+    "cwe-620",
+    "cwe-639",
+    "cwe-64",
+    "cwe-653",
+    "cwe-655",
+    "cwe-668",
+    "cwe-669",
+    "cwe-676",
+    "cwe-684",
+    "cwe-694",
+    "cwe-703",
+    "cwe-704",
+    "cwe-754",
+    "cwe-755",
+    "cwe-756",
+    "cwe-759",
+    "cwe-760",
+    "cwe-763",
+    "cwe-774",
+    "cwe-778",
+    "cwe-784",
+    "cwe-787",
+    "cwe-788"
+  ],
+  "capec_connected_cwe_ids_sample": [
+    "cwe-1192",
+    "cwe-1193",
+    "cwe-1209",
+    "cwe-1232",
+    "cwe-1239",
+    "cwe-1243",
+    "cwe-1248",
+    "cwe-1252",
+    "cwe-1266",
+    "cwe-1267",
+    "cwe-1268",
+    "cwe-1271",
+    "cwe-1273",
+    "cwe-1277",
+    "cwe-1280",
+    "cwe-1294",
+    "cwe-1296",
+    "cwe-1297",
+    "cwe-1302",
+    "cwe-1310",
+    "cwe-1311",
+    "cwe-1312",
+    "cwe-1314",
+    "cwe-1315",
+    "cwe-1316",
+    "cwe-1317",
+    "cwe-1318",
+    "cwe-1322",
+    "cwe-1330",
+    "cwe-1331",
+    "cwe-1338",
+    "cwe-1351",
+    "cwe-162",
+    "cwe-181",
+    "cwe-221",
+    "cwe-301",
+    "cwe-309",
+    "cwe-370",
+    "cwe-46",
+    "cwe-514",
+    "cwe-553",
+    "cwe-589",
+    "cwe-593",
+    "cwe-6",
+    "cwe-663",
+    "cwe-695"
+  ]
+}

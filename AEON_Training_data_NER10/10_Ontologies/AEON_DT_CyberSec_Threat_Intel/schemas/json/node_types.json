@@ -1,0 +1,90 @@
+{
+  "nodeTypes": {
+    "Organization": {
+      "count": 3,
+      "criticalityDistribution": {"high": 1, "medium": 2},
+      "examples": ["Northern Railway Corporation", "Siemens Mobility", "European Rail Agency"]
+    },
+    "Site": {
+      "count": 10,
+      "types": ["station", "depot", "control_center", "maintenance"],
+      "criticalityDistribution": {"critical": 3, "high": 3, "medium": 4}
+    },
+    "Train": {
+      "count": 20,
+      "types": ["high_speed", "passenger", "freight", "metro"],
+      "statusDistribution": {"active": 15, "maintenance": 5}
+    },
+    "Component": {
+      "count": 100,
+      "types": ["PLC", "SCADA", "sensor", "controller", "actuator", "display", "gateway", "relay"],
+      "criticalityDistribution": {"critical": 25, "high": 25, "medium": 25, "low": 25}
+    },
+    "Software": {
+      "count": 200,
+      "types": ["os", "application", "firmware", "driver", "middleware"],
+      "vulnerabilityRate": 0.20
+    },
+    "Library": {
+      "count": 50,
+      "languages": ["Java", "C", "C++", "Python", "JavaScript"],
+      "openSourceRate": 1.0
+    },
+    "NetworkInterface": {
+      "count": 150,
+      "types": ["ethernet", "wifi", "serial", "canbus"],
+      "activeRate": 0.67
+    },
+    "NetworkSegment": {
+      "count": 20,
+      "types": ["operational", "management", "dmz", "public"],
+      "securityZones": ["critical", "high", "medium", "low"]
+    },
+    "FirewallRule": {
+      "count": 50,
+      "actions": ["allow", "deny", "log"],
+      "enabledRate": 1.0
+    },
+    "Protocol": {
+      "count": 10,
+      "industrial": ["MODBUS", "DNP3", "IEC-104", "OPC-UA", "PROFINET", "EtherCAT", "CAN-bus"],
+      "application": ["MQTT", "AMQP", "HTTPS"]
+    },
+    "CVE": {
+      "count": 500,
+      "severityDistribution": {"critical": 125, "high": 125, "medium": 125, "low": 125},
+      "exploitableRate": 0.20,
+      "patchedRate": 0.33
+    },
+    "ThreatActor": {
+      "count": 10,
+      "types": ["nation_state", "cybercrime", "hacktivist", "insider"],
+      "activeRate": 0.50,
+      "sophistication": ["advanced", "intermediate", "basic"]
+    },
+    "Campaign": {
+      "count": 5,
+      "status": ["active", "concluded"],
+      "activeRate": 0.50
+    },
+    "AttackTechnique": {
+      "count": 20,
+      "mitreAttackCoverage": ["Initial Access", "Execution", "Persistence", "Privilege Escalation", "Defense Evasion"],
+      "railwayRelevantRate": 0.50
+    },
+    "Document": {
+      "count": 10,
+      "types": ["policy", "report", "assessment", "procedure", "standard"],
+      "statusDistribution": {"published": 7, "draft": 2, "archived": 1}
+    }
+  },
+  "summary": {
+    "totalNodeTypes": 15,
+    "totalNodes": 1148,
+    "mostCommonType": "Software",
+    "leastCommonType": "Organization",
+    "criticalAssets": 151,
+    "vulnerableAssets": 200,
+    "activeThreats": 5
+  }
+}

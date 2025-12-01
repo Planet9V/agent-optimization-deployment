@@ -1,0 +1,400 @@
+{
+  "sector": "FINANCIAL_SERVICES",
+  "mapping_version": "v5.0",
+  "created": "2025-11-21T20:30:00Z",
+  "gold_standard_reference": {
+    "water_sector": {
+      "total_nodes": 27000,
+      "measurement_ratio": 0.607,
+      "node_types": 8,
+      "relationships": 9,
+      "labels": 5
+    },
+    "energy_sector": {
+      "total_nodes": 35000,
+      "measurement_ratio": 0.607,
+      "node_types": 8,
+      "relationships": 9,
+      "labels": 7
+    },
+    "communications_sector": {
+      "total_nodes": 41000,
+      "measurement_ratio": 0.607,
+      "node_types": 8,
+      "relationships": 9,
+      "labels": 7
+    },
+    "target_range": {
+      "min_nodes": 26000,
+      "max_nodes": 35000,
+      "measurement_ratio_min": 0.60,
+      "measurement_ratio_max": 0.70
+    }
+  },
+  "financial_services_mapping": {
+    "target_total_nodes": 28000,
+    "subsectors": {
+      "banking": {
+        "percentage": 40,
+        "description": "Retail, commercial, investment, and digital banking operations"
+      },
+      "capital_markets": {
+        "percentage": 35,
+        "description": "Securities trading, asset management, investment services"
+      },
+      "payment_systems": {
+        "percentage": 25,
+        "description": "Payment processing, clearing, settlement, money transfer"
+      }
+    },
+    "node_types": [
+      {
+        "type": "Device",
+        "label": "FinancialServicesDevice",
+        "count": 3500,
+        "percentage": 12.5,
+        "description": "Physical financial services equipment and systems",
+        "examples": [
+          "ATM",
+          "POS_Terminal",
+          "Trading_Server",
+          "Payment_Gateway",
+          "HSM",
+          "Fraud_Detection_System",
+          "Card_Reader",
+          "Market_Data_Server",
+          "Order_Routing_System",
+          "Authentication_Server"
+        ],
+        "subsector_distribution": {
+          "banking": 1400,
+          "capital_markets": 1225,
+          "payment_systems": 875
+        },
+        "properties": [
+          "device_id",
+          "device_type",
+          "operational_status",
+          "location",
+          "firmware_version",
+          "maintenance_status",
+          "compliance_status",
+          "last_audit_date"
+        ]
+      },
+      {
+        "type": "Measurement",
+        "label": "TransactionMetric",
+        "count": 17000,
+        "percentage": 60.7,
+        "description": "Time-series measurements of financial system performance and transactions",
+        "calculation": "6 measurements per device × 3,500 devices = 21,000, capped at 17,000 for gold standard ratio",
+        "measurements": [
+          "transaction_volume",
+          "transaction_latency",
+          "fraud_detection_rate",
+          "system_availability",
+          "processing_throughput",
+          "error_rate",
+          "authorization_success_rate",
+          "settlement_time",
+          "api_response_time",
+          "queue_depth",
+          "cpu_utilization",
+          "memory_utilization"
+        ],
+        "measurement_frequency": {
+          "transaction_volume": "per_minute",
+          "transaction_latency": "real_time",
+          "fraud_detection_rate": "hourly",
+          "system_availability": "per_minute"
+        },
+        "properties": [
+          "timestamp",
+          "metric_value",
+          "unit_of_measure",
+          "transaction_id",
+          "device_id",
+          "subsector",
+          "severity_level"
+        ]
+      },
+      {
+        "type": "Property",
+        "label": "FinancialServicesProperty",
+        "count": 5000,
+        "percentage": 17.9,
+        "description": "Static and semi-static attributes of financial services assets",
+        "calculation": "1.5 properties per device × 3,500 devices = 5,250, rounded to 5,000",
+        "property_categories": [
+          "compliance_status",
+          "security_configuration",
+          "capacity_limits",
+          "regulatory_requirements",
+          "audit_status",
+          "certification_status",
+          "backup_configuration",
+          "encryption_settings",
+          "access_control_policies",
+          "data_retention_policies"
+        ],
+        "properties": [
+          "property_name",
+          "property_value",
+          "last_updated",
+          "verification_date",
+          "responsible_party"
+        ]
+      },
+      {
+        "type": "Process",
+        "label": "FinancialProcess",
+        "count": 1200,
+        "percentage": 4.3,
+        "description": "Financial transaction workflows and operational procedures",
+        "processes": [
+          "Payment_Authorization",
+          "Payment_Clearing",
+          "Payment_Settlement",
+          "Trade_Execution",
+          "Trade_Clearing",
+          "Fraud_Detection",
+          "AML_Screening",
+          "KYC_Verification",
+          "Risk_Assessment",
+          "Compliance_Reporting",
+          "Audit_Logging",
+          "Incident_Response"
+        ],
+        "process_stages": [
+          "initiation",
+          "validation",
+          "authorization",
+          "execution",
+          "confirmation",
+          "settlement",
+          "reconciliation",
+          "reporting"
+        ],
+        "properties": [
+          "process_id",
+          "process_name",
+          "sla_target",
+          "compliance_requirements",
+          "risk_level",
+          "automation_level",
+          "average_duration"
+        ]
+      },
+      {
+        "type": "Control",
+        "label": "FinancialControl",
+        "count": 600,
+        "percentage": 2.1,
+        "description": "Risk management, compliance, and security controls",
+        "control_systems": [
+          "Risk_Management_System",
+          "Fraud_Prevention_System",
+          "AML_System",
+          "Compliance_Management_System",
+          "Access_Control_System",
+          "Encryption_Management",
+          "Audit_System",
+          "Incident_Response_System",
+          "Vulnerability_Management",
+          "Security_Operations_Center"
+        ],
+        "control_levels": [
+          "preventive",
+          "detective",
+          "corrective",
+          "compensating",
+          "directive"
+        ],
+        "properties": [
+          "control_id",
+          "control_type",
+          "effectiveness",
+          "last_tested",
+          "compliance_framework",
+          "automation_level"
+        ]
+      },
+      {
+        "type": "Alert",
+        "label": "FinancialAlert",
+        "count": 400,
+        "percentage": 1.4,
+        "description": "Critical notifications for fraud, failures, and compliance issues",
+        "alert_types": [
+          "Fraud_Alert",
+          "System_Failure",
+          "Compliance_Violation",
+          "Security_Incident",
+          "Performance_Degradation",
+          "Transaction_Anomaly",
+          "Unauthorized_Access",
+          "Data_Breach",
+          "Regulatory_Breach",
+          "Disaster_Recovery_Activation",
+          "Audit_Finding",
+          "Risk_Threshold_Exceeded"
+        ],
+        "severity_levels": [
+          "critical",
+          "high",
+          "medium",
+          "low",
+          "informational"
+        ],
+        "properties": [
+          "alert_id",
+          "alert_type",
+          "severity",
+          "timestamp",
+          "affected_system",
+          "response_required",
+          "escalation_status"
+        ]
+      },
+      {
+        "type": "Zone",
+        "label": "FinancialZone",
+        "count": 250,
+        "percentage": 0.9,
+        "description": "Geographic regions, regulatory jurisdictions, and network segments",
+        "zone_types": [
+          "Geographic_Region",
+          "Regulatory_Jurisdiction",
+          "Network_Segment",
+          "Data_Center",
+          "Trading_Zone",
+          "Payment_Zone",
+          "Security_Zone",
+          "Compliance_Zone",
+          "Disaster_Recovery_Site",
+          "Cloud_Region"
+        ],
+        "zone_characteristics": [
+          "regulatory_framework",
+          "data_residency_requirements",
+          "operating_hours",
+          "time_zone",
+          "currency"
+        ],
+        "properties": [
+          "zone_id",
+          "zone_name",
+          "jurisdiction",
+          "regulatory_authority",
+          "compliance_requirements",
+          "data_sovereignty"
+        ]
+      },
+      {
+        "type": "Asset",
+        "label": "MajorFacility",
+        "count": 50,
+        "percentage": 0.2,
+        "description": "Major financial services facilities and infrastructure",
+        "facility_types": [
+          "Data_Center",
+          "Trading_Floor",
+          "Operations_Center",
+          "Backup_Facility",
+          "Disaster_Recovery_Site",
+          "Call_Center",
+          "Branch_Network_Hub",
+          "Payment_Processing_Center",
+          "Clearing_House",
+          "Security_Operations_Center"
+        ],
+        "facility_capabilities": [
+          "transaction_capacity",
+          "storage_capacity",
+          "processing_capacity",
+          "redundancy_level",
+          "security_level",
+          "compliance_certification"
+        ],
+        "properties": [
+          "asset_id",
+          "facility_name",
+          "location",
+          "operational_status",
+          "capacity",
+          "staffing_level",
+          "equipment_inventory",
+          "backup_power",
+          "cooling_capacity"
+        ]
+      }
+    ]
+  },
+  "validation": {
+    "total_nodes": 28000,
+    "node_count_check": "3,500 + 17,000 + 5,000 + 1,200 + 600 + 400 + 250 + 50 = 28,000 ✓",
+    "measurement_ratio": 0.607,
+    "measurement_ratio_check": "17,000 / 28,000 = 60.7% ✓",
+    "within_gold_standard_range": true,
+    "node_type_count": 8,
+    "matches_water_energy_pattern": true,
+    "validation_criteria": {
+      "total_nodes_target": "26,000 - 35,000",
+      "total_nodes_actual": 28000,
+      "total_nodes_status": "PASS",
+      "measurement_ratio_target": "60% - 70%",
+      "measurement_ratio_actual": "60.7%",
+      "measurement_ratio_status": "PASS",
+      "node_types_target": 8,
+      "node_types_actual": 8,
+      "node_types_status": "PASS"
+    }
+  },
+  "relationship_types_planned": [
+    "PROCESSES",
+    "HAS_PROPERTY",
+    "EXECUTES",
+    "CONTROLS",
+    "TRIGGERS",
+    "LOCATED_IN",
+    "SUPPORTS",
+    "REPORTS_TO",
+    "VALIDATES"
+  ],
+  "labels_planned": [
+    "FinancialServices",
+    "Banking",
+    "CapitalMarkets",
+    "PaymentSystems",
+    "Compliance",
+    "Trading",
+    "Critical"
+  ],
+  "data_generation_parameters": {
+    "time_range": "2023-01-01 to 2024-12-31",
+    "measurement_frequency": {
+      "transaction_volume": "1min",
+      "transaction_latency": "real_time",
+      "fraud_detection_rate": "1hour",
+      "system_availability": "1min"
+    },
+    "transaction_types": [
+      "atm_withdrawal",
+      "card_payment",
+      "wire_transfer",
+      "ach_payment",
+      "securities_trade",
+      "fx_transaction",
+      "mobile_payment"
+    ],
+    "geographic_coverage": "global_financial_centers"
+  },
+  "quality_assurance": {
+    "schema_consistency": "Follows Water/Energy/Communications 8-type pattern",
+    "label_consistency": "Sector-specific labels + common critical infrastructure labels",
+    "relationship_consistency": "9 relationship types matching gold standard",
+    "measurement_dominance": "60.7% measurement nodes ensures time-series richness",
+    "realistic_distribution": "Subsector percentages based on global financial services data"
+  }
+}

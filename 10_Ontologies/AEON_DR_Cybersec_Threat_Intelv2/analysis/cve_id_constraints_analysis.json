@@ -1,0 +1,115 @@
+{
+  "constraints": [
+    {
+      "name": "cve_cveid",
+      "type": "UNIQUENESS",
+      "labels": ["CVE"],
+      "properties": ["cveId"],
+      "options": {"indexConfig": {}, "indexProvider": "range-1.0"}
+    },
+    {
+      "name": "cve_id_unique",
+      "type": "UNIQUENESS",
+      "labels": ["CVE"],
+      "properties": ["cve_id"],
+      "options": {"indexConfig": {}, "indexProvider": "range-1.0"}
+    },
+    {
+      "name": "cybersec_cve_id",
+      "type": "UNIQUENESS",
+      "labels": ["CVE"],
+      "properties": ["id"],
+      "options": {"indexConfig": {}, "indexProvider": "range-1.0"}
+    }
+  ],
+  "indexes": [
+    {
+      "name": "cve_cveid",
+      "type": "RANGE",
+      "labels": ["CVE"],
+      "properties": ["cveId"],
+      "options": {"indexConfig": {}, "indexProvider": "range-1.0"}
+    },
+    {
+      "name": "cve_cvss_score",
+      "type": "RANGE",
+      "labels": ["CVE"],
+      "properties": ["cvssV3BaseScore"],
+      "options": {"indexConfig": {}, "indexProvider": "range-1.0"}
+    },
+    {
+      "name": "cve_id_unique",
+      "type": "RANGE",
+      "labels": ["CVE"],
+      "properties": ["cve_id"],
+      "options": {"indexConfig": {}, "indexProvider": "range-1.0"}
+    },
+    {
+      "name": "cve_namespace",
+      "type": "RANGE",
+      "labels": ["CVE"],
+      "properties": ["customer_namespace"],
+      "options": {"indexConfig": {}, "indexProvider": "range-1.0"}
+    },
+    {
+      "name": "cve_year",
+      "type": "RANGE",
+      "labels": ["CVE"],
+      "properties": ["year"],
+      "options": {"indexConfig": {}, "indexProvider": "range-1.0"}
+    },
+    {
+      "name": "cybersec_cve_created",
+      "type": "RANGE",
+      "labels": ["CVE"],
+      "properties": ["created_time"],
+      "options": {"indexConfig": {}, "indexProvider": "range-1.0"}
+    },
+    {
+      "name": "cybersec_cve_id",
+      "type": "RANGE",
+      "labels": ["CVE"],
+      "properties": ["id"],
+      "options": {"indexConfig": {}, "indexProvider": "range-1.0"}
+    },
+    {
+      "name": "cybersec_cve_namespace",
+      "type": "RANGE",
+      "labels": ["CVE"],
+      "properties": ["namespace"],
+      "options": {"indexConfig": {}, "indexProvider": "range-1.0"}
+    },
+    {
+      "name": "cybersec_cve_published",
+      "type": "RANGE",
+      "labels": ["CVE"],
+      "properties": ["published_date"],
+      "options": {"indexConfig": {}, "indexProvider": "range-1.0"}
+    },
+    {
+      "name": "cybersec_cve_score",
+      "type": "RANGE",
+      "labels": ["CVE"],
+      "properties": ["cvss_score"],
+      "options": {"indexConfig": {}, "indexProvider": "range-1.0"}
+    },
+    {
+      "name": "cybersec_cve_severity",
+      "type": "RANGE",
+      "labels": ["CVE"],
+      "properties": ["severity"],
+      "options": {"indexConfig": {}, "indexProvider": "range-1.0"}
+    }
+  ],
+  "impact_assessment": {
+    "has_unique_constraint": true,
+    "has_exists_constraint": false,
+    "has_range_index": true,
+    "has_text_index": false,
+    "normalization_impact": "BREAKING"
+  },
+  "recommendations": [
+    "DROP uniqueness constraint before normalization, recreate after",
+    "Review RANGE index performance after normalization"
+  ]
+}

@@ -1,0 +1,797 @@
+{
+  "executive_summary": {
+    "cve_connected_cwes": 111,
+    "capec_connected_cwes": 337,
+    "string_id_overlap": 1,
+    "numeric_id_overlap": 1,
+    "complete_attack_chains": 1
+  },
+  "property_mapping": {
+    "cve": ".id",
+    "cwe": {
+      "string_id": ".id (e.g., 'cwe-123')",
+      "numeric_id": ".cwe_id (e.g., 123)"
+    },
+    "capec": ".capecId (e.g., 'CAPEC-123')"
+  },
+  "overlap_details": {
+    "string_ids": {
+      "overlap_count": 1,
+      "examples": [
+        "cwe-778"
+      ]
+    },
+    "numeric_ids": {
+      "overlap_count": 1,
+      "examples": [
+        "778"
+      ]
+    }
+  },
+  "cve_connected_cwe_samples": [
+    {
+      "string_id": "cwe-1",
+      "numeric_id": "1"
+    },
+    {
+      "string_id": "cwe-1067",
+      "numeric_id": "1067"
+    },
+    {
+      "string_id": "cwe-1103",
+      "numeric_id": "1103"
+    },
+    {
+      "string_id": "cwe-1104",
+      "numeric_id": "1104"
+    },
+    {
+      "string_id": "cwe-121",
+      "numeric_id": "121"
+    },
+    {
+      "string_id": "cwe-123",
+      "numeric_id": "123"
+    },
+    {
+      "string_id": "cwe-1236",
+      "numeric_id": "1236"
+    },
+    {
+      "string_id": "cwe-124",
+      "numeric_id": "124"
+    },
+    {
+      "string_id": "cwe-126",
+      "numeric_id": "126"
+    },
+    {
+      "string_id": "cwe-1284",
+      "numeric_id": "1284"
+    },
+    {
+      "string_id": "cwe-1287",
+      "numeric_id": "1287"
+    },
+    {
+      "string_id": "cwe-1336",
+      "numeric_id": "1336"
+    },
+    {
+      "string_id": "cwe-1385",
+      "numeric_id": "1385"
+    },
+    {
+      "string_id": "cwe-1389",
+      "numeric_id": "1389"
+    },
+    {
+      "string_id": "cwe-1390",
+      "numeric_id": "1390"
+    },
+    {
+      "string_id": "cwe-1392",
+      "numeric_id": "1392"
+    },
+    {
+      "string_id": "cwe-1394",
+      "numeric_id": "1394"
+    },
+    {
+      "string_id": "cwe-1395",
+      "numeric_id": "1395"
+    },
+    {
+      "string_id": "cwe-17",
+      "numeric_id": "17"
+    },
+    {
+      "string_id": "cwe-170",
+      "numeric_id": "170"
+    },
+    {
+      "string_id": "cwe-178",
+      "numeric_id": "178"
+    },
+    {
+      "string_id": "cwe-19",
+      "numeric_id": "19"
+    },
+    {
+      "string_id": "cwe-191",
+      "numeric_id": "191"
+    },
+    {
+      "string_id": "cwe-193",
+      "numeric_id": "193"
+    },
+    {
+      "string_id": "cwe-2",
+      "numeric_id": "2"
+    },
+    {
+      "string_id": "cwe-213",
+      "numeric_id": "213"
+    },
+    {
+      "string_id": "cwe-214",
+      "numeric_id": "214"
+    },
+    {
+      "string_id": "cwe-228",
+      "numeric_id": "228"
+    },
+    {
+      "string_id": "cwe-248",
+      "numeric_id": "248"
+    },
+    {
+      "string_id": "cwe-252",
+      "numeric_id": "252"
+    },
+    {
+      "string_id": "cwe-255",
+      "numeric_id": "255"
+    },
+    {
+      "string_id": "cwe-256",
+      "numeric_id": "256"
+    },
+    {
+      "string_id": "cwe-258",
+      "numeric_id": "258"
+    },
+    {
+      "string_id": "cwe-259",
+      "numeric_id": "259"
+    },
+    {
+      "string_id": "cwe-264",
+      "numeric_id": "264"
+    },
+    {
+      "string_id": "cwe-266",
+      "numeric_id": "266"
+    },
+    {
+      "string_id": "cwe-268",
+      "numeric_id": "268"
+    },
+    {
+      "string_id": "cwe-273",
+      "numeric_id": "273"
+    },
+    {
+      "string_id": "cwe-274",
+      "numeric_id": "274"
+    },
+    {
+      "string_id": "cwe-275",
+      "numeric_id": "275"
+    },
+    {
+      "string_id": "cwe-280",
+      "numeric_id": "280"
+    },
+    {
+      "string_id": "cwe-286",
+      "numeric_id": "286"
+    },
+    {
+      "string_id": "cwe-29",
+      "numeric_id": "29"
+    },
+    {
+      "string_id": "cwe-297",
+      "numeric_id": "297"
+    },
+    {
+      "string_id": "cwe-304",
+      "numeric_id": "304"
+    },
+    {
+      "string_id": "cwe-305",
+      "numeric_id": "305"
+    },
+    {
+      "string_id": "cwe-310",
+      "numeric_id": "310"
+    },
+    {
+      "string_id": "cwe-313",
+      "numeric_id": "313"
+    },
+    {
+      "string_id": "cwe-316",
+      "numeric_id": "316"
+    },
+    {
+      "string_id": "cwe-320",
+      "numeric_id": "320"
+    }
+  ],
+  "capec_connected_cwe_samples": [
+    {
+      "string_id": "cwe-1192",
+      "numeric_id": "1192"
+    },
+    {
+      "string_id": "cwe-1193",
+      "numeric_id": "1193"
+    },
+    {
+      "string_id": "cwe-1209",
+      "numeric_id": "1209"
+    },
+    {
+      "string_id": "cwe-1232",
+      "numeric_id": "1232"
+    },
+    {
+      "string_id": "cwe-1239",
+      "numeric_id": "1239"
+    },
+    {
+      "string_id": "cwe-1243",
+      "numeric_id": "1243"
+    },
+    {
+      "string_id": "cwe-1248",
+      "numeric_id": "1248"
+    },
+    {
+      "string_id": "cwe-1252",
+      "numeric_id": "1252"
+    },
+    {
+      "string_id": "cwe-1266",
+      "numeric_id": "1266"
+    },
+    {
+      "string_id": "cwe-1267",
+      "numeric_id": "1267"
+    },
+    {
+      "string_id": "cwe-1268",
+      "numeric_id": "1268"
+    },
+    {
+      "string_id": "cwe-1271",
+      "numeric_id": "1271"
+    },
+    {
+      "string_id": "cwe-1273",
+      "numeric_id": "1273"
+    },
+    {
+      "string_id": "cwe-1277",
+      "numeric_id": "1277"
+    },
+    {
+      "string_id": "cwe-1280",
+      "numeric_id": "1280"
+    },
+    {
+      "string_id": "cwe-1294",
+      "numeric_id": "1294"
+    },
+    {
+      "string_id": "cwe-1296",
+      "numeric_id": "1296"
+    },
+    {
+      "string_id": "cwe-1297",
+      "numeric_id": "1297"
+    },
+    {
+      "string_id": "cwe-1302",
+      "numeric_id": "1302"
+    },
+    {
+      "string_id": "cwe-1310",
+      "numeric_id": "1310"
+    },
+    {
+      "string_id": "cwe-1311",
+      "numeric_id": "1311"
+    },
+    {
+      "string_id": "cwe-1312",
+      "numeric_id": "1312"
+    },
+    {
+      "string_id": "cwe-1314",
+      "numeric_id": "1314"
+    },
+    {
+      "string_id": "cwe-1315",
+      "numeric_id": "1315"
+    },
+    {
+      "string_id": "cwe-1316",
+      "numeric_id": "1316"
+    },
+    {
+      "string_id": "cwe-1317",
+      "numeric_id": "1317"
+    },
+    {
+      "string_id": "cwe-1318",
+      "numeric_id": "1318"
+    },
+    {
+      "string_id": "cwe-1322",
+      "numeric_id": "1322"
+    },
+    {
+      "string_id": "cwe-1330",
+      "numeric_id": "1330"
+    },
+    {
+      "string_id": "cwe-1331",
+      "numeric_id": "1331"
+    },
+    {
+      "string_id": "cwe-1338",
+      "numeric_id": "1338"
+    },
+    {
+      "string_id": "cwe-1351",
+      "numeric_id": "1351"
+    },
+    {
+      "string_id": "cwe-162",
+      "numeric_id": "162"
+    },
+    {
+      "string_id": "cwe-181",
+      "numeric_id": "181"
+    },
+    {
+      "string_id": "cwe-221",
+      "numeric_id": "221"
+    },
+    {
+      "string_id": "cwe-301",
+      "numeric_id": "301"
+    },
+    {
+      "string_id": "cwe-309",
+      "numeric_id": "309"
+    },
+    {
+      "string_id": "cwe-370",
+      "numeric_id": "370"
+    },
+    {
+      "string_id": "cwe-46",
+      "numeric_id": "46"
+    },
+    {
+      "string_id": "cwe-514",
+      "numeric_id": "514"
+    },
+    {
+      "string_id": "cwe-553",
+      "numeric_id": "553"
+    },
+    {
+      "string_id": "cwe-589",
+      "numeric_id": "589"
+    },
+    {
+      "string_id": "cwe-593",
+      "numeric_id": "593"
+    },
+    {
+      "string_id": "cwe-6",
+      "numeric_id": "6"
+    },
+    {
+      "string_id": "cwe-663",
+      "numeric_id": "663"
+    },
+    {
+      "string_id": "cwe-695",
+      "numeric_id": "695"
+    },
+    {
+      "string_id": "cwe-778",
+      "numeric_id": "778"
+    },
+    {
+      "string_id": null,
+      "numeric_id": "1007"
+    },
+    {
+      "string_id": null,
+      "numeric_id": "1021"
+    },
+    {
+      "string_id": null,
+      "numeric_id": "1037"
+    }
+  ],
+  "attack_chains": [
+    {
+      "cve_id": "CVE-2022-30305",
+      "cwe_id": "cwe-778",
+      "cwe_numeric": "778",
+      "cwe_name": "Insufficient Logging",
+      "capec_id": "CAPEC-81",
+      "capec_name": ""
+    }
+  ],
+  "cwe_capec_samples": [
+    {
+      "cwe_string_id": "cwe-1297",
+      "cwe_numeric_id": "1297",
+      "cwe_name": "Unprotected Confidential Information on Device is Accessible by OSAT Vendors",
+      "capec_id": "CAPEC-1",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": "cwe-1311",
+      "cwe_numeric_id": "1311",
+      "cwe_name": "Improper Translation of Security Attributes by Fabric Bridge",
+      "capec_id": "CAPEC-1",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "1220",
+      "cwe_name": "Insufficient Granularity of Access Control",
+      "capec_id": "CAPEC-1",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "276",
+      "cwe_name": "Incorrect Default Permissions",
+      "capec_id": "CAPEC-1",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": "cwe-1318",
+      "cwe_numeric_id": "1318",
+      "cwe_name": "Missing Support for Security Features in On-chip Fabrics or Buses",
+      "capec_id": "CAPEC-1",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "434",
+      "cwe_name": "Unrestricted Upload of File with Dangerous Type",
+      "capec_id": "CAPEC-1",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "1321",
+      "cwe_name": "Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')",
+      "capec_id": "CAPEC-1",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "285",
+      "cwe_name": "Improper Authorization",
+      "capec_id": "CAPEC-1",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "732",
+      "cwe_name": "Incorrect Permission Assignment for Critical Resource",
+      "capec_id": "CAPEC-1",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "693",
+      "cwe_name": "Protection Mechanism Failure",
+      "capec_id": "CAPEC-1",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "1327",
+      "cwe_name": "Binding to an Unrestricted IP Address",
+      "capec_id": "CAPEC-1",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "1320",
+      "cwe_name": "Improper Protection for Outbound Error Messages and Alert Signals",
+      "capec_id": "CAPEC-1",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": "cwe-1193",
+      "cwe_numeric_id": "1193",
+      "cwe_name": "Power-On of Untrusted Execution Core Before Enabling Fabric Access Control",
+      "capec_id": "CAPEC-1",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": "cwe-1315",
+      "cwe_numeric_id": "1315",
+      "cwe_name": "Improper Setting of Bus Controlling Capability in Fabric End-point",
+      "capec_id": "CAPEC-1",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "1191",
+      "cwe_name": "On-Chip Debug and Test Interface With Improper Access Control",
+      "capec_id": "CAPEC-1",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": "cwe-1314",
+      "cwe_numeric_id": "1314",
+      "cwe_name": "Missing Write Protection for Parametric Data Values",
+      "capec_id": "CAPEC-1",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "74",
+      "cwe_name": "Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')",
+      "capec_id": "CAPEC-10",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "733",
+      "cwe_name": "Compiler Optimization Removal or Modification of Security-critical Code",
+      "capec_id": "CAPEC-10",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "120",
+      "cwe_name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')",
+      "capec_id": "CAPEC-10",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "680",
+      "cwe_name": "Integer Overflow to Buffer Overflow",
+      "capec_id": "CAPEC-10",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "118",
+      "cwe_name": "Incorrect Access of Indexable Resource ('Range Error')",
+      "capec_id": "CAPEC-10",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "99",
+      "cwe_name": "Improper Control of Resource Identifiers ('Resource Injection')",
+      "capec_id": "CAPEC-10",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "302",
+      "cwe_name": "Authentication Bypass by Assumed-Immutable Data",
+      "capec_id": "CAPEC-10",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "119",
+      "cwe_name": "Improper Restriction of Operations within the Bounds of a Memory Buffer",
+      "capec_id": "CAPEC-10",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "20",
+      "cwe_name": "Improper Input Validation",
+      "capec_id": "CAPEC-10",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "697",
+      "cwe_name": "Incorrect Comparison",
+      "capec_id": "CAPEC-10",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "120",
+      "cwe_name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')",
+      "capec_id": "CAPEC-100",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "805",
+      "cwe_name": "Buffer Access with Incorrect Length Value",
+      "capec_id": "CAPEC-100",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "680",
+      "cwe_name": "Integer Overflow to Buffer Overflow",
+      "capec_id": "CAPEC-100",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "119",
+      "cwe_name": "Improper Restriction of Operations within the Bounds of a Memory Buffer",
+      "capec_id": "CAPEC-100",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "129",
+      "cwe_name": "Improper Validation of Array Index",
+      "capec_id": "CAPEC-100",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "131",
+      "cwe_name": "Incorrect Calculation of Buffer Size",
+      "capec_id": "CAPEC-100",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "20",
+      "cwe_name": "Improper Input Validation",
+      "capec_id": "CAPEC-101",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "97",
+      "cwe_name": "Improper Neutralization of Server-Side Includes (SSI) Within a Web Page",
+      "capec_id": "CAPEC-101",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "74",
+      "cwe_name": "Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')",
+      "capec_id": "CAPEC-101",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "319",
+      "cwe_name": "Cleartext Transmission of Sensitive Information",
+      "capec_id": "CAPEC-102",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "523",
+      "cwe_name": "Unprotected Transport of Credentials",
+      "capec_id": "CAPEC-102",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "522",
+      "cwe_name": "Insufficiently Protected Credentials",
+      "capec_id": "CAPEC-102",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "614",
+      "cwe_name": "Sensitive Cookie in HTTPS Session Without 'Secure' Attribute",
+      "capec_id": "CAPEC-102",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "294",
+      "cwe_name": "Authentication Bypass by Capture-replay",
+      "capec_id": "CAPEC-102",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "1021",
+      "cwe_name": "Improper Restriction of Rendered UI Layers or Frames",
+      "capec_id": "CAPEC-103",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "285",
+      "cwe_name": "Improper Authorization",
+      "capec_id": "CAPEC-104",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "250",
+      "cwe_name": "Execution with Unnecessary Privileges",
+      "capec_id": "CAPEC-104",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "116",
+      "cwe_name": "Improper Encoding or Escaping of Output",
+      "capec_id": "CAPEC-104",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "20",
+      "cwe_name": "Improper Input Validation",
+      "capec_id": "CAPEC-104",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "638",
+      "cwe_name": "Not Using Complete Mediation",
+      "capec_id": "CAPEC-104",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "138",
+      "cwe_name": "Improper Neutralization of Special Elements",
+      "capec_id": "CAPEC-105",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "74",
+      "cwe_name": "Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')",
+      "capec_id": "CAPEC-105",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "113",
+      "cwe_name": "Improper Neutralization of CRLF Sequences in HTTP Headers ('HTTP Request/Response Splitting')",
+      "capec_id": "CAPEC-105",
+      "capec_name": ""
+    },
+    {
+      "cwe_string_id": null,
+      "cwe_numeric_id": "436",
+      "cwe_name": "Interpretation Conflict",
+      "capec_id": "CAPEC-105",
+      "capec_name": ""
+    }
+  ]
+}

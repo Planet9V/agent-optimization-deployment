@@ -1,0 +1,348 @@
+================================================================================
+CAPEC NER TRAINING DATA - SAMPLE ANNOTATIONS
+================================================================================
+
+SAMPLE 1
+--------------------------------------------------------------------------------
+CAPEC: 106 - DEPRECATED: XSS through Log Files
+Abstraction: Detailed
+Context: description
+Entity Count: 1
+
+TEXT:
+This attack pattern has been deprecated as it referes to an existing chain relationship between "CAPEC-93 : Log Injection-Tampering-Forging" and "CAPEC-63 : Cross-Site Scripting". Please refer to these CAPECs going forward.
+
+ENTITIES:
+  CAPEC: 106 (DEPRECATED: XSS through Log Files)
+
+================================================================================
+
+SAMPLE 2
+--------------------------------------------------------------------------------
+CAPEC: 113 - Interface Manipulation
+Abstraction: Meta
+Context: description
+Entity Count: 2
+
+TEXT:
+An adversary manipulates the use or processing of an interface (e.g. Application Programming Interface (API) or System-on-Chip (SoC)) resulting in an adverse impact upon the security of the system implementing the interface. This can allow the adversary to bypass access control and/or execute functionality not intended by the interface implementation, possibly compromising the system which integrates the interface. Interface manipulation can take on a number of forms including forcing the unexpe...
+
+ENTITIES:
+  CAPEC: 113 (Interface Manipulation)
+  CWE: 1192
+
+================================================================================
+
+SAMPLE 3
+--------------------------------------------------------------------------------
+CAPEC: 103 - Clickjacking
+Abstraction: Standard
+Context: description
+Entity Count: 3
+
+TEXT:
+An adversary tricks a victim into unknowingly initiating some action in one system while interacting with the UI from a seemingly completely different, usually an adversary controlled or intended, system.
+
+ENTITIES:
+  CAPEC: 103 (Clickjacking)
+  CWE: 1021
+  OWASP: Clickjacking
+
+================================================================================
+
+SAMPLE 4
+--------------------------------------------------------------------------------
+CAPEC: 122 - Privilege Abuse
+Abstraction: Meta
+Context: description
+Entity Count: 5
+
+TEXT:
+An adversary is able to exploit features of the target that should be reserved for privileged users or administrators but are exposed to use by lower or non-privileged accounts. Access to sensitive information and functionality must be controlled to ensure that only authorized users are able to access these resources.
+
+ENTITIES:
+  CAPEC: 122 (Privilege Abuse)
+  CWE: 269, 732, 1317
+  ATTACK_TECHNIQUE: 1548
+
+================================================================================
+
+SAMPLE 5
+--------------------------------------------------------------------------------
+CAPEC: 1 - Accessing Functionality Not Properly Constrained by ACLs
+Abstraction: Standard
+Context: description
+Entity Count: 18
+
+TEXT:
+In applications, particularly web applications, access to functionality is mitigated by an authorization framework. This framework maps Access Control Lists (ACLs) to elements of the application's functionality; particularly URL's for web apps. In the case that the administrator failed to specify an ACL for a particular element, an attacker may be able to access it with impunity. An attacker with the ability to access functionality not properly constrained by ACLs can obtain sensitive informatio...
+
+ENTITIES:
+  CAPEC: 1 (Accessing Functionality Not Properly Constrained by ACLs)
+  CWE: 276, 285, 434, 693, 732, 1191, 1193, 1220, 1297, 1311, 1314, 1315, 1318, 1320, 1321, 1327
+  ATTACK_TECHNIQUE: 1574.010
+
+================================================================================
+
+SAMPLE 6
+--------------------------------------------------------------------------------
+CAPEC: 1 - Accessing Functionality Not Properly Constrained by ACLs
+Abstraction: Standard
+Context: prerequisite
+Entity Count: 18
+
+TEXT:
+The application must be navigable in a manner that associates elements (subsections) of the application with ACLs.
+
+ENTITIES:
+  CAPEC: 1 (Accessing Functionality Not Properly Constrained by ACLs)
+  CWE: 276, 285, 434, 693, 732, 1191, 1193, 1220, 1297, 1311, 1314, 1315, 1318, 1320, 1321, 1327
+  ATTACK_TECHNIQUE: 1574.010
+
+================================================================================
+
+SAMPLE 7
+--------------------------------------------------------------------------------
+CAPEC: 1 - Accessing Functionality Not Properly Constrained by ACLs
+Abstraction: Standard
+Context: prerequisite
+Entity Count: 18
+
+TEXT:
+The various resources, or individual URLs, must be somehow discoverable by the attacker
+
+ENTITIES:
+  CAPEC: 1 (Accessing Functionality Not Properly Constrained by ACLs)
+  CWE: 276, 285, 434, 693, 732, 1191, 1193, 1220, 1297, 1311, 1314, 1315, 1318, 1320, 1321, 1327
+  ATTACK_TECHNIQUE: 1574.010
+
+================================================================================
+
+SAMPLE 8
+--------------------------------------------------------------------------------
+CAPEC: 1 - Accessing Functionality Not Properly Constrained by ACLs
+Abstraction: Standard
+Context: prerequisite
+Entity Count: 18
+
+TEXT:
+The administrator must have forgotten to associate an ACL or has associated an inappropriately permissive ACL with a particular navigable resource.
+
+ENTITIES:
+  CAPEC: 1 (Accessing Functionality Not Properly Constrained by ACLs)
+  CWE: 276, 285, 434, 693, 732, 1191, 1193, 1220, 1297, 1311, 1314, 1315, 1318, 1320, 1321, 1327
+  ATTACK_TECHNIQUE: 1574.010
+
+================================================================================
+
+SAMPLE 9
+--------------------------------------------------------------------------------
+CAPEC: 10 - Buffer Overflow via Environment Variables
+Abstraction: Detailed
+Context: description
+Entity Count: 12
+
+TEXT:
+This attack pattern involves causing a buffer overflow through manipulation of environment variables. Once the adversary finds that they can modify an environment variable, they may try to overflow associated buffers. This attack leverages implicit trust often placed in environment variables.
+
+ENTITIES:
+  CAPEC: 10 (Buffer Overflow via Environment Variables)
+  CWE: 120, 302, 118, 119, 74, 99, 20, 680, 733, 697
+  OWASP: Buffer Overflow via Environment Variables
+
+================================================================================
+
+SAMPLE 10
+--------------------------------------------------------------------------------
+CAPEC: 10 - Buffer Overflow via Environment Variables
+Abstraction: Detailed
+Context: prerequisite
+Entity Count: 12
+
+TEXT:
+The application uses environment variables.
+
+ENTITIES:
+  CAPEC: 10 (Buffer Overflow via Environment Variables)
+  CWE: 120, 302, 118, 119, 74, 99, 20, 680, 733, 697
+  OWASP: Buffer Overflow via Environment Variables
+
+================================================================================
+
+SAMPLE 11
+--------------------------------------------------------------------------------
+CAPEC: 10 - Buffer Overflow via Environment Variables
+Abstraction: Detailed
+Context: prerequisite
+Entity Count: 12
+
+TEXT:
+An environment variable exposed to the user is vulnerable to a buffer overflow.
+
+ENTITIES:
+  CAPEC: 10 (Buffer Overflow via Environment Variables)
+  CWE: 120, 302, 118, 119, 74, 99, 20, 680, 733, 697
+  OWASP: Buffer Overflow via Environment Variables
+
+================================================================================
+
+SAMPLE 12
+--------------------------------------------------------------------------------
+CAPEC: 10 - Buffer Overflow via Environment Variables
+Abstraction: Detailed
+Context: prerequisite
+Entity Count: 12
+
+TEXT:
+The vulnerable environment variable uses untrusted data.
+
+ENTITIES:
+  CAPEC: 10 (Buffer Overflow via Environment Variables)
+  CWE: 120, 302, 118, 119, 74, 99, 20, 680, 733, 697
+  OWASP: Buffer Overflow via Environment Variables
+
+================================================================================
+
+SAMPLE 13
+--------------------------------------------------------------------------------
+CAPEC: 10 - Buffer Overflow via Environment Variables
+Abstraction: Detailed
+Context: prerequisite
+Entity Count: 12
+
+TEXT:
+Tainted data used in the environment variables is not properly validated. For instance boundary checking is not done before copying the input data to a buffer.
+
+ENTITIES:
+  CAPEC: 10 (Buffer Overflow via Environment Variables)
+  CWE: 120, 302, 118, 119, 74, 99, 20, 680, 733, 697
+  OWASP: Buffer Overflow via Environment Variables
+
+================================================================================
+
+SAMPLE 14
+--------------------------------------------------------------------------------
+CAPEC: 100 - Overflow Buffers
+Abstraction: Standard
+Context: description
+Entity Count: 9
+
+TEXT:
+Buffer Overflow attacks target improper or missing bounds checking on buffer operations, typically triggered by input injected by an adversary. As a consequence, an adversary is able to write past the boundaries of allocated buffer regions in memory, causing a program crash or potentially redirection of execution as per the adversaries' choice.
+
+ENTITIES:
+  CAPEC: 100 (Overflow Buffers)
+  CWE: 120, 119, 131, 129, 805, 680
+  WASC: 07
+  OWASP: Buffer overflow attack
+
+================================================================================
+
+SAMPLE 15
+--------------------------------------------------------------------------------
+CAPEC: 100 - Overflow Buffers
+Abstraction: Standard
+Context: prerequisite
+Entity Count: 9
+
+TEXT:
+Targeted software performs buffer operations.
+
+ENTITIES:
+  CAPEC: 100 (Overflow Buffers)
+  CWE: 120, 119, 131, 129, 805, 680
+  WASC: 07
+  OWASP: Buffer overflow attack
+
+================================================================================
+
+SAMPLE 16
+--------------------------------------------------------------------------------
+CAPEC: 100 - Overflow Buffers
+Abstraction: Standard
+Context: prerequisite
+Entity Count: 9
+
+TEXT:
+Targeted software inadequately performs bounds-checking on buffer operations.
+
+ENTITIES:
+  CAPEC: 100 (Overflow Buffers)
+  CWE: 120, 119, 131, 129, 805, 680
+  WASC: 07
+  OWASP: Buffer overflow attack
+
+================================================================================
+
+SAMPLE 17
+--------------------------------------------------------------------------------
+CAPEC: 100 - Overflow Buffers
+Abstraction: Standard
+Context: prerequisite
+Entity Count: 9
+
+TEXT:
+Adversary has the capability to influence the input to buffer operations.
+
+ENTITIES:
+  CAPEC: 100 (Overflow Buffers)
+  CWE: 120, 119, 131, 129, 805, 680
+  WASC: 07
+  OWASP: Buffer overflow attack
+
+================================================================================
+
+SAMPLE 18
+--------------------------------------------------------------------------------
+CAPEC: 100 - Overflow Buffers
+Abstraction: Standard
+Context: example_instance
+Entity Count: 9
+
+TEXT:
+The most straightforward example is an application that reads in input from the user and stores it in an internal buffer but does not check that the size of the input data is less than or equal to the size of the buffer. If the user enters excessive length data, the buffer may overflow leading to the application crashing, or worse, enabling the user to cause execution of injected code.
+
+ENTITIES:
+  CAPEC: 100 (Overflow Buffers)
+  CWE: 120, 119, 131, 129, 805, 680
+  WASC: 07
+  OWASP: Buffer overflow attack
+
+================================================================================
+
+SAMPLE 19
+--------------------------------------------------------------------------------
+CAPEC: 100 - Overflow Buffers
+Abstraction: Standard
+Context: example_instance
+Entity Count: 9
+
+TEXT:
+Many web servers enforce security in web applications through the use of filter plugins. An example is the SiteMinder plugin used for authentication. An overflow in such a plugin, possibly through a long URL or redirect parameter, can allow an adversary not only to bypass the security checks but also execute arbitrary code on the target web server in the context of the user that runs the web server process.
+
+ENTITIES:
+  CAPEC: 100 (Overflow Buffers)
+  CWE: 120, 119, 131, 129, 805, 680
+  WASC: 07
+  OWASP: Buffer overflow attack
+
+================================================================================
+
+SAMPLE 20
+--------------------------------------------------------------------------------
+CAPEC: 101 - Server Side Include (SSI) Injection
+Abstraction: Detailed
+Context: description
+Entity Count: 6
+
+TEXT:
+An attacker can use Server Side Include (SSI) Injection to send code to a web application that then gets executed by the web server. Doing so enables the attacker to achieve similar results to Cross Site Scripting, viz., arbitrary code execution and information disclosure, albeit on a more limited scale, since the SSI directives are nowhere near as powerful as a full-fledged scripting language. Nonetheless, the attacker can conveniently gain access to sensitive files, such as password files, and...
+
+ENTITIES:
+  CAPEC: 101 (Server Side Include (SSI) Injection)
+  CWE: 97, 74, 20
+  WASC: 36
+  OWASP: Server-Side Includes (SSI) Injection
+
+================================================================================
+

@@ -1,0 +1,17 @@
+# Phase 1 Test Requirements
+
+# Core testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-timeout>=2.1.0
+pytest-json-report>=1.5.0
+
+# Async support
+asyncio>=3.4.3
+websockets>=11.0
+
+# Data handling
+qdrant-client>=1.7.0
+
+# Additional utilities
+python-dateutil>=2.8.2

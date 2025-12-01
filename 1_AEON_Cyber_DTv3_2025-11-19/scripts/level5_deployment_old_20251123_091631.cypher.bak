@@ -1,0 +1,734 @@
+// ═══════════════════════════════════════════════════
+// LEVEL 5: INFORMATION STREAMS - DATABASE DEPLOYMENT
+// ═══════════════════════════════════════════════════
+// Target: 6,000 nodes, 50,000+ relationships
+// Integration: Connect to existing AEON DT knowledge graph
+
+// ═══════════════════════════════════════════════════
+// PART 1: CREATE CORE STREAM TYPES (600 nodes)
+// ═══════════════════════════════════════════════════
+
+// 1.1 Real-Time Data Streams (120 nodes)
+CREATE (s1:InformationStream:RealTimeStream {
+    id: 'rt-001',
+    name: 'SCADA Real-Time Monitoring',
+    streamType: 'real-time',
+    protocol: 'Modbus TCP',
+    dataRate: '1000 msg/sec',
+    latency: '< 10ms',
+    priority: 'critical',
+    encryption: 'TLS 1.3',
+    created: datetime()
+});
+
+UNWIND range(2, 120) AS idx
+CREATE (:InformationStream:RealTimeStream {
+    id: 'rt-' + toString(idx),
+    name: 'Real-Time Stream ' + toString(idx),
+    streamType: 'real-time',
+    protocol: CASE idx % 4
+        WHEN 0 THEN 'Modbus TCP'
+        WHEN 1 THEN 'OPC UA'
+        WHEN 2 THEN 'MQTT'
+        ELSE 'DNP3' END,
+    dataRate: toString((idx * 10) % 5000 + 100) + ' msg/sec',
+    latency: '< ' + toString(idx % 50 + 5) + 'ms',
+    priority: CASE idx % 3
+        WHEN 0 THEN 'critical'
+        WHEN 1 THEN 'high'
+        ELSE 'medium' END,
+    encryption: CASE idx % 2 WHEN 0 THEN 'TLS 1.3' ELSE 'AES-256' END,
+    created: datetime()
+});
+
+// 1.2 Batch Processing Streams (100 nodes)
+UNWIND range(1, 100) AS idx
+CREATE (:InformationStream:BatchStream {
+    id: 'batch-' + toString(idx),
+    name: 'Batch Processing Stream ' + toString(idx),
+    streamType: 'batch',
+    batchSize: toString((idx * 100) % 10000 + 1000) + ' records',
+    frequency: CASE idx % 5
+        WHEN 0 THEN 'hourly'
+        WHEN 1 THEN 'daily'
+        WHEN 2 THEN 'weekly'
+        WHEN 3 THEN '15-minute'
+        ELSE '30-minute' END,
+    processingTime: toString(idx % 60 + 5) + ' minutes',
+    priority: CASE idx % 3
+        WHEN 0 THEN 'high'
+        WHEN 1 THEN 'medium'
+        ELSE 'low' END,
+    created: datetime()
+});
+
+// 1.3 Event-Driven Streams (80 nodes)
+UNWIND range(1, 80) AS idx
+CREATE (:InformationStream:EventStream {
+    id: 'event-' + toString(idx),
+    name: 'Event-Driven Stream ' + toString(idx),
+    streamType: 'event-driven',
+    triggerType: CASE idx % 4
+        WHEN 0 THEN 'threshold-based'
+        WHEN 1 THEN 'pattern-detection'
+        WHEN 2 THEN 'anomaly-detection'
+        ELSE 'time-based' END,
+    eventRate: toString((idx * 5) % 500 + 10) + ' events/hour',
+    responseTime: '< ' + toString(idx % 30 + 1) + 's',
+    priority: CASE idx % 3
+        WHEN 0 THEN 'critical'
+        WHEN 1 THEN 'high'
+        ELSE 'medium' END,
+    created: datetime()
+});
+
+// 1.4 Analytics Streams (100 nodes)
+UNWIND range(1, 100) AS idx
+CREATE (:InformationStream:AnalyticsStream {
+    id: 'analytics-' + toString(idx),
+    name: 'Analytics Stream ' + toString(idx),
+    streamType: 'analytics',
+    analyticsType: CASE idx % 5
+        WHEN 0 THEN 'predictive'
+        WHEN 1 THEN 'diagnostic'
+        WHEN 2 THEN 'prescriptive'
+        WHEN 3 THEN 'descriptive'
+        ELSE 'real-time-analytics' END,
+    dataWindow: toString(idx % 24 + 1) + ' hours',
+    updateFrequency: toString(idx % 60 + 1) + ' minutes',
+    accuracy: toString(85 + (idx % 15)) + '%',
+    created: datetime()
+});
+
+// 1.5 Integration Streams (100 nodes)
+UNWIND range(1, 100) AS idx
+CREATE (:InformationStream:IntegrationStream {
+    id: 'integration-' + toString(idx),
+    name: 'Integration Stream ' + toString(idx),
+    streamType: 'integration',
+    sourceSystem: CASE idx % 6
+        WHEN 0 THEN 'ERP'
+        WHEN 1 THEN 'MES'
+        WHEN 2 THEN 'SCADA'
+        WHEN 3 THEN 'PLM'
+        WHEN 4 THEN 'QMS'
+        ELSE 'CMMS' END,
+    targetSystem: CASE idx % 4
+        WHEN 0 THEN 'Data Lake'
+        WHEN 1 THEN 'Analytics Platform'
+        WHEN 2 THEN 'Dashboard'
+        ELSE 'Archive' END,
+    transformationType: CASE idx % 3
+        WHEN 0 THEN 'ETL'
+        WHEN 1 THEN 'ELT'
+        ELSE 'Streaming' END,
+    syncFrequency: CASE idx % 4
+        WHEN 0 THEN 'real-time'
+        WHEN 1 THEN 'near-real-time'
+        WHEN 2 THEN 'periodic'
+        ELSE 'on-demand' END,
+    created: datetime()
+});
+
+// 1.6 Security Monitoring Streams (100 nodes)
+UNWIND range(1, 100) AS idx
+CREATE (:InformationStream:SecurityStream {
+    id: 'security-' + toString(idx),
+    name: 'Security Monitoring Stream ' + toString(idx),
+    streamType: 'security',
+    monitoringType: CASE idx % 5
+        WHEN 0 THEN 'intrusion-detection'
+        WHEN 1 THEN 'anomaly-detection'
+        WHEN 2 THEN 'compliance-monitoring'
+        WHEN 3 THEN 'threat-intelligence'
+        ELSE 'vulnerability-scanning' END,
+    alertLevel: CASE idx % 4
+        WHEN 0 THEN 'critical'
+        WHEN 1 THEN 'high'
+        WHEN 2 THEN 'medium'
+        ELSE 'low' END,
+    responseTime: '< ' + toString(idx % 10 + 1) + 's',
+    retention: toString(idx % 12 + 1) + ' months',
+    created: datetime()
+});
+
+// ═══════════════════════════════════════════════════
+// PART 2: CREATE DATA SOURCES (1,200 nodes)
+// ═══════════════════════════════════════════════════
+
+// 2.1 Sensor Data Sources (400 nodes)
+UNWIND range(1, 400) AS idx
+CREATE (:DataSource:SensorSource {
+    id: 'sensor-src-' + toString(idx),
+    name: 'Sensor Data Source ' + toString(idx),
+    sourceType: 'sensor',
+    sensorType: CASE idx % 8
+        WHEN 0 THEN 'temperature'
+        WHEN 1 THEN 'pressure'
+        WHEN 2 THEN 'flow'
+        WHEN 3 THEN 'level'
+        WHEN 4 THEN 'vibration'
+        WHEN 5 THEN 'humidity'
+        WHEN 6 THEN 'pH'
+        ELSE 'conductivity' END,
+    samplingRate: toString((idx * 10) % 1000 + 100) + ' Hz',
+    accuracy: toString(95 + (idx % 5)) + '%',
+    location: 'Zone-' + toString(idx % 10 + 1),
+    status: CASE idx % 10 WHEN 0 THEN 'degraded' ELSE 'active' END,
+    created: datetime()
+});
+
+// 2.2 System Logs (300 nodes)
+UNWIND range(1, 300) AS idx
+CREATE (:DataSource:LogSource {
+    id: 'log-src-' + toString(idx),
+    name: 'Log Source ' + toString(idx),
+    sourceType: 'system-log',
+    logType: CASE idx % 6
+        WHEN 0 THEN 'application'
+        WHEN 1 THEN 'security'
+        WHEN 2 THEN 'audit'
+        WHEN 3 THEN 'performance'
+        WHEN 4 THEN 'error'
+        ELSE 'access' END,
+    format: CASE idx % 3
+        WHEN 0 THEN 'JSON'
+        WHEN 1 THEN 'Syslog'
+        ELSE 'CEF' END,
+    volumePerDay: toString((idx * 100) % 100000 + 10000) + ' entries',
+    retention: toString(idx % 12 + 1) + ' months',
+    created: datetime()
+});
+
+// 2.3 Database Sources (200 nodes)
+UNWIND range(1, 200) AS idx
+CREATE (:DataSource:DatabaseSource {
+    id: 'db-src-' + toString(idx),
+    name: 'Database Source ' + toString(idx),
+    sourceType: 'database',
+    dbType: CASE idx % 5
+        WHEN 0 THEN 'PostgreSQL'
+        WHEN 1 THEN 'MySQL'
+        WHEN 2 THEN 'Oracle'
+        WHEN 3 THEN 'SQL Server'
+        ELSE 'MongoDB' END,
+    tableCount: toString((idx * 5) % 100 + 10),
+    recordCount: toString((idx * 10000) % 10000000 + 100000),
+    updateFrequency: CASE idx % 4
+        WHEN 0 THEN 'real-time'
+        WHEN 1 THEN 'hourly'
+        WHEN 2 THEN 'daily'
+        ELSE 'weekly' END,
+    created: datetime()
+});
+
+// 2.4 External API Sources (300 nodes)
+UNWIND range(1, 300) AS idx
+CREATE (:DataSource:APISource {
+    id: 'api-src-' + toString(idx),
+    name: 'API Source ' + toString(idx),
+    sourceType: 'external-api',
+    apiType: CASE idx % 5
+        WHEN 0 THEN 'REST'
+        WHEN 1 THEN 'GraphQL'
+        WHEN 2 THEN 'SOAP'
+        WHEN 3 THEN 'gRPC'
+        ELSE 'WebSocket' END,
+    endpoint: 'https://api-' + toString(idx) + '.example.com',
+    authentication: CASE idx % 3
+        WHEN 0 THEN 'OAuth2'
+        WHEN 1 THEN 'API Key'
+        ELSE 'JWT' END,
+    rateLimit: toString((idx * 100) % 10000 + 1000) + ' req/hour',
+    created: datetime()
+});
+
+// ═══════════════════════════════════════════════════
+// PART 3: CREATE DATA CONSUMERS (1,200 nodes)
+// ═══════════════════════════════════════════════════
+
+// 3.1 Dashboard Consumers (300 nodes)
+UNWIND range(1, 300) AS idx
+CREATE (:DataConsumer:Dashboard {
+    id: 'dashboard-' + toString(idx),
+    name: 'Dashboard ' + toString(idx),
+    consumerType: 'dashboard',
+    dashboardType: CASE idx % 5
+        WHEN 0 THEN 'operational'
+        WHEN 1 THEN 'executive'
+        WHEN 2 THEN 'analytical'
+        WHEN 3 THEN 'tactical'
+        ELSE 'strategic' END,
+    refreshRate: toString(idx % 60 + 5) + ' seconds',
+    userCount: toString((idx * 5) % 500 + 10),
+    widgets: toString(idx % 20 + 5),
+    created: datetime()
+});
+
+// 3.2 Analytics Applications (300 nodes)
+UNWIND range(1, 300) AS idx
+CREATE (:DataConsumer:AnalyticsApp {
+    id: 'analytics-app-' + toString(idx),
+    name: 'Analytics Application ' + toString(idx),
+    consumerType: 'analytics',
+    analysisType: CASE idx % 6
+        WHEN 0 THEN 'predictive-maintenance'
+        WHEN 1 THEN 'quality-analysis'
+        WHEN 2 THEN 'performance-optimization'
+        WHEN 3 THEN 'energy-management'
+        WHEN 4 THEN 'resource-planning'
+        ELSE 'risk-assessment' END,
+    updateFrequency: toString(idx % 60 + 5) + ' minutes',
+    dataRetention: toString(idx % 24 + 1) + ' months',
+    created: datetime()
+});
+
+// 3.3 Alert Systems (200 nodes)
+UNWIND range(1, 200) AS idx
+CREATE (:DataConsumer:AlertSystem {
+    id: 'alert-sys-' + toString(idx),
+    name: 'Alert System ' + toString(idx),
+    consumerType: 'alerting',
+    alertType: CASE idx % 5
+        WHEN 0 THEN 'threshold-based'
+        WHEN 1 THEN 'anomaly-detection'
+        WHEN 2 THEN 'pattern-matching'
+        WHEN 3 THEN 'predictive'
+        ELSE 'correlation-based' END,
+    severity: CASE idx % 4
+        WHEN 0 THEN 'critical'
+        WHEN 1 THEN 'high'
+        WHEN 2 THEN 'medium'
+        ELSE 'low' END,
+    notificationMethod: CASE idx % 4
+        WHEN 0 THEN 'email'
+        WHEN 1 THEN 'SMS'
+        WHEN 2 THEN 'webhook'
+        ELSE 'mobile-push' END,
+    created: datetime()
+});
+
+// 3.4 Archive Systems (200 nodes)
+UNWIND range(1, 200) AS idx
+CREATE (:DataConsumer:ArchiveSystem {
+    id: 'archive-' + toString(idx),
+    name: 'Archive System ' + toString(idx),
+    consumerType: 'archival',
+    storageType: CASE idx % 4
+        WHEN 0 THEN 'hot-storage'
+        WHEN 1 THEN 'warm-storage'
+        WHEN 2 THEN 'cold-storage'
+        ELSE 'glacier' END,
+    compressionRatio: toString(idx % 10 + 2) + ':1',
+    retentionPolicy: toString(idx % 10 + 1) + ' years',
+    capacity: toString((idx * 100) % 10000 + 1000) + ' TB',
+    created: datetime()
+});
+
+// 3.5 ML Model Consumers (200 nodes)
+UNWIND range(1, 200) AS idx
+CREATE (:DataConsumer:MLModel {
+    id: 'ml-model-' + toString(idx),
+    name: 'ML Model ' + toString(idx),
+    consumerType: 'machine-learning',
+    modelType: CASE idx % 6
+        WHEN 0 THEN 'classification'
+        WHEN 1 THEN 'regression'
+        WHEN 2 THEN 'clustering'
+        WHEN 3 THEN 'anomaly-detection'
+        WHEN 4 THEN 'forecasting'
+        ELSE 'recommendation' END,
+    framework: CASE idx % 4
+        WHEN 0 THEN 'TensorFlow'
+        WHEN 1 THEN 'PyTorch'
+        WHEN 2 THEN 'Scikit-learn'
+        ELSE 'XGBoost' END,
+    accuracy: toString(85 + (idx % 15)) + '%',
+    retrainingFrequency: CASE idx % 4
+        WHEN 0 THEN 'daily'
+        WHEN 1 THEN 'weekly'
+        WHEN 2 THEN 'monthly'
+        ELSE 'quarterly' END,
+    created: datetime()
+});
+
+// ═══════════════════════════════════════════════════
+// PART 4: CREATE PROCESSING NODES (1,500 nodes)
+// ═══════════════════════════════════════════════════
+
+// 4.1 Data Validators (300 nodes)
+UNWIND range(1, 300) AS idx
+CREATE (:DataProcessor:Validator {
+    id: 'validator-' + toString(idx),
+    name: 'Data Validator ' + toString(idx),
+    processorType: 'validation',
+    validationType: CASE idx % 5
+        WHEN 0 THEN 'schema-validation'
+        WHEN 1 THEN 'range-check'
+        WHEN 2 THEN 'format-validation'
+        WHEN 3 THEN 'business-rules'
+        ELSE 'integrity-check' END,
+    throughput: toString((idx * 1000) % 100000 + 10000) + ' records/sec',
+    errorRate: toString((idx % 5) / 10.0) + '%',
+    created: datetime()
+});
+
+// 4.2 Data Transformers (400 nodes)
+UNWIND range(1, 400) AS idx
+CREATE (:DataProcessor:Transformer {
+    id: 'transformer-' + toString(idx),
+    name: 'Data Transformer ' + toString(idx),
+    processorType: 'transformation',
+    transformationType: CASE idx % 6
+        WHEN 0 THEN 'normalization'
+        WHEN 1 THEN 'aggregation'
+        WHEN 2 THEN 'enrichment'
+        WHEN 3 THEN 'filtering'
+        WHEN 4 THEN 'conversion'
+        ELSE 'cleansing' END,
+    processingTime: toString(idx % 100 + 10) + ' ms',
+    throughput: toString((idx * 500) % 50000 + 5000) + ' records/sec',
+    created: datetime()
+});
+
+// 4.3 Data Routers (300 nodes)
+UNWIND range(1, 300) AS idx
+CREATE (:DataProcessor:Router {
+    id: 'router-' + toString(idx),
+    name: 'Data Router ' + toString(idx),
+    processorType: 'routing',
+    routingLogic: CASE idx % 5
+        WHEN 0 THEN 'content-based'
+        WHEN 1 THEN 'priority-based'
+        WHEN 2 THEN 'load-balanced'
+        WHEN 3 THEN 'rule-based'
+        ELSE 'dynamic' END,
+    outputPorts: toString(idx % 10 + 2),
+    latency: toString(idx % 50 + 1) + ' ms',
+    created: datetime()
+});
+
+// 4.4 Data Aggregators (300 nodes)
+UNWIND range(1, 300) AS idx
+CREATE (:DataProcessor:Aggregator {
+    id: 'aggregator-' + toString(idx),
+    name: 'Data Aggregator ' + toString(idx),
+    processorType: 'aggregation',
+    aggregationType: CASE idx % 5
+        WHEN 0 THEN 'time-window'
+        WHEN 1 THEN 'count-window'
+        WHEN 2 THEN 'session-window'
+        WHEN 3 THEN 'sliding-window'
+        ELSE 'tumbling-window' END,
+    windowSize: toString(idx % 60 + 5) + ' minutes',
+    throughput: toString((idx * 100) % 10000 + 1000) + ' records/sec',
+    created: datetime()
+});
+
+// 4.5 Data Enrichers (200 nodes)
+UNWIND range(1, 200) AS idx
+CREATE (:DataProcessor:Enricher {
+    id: 'enricher-' + toString(idx),
+    name: 'Data Enricher ' + toString(idx),
+    processorType: 'enrichment',
+    enrichmentType: CASE idx % 4
+        WHEN 0 THEN 'lookup-table'
+        WHEN 1 THEN 'api-call'
+        WHEN 2 THEN 'calculation'
+        ELSE 'ml-inference' END,
+    latency: toString(idx % 100 + 10) + ' ms',
+    cacheHitRate: toString(70 + (idx % 30)) + '%',
+    created: datetime()
+});
+
+// ═══════════════════════════════════════════════════
+// PART 5: CREATE QUALITY & MONITORING (1,500 nodes)
+// ═══════════════════════════════════════════════════
+
+// 5.1 Quality Metrics (500 nodes)
+UNWIND range(1, 500) AS idx
+CREATE (:QualityMetric {
+    id: 'quality-' + toString(idx),
+    name: 'Quality Metric ' + toString(idx),
+    metricType: CASE idx % 6
+        WHEN 0 THEN 'completeness'
+        WHEN 1 THEN 'accuracy'
+        WHEN 2 THEN 'consistency'
+        WHEN 3 THEN 'timeliness'
+        WHEN 4 THEN 'validity'
+        ELSE 'uniqueness' END,
+    threshold: toString(95 + (idx % 5)) + '%',
+    currentValue: toString(90 + (idx % 10)) + '%',
+    status: CASE
+        WHEN (90 + (idx % 10)) >= (95 + (idx % 5)) THEN 'passed'
+        ELSE 'failed' END,
+    created: datetime()
+});
+
+// 5.2 Performance Metrics (500 nodes)
+UNWIND range(1, 500) AS idx
+CREATE (:PerformanceMetric {
+    id: 'perf-' + toString(idx),
+    name: 'Performance Metric ' + toString(idx),
+    metricType: CASE idx % 5
+        WHEN 0 THEN 'latency'
+        WHEN 1 THEN 'throughput'
+        WHEN 2 THEN 'resource-utilization'
+        WHEN 3 THEN 'error-rate'
+        ELSE 'availability' END,
+    unit: CASE idx % 5
+        WHEN 0 THEN 'ms'
+        WHEN 1 THEN 'records/sec'
+        WHEN 2 THEN '%'
+        WHEN 3 THEN 'errors/hour'
+        ELSE '%' END,
+    currentValue: toString((idx * 10) % 1000 + 10),
+    threshold: toString((idx * 15) % 1500 + 50),
+    status: 'monitored',
+    created: datetime()
+});
+
+// 5.3 SLA Definitions (300 nodes)
+UNWIND range(1, 300) AS idx
+CREATE (:SLA {
+    id: 'sla-' + toString(idx),
+    name: 'SLA ' + toString(idx),
+    slaType: CASE idx % 4
+        WHEN 0 THEN 'availability'
+        WHEN 1 THEN 'performance'
+        WHEN 2 THEN 'data-quality'
+        ELSE 'response-time' END,
+    target: toString(95 + (idx % 5)) + '%',
+    current: toString(90 + (idx % 10)) + '%',
+    penalty: CASE idx % 3
+        WHEN 0 THEN 'credit'
+        WHEN 1 THEN 'escalation'
+        ELSE 'termination-clause' END,
+    created: datetime()
+});
+
+// 5.4 Alerts (200 nodes)
+UNWIND range(1, 200) AS idx
+CREATE (:Alert {
+    id: 'alert-' + toString(idx),
+    name: 'Alert ' + toString(idx),
+    severity: CASE idx % 4
+        WHEN 0 THEN 'critical'
+        WHEN 1 THEN 'high'
+        WHEN 2 THEN 'medium'
+        ELSE 'low' END,
+    alertType: CASE idx % 5
+        WHEN 0 THEN 'threshold-exceeded'
+        WHEN 1 THEN 'anomaly-detected'
+        WHEN 2 THEN 'service-degraded'
+        WHEN 3 THEN 'data-quality-issue'
+        ELSE 'security-event' END,
+    status: CASE idx % 3
+        WHEN 0 THEN 'active'
+        WHEN 1 THEN 'acknowledged'
+        ELSE 'resolved' END,
+    created: datetime()
+});
+
+// ═══════════════════════════════════════════════════
+// PART 6: CREATE RELATIONSHIPS (50,000+)
+// ═══════════════════════════════════════════════════
+
+// 6.1 Stream → Source relationships (2,400)
+MATCH (s:InformationStream)
+WITH s LIMIT 600
+MATCH (src:DataSource)
+WITH s, src
+WHERE rand() < 0.4
+CREATE (s)-[:CONSUMES_FROM {
+    bandwidth: toString(toInteger(rand() * 1000) + 100) + ' Mbps',
+    priority: CASE toInteger(rand() * 3)
+        WHEN 0 THEN 'high'
+        WHEN 1 THEN 'medium'
+        ELSE 'low' END,
+    established: datetime()
+}]->(src);
+
+// 6.2 Stream → Processor relationships (3,600)
+MATCH (s:InformationStream)
+WITH s LIMIT 600
+MATCH (p:DataProcessor)
+WITH s, p
+WHERE rand() < 0.3
+CREATE (s)-[:PROCESSES_THROUGH {
+    stage: CASE toInteger(rand() * 4)
+        WHEN 0 THEN 'validation'
+        WHEN 1 THEN 'transformation'
+        WHEN 2 THEN 'enrichment'
+        ELSE 'routing' END,
+    order: toInteger(rand() * 5) + 1
+}]->(p);
+
+// 6.3 Stream → Consumer relationships (3,600)
+MATCH (s:InformationStream)
+WITH s LIMIT 600
+MATCH (c:DataConsumer)
+WITH s, c
+WHERE rand() < 0.3
+CREATE (s)-[:DELIVERS_TO {
+    deliveryMethod: CASE toInteger(rand() * 3)
+        WHEN 0 THEN 'push'
+        WHEN 1 THEN 'pull'
+        ELSE 'pub-sub' END,
+    frequency: toString(toInteger(rand() * 60) + 1) + ' seconds',
+    established: datetime()
+}]->(c);
+
+// 6.4 Processor → Processor relationships (4,500)
+MATCH (p1:DataProcessor)
+WITH p1 LIMIT 1500
+MATCH (p2:DataProcessor)
+WHERE id(p1) < id(p2) AND rand() < 0.2
+CREATE (p1)-[:CHAINS_TO {
+    order: toInteger(rand() * 10) + 1,
+    latency: toString(toInteger(rand() * 100) + 5) + ' ms'
+}]->(p2);
+
+// 6.5 Quality Metrics → Stream relationships (3,000)
+MATCH (qm:QualityMetric)
+WITH qm LIMIT 500
+MATCH (s:InformationStream)
+WITH qm, s
+WHERE rand() < 0.5
+CREATE (qm)-[:MONITORS {
+    checkFrequency: toString(toInteger(rand() * 60) + 5) + ' seconds',
+    alertThreshold: toString(90 + toInteger(rand() * 10)) + '%'
+}]->(s);
+
+// 6.6 Performance Metrics → Stream relationships (3,000)
+MATCH (pm:PerformanceMetric)
+WITH pm LIMIT 500
+MATCH (s:InformationStream)
+WITH pm, s
+WHERE rand() < 0.5
+CREATE (pm)-[:MEASURES {
+    samplingRate: toString(toInteger(rand() * 60) + 10) + ' seconds',
+    retention: toString(toInteger(rand() * 12) + 1) + ' months'
+}]->(s);
+
+// 6.7 SLA → Stream relationships (1,800)
+MATCH (sla:SLA)
+WITH sla LIMIT 300
+MATCH (s:InformationStream)
+WITH sla, s
+WHERE rand() < 0.3
+CREATE (sla)-[:GOVERNS {
+    enforcementLevel: CASE toInteger(rand() * 3)
+        WHEN 0 THEN 'strict'
+        WHEN 1 THEN 'moderate'
+        ELSE 'advisory' END,
+    reviewFrequency: CASE toInteger(rand() * 3)
+        WHEN 0 THEN 'monthly'
+        WHEN 1 THEN 'quarterly'
+        ELSE 'annually' END
+}]->(s);
+
+// 6.8 Integration with existing AEON DT nodes
+
+// Connect to Equipment
+MATCH (s:InformationStream)
+WHERE s.streamType = 'real-time'
+WITH s LIMIT 120
+MATCH (e:Equipment)
+WHERE rand() < 0.05
+CREATE (s)-[:MONITORS_EQUIPMENT {
+    frequency: '1 second',
+    dataPoints: toString(toInteger(rand() * 20) + 5)
+}]->(e);
+
+// Connect to Process
+MATCH (s:InformationStream)
+WHERE s.streamType IN ['batch', 'analytics']
+WITH s LIMIT 200
+MATCH (p:Process)
+WHERE rand() < 0.05
+CREATE (s)-[:TRACKS_PROCESS {
+    granularity: CASE toInteger(rand() * 3)
+        WHEN 0 THEN 'step-level'
+        WHEN 1 THEN 'phase-level'
+        ELSE 'process-level' END
+}]->(p);
+
+// Connect to CVE
+MATCH (s:SecurityStream)
+WITH s LIMIT 100
+MATCH (cve:CVE)
+WHERE rand() < 0.0001
+CREATE (s)-[:DETECTS_VULNERABILITY {
+    detectionMethod: CASE toInteger(rand() * 3)
+        WHEN 0 THEN 'signature-based'
+        WHEN 1 THEN 'behavior-based'
+        ELSE 'anomaly-based' END
+}]->(cve);
+
+// Connect to Threat
+MATCH (s:SecurityStream)
+WITH s LIMIT 100
+MATCH (t:Threat)
+WHERE rand() < 0.01
+CREATE (s)-[:IDENTIFIES_THREAT {
+    confidenceLevel: toString(70 + toInteger(rand() * 30)) + '%',
+    responseTime: toString(toInteger(rand() * 10) + 1) + ' seconds'
+}]->(t);
+
+// Connect to Device
+MATCH (src:SensorSource)
+WITH src LIMIT 400
+MATCH (d:Device)
+WHERE rand() < 0.05
+CREATE (src)-[:INSTALLED_ON {
+    installationDate: date({year: 2020 + toInteger(rand() * 5), month: toInteger(rand() * 12) + 1, day: toInteger(rand() * 28) + 1}),
+    calibrationDate: date({year: 2024, month: toInteger(rand() * 12) + 1, day: toInteger(rand() * 28) + 1})
+}]->(d);
+
+// Connect to SoftwareComponent
+MATCH (c:DataConsumer)
+WHERE c.consumerType = 'analytics'
+WITH c LIMIT 300
+MATCH (sc:SoftwareComponent)
+WHERE rand() < 0.01
+CREATE (c)-[:USES_SOFTWARE {
+    version: toString(toInteger(rand() * 5) + 1) + '.' + toString(toInteger(rand() * 10)),
+    license: CASE toInteger(rand() * 3)
+        WHEN 0 THEN 'commercial'
+        WHEN 1 THEN 'open-source'
+        ELSE 'enterprise' END
+}]->(sc);
+
+// ═══════════════════════════════════════════════════
+// PART 7: CREATE INDEXES FOR PERFORMANCE
+// ═══════════════════════════════════════════════════
+
+CREATE INDEX stream_id IF NOT EXISTS FOR (s:InformationStream) ON (s.id);
+CREATE INDEX stream_type IF NOT EXISTS FOR (s:InformationStream) ON (s.streamType);
+CREATE INDEX source_id IF NOT EXISTS FOR (ds:DataSource) ON (ds.id);
+CREATE INDEX consumer_id IF NOT EXISTS FOR (dc:DataConsumer) ON (dc.id);
+CREATE INDEX processor_id IF NOT EXISTS FOR (dp:DataProcessor) ON (dp.id);
+CREATE INDEX quality_id IF NOT EXISTS FOR (qm:QualityMetric) ON (qm.id);
+CREATE INDEX perf_id IF NOT EXISTS FOR (pm:PerformanceMetric) ON (pm.id);
+CREATE INDEX sla_id IF NOT EXISTS FOR (sla:SLA) ON (sla.id);
+CREATE INDEX alert_id IF NOT EXISTS FOR (a:Alert) ON (a.id);
+
+// ═══════════════════════════════════════════════════
+// DEPLOYMENT COMPLETE
+// ═══════════════════════════════════════════════════
+// Expected Results:
+// - InformationStream nodes: 600
+// - DataSource nodes: 1,200
+// - DataConsumer nodes: 1,200
+// - DataProcessor nodes: 1,500
+// - QualityMetric nodes: 500
+// - PerformanceMetric nodes: 500
+// - SLA nodes: 300
+// - Alert nodes: 200
+// TOTAL NODES: 6,000
+//
+// - Internal relationships: ~20,000
+// - Integration relationships: ~30,000+
+// TOTAL RELATIONSHIPS: 50,000+
+// ═══════════════════════════════════════════════════

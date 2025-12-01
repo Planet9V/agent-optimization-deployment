@@ -1,0 +1,250 @@
+================================================================================
+ARCHIVE RECOMMENDATIONS - QUICK REFERENCE
+Generated: 2025-11-25
+================================================================================
+
+EXECUTIVE SUMMARY
+- Total Project Size: ~26GB
+- Immediate Safe Archival: 7.5GB (UNTRACKED_FILES_BACKUP + Old Ontologies)
+- Additional Safe Archival: 7.4GB (Git Backups - after verification)
+- Active Retention: 11.2GB (projects + training data + dependencies)
+
+STATUS: READY FOR IMPLEMENTATION
+
+================================================================================
+IMMEDIATE ACTIONS (Safe to execute now)
+================================================================================
+
+1. CREATE ARCHIVE LOCATION
+   mkdir -p /home/jim/ARCHIVE_2025_11_25/{Ontology_Versions,Git_Backups_20251125}
+
+2. ARCHIVE UNTRACKED BACKUP (7.4GB - MINIMAL RISK)
+   cp -r /home/jim/2_OXOT_Projects_Dev/UNTRACKED_FILES_BACKUP \
+         /home/jim/ARCHIVE_2025_11_25/UNTRACKED_BACKUP_20251125
+
+3. ARCHIVE OLD ONTOLOGY VERSIONS (149M - LOW RISK)
+   For: 1_Working_Directory_2025_OCT_30
+        2_Working_Directory_2025_Nov_11
+        AEON_DT_CyberSec_Threat_Intel
+        AEON_DT_CyberSec_Threat_Intel_2025_10_30
+   Action: mv to /home/jim/ARCHIVE_2025_11_25/Ontology_Versions/
+
+4. VERIFY SIZES
+   du -sh /home/jim/ARCHIVE_2025_11_25/*
+   Expected: 7.4GB + 149M
+
+================================================================================
+FOLDERS TO KEEP ACTIVE (11.2GB)
+================================================================================
+
+CRITICAL (Main Projects):
+✓ 1_AEON_Cyber_DTv3_2025-11-19/                    881M
+✓ 4_AEON_DT_CyberDTc3_2025_11_25/                  1.8M
+✓ AEON_Training_data_NER10/                        895M
+✓ 1_AEON_DT_CyberSecurity_Wiki_Current/            2.1M
+✓ 1_2025_11-25_documentation_no_NER11/             32M
+
+IMPORTANT (Tools & Scripts):
+✓ node_modules/                                    894M (rebuild via npm install)
+✓ scripts/                                         35M
+✓ tests/                                           2.2M
+
+REFERENCE (Documentation & Data):
+✓ 10_Ontologies/AEON_DR_Cybersec_Threat_Intelv2/   724M (keep current version)
+✓ docs/, data/, lib/, src/, config/                ~8.6M
+
+================================================================================
+FOLDERS TO ARCHIVE (7.5GB minimum, 14.9GB maximum)
+================================================================================
+
+SAFE ARCHIVAL (Untracked Files):
+→ UNTRACKED_FILES_BACKUP/                          7.4GB
+  - Contains duplicates of root directories
+  - Risk: MINIMAL (everything is redundant elsewhere)
+  - Recovery: Instant (copy back from archive)
+
+SUPERSEDED VERSIONS (Old Ontologies):
+→ 10_Ontologies/1_Working_Directory_2025_OCT_30/   139M
+→ 10_Ontologies/2_Working_Directory_2025_Nov_11/   928K
+→ 10_Ontologies/AEON_DT_CyberSec_Threat_Intel/     7.2M
+→ 10_Ontologies/AEON_DT_CyberSec_Threat_Intel_2025_10_30/  2.2M
+  - Risk: LOW (superseded by v2, available in git history)
+  - Recovery: Easy (restore from archive or git)
+
+BACKUP SNAPSHOTS (Optional - after Git Verification):
+→ backups/                                         7.4GB
+  - Pre-commit snapshots and version backups
+  - Risk: MEDIUM (but git is source of truth)
+  - Recovery: Via git history (not strictly needed)
+
+================================================================================
+DECISION POINTS PENDING
+================================================================================
+
+1. TRAINING DATA AUDIT (Agent 4 - PENDING)
+   Location: UNTRACKED_FILES_BACKUP/Training_Data_Check_to_see/ (120M)
+   Status: Difference found vs AEON_Training_data_NER10
+   Action: HOLD in archive until Agent 4 completes redundancy audit
+   Decision: If unique → restore; If duplicate → confirm deletion
+
+2. NEO4J IMPORT VALIDATION (In Progress)
+   Locations: UNTRACKED_FILES_BACKUP/Import 1 NOV 2025/ (1.3GB)
+              UNTRACKED_FILES_BACKUP/Import_to_neo4j/ (165M)
+   Status: Import work may be complete but unconfirmed
+   Action: HOLD in archive until neo4j schema validation complete
+   Decision: If imported → keep archived; If needed → restore
+
+3. GIT HISTORY VERIFICATION (Required before moving)
+   Check:  git log --oneline | wc -l          (Should be 100+)
+           git branch -a                       (Should show all branches)
+           git log gap-002                     (Should exist)
+   Action: Only move git backups after confirming full history
+
+================================================================================
+SIZE IMPACT SUMMARY
+================================================================================
+
+Current State:      26GB total project size
+After PHASE 1:      ~18.5GB (7.5GB archived)
+After PHASE 2:      ~11.1GB (14.9GB archived + node_modules deleted)
+
+Note: node_modules (894M) rebuilt on demand with: npm install
+
+================================================================================
+RECOVERY SCENARIOS
+================================================================================
+
+Scenario 1: Need Old Ontology Files
+  Command:  cp -r /home/jim/ARCHIVE_2025_11_25/Ontology_Versions/<dir> .
+  Time:     <5 seconds
+
+Scenario 2: Revert to Pre-Gap-002 State
+  Command:  cp -r /home/jim/ARCHIVE_2025_11_25/Git_Backups_20251125/pre-gap002-commit/* .
+  Time:     <30 seconds
+  OR use:   git checkout <old-commit-hash>
+
+Scenario 3: Rebuild Dependencies
+  Command:  npm install
+  Time:     2-5 minutes
+
+Scenario 4: Restore Training Data Version
+  Command:  Location already in AEON_Training_data_NER10 (kept active)
+  Time:     Immediate
+
+================================================================================
+IMPLEMENTATION SCRIPTS
+================================================================================
+
+SAFE COPY SCRIPT (no files deleted):
+---
+#!/bin/bash
+set -e
+mkdir -p /home/jim/ARCHIVE_2025_11_25/{Ontology_Versions,Git_Backups_20251125}
+cd /home/jim/2_OXOT_Projects_Dev
+
+# Copy untracked backup
+cp -r UNTRACKED_FILES_BACKUP /home/jim/ARCHIVE_2025_11_25/UNTRACKED_BACKUP_20251125
+
+# Copy old ontologies
+cd 10_Ontologies
+for dir in 1_Working_Directory_2025_OCT_30 2_Working_Directory_2025_Nov_11 \
+           AEON_DT_CyberSec_Threat_Intel AEON_DT_CyberSec_Threat_Intel_2025_10_30; do
+  [ -d "$dir" ] && cp -r "$dir" /home/jim/ARCHIVE_2025_11_25/Ontology_Versions/
+done
+
+echo "✓ Copies complete. Run move script only after verification."
+du -sh /home/jim/ARCHIVE_2025_11_25/
+---
+
+MOVE SCRIPT (executes after copy verification):
+---
+#!/bin/bash
+set -e
+read -p "WARNING: Moving files. Type 'YES' to confirm: " confirm
+[ "$confirm" = "YES" ] || exit 1
+
+cd /home/jim/2_OXOT_Projects_Dev
+
+# Move untracked
+[ -d UNTRACKED_FILES_BACKUP ] && mv UNTRACKED_FILES_BACKUP /home/jim/ARCHIVE_2025_11_25/
+
+# Move ontologies
+cd 10_Ontologies
+for dir in 1_Working_Directory_2025_OCT_30 2_Working_Directory_2025_Nov_11 \
+           AEON_DT_CyberSec_Threat_Intel AEON_DT_CyberSec_Threat_Intel_2025_10_30; do
+  [ -d "$dir" ] && mv "$dir" /home/jim/ARCHIVE_2025_11_25/Ontology_Versions/
+done
+
+# Move git backups (ONLY if git history verified)
+cd ..
+[ -d backups ] && mv backups /home/jim/ARCHIVE_2025_11_25/Git_Backups_20251125
+
+echo "✓ Archival complete!"
+du -sh /home/jim/ARCHIVE_2025_11_25/
+---
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. REVIEW DETAILED REPORT
+   Location: /home/jim/2_OXOT_Projects_Dev/1_2025_11-25_documentation_no_NER11/audit/
+             ARCHIVE_RECOMMENDATIONS.md
+   Length: 688 lines with complete analysis
+
+2. WAIT FOR APPROVALS
+   - Agent 4 redundancy audit (Training Data)
+   - Neo4j import validation
+   - Optional: Git history verification before backup archival
+
+3. EXECUTE PHASE 1 (Safe)
+   - Create archive location
+   - Copy UNTRACKED_FILES_BACKUP
+   - Copy old ontologies
+
+4. EXECUTE PHASE 3 (After Approvals)
+   - Move files to archive (not just copy)
+   - Verify active project still functional
+   - Update git status
+
+5. LONG-TERM STORAGE
+   - Month 1-3: Keep on local drive (fast recovery)
+   - Month 3-6: Move to external USB (medium-term)
+   - Month 6+: Consider cloud archive (AWS Glacier, cost optimization)
+
+================================================================================
+QUESTIONS ANSWERED
+================================================================================
+
+Q: Is it safe to archive UNTRACKED_FILES_BACKUP?
+A: YES - It's untracked (not in git), contains exact duplicates of root folders.
+   Recovery: Copy back instantly.
+
+Q: Why keep AEON_Training_data_NER10 but archive Training_Data_Check_to_see?
+A: Training_Data_Check_to_see is untracked but contains DIFFERENT data.
+   Decision pending Agent 4 audit - held in archive as precaution.
+
+Q: Can we delete backups/ directory?
+A: ONLY after git verification. Git history is source of truth for recovery.
+   If all branches/commits in git, backups are redundant.
+
+Q: What if node_modules is needed later?
+A: npm install rebuilds it (894M) in 2-5 minutes. Safe to archive.
+
+Q: How do we recover if something goes wrong?
+A: (1) Copy from archive, (2) Use git history, (3) Rebuild via npm install
+   All options available, minimal downtime.
+
+Q: Timeline for implementation?
+A: Immediate for safe copies, conditional for moves (pending audits/verification)
+
+Q: Storage targets if keeping archive?
+A: Local (fast recovery): Now
+   External USB (medium): Month 3
+   Cloud (long-term): Month 6+
+
+================================================================================
+Contact Point: Jim (Project Owner)
+Report Status: COMPLETE - Ready for Implementation
+Last Updated: 2025-11-25 21:25 UTC
+================================================================================

@@ -1,0 +1,190 @@
+{
+  "null_statistics": {
+    "total_relationships": 1208,
+    "null_cwe_ids": 1118,
+    "null_capec_ids": 1208,
+    "both_null": 1118,
+    "both_not_null": 0
+  },
+  "sample_relationships": [
+    {
+      "cwe_id": "cwe-1297",
+      "cwe_name": "Unprotected Confidential Information on Device is Accessible by OSAT Vendors",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2303,
+      "capec_internal_id": 185241
+    },
+    {
+      "cwe_id": "cwe-1311",
+      "cwe_name": "Improper Translation of Security Attributes by Fabric Bridge",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2315,
+      "capec_internal_id": 185241
+    },
+    {
+      "cwe_id": null,
+      "cwe_name": "Insufficient Granularity of Access Control",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2225,
+      "capec_internal_id": 185241
+    },
+    {
+      "cwe_id": null,
+      "cwe_name": "Incorrect Default Permissions",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2506,
+      "capec_internal_id": 185241
+    },
+    {
+      "cwe_id": "cwe-1318",
+      "cwe_name": "Missing Support for Security Features in On-chip Fabrics or Buses",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2322,
+      "capec_internal_id": 185241
+    },
+    {
+      "cwe_id": null,
+      "cwe_name": "Unrestricted Upload of File with Dangerous Type",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2659,
+      "capec_internal_id": 185241
+    },
+    {
+      "cwe_id": null,
+      "cwe_name": "Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2326,
+      "capec_internal_id": 185241
+    },
+    {
+      "cwe_id": null,
+      "cwe_name": "Improper Authorization",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2516,
+      "capec_internal_id": 185241
+    },
+    {
+      "cwe_id": null,
+      "cwe_name": "Incorrect Permission Assignment for Critical Resource",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2931,
+      "capec_internal_id": 185241
+    },
+    {
+      "cwe_id": null,
+      "cwe_name": "Protection Mechanism Failure",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2914,
+      "capec_internal_id": 185241
+    },
+    {
+      "cwe_id": null,
+      "cwe_name": "Binding to an Unrestricted IP Address",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2332,
+      "capec_internal_id": 185241
+    },
+    {
+      "cwe_id": null,
+      "cwe_name": "Improper Protection for Outbound Error Messages and Alert Signals",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2325,
+      "capec_internal_id": 185241
+    },
+    {
+      "cwe_id": "cwe-1193",
+      "cwe_name": "Power-On of Untrusted Execution Core Before Enabling Fabric Access Control",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2218,
+      "capec_internal_id": 185241
+    },
+    {
+      "cwe_id": "cwe-1315",
+      "cwe_name": "Improper Setting of Bus Controlling Capability in Fabric End-point",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2319,
+      "capec_internal_id": 185241
+    },
+    {
+      "cwe_id": null,
+      "cwe_name": "On-Chip Debug and Test Interface With Improper Access Control",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2216,
+      "capec_internal_id": 185241
+    },
+    {
+      "cwe_id": "cwe-1314",
+      "cwe_name": "Missing Write Protection for Parametric Data Values",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2318,
+      "capec_internal_id": 185241
+    },
+    {
+      "cwe_id": null,
+      "cwe_name": "Improper Neutralization of Special Elements in Output Used by a Downstream Component ('Injection')",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2933,
+      "capec_internal_id": 185258
+    },
+    {
+      "cwe_id": null,
+      "cwe_name": "Compiler Optimization Removal or Modification of Security-critical Code",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2932,
+      "capec_internal_id": 185258
+    },
+    {
+      "cwe_id": null,
+      "cwe_name": "Buffer Copy without Checking Size of Input ('Classic Buffer Overflow')",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2220,
+      "capec_internal_id": 185258
+    },
+    {
+      "cwe_id": null,
+      "cwe_name": "Integer Overflow to Buffer Overflow",
+      "capec_id": null,
+      "capec_name": "",
+      "cwe_internal_id": 2897,
+      "capec_internal_id": 185258
+    }
+  ],
+  "sample_cwe_properties": {
+    "uco_enriched_date": "2025-10-27T19:25:16.390000000+00:00",
+    "cwe_id": "1",
+    "description": "This category has been deprecated. It was originally used for organizing the Development View (CWE-699), but it introduced unnecessary complexity and depth to the resulting tree.",
+    "uco_class": "uco:CWE",
+    "created_by": "AEON_INTEGRATION_WAVE4",
+    "tagging_method": "retroactive",
+    "is_shared": true,
+    "name": "DEPRECATED: Location",
+    "namespace": "CybersecurityKB",
+    "id": "cwe-1",
+    "tagged_date": "2025-10-31T21:39:27.620000000+00:00",
+    "validation_status": "VALIDATED",
+    "customer_namespace": "shared:cwe",
+    "category": "category",
+    "uco_uri": "http://purl.org/cyber/cwe#CWE",
+    "status": "Deprecated"
+  },
+  "sample_capec_properties": null
+}

@@ -1,0 +1,35 @@
+[2025-11-21 19:32:29] ============================================================
+[2025-11-21 19:32:29] COMMUNICATIONS SECTOR COMPLETION DEPLOYMENT
+[2025-11-21 19:32:29] ============================================================
+[2025-11-21 19:32:29] 
+--- CREATING MISSING NODE TYPES ---
+
+[2025-11-21 19:32:29] Creating 1000 RoutingProcess nodes...
+[2025-11-21 19:32:30]   Created 500/1000 RoutingProcess nodes
+[2025-11-21 19:32:30]   Created 1000/1000 RoutingProcess nodes
+[2025-11-21 19:32:30] ✅ Created 1000 RoutingProcess nodes
+[2025-11-21 19:32:30] Creating 500 NetworkManagementSystem nodes...
+[2025-11-21 19:32:30]   Created 250/500 NetworkManagementSystem nodes
+[2025-11-21 19:32:30]   Created 500/500 NetworkManagementSystem nodes
+[2025-11-21 19:32:30] ✅ Created 500 NetworkManagementSystem nodes
+[2025-11-21 19:32:30] Creating 300 CommunicationsAlert nodes...
+[2025-11-21 19:32:30] ✅ Created 300 CommunicationsAlert nodes
+[2025-11-21 19:32:30] Creating 150 CommunicationsZone nodes...
+[2025-11-21 19:32:30] ✅ Created 150 CommunicationsZone nodes
+[2025-11-21 19:32:30] Creating 50 MajorAsset nodes...
+[2025-11-21 19:32:30] ✅ Created 50 MajorAsset nodes
+[2025-11-21 19:32:30] 
+--- CREATING RELATIONSHIPS ---
+
+[2025-11-21 19:32:30] Creating HAS_PROPERTY relationships...
+Traceback (most recent call last):
+  File "/home/jim/2_OXOT_Projects_Dev/scripts/complete_communications_deployment.py", line 531, in <module>
+    main()
+  File "/home/jim/2_OXOT_Projects_Dev/scripts/complete_communications_deployment.py", line 524, in main
+    deployer.deploy_all()
+  File "/home/jim/2_OXOT_Projects_Dev/scripts/complete_communications_deployment.py", line 503, in deploy_all
+    self.create_has_property_relationships(session)
+  File "/home/jim/2_OXOT_Projects_Dev/scripts/complete_communications_deployment.py", line 235, in create_has_property_relationships
+    device_props = result.single()['created'] if result.single() else 0
+                   ~~~~~~~~~~~~~~~^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable

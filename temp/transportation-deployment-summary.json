@@ -1,0 +1,45 @@
+{
+  "sector": "TRANSPORTATION",
+  "timestamp": "2025-11-21 22:37:01",
+  "target_nodes": 28000,
+  "target_relationships": 84000,
+  "upgrade_size": 27800,
+  "subsectors": {
+    "Highway_Automotive": {
+      "percentage": 40,
+      "nodes": 11200,
+      "focus": "Roadway infrastructure, vehicles, traffic control, intelligent transportation systems"
+    },
+    "Aviation": {
+      "percentage": 30,
+      "nodes": 8400,
+      "focus": "Aircraft, airports, air traffic control, navigation systems, FAA regulated infrastructure"
+    },
+    "Rail_Maritime_Transit": {
+      "percentage": 30,
+      "nodes": 8400,
+      "focus": "Rail systems, maritime equipment, mass transit, intermodal facilities"
+    }
+  },
+  "node_distribution": {
+    "Equipment": 4200,
+    "Process": 2800,
+    "Measurement": 18200,
+    "Location": 1200,
+    "Standard": 600,
+    "Organization": 500,
+    "Threat": 400,
+    "Event": 100
+  },
+  "standards": [
+    "DOT (Department of Transportation)",
+    "FAA (Federal Aviation Administration)",
+    "FRA (Federal Railroad Administration)",
+    "FMCSA (Federal Motor Carrier Safety Administration)",
+    "TSA (Transportation Security Administration)",
+    "ASCE Infrastructure Standards",
+    "IEC 62443 (OT Security)",
+    "NIST CSF (Cybersecurity Framework)"
+  ],
+  "status": "READY_FOR_DEPLOYMENT"
+}

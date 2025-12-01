@@ -1,0 +1,280 @@
+{
+  "analysis_date": "2025-11-08",
+  "neo4j_state": {
+    "node_counts": {
+      "CVE": 316552,
+      "SoftwareComponent": 40000,
+      "Dependency": 40000,
+      "Measurement": 37000,
+      "Device": 15884,
+      "Provenance": 15000,
+      "Property": 14700,
+      "Entity": 12256,
+      "Package": 10017,
+      "SoftwareLicense": 8300,
+      "Build": 8000,
+      "Indicator": 5000,
+      "BuildSystem": 5000,
+      "Artifact": 5000,
+      "LicenseCompliance": 5000,
+      "Threat": 2453,
+      "CWE": 2177,
+      "Command": 2000,
+      "BuildTool": 2000,
+      "LicensePolicy": 2000,
+      "ConfidenceScore": 2000,
+      "Service": 1500,
+      "Control": 1270,
+      "Function": 1000,
+      "DetectionSignature": 1000,
+      "Process": 874,
+      "Application": 819,
+      "AttackPattern": 815,
+      "DistributedEnergyResource": 750,
+      "ATT_CK_Technique": 691,
+      "CAPEC": 613,
+      "VirtualMachine": 600,
+      "SocialMediaPost": 600,
+      "SocialNetwork": 600,
+      "TTP": 536,
+      "WaterAlert": 500,
+      "PhysicalServer": 400,
+      "SocialMediaAccount": 400,
+      "TransmissionLine": 400,
+      "NetworkDevice": 348,
+      "Mitigation": 301,
+      "Workstation": 300,
+      "VirtualMachineInstance": 300,
+      "CourseOfAction": 276,
+      "MobileDevice": 200,
+      "StorageArray": 200,
+      "Datastore": 200,
+      "Database": 200,
+      "CloudStorageAccount": 200,
+      "VirtualNetwork": 200,
+      "ServerlessFunction": 200,
+      "WaterZone": 200,
+      "Substation": 200,
+      "null": 192,
+      "Server": 158,
+      "Document": 118,
+      "Component": 115,
+      "Equipment": 111,
+      "PeripheralDevice": 100,
+      "KubernetesCluster": 100,
+      "CloudAccount": 100,
+      "Tool": 92,
+      "ICS_Technique": 83,
+      "Metadata": 65,
+      "Vulnerability": 43,
+      "System": 38,
+      "Protocol": 30,
+      "STIX_Object": 30,
+      "SurveillanceSystem": 29,
+      "AttackTactic": 28,
+      "PhysicalAccessControl": 28,
+      "Sector": 24,
+      "Zone": 21,
+      "Personality_Trait": 20,
+      "Behavioral_Pattern": 20,
+      "ICS_Asset": 16,
+      "Critical_Infrastructure_Sector": 16,
+      "UCO_Observable": 15,
+      "ATT_CK_Tactic": 14,
+      "SBOMTool": 13,
+      "NetworkSegment": 13,
+      "ICS_Tactic": 12,
+      "Insider_Threat_Indicator": 11,
+      "ICS_Protocol": 10,
+      "Investigation_Case": 10,
+      "DataCenterFacility": 10,
+      "Tag": 9,
+      "ImplementationPattern": 7,
+      "Customer": 7,
+      "Cognitive_Bias": 7,
+      "Social_Engineering_Tactic": 7,
+      "uco_core_UcoObject": 6,
+      "TARGET_SECTOR": 6,
+      "PsychologicalPattern": 6,
+      "SBOMStandard": 5,
+      "Facility": 5,
+      "Organization": 4,
+      "DiscoursePosition": 4,
+      "Motivation_Factor": 4,
+      "APT_GROUP": 3,
+      "CAMPAIGN": 3,
+      "MALWARE": 3,
+      "VULNERABILITY": 3,
+      "TOOL": 3,
+      "NATION_STATE": 3,
+      "MaliciousPackage": 3,
+      "AttackVector": 3,
+      "Registry": 3,
+      "Register": 3,
+      "Cybersecurity_Attack": 1,
+      "Project": 1,
+      "ThreatModel": 1,
+      "Assessment": 1,
+      "Incident": 1
+    },
+    "cve_cwe_rels": 430,
+    "cwe_capec_rels": 1209,
+    "capec_attack_rels": 270,
+    "complete_chains": 0,
+    "cve_with_attack_paths": 18,
+    "reachable_attack_techniques": 17,
+    "cwe_overlap": {
+      "cve_cwes": 111,
+      "capec_cwes": 337,
+      "overlap": 1,
+      "overlap_pct": 0.9
+    },
+    "sample_chains": []
+  },
+  "stix_mappings": {
+    "total_cve_references": 8,
+    "unique_cves": 1,
+    "unique_techniques": 5,
+    "sample_mappings": [
+      {
+        "cve": "",
+        "attack_id": "T1555.005",
+        "attack_name": "Password Managers",
+        "type": "attack-pattern"
+      },
+      {
+        "cve": "",
+        "attack_id": "T1190",
+        "attack_name": "Exploit Public-Facing Application",
+        "type": "attack-pattern"
+      },
+      {
+        "cve": "",
+        "attack_id": "T1190",
+        "attack_name": "Exploit Public-Facing Application",
+        "type": "attack-pattern"
+      },
+      {
+        "cve": "",
+        "attack_id": "T1210",
+        "attack_name": "Exploitation of Remote Services",
+        "type": "attack-pattern"
+      },
+      {
+        "cve": "",
+        "attack_id": "T1210",
+        "attack_name": "Exploitation of Remote Services",
+        "type": "attack-pattern"
+      },
+      {
+        "cve": "",
+        "attack_id": "T1210",
+        "attack_name": "Exploitation of Remote Services",
+        "type": "attack-pattern"
+      },
+      {
+        "cve": "",
+        "attack_id": "T1218.001",
+        "attack_name": "Compiled HTML File",
+        "type": "attack-pattern"
+      },
+      {
+        "cve": "",
+        "attack_id": "T1223",
+        "attack_name": "Compiled HTML File",
+        "type": "attack-pattern"
+      }
+    ],
+    "techniques_with_most_cves": [
+      [
+        "T1210",
+        3
+      ],
+      [
+        "T1190",
+        2
+      ],
+      [
+        "T1555.005",
+        1
+      ],
+      [
+        "T1218.001",
+        1
+      ],
+      [
+        "T1223",
+        1
+      ]
+    ]
+  },
+  "ics_sec_kg": {
+    "files_found": [
+      "scenario2.ttl",
+      "ATTACK.ttl",
+      "CAPEC.ttl",
+      "CVE.ttl",
+      "ICSA.ttl",
+      "CVSS.ttl",
+      "CPE.ttl",
+      "integrated.ttl",
+      "CWE.ttl"
+    ],
+    "cross_references": {
+      "scenario2.ttl": {
+        "has_cve": true,
+        "has_cwe": true,
+        "has_capec": true,
+        "has_attack": true
+      },
+      "ATTACK.ttl": {
+        "has_cve": false,
+        "has_cwe": false,
+        "has_capec": true,
+        "has_attack": true
+      },
+      "CAPEC.ttl": {
+        "has_cve": false,
+        "has_cwe": true,
+        "has_capec": true,
+        "has_attack": true
+      },
+      "CVE.ttl": {
+        "has_cve": true,
+        "has_cwe": true,
+        "has_capec": false,
+        "has_attack": false
+      },
+      "ICSA.ttl": {
+        "has_cve": true,
+        "has_cwe": true,
+        "has_capec": false,
+        "has_attack": true
+      },
+      "CVSS.ttl": {
+        "has_cve": true,
+        "has_cwe": false,
+        "has_capec": false,
+        "has_attack": true
+      },
+      "CPE.ttl": {
+        "has_cve": true,
+        "has_cwe": true,
+        "has_capec": true,
+        "has_attack": true
+      },
+      "integrated.ttl": {
+        "has_cve": true,
+        "has_cwe": true,
+        "has_capec": true,
+        "has_attack": true
+      },
+      "CWE.ttl": {
+        "has_cve": false,
+        "has_cwe": true,
+        "has_capec": true,
+        "has_attack": false
+      }
+    }
+  }
+}

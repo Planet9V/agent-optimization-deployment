@@ -1,0 +1,9 @@
+{"timestamp": "2025-11-01T00:04:53.752938", "operation": "create_checkpoint_collection", "status": "FAILED", "details": {"error": "Unexpected Response: 401 (Unauthorized)\nRaw response content:\nb'Must provide an API key or an Authorization bearer token'"}}
+{"timestamp": "2025-11-01T00:05:41.140881", "operation": "create_checkpoint_collection", "status": "FAILED", "details": {"error": "[SSL: WRONG_VERSION_NUMBER] wrong version number (_ssl.c:1000)"}}
+{"timestamp": "2025-11-01T00:05:54.097166", "operation": "create_checkpoint_collection", "status": "SUCCESS", "details": {"collection": "ontology_checkpoints", "vector_size": 384, "distance_metric": "COSINE"}}
+{"timestamp": "2025-11-01T00:05:54.106596", "operation": "create_test_checkpoint", "status": "SUCCESS", "details": {"checkpoint_id": "INITIAL_SETUP"}}
+{"timestamp": "2025-11-01T00:05:54.339921", "operation": "create_operation_log_collection", "status": "SUCCESS", "details": {"collection": "operation_logs", "vector_size": 384, "distance_metric": "COSINE"}}
+{"timestamp": "2025-11-01T00:05:54.343121", "operation": "create_test_operation_log", "status": "SUCCESS", "details": {"operation_id": "SETUP_LOG_001"}}
+{"timestamp": "2025-11-01T00:05:54.344188", "operation": "verify_collections", "status": "SUCCESS", "details": {"ontology_checkpoints": true, "operation_logs": true}}
+{"timestamp": "2025-11-01T00:05:54.346188", "operation": "get_collection_info", "status": "SUCCESS", "details": {"name": "ontology_checkpoints", "vectors_count": null, "points_count": 1, "status": "green", "config": {"vector_size": 384, "distance": "Cosine"}}}
+{"timestamp": "2025-11-01T00:05:54.347085", "operation": "get_collection_info", "status": "SUCCESS", "details": {"name": "operation_logs", "vectors_count": null, "points_count": 1, "status": "green", "config": {"vector_size": 384, "distance": "Cosine"}}}

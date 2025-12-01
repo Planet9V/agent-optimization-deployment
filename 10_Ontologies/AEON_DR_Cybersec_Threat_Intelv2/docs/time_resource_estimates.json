@@ -1,0 +1,342 @@
+{
+  "generated_at": "2025-11-01T21:56:44.158574",
+  "approach_a": {
+    "name": "Merge & Normalize (Keep Both Sources)",
+    "phases": [
+      {
+        "phase": "1. Preparation",
+        "tasks": [
+          {
+            "task": "Full database backup",
+            "time_minutes": 5,
+            "risk": "low"
+          },
+          {
+            "task": "Create merge script",
+            "time_minutes": 30,
+            "risk": "low"
+          },
+          {
+            "task": "Test on sample data (1000 CVEs)",
+            "time_minutes": 20,
+            "risk": "medium"
+          }
+        ]
+      },
+      {
+        "phase": "2. Constraint Management",
+        "tasks": [
+          {
+            "task": "Drop uniqueness constraint",
+            "time_minutes": 2,
+            "risk": "low"
+          },
+          {
+            "task": "Verify constraint removal",
+            "time_minutes": 2,
+            "risk": "low"
+          }
+        ]
+      },
+      {
+        "phase": "3. Merge Execution",
+        "tasks": [
+          {
+            "task": "Run merge script (179,522 CVEs)",
+            "time_minutes": 179.5,
+            "risk": "medium"
+          },
+          {
+            "task": "Monitor progress",
+            "time_minutes": 10,
+            "risk": "low"
+          }
+        ]
+      },
+      {
+        "phase": "4. Property Updates",
+        "tasks": [
+          {
+            "task": "Update relationship properties",
+            "time_minutes": 12.0,
+            "risk": "low"
+          },
+          {
+            "task": "Add source labels",
+            "time_minutes": 15,
+            "risk": "low"
+          }
+        ]
+      },
+      {
+        "phase": "5. Validation",
+        "tasks": [
+          {
+            "task": "Run validation queries",
+            "time_minutes": 10,
+            "risk": "low"
+          },
+          {
+            "task": "Check data integrity",
+            "time_minutes": 10,
+            "risk": "medium"
+          }
+        ]
+      },
+      {
+        "phase": "6. EPSS Re-enrichment",
+        "tasks": [
+          {
+            "task": "Re-run EPSS enrichment",
+            "time_minutes": 90,
+            "risk": "medium"
+          },
+          {
+            "task": "Validate EPSS data",
+            "time_minutes": 10,
+            "risk": "low"
+          }
+        ]
+      },
+      {
+        "phase": "7. Finalization",
+        "tasks": [
+          {
+            "task": "Recreate constraint (if needed)",
+            "time_minutes": 2,
+            "risk": "low"
+          },
+          {
+            "task": "Final validation",
+            "time_minutes": 10,
+            "risk": "low"
+          },
+          {
+            "task": "Documentation",
+            "time_minutes": 30,
+            "risk": "low"
+          }
+        ]
+      }
+    ],
+    "totals": {
+      "best_case_minutes": 393.8,
+      "best_case_hours": 6.56,
+      "expected_case_minutes": 437.5,
+      "expected_case_hours": 7.29,
+      "worst_case_minutes": 614.9,
+      "worst_case_hours": 10.25
+    }
+  },
+  "approach_b": {
+    "name": "Clean Re-import (NVD as Single Source)",
+    "phases": [
+      {
+        "phase": "1. Preparation",
+        "tasks": [
+          {
+            "task": "Full database backup",
+            "time_minutes": 5,
+            "risk": "low"
+          },
+          {
+            "task": "Design clean import script",
+            "time_minutes": 60,
+            "risk": "medium"
+          },
+          {
+            "task": "Obtain NVD API key",
+            "time_minutes": 30,
+            "risk": "low"
+          },
+          {
+            "task": "Test on sample data (1000 CVEs)",
+            "time_minutes": 30,
+            "risk": "medium"
+          }
+        ]
+      },
+      {
+        "phase": "2. Database Cleanup",
+        "tasks": [
+          {
+            "task": "Export relationship data for reconstruction",
+            "time_minutes": 15,
+            "risk": "medium"
+          },
+          {
+            "task": "Drop all CVE nodes",
+            "time_minutes": 5,
+            "risk": "high"
+          },
+          {
+            "task": "Verify cleanup",
+            "time_minutes": 5,
+            "risk": "low"
+          }
+        ]
+      },
+      {
+        "phase": "3. NVD Import",
+        "tasks": [
+          {
+            "task": "Import 267,000 CVEs from NVD",
+            "time_minutes": 1.5,
+            "risk": "high"
+          },
+          {
+            "task": "Monitor import progress",
+            "time_minutes": 30,
+            "risk": "low"
+          }
+        ]
+      },
+      {
+        "phase": "4. Relationship Reconstruction",
+        "tasks": [
+          {
+            "task": "Recreate CWE relationships",
+            "time_minutes": 20,
+            "risk": "medium"
+          },
+          {
+            "task": "Recreate vendor/product relationships",
+            "time_minutes": 30,
+            "risk": "medium"
+          },
+          {
+            "task": "Recreate other relationships",
+            "time_minutes": 20,
+            "risk": "medium"
+          }
+        ]
+      },
+      {
+        "phase": "5. EPSS Enrichment",
+        "tasks": [
+          {
+            "task": "Run EPSS enrichment",
+            "time_minutes": 90,
+            "risk": "medium"
+          },
+          {
+            "task": "Validate EPSS data",
+            "time_minutes": 10,
+            "risk": "low"
+          }
+        ]
+      },
+      {
+        "phase": "6. Validation",
+        "tasks": [
+          {
+            "task": "Comprehensive data validation",
+            "time_minutes": 20,
+            "risk": "medium"
+          },
+          {
+            "task": "Compare with backup stats",
+            "time_minutes": 15,
+            "risk": "low"
+          },
+          {
+            "task": "Verify all relationships",
+            "time_minutes": 15,
+            "risk": "medium"
+          }
+        ]
+      },
+      {
+        "phase": "7. Finalization",
+        "tasks": [
+          {
+            "task": "Create indexes",
+            "time_minutes": 10,
+            "risk": "low"
+          },
+          {
+            "task": "Final validation",
+            "time_minutes": 10,
+            "risk": "low"
+          },
+          {
+            "task": "Documentation",
+            "time_minutes": 45,
+            "risk": "low"
+          }
+        ]
+      }
+    ],
+    "totals": {
+      "best_case_minutes": 419.9,
+      "best_case_hours": 7.0,
+      "expected_case_minutes": 466.5,
+      "expected_case_hours": 7.78,
+      "worst_case_minutes": 658.2,
+      "worst_case_hours": 10.97
+    }
+  },
+  "resources": {
+    "approach_a": {
+      "database_downtime": "Minimal (5-10 minutes during constraint changes)",
+      "api_keys": [
+        "EPSS API (existing)"
+      ],
+      "storage": {
+        "backup_space_gb": 2.5,
+        "working_space_gb": 3.0,
+        "total_gb": 5.5
+      },
+      "personnel": {
+        "developer_time_hours": 7.3,
+        "dba_time_hours": 0.5,
+        "qa_time_hours": 1.0
+      },
+      "network": "Minimal (EPSS API calls only)"
+    },
+    "approach_b": {
+      "database_downtime": "Significant (2-4 hours during re-import)",
+      "api_keys": [
+        "NVD API key (required)",
+        "EPSS API (existing)"
+      ],
+      "storage": {
+        "backup_space_gb": 2.5,
+        "working_space_gb": 4.0,
+        "total_gb": 6.5
+      },
+      "personnel": {
+        "developer_time_hours": 7.8,
+        "dba_time_hours": 2.0,
+        "qa_time_hours": 2.0
+      },
+      "network": "Heavy (267K CVEs from NVD API)"
+    }
+  },
+  "comparison": {
+    "time_savings_approach_a": {
+      "vs_approach_b_minutes": 29.0,
+      "vs_approach_b_hours": 0.48,
+      "percentage_faster": 6.2
+    },
+    "risk_comparison": {
+      "approach_a": "Lower overall risk - works with existing data",
+      "approach_b": "Higher risk - destructive operation, API dependencies"
+    },
+    "recommendation": "Approach A (Merge & Normalize)",
+    "rationale": [
+      "Saves 0.5 hours",
+      "Lower risk - non-destructive",
+      "Minimal downtime",
+      "Preserves VulnCheck data quality",
+      "No new API key dependencies"
+    ]
+  },
+  "assumptions": {
+    "neo4j_merge_rate": "1000 CVEs/minute",
+    "nvd_api_with_key": "50 requests/30s, 2000 CVEs/request",
+    "database_size": "2.5 GB",
+    "network_conditions": "Stable internet connection",
+    "concurrent_operations": "None (single process)"
+  }
+}

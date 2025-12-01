@@ -1,0 +1,71 @@
+# Water Management Architecture Patterns
+# Extracted from Water Management sector documentation
+
+patterns:
+  # Control Architectures
+  - label: "ARCHITECTURE"
+    pattern: "distributed control system"
+  - label: "ARCHITECTURE"
+    pattern: "centralized control"
+  - label: "ARCHITECTURE"
+    pattern: "remote monitoring"
+  - label: "ARCHITECTURE"
+    pattern: "telemetry system"
+  - label: "ARCHITECTURE"
+    pattern: "supervisory control"
+
+  # Network Architectures
+  - label: "ARCHITECTURE"
+    pattern: "ring topology"
+  - label: "ARCHITECTURE"
+    pattern: "star topology"
+  - label: "ARCHITECTURE"
+    pattern: "mesh topology"
+  - label: "ARCHITECTURE"
+    pattern: "bus topology"
+
+  # Modern Architectures
+  - label: "ARCHITECTURE"
+    pattern: "cloud SCADA"
+  - label: "ARCHITECTURE"
+    pattern: "edge computing"
+  - label: "ARCHITECTURE"
+    pattern: "fog computing"
+  - label: "ARCHITECTURE"
+    pattern: "digital twin"
+  - label: "ARCHITECTURE"
+    pattern: "IoT architecture"
+
+  # Redundancy Architectures
+  - label: "ARCHITECTURE"
+    pattern: "redundant architecture"
+  - label: "ARCHITECTURE"
+    pattern: "fail-over system"
+  - label: "ARCHITECTURE"
+    pattern: "hot standby"
+  - label: "ARCHITECTURE"
+    pattern: "cold standby"
+  - label: "ARCHITECTURE"
+    pattern: "dual redundant"
+
+  # Network Segmentation
+  - label: "ARCHITECTURE"
+    pattern: "DMZ"
+  - label: "ARCHITECTURE"
+    pattern: "OT network"
+  - label: "ARCHITECTURE"
+    pattern: "IT network"
+  - label: "ARCHITECTURE"
+    pattern: "air gap"
+  - label: "ARCHITECTURE"
+    pattern: "network segmentation"
+
+  # System Integration
+  - label: "ARCHITECTURE"
+    pattern: "cyber-physical system"
+  - label: "ARCHITECTURE"
+    pattern: "integrated automation"
+  - label: "ARCHITECTURE"
+    pattern: "plant-wide control"
+  - label: "ARCHITECTURE"
+    pattern: "multi-tier architecture"

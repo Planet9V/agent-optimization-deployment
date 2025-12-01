@@ -1,0 +1,99 @@
+{
+  "timestamp": "2025-11-01T19:26:27.628463",
+  "cve_counts": {
+    "total": 267487
+  },
+  "data_quality": {
+    "property_counts": {
+      "with_epss": 0,
+      "with_kev": 0,
+      "with_priority": 0,
+      "with_published": 267150,
+      "with_cvss": 267471,
+      "with_cvss_v3": 0,
+      "with_description": 267471
+    },
+    "completeness_pct": {
+      "epss_score": 0.0,
+      "kev_flag": 0.0,
+      "priority": 0.0,
+      "published_date": 99.87,
+      "cvss_score": 99.99,
+      "cvss_v3_score": 0.0,
+      "description": 99.99
+    },
+    "overall_score": 59.96
+  },
+  "distributions": {
+    "by_year": {
+      "2012": 5351,
+      "2013": 5324,
+      "2014": 8008,
+      "2015": 6595,
+      "2016": 6517,
+      "2017": 18113,
+      "2018": 18154,
+      "2019": 18938,
+      "2020": 19222,
+      "2021": 21950,
+      "2022": 26431,
+      "2023": 30949,
+      "2024": 40704,
+      "2025": 40894
+    },
+    "cvss_severity": {
+      "Critical (9.0-10.0)": 31256,
+      "High (7.0-8.9)": 89923,
+      "Low (0-3.9)": 31511,
+      "Medium (4.0-6.9)": 114781
+    },
+    "cve_age": {
+      "Recent (1-3 months)": 7791,
+      "Very Recent (< 1 month)": 259359
+    }
+  },
+  "existing_enrichment": {
+    "epss": {
+      "count": 0
+    },
+    "kev": {
+      "count": 0
+    },
+    "priority": {}
+  },
+  "batch_optimization": {
+    "total_cves": 267487,
+    "recommended_batch_size": 5000,
+    "estimated_batches": 54,
+    "batch_size_options": [
+      100,
+      500,
+      1000,
+      5000,
+      10000
+    ],
+    "considerations": [
+      "Larger batches = fewer transactions but higher memory",
+      "Smaller batches = more transactions but safer for large datasets",
+      "For 267,487 CVEs, 5,000 is optimal balance"
+    ]
+  },
+  "edge_cases": {
+    "missing_properties": {
+      "missing_published": 337,
+      "missing_cvss": 16,
+      "missing_both": 16
+    },
+    "very_old_cves": 0,
+    "very_new_cves": 3684,
+    "multi_label_cves": 267487
+  },
+  "recommendations": [
+    {
+      "area": "Performance",
+      "issue": "Large dataset (267,487 CVEs)",
+      "recommendation": "Use batch size 5,000 with progress tracking",
+      "priority": "HIGH"
+    }
+  ]
+}

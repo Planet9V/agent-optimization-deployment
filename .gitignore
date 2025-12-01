@@ -1,0 +1,87 @@
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Build outputs
+.next/
+dist/
+build/
+
+# Environment variables
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+
+# Test coverage
+coverage/
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+*.tmp
+
+# Test reports
+tests/reports/
+test-results*.log
+
+# Python
+__pycache__/
+venv/
+
+# Large files that exceed GitHub limits
+backups/pre-commit-2025-11-13_07-10-03/
+10_Ontologies/AEON_DR_Cybersec_Threat_Intelv2/exports/
+*.kmz
+5_Downer_Group_CRL_NZ.zip
+
+# Backups and Large Archives
+UNTRACKED_FILES_BACKUP/
+backups/
+
+# Exclude uncompressed training data and large archive
+5_NER11_Gold_Model/training_data/
+5_NER11_Gold_Model/training_data.tar.gz
+
+# ═══════════════════════════════════════════════════
+# Added 2025-12-01 - Large File Exclusions
+# ═══════════════════════════════════════════════════
+
+# Large NER11 Model Files (5.9GB - too large for git)
+5_NER11_Gold_Model/*.tar.gz
+5_NER11_Gold_Model/NER11_Gold_Model.tar.gz
+5_NER11_Gold_Model/models/ner11_v1/
+5_NER11_Gold_Model/models/ner11_v1_backup/
+5_NER11_Gold_Model/models/ner11_v1_resumed/
+5_NER11_Gold_Model/models/ner11_v2/
+5_NER11_Gold_Model/models/ner11_v3/
+
+# Memory Database Files (Binary, constantly changing)
+.swarm/*.db-shm
+.swarm/*.db-wal
+.swarm/*.db-journal
+
+# Auto-generated Metrics
+.claude-flow/metrics/*.json
+
+# Docker Backups
+docker-compose.yml.backup-*
+*.backup-*
+
+# Temporary Files
+temp/
+omega_current_state.md
+
+
+# Large data files (stored in D:\Backups\AEON_Large_Data_Files_2025-12-01\)
+5_NER11_Gold_Model/training_data.tar.gz.part_*
+AEON_Training_data_NER10/10_Ontologies/AEON_DR_Cybersec_Threat_Intelv2/exports/metadata_export_*/cve_node_properties.csv
+AEON_Training_data_NER10/10_Ontologies/AEON_DR_Cybersec_Threat_Intelv2/exports/metadata_export_*/cve_node_properties.json  
+1_AEON_Cyber_DTv3_2025-11-19/data/level6_generated_data.json

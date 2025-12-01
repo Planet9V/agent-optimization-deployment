@@ -1,0 +1,25 @@
+Layer,Technology,Version,Purpose
+Frontend Framework,Next.js 14+ (App Router),14.2+,"Server-side rendering, client portals"
+UI Component Library,shadcn/ui,latest,Accessible React components
+Styling Framework,Tailwind CSS,3.4+,Utility-first CSS framework
+State Management,Zustand / React Query,latest,Client/server state management
+Multi-Tenant Dashboard,Custom Multi-Tenant Portal,Custom,Per-client dashboards and data views
+Backend API Framework,FastAPI (Python 3.11+),0.115+,High-performance async API
+Application Database,PostgreSQL 16+ with Row-Level Security,16.3+,Multi-tenant data with RLS
+Multi-Tenant Data Isolation,Schema-per-tenant + Shared schemas,Custom middleware,Data segregation between clients
+Knowledge Graph Engine,OpenSPG (latest stable),0.5.x,Core KG engine with SPG framework
+Graph Storage,Neo4j 5.x Enterprise (multi-tenancy),5.23+ Enterprise,Multi-database support for tenants
+Ontology Framework,UCO + IEC 62443 + MITRE + Custom,UCO 2.1,Cybersecurity + ICS ontology base
+Knowledge Extraction,OneKE + Custom ICS parsers,1.0+,Document and diagram extraction
+Reasoning Engine,KAG Framework + Custom Rules,0.4+,Logical reasoning and risk analysis
+Autonomous Penetration Testing,Agent Zero with KG integration,latest,AI-driven penetration testing
+Attack Simulation Engine,Custom Attack Path Simulator,Custom,Simulate attack scenarios
+LLM Integration,OpenAI API / Azure OpenAI / Local LLM,gpt-4o / local,Knowledge augmentation and AI chat
+Vector Database,Milvus / Qdrant,2.4+ / 1.10+,Semantic search across KG
+Asset Management Integration,REST/GraphQL connectors,Custom,Connect to client asset databases
+CMMS/RAMS Integration,Custom adapters for CMMS systems,Custom,"Link to CMMS, reliability systems"
+Document Generation,Docxtpl + Jinja2 + WeasyPrint,latest,Generate client deliverables
+Report Templates Engine,IEC 62443 + ISO 57000 + Custom,Custom,"IEC 62443, ISO 57000 reports"
+Message Queue,Apache Kafka / RabbitMQ,3.7+ / 3.13+,"Event streaming, async jobs"
+Orchestration,Docker Compose / Kubernetes,27+ / 1.31+,Container orchestration
+Monitoring & Observability,Prometheus + Grafana + ELK Stack,latest stable,"System health, client metrics"

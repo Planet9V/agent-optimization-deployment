@@ -1,0 +1,259 @@
+{
+  "research_metadata": {
+    "project": "OXOT Energy Sector Neo4j Schema Extraction",
+    "database": "openspg-neo4j",
+    "sector": "Energy",
+    "extraction_date": "2025-11-21",
+    "total_queries_executed": 14,
+    "validation_status": "COMPLETE"
+  },
+  "total_nodes": 35475,
+  "node_type_breakdown": {
+    "Measurement": {
+      "count": 18000,
+      "percentage": 50.74,
+      "description": "Energy measurement nodes tracking values across transmission systems"
+    },
+    "Device": {
+      "count": 10000,
+      "percentage": 28.19,
+      "description": "Energy devices including EnergyDevice and distributed energy resources"
+    },
+    "Property": {
+      "count": 6000,
+      "percentage": 16.91,
+      "description": "Energy properties tracking device characteristics and specifications"
+    },
+    "Asset": {
+      "count": 1350,
+      "percentage": 3.80,
+      "description": "Physical energy assets including DERs, transmission lines, substations"
+    },
+    "Control": {
+      "count": 125,
+      "percentage": 0.35,
+      "description": "Control and management systems (EMS, NERC CIP compliance)"
+    }
+  },
+  "specialized_node_types": {
+    "DistributedEnergyResource": {
+      "count": 750,
+      "parent_labels": ["Energy", "Asset", "ENERGY", "Energy_Generation"],
+      "label_count": 4
+    },
+    "TransmissionLine": {
+      "count": 400,
+      "parent_labels": ["Energy", "Asset", "ENERGY", "Energy_Transmission"],
+      "label_count": 4
+    },
+    "Substation": {
+      "count": 200,
+      "parent_labels": ["Energy", "Asset", "ENERGY", "Energy_Distribution"],
+      "label_count": 4
+    },
+    "EnergyDevice": {
+      "count": 10000,
+      "parent_labels": ["Device", "EnergyDevice", "Energy", "Monitoring", "ENERGY", "Energy_Distribution"],
+      "label_count": 6
+    }
+  },
+  "label_patterns": {
+    "most_common_combinations": [
+      {
+        "labels": ["Measurement", "Monitoring", "ENERGY", "Energy_Transmission"],
+        "count": 18000,
+        "percentage": 50.74,
+        "pattern_description": "Primary pattern for transmission system measurements"
+      },
+      {
+        "labels": ["Device", "EnergyDevice", "Energy", "Monitoring", "ENERGY", "Energy_Distribution"],
+        "count": 10000,
+        "percentage": 28.19,
+        "pattern_description": "Standard pattern for distribution devices with monitoring"
+      },
+      {
+        "labels": ["Property", "EnergyProperty", "Energy", "Monitoring", "ENERGY", "Energy_Transmission"],
+        "count": 6000,
+        "percentage": 16.91,
+        "pattern_description": "Transmission properties with monitoring capabilities"
+      },
+      {
+        "labels": ["DistributedEnergyResource", "Energy", "Asset", "ENERGY", "Energy_Generation"],
+        "count": 750,
+        "percentage": 2.11,
+        "pattern_description": "Generation assets for distributed energy resources"
+      },
+      {
+        "labels": ["TransmissionLine", "Energy", "Asset", "ENERGY", "Energy_Transmission"],
+        "count": 400,
+        "percentage": 1.13,
+        "pattern_description": "High-voltage transmission infrastructure"
+      },
+      {
+        "labels": ["Substation", "Energy", "Asset", "ENERGY", "Energy_Distribution"],
+        "count": 200,
+        "percentage": 0.56,
+        "pattern_description": "Distribution substations and facilities"
+      },
+      {
+        "labels": ["Control", "NERCCIPStandard", "Energy", "ENERGY", "Energy_Distribution"],
+        "count": 100,
+        "percentage": 0.28,
+        "pattern_description": "NERC CIP compliant control systems"
+      },
+      {
+        "labels": ["Control", "EnergyManagementSystem", "Energy", "ENERGY", "Energy_Distribution"],
+        "count": 25,
+        "percentage": 0.07,
+        "pattern_description": "Energy management system control nodes"
+      }
+    ]
+  },
+  "multi_label_statistics": {
+    "min_labels_per_node": 4,
+    "max_labels_per_node": 6,
+    "average_labels_per_node": 4.94,
+    "total_nodes_analyzed": 35475,
+    "label_distribution": {
+      "4_labels": "Typical for specialized assets (DER, TransmissionLine, Substation)",
+      "5_labels": "Common for measurement and property nodes",
+      "6_labels": 10000,
+      "distribution_note": "EnergyDevice nodes exclusively have 6 labels"
+    }
+  },
+  "subsector_distribution": {
+    "Energy_Transmission": {
+      "count": 24400,
+      "percentage": 68.80,
+      "primary_node_types": ["Measurement (18000)", "Property (6000)", "TransmissionLine (400)"],
+      "description": "Transmission system nodes focusing on long-distance power delivery"
+    },
+    "Energy_Distribution": {
+      "count": 10325,
+      "percentage": 29.09,
+      "primary_node_types": ["Device (10000)", "Substation (200)", "Control (125)"],
+      "description": "Distribution network nodes for local power delivery and control"
+    },
+    "Energy_Generation": {
+      "count": 750,
+      "percentage": 2.11,
+      "primary_node_types": ["DistributedEnergyResource (750)"],
+      "description": "Generation source nodes for renewable and distributed energy"
+    }
+  },
+  "relationship_types_and_counts": {
+    "VULNERABLE_TO": {
+      "count": 1311734,
+      "percentage": 86.28,
+      "description": "Security vulnerability relationships mapping attack surfaces"
+    },
+    "HAS_ENERGY_PROPERTY": {
+      "count": 30000,
+      "percentage": 1.97,
+      "description": "Links devices to their energy-specific properties"
+    },
+    "GENERATES_MEASUREMENT": {
+      "count": 18000,
+      "percentage": 1.19,
+      "description": "Links devices/assets to measurement data"
+    },
+    "CONTROLLED_BY_EMS": {
+      "count": 10000,
+      "percentage": 0.66,
+      "description": "Links devices to Energy Management Systems"
+    },
+    "INSTALLED_AT_SUBSTATION": {
+      "count": 10000,
+      "percentage": 0.66,
+      "description": "Locates devices at specific substations"
+    },
+    "COMPLIES_WITH_NERC_CIP": {
+      "count": 5000,
+      "percentage": 0.33,
+      "description": "Compliance relationships with NERC CIP standards"
+    },
+    "EXTENDS_SAREF_DEVICE": {
+      "count": 3000,
+      "percentage": 0.20,
+      "description": "Extends SAREF (Smart Appliances REFerence) device ontology"
+    },
+    "CONNECTS_SUBSTATIONS": {
+      "count": 780,
+      "percentage": 0.05,
+      "description": "Transmission line connections between substations"
+    },
+    "CONNECTED_TO_GRID": {
+      "count": 750,
+      "percentage": 0.05,
+      "description": "Links distributed energy resources to power grid"
+    },
+    "DEPLOYED_AT": {
+      "count": 257,
+      "percentage": 0.02,
+      "description": "Asset deployment location relationships"
+    }
+  },
+  "relationship_statistics": {
+    "total_relationships": 1519521,
+    "total_relationships_from_energy_sector": 1520821,
+    "primary_relationship_type": "VULNERABLE_TO",
+    "security_relationship_percentage": 86.28,
+    "business_relationship_percentage": 13.72,
+    "relationship_density": "High - extensive vulnerability mapping alongside functional relationships"
+  },
+  "governance_patterns_identified": {
+    "hierarchical_organization": {
+      "pattern": "Multi-level labeling with ENERGY as root label",
+      "evidence": "All 35,475 nodes contain ENERGY label plus 3-5 additional labels",
+      "benefit": "Enables sector-wide queries while maintaining granular categorization"
+    },
+    "semantic_enrichment": {
+      "pattern": "Ontology extension through multiple label systems",
+      "evidence": "Nodes labeled with industry standards (SAREF, NERC CIP) alongside domain labels",
+      "benefit": "Standards compliance while maintaining domain-specific semantics"
+    },
+    "subsector_stratification": {
+      "pattern": "Energy_Transmission, Energy_Distribution, Energy_Generation subsectors",
+      "evidence": "68.8%, 29.1%, 2.1% distribution respectively",
+      "benefit": "Enables subsector-specific policies and management"
+    },
+    "property_externalization": {
+      "pattern": "Properties separated from entities (6000 property nodes vs 10000 devices)",
+      "evidence": "Dedicated Property and EnergyProperty labels",
+      "benefit": "Flexible property management without entity modification"
+    },
+    "measurement_centralization": {
+      "pattern": "Centralized measurement nodes (18000) linked via GENERATES_MEASUREMENT",
+      "evidence": "Consistent GENERATES_MEASUREMENT relationship structure",
+      "benefit": "Time-series data and sensor integration at scale"
+    },
+    "control_system_integration": {
+      "pattern": "EMS and NERC CIP controls as separate entities",
+      "evidence": "125 control nodes linked via CONTROLLED_BY_EMS and COMPLIES_WITH_NERC_CIP",
+      "benefit": "Regulatory compliance tracking and management system integration"
+    },
+    "vulnerability_tracking": {
+      "pattern": "Extensive VULNERABLE_TO relationships (1.3M+)",
+      "evidence": "86.28% of all relationships are vulnerability mappings",
+      "benefit": "Comprehensive security posture visibility for critical infrastructure"
+    }
+  },
+  "query_validation_results": {
+    "status": "COMPLETE",
+    "queries_executed": 14,
+    "total_nodes_confirmed": 35475,
+    "validation_against_expected": "MATCH - Expected ~35,000 nodes",
+    "data_integrity": "VERIFIED",
+    "notes": "All queries executed successfully with consistent results. No data anomalies detected."
+  },
+  "schema_summary": {
+    "core_entity_types": 5,
+    "specialized_node_types": 4,
+    "relationship_types": 10,
+    "average_node_complexity": 4.94,
+    "governance_model": "Multi-layered hierarchical with subsector stratification",
+    "compliance_focus": "NERC CIP standards with SAREF ontology extension",
+    "security_emphasis": "High - vulnerability mapping dominant relationship type",
+    "recommended_optimization": "Consider partitioning by subsector for query performance on large operations"
+  }
+}

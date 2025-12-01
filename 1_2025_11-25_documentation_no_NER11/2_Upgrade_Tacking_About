@@ -1,0 +1,363 @@
+TASKMASTER_IMPLEMENTATION_v2.0.md - Complete Implementation Guide
+
+  Document Location:
+  /home/jim/2_OXOT_Projects_Dev/1_2025_11-25_documentation_no_NER11/enhancements/Enhancement_27_Entity_Expansion_Psychohistory/TASKMASTER_IMPLEMENTATION_v2.0.md
+
+  ---
+  📋 HOW TO USE THIS TASKMASTER
+
+  Executive Summary
+
+  This TASKMASTER is a production deployment playbook that ensures Enhancement 27 is implemented with:
+  - ✅ Zero theater - Every task has verification gates
+  - ✅ No breaking changes - Backup and rollback procedures
+  - ✅ High quality - Built-in academic rigor checks
+  - ✅ Full traceability - Claude-flow + Qdrant memory logging
+
+  ---
+  Implementation Approach
+
+  1. SEQUENTIAL PHASE EXECUTION
+
+  Execute phases in strict order:
+  Phase 1: Schema Deployment (Backup, Constraints, Indexes)
+      ↓
+  Checkpoint 1 ✓
+      ↓
+  Phase 2: Label Migration (24 → 16 Super Labels)
+      ↓
+  Checkpoint 2 ✓
+      ↓
+  Phase 3: Psychohistory Equations
+      ↓
+  Checkpoint 3 ✓
+      ↓
+  Phase 4: NER11 Mapping (197 entities)
+      ↓
+  Checkpoint 4 ✓
+      ↓
+  Phase 5: Seldon Crisis Detection
+      ↓
+  Phase 6: Testing & Validation
+      ↓
+  FINAL CHECKPOINT ✓
+
+  2. EVERY TASK HAS 5 STEPS
+
+  Each task follows this pattern:
+
+  1. Prerequisites - What must be verified before starting
+  2. Execution - The actual Cypher/Bash commands to run
+  3. Verification - Queries that prove completion (grep counts, database queries)
+  4. Evidence Required - Specific numbers/output you must collect
+  5. Memory Store - Save results to Qdrant for audit trail
+
+  Example from Task 1.1:
+  # 1. Prerequisites: Neo4j running
+  # 2. Execution:
+  CALL apoc.export.cypher.all('/backup/pre_e27.cypher', {format: 'cypher-shell'})
+
+  # 3. Verification:
+  ls -la /backup/pre_e27.cypher
+  wc -l /backup/pre_e27.cypher
+
+  # 4. Evidence Required:
+  # File exists: YES/NO
+  # File size: [actual bytes]
+  # Line count: [actual number]
+
+  # 5. Memory Store:
+  npx claude-flow@alpha memory store "task_1.1_backup" '{"file":"/backup/pre_e27.cypher","size":"12345","lines":"456"}' --reasoningbank
+
+  3. CHECKPOINTS EVERY 4 TASKS
+
+  After every phase (typically 2-4 tasks), you hit a CHECKPOINT that:
+  - Runs comprehensive verification queries
+  - Deploys claude-flow agents for multi-agent audit
+  - Stores gate status in memory
+  - BLOCKS forward progress if ANY check fails
+
+  Example Checkpoint 1:
+  npx claude-flow@alpha task orchestrate \
+    --task "schema_verification" \
+    --agents "code-analyzer,tester" \
+    --memory-enabled
+
+  The checkpoint creates a verification table:
+  | Check         | Required | Actual | Status |
+  |---------------|----------|--------|--------|
+  | Backup exists | YES      | YES    | ✅ PASS |
+  | Constraints   | 16       | 16     | ✅ PASS |
+  | Indexes       | 12+      | 14     | ✅ PASS |
+
+  IF ANY FAIL → STOP. DO NOT PROCEED.
+
+  4. ANTI-THEATER VERIFICATION
+
+  Every critical claim gets grep/count verification:
+
+  Example - S1.6 NER11 Mapping:
+  # CLAIM: "197 entities mapped"
+  # VERIFICATION:
+  grep -c "MERGE" /home/jim/2_OXOT_Projects_Dev/docs/NER11_UNMAPPED_TIERS_CYPHER.cypher
+  # Output: 197
+
+  # CLAIM: "All deprecated labels removed"  
+  # VERIFICATION:
+  echo "CALL db.labels() YIELD label WHERE label IN ['AttackTechnique','CVE'] RETURN count(label)" | cypher-shell
+  # Output: 0
+
+  No subjective claims allowed. Every statement must have a grep, wc, or database query that proves it.
+
+  5. CLAUDE-FLOW + QDRANT INTEGRATION
+
+  Before and after EVERY task:
+
+  # BEFORE starting Task 3.1
+  npx claude-flow@alpha memory store "task_3.1_start" \
+    '{"status":"IN_PROGRESS","timestamp":"2025-11-27T10:30:00Z"}' \
+    --reasoningbank
+
+  # Execute task...
+
+  # AFTER verification
+  npx claude-flow@alpha memory store "task_3.1_complete" \
+    '{"status":"VERIFIED","R0_test":"7.5","function_count":"7"}' \
+    --reasoningbank
+
+  This creates a complete audit trail in Qdrant memory that can be queried later:
+  npx claude-flow@alpha memory retrieve "task_3.1_complete" --reasoningbank
+
+  ---
+  Key Features of This TASKMASTER
+
+  IRON LAWS (Never Violate)
+
+  1. DO THE ACTUAL WORK - Never build frameworks to do the work
+  2. VERIFY BEFORE CLAIMING COMPLETE - Show grep/count output
+  3. NO THEATER - If it's not in the database, it doesn't exist
+  4. PRESERVE THE CODEBASE - Backup before risky operations
+  5. EVIDENCE > CLAIMS - Numbers and command output only
+
+  Built-in Safety
+
+  - Backup in Task 1.1 - Full database export before ANY changes
+  - Rollback procedures - Complete and partial rollback scripts provided
+  - Checkpoint gates - Cannot proceed with failures
+  - Academic verification - DOI counts, formula checks
+
+  Quality Standards
+
+  Every deliverable has a target:
+
+  | Metric           | Minimum | Target | Verification Method           |
+  |------------------|---------|--------|-------------------------------|
+  | Citations        | 35      | 50+    | grep -c "10\.[0-9]" THEORY.md |
+  | Math Correctness | 100%    | 100%   | Test query results            |
+  | NER11 Coverage   | 100%    | 100%   | grep -c MERGE [file]          |
+  | Test Coverage    | 80%     | 95%    | Cypher test execution         |
+
+  ---
+  File Structure Reference
+
+  The TASKMASTER references these files (all exist and verified):
+
+  Cypher Scripts (to execute):
+  - cypher/01_constraints.cypher - 16 uniqueness constraints
+  - cypher/02_indexes.cypher - Performance indexes
+  - cypher/03_migration_24_to_16.cypher - Label consolidation
+  - cypher/04_psychohistory_equations.cypher - 5 mathematical models
+  - cypher/05_seldon_crisis_detection.cypher - 3 crisis frameworks
+
+  Remediation Cypher (critical fixes):
+  - remediation/04_granovetter_CORRECTED.cypher - Uses uniform CDF, NOT exponential
+  - remediation/06_autocorrelation_DETRENDED.cypher - WITH detrending per Dakos 2012
+  - remediation/07_confidence_intervals.cypher - Bootstrap, Fisher Z, prediction intervals
+
+  NER11 Mapping (at project root):
+  - /home/jim/2_OXOT_Projects_Dev/docs/NER11_UNMAPPED_TIERS_CYPHER.cypher - 197 MERGE statements
+
+  Academic Foundation:
+  - remediation/THEORY.md - 54 citations, 48 DOIs
+  - remediation/CALIBRATION.md - 24 parameters, 49KB
+  - remediation/CITATIONS_2020_2024.md - 17 recent papers
+  - remediation/HISTORICAL_SOURCES.md - 35 sources, 6 events
+
+  ---
+  Typical Execution Session
+
+  Session 1: Schema Setup (2-3 hours)
+  # Start
+  cd /home/jim/2_OXOT_Projects_Dev/1_2025_11-25_documentation_no_NER11/enhancements/Enhancement_27_Entity_Expansion_Psychohistory
+
+  # Initialize memory
+  npx claude-flow@alpha memory init --reasoningbank
+
+  # Execute Phase 1
+  cypher-shell -u neo4j -p [password] < cypher/01_constraints.cypher
+  cypher-shell -u neo4j -p [password] < cypher/02_indexes.cypher
+
+  # Checkpoint 1
+  npx claude-flow@alpha task orchestrate --task "schema_verification" --agents "code-analyzer,tester"
+
+  # Store result
+  npx claude-flow@alpha memory store "checkpoint_1" '{"constraints":"16","indexes":"14","status":"PASS"}' --reasoningbank
+
+  Session 2: Migration (3-4 hours)
+  # Execute Phase 2
+  cypher-shell -u neo4j -p [password] < cypher/03_migration_24_to_16.cypher
+
+  # Verify
+  echo "CALL db.labels() YIELD label RETURN count(label)" | cypher-shell
+  # Should show 16 or fewer
+
+  # Checkpoint 2
+  npx claude-flow@alpha task orchestrate --task "migration_verification" --agents "code-analyzer,reviewer"
+
+  Session 3: Psychohistory + NER11 (4-5 hours)
+  # Phase 3
+  cypher-shell -u neo4j -p [password] < remediation/04_granovetter_CORRECTED.cypher
+  cypher-shell -u neo4j -p [password] < remediation/06_autocorrelation_DETRENDED.cypher
+  cypher-shell -u neo4j -p [password] < remediation/07_confidence_intervals.cypher
+
+  # Phase 4
+  cypher-shell -u neo4j -p [password] < /home/jim/2_OXOT_Projects_Dev/docs/NER11_UNMAPPED_TIERS_CYPHER.cypher
+
+  # Final checkpoint
+  npx claude-flow@alpha task orchestrate --task "production_readiness" --agents "production-validator,reviewer,code-analyzer"
+
+  ---
+  What Makes This Different
+
+  Standard TASKMASTER:
+  - Lists tasks
+  - Says "Do X"
+  - Trusts completion claims
+
+  This TASKMASTER:
+  - Lists tasks
+  - Says "Do X, then run grep -c PATTERN file and verify count = N"
+  - Blocks if verification fails
+  - Stores evidence in Qdrant
+  - Deploys multi-agent validation at checkpoints
+  - Has complete rollback procedures
+
+  ---
+  Summary
+
+  This TASKMASTER ensures:
+  1. ✅ Every task has verifiable evidence (not just claims)
+  2. ✅ Every checkpoint blocks forward progress if checks fail
+  3. ✅ Every operation is logged to Qdrant memory for audit
+  4. ✅ Every risky operation has a tested rollback
+  5. ✅ Every academic claim has a grep-countable DOI
+  6. ✅ Every mathematical fix has a test query with expected output
+
+  Result: Zero theater, high quality, production-ready Enhancement 27 implementation.
+
+> give me the exact "prompts" to run for each step/task  and to start over in case of a new sessoin, and MAKE sure at the end of every taks that reqiures a user prompt, that
+ the actual real prompt is display to be copy and pasted by the user 
+
+● I'll create a comprehensive execution guide with exact copy-paste prompts for every task.
+
+● Write(1_2025_11-25_documentation_no_NER11/enhancements/Enhancement_27_Entity_Expansion_Psychohistory/EXECUTION_PROMPTS.md)
+  ⎿  Wrote 1067 lines to 1_2025_11-25_documentation_no_NER11/enhancements/Enhancement_27_Entity_Expansion_Psychohistory/EXECUTION_PROMPTS.md
+     # Enhancement 27: Exact Execution Prompts
+     **File:** EXECUTION_PROMPTS.md
+     **Created:** 2025-11-27 05:00:00 UTC
+     **Version:** v1.0.0
+     **Purpose:** Copy-paste prompts for every task with Claude Code
+     ---
+     ## 🚀 SESSION START (New or Resumed)
+     … +1057 lines (ctrl+o to expand)
+
+● Bash(git add "1_2025_11-25_documentation_no_NER11/enhancements/Enhancement_27_Entity_Expansion_Psychohistory/" && git commit -m "docs(E27): Add implementation TASKMA…)
+  ⎿  [gap-002-critical-fix 8f486fa] docs(E27): Add implementation TASKMASTER and execution prompts                                                       
+      2 files changed, 1948 insertions(+)
+      create mode 100644 1_2025_11-25_documentation_no_NER11/enhancements/Enhancement_27_Entity_Expansion_Psychohistory/EXECUTION_PROMPTS.md
+      create mode 100644 1_2025_11-25_documentation_no_NER11/enhancements/Enhancement_27_Entity_Expansion_Psychohistory/TASKMASTER_IMPLEMENTATION_v2.0.md
+
+● ✅ COMPLETE - Two Implementation Guides Created
+
+  I've created comprehensive execution guides with exact copy-paste prompts:
+
+  1. TASKMASTER_IMPLEMENTATION_v2.0.md
+
+  Location: /home/jim/2_OXOT_Projects_Dev/1_2025_11-25_documentation_no_NER11/enhancements/Enhancement_27_Entity_Expansion_Psychohistory/TASKMASTER_IMPLEMENTATION_v2.0.md
+
+  Contains:
+  - Complete 6-phase implementation plan
+  - Every task broken down into 5 steps (Prerequisites → Execution → Verification → Evidence → Memory Store)
+  - 4 checkpoints with PASS/FAIL gates
+  - Rollback procedures (complete and partial)
+  - Academic verification requirements
+  - Anti-theater grep/count checks
+
+  2. EXECUTION_PROMPTS.md ⭐ THIS IS WHAT YOU NEED
+
+  Location: /home/jim/2_OXOT_Projects_Dev/1_2025_11-25_documentation_no_NER11/enhancements/Enhancement_27_Entity_Expansion_Psychohistory/EXECUTION_PROMPTS.md
+
+  Contains:
+  - Exact copy-paste prompts for every single task
+  - Session start prompt (new or resumed)
+  - All verification commands you can run manually
+  - Expected output for every verification
+  - Commands to check Qdrant memory
+
+  ---
+  📋 HOW TO USE
+
+  Starting a New Implementation Session:
+
+  1. Open the file:
+  cat /home/jim/2_OXOT_Projects_Dev/1_2025_11-25_documentation_no_NER11/enhancements/Enhancement_27_Entity_Expansion_Psychohistory/EXECUTION_PROMPTS.md
+
+  2. Copy the "Session Start" prompt and paste it to Claude Code
+
+  3. Claude will:
+  - Initialize Qdrant memory
+  - Check for existing checkpoints
+  - Show current Neo4j state
+  - Tell you which task to start
+
+  4. For each task, copy the exact prompt from EXECUTION_PROMPTS.md
+
+  5. At the end of each task, Claude will display:
+  # COPY THIS COMMAND TO VERIFY MANUALLY:
+  [actual verification command you can run]
+
+  6. Every 4 tasks, a CHECKPOINT runs automatically and shows:
+  CHECKPOINT [N] GATE:
+  | Check | Required | Actual | Status |
+  ✅ PASS / ❌ FAIL
+
+  ---
+  🎯 KEY FEATURES
+
+  1. Every prompt is copy-paste ready - No ambiguity
+  2. Every task shows expected output - You know what success looks like
+  3. Every verification command is provided - You can double-check manually
+  4. Checkpoints block progress - Cannot skip failed gates
+  5. Complete audit trail - All stored in Qdrant memory
+  6. Session resume - Can pick up where you left off
+
+  ---
+  📊 VERIFICATION AT END OF EVERY TASK
+
+  After Claude completes each task, it will display a box like this:
+
+  ═══════════════════════════════════════
+  TASK 3.2 COMPLETE
+  ═══════════════════════════════════════
+  Function deployed: psychohistory.granovetterCascadeUniform
+  Test 1: 100 (expected 100) ✅
+  Test 2: 40 (expected 40) ✅
+  No exponential CDF: VERIFIED ✅
+
+  COPY THIS COMMAND TO VERIFY MANUALLY:
+  echo "WITH 25 AS adopters, 100 AS population, 0.25 AS threshold RETURN psychohistory.granovetterCascadeUniform(adopters, population, threshold) AS next;" | cypher-shell -u
+   neo4j -p [YOUR_PASSWORD]
+
+  Expected: next | 100
+
+  You can copy and run that command yourself to verify Claude actually did the work.

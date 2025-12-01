@@ -1,0 +1,148 @@
+{
+  "validation_comparison": {
+    "date": "2025-11-07T23:25:00Z",
+    "database": "Neo4j CVE-CWE-CAPEC-ATT&CK",
+    "target_chains": 124,
+
+    "before_fix": {
+      "complete_chains": 0,
+      "cwe_overlap": 0,
+      "cwe_overlap_percentage": 0.0,
+      "cve_cwe_count": 111,
+      "capec_cwe_count": 336,
+      "hierarchy_exists": false,
+      "issues": [
+        "No CWE hierarchy imported",
+        "0% overlap between CVE-CWEs and CAPEC-CWEs",
+        "CVE-CWEs (cwe-1 to cwe-1000) disjoint from CAPEC-CWEs (cwe-1000+)"
+      ]
+    },
+
+    "fix_applied": {
+      "timestamp": "2025-11-07T23:20:00Z",
+      "actions": [
+        "Imported CWE hierarchy (442 CHILDOF relationships)",
+        "Created transitive ENABLES_ATTACK_PATTERN relationships",
+        "Traversed hierarchy up to 5 hops"
+      ],
+      "scripts_created": [
+        "scripts/investigate_overlap.py",
+        "scripts/check_cwe_hierarchy.py",
+        "scripts/import_cwe_hierarchy.py",
+        "scripts/create_transitive_cwe_capec.py",
+        "scripts/diagnose_chain_breaks.py"
+      ]
+    },
+
+    "after_fix": {
+      "complete_chains": 0,
+      "cwe_overlap": 0,
+      "cwe_overlap_percentage": 0.0,
+      "hierarchy_imported": true,
+      "childof_relationships": 442,
+      "transitive_relationships_created": 1,
+      "cves_bridged_via_hierarchy": 1,
+      "partial_chains_cve_cwe_capec": 1,
+      "partial_chains_cwe_capec_attack": 149,
+      "bottlenecks": {
+        "primary": {
+          "type": "CWE → CAPEC",
+          "cves_blocked": 420,
+          "cwes_without_capec": 110,
+          "cause": "Hierarchy depth (5 hops) insufficient to bridge CWE generations",
+          "sample_blocked_cwes": ["cwe-1", "cwe-2", "cwe-64", "cwe-275", "cwe-787"]
+        },
+        "secondary": {
+          "type": "CAPEC → ATT&CK",
+          "capecs_without_attack": 1,
+          "cause": "Missing CAPEC→ATT&CK relationship import"
+        }
+      }
+    },
+
+    "improvement": {
+      "chains_added": 0,
+      "percentage_of_target": 0.0,
+      "success": false,
+      "shortfall": 124
+    },
+
+    "database_statistics": {
+      "cve_to_cwe": {
+        "cves_with_links": 421,
+        "unique_cwes": 111,
+        "sample_cwes": ["cwe-1", "cwe-121", "cwe-787", "cwe-476", "cwe-126"]
+      },
+      "cwe_to_capec": {
+        "cwes_with_links": 337,
+        "unique_capecs": 448,
+        "transitive_links": 1,
+        "direct_links": 1208
+      },
+      "capec_to_attack": {
+        "capecs_with_links": 177,
+        "unique_attack_techniques": 188,
+        "coverage_percentage": 39.5
+      }
+    },
+
+    "root_cause_analysis": {
+      "fundamental_issue": "CWE generation mismatch",
+      "explanation": "CVEs reference older CWE catalog (cwe-1 to cwe-1000) while CAPECs reference newer catalog (cwe-1000+)",
+      "evidence": {
+        "cve_cwe_range": "cwe-1 to cwe-1104",
+        "capec_cwe_range": "cwe-1192 to cwe-1318",
+        "overlap_cwes": 0,
+        "hierarchy_bridge_success_rate": "0.24% (1/421 CVEs)"
+      },
+      "why_fix_failed": [
+        "Hierarchy traversal (5 hops) only connected 1 CVE",
+        "Disjoint CWE number ranges suggest incompatible CWE versions",
+        "Even bridged CVE failed due to missing CAPEC→ATT&CK link"
+      ]
+    },
+
+    "recommended_solutions": [
+      {
+        "option": "Expand hierarchy depth",
+        "approach": "Increase max_hops from 5 to 15+",
+        "likelihood": "Low - may not exist in hierarchy",
+        "effort": "Low - parameter change"
+      },
+      {
+        "option": "Alternative CWE mapping",
+        "approach": "Import additional CVE→CWE from NVD API",
+        "likelihood": "Medium - NVD may have updated mappings",
+        "effort": "Moderate - API integration required"
+      },
+      {
+        "option": "Manual semantic mapping",
+        "approach": "Map CVE-CWEs to CAPEC-CWEs based on descriptions",
+        "likelihood": "High - guaranteed to work",
+        "effort": "High - requires expert knowledge"
+      },
+      {
+        "option": "Accept lower coverage",
+        "approach": "Document limitation, focus on CAPECs with ATT&CK",
+        "likelihood": "Guaranteed",
+        "effort": "Low - documentation only"
+      }
+    ],
+
+    "validation_queries": {
+      "complete_chains": "MATCH (cve:CVE)-[:IS_WEAKNESS_TYPE]->(cwe:CWE)-[:ENABLES_ATTACK_PATTERN]->(capec:CAPEC)-[:USES_TECHNIQUE]->(attack:AttackTechnique) RETURN count(DISTINCT cve)",
+      "cwe_overlap": "MATCH (cve:CVE)-[:IS_WEAKNESS_TYPE]->(cwe1:CWE) MATCH (cwe2:CWE)-[:ENABLES_ATTACK_PATTERN]->(capec:CAPEC) WHERE cwe1.id = cwe2.id RETURN count(DISTINCT cwe1)",
+      "hierarchy_bridges": "MATCH (cve:CVE)-[:IS_WEAKNESS_TYPE]->(cwe1:CWE)-[:CHILDOF*1..5]->(cwe2:CWE)-[:ENABLES_ATTACK_PATTERN]->(capec:CAPEC) RETURN count(DISTINCT cve)"
+    },
+
+    "conclusion": {
+      "status": "FAILED",
+      "summary": "CWE overlap fix did not resolve attack chain gap",
+      "before_chains": 0,
+      "after_chains": 0,
+      "target_achieved": false,
+      "primary_blocker": "CWE generation mismatch - CVE-CWEs and CAPEC-CWEs are disjoint sets from different CWE catalog versions",
+      "next_action": "Investigate deeper hierarchy traversal (10-15 hops) and complete CAPEC→ATT&CK relationship import"
+    }
+  }
+}

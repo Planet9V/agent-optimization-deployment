@@ -1,0 +1,19 @@
+Requirement ID,Category,Requirement,Acceptance Criteria,Priority
+NFR-001,Performance,Graph query response time < 2 seconds for 90th percentile,Load test showing p90 < 2s for standard queries,Critical
+NFR-002,Performance,Knowledge graph must support 50M+ nodes and 200M+ relationships,Stress test with 50M nodes demonstrating functionality,High
+NFR-003,Performance,Natural language query response < 5 seconds,LLM response time benchmarks with KAG-Solver,Critical
+NFR-004,Scalability,System must support 50+ concurrent consultants across clients,K6 load test with 50 concurrent users maintaining <3s response,Critical
+NFR-005,Scalability,Agent Zero must handle 10+ parallel pentest simulations,10 Agent Zero instances running concurrent attack simulations,High
+NFR-006,Multi-Tenancy,Data isolation enforced at database and application layers,Security audit confirms no cross-tenant data leakage,Critical
+NFR-007,Multi-Tenancy,Shared knowledge base updates must not impact tenant data,"Common data updates complete within 1 hour, zero tenant impact",High
+NFR-008,Availability,System uptime of 99.5% during business hours,Uptime monitoring showing 99.5% over 30-day period,Critical
+NFR-009,Security,All client data encrypted at rest using AES-256,Security scan confirming encryption at rest for all DBs,Critical
+NFR-010,Security,All API communications encrypted using TLS 1.3,SSL Labs test achieving A+ rating,Critical
+NFR-011,Security,Multi-factor authentication required for all users,"MFA enforced for all roles, tested with security audit",Critical
+NFR-012,Security,Client data must be logically or physically separated,Architecture review confirms tenant separation,Critical
+NFR-013,Compliance,Audit logs retained for minimum 7 years (regulatory),"Audit log retention verified, searchable for 7+ years",Critical
+NFR-014,Compliance,IEC 62443 compliance evidence trails maintained,Automated evidence collection for 62443 assessments,Critical
+NFR-015,Usability,UI must support consultant workflow with <3 clicks to common tasks,User testing validates 3-click access to top 10 tasks,Medium
+NFR-016,Maintainability,Code coverage must be minimum 80% for backend services,SonarQube or Codecov report showing 80%+ coverage,High
+NFR-017,Reliability,Automated backup every 12 hours with 90-day retention,"Backup restoration test successful, RPO < 12 hours",Critical
+NFR-018,Agent Zero Integration,Agent Zero API must have <500ms response time for KG queries,API performance testing shows p95 < 500ms,Critical

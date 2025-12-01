@@ -1,0 +1,32 @@
+Loading data...
+Checking current state...
+Current nodes: 25301
+Deploying 2699 missing nodes...
+  Progress: 5000/28000
+  Progress: 10000/28000
+  Progress: 15000/28000
+Traceback (most recent call last):
+  File "/home/jim/2_OXOT_Projects_Dev/scripts/complete_communications_deployment.py", line 59, in <module>
+    success, stdout, stderr = execute_cypher(query)
+                              ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jim/2_OXOT_Projects_Dev/scripts/complete_communications_deployment.py", line 12, in execute_cypher
+    result = subprocess.run(cmd, capture_output=True, text=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 548, in run
+    with Popen(*popenargs, **kwargs) as process:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/lib/python3.12/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+OSError: [Errno 7] Argument list too long: 'docker'
+/bin/bash: line 1: /home/jim/2_OXOT_Projects_Dev/scripts/final_deployment.sh: cannot execute: required file not found
+/home/jim/2_OXOT_Projects_Dev/scripts/final_deployment.sh: line 3: $'\r': command not found
+Creating missing nodes and relationships...
+/home/jim/2_OXOT_Projects_Dev/scripts/final_deployment.sh: line 5: $'\r': command not found
+Created 9 relationship files
+Created 6 node files
+/home/jim/2_OXOT_Projects_Dev/scripts/final_deployment.sh: line 52: $'\r': command not found
+Deploying missing nodes...
+/home/jim/2_OXOT_Projects_Dev/scripts/final_deployment.sh: line 55: syntax error near unexpected token `$'do\r''
+/home/jim/2_OXOT_Projects_Dev/scripts/final_deployment.sh: line 55: `for file in /tmp/nodes_chunk_*.cypher; do'

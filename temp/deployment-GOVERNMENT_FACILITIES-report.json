@@ -1,0 +1,43 @@
+{
+  "nodes_created": 27000,
+  "relationships_created": 38850,
+  "start_time": "2025-11-21 22:01:26.088594",
+  "node_types": {
+    "GovernmentDevice": 8400,
+    "GovernmentMeasurement": 5600,
+    "GovernmentProperty": 5000,
+    "GovernmentProcess": 7000,
+    "GovernmentControl": 500,
+    "GovernmentAlert": 300,
+    "GovernmentZone": 150,
+    "MajorAsset": 50
+  },
+  "end_time": "2025-11-21 22:01:28.996508",
+  "duration_seconds": 2.907914,
+  "validation": {
+    "total_nodes": 27000,
+    "devices": 8400,
+    "measurements": 5600,
+    "properties": 5000,
+    "processes": 7000,
+    "controls": 500,
+    "alerts": 300,
+    "zones": 150,
+    "assets": 300,
+    "total_relationships": 77700,
+    "subsector_distribution": [
+      {
+        "subsector": "Federal_Facilities",
+        "count": 9002
+      },
+      {
+        "subsector": "State_Local_Facilities",
+        "count": 9001
+      },
+      {
+        "subsector": "Courts_Legislative",
+        "count": 8997
+      }
+    ]
+  }
+}

@@ -1,0 +1,164 @@
+{
+  "compared_at": "2025-10-31T10:01:18.808788",
+  "baseline_captured_at": "2025-10-31T02:18:04.010468",
+  "categories": {
+    "node_lookups": {
+      "cve_by_id": {
+        "baseline_mean_ms": 1.1786460876464844,
+        "current_mean_ms": 1.183176040649414,
+        "delta_ms": 0.0045299530029296875,
+        "delta_percent": 0.3843353022089166,
+        "regression": false
+      },
+      "cve_by_year": {
+        "baseline_mean_ms": 5.1418304443359375,
+        "current_mean_ms": 3.6733150482177734,
+        "delta_ms": -1.468515396118164,
+        "delta_percent": -28.560167668224643,
+        "regression": false
+      },
+      "cve_by_severity_range": {
+        "baseline_mean_ms": 10.051870346069336,
+        "current_mean_ms": 10.033893585205078,
+        "delta_ms": -0.017976760864257812,
+        "delta_percent": -0.17883995958311788,
+        "regression": false
+      },
+      "all_cve_count": {
+        "baseline_mean_ms": 0.5661487579345703,
+        "current_mean_ms": 0.6098747253417969,
+        "delta_ms": 0.04372596740722656,
+        "delta_percent": 7.723406047334287,
+        "regression": false
+      }
+    },
+    "relationship_traversals": {
+      "one_hop_from_cve": {
+        "baseline_mean_ms": 0.8138179779052734,
+        "current_mean_ms": 1.300191879272461,
+        "delta_ms": 0.4863739013671875,
+        "delta_percent": 59.76445772543505,
+        "regression": true
+      },
+      "two_hop_from_cve": {
+        "baseline_mean_ms": 0.8531570434570312,
+        "current_mean_ms": 1.048135757446289,
+        "delta_ms": 0.1949787139892578,
+        "delta_percent": 22.85378940308518,
+        "regression": true
+      },
+      "variable_path_traversal": {
+        "baseline_mean_ms": 1.0096073150634766,
+        "current_mean_ms": 1.0673999786376953,
+        "delta_ms": 0.05779266357421875,
+        "delta_percent": 5.724271477825533,
+        "regression": false
+      }
+    },
+    "aggregations": {
+      "cve_count_by_year": {
+        "baseline_mean_ms": 69.41094398498535,
+        "current_mean_ms": 72.41759300231934,
+        "delta_ms": 3.0066490173339844,
+        "delta_percent": 4.33166420843429,
+        "regression": false
+      },
+      "avg_cvss_by_year": {
+        "baseline_mean_ms": 128.92475128173828,
+        "current_mean_ms": 117.16127395629883,
+        "delta_ms": -11.763477325439453,
+        "delta_percent": -9.124297086858686,
+        "regression": false
+      },
+      "severity_distribution": {
+        "baseline_mean_ms": 74.61543083190918,
+        "current_mean_ms": 73.26116561889648,
+        "delta_ms": -1.3542652130126953,
+        "delta_percent": -1.814993491176822,
+        "regression": false
+      },
+      "relationship_type_counts": {
+        "baseline_mean_ms": 455.74989318847656,
+        "current_mean_ms": 430.3637981414795,
+        "delta_ms": -25.38609504699707,
+        "delta_percent": -5.5701812389670895,
+        "regression": false
+      }
+    },
+    "pattern_matching": {
+      "simple_pattern": {
+        "baseline_mean_ms": 3.0350685119628906,
+        "current_mean_ms": 3.2876014709472656,
+        "delta_ms": 0.252532958984375,
+        "delta_percent": 8.32050274941084,
+        "regression": false
+      },
+      "complex_pattern": {
+        "baseline_mean_ms": 153.00679206848145,
+        "current_mean_ms": 128.58619689941406,
+        "delta_ms": -24.420595169067383,
+        "delta_percent": -15.960464786515768,
+        "regression": false
+      },
+      "optional_pattern": {
+        "baseline_mean_ms": 114.12353515625,
+        "current_mean_ms": 104.63118553161621,
+        "delta_ms": -9.492349624633789,
+        "delta_percent": -8.317609169429886,
+        "regression": false
+      }
+    },
+    "property_searches": {
+      "description_contains": {
+        "baseline_mean_ms": 195.16277313232422,
+        "current_mean_ms": 187.66274452209473,
+        "delta_ms": -7.500028610229492,
+        "delta_percent": -3.842960668090284,
+        "regression": false
+      },
+      "description_regex": {
+        "baseline_mean_ms": 736.077070236206,
+        "current_mean_ms": 739.9332046508789,
+        "delta_ms": 3.8561344146728516,
+        "delta_percent": 0.523876448621803,
+        "regression": false
+      },
+      "multi_property_search": {
+        "baseline_mean_ms": 34.444236755371094,
+        "current_mean_ms": 32.500267028808594,
+        "delta_ms": -1.9439697265625,
+        "delta_percent": -5.6438171075437324,
+        "regression": false
+      }
+    }
+  },
+  "regressions": [
+    {
+      "category": "relationship_traversals",
+      "benchmark": "one_hop_from_cve",
+      "delta_percent": 59.76445772543505
+    },
+    {
+      "category": "relationship_traversals",
+      "benchmark": "two_hop_from_cve",
+      "delta_percent": 22.85378940308518
+    }
+  ],
+  "improvements": [
+    {
+      "category": "node_lookups",
+      "benchmark": "cve_by_year",
+      "delta_percent": -28.560167668224643
+    },
+    {
+      "category": "pattern_matching",
+      "benchmark": "complex_pattern",
+      "delta_percent": -15.960464786515768
+    }
+  ],
+  "summary": {
+    "total_regressions": 2,
+    "total_improvements": 2,
+    "performance_status": "FAIL"
+  }
+}

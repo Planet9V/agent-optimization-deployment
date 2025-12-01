@@ -1,0 +1,7 @@
+# GAP-ML-011 Batch Prediction API Requirements
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+neo4j==5.14.1
+redis[hiredis]==5.0.1
+python-multipart==0.0.6

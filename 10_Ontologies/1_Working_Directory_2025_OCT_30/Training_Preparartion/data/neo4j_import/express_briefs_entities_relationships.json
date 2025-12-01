@@ -1,0 +1,4623 @@
+{
+  "total_documents": 44,
+  "total_entities": 433,
+  "total_relationships": 74,
+  "total_attack_chains": 32,
+  "documents": [
+    {
+      "document": "EAB_2025_Q2_Threat_Landscape_Report.docx",
+      "entity_count": 8,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "deeper analysis",
+          "label": "CAPEC",
+          "start": 367,
+          "end": 382,
+          "source_doc": "EAB_2025_Q2_Threat_Landscape_Report.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4630,
+          "end": 4643,
+          "source_doc": "EAB_2025_Q2_Threat_Landscape_Report.docx"
+        },
+        {
+          "text": "analysis of the quarter's most significant incidents reveals consistent targeting patterns and commonalities among victims. While manufacturing, technology, legal services, and construction remained the top targets for overall ransomware activity, the most high-profile and disruptive breaches consistently targeted organizations with a heavy reliance on cloud-based, third-party platforms.1 The victims in these prominent cases\u2014Qantas (aviation)",
+          "label": "CWE",
+          "start": 8105,
+          "end": 8551,
+          "source_doc": "EAB_2025_Q2_Threat_Landscape_Report.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 8655,
+          "end": 8668,
+          "source_doc": "EAB_2025_Q2_Threat_Landscape_Report.docx"
+        },
+        {
+          "text": "Technical Analysis",
+          "label": "CAPEC",
+          "start": 12745,
+          "end": 12763,
+          "source_doc": "EAB_2025_Q2_Threat_Landscape_Report.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 15947,
+          "end": 15960,
+          "source_doc": "EAB_2025_Q2_Threat_Landscape_Report.docx"
+        },
+        {
+          "text": "voice phishing",
+          "label": "CAPEC",
+          "start": 16115,
+          "end": 16129,
+          "source_doc": "EAB_2025_Q2_Threat_Landscape_Report.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 22523,
+          "end": 22525,
+          "source_doc": "EAB_2025_Q2_Threat_Landscape_Report.docx"
+        }
+      ],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-001-VOLTZITE-Enhanced.md.docx",
+      "entity_count": 2,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "- malware analysis",
+          "label": "CAPEC",
+          "start": 1645,
+          "end": 1663,
+          "source_doc": "NCC-OTCE-EAB-001-VOLTZITE-Enhanced.md.docx"
+        },
+        {
+          "text": "CIP-008",
+          "label": "CWE",
+          "start": 4174,
+          "end": 4181,
+          "source_doc": "NCC-OTCE-EAB-001-VOLTZITE-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-002-CYBERAV3NGERS-Unified.md.docx",
+      "entity_count": 15,
+      "relationship_count": 1,
+      "attack_chain_count": 1,
+      "entities": [
+        {
+          "text": "your water",
+          "label": "CAPEC",
+          "start": 1432,
+          "end": 1442,
+          "source_doc": "NCC-OTCE-EAB-002-CYBERAV3NGERS-Unified.md.docx"
+        },
+        {
+          "text": "Use water",
+          "label": "CAPEC",
+          "start": 1850,
+          "end": 1859,
+          "source_doc": "NCC-OTCE-EAB-002-CYBERAV3NGERS-Unified.md.docx"
+        },
+        {
+          "text": "density data",
+          "label": "CAPEC",
+          "start": 2660,
+          "end": 2672,
+          "source_doc": "NCC-OTCE-EAB-002-CYBERAV3NGERS-Unified.md.docx"
+        },
+        {
+          "text": "Islamic Revolutionary Guard Corps Cyber Electronic Command (IRGC-CEC)",
+          "label": "CWE",
+          "start": 3065,
+          "end": 3134,
+          "source_doc": "NCC-OTCE-EAB-002-CYBERAV3NGERS-Unified.md.docx"
+        },
+        {
+          "text": "Use color coding",
+          "label": "CAPEC",
+          "start": 3597,
+          "end": 3613,
+          "source_doc": "NCC-OTCE-EAB-002-CYBERAV3NGERS-Unified.md.docx"
+        },
+        {
+          "text": "Spear-phishing",
+          "label": "CAPEC",
+          "start": 4742,
+          "end": 4756,
+          "source_doc": "NCC-OTCE-EAB-002-CYBERAV3NGERS-Unified.md.docx"
+        },
+        {
+          "text": "valve manipulation",
+          "label": "CAPEC",
+          "start": 5292,
+          "end": 5310,
+          "source_doc": "NCC-OTCE-EAB-002-CYBERAV3NGERS-Unified.md.docx"
+        },
+        {
+          "text": "Dosing Manipulation",
+          "label": "CAPEC",
+          "start": 5788,
+          "end": 5807,
+          "source_doc": "NCC-OTCE-EAB-002-CYBERAV3NGERS-Unified.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 7497,
+          "end": 7510,
+          "source_doc": "NCC-OTCE-EAB-002-CYBERAV3NGERS-Unified.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 7859,
+          "end": 7872,
+          "source_doc": "NCC-OTCE-EAB-002-CYBERAV3NGERS-Unified.md.docx"
+        },
+        {
+          "text": "Use water-themed blue gradients",
+          "label": "CWE",
+          "start": 9002,
+          "end": 9033,
+          "source_doc": "NCC-OTCE-EAB-002-CYBERAV3NGERS-Unified.md.docx"
+        },
+        {
+          "text": "Use color coding",
+          "label": "CAPEC",
+          "start": 13436,
+          "end": 13452,
+          "source_doc": "NCC-OTCE-EAB-002-CYBERAV3NGERS-Unified.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 14041,
+          "end": 14054,
+          "source_doc": "NCC-OTCE-EAB-002-CYBERAV3NGERS-Unified.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 14146,
+          "end": 14148,
+          "source_doc": "NCC-OTCE-EAB-002-CYBERAV3NGERS-Unified.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 15762,
+          "end": 15764,
+          "source_doc": "NCC-OTCE-EAB-002-CYBERAV3NGERS-Unified.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "USES",
+          "target": "20",
+          "target_type": "CWE",
+          "context": "-Day Security Sprint\nPhase 1 - Assessment (Days 1-10):\n\nComplete asset discovery\nPerform vulnerability assessment\nDevelop risk register\nCreate implementation plan\n\nPhase 2 - Quick Wins (Days 11-20):\n\nDeploy Dragos Platform\nImplement access controls\nHarden critical PLCs\nEstablish monitoring baseline\n\nPhase 3 - Operationalize (Days 21-30):\n\nEnable threat detection\nTrain security team\nConduct tableto"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "vulnerability",
+              "step": 0
+            },
+            {
+              "relationship": "USES"
+            },
+            {
+              "node": "20",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "vulnerability",
+          "end": "20"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-009-FROSTYGOOP-Enhanced.md.docx",
+      "entity_count": 12,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "first malware",
+          "label": "CAPEC",
+          "start": 328,
+          "end": 341,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Enhanced.md.docx"
+        },
+        {
+          "text": "process manipulation",
+          "label": "CAPEC",
+          "start": 634,
+          "end": 654,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 2583,
+          "end": 2585,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Enhanced.md.docx"
+        },
+        {
+          "text": "ICS malware",
+          "label": "CAPEC",
+          "start": 3396,
+          "end": 3407,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Enhanced.md.docx"
+        },
+        {
+          "text": "protocol abuse",
+          "label": "CAPEC",
+          "start": 4855,
+          "end": 4869,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Enhanced.md.docx"
+        },
+        {
+          "text": "28",
+          "label": "CWE",
+          "start": 7478,
+          "end": 7480,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Enhanced.md.docx"
+        },
+        {
+          "text": "damage",
+          "label": "CWE",
+          "start": 8470,
+          "end": 8476,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 9726,
+          "end": 9739,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Enhanced.md.docx"
+        },
+        {
+          "text": "behavioral detection",
+          "label": "CAPEC",
+          "start": 11760,
+          "end": 11780,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Enhanced.md.docx"
+        },
+        {
+          "text": "ICS malware",
+          "label": "CAPEC",
+          "start": 17303,
+          "end": 17314,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Enhanced.md.docx"
+        },
+        {
+          "text": "24",
+          "label": "CWE",
+          "start": 17672,
+          "end": 17674,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Enhanced.md.docx"
+        },
+        {
+          "text": "Defend your",
+          "label": "CAPEC",
+          "start": 18566,
+          "end": 18577,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-009-FROSTYGOOP-Unified.md.docx",
+      "entity_count": 11,
+      "relationship_count": 3,
+      "attack_chain_count": 1,
+      "entities": [
+        {
+          "text": "first malware",
+          "label": "CAPEC",
+          "start": 807,
+          "end": 820,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Unified.md.docx"
+        },
+        {
+          "text": "energy distribution",
+          "label": "CAPEC",
+          "start": 2213,
+          "end": 2232,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Unified.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 2517,
+          "end": 2530,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Unified.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 2671,
+          "end": 2684,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Unified.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 2801,
+          "end": 2814,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Unified.md.docx"
+        },
+        {
+          "text": "29",
+          "label": "CWE",
+          "start": 2859,
+          "end": 2861,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Unified.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 3818,
+          "end": 3831,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Unified.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 8263,
+          "end": 8265,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Unified.md.docx"
+        },
+        {
+          "text": "ICS malware",
+          "label": "CAPEC",
+          "start": 10188,
+          "end": 10199,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Unified.md.docx"
+        },
+        {
+          "text": "\" Malware",
+          "label": "CAPEC",
+          "start": 13017,
+          "end": 13026,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Unified.md.docx"
+        },
+        {
+          "text": "29",
+          "label": "CWE",
+          "start": 13205,
+          "end": 13207,
+          "source_doc": "NCC-OTCE-EAB-009-FROSTYGOOP-Unified.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "Vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "d Supply Chain: Cold storage facilities lost temperature control affecting food safety [18]\nIntergenerational Impact: Demonstrates vulnerability of legacy ICS systems our children will inherit [19]\n\n\nAttack Overview\nCampaign Timeline\nPrimary Attack Vector: Unsecured Router Management\nVulnerability Profile: | Detail | Value | Reference | |--------|-------|-----------| | Device Type | Mikrotik Route"
+        },
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "Vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "st temperature control affecting food safety [18]\nIntergenerational Impact: Demonstrates vulnerability of legacy ICS systems our children will inherit [19]\n\n\nAttack Overview\nCampaign Timeline\nPrimary Attack Vector: Unsecured Router Management\nVulnerability Profile: | Detail | Value | Reference | |--------|-------|-----------| | Device Type | Mikrotik RouterOS | [28] | | Vulnerability | Default cre"
+        },
+        {
+          "source": "Vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "Vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "st temperature control affecting food safety [18]\nIntergenerational Impact: Demonstrates vulnerability of legacy ICS systems our children will inherit [19]\n\n\nAttack Overview\nCampaign Timeline\nPrimary Attack Vector: Unsecured Router Management\nVulnerability Profile: | Detail | Value | Reference | |--------|-------|-----------| | Device Type | Mikrotik RouterOS | [28] | | Vulnerability | Default cre"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "vulnerability",
+              "step": 0
+            },
+            {
+              "relationship": "TARGETS"
+            },
+            {
+              "node": "Vulnerability",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "vulnerability",
+          "end": "Vulnerability"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-010-RANSOMHUB-Enhanced.md.docx",
+      "entity_count": 8,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "your manufacturing",
+          "label": "CAPEC",
+          "start": 714,
+          "end": 732,
+          "source_doc": "NCC-OTCE-EAB-010-RANSOMHUB-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 1203,
+          "end": 1205,
+          "source_doc": "NCC-OTCE-EAB-010-RANSOMHUB-Enhanced.md.docx"
+        },
+        {
+          "text": "malware dev",
+          "label": "CAPEC",
+          "start": 3616,
+          "end": 3627,
+          "source_doc": "NCC-OTCE-EAB-010-RANSOMHUB-Enhanced.md.docx"
+        },
+        {
+          "text": "Use color progression",
+          "label": "CAPEC",
+          "start": 5172,
+          "end": 5193,
+          "source_doc": "NCC-OTCE-EAB-010-RANSOMHUB-Enhanced.md.docx"
+        },
+        {
+          "text": "Heat overlay",
+          "label": "CAPEC",
+          "start": 7245,
+          "end": 7257,
+          "source_doc": "NCC-OTCE-EAB-010-RANSOMHUB-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 16508,
+          "end": 16510,
+          "source_doc": "NCC-OTCE-EAB-010-RANSOMHUB-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 16771,
+          "end": 16773,
+          "source_doc": "NCC-OTCE-EAB-010-RANSOMHUB-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 17437,
+          "end": 17450,
+          "source_doc": "NCC-OTCE-EAB-010-RANSOMHUB-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-010-RANSOMHUB-Unified.md.docx",
+      "entity_count": 5,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "29",
+          "label": "CWE",
+          "start": 2886,
+          "end": 2888,
+          "source_doc": "NCC-OTCE-EAB-010-RANSOMHUB-Unified.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4002,
+          "end": 4015,
+          "source_doc": "NCC-OTCE-EAB-010-RANSOMHUB-Unified.md.docx"
+        },
+        {
+          "text": "29",
+          "label": "CWE",
+          "start": 16519,
+          "end": 16521,
+          "source_doc": "NCC-OTCE-EAB-010-RANSOMHUB-Unified.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 16813,
+          "end": 16815,
+          "source_doc": "NCC-OTCE-EAB-010-RANSOMHUB-Unified.md.docx"
+        },
+        {
+          "text": "Credential Dumping",
+          "label": "CAPEC",
+          "start": 17387,
+          "end": 17405,
+          "source_doc": "NCC-OTCE-EAB-010-RANSOMHUB-Unified.md.docx"
+        }
+      ],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-011-BLACKCAT-Enhanced.md.docx",
+      "entity_count": 8,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "Color progression",
+          "label": "CAPEC",
+          "start": 5195,
+          "end": 5212,
+          "source_doc": "NCC-OTCE-EAB-011-BLACKCAT-Enhanced.md.docx"
+        },
+        {
+          "text": "Credential stuffing",
+          "label": "CAPEC",
+          "start": 6059,
+          "end": 6078,
+          "source_doc": "NCC-OTCE-EAB-011-BLACKCAT-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 8218,
+          "end": 8220,
+          "source_doc": "NCC-OTCE-EAB-011-BLACKCAT-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 8798,
+          "end": 8800,
+          "source_doc": "NCC-OTCE-EAB-011-BLACKCAT-Enhanced.md.docx"
+        },
+        {
+          "text": "protocol analysis",
+          "label": "CAPEC",
+          "start": 9862,
+          "end": 9879,
+          "source_doc": "NCC-OTCE-EAB-011-BLACKCAT-Enhanced.md.docx"
+        },
+        {
+          "text": "credential abuse",
+          "label": "CAPEC",
+          "start": 11971,
+          "end": 11987,
+          "source_doc": "NCC-OTCE-EAB-011-BLACKCAT-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 16388,
+          "end": 16390,
+          "source_doc": "NCC-OTCE-EAB-011-BLACKCAT-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 16508,
+          "end": 16521,
+          "source_doc": "NCC-OTCE-EAB-011-BLACKCAT-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-012-STORMOUS-Unified.md.docx",
+      "entity_count": 12,
+      "relationship_count": 3,
+      "attack_chain_count": 2,
+      "entities": [
+        {
+          "text": "29",
+          "label": "CWE",
+          "start": 3181,
+          "end": 3183,
+          "source_doc": "NCC-OTCE-EAB-012-STORMOUS-Unified.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4820,
+          "end": 4833,
+          "source_doc": "NCC-OTCE-EAB-012-STORMOUS-Unified.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 5489,
+          "end": 5502,
+          "source_doc": "NCC-OTCE-EAB-012-STORMOUS-Unified.md.docx"
+        },
+        {
+          "text": "Spear-phishing",
+          "label": "CAPEC",
+          "start": 5586,
+          "end": 5600,
+          "source_doc": "NCC-OTCE-EAB-012-STORMOUS-Unified.md.docx"
+        },
+        {
+          "text": "Credential stuffing",
+          "label": "CAPEC",
+          "start": 5707,
+          "end": 5726,
+          "source_doc": "NCC-OTCE-EAB-012-STORMOUS-Unified.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 12063,
+          "end": 12065,
+          "source_doc": "NCC-OTCE-EAB-012-STORMOUS-Unified.md.docx"
+        },
+        {
+          "text": "27",
+          "label": "CWE",
+          "start": 12584,
+          "end": 12586,
+          "source_doc": "NCC-OTCE-EAB-012-STORMOUS-Unified.md.docx"
+        },
+        {
+          "text": "29",
+          "label": "CWE",
+          "start": 12735,
+          "end": 12737,
+          "source_doc": "NCC-OTCE-EAB-012-STORMOUS-Unified.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 12808,
+          "end": 12821,
+          "source_doc": "NCC-OTCE-EAB-012-STORMOUS-Unified.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 13427,
+          "end": 13440,
+          "source_doc": "NCC-OTCE-EAB-012-STORMOUS-Unified.md.docx"
+        },
+        {
+          "text": "dependency analysis",
+          "label": "CAPEC",
+          "start": 13611,
+          "end": 13630,
+          "source_doc": "NCC-OTCE-EAB-012-STORMOUS-Unified.md.docx"
+        },
+        {
+          "text": "malware analysis",
+          "label": "CAPEC",
+          "start": 13654,
+          "end": 13670,
+          "source_doc": "NCC-OTCE-EAB-012-STORMOUS-Unified.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "Vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "Spear-phishing",
+          "target_type": "CAPEC",
+          "context": "hain mapping\n\n\u251c\u2500\u2500 Employee profiling via social media\n\n\u2514\u2500\u2500 Vulnerability scanning of exposed services\n\nStage 2: Initial Compromise (STORMOUS/GhostSec)\n\n\u251c\u2500\u2500 Spear-phishing campaigns\n\n\u251c\u2500\u2500 Watering hole attacks on vendor sites\n\n\u251c\u2500\u2500 Exploitation of public-facing applications\n\n\u2514\u2500\u2500 Credential stuffing using BlackForums data\n\nStage 3: Persistence & Escalation\n\n\u251c\u2500\u2500 STMX_GhostLocker deployment\n\n\u251c\u2500\u2500 Multipl"
+        },
+        {
+          "source": "Spear-phishing",
+          "source_type": "CAPEC",
+          "relationship": "TARGETS",
+          "target": "Credential stuffing",
+          "target_type": "CAPEC",
+          "context": "hain mapping\n\n\u251c\u2500\u2500 Employee profiling via social media\n\n\u2514\u2500\u2500 Vulnerability scanning of exposed services\n\nStage 2: Initial Compromise (STORMOUS/GhostSec)\n\n\u251c\u2500\u2500 Spear-phishing campaigns\n\n\u251c\u2500\u2500 Watering hole attacks on vendor sites\n\n\u251c\u2500\u2500 Exploitation of public-facing applications\n\n\u2514\u2500\u2500 Credential stuffing using BlackForums data\n\nStage 3: Persistence & Escalation\n\n\u251c\u2500\u2500 STMX_GhostLocker deployment\n\n\u251c\u2500\u2500 Multipl"
+        },
+        {
+          "source": "dependency analysis",
+          "source_type": "CAPEC",
+          "relationship": "TARGETS",
+          "target": "malware analysis",
+          "target_type": "CAPEC",
+          "context": "[41] Peru national CSIRT, \"Transmission infrastructure threats,\" 2024\n\n[42] DHS, \"Critical infrastructure dependency analysis,\" 2024\n\n[43] Technical malware analysis reports, 2024\n\n[44] Supply chain attack case studies, 2023-2024\n\n[45] Phishing campaign analysis, \"Energy sector themes,\" 2024\n\n[46] CVE tracking, \"Exploited vulnerabilities in energy sector,\" 2024\n\n[47] Insider threat program data,"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "Vulnerability",
+              "step": 0
+            },
+            {
+              "relationship": "TARGETS"
+            },
+            {
+              "node": "Spear-phishing",
+              "step": 2
+            },
+            {
+              "relationship": "TARGETS"
+            },
+            {
+              "node": "Credential stuffing",
+              "step": 4
+            }
+          ],
+          "length": 5,
+          "start": "Vulnerability",
+          "end": "Credential stuffing"
+        },
+        {
+          "chain": [
+            {
+              "node": "dependency analysis",
+              "step": 0
+            },
+            {
+              "relationship": "TARGETS"
+            },
+            {
+              "node": "malware analysis",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "dependency analysis",
+          "end": "malware analysis"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-013-RHYSIDA-Unified.md.docx",
+      "entity_count": 0,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-014-METEORCOMM-Unified.md.docx",
+      "entity_count": 7,
+      "relationship_count": 2,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 1484,
+          "end": 1497,
+          "source_doc": "NCC-OTCE-EAB-014-METEORCOMM-Unified.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 2478,
+          "end": 2491,
+          "source_doc": "NCC-OTCE-EAB-014-METEORCOMM-Unified.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 2565,
+          "end": 2578,
+          "source_doc": "NCC-OTCE-EAB-014-METEORCOMM-Unified.md.docx"
+        },
+        {
+          "text": "27",
+          "label": "CWE",
+          "start": 3210,
+          "end": 3212,
+          "source_doc": "NCC-OTCE-EAB-014-METEORCOMM-Unified.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4857,
+          "end": 4870,
+          "source_doc": "NCC-OTCE-EAB-014-METEORCOMM-Unified.md.docx"
+        },
+        {
+          "text": "feasibility",
+          "label": "VULNERABILITY",
+          "start": 9174,
+          "end": 9185,
+          "source_doc": "NCC-OTCE-EAB-014-METEORCOMM-Unified.md.docx"
+        },
+        {
+          "text": "Protocol Analysis",
+          "label": "CAPEC",
+          "start": 10624,
+          "end": 10641,
+          "source_doc": "NCC-OTCE-EAB-014-METEORCOMM-Unified.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "Vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "Vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "upply Chain: Agricultural rail shipments worth $64.7 billion annually at risk of disruption [14]\nIntergenerational Impact: $15.7 billion PTC investment undermined by fundamental security flaws [15]\n\n\nAttack Overview\nCampaign Timeline\nPrimary Attack Vector: Meteorcomm Authentication Bypass\nVulnerability Profile: | Detail | Value | Reference | |--------|-------|-----------| | Vulnerability Type | CW"
+        },
+        {
+          "source": "Vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "Vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "orth $64.7 billion annually at risk of disruption [14]\nIntergenerational Impact: $15.7 billion PTC investment undermined by fundamental security flaws [15]\n\n\nAttack Overview\nCampaign Timeline\nPrimary Attack Vector: Meteorcomm Authentication Bypass\nVulnerability Profile: | Detail | Value | Reference | |--------|-------|-----------| | Vulnerability Type | CWE-287 (Improper Authentication) | [21] | |"
+        }
+      ],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-015-POLAND-RF-Unified.md.docx",
+      "entity_count": 8,
+      "relationship_count": 1,
+      "attack_chain_count": 1,
+      "entities": [
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 847,
+          "end": 849,
+          "source_doc": "NCC-OTCE-EAB-015-POLAND-RF-Unified.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 2617,
+          "end": 2619,
+          "source_doc": "NCC-OTCE-EAB-015-POLAND-RF-Unified.md.docx"
+        },
+        {
+          "text": "27",
+          "label": "CWE",
+          "start": 2904,
+          "end": 2906,
+          "source_doc": "NCC-OTCE-EAB-015-POLAND-RF-Unified.md.docx"
+        },
+        {
+          "text": "61",
+          "label": "CWE",
+          "start": 4857,
+          "end": 4859,
+          "source_doc": "NCC-OTCE-EAB-015-POLAND-RF-Unified.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 10535,
+          "end": 10548,
+          "source_doc": "NCC-OTCE-EAB-015-POLAND-RF-Unified.md.docx"
+        },
+        {
+          "text": "Behavioral analysis",
+          "label": "CAPEC",
+          "start": 10673,
+          "end": 10692,
+          "source_doc": "NCC-OTCE-EAB-015-POLAND-RF-Unified.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 11385,
+          "end": 11398,
+          "source_doc": "NCC-OTCE-EAB-015-POLAND-RF-Unified.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 11868,
+          "end": 11881,
+          "source_doc": "NCC-OTCE-EAB-015-POLAND-RF-Unified.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "Behavioral analysis",
+          "target_type": "CAPEC",
+          "context": "ing: Controlled attack simulation [95]\nProtocol Security Analysis: Radio system vulnerability assessment [96]\nMigration Planning: Digital radio transition roadmap [97]\nDragos Platform Intelligence\nRF Attack Detection: Behavioral analysis of radio patterns [98]\nThreat Actor Tracking: Monitoring copycat attempts globally [99]\nIntegration: Radio monitoring with OT security platform [100]\nAdelard Safe"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "vulnerability",
+              "step": 0
+            },
+            {
+              "relationship": "TARGETS"
+            },
+            {
+              "node": "Behavioral analysis",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "vulnerability",
+          "end": "Behavioral analysis"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-016-PTC-SCADA-Enhanced.md.docx",
+      "entity_count": 12,
+      "relationship_count": 1,
+      "attack_chain_count": 1,
+      "entities": [
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 376,
+          "end": 389,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 857,
+          "end": 870,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Enhanced.md.docx"
+        },
+        {
+          "text": "protocol analysis",
+          "label": "CAPEC",
+          "start": 3024,
+          "end": 3041,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 3738,
+          "end": 3751,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Enhanced.md.docx"
+        },
+        {
+          "text": "Use color progression",
+          "label": "CAPEC",
+          "start": 3826,
+          "end": 3847,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Enhanced.md.docx"
+        },
+        {
+          "text": "Cleartext conversion points\nShared Databases: Single SQL injection reaches everything\nCommon",
+          "label": "CWE",
+          "start": 4595,
+          "end": 4687,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4973,
+          "end": 4986,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Enhanced.md.docx"
+        },
+        {
+          "text": "Use color",
+          "label": "CAPEC",
+          "start": 9019,
+          "end": 9028,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Enhanced.md.docx"
+        },
+        {
+          "text": "Critical Dependencies",
+          "label": "CAPEC",
+          "start": 9794,
+          "end": 9815,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Enhanced.md.docx"
+        },
+        {
+          "text": "electricity",
+          "label": "CAPEC",
+          "start": 9929,
+          "end": 9940,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 10280,
+          "end": 10293,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Enhanced.md.docx"
+        },
+        {
+          "text": "verification during",
+          "label": "CAPEC",
+          "start": 12888,
+          "end": 12907,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "USES",
+          "target": "Use color progression",
+          "target_type": "CAPEC",
+          "context": "e. Bottom track \"Security Reality\": No security requirements \u2192 Rush to comply \u2192 Integration shortcuts \u2192 Massive vulnerability. Connection points between tracks show where safety compromised security. Use color progression from green (safe) to red (vulnerable). Include key dates and decisions that created current crisis.]\nThe Perfect Storm of Vulnerabilities\nCongressional Mandate (2008): Implement"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "vulnerability",
+              "step": 0
+            },
+            {
+              "relationship": "USES"
+            },
+            {
+              "node": "Use color progression",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "vulnerability",
+          "end": "Use color progression"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-016-PTC-SCADA-Unified.md.docx",
+      "entity_count": 7,
+      "relationship_count": 1,
+      "attack_chain_count": 1,
+      "entities": [
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 1447,
+          "end": 1460,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Unified.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 2357,
+          "end": 2370,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Unified.md.docx"
+        },
+        {
+          "text": "27",
+          "label": "CWE",
+          "start": 3211,
+          "end": 3213,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Unified.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 3281,
+          "end": 3294,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Unified.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 4495,
+          "end": 4497,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Unified.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 13315,
+          "end": 13328,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Unified.md.docx"
+        },
+        {
+          "text": "27",
+          "label": "CWE",
+          "start": 14483,
+          "end": 14485,
+          "source_doc": "NCC-OTCE-EAB-016-PTC-SCADA-Unified.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "27",
+          "source_type": "CWE",
+          "relationship": "TARGETS",
+          "target": "Vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "on public filings, security assessments, and intelligence gathering [27].\nHigh-Risk Integrated Systems (Confirmed Vulnerable)\nSCADA System Vulnerability Profiles\nCritical Infrastructure Dependencies\nAttack Path Analysis\nEntry Point Distribution\nBased on penetration testing and incident data [46]:\n\nPrimary Entry Vectors: | Vector | Frequency | Success Rate | Time to PTC | Difficulty | |--------|--"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "27",
+              "step": 0
+            },
+            {
+              "relationship": "TARGETS"
+            },
+            {
+              "node": "Vulnerability",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "27",
+          "end": "Vulnerability"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-017-RAIL-SUPPLY-CHAIN-Unified.md.docx",
+      "entity_count": 8,
+      "relationship_count": 2,
+      "attack_chain_count": 1,
+      "entities": [
+        {
+          "text": "transport manipulation",
+          "label": "CAPEC",
+          "start": 2052,
+          "end": 2074,
+          "source_doc": "NCC-OTCE-EAB-017-RAIL-SUPPLY-CHAIN-Unified.md.docx"
+        },
+        {
+          "text": "Spear Phishing",
+          "label": "CAPEC",
+          "start": 2477,
+          "end": 2491,
+          "source_doc": "NCC-OTCE-EAB-017-RAIL-SUPPLY-CHAIN-Unified.md.docx"
+        },
+        {
+          "text": "27",
+          "label": "CWE",
+          "start": 2782,
+          "end": 2784,
+          "source_doc": "NCC-OTCE-EAB-017-RAIL-SUPPLY-CHAIN-Unified.md.docx"
+        },
+        {
+          "text": "29",
+          "label": "CWE",
+          "start": 3034,
+          "end": 3036,
+          "source_doc": "NCC-OTCE-EAB-017-RAIL-SUPPLY-CHAIN-Unified.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 4440,
+          "end": 4442,
+          "source_doc": "NCC-OTCE-EAB-017-RAIL-SUPPLY-CHAIN-Unified.md.docx"
+        },
+        {
+          "text": "Targeted Phishing",
+          "label": "CAPEC",
+          "start": 7411,
+          "end": 7428,
+          "source_doc": "NCC-OTCE-EAB-017-RAIL-SUPPLY-CHAIN-Unified.md.docx"
+        },
+        {
+          "text": "Upload your",
+          "label": "CAPEC",
+          "start": 7985,
+          "end": 7996,
+          "source_doc": "NCC-OTCE-EAB-017-RAIL-SUPPLY-CHAIN-Unified.md.docx"
+        },
+        {
+          "text": "Reverse engineering analysis",
+          "label": "CAPEC",
+          "start": 8658,
+          "end": 8686,
+          "source_doc": "NCC-OTCE-EAB-017-RAIL-SUPPLY-CHAIN-Unified.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "27",
+          "source_type": "CWE",
+          "relationship": "TARGETS",
+          "target": "29",
+          "target_type": "CWE",
+          "context": "access | Extreme | [27] | | Cloud Compromise | 71% | API key theft | High | [28] |\n\n\nAffected Organizations Analysis\nComprehensive Vendor Compromise Matrix\nThis analysis maps the railway supply chain attack surface, documenting confirmed and suspected vendor compromises [29].\nTier 1 Vendors - Confirmed Compromised\nCritical Component Suppliers - Under Investigation\nSoftware and Service Providers\nSu"
+        },
+        {
+          "source": "27",
+          "source_type": "CWE",
+          "relationship": "TARGETS",
+          "target": "29",
+          "target_type": "CWE",
+          "context": "plants | Extreme | [26] | | Insider Threat | 95% | Legitimate access | Extreme | [27] | | Cloud Compromise | 71% | API key theft | High | [28] |\n\n\nAffected Organizations Analysis\nComprehensive Vendor Compromise Matrix\nThis analysis maps the railway supply chain attack surface, documenting confirmed and suspected vendor compromises [29].\nTier 1 Vendors - Confirmed Compromised\nCritical Component Sup"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "27",
+              "step": 0
+            },
+            {
+              "relationship": "TARGETS"
+            },
+            {
+              "node": "29",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "27",
+          "end": "29"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-018-VOLTZITE-Enhanced.md.docx",
+      "entity_count": 3,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "Grid overlay",
+          "label": "CAPEC",
+          "start": 1464,
+          "end": 1476,
+          "source_doc": "NCC-OTCE-EAB-018-VOLTZITE-Enhanced.md.docx"
+        },
+        {
+          "text": "disruptions during",
+          "label": "CAPEC",
+          "start": 10985,
+          "end": 11003,
+          "source_doc": "NCC-OTCE-EAB-018-VOLTZITE-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 19838,
+          "end": 19840,
+          "source_doc": "NCC-OTCE-EAB-018-VOLTZITE-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-018-VOLTZITE-RAIL-Unified.md.docx",
+      "entity_count": 5,
+      "relationship_count": 4,
+      "attack_chain_count": 2,
+      "entities": [
+        {
+          "text": "27",
+          "label": "CWE",
+          "start": 3196,
+          "end": 3198,
+          "source_doc": "NCC-OTCE-EAB-018-VOLTZITE-RAIL-Unified.md.docx"
+        },
+        {
+          "text": "28",
+          "label": "CWE",
+          "start": 3374,
+          "end": 3376,
+          "source_doc": "NCC-OTCE-EAB-018-VOLTZITE-RAIL-Unified.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 3839,
+          "end": 3841,
+          "source_doc": "NCC-OTCE-EAB-018-VOLTZITE-RAIL-Unified.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4127,
+          "end": 4140,
+          "source_doc": "NCC-OTCE-EAB-018-VOLTZITE-RAIL-Unified.md.docx"
+        },
+        {
+          "text": "principal abuse",
+          "label": "CAPEC",
+          "start": 16106,
+          "end": 16121,
+          "source_doc": "NCC-OTCE-EAB-018-VOLTZITE-RAIL-Unified.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "20",
+          "source_type": "CWE",
+          "relationship": "EXPLOITS",
+          "target": "Vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "connectivity | 25% | Distance to military port | | Base proximity | 20% | Number of installations served | | Alternative routes | 15% | Redundancy assessment |\n\nCivilian Impact Potential:\n\nPopulation affected by disruption (millions)\nEconomic value of freight ($B annually)\nHazmat exposure (tons per day)\nFood/energy security impact (critical days)\n\nCyber Vulnerability Assessment:\n\nExposed attack su"
+        },
+        {
+          "source": "27",
+          "source_type": "CWE",
+          "relationship": "EXPLOITS",
+          "target": "28",
+          "target_type": "CWE",
+          "context": "ing | [26] | | Northeast Corridor | DC-Boston | Passenger heavy | Government continuity | Deep reconnaissance | [27] |\n\n\nAffected Organizations Analysis\nComprehensive Target Matrix\nVOLTZITE's railway targeting prioritizes dual-use infrastructure serving both civilian and military purposes [28].\nPrimary Targets - Strategic Rail Systems\nCritical Junction Analysis\nSupporting Infrastructure Targets\nTa"
+        },
+        {
+          "source": "27",
+          "source_type": "CWE",
+          "relationship": "USES",
+          "target": "28",
+          "target_type": "CWE",
+          "context": "rridor | DC-Boston | Passenger heavy | Government continuity | Deep reconnaissance | [27] |\n\n\nAffected Organizations Analysis\nComprehensive Target Matrix\nVOLTZITE's railway targeting prioritizes dual-use infrastructure serving both civilian and military purposes [28].\nPrimary Targets - Strategic Rail Systems\nCritical Junction Analysis\nSupporting Infrastructure Targets\nTarget Prioritization Analysi"
+        },
+        {
+          "source": "27",
+          "source_type": "CWE",
+          "relationship": "TARGETS",
+          "target": "28",
+          "target_type": "CWE",
+          "context": "| Sealift support | Active targeting | [26] | | Northeast Corridor | DC-Boston | Passenger heavy | Government continuity | Deep reconnaissance | [27] |\n\n\nAffected Organizations Analysis\nComprehensive Target Matrix\nVOLTZITE's railway targeting prioritizes dual-use infrastructure serving both civilian and military purposes [28].\nPrimary Targets - Strategic Rail Systems\nCritical Junction Analysis\nSup"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "20",
+              "step": 0
+            },
+            {
+              "relationship": "EXPLOITS"
+            },
+            {
+              "node": "Vulnerability",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "20",
+          "end": "Vulnerability"
+        },
+        {
+          "chain": [
+            {
+              "node": "27",
+              "step": 0
+            },
+            {
+              "relationship": "EXPLOITS"
+            },
+            {
+              "node": "28",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "27",
+          "end": "28"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-019-AQUAPHANTOM-WATER-Unified.md.docx",
+      "entity_count": 4,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "T0866 - Exploitation of Remote Services\nPersistence",
+          "label": "CWE",
+          "start": 2364,
+          "end": 2415,
+          "source_doc": "NCC-OTCE-EAB-019-AQUAPHANTOM-WATER-Unified.md.docx"
+        },
+        {
+          "text": "dosing PLCs",
+          "label": "CAPEC",
+          "start": 3647,
+          "end": 3658,
+          "source_doc": "NCC-OTCE-EAB-019-AQUAPHANTOM-WATER-Unified.md.docx"
+        },
+        {
+          "text": "process manipulation",
+          "label": "CAPEC",
+          "start": 6083,
+          "end": 6103,
+          "source_doc": "NCC-OTCE-EAB-019-AQUAPHANTOM-WATER-Unified.md.docx"
+        },
+        {
+          "text": "Critical Water Infrastructure",
+          "label": "CAPEC",
+          "start": 8083,
+          "end": 8112,
+          "source_doc": "NCC-OTCE-EAB-019-AQUAPHANTOM-WATER-Unified.md.docx"
+        }
+      ],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-020-GRAINKEEPER-Enhanced.md.docx",
+      "entity_count": 9,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "Grid overlay",
+          "label": "CAPEC",
+          "start": 1530,
+          "end": 1542,
+          "source_doc": "NCC-OTCE-EAB-020-GRAINKEEPER-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 2915,
+          "end": 2917,
+          "source_doc": "NCC-OTCE-EAB-020-GRAINKEEPER-Enhanced.md.docx"
+        },
+        {
+          "text": "velocity",
+          "label": "VULNERABILITY",
+          "start": 4562,
+          "end": 4570,
+          "source_doc": "NCC-OTCE-EAB-020-GRAINKEEPER-Enhanced.md.docx"
+        },
+        {
+          "text": "optimal manipulation for maximum impact\n\n        current_speed = self.get_train_telemetry(train_id)['speed']\n\n        track_geometry = self.get_track_data(location)",
+          "label": "CWE",
+          "start": 6264,
+          "end": 6428,
+          "source_doc": "NCC-OTCE-EAB-020-GRAINKEEPER-Enhanced.md.docx"
+        },
+        {
+          "text": "Use color progression",
+          "label": "CAPEC",
+          "start": 8972,
+          "end": 8993,
+          "source_doc": "NCC-OTCE-EAB-020-GRAINKEEPER-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 14422,
+          "end": 14435,
+          "source_doc": "NCC-OTCE-EAB-020-GRAINKEEPER-Enhanced.md.docx"
+        },
+        {
+          "text": "Use color coding",
+          "label": "CAPEC",
+          "start": 15842,
+          "end": 15858,
+          "source_doc": "NCC-OTCE-EAB-020-GRAINKEEPER-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 17746,
+          "end": 17759,
+          "source_doc": "NCC-OTCE-EAB-020-GRAINKEEPER-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 18423,
+          "end": 18425,
+          "source_doc": "NCC-OTCE-EAB-020-GRAINKEEPER-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-020-GRAINKEEPER-FOOD-Unified.md.docx",
+      "entity_count": 4,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "- malware analysis",
+          "label": "CAPEC",
+          "start": 1620,
+          "end": 1638,
+          "source_doc": "NCC-OTCE-EAB-020-GRAINKEEPER-FOOD-Unified.md.docx"
+        },
+        {
+          "text": "GPS manipulation",
+          "label": "CAPEC",
+          "start": 2896,
+          "end": 2912,
+          "source_doc": "NCC-OTCE-EAB-020-GRAINKEEPER-FOOD-Unified.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 3063,
+          "end": 3065,
+          "source_doc": "NCC-OTCE-EAB-020-GRAINKEEPER-FOOD-Unified.md.docx"
+        },
+        {
+          "text": "GPS Manipulation",
+          "label": "CAPEC",
+          "start": 8199,
+          "end": 8215,
+          "source_doc": "NCC-OTCE-EAB-020-GRAINKEEPER-FOOD-Unified.md.docx"
+        }
+      ],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-021-CHEMLOCK-Unified.md.docx",
+      "entity_count": 2,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "process data",
+          "label": "CAPEC",
+          "start": 3550,
+          "end": 3562,
+          "source_doc": "NCC-OTCE-EAB-021-CHEMLOCK-Unified.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 4536,
+          "end": 4538,
+          "source_doc": "NCC-OTCE-EAB-021-CHEMLOCK-Unified.md.docx"
+        }
+      ],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-022-TREASURY-BREACH-Enhanced.md.docx",
+      "entity_count": 8,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 2198,
+          "end": 2211,
+          "source_doc": "NCC-OTCE-EAB-022-TREASURY-BREACH-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 2300,
+          "end": 2313,
+          "source_doc": "NCC-OTCE-EAB-022-TREASURY-BREACH-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 2491,
+          "end": 2504,
+          "source_doc": "NCC-OTCE-EAB-022-TREASURY-BREACH-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4037,
+          "end": 4050,
+          "source_doc": "NCC-OTCE-EAB-022-TREASURY-BREACH-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4987,
+          "end": 5000,
+          "source_doc": "NCC-OTCE-EAB-022-TREASURY-BREACH-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 8176,
+          "end": 8189,
+          "source_doc": "NCC-OTCE-EAB-022-TREASURY-BREACH-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 11820,
+          "end": 11833,
+          "source_doc": "NCC-OTCE-EAB-022-TREASURY-BREACH-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 11881,
+          "end": 11894,
+          "source_doc": "NCC-OTCE-EAB-022-TREASURY-BREACH-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-023-QILIN-SURGE-Enhanced.md.docx",
+      "entity_count": 10,
+      "relationship_count": 5,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 1862,
+          "end": 1875,
+          "source_doc": "NCC-OTCE-EAB-023-QILIN-SURGE-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 2075,
+          "end": 2088,
+          "source_doc": "NCC-OTCE-EAB-023-QILIN-SURGE-Enhanced.md.docx"
+        },
+        {
+          "text": "Out-of-bounds Write",
+          "label": "CWE",
+          "start": 4322,
+          "end": 4341,
+          "source_doc": "NCC-OTCE-EAB-023-QILIN-SURGE-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4342,
+          "end": 4355,
+          "source_doc": "NCC-OTCE-EAB-023-QILIN-SURGE-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4601,
+          "end": 4614,
+          "source_doc": "NCC-OTCE-EAB-023-QILIN-SURGE-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4875,
+          "end": 4888,
+          "source_doc": "NCC-OTCE-EAB-023-QILIN-SURGE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 9545,
+          "end": 9558,
+          "source_doc": "NCC-OTCE-EAB-023-QILIN-SURGE-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 10952,
+          "end": 10965,
+          "source_doc": "NCC-OTCE-EAB-023-QILIN-SURGE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 11243,
+          "end": 11256,
+          "source_doc": "NCC-OTCE-EAB-023-QILIN-SURGE-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 11839,
+          "end": 11852,
+          "source_doc": "NCC-OTCE-EAB-023-QILIN-SURGE-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "Vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "Vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "pansion: Expanding from Spanish-speaking focus to worldwide\nVulnerability Weaponization: Rapid exploitation of Fortinet zero-days\n\n\n\ud83d\udd0d ATTACK TIMELINE\nPhase 1: Infrastructure Reconnaissance (May 2025)\nTarget Identification: Scanning for vulnerable Fortinet devices globally\nVulnerability Assessment: CVE-2024-21762 and CVE-2024-55591 exploitation\nVictim Profiling: Healthcare and professional services"
+        },
+        {
+          "source": "Vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "Vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "frastructure: Systematic targeting of essential services\nGlobal Expansion: Expanding from Spanish-speaking focus to worldwide\nVulnerability Weaponization: Rapid exploitation of Fortinet zero-days\n\n\n\ud83d\udd0d ATTACK TIMELINE\nPhase 1: Infrastructure Reconnaissance (May 2025)\nTarget Identification: Scanning for vulnerable Fortinet devices globally\nVulnerability Assessment: CVE-2024-21762 and CVE-2024-55591 e"
+        },
+        {
+          "source": "Out-of-bounds Write",
+          "source_type": "CWE",
+          "relationship": "TARGETS",
+          "target": "Vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "bilities\nCVE-2024-21762 (Critical)\nComponent: FortiOS/FortiProxy\n\nType: Out-of-bounds Write Vulnerability\n\nCVSS Score: Critical (9.0+)\n\nImpact: Remote code execution\n\nExploitation: Pre-authentication attack vector\n\nPatch Status: Available but many systems unpatched\nCVE-2024-55591 (Critical)\nComponent: FortiOS/FortiProxy\n\nType: Authentication Bypass Vulnerability\n\nCVSS Score: Critical (9.0+)\n\nImpac"
+        },
+        {
+          "source": "Vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "Vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "bilities\nCVE-2024-21762 (Critical)\nComponent: FortiOS/FortiProxy\n\nType: Out-of-bounds Write Vulnerability\n\nCVSS Score: Critical (9.0+)\n\nImpact: Remote code execution\n\nExploitation: Pre-authentication attack vector\n\nPatch Status: Available but many systems unpatched\nCVE-2024-55591 (Critical)\nComponent: FortiOS/FortiProxy\n\nType: Authentication Bypass Vulnerability\n\nCVSS Score: Critical (9.0+)\n\nImpac"
+        },
+        {
+          "source": "Vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "Vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "entication Bypass Vulnerability\n\nCVSS Score: Critical (9.0+)\n\nImpact: Super-admin privilege escalation\n\nExploitation: Used in conjunction with CVE-2024-21762\n\nPatch Status: Emergency patches released\nAttack Methodology\nAutomated Scanning: Global identification of vulnerable Fortinet devices\nVulnerability Chaining: Combined exploitation of both CVEs for maximum access\nPrivilege Escalation: Super-ad"
+        }
+      ],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-024-DRAGONFORCE-ECOSYSTEM-Enhanced.md.docx",
+      "entity_count": 15,
+      "relationship_count": 1,
+      "attack_chain_count": 1,
+      "entities": [
+        {
+          "text": "breakthroughs immediately",
+          "label": "CAPEC",
+          "start": 2029,
+          "end": 2054,
+          "source_doc": "NCC-OTCE-EAB-024-DRAGONFORCE-ECOSYSTEM-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 2890,
+          "end": 2903,
+          "source_doc": "NCC-OTCE-EAB-024-DRAGONFORCE-ECOSYSTEM-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 3486,
+          "end": 3499,
+          "source_doc": "NCC-OTCE-EAB-024-DRAGONFORCE-ECOSYSTEM-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 5292,
+          "end": 5294,
+          "source_doc": "NCC-OTCE-EAB-024-DRAGONFORCE-ECOSYSTEM-Enhanced.md.docx"
+        },
+        {
+          "text": "27",
+          "label": "CWE",
+          "start": 5504,
+          "end": 5506,
+          "source_doc": "NCC-OTCE-EAB-024-DRAGONFORCE-ECOSYSTEM-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 5797,
+          "end": 5799,
+          "source_doc": "NCC-OTCE-EAB-024-DRAGONFORCE-ECOSYSTEM-Enhanced.md.docx"
+        },
+        {
+          "text": "Innovation Sharing",
+          "label": "CAPEC",
+          "start": 6547,
+          "end": 6565,
+          "source_doc": "NCC-OTCE-EAB-024-DRAGONFORCE-ECOSYSTEM-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "CAPEC",
+          "start": 8402,
+          "end": 8415,
+          "source_doc": "NCC-OTCE-EAB-024-DRAGONFORCE-ECOSYSTEM-Enhanced.md.docx"
+        },
+        {
+          "text": "Geographic distribution",
+          "label": "CAPEC",
+          "start": 10206,
+          "end": 10229,
+          "source_doc": "NCC-OTCE-EAB-024-DRAGONFORCE-ECOSYSTEM-Enhanced.md.docx"
+        },
+        {
+          "text": "Immediate isolation of critical systems from general network access\nBackup Validation",
+          "label": "CWE",
+          "start": 15073,
+          "end": 15158,
+          "source_doc": "NCC-OTCE-EAB-024-DRAGONFORCE-ECOSYSTEM-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 15323,
+          "end": 15336,
+          "source_doc": "NCC-OTCE-EAB-024-DRAGONFORCE-ECOSYSTEM-Enhanced.md.docx"
+        },
+        {
+          "text": "cryptocurrency-based operations\nCyber Warfare Preparedness: National cyber warfare capability development for alliance-level threats\nEconomic Resilience",
+          "label": "CWE",
+          "start": 22225,
+          "end": 22377,
+          "source_doc": "NCC-OTCE-EAB-024-DRAGONFORCE-ECOSYSTEM-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 24173,
+          "end": 24186,
+          "source_doc": "NCC-OTCE-EAB-024-DRAGONFORCE-ECOSYSTEM-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 25048,
+          "end": 25061,
+          "source_doc": "NCC-OTCE-EAB-024-DRAGONFORCE-ECOSYSTEM-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 26241,
+          "end": 26254,
+          "source_doc": "NCC-OTCE-EAB-024-DRAGONFORCE-ECOSYSTEM-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "27",
+          "source_type": "CWE",
+          "relationship": "TARGETS",
+          "target": "20",
+          "target_type": "CWE",
+          "context": "t in supply chain security and increased insurance premiums\n\nGovernment Sector (27% of attacks):\n\n4 government agencies targeted with focus on critical infrastructure oversight\nClassified information compromise and operational disruption\nNational security implications and diplomatic tensions\nEmergency response capability degradation during attack periods\n\nRetail Sector (20% of attacks):\n\n3 major r"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "27",
+              "step": 0
+            },
+            {
+              "relationship": "TARGETS"
+            },
+            {
+              "node": "20",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "27",
+          "end": "20"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx",
+      "entity_count": 23,
+      "relationship_count": 6,
+      "attack_chain_count": 2,
+      "entities": [
+        {
+          "text": "energy distribution",
+          "label": "CAPEC",
+          "start": 488,
+          "end": 507,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "credential abuse",
+          "label": "CAPEC",
+          "start": 3782,
+          "end": 3798,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 3853,
+          "end": 3855,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 5618,
+          "end": 5631,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 7502,
+          "end": 7515,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 7636,
+          "end": 7649,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 12836,
+          "end": 12849,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 14761,
+          "end": 14774,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 15168,
+          "end": 15181,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "damage during",
+          "label": "CAPEC",
+          "start": 15320,
+          "end": 15333,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 15497,
+          "end": 15510,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 15625,
+          "end": 15638,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 15825,
+          "end": 15838,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "Immediate isolation of critical control systems from network access\nAdministrative Access Restriction: Emergency restriction of remote administrative access capabilities\nMonitoring Enhancement: Deployment of advanced monitoring for infrastructure control systems\nIncident Response Activation: Full activation of infrastructure incident response capabilities\nThreat Hunting and Eradication\nVolt Typhoon Detection",
+          "label": "CWE",
+          "start": 16194,
+          "end": 16605,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "Behavioral analysis",
+          "label": "CAPEC",
+          "start": 16739,
+          "end": 16758,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "Development of Volt Typhoon infrastructure-specific indicators\nMachine Learning Detection: AI-powered anomaly detection for infrastructure control systems\nCross-Sector Coordination: Enhanced information sharing among infrastructure operators\nGovernment-Industry Collaboration",
+          "label": "CWE",
+          "start": 17543,
+          "end": 17818,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 19694,
+          "end": 19707,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "Immediate isolation of critical control systems from internet access\nMonitoring Enhancement: Deployment of infrastructure-specific threat monitoring capabilities\nIncident Response Preparation: Activation and testing of infrastructure compromise response procedures\nStrategic Investment Priorities\nZero",
+          "label": "CWE",
+          "start": 21633,
+          "end": 21934,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "International coordination for infrastructure protection against state-sponsored threats\nEconomic Security Integration: Infrastructure security as component of economic and military security\nTechnical and Operational Lessons\nAdvanced Persistent Threat Evolution\nVolt Typhoon Methodology Advancement:\n\nDetection Evasion: Sophisticated use of legitimate tools to avoid traditional security detection\nLong-term Persistence",
+          "label": "CWE",
+          "start": 24870,
+          "end": 25289,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 26454,
+          "end": 26467,
+          "source_doc": "NCC-OTCE-EAB-025-VOLT-TYPHOON-INFRASTRUCTURE-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "EXPLOITS",
+          "target": "Vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "exas Gulf Coast: Energy production and petroleum infrastructure\n\nMilitary Installation Impact:\n\n8+ military installations dependent on compromised infrastructure\nStrategic military logistics networks vulnerable to disruption\nDefense industrial base supply chain vulnerability\nMilitary readiness degradation potential during infrastructure disruption\nEconomic Warfare Implications\nEconomic Sector Vuln"
+        },
+        {
+          "source": "Vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "EXPLOITS",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "y: Infrastructure supply chain security requirements and risk assessment\nStrategic and Policy Analysis\nChinese Military Doctrine: PLA Strategic Support Force cyber warfare doctrine and infrastructure targeting strategy\nCritical Infrastructure Vulnerability: National infrastructure vulnerability assessment and protection requirements\nInternational Cooperation: Allied infrastructure protection coord"
+        },
+        {
+          "source": "credential abuse",
+          "source_type": "CAPEC",
+          "relationship": "USES",
+          "target": "20",
+          "target_type": "CWE",
+          "context": ": Compromised legitimate administrative credentials\nExternal Remote Services (T1133): VPN and remote access infrastructure exploitation\nTrusted Relationship (T1199): Supply chain partner credential abuse\nPhase 2: Persistence and Privilege Escalation (July 1-20, 2025)\nLiving off the Land Technique Implementation:\n\nPowerShell (T1059.001): Windows PowerShell for remote execution and data collection\nW"
+        },
+        {
+          "source": "Vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "USES",
+          "target": "damage during",
+          "target_type": "CAPEC",
+          "context": "conomic Benefits\nCompetitive Advantage Gain:\n\nInfrastructure Vulnerability: Chinese knowledge of US infrastructure weaknesses provides strategic advantage\nEconomic Disruption Capability: Ability to cause economic damage during trade or military conflicts\nTechnology Transfer: Infrastructure control system intelligence for Chinese industrial advancement\nDeterrent Effect: US infrastructure vulnerabil"
+        },
+        {
+          "source": "damage during",
+          "source_type": "CAPEC",
+          "relationship": "USES",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "conomic Benefits\nCompetitive Advantage Gain:\n\nInfrastructure Vulnerability: Chinese knowledge of US infrastructure weaknesses provides strategic advantage\nEconomic Disruption Capability: Ability to cause economic damage during trade or military conflicts\nTechnology Transfer: Infrastructure control system intelligence for Chinese industrial advancement\nDeterrent Effect: US infrastructure vulnerabil"
+        },
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "Immediate isolation of critical control systems from network access\nAdministrative Access Restriction: Emergency restriction of remote administrative access capabilities\nMonitoring Enhancement: Deployment of advanced monitoring for infrastructure control systems\nIncident Response Activation: Full activation of infrastructure incident response capabilities\nThreat Hunting and Eradication\nVolt Typhoon Detection",
+          "target_type": "CWE",
+          "context": "re chokepoints create economic vulnerability\nInternational Competitiveness: Infrastructure unreliability reduces US economic competitiveness\nStrategic Resource Access: Energy and water supply control affects defense industrial capacity\n\n\n\ud83d\udee1\ufe0f COMPREHENSIVE MITIGATION STRATEGY\nImmediate Response Actions (0-30 Days)\nEmergency Infrastructure Protection\nCritical System Isolation:\n\nNetwork Segmentation:"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "vulnerability",
+              "step": 0
+            },
+            {
+              "relationship": "EXPLOITS"
+            },
+            {
+              "node": "Vulnerability",
+              "step": 2
+            },
+            {
+              "relationship": "USES"
+            },
+            {
+              "node": "damage during",
+              "step": 4
+            }
+          ],
+          "length": 5,
+          "start": "vulnerability",
+          "end": "damage during"
+        },
+        {
+          "chain": [
+            {
+              "node": "credential abuse",
+              "step": 0
+            },
+            {
+              "relationship": "USES"
+            },
+            {
+              "node": "20",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "credential abuse",
+          "end": "20"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-026-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx",
+      "entity_count": 15,
+      "relationship_count": 3,
+      "attack_chain_count": 2,
+      "entities": [
+        {
+          "text": "medication dispensing",
+          "label": "CAPEC",
+          "start": 1359,
+          "end": 1380,
+          "source_doc": "NCC-OTCE-EAB-026-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4410,
+          "end": 4423,
+          "source_doc": "NCC-OTCE-EAB-026-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "spear-phishing",
+          "label": "CAPEC",
+          "start": 4534,
+          "end": 4548,
+          "source_doc": "NCC-OTCE-EAB-026-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "Protocol Abuse",
+          "label": "CAPEC",
+          "start": 9660,
+          "end": 9674,
+          "source_doc": "NCC-OTCE-EAB-026-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "protocol exploitation",
+          "label": "CAPEC",
+          "start": 9692,
+          "end": 9713,
+          "source_doc": "NCC-OTCE-EAB-026-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 10550,
+          "end": 10563,
+          "source_doc": "NCC-OTCE-EAB-026-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "Medical record alteration for additional extortion pressure\nHealthcare Network Architecture Exploitation\nMedical Network Segmentation Bypass\nNetwork Architecture Vulnerabilities:\n\nFlat Network Design",
+          "label": "CWE",
+          "start": 11117,
+          "end": 11316,
+          "source_doc": "NCC-OTCE-EAB-026-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 12213,
+          "end": 12226,
+          "source_doc": "NCC-OTCE-EAB-026-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "operators developing",
+          "label": "CAPEC",
+          "start": 14653,
+          "end": 14673,
+          "source_doc": "NCC-OTCE-EAB-026-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "Behavioral analysis",
+          "label": "CAPEC",
+          "start": 18608,
+          "end": 18627,
+          "source_doc": "NCC-OTCE-EAB-026-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "protocol abuse",
+          "label": "CAPEC",
+          "start": 18858,
+          "end": 18872,
+          "source_doc": "NCC-OTCE-EAB-026-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 27358,
+          "end": 27371,
+          "source_doc": "NCC-OTCE-EAB-026-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 28143,
+          "end": 28156,
+          "source_doc": "NCC-OTCE-EAB-026-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 30390,
+          "end": 30403,
+          "source_doc": "NCC-OTCE-EAB-026-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 30503,
+          "end": 30516,
+          "source_doc": "NCC-OTCE-EAB-026-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "spear-phishing",
+          "target_type": "CAPEC",
+          "context": "credentials and poor security\nEHR System Exploitation (T1190): Electronic health record system vulnerability exploitation\nMedical Staff Credential Harvesting (T1078.004): Healthcare worker credential compromise through spear-phishing\nVendor Network Access (T1199): Medical device vendor and EHR support partner compromise\n\nHealthcare Network Penetration:\n\nPACS System Access: Picture Archiving and Co"
+        },
+        {
+          "source": "Protocol Abuse",
+          "source_type": "CAPEC",
+          "relationship": "TARGETS",
+          "target": "protocol exploitation",
+          "target_type": "CAPEC",
+          "context": "deling: HIPAA violation costs and regulatory response prediction\nHealthcare-Specific Technical Capabilities\nMedical Device Network Exploitation:\n\nIoMT (Internet of Medical Things): Medical IoT device compromise and botnet integration\nDICOM Protocol Abuse: Medical imaging protocol exploitation for data access and system control\nHL7 Message Interception: Healthcare data exchange protocol compromise"
+        },
+        {
+          "source": "Protocol Abuse",
+          "source_type": "CAPEC",
+          "relationship": "TARGETS",
+          "target": "protocol exploitation",
+          "target_type": "CAPEC",
+          "context": "IoT device compromise and botnet integration\nDICOM Protocol Abuse: Medical imaging protocol exploitation for data access and system control\nHL7 Message Interception: Healthcare data exchange protocol compromise for PHI access\nMedical Device Firmware: Implantable and external medical device firmware compromise\n\nElectronic Health Record (EHR) System Integration:\n\nEpic MyChart: Patient portal and EHR"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "vulnerability",
+              "step": 0
+            },
+            {
+              "relationship": "TARGETS"
+            },
+            {
+              "node": "spear-phishing",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "vulnerability",
+          "end": "spear-phishing"
+        },
+        {
+          "chain": [
+            {
+              "node": "Protocol Abuse",
+              "step": 0
+            },
+            {
+              "relationship": "TARGETS"
+            },
+            {
+              "node": "protocol exploitation",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "Protocol Abuse",
+          "end": "protocol exploitation"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx",
+      "entity_count": 21,
+      "relationship_count": 6,
+      "attack_chain_count": 2,
+      "entities": [
+        {
+          "text": "cryptocurrency exploitation\nObjective 4:",
+          "label": "CWE",
+          "start": 2783,
+          "end": 2823,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "Cryptocurrency conversion",
+          "label": "CAPEC",
+          "start": 3064,
+          "end": 3089,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 3920,
+          "end": 3933,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 4108,
+          "end": 4110,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "Cryptocurrency conversion",
+          "label": "CAPEC",
+          "start": 6205,
+          "end": 6230,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 7836,
+          "end": 7849,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 7875,
+          "end": 7888,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "cryptocurrency exploitation\nInternational financial monitoring evasion through decentralized asset management\nCross-border transfer capability without traditional correspondent banking\nReduced dependency on Chinese financial intermediaries for sanctions circumvention\nStrategic Implications for International Order\nSanctions Effectiveness Degradation:\n\nDemonstrated capability to systematically exploit cryptocurrency for sanctions evasion\nCryptocurrency ecosystem",
+          "label": "CWE",
+          "start": 8717,
+          "end": 9181,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 9182,
+          "end": 9195,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "cryptocurrency conversion",
+          "label": "CAPEC",
+          "start": 11628,
+          "end": 11653,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "international distribution",
+          "label": "CAPEC",
+          "start": 13199,
+          "end": 13225,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 13483,
+          "end": 13496,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 15118,
+          "end": 15131,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "Cryptocurrency",
+          "label": "CAPEC",
+          "start": 15173,
+          "end": 15187,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "Inconsistent cryptocurrency regulation across",
+          "label": "CWE",
+          "start": 15284,
+          "end": 15329,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 15482,
+          "end": 15495,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 16902,
+          "end": 16904,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "cryptocurrency",
+          "label": "CAPEC",
+          "start": 18583,
+          "end": 18597,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "International cooperation for cryptocurrency theft investigation and asset recovery\nNext-Generation Cryptocurrency",
+          "label": "CWE",
+          "start": 21861,
+          "end": 21975,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 30456,
+          "end": 30469,
+          "source_doc": "NCC-OTCE-EAB-027-LAZARUS-CRYPTO-EXCHANGE-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "EXPLOITS",
+          "target": "20",
+          "target_type": "CWE",
+          "context": "High-volume exchanges with significant hot wallet reserves ($50M+ per exchange)\nGeographic distribution for international laundering capability\nTechnical vulnerability assessment including employee targeting opportunities\nSupply chain partner analysis and compromise potential\nPhase 2: Initial Access and Social Engineering Campaign (July 11-20, 2025)\nAdvanced Social Engineering Operations:\n\nSpear"
+        },
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "20",
+          "target_type": "CWE",
+          "context": "es ($50M+ per exchange)\nGeographic distribution for international laundering capability\nTechnical vulnerability assessment including employee targeting opportunities\nSupply chain partner analysis and compromise potential\nPhase 2: Initial Access and Social Engineering Campaign (July 11-20, 2025)\nAdvanced Social Engineering Operations:\n\nSpear-Phishing Campaign: 127 targeted emails to exchange admini"
+        },
+        {
+          "source": "Vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "ENABLES",
+          "target": "Cryptocurrency",
+          "target_type": "CAPEC",
+          "context": "ition\nInternational Sanctions Effectiveness and Response Requirements\nCryptocurrency Sanctions Evasion Challenge\nSanctions Regime Vulnerability Assessment:\n\nTraditional Banking Bypass: Cryptocurrency enables direct circumvention of correspondent banking sanctions\nInternational Coordination Gap: Inconsistent cryptocurrency regulation across jurisdictions enables exploitation\nTechnical Attribution C"
+        },
+        {
+          "source": "Cryptocurrency",
+          "source_type": "CAPEC",
+          "relationship": "ENABLES",
+          "target": "Inconsistent cryptocurrency regulation across",
+          "target_type": "CWE",
+          "context": "ition\nInternational Sanctions Effectiveness and Response Requirements\nCryptocurrency Sanctions Evasion Challenge\nSanctions Regime Vulnerability Assessment:\n\nTraditional Banking Bypass: Cryptocurrency enables direct circumvention of correspondent banking sanctions\nInternational Coordination Gap: Inconsistent cryptocurrency regulation across jurisdictions enables exploitation\nTechnical Attribution C"
+        },
+        {
+          "source": "Cryptocurrency",
+          "source_type": "CAPEC",
+          "relationship": "ENABLES",
+          "target": "Inconsistent cryptocurrency regulation across",
+          "target_type": "CWE",
+          "context": "Traditional Banking Bypass: Cryptocurrency enables direct circumvention of correspondent banking sanctions\nInternational Coordination Gap: Inconsistent cryptocurrency regulation across jurisdictions enables exploitation\nTechnical Attribution Challenges: Blockchain pseudonymity complicating enforcement and asset recovery\nPrivate Sector Vulnerability: Cryptocurrency exchange security gaps enabling"
+        },
+        {
+          "source": "Inconsistent cryptocurrency regulation across",
+          "source_type": "CWE",
+          "relationship": "ENABLES",
+          "target": "Vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "Traditional Banking Bypass: Cryptocurrency enables direct circumvention of correspondent banking sanctions\nInternational Coordination Gap: Inconsistent cryptocurrency regulation across jurisdictions enables exploitation\nTechnical Attribution Challenges: Blockchain pseudonymity complicating enforcement and asset recovery\nPrivate Sector Vulnerability: Cryptocurrency exchange security gaps enabling"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "vulnerability",
+              "step": 0
+            },
+            {
+              "relationship": "EXPLOITS"
+            },
+            {
+              "node": "20",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "vulnerability",
+          "end": "20"
+        },
+        {
+          "chain": [
+            {
+              "node": "Vulnerability",
+              "step": 0
+            },
+            {
+              "relationship": "ENABLES"
+            },
+            {
+              "node": "Cryptocurrency",
+              "step": 2
+            },
+            {
+              "relationship": "ENABLES"
+            },
+            {
+              "node": "Inconsistent cryptocurrency regulation across",
+              "step": 4
+            }
+          ],
+          "length": 5,
+          "start": "Vulnerability",
+          "end": "Inconsistent cryptocurrency regulation across"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx",
+      "entity_count": 27,
+      "relationship_count": 5,
+      "attack_chain_count": 2,
+      "entities": [
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 2926,
+          "end": 2939,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "spear-phishing",
+          "label": "CAPEC",
+          "start": 4700,
+          "end": 4714,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 5543,
+          "end": 5556,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 6680,
+          "end": 6693,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 7361,
+          "end": 7374,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "potential manipulation",
+          "label": "CAPEC",
+          "start": 7907,
+          "end": 7929,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "concern amplification",
+          "label": "CAPEC",
+          "start": 8161,
+          "end": 8182,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "concern amplification",
+          "label": "CAPEC",
+          "start": 8804,
+          "end": 8825,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "amplification",
+          "label": "CAPEC",
+          "start": 9236,
+          "end": 9249,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 10038,
+          "end": 10051,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 10451,
+          "end": 10464,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 14569,
+          "end": 14582,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 15022,
+          "end": 15035,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 15427,
+          "end": 15440,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "weakness",
+          "label": "WEAKNESS",
+          "start": 15476,
+          "end": 15484,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 15533,
+          "end": 15546,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 15648,
+          "end": 15661,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 15738,
+          "end": 15751,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "International election security standard development and implementation coordination\nResponse Coordination: Coordinated diplomatic and economic",
+          "label": "CWE",
+          "start": 16731,
+          "end": 16874,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        },
+        {
+          "text": "Blockchain-based election verification and audit trail technology development\nQuantum-Resistant Cryptography: Post-quantum cryptographic protection for next-generation election systems\nAdvanced Monitoring: Comprehensive election infrastructure monitoring and threat intelligence integration\n\n\n\ud83d\udcca INTELLIGENCE ASSESSMENT AND ATTRIBUTION\nAttribution Confidence Assessment\nTechnical Attribution Evidence\nAPT29/Cozy Bear Signature Techniques:\n\nSocial Engineering Methodology: Sophisticated spear-phishing and vendor targeting consistent with documented APT29 operations\nPersistence",
+          "label": "CWE",
+          "start": 22551,
+          "end": 23127,
+          "source_doc": "NCC-OTCE-EAB-028-COZY-BEAR-ELECTION-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "Vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "EXPLOITS",
+          "target": "Vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "tation for operational capability\nProcess Vulnerability: Democratic process complexity and decentralization exploitation for confusion and disruption\nSocial Vulnerability: Public trust and confidence targeting for legitimacy degradation\nPolitical Vulnerability: Partisan polarization exploitation for division amplification and governance degradation\n\nRussian Strategic Objectives Through Election In"
+        },
+        {
+          "source": "Vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "EXPLOITS",
+          "target": "Vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "tation for operational capability\nProcess Vulnerability: Democratic process complexity and decentralization exploitation for confusion and disruption\nSocial Vulnerability: Public trust and confidence targeting for legitimacy degradation\nPolitical Vulnerability: Partisan polarization exploitation for division amplification and governance degradation\n\nRussian Strategic Objectives Through Election In"
+        },
+        {
+          "source": "Comprehensive analysis",
+          "source_type": "CAPEC",
+          "relationship": "EXPLOITS",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "n Analysis: Comprehensive analysis of June-August 2025 election infrastructure reconnaissance campaign\nRussian SVR Strategic Intelligence Assessment: SVR election interference strategy and democratic targeting doctrine analysis\nElection Infrastructure Security Analysis: Technical forensic investigation of election system reconnaissance and vulnerability assessment\nDemocratic Process Impact Assessm"
+        },
+        {
+          "source": "Vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "weakness",
+          "target_type": "WEAKNESS",
+          "context": "and confidence assessment for information operations\nStrategic Intelligence: Long-term democratic process weakness and exploitation opportunity identification\nDemocratic Process as Russian Strategic Target\nDemocratic Vulnerability Exploitation Strategy:\n\nTechnical Vulnerability: Election infrastructure technical weakness exploitation for operational capability\nProcess Vulnerability: Democratic pr"
+        },
+        {
+          "source": "weakness",
+          "source_type": "WEAKNESS",
+          "relationship": "TARGETS",
+          "target": "Vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "and confidence assessment for information operations\nStrategic Intelligence: Long-term democratic process weakness and exploitation opportunity identification\nDemocratic Process as Russian Strategic Target\nDemocratic Vulnerability Exploitation Strategy:\n\nTechnical Vulnerability: Election infrastructure technical weakness exploitation for operational capability\nProcess Vulnerability: Democratic pr"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "Vulnerability",
+              "step": 0
+            },
+            {
+              "relationship": "TARGETS"
+            },
+            {
+              "node": "weakness",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "Vulnerability",
+          "end": "weakness"
+        },
+        {
+          "chain": [
+            {
+              "node": "Comprehensive analysis",
+              "step": 0
+            },
+            {
+              "relationship": "EXPLOITS"
+            },
+            {
+              "node": "vulnerability",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "Comprehensive analysis",
+          "end": "vulnerability"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx",
+      "entity_count": 24,
+      "relationship_count": 6,
+      "attack_chain_count": 2,
+      "entities": [
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 85,
+          "end": 98,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 468,
+          "end": 481,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "protocol abuse",
+          "label": "CAPEC",
+          "start": 1264,
+          "end": 1278,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 1503,
+          "end": 1516,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 2867,
+          "end": 2880,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 3270,
+          "end": 3283,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 6158,
+          "end": 6171,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "manipulation during",
+          "label": "CAPEC",
+          "start": 6660,
+          "end": 6679,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "Protocol Manipulation",
+          "label": "CAPEC",
+          "start": 8475,
+          "end": 8496,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "protocol vulnerability",
+          "label": "CAPEC",
+          "start": 8655,
+          "end": 8677,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 9390,
+          "end": 9403,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 9473,
+          "end": 9486,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 9652,
+          "end": 9665,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 9764,
+          "end": 9777,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 9992,
+          "end": 10005,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 10541,
+          "end": 10554,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 10648,
+          "end": 10661,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "dependency analysis",
+          "label": "CAPEC",
+          "start": 10713,
+          "end": 10732,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "dependency analysis",
+          "label": "CAPEC",
+          "start": 10879,
+          "end": 10898,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 10930,
+          "end": 10943,
+          "source_doc": "NCC-OTCE-EAB-029-SANDWORM-ENERGY-GRID-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "EXPLOITS",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "or dependency\nExtreme weather vulnerability correlation\nInternational Implications\nCanadian Grid Interconnection:\n\nCross-border power sharing vulnerability analysis\nHydro-Quebec interconnection point targeting\nBilateral energy agreement exploitation potential\nJoint defense coordination requirement identification\n\nMexican Energy Integration:\n\nCross-border transmission vulnerability assessment\nNatur"
+        },
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "EXPLOITS",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "or dependency\nExtreme weather vulnerability correlation\nInternational Implications\nCanadian Grid Interconnection:\n\nCross-border power sharing vulnerability analysis\nHydro-Quebec interconnection point targeting\nBilateral energy agreement exploitation potential\nJoint defense coordination requirement identification\n\nMexican Energy Integration:\n\nCross-border transmission vulnerability assessment\nNatur"
+        },
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "EXPLOITS",
+          "target": "Vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "rgency services coordination capability evaluation\nEconomic Warfare Implications\nStrategic Economic Targets:\n\nStock exchange and financial market manipulation potential\nCryptocurrency mining facility targeting for economic disruption\nAgricultural processing facility seasonal vulnerability\nRetail and consumer service disruption for social impact\n\nRegional Economic Vulnerability:\n\nGDP impact modelin"
+        },
+        {
+          "source": "Protocol Manipulation",
+          "source_type": "CAPEC",
+          "relationship": "TARGETS",
+          "target": "protocol vulnerability",
+          "target_type": "CAPEC",
+          "context": "ed Network Protocol for SCADA systems\nModbus: Industrial communication protocol for PLCs\nIEC 60870-5-104: Telecontrol protocol for energy systems\n\nProtocol Manipulation Techniques:\n\nMan-in-the-middle attacks on industrial communications\nProtocol command injection for unauthorized control actions\nAuthentication bypass through protocol vulnerability exploitation\nReal-time data manipulation for opera"
+        },
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "wer companies infiltrated\nManufacturing sector vulnerability focus\nAutomotive industry critical dependency mapping\nWinter heating vulnerability assessment\n\nTexas Energy Grid:\n\n1 major utility company compromise\nIsolated grid architecture analysis\nCritical petroleum refining sector dependency\nExtreme weather vulnerability correlation\nInternational Implications\nCanadian Grid Interconnection:\n\nCross-"
+        },
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "wer companies infiltrated\nManufacturing sector vulnerability focus\nAutomotive industry critical dependency mapping\nWinter heating vulnerability assessment\n\nTexas Energy Grid:\n\n1 major utility company compromise\nIsolated grid architecture analysis\nCritical petroleum refining sector dependency\nExtreme weather vulnerability correlation\nInternational Implications\nCanadian Grid Interconnection:\n\nCross-"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "vulnerability",
+              "step": 0
+            },
+            {
+              "relationship": "EXPLOITS"
+            },
+            {
+              "node": "Vulnerability",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "vulnerability",
+          "end": "Vulnerability"
+        },
+        {
+          "chain": [
+            {
+              "node": "Protocol Manipulation",
+              "step": 0
+            },
+            {
+              "relationship": "TARGETS"
+            },
+            {
+              "node": "protocol vulnerability",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "Protocol Manipulation",
+          "end": "protocol vulnerability"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-030-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx",
+      "entity_count": 16,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 719,
+          "end": 732,
+          "source_doc": "NCC-OTCE-EAB-030-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 2739,
+          "end": 2752,
+          "source_doc": "NCC-OTCE-EAB-030-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 3714,
+          "end": 3727,
+          "source_doc": "NCC-OTCE-EAB-030-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4542,
+          "end": 4555,
+          "source_doc": "NCC-OTCE-EAB-030-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 4956,
+          "end": 4958,
+          "source_doc": "NCC-OTCE-EAB-030-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "dependency analysis",
+          "label": "CAPEC",
+          "start": 5333,
+          "end": 5352,
+          "source_doc": "NCC-OTCE-EAB-030-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "Medication dispensing",
+          "label": "CAPEC",
+          "start": 8357,
+          "end": 8378,
+          "source_doc": "NCC-OTCE-EAB-030-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "Components",
+          "label": "CWE",
+          "start": 8869,
+          "end": 8879,
+          "source_doc": "NCC-OTCE-EAB-030-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 9844,
+          "end": 9857,
+          "source_doc": "NCC-OTCE-EAB-030-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 10144,
+          "end": 10157,
+          "source_doc": "NCC-OTCE-EAB-030-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "damage amplification",
+          "label": "CAPEC",
+          "start": 10612,
+          "end": 10632,
+          "source_doc": "NCC-OTCE-EAB-030-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 16181,
+          "end": 16194,
+          "source_doc": "NCC-OTCE-EAB-030-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "similarity analysis",
+          "label": "CAPEC",
+          "start": 19569,
+          "end": 19588,
+          "source_doc": "NCC-OTCE-EAB-030-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 20313,
+          "end": 20326,
+          "source_doc": "NCC-OTCE-EAB-030-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 23464,
+          "end": 23477,
+          "source_doc": "NCC-OTCE-EAB-030-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        },
+        {
+          "text": "Malware Analysis",
+          "label": "CAPEC",
+          "start": 26185,
+          "end": 26201,
+          "source_doc": "NCC-OTCE-EAB-030-LOCKBIT-4-HEALTHCARE-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-031-BLACKCAT-DRAGONFORCE-ALLIANCE-Enhanced.md.docx",
+      "entity_count": 15,
+      "relationship_count": 4,
+      "attack_chain_count": 1,
+      "entities": [
+        {
+          "text": "devastating",
+          "label": "CAPEC",
+          "start": 474,
+          "end": 485,
+          "source_doc": "NCC-OTCE-EAB-031-BLACKCAT-DRAGONFORCE-ALLIANCE-Enhanced.md.docx"
+        },
+        {
+          "text": "critical manufacturing",
+          "label": "CAPEC",
+          "start": 664,
+          "end": 686,
+          "source_doc": "NCC-OTCE-EAB-031-BLACKCAT-DRAGONFORCE-ALLIANCE-Enhanced.md.docx"
+        },
+        {
+          "text": "protocol manipulation",
+          "label": "CAPEC",
+          "start": 1514,
+          "end": 1535,
+          "source_doc": "NCC-OTCE-EAB-031-BLACKCAT-DRAGONFORCE-ALLIANCE-Enhanced.md.docx"
+        },
+        {
+          "text": "critical manufacturing",
+          "label": "CAPEC",
+          "start": 1688,
+          "end": 1710,
+          "source_doc": "NCC-OTCE-EAB-031-BLACKCAT-DRAGONFORCE-ALLIANCE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 5042,
+          "end": 5055,
+          "source_doc": "NCC-OTCE-EAB-031-BLACKCAT-DRAGONFORCE-ALLIANCE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 5211,
+          "end": 5224,
+          "source_doc": "NCC-OTCE-EAB-031-BLACKCAT-DRAGONFORCE-ALLIANCE-Enhanced.md.docx"
+        },
+        {
+          "text": "manipulation during",
+          "label": "CAPEC",
+          "start": 7741,
+          "end": 7760,
+          "source_doc": "NCC-OTCE-EAB-031-BLACKCAT-DRAGONFORCE-ALLIANCE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 12316,
+          "end": 12329,
+          "source_doc": "NCC-OTCE-EAB-031-BLACKCAT-DRAGONFORCE-ALLIANCE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 15656,
+          "end": 15669,
+          "source_doc": "NCC-OTCE-EAB-031-BLACKCAT-DRAGONFORCE-ALLIANCE-Enhanced.md.docx"
+        },
+        {
+          "text": "Infrastructure Manufacturing",
+          "label": "CAPEC",
+          "start": 17897,
+          "end": 17925,
+          "source_doc": "NCC-OTCE-EAB-031-BLACKCAT-DRAGONFORCE-ALLIANCE-Enhanced.md.docx"
+        },
+        {
+          "text": "protocol analysis",
+          "label": "CAPEC",
+          "start": 18859,
+          "end": 18876,
+          "source_doc": "NCC-OTCE-EAB-031-BLACKCAT-DRAGONFORCE-ALLIANCE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 23410,
+          "end": 23423,
+          "source_doc": "NCC-OTCE-EAB-031-BLACKCAT-DRAGONFORCE-ALLIANCE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 23702,
+          "end": 23715,
+          "source_doc": "NCC-OTCE-EAB-031-BLACKCAT-DRAGONFORCE-ALLIANCE-Enhanced.md.docx"
+        },
+        {
+          "text": "warfare expansion",
+          "label": "CAPEC",
+          "start": 24782,
+          "end": 24799,
+          "source_doc": "NCC-OTCE-EAB-031-BLACKCAT-DRAGONFORCE-ALLIANCE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 26370,
+          "end": 26383,
+          "source_doc": "NCC-OTCE-EAB-031-BLACKCAT-DRAGONFORCE-ALLIANCE-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "EXPLOITS",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "tor vulnerability assessment across 47 potential targets\nSupply chain dependency mapping using both BlackCat and DragonForce intelligence networks\nIndustrial control system vulnerability research and exploit development\nManufacturing peak production period analysis for optimal timing coordination\n\nTechnical Infrastructure Integration:\n\nMerged command and control infrastructure deployment\nAlliance-"
+        },
+        {
+          "source": "protocol manipulation",
+          "source_type": "CAPEC",
+          "relationship": "EXPLOITS",
+          "target": "critical manufacturing",
+          "target_type": "CAPEC",
+          "context": "r of major ransomware operations with coordinated command structure\nTechnical Evolution: Advanced OT/IT convergence exploitation with industrial protocol manipulation\nSupply Chain Warfare: Systematic targeting of manufacturing dependencies for maximum economic impact\nStrategic Intent: Economic destabilization through critical manufacturing infrastructure disruption\n\nStrategic Implications: The Bla"
+        },
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "EXPLOITS",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "pply chain vulnerability exploitation\nAlliance operational security enhancement through merged capabilities and shared expertise\n\nManufacturing Sector Threat Landscape Evolution:\n\nRansomware alliance targeting represents escalation from individual facility targeting to sector-wide warfare\nSupply chain vulnerability exploitation demonstrates advanced understanding of manufacturing dependencies\nIndu"
+        },
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "se 1: Alliance Formation and Manufacturing Reconnaissance (July 5-12, 2025)\nUnified Intelligence Gathering Operations:\n\nComprehensive manufacturing sector vulnerability assessment across 47 potential targets\nSupply chain dependency mapping using both BlackCat and DragonForce intelligence networks\nIndustrial control system vulnerability research and exploit development\nManufacturing peak production"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "protocol manipulation",
+              "step": 0
+            },
+            {
+              "relationship": "EXPLOITS"
+            },
+            {
+              "node": "critical manufacturing",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "protocol manipulation",
+          "end": "critical manufacturing"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-032-RHYSIDA-GOVERNMENT-SECTOR-Enhanced.md.docx",
+      "entity_count": 13,
+      "relationship_count": 2,
+      "attack_chain_count": 2,
+      "entities": [
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 3525,
+          "end": 3538,
+          "source_doc": "NCC-OTCE-EAB-032-RHYSIDA-GOVERNMENT-SECTOR-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 3888,
+          "end": 3901,
+          "source_doc": "NCC-OTCE-EAB-032-RHYSIDA-GOVERNMENT-SECTOR-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 4195,
+          "end": 4197,
+          "source_doc": "NCC-OTCE-EAB-032-RHYSIDA-GOVERNMENT-SECTOR-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4259,
+          "end": 4272,
+          "source_doc": "NCC-OTCE-EAB-032-RHYSIDA-GOVERNMENT-SECTOR-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4669,
+          "end": 4682,
+          "source_doc": "NCC-OTCE-EAB-032-RHYSIDA-GOVERNMENT-SECTOR-Enhanced.md.docx"
+        },
+        {
+          "text": "spear-phishing",
+          "label": "CAPEC",
+          "start": 5532,
+          "end": 5546,
+          "source_doc": "NCC-OTCE-EAB-032-RHYSIDA-GOVERNMENT-SECTOR-Enhanced.md.docx"
+        },
+        {
+          "text": "disruptions during peak",
+          "label": "CAPEC",
+          "start": 7442,
+          "end": 7465,
+          "source_doc": "NCC-OTCE-EAB-032-RHYSIDA-GOVERNMENT-SECTOR-Enhanced.md.docx"
+        },
+        {
+          "text": "probing",
+          "label": "CAPEC",
+          "start": 9004,
+          "end": 9011,
+          "source_doc": "NCC-OTCE-EAB-032-RHYSIDA-GOVERNMENT-SECTOR-Enhanced.md.docx"
+        },
+        {
+          "text": "system manipulation",
+          "label": "CAPEC",
+          "start": 9319,
+          "end": 9338,
+          "source_doc": "NCC-OTCE-EAB-032-RHYSIDA-GOVERNMENT-SECTOR-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 12498,
+          "end": 12511,
+          "source_doc": "NCC-OTCE-EAB-032-RHYSIDA-GOVERNMENT-SECTOR-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 14922,
+          "end": 14935,
+          "source_doc": "NCC-OTCE-EAB-032-RHYSIDA-GOVERNMENT-SECTOR-Enhanced.md.docx"
+        },
+        {
+          "text": "spear-phishing",
+          "label": "CAPEC",
+          "start": 17331,
+          "end": 17345,
+          "source_doc": "NCC-OTCE-EAB-032-RHYSIDA-GOVERNMENT-SECTOR-Enhanced.md.docx"
+        },
+        {
+          "text": "system manipulation during",
+          "label": "CAPEC",
+          "start": 22790,
+          "end": 22816,
+          "source_doc": "NCC-OTCE-EAB-032-RHYSIDA-GOVERNMENT-SECTOR-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "20",
+          "source_type": "CWE",
+          "relationship": "TARGETS",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "t\nVoter registration database infiltration and manipulation capabilities\nElection management system probing and access attempts\nPublic communication system disruption and misinformation injection\n\n\n\ud83d\udcc5 ATTACK TIMELINE ANALYSIS\nPhase 1: Government Infrastructure Reconnaissance (June 12-20, 2025)\nSystematic Government Network Mapping:\n\nComprehensive vulnerability assessment across 35 municipal and sta"
+        },
+        {
+          "source": "probing",
+          "source_type": "CAPEC",
+          "relationship": "TARGETS",
+          "target": "system manipulation",
+          "target_type": "CAPEC",
+          "context": "ection preparation periods\nAbsentee and mail-in voting system probing indicating potential future electoral interference\n\nGovernment Transparency and Accountability Compromise:\n\nPublic records system compromise affecting citizen access to government information\nGovernment meeting and decision-making process documentation exposure\nGovernment contract and financial management system manipulation aff"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "20",
+              "step": 0
+            },
+            {
+              "relationship": "TARGETS"
+            },
+            {
+              "node": "vulnerability",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "20",
+          "end": "vulnerability"
+        },
+        {
+          "chain": [
+            {
+              "node": "probing",
+              "step": 0
+            },
+            {
+              "relationship": "TARGETS"
+            },
+            {
+              "node": "system manipulation",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "probing",
+          "end": "system manipulation"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-033-ROYAL-RANSOMWARE-MSP-Enhanced.md.docx",
+      "entity_count": 10,
+      "relationship_count": 2,
+      "attack_chain_count": 1,
+      "entities": [
+        {
+          "text": "devastating",
+          "label": "CAPEC",
+          "start": 408,
+          "end": 419,
+          "source_doc": "NCC-OTCE-EAB-033-ROYAL-RANSOMWARE-MSP-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 4501,
+          "end": 4503,
+          "source_doc": "NCC-OTCE-EAB-033-ROYAL-RANSOMWARE-MSP-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4746,
+          "end": 4759,
+          "source_doc": "NCC-OTCE-EAB-033-ROYAL-RANSOMWARE-MSP-Enhanced.md.docx"
+        },
+        {
+          "text": "spear-phishing",
+          "label": "CAPEC",
+          "start": 5908,
+          "end": 5922,
+          "source_doc": "NCC-OTCE-EAB-033-ROYAL-RANSOMWARE-MSP-Enhanced.md.docx"
+        },
+        {
+          "text": "dependency exploitation",
+          "label": "CAPEC",
+          "start": 8094,
+          "end": 8117,
+          "source_doc": "NCC-OTCE-EAB-033-ROYAL-RANSOMWARE-MSP-Enhanced.md.docx"
+        },
+        {
+          "text": "dependency manipulation and access blocking",
+          "label": "CAPEC",
+          "start": 12312,
+          "end": 12355,
+          "source_doc": "NCC-OTCE-EAB-033-ROYAL-RANSOMWARE-MSP-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 23888,
+          "end": 23901,
+          "source_doc": "NCC-OTCE-EAB-033-ROYAL-RANSOMWARE-MSP-Enhanced.md.docx"
+        },
+        {
+          "text": "exploitation demonstrating",
+          "label": "CAPEC",
+          "start": 23902,
+          "end": 23928,
+          "source_doc": "NCC-OTCE-EAB-033-ROYAL-RANSOMWARE-MSP-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 24124,
+          "end": 24137,
+          "source_doc": "NCC-OTCE-EAB-033-ROYAL-RANSOMWARE-MSP-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 26822,
+          "end": 26835,
+          "source_doc": "NCC-OTCE-EAB-033-ROYAL-RANSOMWARE-MSP-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "EXPLOITS",
+          "target": "exploitation demonstrating",
+          "target_type": "CAPEC",
+          "context": "Royal capabilities for supply chain economic warfare (5% confidence)\nStrategic Supply Chain Threat Context\nMSP Supply Chain Warfare Evolution:\n\nRoyal group operational transformation from individual targeting to supply chain force multiplication\nMSP trust relationship weaponization representing fundamental evolution in cyber attack economics\nSupply chain vulnerability exploitation demonstrating a"
+        },
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "exploitation demonstrating",
+          "target_type": "CAPEC",
+          "context": "fare Evolution:\n\nRoyal group operational transformation from individual targeting to supply chain force multiplication\nMSP trust relationship weaponization representing fundamental evolution in cyber attack economics\nSupply chain vulnerability exploitation demonstrating advanced understanding of business service dependencies\nForce multiplication methodology indicating strategic planning and resour"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "vulnerability",
+              "step": 0
+            },
+            {
+              "relationship": "EXPLOITS"
+            },
+            {
+              "node": "exploitation demonstrating",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "vulnerability",
+          "end": "exploitation demonstrating"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-034-SOLARWINDS-NETWORK-MONITORING-Enhanced.md.docx",
+      "entity_count": 13,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "Discovery during",
+          "label": "CAPEC",
+          "start": 1568,
+          "end": 1584,
+          "source_doc": "NCC-OTCE-EAB-034-SOLARWINDS-NETWORK-MONITORING-Enhanced.md.docx"
+        },
+        {
+          "text": "trusted software",
+          "label": "CAPEC",
+          "start": 2503,
+          "end": 2519,
+          "source_doc": "NCC-OTCE-EAB-034-SOLARWINDS-NETWORK-MONITORING-Enhanced.md.docx"
+        },
+        {
+          "text": "detection evasion",
+          "label": "CAPEC",
+          "start": 5519,
+          "end": 5536,
+          "source_doc": "NCC-OTCE-EAB-034-SOLARWINDS-NETWORK-MONITORING-Enhanced.md.docx"
+        },
+        {
+          "text": "Software distribution",
+          "label": "CAPEC",
+          "start": 5730,
+          "end": 5751,
+          "source_doc": "NCC-OTCE-EAB-034-SOLARWINDS-NETWORK-MONITORING-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 6298,
+          "end": 6300,
+          "source_doc": "NCC-OTCE-EAB-034-SOLARWINDS-NETWORK-MONITORING-Enhanced.md.docx"
+        },
+        {
+          "text": "detection evasion",
+          "label": "CAPEC",
+          "start": 7591,
+          "end": 7608,
+          "source_doc": "NCC-OTCE-EAB-034-SOLARWINDS-NETWORK-MONITORING-Enhanced.md.docx"
+        },
+        {
+          "text": "detection evasion",
+          "label": "CAPEC",
+          "start": 8911,
+          "end": 8928,
+          "source_doc": "NCC-OTCE-EAB-034-SOLARWINDS-NETWORK-MONITORING-Enhanced.md.docx"
+        },
+        {
+          "text": "provider infrastructure abuse",
+          "label": "CAPEC",
+          "start": 13093,
+          "end": 13122,
+          "source_doc": "NCC-OTCE-EAB-034-SOLARWINDS-NETWORK-MONITORING-Enhanced.md.docx"
+        },
+        {
+          "text": "capability abuse",
+          "label": "CAPEC",
+          "start": 14292,
+          "end": 14308,
+          "source_doc": "NCC-OTCE-EAB-034-SOLARWINDS-NETWORK-MONITORING-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 14510,
+          "end": 14523,
+          "source_doc": "NCC-OTCE-EAB-034-SOLARWINDS-NETWORK-MONITORING-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 16896,
+          "end": 16909,
+          "source_doc": "NCC-OTCE-EAB-034-SOLARWINDS-NETWORK-MONITORING-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 27889,
+          "end": 27902,
+          "source_doc": "NCC-OTCE-EAB-034-SOLARWINDS-NETWORK-MONITORING-Enhanced.md.docx"
+        },
+        {
+          "text": "infrastructure software",
+          "label": "CAPEC",
+          "start": 28853,
+          "end": 28876,
+          "source_doc": "NCC-OTCE-EAB-034-SOLARWINDS-NETWORK-MONITORING-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-035-AKIRA-MANUFACTURING-EXTORTION-Enhanced.md.docx",
+      "entity_count": 8,
+      "relationship_count": 4,
+      "attack_chain_count": 2,
+      "entities": [
+        {
+          "text": "Akira Manufacturing",
+          "label": "CAPEC",
+          "start": 211,
+          "end": 230,
+          "source_doc": "NCC-OTCE-EAB-035-AKIRA-MANUFACTURING-EXTORTION-Enhanced.md.docx"
+        },
+        {
+          "text": "credential abuse",
+          "label": "CAPEC",
+          "start": 3717,
+          "end": 3733,
+          "source_doc": "NCC-OTCE-EAB-035-AKIRA-MANUFACTURING-EXTORTION-Enhanced.md.docx"
+        },
+        {
+          "text": "protocol abuse",
+          "label": "CAPEC",
+          "start": 4311,
+          "end": 4325,
+          "source_doc": "NCC-OTCE-EAB-035-AKIRA-MANUFACTURING-EXTORTION-Enhanced.md.docx"
+        },
+        {
+          "text": "process manipulation",
+          "label": "CAPEC",
+          "start": 4467,
+          "end": 4487,
+          "source_doc": "NCC-OTCE-EAB-035-AKIRA-MANUFACTURING-EXTORTION-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 8396,
+          "end": 8409,
+          "source_doc": "NCC-OTCE-EAB-035-AKIRA-MANUFACTURING-EXTORTION-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 16177,
+          "end": 16190,
+          "source_doc": "NCC-OTCE-EAB-035-AKIRA-MANUFACTURING-EXTORTION-Enhanced.md.docx"
+        },
+        {
+          "text": "Critical manufacturing",
+          "label": "CAPEC",
+          "start": 16493,
+          "end": 16515,
+          "source_doc": "NCC-OTCE-EAB-035-AKIRA-MANUFACTURING-EXTORTION-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 16531,
+          "end": 16544,
+          "source_doc": "NCC-OTCE-EAB-035-AKIRA-MANUFACTURING-EXTORTION-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "protocol abuse",
+          "source_type": "CAPEC",
+          "relationship": "USES",
+          "target": "process manipulation",
+          "target_type": "CAPEC",
+          "context": "and SCADA control processes\n\nManufacturing-Specific Techniques:\n\nModbus Protocol Exploitation: Unauthorized control of manufacturing equipment\nEtherNet/IP Manipulation: Industrial Ethernet protocol abuse for system access\nOPC-UA Security Bypass: Industrial communication protocol security circumvention\nHMI Process Control: Direct manufacturing process manipulation capabilities\nPhase 3: Data Exfiltr"
+        },
+        {
+          "source": "Vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "Critical manufacturing",
+          "target_type": "CAPEC",
+          "context": "ns\nIndustrial Base Vulnerability: Manufacturing sector cybersecurity gaps expose critical industrial capabilities\nSupply Chain Dependencies: Manufacturing supply chain interdependencies amplify cyber attack impact\nEconomic Competitiveness: Manufacturing cyber attacks threaten US industrial competitiveness\nNational Security Concerns: Critical manufacturing infrastructure vulnerability threatens nat"
+        },
+        {
+          "source": "Critical manufacturing",
+          "source_type": "CAPEC",
+          "relationship": "TARGETS",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "ns\nIndustrial Base Vulnerability: Manufacturing sector cybersecurity gaps expose critical industrial capabilities\nSupply Chain Dependencies: Manufacturing supply chain interdependencies amplify cyber attack impact\nEconomic Competitiveness: Manufacturing cyber attacks threaten US industrial competitiveness\nNational Security Concerns: Critical manufacturing infrastructure vulnerability threatens nat"
+        },
+        {
+          "source": "Critical manufacturing",
+          "source_type": "CAPEC",
+          "relationship": "TARGETS",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "security gaps expose critical industrial capabilities\nSupply Chain Dependencies: Manufacturing supply chain interdependencies amplify cyber attack impact\nEconomic Competitiveness: Manufacturing cyber attacks threaten US industrial competitiveness\nNational Security Concerns: Critical manufacturing infrastructure vulnerability threatens national defense\nInternational Manufacturing Security Response"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "protocol abuse",
+              "step": 0
+            },
+            {
+              "relationship": "USES"
+            },
+            {
+              "node": "process manipulation",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "protocol abuse",
+          "end": "process manipulation"
+        },
+        {
+          "chain": [
+            {
+              "node": "Vulnerability",
+              "step": 0
+            },
+            {
+              "relationship": "TARGETS"
+            },
+            {
+              "node": "Critical manufacturing",
+              "step": 2
+            },
+            {
+              "relationship": "TARGETS"
+            },
+            {
+              "node": "vulnerability",
+              "step": 4
+            }
+          ],
+          "length": 5,
+          "start": "Vulnerability",
+          "end": "vulnerability"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-036-APT29-CLOUD-RECONNAISSANCE-Enhanced.md.docx",
+      "entity_count": 2,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 3973,
+          "end": 3975,
+          "source_doc": "NCC-OTCE-EAB-036-APT29-CLOUD-RECONNAISSANCE-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 8837,
+          "end": 8850,
+          "source_doc": "NCC-OTCE-EAB-036-APT29-CLOUD-RECONNAISSANCE-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-037-PLAY-EDUCATION-RANSOMWARE-Enhanced.md.docx",
+      "entity_count": 2,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 9143,
+          "end": 9156,
+          "source_doc": "NCC-OTCE-EAB-037-PLAY-EDUCATION-RANSOMWARE-Enhanced.md.docx"
+        },
+        {
+          "text": "education",
+          "label": "CAPEC",
+          "start": 17563,
+          "end": 17572,
+          "source_doc": "NCC-OTCE-EAB-037-PLAY-EDUCATION-RANSOMWARE-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-038-SCATTERED-SPIDER-SOCIAL-ENGINEERING-Enhanced.md.docx",
+      "entity_count": 12,
+      "relationship_count": 1,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "voice phishing",
+          "label": "CAPEC",
+          "start": 516,
+          "end": 530,
+          "source_doc": "NCC-OTCE-EAB-038-SCATTERED-SPIDER-SOCIAL-ENGINEERING-Enhanced.md.docx"
+        },
+        {
+          "text": "67",
+          "label": "CWE",
+          "start": 1330,
+          "end": 1332,
+          "source_doc": "NCC-OTCE-EAB-038-SCATTERED-SPIDER-SOCIAL-ENGINEERING-Enhanced.md.docx"
+        },
+        {
+          "text": "voice phishing",
+          "label": "CAPEC",
+          "start": 2282,
+          "end": 2296,
+          "source_doc": "NCC-OTCE-EAB-038-SCATTERED-SPIDER-SOCIAL-ENGINEERING-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 4253,
+          "end": 4255,
+          "source_doc": "NCC-OTCE-EAB-038-SCATTERED-SPIDER-SOCIAL-ENGINEERING-Enhanced.md.docx"
+        },
+        {
+          "text": "Voice Phishing",
+          "label": "CAPEC",
+          "start": 4304,
+          "end": 4318,
+          "source_doc": "NCC-OTCE-EAB-038-SCATTERED-SPIDER-SOCIAL-ENGINEERING-Enhanced.md.docx"
+        },
+        {
+          "text": "Spear Phishing",
+          "label": "CAPEC",
+          "start": 7963,
+          "end": 7977,
+          "source_doc": "NCC-OTCE-EAB-038-SCATTERED-SPIDER-SOCIAL-ENGINEERING-Enhanced.md.docx"
+        },
+        {
+          "text": "Spear Phishing",
+          "label": "CAPEC",
+          "start": 8053,
+          "end": 8067,
+          "source_doc": "NCC-OTCE-EAB-038-SCATTERED-SPIDER-SOCIAL-ENGINEERING-Enhanced.md.docx"
+        },
+        {
+          "text": "Spear Phishing",
+          "label": "CAPEC",
+          "start": 8139,
+          "end": 8153,
+          "source_doc": "NCC-OTCE-EAB-038-SCATTERED-SPIDER-SOCIAL-ENGINEERING-Enhanced.md.docx"
+        },
+        {
+          "text": "Targeted phishing",
+          "label": "CAPEC",
+          "start": 8166,
+          "end": 8183,
+          "source_doc": "NCC-OTCE-EAB-038-SCATTERED-SPIDER-SOCIAL-ENGINEERING-Enhanced.md.docx"
+        },
+        {
+          "text": "protocol abuse",
+          "label": "CAPEC",
+          "start": 10431,
+          "end": 10445,
+          "source_doc": "NCC-OTCE-EAB-038-SCATTERED-SPIDER-SOCIAL-ENGINEERING-Enhanced.md.docx"
+        },
+        {
+          "text": "Voice Phishing",
+          "label": "CAPEC",
+          "start": 11126,
+          "end": 11140,
+          "source_doc": "NCC-OTCE-EAB-038-SCATTERED-SPIDER-SOCIAL-ENGINEERING-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 15643,
+          "end": 15656,
+          "source_doc": "NCC-OTCE-EAB-038-SCATTERED-SPIDER-SOCIAL-ENGINEERING-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "Spear Phishing",
+          "source_type": "CAPEC",
+          "relationship": "TARGETS",
+          "target": "Spear Phishing",
+          "target_type": "CAPEC",
+          "context": "stomer account management and billing systems\nNetwork operations and infrastructure management\nEmergency communications and public safety systems\nTelecommunications regulatory compliance systems\n\n\n\u2694\ufe0f ATTACK TECHNIQUES AND PROCEDURES\nMITRE ATT&CK Framework Mapping\nInitial Access\nT1566.004 - Phishing: Spear Phishing Voice: Advanced voice phishing and vishing campaigns\nT1566.003 - Phishing: Spear Phi"
+        }
+      ],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-039-CL0P-SUPPLY-CHAIN-Enhanced.md.docx",
+      "entity_count": 11,
+      "relationship_count": 2,
+      "attack_chain_count": 2,
+      "entities": [
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 782,
+          "end": 795,
+          "source_doc": "NCC-OTCE-EAB-039-CL0P-SUPPLY-CHAIN-Enhanced.md.docx"
+        },
+        {
+          "text": "amplification",
+          "label": "CAPEC",
+          "start": 823,
+          "end": 836,
+          "source_doc": "NCC-OTCE-EAB-039-CL0P-SUPPLY-CHAIN-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 2405,
+          "end": 2418,
+          "source_doc": "NCC-OTCE-EAB-039-CL0P-SUPPLY-CHAIN-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability Discovery",
+          "label": "CAPEC",
+          "start": 3389,
+          "end": 3412,
+          "source_doc": "NCC-OTCE-EAB-039-CL0P-SUPPLY-CHAIN-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 3546,
+          "end": 3559,
+          "source_doc": "NCC-OTCE-EAB-039-CL0P-SUPPLY-CHAIN-Enhanced.md.docx"
+        },
+        {
+          "text": "Vendor software",
+          "label": "CAPEC",
+          "start": 7602,
+          "end": 7617,
+          "source_doc": "NCC-OTCE-EAB-039-CL0P-SUPPLY-CHAIN-Enhanced.md.docx"
+        },
+        {
+          "text": "targeted spear phishing",
+          "label": "CAPEC",
+          "start": 7687,
+          "end": 7710,
+          "source_doc": "NCC-OTCE-EAB-039-CL0P-SUPPLY-CHAIN-Enhanced.md.docx"
+        },
+        {
+          "text": "dependency analysis",
+          "label": "CAPEC",
+          "start": 12551,
+          "end": 12570,
+          "source_doc": "NCC-OTCE-EAB-039-CL0P-SUPPLY-CHAIN-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 12814,
+          "end": 12827,
+          "source_doc": "NCC-OTCE-EAB-039-CL0P-SUPPLY-CHAIN-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 14773,
+          "end": 14786,
+          "source_doc": "NCC-OTCE-EAB-039-CL0P-SUPPLY-CHAIN-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 17498,
+          "end": 17511,
+          "source_doc": "NCC-OTCE-EAB-039-CL0P-SUPPLY-CHAIN-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "amplification",
+          "target_type": "CAPEC",
+          "context": "managed service providers through advanced zero-day exploitation techniques. This campaign represents a strategic evolution from direct targeting to systematic supply chain compromise, with confirmed attacks affecting 150+ downstream organizations through 12+ compromised vendors and MSPs. The group's systematic approach to vendor vulnerability discovery and supply chain amplification demonstrates"
+        },
+        {
+          "source": "Vendor software",
+          "source_type": "CAPEC",
+          "relationship": "TARGETS",
+          "target": "targeted spear phishing",
+          "target_type": "CAPEC",
+          "context": "ing\nInitial Access\nT1190 - Exploit Public-Facing Application: Zero-day exploitation of vendor web applications\nT1195.002 - Supply Chain Compromise: Software Supply Chain: Vendor software supply chain compromise\nT1566.001 - Spearphishing Attachment: Vendor-targeted spear phishing campaigns\nExecution\nT1059.001 - PowerShell: Windows PowerShell for vendor system reconnaissance and exploitation\nT1203 -"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "vulnerability",
+              "step": 0
+            },
+            {
+              "relationship": "TARGETS"
+            },
+            {
+              "node": "amplification",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "vulnerability",
+          "end": "amplification"
+        },
+        {
+          "chain": [
+            {
+              "node": "Vendor software",
+              "step": 0
+            },
+            {
+              "relationship": "TARGETS"
+            },
+            {
+              "node": "targeted spear phishing",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "Vendor software",
+          "end": "targeted spear phishing"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-040-APT31-GOVERNMENT-EMAIL-Enhanced.md.docx",
+      "entity_count": 5,
+      "relationship_count": 2,
+      "attack_chain_count": 1,
+      "entities": [
+        {
+          "text": "credential abuse",
+          "label": "CAPEC",
+          "start": 3947,
+          "end": 3963,
+          "source_doc": "NCC-OTCE-EAB-040-APT31-GOVERNMENT-EMAIL-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 4043,
+          "end": 4045,
+          "source_doc": "NCC-OTCE-EAB-040-APT31-GOVERNMENT-EMAIL-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4139,
+          "end": 4152,
+          "source_doc": "NCC-OTCE-EAB-040-APT31-GOVERNMENT-EMAIL-Enhanced.md.docx"
+        },
+        {
+          "text": "targeted spear phishing",
+          "label": "CAPEC",
+          "start": 8235,
+          "end": 8258,
+          "source_doc": "NCC-OTCE-EAB-040-APT31-GOVERNMENT-EMAIL-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 9023,
+          "end": 9036,
+          "source_doc": "NCC-OTCE-EAB-040-APT31-GOVERNMENT-EMAIL-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "credential abuse",
+          "source_type": "CAPEC",
+          "relationship": "USES",
+          "target": "20",
+          "target_type": "CWE",
+          "context": "ted government employee phishing\nValid Government Accounts (T1078): Compromised government employee credentials\nGovernment Trusted Relationships (T1199): Government contractor and vendor credential abuse\nPhase 2: Email Infrastructure Exploitation and Surveillance Deployment (July 5-20, 2025)\nGovernment Email System Compromise:\n\nExchange Server Exploitation: Microsoft Exchange vulnerability exploit"
+        },
+        {
+          "source": "20",
+          "source_type": "CWE",
+          "relationship": "USES",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "ted government employee phishing\nValid Government Accounts (T1078): Compromised government employee credentials\nGovernment Trusted Relationships (T1199): Government contractor and vendor credential abuse\nPhase 2: Email Infrastructure Exploitation and Surveillance Deployment (July 5-20, 2025)\nGovernment Email System Compromise:\n\nExchange Server Exploitation: Microsoft Exchange vulnerability exploit"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "credential abuse",
+              "step": 0
+            },
+            {
+              "relationship": "USES"
+            },
+            {
+              "node": "20",
+              "step": 2
+            },
+            {
+              "relationship": "USES"
+            },
+            {
+              "node": "vulnerability",
+              "step": 4
+            }
+          ],
+          "length": 5,
+          "start": "credential abuse",
+          "end": "vulnerability"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-041-LOCKBIT-BLACK-SUCCESSOR-Enhanced.md.docx",
+      "entity_count": 10,
+      "relationship_count": 4,
+      "attack_chain_count": 1,
+      "entities": [
+        {
+          "text": "Vulnerability Analysis",
+          "label": "CAPEC",
+          "start": 4268,
+          "end": 4290,
+          "source_doc": "NCC-OTCE-EAB-041-LOCKBIT-BLACK-SUCCESSOR-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4330,
+          "end": 4343,
+          "source_doc": "NCC-OTCE-EAB-041-LOCKBIT-BLACK-SUCCESSOR-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 4524,
+          "end": 4537,
+          "source_doc": "NCC-OTCE-EAB-041-LOCKBIT-BLACK-SUCCESSOR-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 8035,
+          "end": 8048,
+          "source_doc": "NCC-OTCE-EAB-041-LOCKBIT-BLACK-SUCCESSOR-Enhanced.md.docx"
+        },
+        {
+          "text": "spear phishing",
+          "label": "CAPEC",
+          "start": 8116,
+          "end": 8130,
+          "source_doc": "NCC-OTCE-EAB-041-LOCKBIT-BLACK-SUCCESSOR-Enhanced.md.docx"
+        },
+        {
+          "text": "next-generation ransomware\na7b2c5d8e1f3a6b9c4d7e2f5a8b3c6d9e4f7a1b5c8d2e4f7a3b6c9d5e8f1a4b7: Advanced encryption and evasion framework\nb3c6d9e4f7a1b5c8d2e4f7a3b6c9d5e8f1a4b7c2d5e8f3a6b9c4d7e1f2a5b8c3: Anti-analysis and forensics evasion toolkit\nRegistry Keys\nHKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run\\SystemUpdateService: Advanced persistence mechanism\nHKLM\\SYSTEM\\CurrentControlSet\\Services\\SecurityMonitor: Fake security service creation\nHKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\ProxyServer: Advanced proxy configuration\nAdvanced Behavioral Indicators\nNext-Generation Ransomware Behaviors\nMilitary-Grade Encryption",
+          "label": "CWE",
+          "start": 11660,
+          "end": 12309,
+          "source_doc": "NCC-OTCE-EAB-041-LOCKBIT-BLACK-SUCCESSOR-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 13340,
+          "end": 13353,
+          "source_doc": "NCC-OTCE-EAB-041-LOCKBIT-BLACK-SUCCESSOR-Enhanced.md.docx"
+        },
+        {
+          "text": "Build critical infrastructure resilience against advanced ransomware\nAdvanced Threat Hunting\nNext-Generation Ransomware Detection\nAdvanced Behavioral Analysis: Hunt for next-generation ransomware behavioral indicators\nEncryption Detection",
+          "label": "CWE",
+          "start": 14167,
+          "end": 14405,
+          "source_doc": "NCC-OTCE-EAB-041-LOCKBIT-BLACK-SUCCESSOR-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 14821,
+          "end": 14834,
+          "source_doc": "NCC-OTCE-EAB-041-LOCKBIT-BLACK-SUCCESSOR-Enhanced.md.docx"
+        },
+        {
+          "text": "cryptocurrency",
+          "label": "CAPEC",
+          "start": 17628,
+          "end": 17642,
+          "source_doc": "NCC-OTCE-EAB-041-LOCKBIT-BLACK-SUCCESSOR-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "EXPLOITS",
+          "target": "spear phishing",
+          "target_type": "CAPEC",
+          "context": "sportation management and traffic control systems\nEmergency services communication and coordination systems\n\n\n\u2694\ufe0f ATTACK TECHNIQUES AND PROCEDURES\nMITRE ATT&CK Framework Mapping\nInitial Access\nT1190 - Exploit Public-Facing Application: Zero-day and advanced vulnerability exploitation\nT1566.001 - Spearphishing Attachment: Next-generation spear phishing with advanced evasion\nT1195 - Supply Chain Comp"
+        },
+        {
+          "source": "Vulnerability Analysis",
+          "source_type": "CAPEC",
+          "relationship": "USES",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "sponse capability assessment\nTechnical Vulnerability Analysis: Advanced technical reconnaissance and vulnerability assessment\nBusiness Impact Modeling: Business disruption impact modeling for maximum leverage\n\nNext-Generation Initial Access Techniques:\n\nZero-Day Exploitation: Advanced zero-day vulnerability exploitation capabilities\nSupply Chain Compromise: Targeted supply chain and MSP compromise"
+        },
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "USES",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "sponse capability assessment\nTechnical Vulnerability Analysis: Advanced technical reconnaissance and vulnerability assessment\nBusiness Impact Modeling: Business disruption impact modeling for maximum leverage\n\nNext-Generation Initial Access Techniques:\n\nZero-Day Exploitation: Advanced zero-day vulnerability exploitation capabilities\nSupply Chain Compromise: Targeted supply chain and MSP compromise"
+        },
+        {
+          "source": "vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "spear phishing",
+          "target_type": "CAPEC",
+          "context": "o-day and advanced vulnerability exploitation\nT1566.001 - Spearphishing Attachment: Next-generation spear phishing with advanced evasion\nT1195 - Supply Chain Compromise: Advanced supply chain and MSP compromise techniques\nExecution\nT1059.001 - PowerShell: Advanced PowerShell with anti-analysis and evasion capabilities\nT1053 - Scheduled Task/Job: System scheduling abuse with persistence enhancement"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "vulnerability",
+              "step": 0
+            },
+            {
+              "relationship": "EXPLOITS"
+            },
+            {
+              "node": "spear phishing",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "vulnerability",
+          "end": "spear phishing"
+        }
+      ]
+    },
+    {
+      "document": "NCC-OTCE-EAB-042-LAZARUS-WEB3-DEFI-Enhanced.md.docx",
+      "entity_count": 16,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 1331,
+          "end": 1333,
+          "source_doc": "NCC-OTCE-EAB-042-LAZARUS-WEB3-DEFI-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 2374,
+          "end": 2387,
+          "source_doc": "NCC-OTCE-EAB-042-LAZARUS-WEB3-DEFI-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 2665,
+          "end": 2678,
+          "source_doc": "NCC-OTCE-EAB-042-LAZARUS-WEB3-DEFI-Enhanced.md.docx"
+        },
+        {
+          "text": "Analysis of cross-chain bridge protocols and",
+          "label": "CWE",
+          "start": 4193,
+          "end": 4237,
+          "source_doc": "NCC-OTCE-EAB-042-LAZARUS-WEB3-DEFI-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 4340,
+          "end": 4342,
+          "source_doc": "NCC-OTCE-EAB-042-LAZARUS-WEB3-DEFI-Enhanced.md.docx"
+        },
+        {
+          "text": "protocol exploitation",
+          "label": "CAPEC",
+          "start": 4547,
+          "end": 4568,
+          "source_doc": "NCC-OTCE-EAB-042-LAZARUS-WEB3-DEFI-Enhanced.md.docx"
+        },
+        {
+          "text": "Use of advanced cryptocurrency mixing services and privacy coins\nDecentralized Exchange Trading: Complex",
+          "label": "CWE",
+          "start": 5462,
+          "end": 5566,
+          "source_doc": "NCC-OTCE-EAB-042-LAZARUS-WEB3-DEFI-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 8766,
+          "end": 8779,
+          "source_doc": "NCC-OTCE-EAB-042-LAZARUS-WEB3-DEFI-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 8950,
+          "end": 8963,
+          "source_doc": "NCC-OTCE-EAB-042-LAZARUS-WEB3-DEFI-Enhanced.md.docx"
+        },
+        {
+          "text": "Use of cross-chain transfers for transaction trail obfuscation\nPrivacy Coin Utilization: Use of privacy-focused cryptocurrencies for transaction hiding\nCredential",
+          "label": "CWE",
+          "start": 9924,
+          "end": 10086,
+          "source_doc": "NCC-OTCE-EAB-042-LAZARUS-WEB3-DEFI-Enhanced.md.docx"
+        },
+        {
+          "text": "Analysis of blockchain transactions and cryptocurrency flow patterns\nSmart Contract Auditing: Detailed analysis of smart contract code for",
+          "label": "CWE",
+          "start": 10402,
+          "end": 10540,
+          "source_doc": "NCC-OTCE-EAB-042-LAZARUS-WEB3-DEFI-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 10541,
+          "end": 10554,
+          "source_doc": "NCC-OTCE-EAB-042-LAZARUS-WEB3-DEFI-Enhanced.md.docx"
+        },
+        {
+          "text": "Use of blockchain networks for command and control communication\nDecentralized C2: Utilization of decentralized protocols for command and control infrastructure\nCryptocurrency-Based C2: Cryptocurrency transaction-based command and control mechanisms\nExfiltration\nCryptocurrency Transfer: Direct cryptocurrency transfer",
+          "label": "CWE",
+          "start": 11291,
+          "end": 11609,
+          "source_doc": "NCC-OTCE-EAB-042-LAZARUS-WEB3-DEFI-Enhanced.md.docx"
+        },
+        {
+          "text": "flash loan",
+          "label": "CAPEC",
+          "start": 12743,
+          "end": 12753,
+          "source_doc": "NCC-OTCE-EAB-042-LAZARUS-WEB3-DEFI-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 14449,
+          "end": 14462,
+          "source_doc": "NCC-OTCE-EAB-042-LAZARUS-WEB3-DEFI-Enhanced.md.docx"
+        },
+        {
+          "text": "cryptocurrency tracking",
+          "label": "CAPEC",
+          "start": 15629,
+          "end": 15652,
+          "source_doc": "NCC-OTCE-EAB-042-LAZARUS-WEB3-DEFI-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-043-VOLT-TYPHOON-TRANSPORTATION-Enhanced.md.docx",
+      "entity_count": 4,
+      "relationship_count": 0,
+      "attack_chain_count": 0,
+      "entities": [
+        {
+          "text": "Initial critical infrastructure reconnaissance and capability development\n2023: First major infrastructure targeting including transportation sector exploration\n2024: Transportation-specific technique development and operational technology expertise\n2025: Current systematic transportation infrastructure pre-positioning campaign\nStrategic Objectives and Capabilities\nPrimary Mission: Transportation infrastructure compromise for strategic mobility disruption during conflicts\n\nCapability 1: Transportation operational technology (OT) and industrial control system exploitation\nCapability 2: Multi-modal transportation network analysis and interdependency mapping\nCapability 3: Advanced persistent access in transportation management and control systems\nCapability 4: Strategic timing and coordination for maximum transportation system disruption\n\nTransportation Infrastructure Specialization:\n\nDeep understanding of transportation network interdependencies and single points of failure\nAdvanced knowledge of transportation operational technology and control system architectures\nStrategic focus on high-impact transportation hubs and critical mobility corridors\nPatient, methodical approach prioritizing stealth and strategic positioning over immediate disruption\n\n\n\ud83d\udd0d CAMPAIGN ANALYSIS: TRANSPORTATION PRE-POSITIONING 2025\nCampaign Timeline and Methodology\nPhase 1: Transportation Infrastructure Reconnaissance and Target Selection (June 20",
+          "label": "CWE",
+          "start": 2336,
+          "end": 3777,
+          "source_doc": "NCC-OTCE-EAB-043-VOLT-TYPHOON-TRANSPORTATION-Enhanced.md.docx"
+        },
+        {
+          "text": "20",
+          "label": "CWE",
+          "start": 4690,
+          "end": 4692,
+          "source_doc": "NCC-OTCE-EAB-043-VOLT-TYPHOON-TRANSPORTATION-Enhanced.md.docx"
+        },
+        {
+          "text": "credential abuse",
+          "label": "CAPEC",
+          "start": 5021,
+          "end": 5037,
+          "source_doc": "NCC-OTCE-EAB-043-VOLT-TYPHOON-TRANSPORTATION-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 10574,
+          "end": 10587,
+          "source_doc": "NCC-OTCE-EAB-043-VOLT-TYPHOON-TRANSPORTATION-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [],
+      "attack_chains": []
+    },
+    {
+      "document": "NCC-OTCE-EAB-044-IRANIAN-APT-UTILITIES-SCADA-Enhanced.md.docx",
+      "entity_count": 3,
+      "relationship_count": 3,
+      "attack_chain_count": 1,
+      "entities": [
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 9803,
+          "end": 9816,
+          "source_doc": "NCC-OTCE-EAB-044-IRANIAN-APT-UTILITIES-SCADA-Enhanced.md.docx"
+        },
+        {
+          "text": "Vulnerability",
+          "label": "VULNERABILITY",
+          "start": 18210,
+          "end": 18223,
+          "source_doc": "NCC-OTCE-EAB-044-IRANIAN-APT-UTILITIES-SCADA-Enhanced.md.docx"
+        },
+        {
+          "text": "vulnerability",
+          "label": "VULNERABILITY",
+          "start": 18299,
+          "end": 18312,
+          "source_doc": "NCC-OTCE-EAB-044-IRANIAN-APT-UTILITIES-SCADA-Enhanced.md.docx"
+        }
+      ],
+      "relationships": [
+        {
+          "source": "Vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "EXPLOITS",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "c National Security Implications\nCritical Infrastructure Vulnerability: Utilities infrastructure compromise represents critical national security vulnerability\nStrategic Deterrence: Iranian utilities targeting as strategic deterrence and geopolitical leverage capability\nNational Resilience: Utilities security directly linked to national resilience and homeland security\nEconomic Security: Utilities"
+        },
+        {
+          "source": "Vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "USES",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "cture Vulnerability: Utilities infrastructure compromise represents critical national security vulnerability\nStrategic Deterrence: Iranian utilities targeting as strategic deterrence and geopolitical leverage capability\nNational Resilience: Utilities security directly linked to national resilience and homeland security\nEconomic Security: Utilities disruption potential for massive economic disrupti"
+        },
+        {
+          "source": "Vulnerability",
+          "source_type": "VULNERABILITY",
+          "relationship": "TARGETS",
+          "target": "vulnerability",
+          "target_type": "VULNERABILITY",
+          "context": "e cooperation\n\n\n\ud83c\udf0d GEOPOLITICAL AND ECONOMIC IMPLICATIONS\nNational Security and Economic Impact\nStrategic National Security Implications\nCritical Infrastructure Vulnerability: Utilities infrastructure compromise represents critical national security vulnerability\nStrategic Deterrence: Iranian utilities targeting as strategic deterrence and geopolitical leverage capability\nNational Resilience: Utili"
+        }
+      ],
+      "attack_chains": [
+        {
+          "chain": [
+            {
+              "node": "Vulnerability",
+              "step": 0
+            },
+            {
+              "relationship": "EXPLOITS"
+            },
+            {
+              "node": "vulnerability",
+              "step": 2
+            }
+          ],
+          "length": 3,
+          "start": "Vulnerability",
+          "end": "vulnerability"
+        }
+      ]
+    }
+  ]
+}

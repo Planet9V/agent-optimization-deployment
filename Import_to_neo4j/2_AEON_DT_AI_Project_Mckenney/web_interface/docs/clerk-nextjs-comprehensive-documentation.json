@@ -1,0 +1,1528 @@
+{
+  "metadata": {
+    "title": "Clerk Next.js Comprehensive Documentation",
+    "source": "https://clerk.com/docs/nextjs",
+    "researched_date": "2025-11-04",
+    "framework": "Next.js (App Router & Pages Router)",
+    "sdk_version": "Latest",
+    "coverage": "Complete quickstart, components, hooks, middleware, deployment"
+  },
+
+  "quickstart_guide": {
+    "title": "Next.js Quickstart (App Router)",
+    "url": "https://clerk.com/docs/nextjs/getting-started/quickstart",
+    "overview": "Step-by-step guide to integrate Clerk authentication into Next.js App Router applications",
+
+    "stages": [
+      {
+        "stage": 1,
+        "title": "Create Next.js Application",
+        "description": "Scaffold new Next.js project",
+        "commands": [
+          "npm create next-app@latest my-clerk-app -- --yes",
+          "yarn create next-app my-clerk-app --yes",
+          "pnpm create next-app my-clerk-app --yes",
+          "bun create next-app my-clerk-app --yes"
+        ],
+        "notes": [
+          "Choose package manager based on your preference",
+          "All commands scaffold identical Next.js projects"
+        ]
+      },
+      {
+        "stage": 2,
+        "title": "Install Clerk SDK",
+        "description": "Add @clerk/nextjs package to project dependencies",
+        "commands": [
+          "npm install @clerk/nextjs",
+          "yarn add @clerk/nextjs",
+          "pnpm add @clerk/nextjs",
+          "bun add @clerk/nextjs"
+        ],
+        "package": "@clerk/nextjs",
+        "purpose": "Next.js-specific Clerk SDK with App Router and Pages Router support"
+      },
+      {
+        "stage": 3,
+        "title": "Configure Environment Variables",
+        "description": "Add Clerk API keys to environment configuration",
+        "file": ".env.local",
+        "required_variables": {
+          "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": {
+            "description": "Client-side publishable key",
+            "format": "pk_test_* (development) or pk_live_* (production)",
+            "source": "Clerk Dashboard > API Keys",
+            "visibility": "Public (client-side accessible)"
+          },
+          "CLERK_SECRET_KEY": {
+            "description": "Server-side secret key",
+            "format": "sk_test_* (development) or sk_live_* (production)",
+            "source": "Clerk Dashboard > API Keys",
+            "visibility": "Private (server-side only)"
+          }
+        },
+        "optional_variables": {
+          "NEXT_PUBLIC_CLERK_SIGN_IN_URL": {
+            "description": "Custom sign-in page path",
+            "default": "/sign-in",
+            "example": "/auth/login"
+          },
+          "NEXT_PUBLIC_CLERK_SIGN_UP_URL": {
+            "description": "Custom sign-up page path",
+            "default": "/sign-up",
+            "example": "/auth/register"
+          },
+          "NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL": {
+            "description": "Redirect after successful sign-in",
+            "default": "/",
+            "example": "/dashboard"
+          },
+          "NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL": {
+            "description": "Redirect after successful sign-up",
+            "default": "/",
+            "example": "/onboarding"
+          },
+          "NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL": {
+            "description": "Fallback redirect for sign-in",
+            "default": "/",
+            "example": "/dashboard"
+          },
+          "NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL": {
+            "description": "Force redirect after sign-up (overrides others)",
+            "default": null,
+            "example": "/onboarding"
+          },
+          "CLERK_ENCRYPTION_KEY": {
+            "description": "Required when using dynamic keys in middleware",
+            "usage": "Encrypts shared server-side keys",
+            "required_when": "Using secretKey in clerkMiddleware() options"
+          }
+        },
+        "example_env_file": "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nCLERK_SECRET_KEY=sk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\nNEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in\nNEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up\nNEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard\nNEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/dashboard"
+      },
+      {
+        "stage": 4,
+        "title": "Add Middleware",
+        "description": "Configure Clerk authentication middleware for route protection",
+        "file_app_router": "middleware.ts (Next.js 15) or proxy.ts (Next.js 14 and earlier)",
+        "location": "Project root or /src directory",
+        "code_example": "import { clerkMiddleware } from '@clerk/nextjs/server'\n\nexport default clerkMiddleware()\n\nexport const config = {\n  matcher: [\n    '/((?!_next|[^?]*\\\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',\n    '/(api|trpc)(.*)',\n  ],\n}",
+        "middleware_behavior": {
+          "default": "All routes are PUBLIC by default - you must opt-in to protection",
+          "matcher_purpose": "Skip Next.js internals, static files; always run for API routes",
+          "protection_strategy": "Explicit opt-in required for route protection"
+        },
+        "route_protection_patterns": {
+          "protect_specific_routes": {
+            "description": "Protect specific routes using createRouteMatcher",
+            "code": "import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'\n\nconst isProtectedRoute = createRouteMatcher(['/dashboard(.*)', '/forum(.*)'])\n\nexport default clerkMiddleware(async (auth, req) => {\n  if (isProtectedRoute(req)) await auth.protect()\n})"
+          },
+          "protect_all_except_public": {
+            "description": "Protect all routes except explicitly public ones",
+            "code": "const isPublicRoute = createRouteMatcher(['/sign-in(.*)', '/sign-up(.*)', '/'])\n\nexport default clerkMiddleware(async (auth, req) => {\n  if (!isPublicRoute(req)) await auth.protect()\n})"
+          },
+          "permission_based_protection": {
+            "description": "Protect routes based on user permissions",
+            "code": "await auth.protect((has) => {\n  return has({ permission: 'org:admin:example1' }) || \n         has({ permission: 'org:admin:example2' })\n})"
+          },
+          "token_based_protection": {
+            "description": "Enforce specific token types for routes",
+            "code": "const isOAuthRoute = createRouteMatcher(['/oauth(.*)'])\nconst isM2MRoute = createRouteMatcher(['/m2m(.*)'])\n\nif (isOAuthRoute(req)) await auth.protect({ token: 'oauth_token' })\nif (isM2MRoute(req)) await auth.protect({ token: 'm2m_token' })"
+          }
+        },
+        "middleware_configuration_options": {
+          "audience": "JWT audience claim verification",
+          "authorizedParties": "Origin allowlist for subdomain CSRF protection",
+          "clockSkewInMs": "Token validation time tolerance (default: 5000ms)",
+          "domain": "Satellite deployment domain",
+          "organizationSyncOptions": "URL pattern-based organization activation",
+          "signInUrl": "Custom sign-in page path",
+          "signUpUrl": "Custom sign-up page path",
+          "debug": "Enable terminal logging (boolean or conditional)"
+        },
+        "debugging": {
+          "enable_debug": "{ debug: true }",
+          "conditional_debug": "{ debug: process.env.NODE_ENV === 'development' }"
+        }
+      },
+      {
+        "stage": 5,
+        "title": "Add ClerkProvider to Layout",
+        "description": "Wrap application with ClerkProvider to enable authentication context",
+        "file": "app/layout.tsx",
+        "code_example": "import {\n  ClerkProvider,\n  SignInButton,\n  SignUpButton,\n  SignedIn,\n  SignedOut,\n  UserButton,\n} from '@clerk/nextjs'\nimport './globals.css'\n\nexport default function RootLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  return (\n    <ClerkProvider>\n      <html lang=\"en\">\n        <body>\n          <header className=\"flex justify-end items-center p-4 gap-4 h-16\">\n            <SignedOut>\n              <SignInButton />\n              <SignUpButton>\n                <button className=\"bg-[#6c47ff] text-white rounded-full px-4 py-2\">\n                  Sign Up\n                </button>\n              </SignUpButton>\n            </SignedOut>\n            <SignedIn>\n              <UserButton />\n            </SignedIn>\n          </header>\n          {children}\n        </body>\n      </html>\n    </ClerkProvider>\n  )\n}",
+        "key_components_used": {
+          "ClerkProvider": "Provides authentication context application-wide",
+          "SignedIn": "Conditional rendering for authenticated users",
+          "SignedOut": "Conditional rendering for unauthenticated users",
+          "SignInButton": "Pre-built sign-in button with modal/redirect",
+          "SignUpButton": "Pre-built sign-up button with modal/redirect",
+          "UserButton": "User profile menu with account management"
+        },
+        "styling_notes": [
+          "Uses Tailwind CSS classes in example",
+          "Customize appearance via appearance prop",
+          "Can use custom buttons instead of prebuilt components"
+        ]
+      },
+      {
+        "stage": 6,
+        "title": "Run Development Server",
+        "description": "Start Next.js development server and create first user",
+        "commands": [
+          "npm run dev",
+          "yarn dev",
+          "pnpm dev",
+          "bun dev"
+        ],
+        "testing_steps": [
+          "Visit http://localhost:3000",
+          "Click 'Sign Up' button",
+          "Complete sign-up flow",
+          "Verify user appears in Clerk Dashboard",
+          "Test sign-out and sign-in flows"
+        ],
+        "expected_behavior": {
+          "signed_out": "Shows SignInButton and SignUpButton",
+          "signed_in": "Shows UserButton with user avatar",
+          "user_button_click": "Opens dropdown with 'Manage account' and 'Sign out'"
+        }
+      }
+    ],
+
+    "next_steps": {
+      "custom_pages": {
+        "title": "Create Custom Sign-in/Sign-up Pages",
+        "url": "/docs/nextjs/guides/development/custom-sign-in-or-up-page",
+        "description": "Build dedicated authentication pages instead of Account Portal"
+      },
+      "onboarding": {
+        "title": "Add Custom Onboarding Flow",
+        "url": "/docs/guides/development/add-onboarding-flow",
+        "description": "Collect additional user data after sign-up"
+      },
+      "route_protection": {
+        "title": "Protect Specific Routes",
+        "url": "/docs/reference/nextjs/clerk-middleware",
+        "description": "Advanced middleware configuration for authorization"
+      },
+      "user_data_access": {
+        "title": "Access User Data",
+        "url": "/docs/nextjs/guides/users/reading",
+        "description": "Read user information in server/client components"
+      },
+      "sdk_reference": {
+        "title": "Next.js SDK Reference",
+        "url": "/docs/reference/nextjs/overview",
+        "description": "Complete API documentation for all functions and hooks"
+      },
+      "production_deployment": {
+        "title": "Production Deployment",
+        "url": "/docs/guides/development/deployment/production",
+        "description": "Deploy to production with domain configuration"
+      }
+    }
+  },
+
+  "pages_router_differences": {
+    "title": "Pages Router vs App Router",
+    "provider_location": {
+      "pages_router": "pages/_app.tsx",
+      "app_router": "app/layout.tsx"
+    },
+    "middleware_file": {
+      "both": "middleware.ts in root or /src",
+      "note": "Same middleware API for both routers"
+    },
+    "css_layer_requirement": {
+      "pages_router": "Add @layer theme, base, clerk, components, utilities; to globals.css",
+      "app_router": "Not required"
+    },
+    "server_side_helpers": {
+      "pages_router": ["getAuth(req)", "buildClerkProps()", "getServerSideProps/getStaticProps integration"],
+      "app_router": ["auth()", "currentUser()", "Server Components", "Route Handlers", "Server Actions"]
+    },
+    "recommendation": "Use App Router for new projects - better performance and simpler patterns"
+  },
+
+  "components": {
+    "authentication": {
+      "SignIn": {
+        "description": "Complete sign-in UI with authentication strategies",
+        "import": "import { SignIn } from '@clerk/nextjs'",
+        "usage": "<SignIn />",
+        "props": {
+          "appearance": {
+            "type": "Appearance",
+            "description": "Customize component styling"
+          },
+          "fallback": {
+            "type": "ReactNode",
+            "description": "Element shown while component mounts"
+          },
+          "fallbackRedirectUrl": {
+            "type": "string",
+            "description": "Redirect after sign-in (default: /)",
+            "default": "/"
+          },
+          "forceRedirectUrl": {
+            "type": "string",
+            "description": "Always redirect to this URL after sign-in"
+          },
+          "initialValues": {
+            "type": "SignInInitialValues",
+            "description": "Pre-fill form fields",
+            "example": { "emailAddress": "user@example.com" }
+          },
+          "oauthFlow": {
+            "type": "'redirect' | 'popup' | 'auto'",
+            "description": "OAuth authentication method",
+            "default": "auto"
+          },
+          "path": {
+            "type": "string",
+            "description": "Mount path for component (e.g., /sign-in)"
+          },
+          "routing": {
+            "type": "'hash' | 'path'",
+            "description": "Routing strategy",
+            "default": "path"
+          },
+          "withSignUp": {
+            "type": "boolean",
+            "description": "Enable sign-in-or-up flow"
+          }
+        },
+        "important_notes": [
+          "Cannot render when user is signed in (unless multi-session enabled)",
+          "Automatically redirects signed-in users to home URL",
+          "Configure authentication strategies in Clerk Dashboard"
+        ],
+        "example": "'use client'\n\nimport { SignIn, useUser } from '@clerk/nextjs'\n\nexport default function SignInPage() {\n  const { isSignedIn } = useUser()\n  \n  if (!isSignedIn) {\n    return <SignIn />\n  }\n  \n  return <div>Welcome!</div>\n}"
+      },
+      "SignUp": {
+        "description": "Complete sign-up UI with registration strategies",
+        "import": "import { SignUp } from '@clerk/nextjs'",
+        "usage": "<SignUp />",
+        "props": {
+          "appearance": {
+            "type": "Appearance",
+            "description": "Customize component styling"
+          },
+          "fallback": {
+            "type": "ReactNode",
+            "description": "Element shown while component mounts"
+          },
+          "fallbackRedirectUrl": {
+            "type": "string",
+            "description": "Redirect after sign-up (default: /)",
+            "default": "/"
+          },
+          "forceRedirectUrl": {
+            "type": "string",
+            "description": "Always redirect to this URL after sign-up"
+          },
+          "initialValues": {
+            "type": "SignUpInitialValues",
+            "description": "Pre-fill form fields",
+            "example": { "emailAddress": "user@example.com", "firstName": "John" }
+          },
+          "oauthFlow": {
+            "type": "'redirect' | 'popup' | 'auto'",
+            "description": "OAuth authentication method",
+            "default": "auto"
+          },
+          "path": {
+            "type": "string",
+            "description": "Mount path for component (e.g., /sign-up)"
+          },
+          "routing": {
+            "type": "'hash' | 'path'",
+            "description": "Routing strategy",
+            "default": "path"
+          },
+          "signInUrl": {
+            "type": "string",
+            "description": "Link to sign-in page"
+          },
+          "unsafeMetadata": {
+            "type": "SignUpUnsafeMetadata",
+            "description": "Custom metadata added to user profile",
+            "example": { "role": "premium_user" }
+          }
+        },
+        "important_notes": [
+          "Cannot render when user is signed in (unless multi-session enabled)",
+          "Appearance prop only affects component, not Account Portal",
+          "Configure required fields in Clerk Dashboard"
+        ]
+      },
+      "SignInButton": {
+        "description": "Button that triggers sign-in flow",
+        "import": "import { SignInButton } from '@clerk/nextjs'",
+        "usage": "<SignInButton />",
+        "behavior": "Opens sign-in modal or redirects to sign-in page",
+        "customization": "<SignInButton mode=\"modal\">\n  <button>Custom Sign In</button>\n</SignInButton>"
+      },
+      "SignUpButton": {
+        "description": "Button that triggers sign-up flow",
+        "import": "import { SignUpButton } from '@clerk/nextjs'",
+        "usage": "<SignUpButton />",
+        "behavior": "Opens sign-up modal or redirects to sign-up page",
+        "customization": "<SignUpButton mode=\"modal\">\n  <button className=\"btn-primary\">Get Started</button>\n</SignUpButton>"
+      }
+    },
+    "control": {
+      "SignedIn": {
+        "description": "Conditional rendering for authenticated users",
+        "import": "import { SignedIn } from '@clerk/nextjs'",
+        "usage": "<SignedIn>\n  <UserProfile />\n</SignedIn>",
+        "behavior": "Renders children only when user is signed in"
+      },
+      "SignedOut": {
+        "description": "Conditional rendering for unauthenticated users",
+        "import": "import { SignedOut } from '@clerk/nextjs'",
+        "usage": "<SignedOut>\n  <SignInButton />\n</SignedOut>",
+        "behavior": "Renders children only when user is NOT signed in"
+      }
+    },
+    "user": {
+      "UserButton": {
+        "description": "User profile button with dropdown menu",
+        "import": "import { UserButton } from '@clerk/nextjs'",
+        "usage": "<UserButton />",
+        "props": {
+          "afterSwitchSessionUrl": {
+            "type": "string",
+            "description": "Navigation destination after account switching",
+            "use_case": "Multi-session applications"
+          },
+          "appearance": {
+            "type": "Appearance",
+            "description": "Customize component styling"
+          },
+          "defaultOpen": {
+            "type": "boolean",
+            "description": "Controls initial dropdown state",
+            "default": false
+          },
+          "showName": {
+            "type": "boolean",
+            "description": "Display user name beside avatar",
+            "default": false
+          },
+          "signInUrl": {
+            "type": "string",
+            "description": "Destination for 'Add another account' button"
+          },
+          "userProfileMode": {
+            "type": "'modal' | 'navigation'",
+            "description": "Profile opens as modal or navigates to page",
+            "default": "modal"
+          },
+          "userProfileProps": {
+            "type": "object",
+            "description": "Options for underlying UserProfile component"
+          },
+          "userProfileUrl": {
+            "type": "string",
+            "description": "URL to user management interface"
+          },
+          "fallback": {
+            "type": "ReactNode",
+            "description": "Element shown while mounting"
+          }
+        },
+        "default_menu_items": [
+          "Manage account (opens UserProfile)",
+          "Sign out"
+        ],
+        "customization": {
+          "add_menu_items": "Support custom actions and links",
+          "reorder_items": "Reposition default menu items",
+          "styling": "Use appearance prop for visual customization"
+        }
+      },
+      "UserProfile": {
+        "description": "Complete user profile management interface",
+        "import": "import { UserProfile } from '@clerk/nextjs'",
+        "features": [
+          "Update profile information",
+          "Change password",
+          "Manage connected accounts",
+          "Security settings",
+          "Delete account"
+        ]
+      }
+    },
+    "organization": {
+      "OrganizationSwitcher": {
+        "description": "Dropdown to create and switch between organizations",
+        "import": "import { OrganizationSwitcher } from '@clerk/nextjs'",
+        "usage": "<OrganizationSwitcher />",
+        "features": [
+          "Create new organizations",
+          "Switch between organizations",
+          "Invite members",
+          "Manage organization settings"
+        ],
+        "multi_tenancy": "Core component for multi-tenant applications"
+      },
+      "OrganizationProfile": {
+        "description": "Organization management interface",
+        "features": [
+          "Update organization details",
+          "Manage members and invitations",
+          "Configure roles and permissions",
+          "Organization settings"
+        ]
+      },
+      "OrganizationList": {
+        "description": "List all user's organizations",
+        "usage": "Display and navigate between organizations"
+      }
+    }
+  },
+
+  "hooks": {
+    "client_side": {
+      "useUser": {
+        "description": "Access current user's User object and authentication state",
+        "import": "import { useUser } from '@clerk/nextjs'",
+        "return_values": {
+          "isLoaded": {
+            "type": "boolean",
+            "description": "Indicates whether Clerk has completed initialization",
+            "initial_value": false
+          },
+          "isSignedIn": {
+            "type": "boolean",
+            "description": "Returns true if user is signed in"
+          },
+          "user": {
+            "type": "User | null | undefined",
+            "description": "User object containing all user data"
+          }
+        },
+        "user_object_properties": [
+          "id - Unique user identifier",
+          "firstName - User's first name",
+          "lastName - User's last name",
+          "fullName - Combined first and last name",
+          "emailAddress - Primary email address",
+          "primaryEmailAddress - Primary email object",
+          "phoneNumbers - Array of phone numbers",
+          "imageUrl - User avatar URL",
+          "hasImage - Boolean indicating if user has avatar",
+          "publicMetadata - Custom public metadata",
+          "privateMetadata - Custom private metadata",
+          "unsafeMetadata - Unsafe metadata (client-writable)",
+          "createdAt - Account creation timestamp",
+          "updatedAt - Last update timestamp"
+        ],
+        "user_methods": [
+          "update() - Update user information",
+          "reload() - Refresh user data from server",
+          "delete() - Delete user account"
+        ],
+        "example": "const { isLoaded, isSignedIn, user } = useUser()\n\nif (!isLoaded) return <div>Loading...</div>\nif (!isSignedIn) return <div>Not signed in</div>\n\nreturn <div>Hello, {user.firstName}!</div>"
+      },
+      "useAuth": {
+        "description": "Access authentication state and session management methods",
+        "import": "import { useAuth } from '@clerk/nextjs'",
+        "return_values": {
+          "isLoaded": {
+            "type": "boolean",
+            "description": "Indicates whether Clerk has loaded"
+          },
+          "isSignedIn": {
+            "type": "boolean",
+            "description": "Returns true if user is authenticated"
+          },
+          "userId": {
+            "type": "string | null | undefined",
+            "description": "Current user's ID"
+          },
+          "sessionId": {
+            "type": "string | null | undefined",
+            "description": "Current session ID"
+          },
+          "orgId": {
+            "type": "string | null | undefined",
+            "description": "Current active organization ID"
+          },
+          "orgRole": {
+            "type": "string | null | undefined",
+            "description": "User's role in current organization"
+          },
+          "orgSlug": {
+            "type": "string | null | undefined",
+            "description": "Current organization's slug"
+          },
+          "getToken": {
+            "type": "(options?: GetTokenOptions) => Promise<string | null>",
+            "description": "Retrieve session token or custom JWT template"
+          },
+          "signOut": {
+            "type": "() => Promise<void>",
+            "description": "Sign out current user"
+          }
+        },
+        "getToken_usage": {
+          "basic": "const token = await getToken()",
+          "with_template": "const token = await getToken({ template: 'custom_jwt' })",
+          "for_integration": "const token = await getToken({ template: 'integration_firebase' })",
+          "note": "Integration templates must be prefixed with 'integration_'"
+        },
+        "example": "const { isSignedIn, userId, getToken, signOut } = useAuth()\n\nconst fetchData = async () => {\n  const token = await getToken()\n  const response = await fetch('/api/data', {\n    headers: { Authorization: `Bearer ${token}` }\n  })\n  return response.json()\n}"
+      },
+      "useClerk": {
+        "description": "Access Clerk instance and global methods",
+        "import": "import { useClerk } from '@clerk/nextjs'",
+        "methods": [
+          "openSignIn() - Open sign-in modal",
+          "openSignUp() - Open sign-up modal",
+          "openUserProfile() - Open user profile modal",
+          "redirectToSignIn() - Navigate to sign-in page",
+          "redirectToSignUp() - Navigate to sign-up page",
+          "setActive() - Set active session/organization"
+        ]
+      },
+      "useSignIn": {
+        "description": "Programmatic sign-in flow control",
+        "usage": "Build custom sign-in forms and authentication flows"
+      },
+      "useSignUp": {
+        "description": "Programmatic sign-up flow control",
+        "usage": "Build custom sign-up forms and registration flows"
+      },
+      "useSession": {
+        "description": "Access current session information",
+        "return_values": ["session", "isLoaded", "isSignedIn"]
+      },
+      "useSessionList": {
+        "description": "Manage multiple active sessions",
+        "usage": "Multi-session applications with account switching"
+      },
+      "useOrganization": {
+        "description": "Access current organization information",
+        "return_values": ["organization", "membership", "isLoaded"]
+      },
+      "useOrganizationList": {
+        "description": "Access list of user's organizations",
+        "usage": "Display and manage multiple organizations"
+      }
+    }
+  },
+
+  "server_side_helpers": {
+    "app_router": {
+      "auth": {
+        "description": "Returns authentication data for server components and route handlers",
+        "import": "import { auth } from '@clerk/nextjs/server'",
+        "return_type": "Promise<Auth>",
+        "usage_contexts": [
+          "Server Components",
+          "Route Handlers (app/api/**/route.ts)",
+          "Server Actions",
+          "Middleware"
+        ],
+        "auth_object_properties": {
+          "userId": "string | null - Current user ID",
+          "sessionId": "string | null - Current session ID",
+          "orgId": "string | null - Active organization ID",
+          "orgRole": "string | null - User role in organization",
+          "orgSlug": "string | null - Organization slug",
+          "sessionClaims": "JwtPayload | null - Full JWT claims",
+          "isAuthenticated": "boolean - Authentication status"
+        },
+        "methods": {
+          "protect": {
+            "description": "Throw error if not authenticated/authorized",
+            "usage": "await auth.protect()",
+            "with_permission": "await auth.protect((has) => has({ permission: 'org:admin' }))"
+          },
+          "redirectToSignIn": {
+            "description": "Redirect to sign-in page",
+            "usage": "return auth.redirectToSignIn()"
+          }
+        },
+        "example": "// app/dashboard/page.tsx\nimport { auth } from '@clerk/nextjs/server'\n\nexport default async function DashboardPage() {\n  const { userId } = await auth()\n  \n  if (!userId) {\n    return <div>Not authenticated</div>\n  }\n  \n  return <div>User ID: {userId}</div>\n}"
+      },
+      "currentUser": {
+        "description": "Retrieve current user's complete Backend User object",
+        "import": "import { currentUser } from '@clerk/nextjs/server'",
+        "return_type": "Promise<User | null>",
+        "rate_limit_warning": "Counts towards Backend API request rate limit",
+        "recommendation": "Use client-side useUser() when possible to avoid rate limits",
+        "usage_contexts": [
+          "Server Components",
+          "Route Handlers",
+          "Server Actions"
+        ],
+        "example": "import { currentUser } from '@clerk/nextjs/server'\n\nexport default async function ProfilePage() {\n  const user = await currentUser()\n  \n  if (!user) return <div>Not signed in</div>\n  \n  return (\n    <div>\n      <h1>{user.fullName}</h1>\n      <p>{user.emailAddress}</p>\n    </div>\n  )\n}"
+      },
+      "clerkClient": {
+        "description": "Access Backend API for user/organization management",
+        "import": "import { clerkClient } from '@clerk/nextjs/server'",
+        "methods": {
+          "users": {
+            "getUser": "Fetch user by ID",
+            "getUserList": "List all users",
+            "updateUser": "Update user information",
+            "deleteUser": "Delete user account",
+            "createUser": "Create new user"
+          },
+          "organizations": {
+            "getOrganization": "Fetch organization by ID",
+            "getOrganizationList": "List organizations",
+            "createOrganization": "Create new organization",
+            "updateOrganization": "Update organization",
+            "deleteOrganization": "Delete organization"
+          },
+          "sessions": {
+            "getSession": "Fetch session by ID",
+            "getSessionList": "List user sessions",
+            "revokeSession": "Revoke specific session"
+          }
+        },
+        "example": "import { auth, clerkClient } from '@clerk/nextjs/server'\n\nexport async function POST(req: Request) {\n  const { userId } = await auth()\n  const client = await clerkClient()\n  \n  await client.users.updateUser(userId, {\n    publicMetadata: { role: 'admin' }\n  })\n  \n  return Response.json({ success: true })\n}"
+      }
+    },
+    "pages_router": {
+      "getAuth": {
+        "description": "Extract authentication data from requests",
+        "import": "import { getAuth } from '@clerk/nextjs/server'",
+        "usage": "const { userId } = getAuth(req)",
+        "contexts": [
+          "getServerSideProps",
+          "API Routes",
+          "getStaticProps (with SSG helper)"
+        ]
+      },
+      "buildClerkProps": {
+        "description": "Prepare Clerk properties for client-side hydration",
+        "usage": "return { props: { ...buildClerkProps(req) } }",
+        "purpose": "Pass authentication state from server to client"
+      }
+    }
+  },
+
+  "onboarding_flow": {
+    "title": "Custom Onboarding Implementation",
+    "description": "Mandatory onboarding flow using session tokens and metadata",
+    "url": "https://clerk.com/docs/guides/development/add-onboarding-flow",
+
+    "setup_steps": [
+      {
+        "step": 1,
+        "title": "Configure Session Token Claims",
+        "location": "Clerk Dashboard > Sessions",
+        "action": "Add custom claims to session token",
+        "configuration": {
+          "json_template": "{\n  \"metadata\": \"{{user.public_metadata}}\"\n}",
+          "purpose": "Expose user metadata in session claims"
+        },
+        "typescript_types": "declare global {\n  interface CustomJwtSessionClaims {\n    metadata: {\n      onboardingComplete?: boolean\n    }\n  }\n}"
+      },
+      {
+        "step": 2,
+        "title": "Implement Middleware Logic",
+        "file": "src/middleware.ts or src/proxy.ts",
+        "logic": [
+          "Allow unauthenticated access to public routes",
+          "Redirect unauthenticated users to sign-in for protected routes",
+          "Allow authenticated users to access /onboarding route",
+          "Redirect authenticated users without onboardingComplete to /onboarding",
+          "Allow fully onboarded users to access all protected routes"
+        ],
+        "code_example": "import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'\nimport { NextResponse } from 'next/server'\n\nconst isOnboardingRoute = createRouteMatcher(['/onboarding'])\nconst isPublicRoute = createRouteMatcher(['/sign-in(.*)', '/sign-up(.*)'])\n\nexport default clerkMiddleware(async (auth, req) => {\n  const { isAuthenticated, sessionClaims, redirectToSignIn } = await auth()\n  \n  // Public routes accessible to all\n  if (isPublicRoute(req)) {\n    return NextResponse.next()\n  }\n  \n  // Redirect unauthenticated to sign-in\n  if (!isAuthenticated) {\n    return redirectToSignIn()\n  }\n  \n  // Allow access to onboarding page\n  if (isOnboardingRoute(req)) {\n    return NextResponse.next()\n  }\n  \n  // Redirect incomplete onboarding\n  if (!sessionClaims?.metadata?.onboardingComplete) {\n    const onboardingUrl = new URL('/onboarding', req.url)\n    return NextResponse.redirect(onboardingUrl)\n  }\n  \n  return NextResponse.next()\n})"
+      },
+      {
+        "step": 3,
+        "title": "Create Onboarding Layout",
+        "file": "src/app/onboarding/layout.tsx",
+        "purpose": "Redirect already-onboarded users away from onboarding",
+        "code_example": "import { auth } from '@clerk/nextjs/server'\nimport { redirect } from 'next/navigation'\n\nexport default async function OnboardingLayout({\n  children,\n}: {\n  children: React.ReactNode\n}) {\n  const { sessionClaims } = await auth()\n  \n  if (sessionClaims?.metadata?.onboardingComplete === true) {\n    redirect('/')\n  }\n  \n  return <>{children}</>\n}"
+      },
+      {
+        "step": 4,
+        "title": "Create Onboarding Form",
+        "file": "src/app/onboarding/page.tsx",
+        "fields_example": [
+          "Application Name",
+          "Application Type"
+        ],
+        "form_handling": "Use Server Actions for secure form submission"
+      },
+      {
+        "step": 5,
+        "title": "Update User Metadata",
+        "file": "src/app/onboarding/_actions.ts",
+        "code_example": "'use server'\n\nimport { auth, clerkClient } from '@clerk/nextjs/server'\n\nexport const completeOnboarding = async (formData: FormData) => {\n  const { userId } = await auth()\n  const client = await clerkClient()\n  \n  await client.users.updateUser(userId, {\n    publicMetadata: {\n      onboardingComplete: true,\n      applicationName: formData.get('applicationName'),\n      applicationType: formData.get('applicationType'),\n    },\n  })\n  \n  return { success: true }\n}"
+      }
+    ],
+
+    "environment_configuration": {
+      "NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL": "/dashboard",
+      "NEXT_PUBLIC_CLERK_SIGN_UP_FORCE_REDIRECT_URL": "/onboarding"
+    },
+
+    "best_practices": [
+      "Use publicMetadata for client-accessible onboarding state",
+      "Call user?.reload() after backend updates to refresh client data",
+      "Implement proper error handling for metadata updates",
+      "Consider multi-step onboarding by expanding layout logic",
+      "Store sensitive onboarding data in privateMetadata instead"
+    ],
+
+    "metadata_types": {
+      "publicMetadata": {
+        "visibility": "Readable by client and server",
+        "writeable": "Server-side only",
+        "use_cases": ["Onboarding status", "User preferences", "Public profile data"]
+      },
+      "privateMetadata": {
+        "visibility": "Server-side only",
+        "writeable": "Server-side only",
+        "use_cases": ["Sensitive user data", "Internal flags", "Admin notes"]
+      },
+      "unsafeMetadata": {
+        "visibility": "Readable by client and server",
+        "writeable": "Client and server",
+        "use_cases": ["User-controlled preferences", "Temporary data"],
+        "warning": "Can be modified by client - validate server-side"
+      }
+    }
+  },
+
+  "production_deployment": {
+    "title": "Production Deployment Guide",
+    "url": "https://clerk.com/docs/guides/development/deployment/production",
+
+    "prerequisites": [
+      "Domain you own with DNS record access",
+      "OAuth credentials for each social provider (production-specific)",
+      "Hosting platform with environment variable support"
+    ],
+
+    "deployment_steps": [
+      {
+        "step": 1,
+        "title": "Create Production Instance",
+        "location": "Clerk Dashboard",
+        "actions": [
+          "Click 'Development' button at top",
+          "Select 'Create production instance'",
+          "Choose to clone development settings or use defaults"
+        ],
+        "important_notes": [
+          "SSO connections do NOT copy over - must reconfigure",
+          "Integrations do NOT copy over - must reconfigure",
+          "Path settings do NOT copy over - must reconfigure"
+        ]
+      },
+      {
+        "step": 2,
+        "title": "Update Environment Variables",
+        "critical_changes": {
+          "NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY": {
+            "from": "pk_test_*",
+            "to": "pk_live_*"
+          },
+          "CLERK_SECRET_KEY": {
+            "from": "sk_test_*",
+            "to": "sk_live_*"
+          }
+        },
+        "deployment_locations": [
+          "Vercel: Environment Variables in project settings",
+          "Netlify: Environment variables in site settings",
+          "AWS: Parameter Store or Secrets Manager",
+          "Docker: Docker secrets or environment files",
+          "Kubernetes: ConfigMaps and Secrets"
+        ],
+        "after_update": "Redeploy application for changes to take effect"
+      },
+      {
+        "step": 3,
+        "title": "Configure Domain",
+        "location": "Clerk Dashboard > Domains",
+        "dns_records": "Obtain DNS records from Domains page",
+        "propagation_time": "Up to 48 hours for DNS propagation",
+        "subdomain_behavior": {
+          "root_domain_set": "Authentication works across all subdomains",
+          "session_sharing": true,
+          "examples": [
+            "example-site.com and dashboard.example-site.com share authentication",
+            "Users signed in on one subdomain are signed in on all"
+          ]
+        }
+      },
+      {
+        "step": 4,
+        "title": "Configure Authorized Parties",
+        "purpose": "Prevent subdomain cookie leaking (CSRF protection)",
+        "middleware_config": "clerkMiddleware({\n  authorizedParties: ['https://example.com', 'https://dashboard.example.com'],\n})",
+        "security_benefit": "Restricts which origins can make authenticated requests"
+      },
+      {
+        "step": 5,
+        "title": "Configure OAuth Providers",
+        "requirement": "Set up production-specific OAuth credentials",
+        "reason": "Development credentials are not secure for production",
+        "providers_to_configure": [
+          "Google OAuth",
+          "GitHub OAuth",
+          "Facebook OAuth",
+          "Microsoft OAuth",
+          "Other enabled providers"
+        ]
+      },
+      {
+        "step": 6,
+        "title": "Update Webhook Endpoints",
+        "changes_required": [
+          "Update webhook URLs to production endpoints",
+          "Update webhook signing secrets",
+          "Test webhook delivery in production"
+        ]
+      },
+      {
+        "step": 7,
+        "title": "Deploy Certificates",
+        "location": "Clerk Dashboard",
+        "action": "Click 'Deploy certificates' button",
+        "when": "After completing all above steps"
+      }
+    ],
+
+    "security_considerations": {
+      "authorizedParties": {
+        "purpose": "CSRF protection for multi-subdomain applications",
+        "configuration": "Array of allowed origins",
+        "example": "['https://example.com', 'https://api.example.com']"
+      },
+      "content_security_policy": {
+        "requirement": "Configure CSP headers if implemented",
+        "reference": "Consult Clerk CSP guide for proper configuration"
+      },
+      "rate_limiting": {
+        "backend_api": "Monitor Backend API rate limits",
+        "optimization": "Use client-side hooks when possible"
+      }
+    },
+
+    "troubleshooting": {
+      "dns_issues_cloudflare": {
+        "problem": "DNS not resolving with Cloudflare",
+        "solution": "Set subdomain to 'DNS only' mode (disable proxy)"
+      },
+      "certificate_delays": {
+        "problem": "Certificate issuance taking too long",
+        "check": "CAA DNS records on primary domain",
+        "command": "dig example.com +short CAA",
+        "expected": "Empty response (no restrictive CAA records)"
+      },
+      "wrong_domain": {
+        "problem": "Need to change domain after deployment",
+        "solution": "Use Clerk Dashboard or Backend API to update domain"
+      }
+    },
+
+    "deployment_checklist": [
+      "✓ Created production Clerk instance",
+      "✓ Updated environment variables (pk_live_*, sk_live_*)",
+      "✓ Configured DNS records for domain",
+      "✓ Added authorizedParties for subdomain security",
+      "✓ Configured production OAuth credentials",
+      "✓ Updated webhook endpoints and secrets",
+      "✓ Tested authentication flows in production",
+      "✓ Verified subdomain authentication working",
+      "✓ Deployed certificates via Clerk Dashboard",
+      "✓ Monitored for DNS propagation completion"
+    ]
+  },
+
+  "user_data_access": {
+    "title": "Reading User Data in Next.js",
+    "url": "https://clerk.com/docs/nextjs/guides/users/reading",
+
+    "server_side": {
+      "app_router": {
+        "auth_helper": {
+          "import": "import { auth } from '@clerk/nextjs/server'",
+          "returns": "AuthObject with userId and sessionId",
+          "usage": "const { userId, sessionId } = await auth()",
+          "contexts": ["Server Components", "Route Handlers", "Server Actions"]
+        },
+        "currentUser_helper": {
+          "import": "import { currentUser } from '@clerk/nextjs/server'",
+          "returns": "Complete Backend User object",
+          "usage": "const user = await currentUser()",
+          "warning": "Counts towards Backend API rate limit",
+          "recommendation": "Use client-side useUser() when possible"
+        },
+        "example": "// app/profile/page.tsx\nimport { auth, currentUser } from '@clerk/nextjs/server'\n\nexport default async function ProfilePage() {\n  const { userId } = await auth()\n  \n  if (!userId) {\n    return <div>Not authenticated</div>\n  }\n  \n  const user = await currentUser()\n  \n  return (\n    <div>\n      <h1>{user?.fullName}</h1>\n      <p>{user?.primaryEmailAddress?.emailAddress}</p>\n      <p>Member since: {user?.createdAt?.toLocaleDateString()}</p>\n    </div>\n  )\n}"
+      },
+      "pages_router": {
+        "getAuth_helper": {
+          "import": "import { getAuth } from '@clerk/nextjs/server'",
+          "returns": "AuthObject with userId",
+          "usage": "const { userId } = getAuth(req)",
+          "contexts": ["getServerSideProps", "API Routes"]
+        },
+        "clerkClient_usage": {
+          "import": "import { clerkClient } from '@clerk/nextjs/server'",
+          "usage": "const user = await clerkClient().users.getUser(userId)",
+          "purpose": "Fetch complete user data from Backend API"
+        },
+        "example": "// pages/profile.tsx\nimport { getAuth, clerkClient, buildClerkProps } from '@clerk/nextjs/server'\n\nexport async function getServerSideProps(context) {\n  const { userId } = getAuth(context.req)\n  \n  if (!userId) {\n    return { redirect: { destination: '/sign-in', permanent: false } }\n  }\n  \n  const user = await clerkClient().users.getUser(userId)\n  \n  return {\n    props: {\n      ...buildClerkProps(context.req),\n      user: JSON.parse(JSON.stringify(user))\n    }\n  }\n}"
+      }
+    },
+
+    "client_side": {
+      "useUser_hook": {
+        "import": "import { useUser } from '@clerk/nextjs'",
+        "returns": {
+          "isLoaded": "boolean - Clerk initialization complete",
+          "isSignedIn": "boolean - User authentication status",
+          "user": "User object with full user data"
+        },
+        "recommendation": "Preferred method for client-side user data access",
+        "example": "'use client'\n\nimport { useUser } from '@clerk/nextjs'\n\nexport default function Profile() {\n  const { isLoaded, isSignedIn, user } = useUser()\n  \n  if (!isLoaded) return <div>Loading...</div>\n  if (!isSignedIn) return <div>Not signed in</div>\n  \n  return (\n    <div>\n      <h1>{user.fullName}</h1>\n      <p>{user.primaryEmailAddress?.emailAddress}</p>\n      <img src={user.imageUrl} alt=\"Avatar\" />\n    </div>\n  )\n}"
+      },
+      "useAuth_hook": {
+        "import": "import { useAuth } from '@clerk/nextjs'",
+        "returns": {
+          "userId": "string | null",
+          "sessionId": "string | null",
+          "orgId": "string | null",
+          "isLoaded": "boolean",
+          "isSignedIn": "boolean"
+        },
+        "use_case": "When you only need IDs, not full user object",
+        "performance": "Lighter weight than useUser()"
+      }
+    },
+
+    "available_user_properties": {
+      "identity": [
+        "id - Unique user identifier",
+        "firstName - User's first name",
+        "lastName - User's last name",
+        "fullName - Combined first and last name",
+        "username - Unique username (if enabled)"
+      ],
+      "contact": [
+        "primaryEmailAddress - Primary email object",
+        "emailAddresses - Array of all email addresses",
+        "primaryPhoneNumber - Primary phone object",
+        "phoneNumbers - Array of all phone numbers"
+      ],
+      "profile": [
+        "imageUrl - Avatar image URL",
+        "hasImage - Boolean indicating avatar presence",
+        "profileImageUrl - Full-size profile image"
+      ],
+      "metadata": [
+        "publicMetadata - Custom public data (client-readable)",
+        "privateMetadata - Custom private data (server-only)",
+        "unsafeMetadata - User-modifiable custom data"
+      ],
+      "authentication": [
+        "passwordEnabled - Boolean for password authentication",
+        "totpEnabled - Boolean for TOTP 2FA",
+        "backupCodeEnabled - Boolean for backup codes",
+        "twoFactorEnabled - Boolean for any 2FA method"
+      ],
+      "external_accounts": [
+        "externalAccounts - Array of connected OAuth accounts",
+        "verifiedExternalAccounts - Array of verified connections"
+      ],
+      "timestamps": [
+        "createdAt - Account creation date",
+        "updatedAt - Last update date",
+        "lastSignInAt - Most recent sign-in"
+      ],
+      "organizations": [
+        "organizationMemberships - Array of organization memberships",
+        "activeOrganizationId - Currently active organization"
+      ]
+    },
+
+    "rate_limit_considerations": {
+      "backend_api_calls": {
+        "functions": ["currentUser()", "clerkClient().users.getUser()"],
+        "impact": "Count towards Backend API rate limit",
+        "limits": "Varies by Clerk plan",
+        "optimization": "Cache user data when possible"
+      },
+      "client_side_hooks": {
+        "functions": ["useUser()", "useAuth()"],
+        "impact": "Do not count towards rate limit",
+        "recommendation": "Prefer client-side access when possible"
+      }
+    }
+  },
+
+  "organizations_multi_tenancy": {
+    "title": "Organizations & Multi-Tenancy",
+    "description": "Build multi-tenant B2B applications with Clerk Organizations",
+
+    "overview": {
+      "purpose": "Enable users to create and manage organizations with isolated data",
+      "use_cases": [
+        "B2B SaaS applications",
+        "Team collaboration tools",
+        "Enterprise applications",
+        "Multi-tenant platforms"
+      ],
+      "key_features": [
+        "Create and manage organizations",
+        "Invite and manage members",
+        "Role-based access control",
+        "Organization switching",
+        "Isolated data per organization"
+      ]
+    },
+
+    "setup_steps": [
+      {
+        "step": 1,
+        "title": "Enable Organizations",
+        "location": "Clerk Dashboard > Configure > Settings",
+        "action": "Toggle 'Enable organizations'",
+        "note": "Organizations feature must be enabled before use"
+      },
+      {
+        "step": 2,
+        "title": "Add Organization Components",
+        "components": [
+          "<OrganizationSwitcher /> - Create, switch, and manage organizations",
+          "<OrganizationProfile /> - Organization settings and member management",
+          "<OrganizationList /> - Display all user's organizations"
+        ],
+        "example": "import { OrganizationSwitcher } from '@clerk/nextjs'\n\nexport default function Header() {\n  return (\n    <header>\n      <OrganizationSwitcher />\n    </header>\n  )\n}"
+      },
+      {
+        "step": 3,
+        "title": "Configure Roles and Permissions",
+        "location": "Clerk Dashboard > Roles and Permissions",
+        "actions": [
+          "Create custom permissions",
+          "Define roles with permission sets",
+          "Assign roles to organization members"
+        ],
+        "default_roles": [
+          "admin - Full organization control",
+          "member - Basic organization access"
+        ]
+      }
+    ],
+
+    "accessing_organization_data": {
+      "server_side": {
+        "auth_helper": {
+          "usage": "const { orgId, orgRole, orgSlug } = await auth()",
+          "properties": {
+            "orgId": "Current active organization ID",
+            "orgRole": "User's role in current organization",
+            "orgSlug": "Human-readable organization identifier"
+          }
+        },
+        "example": "import { auth } from '@clerk/nextjs/server'\n\nexport async function GET() {\n  const { userId, orgId, orgRole } = await auth()\n  \n  if (!orgId) {\n    return Response.json({ error: 'No organization selected' }, { status: 400 })\n  }\n  \n  // Fetch organization-specific data\n  const data = await db.query(\n    'SELECT * FROM projects WHERE org_id = ?',\n    [orgId]\n  )\n  \n  return Response.json({ data })\n}"
+      },
+      "client_side": {
+        "useOrganization_hook": {
+          "import": "import { useOrganization } from '@clerk/nextjs'",
+          "returns": {
+            "organization": "Organization object",
+            "membership": "User's membership in organization",
+            "isLoaded": "Loading state"
+          },
+          "example": "const { organization, membership } = useOrganization()\n\nif (membership?.role === 'admin') {\n  return <AdminPanel />\n}"
+        },
+        "useAuth_for_org": {
+          "import": "import { useAuth } from '@clerk/nextjs'",
+          "returns": {
+            "orgId": "Current organization ID",
+            "orgRole": "User's role in organization",
+            "orgSlug": "Organization slug"
+          }
+        }
+      }
+    },
+
+    "permission_checking": {
+      "middleware_protection": {
+        "description": "Protect routes based on organization permissions",
+        "example": "import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'\n\nconst isAdminRoute = createRouteMatcher(['/admin(.*)'])\n\nexport default clerkMiddleware(async (auth, req) => {\n  if (isAdminRoute(req)) {\n    await auth.protect((has) => {\n      return has({ permission: 'org:admin:access' })\n    })\n  }\n})"
+      },
+      "component_level": {
+        "description": "Conditionally render based on permissions",
+        "example": "import { useOrganization } from '@clerk/nextjs'\n\nfunction AdminSection() {\n  const { membership } = useOrganization()\n  \n  if (membership?.role !== 'admin') {\n    return null\n  }\n  \n  return <div>Admin controls</div>\n}"
+      }
+    },
+
+    "data_isolation_patterns": {
+      "database_approach": {
+        "strategy": "Add org_id column to all tables",
+        "example": "CREATE TABLE projects (\n  id UUID PRIMARY KEY,\n  org_id VARCHAR NOT NULL,\n  name VARCHAR,\n  FOREIGN KEY (org_id) REFERENCES organizations(id)\n)",
+        "query_pattern": "SELECT * FROM projects WHERE org_id = ?",
+        "row_level_security": "Use database RLS policies for automatic filtering"
+      },
+      "api_approach": {
+        "strategy": "Include orgId in all API calls",
+        "example": "export async function GET(req: Request) {\n  const { orgId } = await auth()\n  \n  // Automatically filter by orgId\n  const projects = await db.projects.findMany({\n    where: { orgId }\n  })\n  \n  return Response.json({ projects })\n}"
+      }
+    },
+
+    "resources": [
+      {
+        "title": "Building Multi-Tenant Apps with Clerk",
+        "url": "https://clerk.com/blog/how-to-build-multitenant-authentication-with-clerk"
+      },
+      {
+        "title": "Team-Based Task Manager Tutorial",
+        "url": "https://clerk.com/blog/build-a-team-based-task-manager-with-organizations"
+      },
+      {
+        "title": "Multi-Tenancy with ZenStack and Prisma",
+        "url": "https://zenstack.dev/blog/clerk-multitenancy"
+      }
+    ]
+  },
+
+  "appearance_customization": {
+    "title": "Component Appearance Customization",
+    "url": "https://clerk.com/docs/customization/overview",
+
+    "overview": {
+      "appearance_prop": "Primary customization method for Clerk components",
+      "application_levels": [
+        "Global: Applied to <ClerkProvider>",
+        "Component: Applied to individual components"
+      ],
+      "customization_methods": [
+        "baseTheme - Use prebuilt themes",
+        "variables - Customize colors, fonts, spacing",
+        "elements - Target specific CSS classes",
+        "layout - Adjust component structure"
+      ]
+    },
+
+    "appearance_prop_structure": {
+      "baseTheme": {
+        "description": "Prebuilt Clerk themes",
+        "options": ["dark", "light"],
+        "usage": "appearance={{ baseTheme: dark }}"
+      },
+      "variables": {
+        "description": "Customize theme variables",
+        "properties": {
+          "colorPrimary": "Primary brand color",
+          "colorBackground": "Background color",
+          "colorText": "Text color",
+          "colorTextSecondary": "Secondary text color",
+          "fontFamily": "Font family",
+          "fontSize": "Base font size",
+          "borderRadius": "Border radius"
+        },
+        "example": "appearance={{\n  variables: {\n    colorPrimary: '#6c47ff',\n    fontFamily: 'Inter, sans-serif',\n    borderRadius: '8px'\n  }\n}}"
+      },
+      "elements": {
+        "description": "Target specific element classes for custom styling",
+        "usage": "CSS-in-JS or className targeting",
+        "example": "appearance={{\n  elements: {\n    card: 'shadow-lg',\n    headerTitle: 'text-2xl font-bold',\n    formButtonPrimary: 'bg-blue-600 hover:bg-blue-700'\n  }\n}}"
+      },
+      "layout": {
+        "description": "Adjust component layout",
+        "properties": {
+          "socialButtonsPlacement": "'top' | 'bottom'",
+          "socialButtonsVariant": "'blockButton' | 'iconButton'",
+          "showOptionalFields": "boolean"
+        },
+        "example": "appearance={{\n  layout: {\n    socialButtonsPlacement: 'bottom',\n    socialButtonsVariant: 'iconButton',\n    showOptionalFields: false\n  }\n}}"
+      }
+    },
+
+    "global_styling": {
+      "description": "Apply styles to all Clerk components",
+      "implementation": "Add appearance prop to ClerkProvider",
+      "example": "import { ClerkProvider } from '@clerk/nextjs'\nimport { dark } from '@clerk/themes'\n\nexport default function RootLayout({ children }) {\n  return (\n    <ClerkProvider\n      appearance={{\n        baseTheme: dark,\n        variables: {\n          colorPrimary: '#6c47ff',\n          fontFamily: 'Inter'\n        }\n      }}\n    >\n      <html lang=\"en\">\n        <body>{children}</body>\n      </html>\n    </ClerkProvider>\n  )\n}"
+    },
+
+    "component_specific_styling": {
+      "description": "Override global styles for individual components",
+      "example": "<SignIn\n  appearance={{\n    elements: {\n      card: 'shadow-xl',\n      headerTitle: 'text-blue-600'\n    }\n  }}\n/>",
+      "precedence": "Component appearance overrides ClerkProvider appearance"
+    },
+
+    "common_elements": {
+      "card": "Main card container",
+      "headerTitle": "Component header title",
+      "headerSubtitle": "Component header subtitle",
+      "socialButtons": "Social provider buttons container",
+      "socialButtonsBlockButton": "Block-style social button",
+      "socialButtonsIconButton": "Icon-style social button",
+      "formFieldInput": "Form input fields",
+      "formButtonPrimary": "Primary form button",
+      "footerActionLink": "Footer action links"
+    },
+
+    "userButton_customization": {
+      "menu_items": {
+        "add_custom_items": true,
+        "reorder_default_items": true,
+        "example": "<UserButton>\n  <UserButton.MenuItems>\n    <UserButton.Link\n      label=\"Settings\"\n      labelIcon={<SettingsIcon />}\n      href=\"/settings\"\n    />\n    <UserButton.Action\n      label=\"Help\"\n      labelIcon={<HelpIcon />}\n      onClick={() => openHelpModal()}\n    />\n  </UserButton.MenuItems>\n</UserButton>"
+      },
+      "avatar_customization": {
+        "showName": "Display user name beside avatar",
+        "appearance": "Style avatar and dropdown"
+      }
+    }
+  },
+
+  "middleware_configuration": {
+    "title": "Complete Middleware Configuration Reference",
+    "file": "middleware.ts or proxy.ts",
+
+    "basic_setup": {
+      "import": "import { clerkMiddleware } from '@clerk/nextjs/server'",
+      "minimal": "export default clerkMiddleware()",
+      "with_matcher": "export const config = {\n  matcher: [\n    '/((?!_next|[^?]*\\\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',\n    '/(api|trpc)(.*)',\n  ],\n}"
+    },
+
+    "route_matching": {
+      "createRouteMatcher": {
+        "description": "Helper to check if request matches specified routes",
+        "import": "import { createRouteMatcher } from '@clerk/nextjs/server'",
+        "pattern_format": "Next.js Middleware matcher format",
+        "examples": [
+          "createRouteMatcher(['/dashboard(.*)']) - Dashboard and subroutes",
+          "createRouteMatcher(['/api/(.*)']) - All API routes",
+          "createRouteMatcher(['/admin', '/settings']) - Specific routes",
+          "createRouteMatcher(['/']) - Homepage only"
+        ],
+        "usage": "const isProtected = createRouteMatcher(['/dashboard(.*)'])\nif (isProtected(req)) await auth.protect()"
+      }
+    },
+
+    "protection_strategies": {
+      "explicit_protection": {
+        "description": "Protect specific routes only",
+        "example": "const isProtectedRoute = createRouteMatcher([\n  '/dashboard(.*)',\n  '/settings(.*)',\n  '/api/protected(.*)'\n])\n\nexport default clerkMiddleware(async (auth, req) => {\n  if (isProtectedRoute(req)) await auth.protect()\n})"
+      },
+      "protect_all_except_public": {
+        "description": "Default to protected, whitelist public routes",
+        "example": "const isPublicRoute = createRouteMatcher([\n  '/',\n  '/sign-in(.*)',\n  '/sign-up(.*)',\n  '/api/public(.*)'\n])\n\nexport default clerkMiddleware(async (auth, req) => {\n  if (!isPublicRoute(req)) await auth.protect()\n})"
+      },
+      "permission_based": {
+        "description": "Protect based on permissions",
+        "example": "const isAdminRoute = createRouteMatcher(['/admin(.*)'])\n\nexport default clerkMiddleware(async (auth, req) => {\n  if (isAdminRoute(req)) {\n    await auth.protect((has) => {\n      return has({ permission: 'org:admin:access' })\n    })\n  }\n})"
+      },
+      "role_based": {
+        "description": "Protect based on organization roles",
+        "example": "const isManagerRoute = createRouteMatcher(['/manage(.*)'])\n\nexport default clerkMiddleware(async (auth, req) => {\n  if (isManagerRoute(req)) {\n    await auth.protect((has) => {\n      return has({ role: 'org:manager' })\n    })\n  }\n})"
+      },
+      "multi_level_protection": {
+        "description": "Different protection levels for different routes",
+        "example": "const isPublicRoute = createRouteMatcher(['/'])\nconst isAuthRoute = createRouteMatcher(['/dashboard(.*)'])\nconst isAdminRoute = createRouteMatcher(['/admin(.*)'])\n\nexport default clerkMiddleware(async (auth, req) => {\n  if (isPublicRoute(req)) return\n  \n  if (isAdminRoute(req)) {\n    return await auth.protect((has) => \n      has({ permission: 'org:admin:access' })\n    )\n  }\n  \n  if (isAuthRoute(req)) {\n    return await auth.protect()\n  }\n})"
+      }
+    },
+
+    "configuration_options": {
+      "audience": {
+        "type": "string | string[]",
+        "description": "JWT audience claim verification",
+        "example": "clerkMiddleware({ audience: 'https://api.example.com' })"
+      },
+      "authorizedParties": {
+        "type": "string[]",
+        "description": "Allowed origins for requests (CSRF protection)",
+        "use_case": "Multi-subdomain applications",
+        "example": "clerkMiddleware({\n  authorizedParties: [\n    'https://example.com',\n    'https://dashboard.example.com'\n  ]\n})"
+      },
+      "clockSkewInMs": {
+        "type": "number",
+        "description": "Token validation time tolerance in milliseconds",
+        "default": 5000,
+        "example": "clerkMiddleware({ clockSkewInMs: 10000 })"
+      },
+      "domain": {
+        "type": "string",
+        "description": "Satellite deployment domain",
+        "use_case": "Multi-domain applications"
+      },
+      "signInUrl": {
+        "type": "string",
+        "description": "Custom sign-in page URL",
+        "example": "clerkMiddleware({ signInUrl: '/auth/login' })"
+      },
+      "signUpUrl": {
+        "type": "string",
+        "description": "Custom sign-up page URL",
+        "example": "clerkMiddleware({ signUpUrl: '/auth/register' })"
+      },
+      "debug": {
+        "type": "boolean",
+        "description": "Enable debug logging to terminal",
+        "example": "clerkMiddleware(\n  (auth, req) => { /* checks */ },\n  { debug: process.env.NODE_ENV === 'development' }\n)"
+      }
+    },
+
+    "combining_with_other_middleware": {
+      "description": "Return additional middleware from clerkMiddleware",
+      "example": "import { clerkMiddleware } from '@clerk/nextjs/server'\nimport createIntlMiddleware from 'next-intl/middleware'\n\nconst intlMiddleware = createIntlMiddleware({\n  locales: ['en', 'fr', 'es'],\n  defaultLocale: 'en'\n})\n\nexport default clerkMiddleware(async (auth, req) => {\n  // Clerk authentication checks\n  if (isProtectedRoute(req)) await auth.protect()\n  \n  // Run i18n middleware\n  return intlMiddleware(req)\n})"
+    }
+  },
+
+  "best_practices": {
+    "security": [
+      "Always use environment variables for API keys",
+      "Never commit .env files to version control",
+      "Use authorizedParties for multi-subdomain applications",
+      "Implement proper permission checks in middleware",
+      "Validate user permissions on both client and server",
+      "Use privateMetadata for sensitive data, not publicMetadata"
+    ],
+    "performance": [
+      "Prefer client-side useUser() over server-side currentUser()",
+      "Cache user data to reduce Backend API calls",
+      "Use auth() instead of currentUser() when only needing userId",
+      "Implement proper loading states while Clerk initializes",
+      "Use conditional rendering (SignedIn/SignedOut) to avoid flashes"
+    ],
+    "user_experience": [
+      "Provide fallback content during component mounting",
+      "Implement smooth loading transitions",
+      "Show meaningful error messages for authentication failures",
+      "Use redirects appropriately for unauthenticated users",
+      "Consider multi-session support for better UX"
+    ],
+    "development_workflow": [
+      "Start with development instance, deploy to production when ready",
+      "Test authentication flows thoroughly before production",
+      "Use Clerk Dashboard to manage users and organizations",
+      "Monitor Backend API rate limits",
+      "Implement proper error handling and logging"
+    ],
+    "organization_management": [
+      "Enable organizations for B2B applications",
+      "Implement proper data isolation by orgId",
+      "Use role-based access control for permissions",
+      "Provide clear organization switching UI",
+      "Document permission requirements for features"
+    ]
+  },
+
+  "common_patterns": {
+    "protected_pages": {
+      "description": "Redirect unauthenticated users to sign-in",
+      "middleware_approach": "const isProtectedRoute = createRouteMatcher(['/dashboard(.*)'])\n\nexport default clerkMiddleware(async (auth, req) => {\n  if (isProtectedRoute(req)) await auth.protect()\n})",
+      "component_approach": "'use client'\n\nimport { useUser } from '@clerk/nextjs'\nimport { redirect } from 'next/navigation'\n\nexport default function ProtectedPage() {\n  const { isLoaded, isSignedIn } = useUser()\n  \n  if (isLoaded && !isSignedIn) {\n    redirect('/sign-in')\n  }\n  \n  return <div>Protected content</div>\n}"
+    },
+    "custom_sign_in_page": {
+      "description": "Create dedicated sign-in page",
+      "file": "app/sign-in/[[...sign-in]]/page.tsx",
+      "code": "import { SignIn } from '@clerk/nextjs'\n\nexport default function SignInPage() {\n  return (\n    <div className=\"flex min-h-screen items-center justify-center\">\n      <SignIn />\n    </div>\n  )\n}",
+      "environment_variable": "NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in"
+    },
+    "conditional_rendering": {
+      "description": "Show different content based on auth state",
+      "example": "import { SignedIn, SignedOut, UserButton, SignInButton } from '@clerk/nextjs'\n\nexport default function Header() {\n  return (\n    <header>\n      <SignedOut>\n        <SignInButton />\n      </SignedOut>\n      <SignedIn>\n        <UserButton />\n      </SignedIn>\n    </header>\n  )\n}"
+    },
+    "api_route_protection": {
+      "description": "Protect API routes with authentication",
+      "example": "import { auth } from '@clerk/nextjs/server'\n\nexport async function GET() {\n  const { userId } = await auth()\n  \n  if (!userId) {\n    return Response.json(\n      { error: 'Unauthorized' },\n      { status: 401 }\n    )\n  }\n  \n  // Fetch user-specific data\n  const data = await fetchUserData(userId)\n  return Response.json({ data })\n}"
+    },
+    "organization_data_filtering": {
+      "description": "Automatically filter data by organization",
+      "example": "import { auth } from '@clerk/nextjs/server'\n\nexport async function GET() {\n  const { orgId } = await auth()\n  \n  if (!orgId) {\n    return Response.json(\n      { error: 'No organization selected' },\n      { status: 400 }\n    )\n  }\n  \n  const projects = await db.project.findMany({\n    where: { orgId }\n  })\n  \n  return Response.json({ projects })\n}"
+    }
+  },
+
+  "troubleshooting": {
+    "common_issues": [
+      {
+        "issue": "Environment variables not loading",
+        "causes": [
+          "Missing .env.local file",
+          "Variables don't start with NEXT_PUBLIC_ for client-side access",
+          "Server not restarted after adding variables"
+        ],
+        "solutions": [
+          "Create .env.local in project root",
+          "Ensure NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY is public",
+          "Restart development server after changes"
+        ]
+      },
+      {
+        "issue": "clerkMiddleware not protecting routes",
+        "cause": "Default behavior is public - must opt-in to protection",
+        "solution": "Use auth.protect() in middleware callback for protected routes"
+      },
+      {
+        "issue": "User data not available immediately",
+        "cause": "Clerk still initializing (isLoaded = false)",
+        "solution": "Check isLoaded before accessing user data"
+      },
+      {
+        "issue": "Rate limit errors with currentUser()",
+        "cause": "Too many Backend API calls",
+        "solution": "Use client-side useUser() or cache user data"
+      },
+      {
+        "issue": "DNS not resolving for custom domain",
+        "causes": [
+          "DNS records not configured correctly",
+          "Cloudflare proxy interfering",
+          "DNS propagation not complete"
+        ],
+        "solutions": [
+          "Verify DNS records in Clerk Dashboard",
+          "Set Cloudflare to DNS-only mode",
+          "Wait up to 48 hours for propagation"
+        ]
+      }
+    ]
+  },
+
+  "additional_resources": {
+    "official_documentation": [
+      {
+        "title": "Clerk Documentation Home",
+        "url": "https://clerk.com/docs"
+      },
+      {
+        "title": "Next.js SDK Reference",
+        "url": "https://clerk.com/docs/reference/nextjs/overview"
+      },
+      {
+        "title": "Component Reference",
+        "url": "https://clerk.com/docs/components/overview"
+      }
+    ],
+    "example_repositories": [
+      {
+        "title": "Clerk + Next.js App Router Demo",
+        "url": "https://github.com/clerk/clerk-nextjs-app-quickstart"
+      },
+      {
+        "title": "Clerk + Next.js Pages Router Demo",
+        "url": "https://github.com/clerk/clerk-nextjs-pages-quickstart"
+      }
+    ],
+    "blog_tutorials": [
+      {
+        "title": "Building Multi-Tenant Apps with Clerk",
+        "url": "https://clerk.com/blog/how-to-build-multitenant-authentication-with-clerk"
+      },
+      {
+        "title": "Team-Based Task Manager Tutorial",
+        "url": "https://clerk.com/blog/build-a-team-based-task-manager-with-organizations"
+      }
+    ]
+  }
+}

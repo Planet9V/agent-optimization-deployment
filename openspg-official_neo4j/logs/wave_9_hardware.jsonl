@@ -1,0 +1,368 @@
+{"timestamp": "2025-10-31T16:52:53.633051", "operation": "wave_9_hardware_execution_started", "details": {"timestamp": "2025-10-31T16:52:53.633027"}}
+{"timestamp": "2025-10-31T16:52:53.937056", "operation": "physical_servers_batch_1_domain_controllers", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:52:54.043249", "operation": "physical_servers_batch_2_application", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:52:54.141908", "operation": "physical_servers_batch_3_database", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:52:54.297875", "operation": "physical_servers_batch_4_web_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:52:54.347969", "operation": "physical_servers_batch_5_file_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:52:54.498112", "operation": "physical_servers_batch_6_backup_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:52:54.546696", "operation": "physical_servers_batch_7_hypervisor_host", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:52:54.595670", "operation": "physical_servers_batch_8_storage_controller", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:52:54.623980", "operation": "physical_servers_verification", "details": {"total": 400, "unique_ids": 400, "unique_hostnames": 400, "unique_serials": 400}}
+{"timestamp": "2025-10-31T16:52:54.794798", "operation": "workstations_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:52:54.834341", "operation": "workstations_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:52:54.882724", "operation": "workstations_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:52:54.928890", "operation": "workstations_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:52:54.975089", "operation": "workstations_batch_5", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:52:55.020248", "operation": "workstations_batch_6", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:52:55.039739", "operation": "wave_9_hardware_execution_error", "details": {"error": "{neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Variable `batch_num` not defined (line 15, column 57 (offset: 1027))\n\"                  imei: \"35\" + toString(1234567890000 + batch_num * 1000 + idx),\"\n                                                         ^} {gql_status: 50N42} {gql_status_description: error: general processing exception - unexpected error. Unexpected error has occurred. See debug log for details.}"}}
+{"timestamp": "2025-10-31T16:54:03.087718", "operation": "wave_9_hardware_execution_started", "details": {"timestamp": "2025-10-31T16:54:03.087690"}}
+{"timestamp": "2025-10-31T16:54:03.092639", "operation": "physical_servers_batch_1_domain_controllers", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:03.122920", "operation": "physical_servers_batch_2_application", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:03.133910", "operation": "physical_servers_batch_3_database", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:03.143850", "operation": "physical_servers_batch_4_web_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:03.158135", "operation": "physical_servers_batch_5_file_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:03.169606", "operation": "physical_servers_batch_6_backup_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:03.180248", "operation": "physical_servers_batch_7_hypervisor_host", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:03.191050", "operation": "physical_servers_batch_8_storage_controller", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:03.205572", "operation": "physical_servers_verification", "details": {"total": 800, "unique_ids": 400, "unique_hostnames": 400, "unique_serials": 400}}
+{"timestamp": "2025-10-31T16:54:03.205753", "operation": "wave_9_hardware_execution_error", "details": {"error": "Expected 400 PhysicalServers, got 800"}}
+{"timestamp": "2025-10-31T16:54:33.725413", "operation": "wave_9_hardware_execution_started", "details": {"timestamp": "2025-10-31T16:54:33.725388"}}
+{"timestamp": "2025-10-31T16:54:33.730260", "operation": "physical_servers_batch_1_domain_controllers", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:33.749219", "operation": "physical_servers_batch_2_application", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:33.765102", "operation": "physical_servers_batch_3_database", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:33.775831", "operation": "physical_servers_batch_4_web_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:33.786737", "operation": "physical_servers_batch_5_file_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:33.797877", "operation": "physical_servers_batch_6_backup_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:33.808486", "operation": "physical_servers_batch_7_hypervisor_host", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:33.820074", "operation": "physical_servers_batch_8_storage_controller", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:33.834083", "operation": "physical_servers_verification", "details": {"total": 400, "unique_ids": 400, "unique_hostnames": 400, "unique_serials": 400}}
+{"timestamp": "2025-10-31T16:54:33.835863", "operation": "workstations_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:33.844417", "operation": "workstations_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:33.853934", "operation": "workstations_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:33.862716", "operation": "workstations_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:33.871580", "operation": "workstations_batch_5", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:33.880447", "operation": "workstations_batch_6", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:34.041966", "operation": "mobile_devices_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:34.082010", "operation": "mobile_devices_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:34.121566", "operation": "mobile_devices_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:34.160267", "operation": "mobile_devices_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:34.184128", "operation": "workstations_verification", "details": {"workstation_count": 300, "unique_ws_tags": 300}}
+{"timestamp": "2025-10-31T16:54:34.201400", "operation": "mobile_devices_verification", "details": {"mobile_count": 200, "unique_mob_tags": 200, "unique_imeis": 200}}
+{"timestamp": "2025-10-31T16:54:34.317735", "operation": "network_devices_batch_1_ROUTER", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:34.404591", "operation": "network_devices_batch_2_SWITCH-A", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:34.438934", "operation": "network_devices_batch_3_SWITCH-B", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:34.471791", "operation": "network_devices_batch_4_FIREWALL", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:34.558319", "operation": "network_devices_batch_5_LB", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:34.615609", "operation": "network_devices_batch_6_VPN-AP", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:54:34.639720", "operation": "network_devices_batch_6_WAP", "details": {"count": 20}}
+{"timestamp": "2025-10-31T16:54:34.663608", "operation": "network_devices_verification", "details": {"total": 300, "unique_ids": 300, "device_types": ["router", "switch", "firewall", "load_balancer", "vpn_gateway", "wireless_ap"], "unique_serials": 300}}
+{"timestamp": "2025-10-31T16:54:34.808347", "operation": "storage_arrays_batch_1_SAN_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:34.841111", "operation": "storage_arrays_batch_1_SAN_2", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:54:34.873728", "operation": "storage_arrays_batch_2_NAS_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:54:34.908839", "operation": "storage_arrays_batch_2_NAS_2", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:54:35.003248", "operation": "storage_arrays_batch_3_OBJ_1", "details": {"count": 40}}
+{"timestamp": "2025-10-31T16:54:35.025430", "operation": "storage_arrays_verification", "details": {"total": 200, "unique_ids": 200, "array_types": ["san", "nas", "object_storage"]}}
+{"timestamp": "2025-10-31T16:54:35.089302", "operation": "peripheral_devices_batch_1", "details": {"printers": 40, "cameras": 10}}
+{"timestamp": "2025-10-31T16:54:35.158057", "operation": "peripheral_devices_batch_2", "details": {"access_readers": 20, "iot_sensors": 30}}
+{"timestamp": "2025-10-31T16:54:35.179453", "operation": "peripheral_devices_verification", "details": {"total": 100, "unique_ids": 100, "device_types": ["printer", "camera", "access_reader", "iot_sensor"]}}
+{"timestamp": "2025-10-31T16:54:35.201484", "operation": "final_verification_MobileDevice", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:54:35.201727", "operation": "final_verification_NetworkDevice", "details": {"count": 300}}
+{"timestamp": "2025-10-31T16:54:35.201830", "operation": "final_verification_PeripheralDevice", "details": {"count": 100}}
+{"timestamp": "2025-10-31T16:54:35.201909", "operation": "final_verification_PhysicalServer", "details": {"count": 400}}
+{"timestamp": "2025-10-31T16:54:35.201984", "operation": "final_verification_StorageArray", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:54:35.202058", "operation": "final_verification_Workstation", "details": {"count": 300}}
+{"timestamp": "2025-10-31T16:54:35.202190", "operation": "hardware_total_verification", "details": {"total_nodes": 1500, "status": "PASSED"}}
+{"timestamp": "2025-10-31T16:54:35.202291", "operation": "wave_9_hardware_execution_completed", "details": {"timestamp": "2025-10-31T16:54:35.202288", "total_nodes": 1500, "physical_servers": 400, "workstations_mobile": 500, "network_devices": 300, "storage_arrays": 200, "peripheral_devices": 100, "status": "SUCCESS"}}
+{"timestamp": "2025-10-31T16:55:03.271886", "operation": "wave_9_hardware_execution_started", "details": {"timestamp": "2025-10-31T16:55:03.271861"}}
+{"timestamp": "2025-10-31T16:55:03.277779", "operation": "physical_servers_batch_1_domain_controllers", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:03.292645", "operation": "physical_servers_batch_2_application", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:03.302307", "operation": "physical_servers_batch_3_database", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:03.315543", "operation": "physical_servers_batch_4_web_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:03.325305", "operation": "physical_servers_batch_5_file_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:03.335326", "operation": "physical_servers_batch_6_backup_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:03.345850", "operation": "physical_servers_batch_7_hypervisor_host", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:03.356129", "operation": "physical_servers_batch_8_storage_controller", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:03.365530", "operation": "physical_servers_verification", "details": {"total": 800, "unique_ids": 400, "unique_hostnames": 400, "unique_serials": 400}}
+{"timestamp": "2025-10-31T16:55:03.365700", "operation": "wave_9_hardware_execution_error", "details": {"error": "Expected 400 PhysicalServers, got 800"}}
+{"timestamp": "2025-10-31T16:55:26.419791", "operation": "wave_9_hardware_execution_started", "details": {"timestamp": "2025-10-31T16:55:26.419765"}}
+{"timestamp": "2025-10-31T16:55:26.424388", "operation": "physical_servers_batch_1_domain_controllers", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.439628", "operation": "physical_servers_batch_2_application", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.451320", "operation": "physical_servers_batch_3_database", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.462553", "operation": "physical_servers_batch_4_web_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.473422", "operation": "physical_servers_batch_5_file_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.484705", "operation": "physical_servers_batch_6_backup_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.495655", "operation": "physical_servers_batch_7_hypervisor_host", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.510188", "operation": "physical_servers_batch_8_storage_controller", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.520944", "operation": "physical_servers_verification", "details": {"total": 400, "unique_ids": 400, "unique_hostnames": 400, "unique_serials": 400}}
+{"timestamp": "2025-10-31T16:55:26.522601", "operation": "workstations_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.530948", "operation": "workstations_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.540240", "operation": "workstations_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.552609", "operation": "workstations_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.563007", "operation": "workstations_batch_5", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.571923", "operation": "workstations_batch_6", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.580305", "operation": "mobile_devices_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.588544", "operation": "mobile_devices_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.597208", "operation": "mobile_devices_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.606010", "operation": "mobile_devices_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.618799", "operation": "workstations_verification", "details": {"workstation_count": 300, "unique_ws_tags": 300}}
+{"timestamp": "2025-10-31T16:55:26.621673", "operation": "mobile_devices_verification", "details": {"mobile_count": 200, "unique_mob_tags": 200, "unique_imeis": 200}}
+{"timestamp": "2025-10-31T16:55:26.622979", "operation": "network_devices_batch_1_ROUTER", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.629842", "operation": "network_devices_batch_2_SWITCH-A", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.637554", "operation": "network_devices_batch_3_SWITCH-B", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.646253", "operation": "network_devices_batch_4_FIREWALL", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.653777", "operation": "network_devices_batch_5_LB", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.662077", "operation": "network_devices_batch_6_VPN-AP", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:55:26.669655", "operation": "network_devices_batch_6_WAP", "details": {"count": 20}}
+{"timestamp": "2025-10-31T16:55:26.677572", "operation": "network_devices_verification", "details": {"total": 300, "unique_ids": 300, "device_types": ["router", "switch", "firewall", "load_balancer", "vpn_gateway", "wireless_ap"], "unique_serials": 300}}
+{"timestamp": "2025-10-31T16:55:26.679177", "operation": "storage_arrays_batch_1_SAN_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.686319", "operation": "storage_arrays_batch_1_SAN_2", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:55:26.691938", "operation": "storage_arrays_batch_2_NAS_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:55:26.699683", "operation": "storage_arrays_batch_2_NAS_2", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:55:26.707135", "operation": "storage_arrays_batch_3_OBJ_1", "details": {"count": 40}}
+{"timestamp": "2025-10-31T16:55:26.714558", "operation": "storage_arrays_verification", "details": {"total": 200, "unique_ids": 200, "array_types": ["san", "nas", "object_storage"]}}
+{"timestamp": "2025-10-31T16:55:26.722042", "operation": "peripheral_devices_batch_1", "details": {"printers": 40, "cameras": 10}}
+{"timestamp": "2025-10-31T16:55:26.735616", "operation": "peripheral_devices_batch_2", "details": {"access_readers": 20, "iot_sensors": 30}}
+{"timestamp": "2025-10-31T16:55:26.743245", "operation": "peripheral_devices_verification", "details": {"total": 100, "unique_ids": 100, "device_types": ["printer", "camera", "access_reader", "iot_sensor"]}}
+{"timestamp": "2025-10-31T16:55:26.745347", "operation": "final_verification_MobileDevice", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:55:26.745556", "operation": "final_verification_NetworkDevice", "details": {"count": 300}}
+{"timestamp": "2025-10-31T16:55:26.745668", "operation": "final_verification_PeripheralDevice", "details": {"count": 100}}
+{"timestamp": "2025-10-31T16:55:26.745758", "operation": "final_verification_PhysicalServer", "details": {"count": 400}}
+{"timestamp": "2025-10-31T16:55:26.745828", "operation": "final_verification_StorageArray", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:55:26.745902", "operation": "final_verification_Workstation", "details": {"count": 300}}
+{"timestamp": "2025-10-31T16:55:26.746021", "operation": "hardware_total_verification", "details": {"total_nodes": 1500, "status": "PASSED"}}
+{"timestamp": "2025-10-31T16:55:26.746129", "operation": "wave_9_hardware_execution_completed", "details": {"timestamp": "2025-10-31T16:55:26.746125", "total_nodes": 1500, "physical_servers": 400, "workstations_mobile": 500, "network_devices": 300, "storage_arrays": 200, "peripheral_devices": 100, "status": "SUCCESS"}}
+{"timestamp": "2025-10-31T16:56:11.432357", "operation": "wave_9_hardware_execution_started", "details": {"timestamp": "2025-10-31T16:56:11.432333"}}
+{"timestamp": "2025-10-31T16:56:11.437025", "operation": "physical_servers_batch_1_domain_controllers", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.455650", "operation": "physical_servers_batch_2_application", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.466049", "operation": "physical_servers_batch_3_database", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.476475", "operation": "physical_servers_batch_4_web_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.485984", "operation": "physical_servers_batch_5_file_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.500467", "operation": "physical_servers_batch_6_backup_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.511153", "operation": "physical_servers_batch_7_hypervisor_host", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.520887", "operation": "physical_servers_batch_8_storage_controller", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.531266", "operation": "physical_servers_verification", "details": {"total": 400, "unique_ids": 400, "unique_hostnames": 400, "unique_serials": 400}}
+{"timestamp": "2025-10-31T16:56:11.532877", "operation": "workstations_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.541388", "operation": "workstations_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.549563", "operation": "workstations_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.558617", "operation": "workstations_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.566719", "operation": "workstations_batch_5", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.574957", "operation": "workstations_batch_6", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.587010", "operation": "mobile_devices_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.596014", "operation": "mobile_devices_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.604637", "operation": "mobile_devices_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.613166", "operation": "mobile_devices_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.623001", "operation": "workstations_verification", "details": {"workstation_count": 300, "unique_ws_tags": 300}}
+{"timestamp": "2025-10-31T16:56:11.625918", "operation": "mobile_devices_verification", "details": {"mobile_count": 200, "unique_mob_tags": 200, "unique_imeis": 200}}
+{"timestamp": "2025-10-31T16:56:11.627333", "operation": "network_devices_batch_1_ROUTER", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.635287", "operation": "network_devices_batch_2_SWITCH-A", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.643216", "operation": "network_devices_batch_3_SWITCH-B", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.650651", "operation": "network_devices_batch_4_FIREWALL", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.658398", "operation": "network_devices_batch_5_LB", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.665580", "operation": "network_devices_batch_6_VPN-AP", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:56:11.672647", "operation": "network_devices_batch_6_WAP", "details": {"count": 20}}
+{"timestamp": "2025-10-31T16:56:11.679801", "operation": "network_devices_verification", "details": {"total": 300, "unique_ids": 300, "device_types": ["router", "switch", "firewall", "load_balancer", "vpn_gateway", "wireless_ap"], "unique_serials": 300}}
+{"timestamp": "2025-10-31T16:56:11.681525", "operation": "storage_arrays_batch_1_SAN_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.689051", "operation": "storage_arrays_batch_1_SAN_2", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:56:11.696081", "operation": "storage_arrays_batch_2_NAS_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:56:11.703483", "operation": "storage_arrays_batch_2_NAS_2", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:56:11.710398", "operation": "storage_arrays_batch_3_OBJ_1", "details": {"count": 40}}
+{"timestamp": "2025-10-31T16:56:11.717975", "operation": "storage_arrays_verification", "details": {"total": 200, "unique_ids": 200, "array_types": ["san", "nas", "object_storage"]}}
+{"timestamp": "2025-10-31T16:56:11.729370", "operation": "peripheral_devices_batch_1", "details": {"printers": 40, "cameras": 10}}
+{"timestamp": "2025-10-31T16:56:11.742222", "operation": "peripheral_devices_batch_2", "details": {"access_readers": 20, "iot_sensors": 30}}
+{"timestamp": "2025-10-31T16:56:11.749171", "operation": "peripheral_devices_verification", "details": {"total": 100, "unique_ids": 100, "device_types": ["printer", "camera", "access_reader", "iot_sensor"]}}
+{"timestamp": "2025-10-31T16:56:11.751181", "operation": "final_verification_MobileDevice", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:56:11.751346", "operation": "final_verification_NetworkDevice", "details": {"count": 300}}
+{"timestamp": "2025-10-31T16:56:11.751442", "operation": "final_verification_PeripheralDevice", "details": {"count": 100}}
+{"timestamp": "2025-10-31T16:56:11.751524", "operation": "final_verification_PhysicalServer", "details": {"count": 400}}
+{"timestamp": "2025-10-31T16:56:11.751599", "operation": "final_verification_StorageArray", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:56:11.751674", "operation": "final_verification_Workstation", "details": {"count": 300}}
+{"timestamp": "2025-10-31T16:56:11.751783", "operation": "hardware_total_verification", "details": {"total_nodes": 1500, "status": "PASSED"}}
+{"timestamp": "2025-10-31T16:56:11.751878", "operation": "wave_9_hardware_execution_completed", "details": {"timestamp": "2025-10-31T16:56:11.751875", "total_nodes": 1500, "physical_servers": 400, "workstations_mobile": 500, "network_devices": 300, "storage_arrays": 200, "peripheral_devices": 100, "status": "SUCCESS"}}
+{"timestamp": "2025-10-31T16:57:01.957650", "operation": "wave_9_hardware_execution_started", "details": {"timestamp": "2025-10-31T16:57:01.957623"}}
+{"timestamp": "2025-10-31T16:57:01.961939", "operation": "physical_servers_batch_1_domain_controllers", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:01.979995", "operation": "physical_servers_batch_2_application", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:01.990597", "operation": "physical_servers_batch_3_database", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.001681", "operation": "physical_servers_batch_4_web_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.011901", "operation": "physical_servers_batch_5_file_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.028219", "operation": "physical_servers_batch_6_backup_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.039494", "operation": "physical_servers_batch_7_hypervisor_host", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.050308", "operation": "physical_servers_batch_8_storage_controller", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.061811", "operation": "physical_servers_verification", "details": {"total": 400, "unique_ids": 400, "unique_hostnames": 400, "unique_serials": 400}}
+{"timestamp": "2025-10-31T16:57:02.063397", "operation": "workstations_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.071771", "operation": "workstations_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.079889", "operation": "workstations_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.089129", "operation": "workstations_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.096989", "operation": "workstations_batch_5", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.105655", "operation": "workstations_batch_6", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.118291", "operation": "mobile_devices_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.127015", "operation": "mobile_devices_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.135715", "operation": "mobile_devices_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.144380", "operation": "mobile_devices_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.153997", "operation": "workstations_verification", "details": {"workstation_count": 300, "unique_ws_tags": 300}}
+{"timestamp": "2025-10-31T16:57:02.156683", "operation": "mobile_devices_verification", "details": {"mobile_count": 200, "unique_mob_tags": 200, "unique_imeis": 200}}
+{"timestamp": "2025-10-31T16:57:02.157951", "operation": "network_devices_batch_1_ROUTER", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.178928", "operation": "network_devices_batch_2_SWITCH-A", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.186950", "operation": "network_devices_batch_3_SWITCH-B", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.193994", "operation": "network_devices_batch_4_FIREWALL", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.201323", "operation": "network_devices_batch_5_LB", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.209330", "operation": "network_devices_batch_6_VPN-AP", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:57:02.216556", "operation": "network_devices_batch_6_WAP", "details": {"count": 20}}
+{"timestamp": "2025-10-31T16:57:02.223766", "operation": "network_devices_verification", "details": {"total": 300, "unique_ids": 300, "device_types": ["router", "switch", "firewall", "load_balancer", "vpn_gateway", "wireless_ap"], "unique_serials": 300}}
+{"timestamp": "2025-10-31T16:57:02.225104", "operation": "storage_arrays_batch_1_SAN_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.232021", "operation": "storage_arrays_batch_1_SAN_2", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:57:02.239707", "operation": "storage_arrays_batch_2_NAS_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:57:02.247546", "operation": "storage_arrays_batch_2_NAS_2", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:57:02.256916", "operation": "storage_arrays_batch_3_OBJ_1", "details": {"count": 40}}
+{"timestamp": "2025-10-31T16:57:02.264464", "operation": "storage_arrays_verification", "details": {"total": 200, "unique_ids": 200, "array_types": ["san", "nas", "object_storage"]}}
+{"timestamp": "2025-10-31T16:57:02.276361", "operation": "peripheral_devices_batch_1", "details": {"printers": 40, "cameras": 10}}
+{"timestamp": "2025-10-31T16:57:02.288553", "operation": "peripheral_devices_batch_2", "details": {"access_readers": 20, "iot_sensors": 30}}
+{"timestamp": "2025-10-31T16:57:02.297154", "operation": "peripheral_devices_verification", "details": {"total": 100, "unique_ids": 100, "device_types": ["printer", "camera", "access_reader", "iot_sensor"]}}
+{"timestamp": "2025-10-31T16:57:02.298834", "operation": "final_verification_MobileDevice", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:57:02.299001", "operation": "final_verification_NetworkDevice", "details": {"count": 300}}
+{"timestamp": "2025-10-31T16:57:02.299098", "operation": "final_verification_PeripheralDevice", "details": {"count": 100}}
+{"timestamp": "2025-10-31T16:57:02.299237", "operation": "final_verification_PhysicalServer", "details": {"count": 400}}
+{"timestamp": "2025-10-31T16:57:02.299320", "operation": "final_verification_StorageArray", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:57:02.299395", "operation": "final_verification_Workstation", "details": {"count": 300}}
+{"timestamp": "2025-10-31T16:57:02.299516", "operation": "hardware_total_verification", "details": {"total_nodes": 1500, "status": "PASSED"}}
+{"timestamp": "2025-10-31T16:57:02.299624", "operation": "wave_9_hardware_execution_completed", "details": {"timestamp": "2025-10-31T16:57:02.299620", "total_nodes": 1500, "physical_servers": 400, "workstations_mobile": 500, "network_devices": 300, "storage_arrays": 200, "peripheral_devices": 100, "status": "SUCCESS"}}
+{"timestamp": "2025-10-31T16:58:06.745671", "operation": "wave_9_hardware_execution_started", "details": {"timestamp": "2025-10-31T16:58:06.745645"}}
+{"timestamp": "2025-10-31T16:58:06.750073", "operation": "physical_servers_batch_1_domain_controllers", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.760963", "operation": "physical_servers_batch_2_application", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.770680", "operation": "physical_servers_batch_3_database", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.785436", "operation": "physical_servers_batch_4_web_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.796533", "operation": "physical_servers_batch_5_file_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.808500", "operation": "physical_servers_batch_6_backup_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.818828", "operation": "physical_servers_batch_7_hypervisor_host", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.829760", "operation": "physical_servers_batch_8_storage_controller", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.841084", "operation": "physical_servers_verification", "details": {"total": 400, "unique_ids": 400, "unique_hostnames": 400, "unique_serials": 400}}
+{"timestamp": "2025-10-31T16:58:06.842903", "operation": "workstations_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.851209", "operation": "workstations_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.863559", "operation": "workstations_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.872342", "operation": "workstations_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.880829", "operation": "workstations_batch_5", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.888735", "operation": "workstations_batch_6", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.896931", "operation": "mobile_devices_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.906329", "operation": "mobile_devices_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.915040", "operation": "mobile_devices_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.924594", "operation": "mobile_devices_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.934186", "operation": "workstations_verification", "details": {"workstation_count": 300, "unique_ws_tags": 300}}
+{"timestamp": "2025-10-31T16:58:06.938526", "operation": "mobile_devices_verification", "details": {"mobile_count": 200, "unique_mob_tags": 200, "unique_imeis": 200}}
+{"timestamp": "2025-10-31T16:58:06.941176", "operation": "network_devices_batch_1_ROUTER", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.949406", "operation": "network_devices_batch_2_SWITCH-A", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.959400", "operation": "network_devices_batch_3_SWITCH-B", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.967682", "operation": "network_devices_batch_4_FIREWALL", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.980169", "operation": "network_devices_batch_5_LB", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:06.988305", "operation": "network_devices_batch_6_VPN-AP", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:58:06.995870", "operation": "network_devices_batch_6_WAP", "details": {"count": 20}}
+{"timestamp": "2025-10-31T16:58:07.004497", "operation": "network_devices_verification", "details": {"total": 300, "unique_ids": 300, "device_types": ["router", "switch", "firewall", "load_balancer", "vpn_gateway", "wireless_ap"], "unique_serials": 300}}
+{"timestamp": "2025-10-31T16:58:07.006369", "operation": "storage_arrays_batch_1_SAN_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:07.014692", "operation": "storage_arrays_batch_1_SAN_2", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:58:07.023104", "operation": "storage_arrays_batch_2_NAS_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:07.030943", "operation": "storage_arrays_batch_2_NAS_2", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:58:07.038687", "operation": "storage_arrays_batch_3_OBJ_1", "details": {"count": 40}}
+{"timestamp": "2025-10-31T16:58:07.046714", "operation": "storage_arrays_verification", "details": {"total": 200, "unique_ids": 200, "array_types": ["san", "nas", "object_storage"]}}
+{"timestamp": "2025-10-31T16:58:07.055118", "operation": "peripheral_devices_batch_1", "details": {"printers": 40, "cameras": 10}}
+{"timestamp": "2025-10-31T16:58:07.066611", "operation": "peripheral_devices_batch_2", "details": {"access_readers": 20, "iot_sensors": 30}}
+{"timestamp": "2025-10-31T16:58:07.073712", "operation": "peripheral_devices_verification", "details": {"total": 100, "unique_ids": 100, "device_types": ["printer", "camera", "access_reader", "iot_sensor"]}}
+{"timestamp": "2025-10-31T16:58:07.075748", "operation": "final_verification_MobileDevice", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:58:07.075934", "operation": "final_verification_NetworkDevice", "details": {"count": 300}}
+{"timestamp": "2025-10-31T16:58:07.076032", "operation": "final_verification_PeripheralDevice", "details": {"count": 100}}
+{"timestamp": "2025-10-31T16:58:07.076110", "operation": "final_verification_PhysicalServer", "details": {"count": 400}}
+{"timestamp": "2025-10-31T16:58:07.076183", "operation": "final_verification_StorageArray", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:58:07.076257", "operation": "final_verification_Workstation", "details": {"count": 300}}
+{"timestamp": "2025-10-31T16:58:07.076373", "operation": "hardware_total_verification", "details": {"total_nodes": 1500, "status": "PASSED"}}
+{"timestamp": "2025-10-31T16:58:07.076475", "operation": "wave_9_hardware_execution_completed", "details": {"timestamp": "2025-10-31T16:58:07.076472", "total_nodes": 1500, "physical_servers": 400, "workstations_mobile": 500, "network_devices": 300, "storage_arrays": 200, "peripheral_devices": 100, "status": "SUCCESS"}}
+{"timestamp": "2025-10-31T16:58:55.827321", "operation": "wave_9_hardware_execution_started", "details": {"timestamp": "2025-10-31T16:58:55.827296"}}
+{"timestamp": "2025-10-31T16:58:55.831677", "operation": "physical_servers_batch_1_domain_controllers", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:55.844779", "operation": "physical_servers_batch_2_application", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:55.855622", "operation": "physical_servers_batch_3_database", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:55.866078", "operation": "physical_servers_batch_4_web_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:55.879435", "operation": "physical_servers_batch_5_file_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:55.890546", "operation": "physical_servers_batch_6_backup_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:55.905478", "operation": "physical_servers_batch_7_hypervisor_host", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:55.916072", "operation": "physical_servers_batch_8_storage_controller", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:55.926896", "operation": "physical_servers_verification", "details": {"total": 400, "unique_ids": 400, "unique_hostnames": 400, "unique_serials": 400}}
+{"timestamp": "2025-10-31T16:58:55.928481", "operation": "workstations_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:55.937410", "operation": "workstations_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:55.946265", "operation": "workstations_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:55.958821", "operation": "workstations_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:55.967459", "operation": "workstations_batch_5", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:55.976171", "operation": "workstations_batch_6", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:55.984758", "operation": "mobile_devices_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:55.993630", "operation": "mobile_devices_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:56.002740", "operation": "mobile_devices_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:56.011658", "operation": "mobile_devices_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:56.020438", "operation": "workstations_verification", "details": {"workstation_count": 300, "unique_ws_tags": 300}}
+{"timestamp": "2025-10-31T16:58:56.023310", "operation": "mobile_devices_verification", "details": {"mobile_count": 200, "unique_mob_tags": 200, "unique_imeis": 200}}
+{"timestamp": "2025-10-31T16:58:56.024611", "operation": "network_devices_batch_1_ROUTER", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:56.032751", "operation": "network_devices_batch_2_SWITCH-A", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:56.041021", "operation": "network_devices_batch_3_SWITCH-B", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:56.049165", "operation": "network_devices_batch_4_FIREWALL", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:56.057863", "operation": "network_devices_batch_5_LB", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:56.065664", "operation": "network_devices_batch_6_VPN-AP", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:58:56.073285", "operation": "network_devices_batch_6_WAP", "details": {"count": 20}}
+{"timestamp": "2025-10-31T16:58:56.081194", "operation": "network_devices_verification", "details": {"total": 300, "unique_ids": 300, "device_types": ["router", "switch", "firewall", "load_balancer", "vpn_gateway", "wireless_ap"], "unique_serials": 300}}
+{"timestamp": "2025-10-31T16:58:56.082645", "operation": "storage_arrays_batch_1_SAN_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:56.096480", "operation": "storage_arrays_batch_1_SAN_2", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:58:56.104359", "operation": "storage_arrays_batch_2_NAS_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:58:56.111823", "operation": "storage_arrays_batch_2_NAS_2", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:58:56.118774", "operation": "storage_arrays_batch_3_OBJ_1", "details": {"count": 40}}
+{"timestamp": "2025-10-31T16:58:56.126454", "operation": "storage_arrays_verification", "details": {"total": 200, "unique_ids": 200, "array_types": ["object_storage", "san", "nas"]}}
+{"timestamp": "2025-10-31T16:58:56.135384", "operation": "peripheral_devices_batch_1", "details": {"printers": 40, "cameras": 10}}
+{"timestamp": "2025-10-31T16:58:56.148488", "operation": "peripheral_devices_batch_2", "details": {"access_readers": 20, "iot_sensors": 30}}
+{"timestamp": "2025-10-31T16:58:56.155407", "operation": "peripheral_devices_verification", "details": {"total": 100, "unique_ids": 100, "device_types": ["printer", "camera", "access_reader", "iot_sensor"]}}
+{"timestamp": "2025-10-31T16:58:56.157238", "operation": "final_verification_MobileDevice", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:58:56.157387", "operation": "final_verification_NetworkDevice", "details": {"count": 300}}
+{"timestamp": "2025-10-31T16:58:56.157478", "operation": "final_verification_PeripheralDevice", "details": {"count": 100}}
+{"timestamp": "2025-10-31T16:58:56.157560", "operation": "final_verification_PhysicalServer", "details": {"count": 400}}
+{"timestamp": "2025-10-31T16:58:56.157635", "operation": "final_verification_StorageArray", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:58:56.157708", "operation": "final_verification_Workstation", "details": {"count": 300}}
+{"timestamp": "2025-10-31T16:58:56.157817", "operation": "hardware_total_verification", "details": {"total_nodes": 1500, "status": "PASSED"}}
+{"timestamp": "2025-10-31T16:58:56.157911", "operation": "wave_9_hardware_execution_completed", "details": {"timestamp": "2025-10-31T16:58:56.157907", "total_nodes": 1500, "physical_servers": 400, "workstations_mobile": 500, "network_devices": 300, "storage_arrays": 200, "peripheral_devices": 100, "status": "SUCCESS"}}
+{"timestamp": "2025-10-31T16:59:19.725155", "operation": "wave_9_hardware_execution_started", "details": {"timestamp": "2025-10-31T16:59:19.725120"}}
+{"timestamp": "2025-10-31T16:59:19.729738", "operation": "physical_servers_batch_1_domain_controllers", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.740967", "operation": "physical_servers_batch_2_application", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.751805", "operation": "physical_servers_batch_3_database", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.762332", "operation": "physical_servers_batch_4_web_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.772542", "operation": "physical_servers_batch_5_file_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.783388", "operation": "physical_servers_batch_6_backup_server", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.793088", "operation": "physical_servers_batch_7_hypervisor_host", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.807441", "operation": "physical_servers_batch_8_storage_controller", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.817999", "operation": "physical_servers_verification", "details": {"total": 400, "unique_ids": 400, "unique_hostnames": 400, "unique_serials": 400}}
+{"timestamp": "2025-10-31T16:59:19.819629", "operation": "workstations_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.826412", "operation": "workstations_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.834344", "operation": "workstations_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.843648", "operation": "workstations_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.852335", "operation": "workstations_batch_5", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.861224", "operation": "workstations_batch_6", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.868260", "operation": "mobile_devices_batch_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.876765", "operation": "mobile_devices_batch_2", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.885675", "operation": "mobile_devices_batch_3", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.896802", "operation": "mobile_devices_batch_4", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.905959", "operation": "workstations_verification", "details": {"workstation_count": 300, "unique_ws_tags": 300}}
+{"timestamp": "2025-10-31T16:59:19.909643", "operation": "mobile_devices_verification", "details": {"mobile_count": 200, "unique_mob_tags": 200, "unique_imeis": 200}}
+{"timestamp": "2025-10-31T16:59:19.911343", "operation": "network_devices_batch_1_ROUTER", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.919905", "operation": "network_devices_batch_2_SWITCH-A", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.928042", "operation": "network_devices_batch_3_SWITCH-B", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.936533", "operation": "network_devices_batch_4_FIREWALL", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.945319", "operation": "network_devices_batch_5_LB", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.953733", "operation": "network_devices_batch_6_VPN-AP", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:59:19.961839", "operation": "network_devices_batch_6_WAP", "details": {"count": 20}}
+{"timestamp": "2025-10-31T16:59:19.969746", "operation": "network_devices_verification", "details": {"total": 300, "unique_ids": 300, "device_types": ["router", "switch", "firewall", "load_balancer", "vpn_gateway", "wireless_ap"], "unique_serials": 300}}
+{"timestamp": "2025-10-31T16:59:19.971214", "operation": "storage_arrays_batch_1_SAN_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.979308", "operation": "storage_arrays_batch_1_SAN_2", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:59:19.987034", "operation": "storage_arrays_batch_2_NAS_1", "details": {"count": 50}}
+{"timestamp": "2025-10-31T16:59:19.994621", "operation": "storage_arrays_batch_2_NAS_2", "details": {"count": 30}}
+{"timestamp": "2025-10-31T16:59:20.002151", "operation": "storage_arrays_batch_3_OBJ_1", "details": {"count": 40}}
+{"timestamp": "2025-10-31T16:59:20.009609", "operation": "storage_arrays_verification", "details": {"total": 200, "unique_ids": 200, "array_types": ["san", "nas", "object_storage"]}}
+{"timestamp": "2025-10-31T16:59:20.018173", "operation": "peripheral_devices_batch_1", "details": {"printers": 40, "cameras": 10}}
+{"timestamp": "2025-10-31T16:59:20.031342", "operation": "peripheral_devices_batch_2", "details": {"access_readers": 20, "iot_sensors": 30}}
+{"timestamp": "2025-10-31T16:59:20.038264", "operation": "peripheral_devices_verification", "details": {"total": 100, "unique_ids": 100, "device_types": ["printer", "camera", "access_reader", "iot_sensor"]}}
+{"timestamp": "2025-10-31T16:59:20.039963", "operation": "final_verification_MobileDevice", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:59:20.040108", "operation": "final_verification_NetworkDevice", "details": {"count": 300}}
+{"timestamp": "2025-10-31T16:59:20.040194", "operation": "final_verification_PeripheralDevice", "details": {"count": 100}}
+{"timestamp": "2025-10-31T16:59:20.040271", "operation": "final_verification_PhysicalServer", "details": {"count": 400}}
+{"timestamp": "2025-10-31T16:59:20.040346", "operation": "final_verification_StorageArray", "details": {"count": 200}}
+{"timestamp": "2025-10-31T16:59:20.040427", "operation": "final_verification_Workstation", "details": {"count": 300}}
+{"timestamp": "2025-10-31T16:59:20.040531", "operation": "hardware_total_verification", "details": {"total_nodes": 1500, "status": "PASSED"}}
+{"timestamp": "2025-10-31T16:59:20.040627", "operation": "wave_9_hardware_execution_completed", "details": {"timestamp": "2025-10-31T16:59:20.040621", "total_nodes": 1500, "physical_servers": 400, "workstations_mobile": 500, "network_devices": 300, "storage_arrays": 200, "peripheral_devices": 100, "status": "SUCCESS"}}

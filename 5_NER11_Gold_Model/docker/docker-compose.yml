@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  ner11-gold-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ner11-gold-api:latest
+    container_name: ner11-gold-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../:/app
+    working_dir: /app
+    # Enable GPU support
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
+    shm_size: '8gb'
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - MODEL_PATH=models/ner11_v3/model-best
+    networks:
+      - aeon-net
+
+networks:
+  aeon-net:
+    external: true

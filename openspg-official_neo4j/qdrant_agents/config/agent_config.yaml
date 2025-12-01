@@ -1,0 +1,158 @@
+# Qdrant Agent System Configuration
+# Created: 2025-10-31
+version: "1.0.0"
+
+# Base Configuration
+qdrant:
+  url: "http://localhost:6333"
+  api_key_env: "QDRANT_API_KEY"
+  timeout: 30
+  retry_attempts: 3
+
+openai:
+  api_key_env: "OPENAI_API_KEY"
+  model: "text-embedding-3-large"
+  dimensions: 3072
+  batch_size: 100
+  max_tokens: 8191
+
+# Agent Definitions
+agents:
+  qdrant_query_agent:
+    type: "query_specialist"
+    priority: "high"
+    capabilities:
+      - "semantic_search"
+      - "multi_collection_query"
+      - "context_expansion"
+      - "wave_filtering"
+    performance:
+      max_query_time: 1.0  # seconds
+      min_relevance_score: 0.5
+      cache_enabled: true
+      cache_ttl: 3600  # 1 hour
+    collections:
+      primary: "schema_knowledge"
+      secondary: ["query_patterns", "implementation_decisions"]
+    integration:
+      claude_flow_namespace: "qdrant:query"
+      hook_triggers: ["pre_task"]
+
+  qdrant_memory_agent:
+    type: "memory_coordinator"
+    priority: "high"
+    capabilities:
+      - "finding_storage"
+      - "experience_retrieval"
+      - "conflict_resolution"
+      - "cross_agent_learning"
+    performance:
+      max_store_time: 2.0  # seconds
+      sync_interval: 14400  # 4 hours
+      backup_enabled: true
+    collections:
+      primary: "agent_shared_memory"
+    integration:
+      claude_flow_namespace: "qdrant:memory"
+      hook_triggers: ["post_task", "session_end"]
+
+  qdrant_pattern_agent:
+    type: "pattern_discovery"
+    priority: "medium"
+    capabilities:
+      - "pattern_extraction"
+      - "clustering_analysis"
+      - "template_generation"
+      - "anti_pattern_detection"
+    performance:
+      min_pattern_frequency: 3
+      clustering_algorithm: "kmeans"
+      similarity_threshold: 0.7
+    collections:
+      query: ["agent_shared_memory", "implementation_decisions"]
+      store: "query_patterns"
+    integration:
+      claude_flow_namespace: "qdrant:patterns"
+      hook_triggers: ["wave_complete"]
+
+  qdrant_decision_agent:
+    type: "decision_tracker"
+    priority: "high"
+    capabilities:
+      - "decision_storage"
+      - "impact_analysis"
+      - "consistency_validation"
+      - "dependency_tracking"
+    performance:
+      max_impact_depth: 3  # levels
+      conflict_detection: true
+    collections:
+      primary: "implementation_decisions"
+    integration:
+      claude_flow_namespace: "qdrant:decisions"
+      hook_triggers: ["architecture_decision"]
+
+  qdrant_sync_agent:
+    type: "synchronization"
+    priority: "critical"
+    capabilities:
+      - "bidirectional_sync"
+      - "conflict_resolution"
+      - "git_integration"
+      - "disaster_recovery"
+    performance:
+      sync_interval: 14400  # 4 hours
+      conflict_strategy: "qdrant_wins"  # or "local_wins", "merge"
+      git_auto_commit: true
+    integration:
+      claude_flow_namespace: "qdrant:sync"
+      hook_triggers: ["scheduled", "manual"]
+
+  qdrant_analytics_agent:
+    type: "analytics"
+    priority: "low"
+    capabilities:
+      - "performance_monitoring"
+      - "cost_tracking"
+      - "usage_analytics"
+      - "optimization_recommendations"
+    performance:
+      report_frequency: "daily"
+      metrics_retention: 90  # days
+    integration:
+      claude_flow_namespace: "qdrant:analytics"
+      hook_triggers: ["scheduled"]
+
+# Hook Configuration
+hooks:
+  pre_task:
+    enabled: true
+    agents: ["qdrant_query_agent", "qdrant_memory_agent"]
+    timeout: 5  # seconds
+    failure_behavior: "warn"  # or "abort"
+
+  post_task:
+    enabled: true
+    agents: ["qdrant_memory_agent", "qdrant_decision_agent"]
+    timeout: 10  # seconds
+    failure_behavior: "retry"
+
+  wave_complete:
+    enabled: true
+    agents: ["qdrant_pattern_agent", "qdrant_analytics_agent"]
+    timeout: 300  # 5 minutes
+    failure_behavior: "log"
+
+# Performance Monitoring
+monitoring:
+  enabled: true
+  metrics:
+    - "query_latency"
+    - "embedding_cost"
+    - "collection_size"
+    - "agent_coordination_time"
+    - "cache_hit_rate"
+  alerts:
+    query_latency_threshold: 2.0  # seconds
+    cost_daily_threshold: 10.0  # USD
+    collection_size_threshold: 100000  # vectors

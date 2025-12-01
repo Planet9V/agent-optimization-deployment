@@ -1,0 +1,185 @@
+{
+  "evaluation_metrics": {
+    "VENDOR": {
+      "precision": 0.5973,
+      "recall": 0.2591,
+      "f1": 0.3614,
+      "support": 687
+    },
+    "EQUIPMENT": {
+      "precision": 0.8643,
+      "recall": 0.9629,
+      "f1": 0.9109,
+      "support": 377
+    },
+    "PROTOCOL": {
+      "precision": 0.9824,
+      "recall": 0.8764,
+      "f1": 0.9264,
+      "support": 445
+    },
+    "OPERATION": {
+      "precision": 0.7685,
+      "recall": 0.4743,
+      "f1": 0.5866,
+      "support": 175
+    },
+    "ARCHITECTURE": {
+      "precision": 0.9655,
+      "recall": 0.9825,
+      "f1": 0.9739,
+      "support": 57
+    },
+    "SECURITY": {
+      "precision": 0.9847,
+      "recall": 0.9787,
+      "f1": 0.9817,
+      "support": 656
+    },
+    "SUPPLIER": {
+      "precision": 0.85,
+      "recall": 0.9714,
+      "f1": 0.9067,
+      "support": 35
+    },
+    "THREAT_MODEL": {
+      "precision": 0.9748,
+      "recall": 0.9831,
+      "f1": 0.9789,
+      "support": 118
+    },
+    "TACTIC": {
+      "precision": 0.9882,
+      "recall": 0.9867,
+      "f1": 0.9875,
+      "support": 678
+    },
+    "TECHNIQUE": {
+      "precision": 0.9778,
+      "recall": 0.9167,
+      "f1": 0.9462,
+      "support": 144
+    },
+    "ATTACK_PATTERN": {
+      "precision": 0.6897,
+      "recall": 1.0,
+      "f1": 0.8163,
+      "support": 20
+    },
+    "VULNERABILITY": {
+      "precision": 0.4,
+      "recall": 0.2564,
+      "f1": 0.3125,
+      "support": 39
+    },
+    "WEAKNESS": {
+      "precision": 0.95,
+      "recall": 0.9048,
+      "f1": 0.9268,
+      "support": 42
+    },
+    "INDICATOR": {
+      "precision": 0.8214,
+      "recall": 0.1544,
+      "f1": 0.2599,
+      "support": 298
+    },
+    "THREAT_ACTOR": {
+      "precision": 0.9434,
+      "recall": 0.9259,
+      "f1": 0.9346,
+      "support": 54
+    },
+    "CAMPAIGN": {
+      "precision": 0.9402,
+      "recall": 0.9328,
+      "f1": 0.9365,
+      "support": 253
+    },
+    "SOFTWARE_COMPONENT": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 3
+    },
+    "HARDWARE_COMPONENT": {
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "support": 34
+    },
+    "PERSONALITY_TRAIT": {
+      "precision": 1.0,
+      "recall": 0.9796,
+      "f1": 0.9897,
+      "support": 98
+    },
+    "COGNITIVE_BIAS": {
+      "precision": 0.9667,
+      "recall": 0.8529,
+      "f1": 0.9062,
+      "support": 34
+    },
+    "INSIDER_INDICATOR": {
+      "precision": 0.9912,
+      "recall": 0.9825,
+      "f1": 0.9868,
+      "support": 114
+    },
+    "SOCIAL_ENGINEERING": {
+      "precision": 0.9787,
+      "recall": 1.0,
+      "f1": 0.9892,
+      "support": 46
+    },
+    "ATTACK_VECTOR": {
+      "precision": 0.9286,
+      "recall": 0.9286,
+      "f1": 0.9286,
+      "support": 14
+    },
+    "MITIGATION": {
+      "precision": 0.9548,
+      "recall": 0.9801,
+      "f1": 0.9673,
+      "support": 151
+    },
+    "OVERALL": {
+      "precision": 0.9205,
+      "recall": 0.7752,
+      "f1": 0.8416,
+      "support": 4572
+    }
+  },
+  "annotation_stats": {
+    "VENDOR": 4010,
+    "EQUIPMENT": 4197,
+    "PROTOCOL": 3620,
+    "OPERATION": 747,
+    "ARCHITECTURE": 609,
+    "SECURITY": 4314,
+    "SUPPLIER": 198,
+    "THREAT_MODEL": 328,
+    "TACTIC": 2885,
+    "TECHNIQUE": 1528,
+    "ATTACK_PATTERN": 176,
+    "VULNERABILITY": 219,
+    "WEAKNESS": 255,
+    "INDICATOR": 1231,
+    "THREAT_ACTOR": 699,
+    "CAMPAIGN": 1794,
+    "SOFTWARE_COMPONENT": 200,
+    "HARDWARE_COMPONENT": 185,
+    "PERSONALITY_TRAIT": 701,
+    "COGNITIVE_BIAS": 147,
+    "INSIDER_INDICATOR": 569,
+    "SOCIAL_ENGINEERING": 243,
+    "ATTACK_VECTOR": 74,
+    "MITIGATION": 799
+  },
+  "dataset_splits": {
+    "train": 296,
+    "validation": 63,
+    "test": 64
+  }
+}

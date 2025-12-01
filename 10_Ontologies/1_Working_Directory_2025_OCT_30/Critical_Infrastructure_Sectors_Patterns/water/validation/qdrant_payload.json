@@ -1,0 +1,69 @@
+{
+  "sector": "water",
+  "validation_date": "2025-11-05",
+  "status": "FAILED",
+  "f1_score": 0.791,
+  "threshold": 0.85,
+  "passed": false,
+  "test_sections": 7,
+  "total_patterns": 299,
+  "category_results": {
+    "equipment": 0.889,
+    "operations": 0.545,
+    "scada": 0.933,
+    "vendors": 0.800
+  },
+  "data_quality_issues": [
+    "Only 7 test sections (not 9)",
+    "Missing security and standards categories",
+    "Limited source diversity (2 documents)",
+    "Duplicate content between documents",
+    ".docx format conversion issues"
+  ],
+  "comparison_to_dams": {
+    "dams_f1": 0.929,
+    "water_f1": 0.791,
+    "difference": -0.138
+  },
+  "key_findings": {
+    "best_category": "scada",
+    "best_f1": 0.933,
+    "worst_category": "operations",
+    "worst_f1": 0.545,
+    "missing_categories": ["security", "standards"],
+    "duplicate_content": true,
+    "source_documents": 2,
+    "precision": 1.0,
+    "recall_avg": 0.681
+  },
+  "recommendations": [
+    "Obtain 10-15 diverse Water sector documents",
+    "Eliminate duplicate content from test set",
+    "Add security and standards test materials",
+    "Review and improve operations patterns (54.5% F1)",
+    "Retest with improved source materials",
+    "Target F1 >= 85% on retest"
+  ],
+  "root_causes": [
+    "Limited source diversity (2 docs vs 15+ for Dams)",
+    "Duplicate content between source documents",
+    "Missing critical categories (security, standards)",
+    ".docx format conversion issues",
+    "Narrow operational content (Fine Screens only)"
+  ],
+  "technical_details": {
+    "pattern_format": "YAML with 'patterns:' key",
+    "extraction_method": "Regex pattern matching with word boundaries",
+    "evaluation_metric": "F1 score (harmonic mean of precision and recall)",
+    "pattern_distribution": {
+      "equipment": 91,
+      "operations": 42,
+      "vendors": 41,
+      "security": 45,
+      "standards": 27,
+      "protocols": 25,
+      "architectures": 28
+    }
+  },
+  "conclusion": "CONDITIONAL PASS WITH RETEST - Patterns fundamentally sound but require better validation data. Accept patterns provisionally for SCADA (93.3%) and Equipment (88.9%) categories. Flag Operations patterns (54.5%) for review. Require retest with 10+ diverse documents covering all categories."
+}

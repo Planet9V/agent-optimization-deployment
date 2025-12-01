@@ -1,0 +1,33 @@
+{"timestamp": "2025-10-31T15:15:29.344257", "operation": "wave_5_execution_started", "details": {"timestamp": "2025-10-31T15:15:29.344226"}}
+{"timestamp": "2025-10-31T15:15:29.344522", "operation": "phase_started", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T15:15:29.394017", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT ics_tactic_id_unique IF NOT EXISTS FOR (t:ICS_Tactic) REQUIRE ..."}}
+{"timestamp": "2025-10-31T15:15:29.441568", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT ics_technique_id_unique IF NOT EXISTS FOR (t:ICS_Technique) RE..."}}
+{"timestamp": "2025-10-31T15:15:29.488363", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT ics_asset_id_unique IF NOT EXISTS FOR (a:ICS_Asset) REQUIRE a...."}}
+{"timestamp": "2025-10-31T15:15:29.527544", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT ics_protocol_id_unique IF NOT EXISTS FOR (p:ICS_Protocol) REQU..."}}
+{"timestamp": "2025-10-31T15:15:29.572169", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT sector_id_unique IF NOT EXISTS FOR (s:Critical_Infrastructure_..."}}
+{"timestamp": "2025-10-31T15:15:29.579119", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ics_tactic_name_idx IF NOT EXISTS FOR (t:ICS_Tactic) ON (t.name)..."}}
+{"timestamp": "2025-10-31T15:15:29.593418", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ics_tactic_order_idx IF NOT EXISTS FOR (t:ICS_Tactic) ON (t.order_p..."}}
+{"timestamp": "2025-10-31T15:15:29.601862", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ics_technique_name_idx IF NOT EXISTS FOR (t:ICS_Technique) ON (t.na..."}}
+{"timestamp": "2025-10-31T15:15:29.616921", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ics_technique_severity_idx IF NOT EXISTS FOR (t:ICS_Technique) ON (..."}}
+{"timestamp": "2025-10-31T15:15:29.638226", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ics_asset_type_idx IF NOT EXISTS FOR (a:ICS_Asset) ON (a.asset_type..."}}
+{"timestamp": "2025-10-31T15:15:29.650184", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ics_asset_criticality_idx IF NOT EXISTS FOR (a:ICS_Asset) ON (a.cri..."}}
+{"timestamp": "2025-10-31T15:15:29.665498", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ics_asset_purdue_idx IF NOT EXISTS FOR (a:ICS_Asset) ON (a.purdue_l..."}}
+{"timestamp": "2025-10-31T15:15:29.679727", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ics_asset_zone_idx IF NOT EXISTS FOR (a:ICS_Asset) ON (a.network_zo..."}}
+{"timestamp": "2025-10-31T15:15:29.698304", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ics_protocol_name_idx IF NOT EXISTS FOR (p:ICS_Protocol) ON (p.prot..."}}
+{"timestamp": "2025-10-31T15:15:29.712547", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX sector_name_idx IF NOT EXISTS FOR (s:Critical_Infrastructure_Sector..."}}
+{"timestamp": "2025-10-31T15:15:29.715876", "operation": "phase_completed", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T15:15:29.716032", "operation": "phase_started", "details": {"phase": "create_ics_nodes"}}
+{"timestamp": "2025-10-31T15:15:29.813319", "operation": "ics_tactics_created", "details": {"count": 12}}
+{"timestamp": "2025-10-31T15:15:30.019249", "operation": "ics_techniques_created", "details": {"count": 83}}
+{"timestamp": "2025-10-31T15:15:30.102513", "operation": "ics_assets_created", "details": {"count": 16}}
+{"timestamp": "2025-10-31T15:15:30.172552", "operation": "ics_protocols_created", "details": {"count": 10}}
+{"timestamp": "2025-10-31T15:15:30.228281", "operation": "critical_infrastructure_sectors_created", "details": {"count": 16}}
+{"timestamp": "2025-10-31T15:15:30.228448", "operation": "phase_completed", "details": {"phase": "create_ics_nodes", "nodes_created": 137}}
+{"timestamp": "2025-10-31T15:15:30.228516", "operation": "phase_started", "details": {"phase": "create_relationships"}}
+{"timestamp": "2025-10-31T15:15:30.274930", "operation": "relationships_created", "details": {"type": "CONTAINS_ICS_TECHNIQUE", "count": 98}}
+{"timestamp": "2025-10-31T15:15:30.334717", "operation": "relationships_created", "details": {"type": "TARGETS_ICS_ASSET", "count": 17}}
+{"timestamp": "2025-10-31T15:15:30.388800", "operation": "relationships_created", "details": {"type": "USES_PROTOCOL", "count": 15}}
+{"timestamp": "2025-10-31T15:15:30.475023", "operation": "relationships_created", "details": {"type": "DEPLOYS_ASSET", "count": 20}}
+{"timestamp": "2025-10-31T15:15:30.534948", "operation": "relationships_created", "details": {"type": "EXPLOITS_PROTOCOL", "count": 42}}
+{"timestamp": "2025-10-31T15:15:30.535084", "operation": "phase_completed", "details": {"phase": "create_relationships", "total_relationships": 192}}
+{"timestamp": "2025-10-31T15:15:30.535147", "operation": "wave_5_execution_completed", "details": {"timestamp": "2025-10-31T15:15:30.535144", "nodes_created": 137, "relationships_created": 192}}

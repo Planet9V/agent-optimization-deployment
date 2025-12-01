@@ -1,0 +1,91 @@
+================================================================================
+V5 TRAINING EXECUTION SUMMARY
+================================================================================
+
+EXECUTION DATE: 2025-11-06
+STATUS: ⚠️ PARTIAL SUCCESS
+
+--------------------------------------------------------------------------------
+KEY RESULTS
+--------------------------------------------------------------------------------
+
+✅ ENTITY RECOVERY VALIDATION - SUCCESS
+  - VENDOR entities: 9,788 (target: 8,582, achievement: 114%)
+  - Total entities: 42,925 (target: 18,332, achievement: 234%)
+  - Deduplication fix: VALIDATED
+
+❌ MODEL TRAINING - FAILED
+  - Reason: Overlapping entity spans (E103 ValueError)
+  - Documents affected: 361 out of 423 (85.3%)
+  - Training iterations completed: 0/50
+
+--------------------------------------------------------------------------------
+CRITICAL ISSUE
+--------------------------------------------------------------------------------
+
+OVERLAPPING ENTITIES DETECTED
+  - Same text spans annotated as multiple entity types
+  - Example: Position 4660-4667 tagged as both EQUIPMENT and PROTOCOL
+  - spaCy requirement: One entity per token (overlaps not allowed)
+  - Impact: Training cannot proceed until overlaps resolved
+
+E1010 Warnings: 361 documents skipped during dataset save
+
+--------------------------------------------------------------------------------
+VALIDATION GATE STATUS
+--------------------------------------------------------------------------------
+
+GATE 2 - ENTITY RECOVERY:     ✅ PASSED (9,788 ≥ 8,500 VENDOR entities)
+GATE 3 - TRAINING EXECUTION:  ❌ FAILED (E103 overlapping entities)
+GATE 4 - MODEL VALIDATION:    ⏸️ BLOCKED (no model created)
+
+--------------------------------------------------------------------------------
+FILES GENERATED
+--------------------------------------------------------------------------------
+
+✅ ner_v5_training.log              (Complete execution log, 6,500+ lines)
+✅ ner_training_data/train.spacy    (651KB, partial - overlaps skipped)
+✅ ner_training_data/dev.spacy      (313KB, partial - overlaps skipped)
+✅ ner_training_data/test.spacy     (210KB, partial - overlaps skipped)
+✅ docs/V5_TRAINING_REPORT.md       (Comprehensive analysis report)
+❌ ner_model_v5/                    (Not created - training failed)
+
+--------------------------------------------------------------------------------
+NEXT ACTIONS REQUIRED
+--------------------------------------------------------------------------------
+
+PRIORITY: 🔴 CRITICAL - Implement Phase 3.5 (Overlap Resolution)
+
+1. Analyze overlap patterns (analyze 361 conflicts)
+2. Define entity priority hierarchy (e.g., VENDOR > SUPPLIER)
+3. Implement conflict resolution algorithm
+4. Validate cleaned data (ensure no E1010 warnings)
+5. Retry v5 training with resolved overlaps
+
+DO NOT PROCEED to Phase 4 evaluation until overlaps are resolved.
+
+--------------------------------------------------------------------------------
+POSITIVE OUTCOMES
+--------------------------------------------------------------------------------
+
+✅ Deduplication fix validated (50.8% increase in VENDOR entities)
+✅ All 17 sectors processed successfully
+✅ 24 entity types extracted across all sectors
+✅ No file processing errors
+✅ Pipeline infrastructure working correctly
+
+--------------------------------------------------------------------------------
+RECOMMENDATION
+--------------------------------------------------------------------------------
+
+The deduplication fix successfully recovered missing entities and improved
+data quality. However, it exposed a pre-existing issue with overlapping
+entity annotations that must be resolved before model training can proceed.
+
+Phase 3.5 (Overlap Resolution) must be implemented as a new critical phase
+before continuing to Phase 4 (Model Validation).
+
+================================================================================
+DETAILED REPORT: docs/V5_TRAINING_REPORT.md
+EXECUTION LOG: ner_v5_training.log
+================================================================================

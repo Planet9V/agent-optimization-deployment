@@ -1,0 +1,124 @@
+{"timestamp": "2025-10-31T15:37:07.631192", "operation": "wave_8_execution_started", "details": {"timestamp": "2025-10-31T15:37:07.631164"}}
+{"timestamp": "2025-10-31T15:37:07.631385", "operation": "phase_started", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T15:37:07.677466", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT server_id_unique IF NOT EXISTS FOR (s:Server) REQUIRE s.server..."}}
+{"timestamp": "2025-10-31T15:37:07.691095", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_hostname_idx IF NOT EXISTS FOR (s:Server) ON (s.hostname)..."}}
+{"timestamp": "2025-10-31T15:37:07.702077", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_primary_ip_idx IF NOT EXISTS FOR (s:Server) ON (s.primary_ip..."}}
+{"timestamp": "2025-10-31T15:37:07.714238", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_role_idx IF NOT EXISTS FOR (s:Server) ON (s.server_role)..."}}
+{"timestamp": "2025-10-31T15:37:07.733116", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_criticality_idx IF NOT EXISTS FOR (s:Server) ON (s.criticali..."}}
+{"timestamp": "2025-10-31T15:37:07.739279", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_network_segment_idx IF NOT EXISTS FOR (s:Server) ON (s.netwo..."}}
+{"timestamp": "2025-10-31T15:37:07.791950", "operation": "constraint_or_index_created", "details": {"statement": "CREATE FULLTEXT INDEX server_search_idx IF NOT EXISTS FOR (s:Server) ON EACH [s...."}}
+{"timestamp": "2025-10-31T15:37:07.874005", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT network_device_id_unique IF NOT EXISTS FOR (nd:NetworkDevice) ..."}}
+{"timestamp": "2025-10-31T15:37:07.880586", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_device_hostname_idx IF NOT EXISTS FOR (nd:NetworkDevice) ON..."}}
+{"timestamp": "2025-10-31T15:37:07.899276", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_device_mgmt_ip_idx IF NOT EXISTS FOR (nd:NetworkDevice) ON ..."}}
+{"timestamp": "2025-10-31T15:37:07.912658", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_device_type_idx IF NOT EXISTS FOR (nd:NetworkDevice) ON (nd..."}}
+{"timestamp": "2025-10-31T15:37:07.929419", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_device_role_idx IF NOT EXISTS FOR (nd:NetworkDevice) ON (nd..."}}
+{"timestamp": "2025-10-31T15:37:08.021034", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT network_segment_id_unique IF NOT EXISTS FOR (ns:NetworkSegment..."}}
+{"timestamp": "2025-10-31T15:37:08.031309", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_segment_name_idx IF NOT EXISTS FOR (ns:NetworkSegment) ON (..."}}
+{"timestamp": "2025-10-31T15:37:08.042247", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_segment_zone_idx IF NOT EXISTS FOR (ns:NetworkSegment) ON (..."}}
+{"timestamp": "2025-10-31T15:37:08.054191", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_segment_trust_idx IF NOT EXISTS FOR (ns:NetworkSegment) ON ..."}}
+{"timestamp": "2025-10-31T15:37:08.130237", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT physical_access_control_id_unique IF NOT EXISTS FOR (pac:Physi..."}}
+{"timestamp": "2025-10-31T15:37:08.140248", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX physical_access_location_idx IF NOT EXISTS FOR (pac:PhysicalAccessC..."}}
+{"timestamp": "2025-10-31T15:37:08.197565", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT surveillance_system_id_unique IF NOT EXISTS FOR (ss:Surveillan..."}}
+{"timestamp": "2025-10-31T15:37:08.207018", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX surveillance_location_idx IF NOT EXISTS FOR (ss:SurveillanceSystem)..."}}
+{"timestamp": "2025-10-31T15:37:08.263026", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT data_center_facility_id_unique IF NOT EXISTS FOR (dcf:DataCent..."}}
+{"timestamp": "2025-10-31T15:37:08.275217", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX data_center_facility_name_idx IF NOT EXISTS FOR (dcf:DataCenterFaci..."}}
+{"timestamp": "2025-10-31T15:37:08.285473", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX data_center_tier_idx IF NOT EXISTS FOR (dcf:DataCenterFacility) ON ..."}}
+{"timestamp": "2025-10-31T15:37:08.292584", "operation": "phase_completed", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T15:37:08.292771", "operation": "phase_started", "details": {"phase": "create_infrastructure_nodes"}}
+{"timestamp": "2025-10-31T15:37:08.328696", "operation": "wave_8_execution_error", "details": {"error": "{neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Unknown operation '!=' (you probably meant to use '<>', which is the operator for inequality testing) (line 91, column 45 (offset: 3541))\n\"          hypervisor: CASE WHEN app_num % 3 != 0 THEN \"VMware ESXi 7.0\" ELSE null END,\"\n                                             ^} {gql_status: 50N42} {gql_status_description: error: general processing exception - unexpected error. Unexpected error has occurred. See debug log for details.}"}}
+{"timestamp": "2025-10-31T15:37:38.851268", "operation": "wave_8_execution_started", "details": {"timestamp": "2025-10-31T15:37:38.851238"}}
+{"timestamp": "2025-10-31T15:37:38.851506", "operation": "phase_started", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T15:37:38.855750", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT server_id_unique IF NOT EXISTS FOR (s:Server) REQUIRE s.server..."}}
+{"timestamp": "2025-10-31T15:37:38.860337", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_hostname_idx IF NOT EXISTS FOR (s:Server) ON (s.hostname)..."}}
+{"timestamp": "2025-10-31T15:37:38.862723", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_primary_ip_idx IF NOT EXISTS FOR (s:Server) ON (s.primary_ip..."}}
+{"timestamp": "2025-10-31T15:37:38.864789", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_role_idx IF NOT EXISTS FOR (s:Server) ON (s.server_role)..."}}
+{"timestamp": "2025-10-31T15:37:38.866988", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_criticality_idx IF NOT EXISTS FOR (s:Server) ON (s.criticali..."}}
+{"timestamp": "2025-10-31T15:37:38.871818", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_network_segment_idx IF NOT EXISTS FOR (s:Server) ON (s.netwo..."}}
+{"timestamp": "2025-10-31T15:37:38.874521", "operation": "constraint_or_index_created", "details": {"statement": "CREATE FULLTEXT INDEX server_search_idx IF NOT EXISTS FOR (s:Server) ON EACH [s...."}}
+{"timestamp": "2025-10-31T15:37:38.876583", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT network_device_id_unique IF NOT EXISTS FOR (nd:NetworkDevice) ..."}}
+{"timestamp": "2025-10-31T15:37:38.878221", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_device_hostname_idx IF NOT EXISTS FOR (nd:NetworkDevice) ON..."}}
+{"timestamp": "2025-10-31T15:37:38.879608", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_device_mgmt_ip_idx IF NOT EXISTS FOR (nd:NetworkDevice) ON ..."}}
+{"timestamp": "2025-10-31T15:37:38.881081", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_device_type_idx IF NOT EXISTS FOR (nd:NetworkDevice) ON (nd..."}}
+{"timestamp": "2025-10-31T15:37:38.883585", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_device_role_idx IF NOT EXISTS FOR (nd:NetworkDevice) ON (nd..."}}
+{"timestamp": "2025-10-31T15:37:38.885531", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT network_segment_id_unique IF NOT EXISTS FOR (ns:NetworkSegment..."}}
+{"timestamp": "2025-10-31T15:37:38.887220", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_segment_name_idx IF NOT EXISTS FOR (ns:NetworkSegment) ON (..."}}
+{"timestamp": "2025-10-31T15:37:38.889266", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_segment_zone_idx IF NOT EXISTS FOR (ns:NetworkSegment) ON (..."}}
+{"timestamp": "2025-10-31T15:37:38.890861", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_segment_trust_idx IF NOT EXISTS FOR (ns:NetworkSegment) ON ..."}}
+{"timestamp": "2025-10-31T15:37:38.892322", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT physical_access_control_id_unique IF NOT EXISTS FOR (pac:Physi..."}}
+{"timestamp": "2025-10-31T15:37:38.893680", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX physical_access_location_idx IF NOT EXISTS FOR (pac:PhysicalAccessC..."}}
+{"timestamp": "2025-10-31T15:37:38.895160", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT surveillance_system_id_unique IF NOT EXISTS FOR (ss:Surveillan..."}}
+{"timestamp": "2025-10-31T15:37:38.896525", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX surveillance_location_idx IF NOT EXISTS FOR (ss:SurveillanceSystem)..."}}
+{"timestamp": "2025-10-31T15:37:38.898130", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT data_center_facility_id_unique IF NOT EXISTS FOR (dcf:DataCent..."}}
+{"timestamp": "2025-10-31T15:37:38.899829", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX data_center_facility_name_idx IF NOT EXISTS FOR (dcf:DataCenterFaci..."}}
+{"timestamp": "2025-10-31T15:37:38.901067", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX data_center_tier_idx IF NOT EXISTS FOR (dcf:DataCenterFacility) ON ..."}}
+{"timestamp": "2025-10-31T15:37:38.901302", "operation": "phase_completed", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T15:37:38.901372", "operation": "phase_started", "details": {"phase": "create_infrastructure_nodes"}}
+{"timestamp": "2025-10-31T15:37:39.018712", "operation": "wave_8_execution_error", "details": {"error": "{neo4j_code: Neo.ClientError.Statement.SyntaxError} {message: Aggregation column contains implicit grouping expressions. For example, in 'RETURN n.a, n.a + n.b + count(*)' the aggregation expression 'n.a + n.b + count(*)' includes the implicit grouping key 'n.b'. It may be possible to rewrite the query by extracting these grouping/aggregation expressions into a preceding WITH clause. Illegal expression(s): esxi_count, dc_count, db_count, storage_count, web_count, mgmt_count, app_count (line 541, column 34 (offset: 20065))\n\"          dc_count + app_count + db_count + web_count + mgmt_count + esxi_count + storage_count + count(*) as total_servers\"\n                                  ^} {gql_status: 42001} {gql_status_description: error: syntax error or access rule violation - invalid syntax}"}}
+{"timestamp": "2025-10-31T15:48:55.384803", "operation": "wave_8_execution_started", "details": {"timestamp": "2025-10-31T15:48:55.384777"}}
+{"timestamp": "2025-10-31T15:48:55.384953", "operation": "phase_started", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T15:48:55.388271", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT server_id_unique IF NOT EXISTS FOR (s:Server) REQUIRE s.server..."}}
+{"timestamp": "2025-10-31T15:48:55.389504", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_hostname_idx IF NOT EXISTS FOR (s:Server) ON (s.hostname)..."}}
+{"timestamp": "2025-10-31T15:48:55.393090", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_ip_idx IF NOT EXISTS FOR (s:Server) ON (s.primary_ip_address..."}}
+{"timestamp": "2025-10-31T15:48:55.393957", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_role_idx IF NOT EXISTS FOR (s:Server) ON (s.server_role)..."}}
+{"timestamp": "2025-10-31T15:48:55.394767", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_criticality_idx IF NOT EXISTS FOR (s:Server) ON (s.criticali..."}}
+{"timestamp": "2025-10-31T15:48:55.395864", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_network_segment_idx IF NOT EXISTS FOR (s:Server) ON (s.netwo..."}}
+{"timestamp": "2025-10-31T15:48:55.396844", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT network_device_id_unique IF NOT EXISTS FOR (nd:NetworkDevice) ..."}}
+{"timestamp": "2025-10-31T15:48:55.397777", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_device_hostname_idx IF NOT EXISTS FOR (nd:NetworkDevice) ON..."}}
+{"timestamp": "2025-10-31T15:48:55.398534", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_device_mgmt_ip_idx IF NOT EXISTS FOR (nd:NetworkDevice) ON ..."}}
+{"timestamp": "2025-10-31T15:48:55.399162", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_device_type_idx IF NOT EXISTS FOR (nd:NetworkDevice) ON (nd..."}}
+{"timestamp": "2025-10-31T15:48:55.399868", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_device_role_idx IF NOT EXISTS FOR (nd:NetworkDevice) ON (nd..."}}
+{"timestamp": "2025-10-31T15:48:55.400794", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT network_segment_id_unique IF NOT EXISTS FOR (ns:NetworkSegment..."}}
+{"timestamp": "2025-10-31T15:48:55.401500", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_segment_name_idx IF NOT EXISTS FOR (ns:NetworkSegment) ON (..."}}
+{"timestamp": "2025-10-31T15:48:55.402396", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_segment_zone_idx IF NOT EXISTS FOR (ns:NetworkSegment) ON (..."}}
+{"timestamp": "2025-10-31T15:48:55.403090", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_segment_trust_idx IF NOT EXISTS FOR (ns:NetworkSegment) ON ..."}}
+{"timestamp": "2025-10-31T15:48:55.403911", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT physical_access_control_id_unique IF NOT EXISTS FOR (pac:Physi..."}}
+{"timestamp": "2025-10-31T15:48:55.413395", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX physical_access_zone_idx IF NOT EXISTS FOR (pac:PhysicalAccessContr..."}}
+{"timestamp": "2025-10-31T15:48:55.419956", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT surveillance_id_unique IF NOT EXISTS FOR (ss:SurveillanceSyste..."}}
+{"timestamp": "2025-10-31T15:48:55.422814", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX surveillance_system_type_idx IF NOT EXISTS FOR (ss:SurveillanceSyst..."}}
+{"timestamp": "2025-10-31T15:48:55.433332", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT data_center_facility_id_unique IF NOT EXISTS FOR (dcf:DataCent..."}}
+{"timestamp": "2025-10-31T15:48:55.434545", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX data_center_facility_name_idx IF NOT EXISTS FOR (dcf:DataCenterFaci..."}}
+{"timestamp": "2025-10-31T15:48:55.435702", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX data_center_tier_idx IF NOT EXISTS FOR (dcf:DataCenterFacility) ON ..."}}
+{"timestamp": "2025-10-31T15:48:55.436123", "operation": "phase_completed", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T15:48:55.436284", "operation": "phase_started", "details": {"phase": "create_it_infrastructure_nodes"}}
+{"timestamp": "2025-10-31T15:48:56.028435", "operation": "servers_created", "details": {"count": 158}}
+{"timestamp": "2025-10-31T15:48:56.275973", "operation": "network_devices_created", "details": {"count": 48}}
+{"timestamp": "2025-10-31T15:48:56.418186", "operation": "network_segments_created", "details": {"count": 13}}
+{"timestamp": "2025-10-31T15:48:56.418382", "operation": "phase_completed", "details": {"phase": "create_it_infrastructure_nodes", "nodes_created": 219}}
+{"timestamp": "2025-10-31T15:48:56.418441", "operation": "phase_started", "details": {"phase": "create_physical_security_nodes"}}
+{"timestamp": "2025-10-31T15:48:56.595816", "operation": "physical_access_controls_created", "details": {"count": 28}}
+{"timestamp": "2025-10-31T15:48:56.779135", "operation": "surveillance_systems_created", "details": {"count": 29}}
+{"timestamp": "2025-10-31T15:48:56.926287", "operation": "data_center_facilities_created", "details": {"count": 10}}
+{"timestamp": "2025-10-31T15:48:56.926474", "operation": "phase_completed", "details": {"phase": "create_physical_security_nodes", "nodes_created": 67}}
+{"timestamp": "2025-10-31T15:48:56.926539", "operation": "phase_started", "details": {"phase": "create_relationships"}}
+{"timestamp": "2025-10-31T15:48:56.967685", "operation": "relationships_created", "details": {"type": "CONNECTED_TO_SEGMENT", "count": 158}}
+{"timestamp": "2025-10-31T15:48:57.011091", "operation": "relationships_created", "details": {"type": "ROUTES_TO", "count": 150}}
+{"timestamp": "2025-10-31T15:48:57.061322", "operation": "relationships_created", "details": {"type": "GRANTS_PHYSICAL_ACCESS_TO", "count": 1354}}
+{"timestamp": "2025-10-31T15:48:57.102686", "operation": "relationships_created", "details": {"type": "MONITORS", "count": 50}}
+{"timestamp": "2025-10-31T15:48:57.149201", "operation": "wave_8_execution_error", "details": {"error": "{neo4j_code: Neo.ClientError.Statement.TypeError} {message: Property values can only be of primitive types or arrays thereof. Encountered: Map{vcpu -> Long(8), storage_gb -> Long(500), ram_gb -> Long(64)}.} {gql_status: 22G03} {gql_status_description: error: data exception - invalid value type}"}}
+{"timestamp": "2025-10-31T15:49:17.048370", "operation": "wave_8_execution_started", "details": {"timestamp": "2025-10-31T15:49:17.048342"}}
+{"timestamp": "2025-10-31T15:49:17.048534", "operation": "phase_started", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T15:49:17.052638", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT server_id_unique IF NOT EXISTS FOR (s:Server) REQUIRE s.server..."}}
+{"timestamp": "2025-10-31T15:49:17.054244", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_hostname_idx IF NOT EXISTS FOR (s:Server) ON (s.hostname)..."}}
+{"timestamp": "2025-10-31T15:49:17.056006", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_ip_idx IF NOT EXISTS FOR (s:Server) ON (s.primary_ip_address..."}}
+{"timestamp": "2025-10-31T15:49:17.058432", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_role_idx IF NOT EXISTS FOR (s:Server) ON (s.server_role)..."}}
+{"timestamp": "2025-10-31T15:49:17.060486", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_criticality_idx IF NOT EXISTS FOR (s:Server) ON (s.criticali..."}}
+{"timestamp": "2025-10-31T15:49:17.061994", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX server_network_segment_idx IF NOT EXISTS FOR (s:Server) ON (s.netwo..."}}
+{"timestamp": "2025-10-31T15:49:17.063402", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT network_device_id_unique IF NOT EXISTS FOR (nd:NetworkDevice) ..."}}
+{"timestamp": "2025-10-31T15:49:17.064860", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_device_hostname_idx IF NOT EXISTS FOR (nd:NetworkDevice) ON..."}}
+{"timestamp": "2025-10-31T15:49:17.066061", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_device_mgmt_ip_idx IF NOT EXISTS FOR (nd:NetworkDevice) ON ..."}}
+{"timestamp": "2025-10-31T15:49:17.067168", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_device_type_idx IF NOT EXISTS FOR (nd:NetworkDevice) ON (nd..."}}
+{"timestamp": "2025-10-31T15:49:17.068348", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_device_role_idx IF NOT EXISTS FOR (nd:NetworkDevice) ON (nd..."}}
+{"timestamp": "2025-10-31T15:49:17.069591", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT network_segment_id_unique IF NOT EXISTS FOR (ns:NetworkSegment..."}}
+{"timestamp": "2025-10-31T15:49:17.070830", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_segment_name_idx IF NOT EXISTS FOR (ns:NetworkSegment) ON (..."}}
+{"timestamp": "2025-10-31T15:49:17.072097", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_segment_zone_idx IF NOT EXISTS FOR (ns:NetworkSegment) ON (..."}}
+{"timestamp": "2025-10-31T15:49:17.073433", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX network_segment_trust_idx IF NOT EXISTS FOR (ns:NetworkSegment) ON ..."}}
+{"timestamp": "2025-10-31T15:49:17.075400", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT physical_access_control_id_unique IF NOT EXISTS FOR (pac:Physi..."}}
+{"timestamp": "2025-10-31T15:49:17.076711", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX physical_access_zone_idx IF NOT EXISTS FOR (pac:PhysicalAccessContr..."}}
+{"timestamp": "2025-10-31T15:49:17.077917", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT surveillance_id_unique IF NOT EXISTS FOR (ss:SurveillanceSyste..."}}
+{"timestamp": "2025-10-31T15:49:17.079309", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX surveillance_system_type_idx IF NOT EXISTS FOR (ss:SurveillanceSyst..."}}
+{"timestamp": "2025-10-31T15:49:17.080735", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT data_center_facility_id_unique IF NOT EXISTS FOR (dcf:DataCent..."}}
+{"timestamp": "2025-10-31T15:49:17.081994", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX data_center_facility_name_idx IF NOT EXISTS FOR (dcf:DataCenterFaci..."}}
+{"timestamp": "2025-10-31T15:49:17.083178", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX data_center_tier_idx IF NOT EXISTS FOR (dcf:DataCenterFacility) ON ..."}}
+{"timestamp": "2025-10-31T15:49:17.083433", "operation": "phase_completed", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T15:49:17.083508", "operation": "phase_started", "details": {"phase": "create_it_infrastructure_nodes"}}
+{"timestamp": "2025-10-31T15:49:17.104832", "operation": "wave_8_execution_error", "details": {"error": "{neo4j_code: Neo.ClientError.Schema.ConstraintValidationFailed} {message: Node(396652) already exists with label `Server` and property `server_id` = 'SRV-DC-01'} {gql_status: 50N42} {gql_status_description: error: general processing exception - unexpected error. Unexpected error has occurred. See debug log for details.}"}}

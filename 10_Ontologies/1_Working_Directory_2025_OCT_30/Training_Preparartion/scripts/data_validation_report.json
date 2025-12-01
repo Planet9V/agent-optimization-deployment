@@ -1,0 +1,461 @@
+{
+  "timestamp": "2025-11-07T21:39:09.497542",
+  "neo4j_state": {
+    "nodes": {
+      "cve": 316552,
+      "cwe": 2214,
+      "capec": 613,
+      "attack_technique": 834
+    },
+    "relationships": {
+      "cve_cwe": 886,
+      "cwe_capec": 0,
+      "capec_technique": 0
+    },
+    "coverage": {
+      "epss": 300461,
+      "epss_percent": 94.92
+    },
+    "issues": {
+      "cwes_null_id": 1079
+    }
+  },
+  "nvd_validation": {
+    "sample_size": 50,
+    "cves_with_cwe": 16,
+    "cves_without_cwe": 34,
+    "coverage_percent": 32.0,
+    "unique_cwes": 12,
+    "cwe_frequency": {
+      "cwe-20": 1,
+      "cwe-119": 2,
+      "cwe-125": 3,
+      "cwe-327": 1,
+      "cwe-1067": 1,
+      "cwe-290": 1,
+      "cwe-522": 1,
+      "cwe-364": 1,
+      "cwe-434": 1,
+      "cwe-120": 2,
+      "cwe-77": 1,
+      "cwe-78": 1
+    },
+    "nvd_results": [
+      {
+        "cve_id": "CVE-1999-0001",
+        "description": "ip_input.c in BSD-derived TCP/IP implementations allows remote attackers to cause a denial of service (crash or hang) via crafted packets.",
+        "cwe_ids": [
+          "cwe-20"
+        ],
+        "published": "1999-12-30T05:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0002",
+        "description": "Buffer overflow in NFS mountd gives root access to remote attackers, mostly in Linux systems.",
+        "cwe_ids": [
+          "cwe-119"
+        ],
+        "published": "1998-10-12T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0003",
+        "description": "Execute commands as root via buffer overflow in Tooltalk database server (rpc.ttdbserverd).",
+        "cwe_ids": [],
+        "published": "1998-04-01T05:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0004",
+        "description": "MIME buffer overflow in email clients, e.g. Solaris mailtool and Outlook.",
+        "cwe_ids": [],
+        "published": "1997-12-16T05:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0005",
+        "description": "Arbitrary command execution via IMAP buffer overflow in authenticate command.",
+        "cwe_ids": [],
+        "published": "1998-07-20T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0006",
+        "description": "Buffer overflow in POP servers based on BSD/Qualcomm's qpopper allows remote attackers to gain root access using a long PASS command.",
+        "cwe_ids": [
+          "cwe-125"
+        ],
+        "published": "1998-07-14T04:00:00.000",
+        "cvss_v3": 9.8
+      },
+      {
+        "cve_id": "CVE-1999-0007",
+        "description": "Information from SSL-encrypted sessions via PKCS #1.",
+        "cwe_ids": [
+          "cwe-327"
+        ],
+        "published": "1998-06-26T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0008",
+        "description": "Buffer overflow in NIS+, in Sun's rpc.nisd program.",
+        "cwe_ids": [],
+        "published": "1998-06-08T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0009",
+        "description": "Inverse query buffer overflow in BIND 4.9 and BIND 8 Releases.",
+        "cwe_ids": [],
+        "published": "1998-04-08T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0010",
+        "description": "Denial of Service vulnerability in BIND 8 Releases via maliciously formatted DNS messages.",
+        "cwe_ids": [],
+        "published": "1998-04-08T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0011",
+        "description": "Denial of Service vulnerabilities in BIND 4.9 and BIND 8 Releases via CNAME record and zone transfer.",
+        "cwe_ids": [
+          "cwe-1067"
+        ],
+        "published": "1998-04-08T04:00:00.000",
+        "cvss_v3": 5.4
+      },
+      {
+        "cve_id": "CVE-1999-0012",
+        "description": "Some web servers under Microsoft Windows allow remote attackers to bypass access restrictions for files with long file names.",
+        "cwe_ids": [
+          "cwe-290"
+        ],
+        "published": "1998-02-06T05:00:00.000",
+        "cvss_v3": 7.0
+      },
+      {
+        "cve_id": "CVE-1999-0013",
+        "description": "Stolen credentials from SSH clients via ssh-agent program, allowing other local users to access remote accounts belonging to the ssh-agent user.",
+        "cwe_ids": [
+          "cwe-522"
+        ],
+        "published": "1998-01-22T05:00:00.000",
+        "cvss_v3": 8.4
+      },
+      {
+        "cve_id": "CVE-1999-0014",
+        "description": "Unauthorized privileged access or denial of service via dtappgather program in CDE.",
+        "cwe_ids": [],
+        "published": "1998-01-21T05:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0015",
+        "description": "Teardrop IP denial of service.",
+        "cwe_ids": [],
+        "published": "1997-12-16T05:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0016",
+        "description": "Land IP denial of service.",
+        "cwe_ids": [],
+        "published": "1997-12-01T05:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0017",
+        "description": "FTP servers can allow an attacker to connect to arbitrary ports on machines other than the FTP client, aka FTP bounce.",
+        "cwe_ids": [],
+        "published": "1997-12-10T05:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0018",
+        "description": "Buffer overflow in statd allows root privileges.",
+        "cwe_ids": [],
+        "published": "1997-12-05T05:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0019",
+        "description": "Delete or create a file via rpc.statd, due to invalid information.",
+        "cwe_ids": [],
+        "published": "1996-04-24T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0020",
+        "description": "Rejected reason: DO NOT USE THIS CANDIDATE NUMBER.  ConsultIDs: CVE-1999-0032.  Reason: This candidate is a duplicate of CVE-1999-0032.  Notes: All CVE users should reference CVE-1999-0032 instead of this candidate.  All references and descriptions in this candidate have been removed to prevent accidental usage",
+        "cwe_ids": [],
+        "published": "1999-01-01T05:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0021",
+        "description": "Arbitrary command execution via buffer overflow in Count.cgi (wwwcount) cgi-bin program.",
+        "cwe_ids": [],
+        "published": "1997-11-05T05:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0022",
+        "description": "Local user gains root privileges via buffer overflow in rdist, via expstr() function.",
+        "cwe_ids": [
+          "cwe-125"
+        ],
+        "published": "1996-07-03T04:00:00.000",
+        "cvss_v3": 7.8
+      },
+      {
+        "cve_id": "CVE-1999-0023",
+        "description": "Local user gains root privileges via buffer overflow in rdist, via lookup() function.",
+        "cwe_ids": [],
+        "published": "1996-07-24T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0024",
+        "description": "DNS cache poisoning via BIND, by predictable query IDs.",
+        "cwe_ids": [],
+        "published": "1997-08-13T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0025",
+        "description": "root privileges via buffer overflow in df command on SGI IRIX systems.",
+        "cwe_ids": [],
+        "published": "1997-07-16T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0026",
+        "description": "root privileges via buffer overflow in pset command on SGI IRIX systems.",
+        "cwe_ids": [],
+        "published": "1997-07-16T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0027",
+        "description": "root privileges via buffer overflow in eject command on SGI IRIX systems.",
+        "cwe_ids": [
+          "cwe-119"
+        ],
+        "published": "1997-07-16T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0028",
+        "description": "root privileges via buffer overflow in login/scheme command on SGI IRIX systems.",
+        "cwe_ids": [],
+        "published": "1997-07-16T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0029",
+        "description": "root privileges via buffer overflow in ordist command on SGI IRIX systems.",
+        "cwe_ids": [
+          "cwe-125"
+        ],
+        "published": "1997-07-16T04:00:00.000",
+        "cvss_v3": 8.4
+      },
+      {
+        "cve_id": "CVE-1999-0030",
+        "description": "root privileges via buffer overflow in xlock command on SGI IRIX systems.",
+        "cwe_ids": [],
+        "published": "1997-07-16T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0031",
+        "description": "JavaScript in Internet Explorer 3.x and 4.x, and Netscape 2.x, 3.x and 4.x, allows remote attackers to monitor a user's web activities, aka the Bell Labs vulnerability.",
+        "cwe_ids": [],
+        "published": "1997-07-08T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0032",
+        "description": "Buffer overflow in lpr, as used in BSD-based systems including Linux, allows local users to execute arbitrary code as root via a long -C (classification) command line option.",
+        "cwe_ids": [],
+        "published": "1996-10-25T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0033",
+        "description": "Command execution in Sun systems via buffer overflow in the at program.",
+        "cwe_ids": [],
+        "published": "1997-06-12T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0034",
+        "description": "Buffer overflow in suidperl (sperl), Perl 4.x and 5.x.",
+        "cwe_ids": [],
+        "published": "1997-05-29T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0035",
+        "description": "Race condition in signal handling routine in ftpd, allowing read/write arbitrary files.",
+        "cwe_ids": [
+          "cwe-364"
+        ],
+        "published": "1997-05-29T04:00:00.000",
+        "cvss_v3": 5.4
+      },
+      {
+        "cve_id": "CVE-1999-0036",
+        "description": "IRIX login program with a nonzero LOCKOUT parameter allows creation or damage to files.",
+        "cwe_ids": [
+          "cwe-434"
+        ],
+        "published": "1997-05-26T04:00:00.000",
+        "cvss_v3": 8.4
+      },
+      {
+        "cve_id": "CVE-1999-0037",
+        "description": "Arbitrary command execution via metamail package using message headers, when user processes attacker's message using metamail.",
+        "cwe_ids": [],
+        "published": "1997-05-21T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0038",
+        "description": "Buffer overflow in xlock program allows local users to execute commands as root.",
+        "cwe_ids": [
+          "cwe-120"
+        ],
+        "published": "1997-04-26T04:00:00.000",
+        "cvss_v3": 8.4
+      },
+      {
+        "cve_id": "CVE-1999-0039",
+        "description": "webdist CGI program (webdist.cgi) in SGI IRIX allows remote attackers to execute arbitrary commands via shell metacharacters in the distloc parameter.",
+        "cwe_ids": [
+          "cwe-77"
+        ],
+        "published": "1997-05-06T04:00:00.000",
+        "cvss_v3": 7.3
+      },
+      {
+        "cve_id": "CVE-1999-0040",
+        "description": "Buffer overflow in Xt library of X Windowing System allows local users to execute commands with root privileges.",
+        "cwe_ids": [],
+        "published": "1997-05-01T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0041",
+        "description": "Buffer overflow in NLS (Natural Language Service).",
+        "cwe_ids": [],
+        "published": "1997-02-13T05:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0042",
+        "description": "Buffer overflow in University of Washington's implementation of IMAP and POP servers.",
+        "cwe_ids": [],
+        "published": "1997-04-07T04:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0043",
+        "description": "Command execution via shell metachars in INN daemon (innd) 1.5 using \"newgroup\" and \"rmgroup\" control messages, and others.",
+        "cwe_ids": [
+          "cwe-78"
+        ],
+        "published": "1996-12-04T05:00:00.000",
+        "cvss_v3": 9.8
+      },
+      {
+        "cve_id": "CVE-1999-0044",
+        "description": "fsdump command in IRIX allows local users to obtain root access by modifying sensitive files.",
+        "cwe_ids": [],
+        "published": "1996-12-03T05:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0045",
+        "description": "List of arbitrary files on Web host via nph-test-cgi script.",
+        "cwe_ids": [],
+        "published": "1996-12-10T05:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0046",
+        "description": "Buffer overflow of rlogin program using TERM environmental variable.",
+        "cwe_ids": [
+          "cwe-120"
+        ],
+        "published": "1997-02-06T05:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0047",
+        "description": "MIME conversion buffer overflow in sendmail versions 8.8.3 and 8.8.4.",
+        "cwe_ids": [],
+        "published": "1997-01-28T05:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0048",
+        "description": "Talkd, when given corrupt DNS information, can be used to execute arbitrary commands with root privileges.",
+        "cwe_ids": [],
+        "published": "1997-01-27T05:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0049",
+        "description": "Csetup under IRIX allows arbitrary file creation or overwriting.",
+        "cwe_ids": [],
+        "published": "1997-01-08T05:00:00.000",
+        "cvss_v3": null
+      },
+      {
+        "cve_id": "CVE-1999-0050",
+        "description": "Buffer overflow in HP-UX newgrp program.",
+        "cwe_ids": [],
+        "published": "1996-12-01T05:00:00.000",
+        "cvss_v3": null
+      }
+    ]
+  },
+  "gaps_identified": {
+    "cve_cwe_relationships": {
+      "current": 886,
+      "expected_minimum": 101296,
+      "gap": "CRITICAL"
+    },
+    "cwe_completeness": {
+      "current": 2214,
+      "null_ids": 1079,
+      "status": "INCOMPLETE"
+    },
+    "epss_coverage": {
+      "current": 94.92,
+      "status": "INCOMPLETE"
+    }
+  },
+  "recommendations": [
+    {
+      "priority": "HIGH",
+      "action": "Fetch official CVE\u2192CWE mappings from NVD API for all 316K CVEs",
+      "rationale": "Only 886 relationships exist, need 100K+"
+    },
+    {
+      "priority": "HIGH",
+      "action": "Import CWE v4.18 XML to fix 1079 NULL IDs",
+      "rationale": "Missing CWE definitions prevent relationship creation"
+    },
+    {
+      "priority": "MEDIUM",
+      "action": "Download and parse CAPEC v3.9 XML for CWE\u2192CAPEC mappings",
+      "rationale": "Required for complete attack chain creation"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+# Qdrant Agents - Python Dependencies
+# Created: 2025-10-31
+# Purpose: Specialized Qdrant agents for Claude-Flow integration
+
+# Core Dependencies
+qdrant-client>=1.7.0           # Qdrant Python SDK
+openai>=1.10.0                 # OpenAI embeddings
+pydantic>=2.5.0                # Data validation
+pyyaml>=6.0.1                  # Configuration parsing
+
+# Data Processing
+numpy>=1.24.0                  # Numerical operations
+pandas>=2.0.0                  # Data analysis
+scikit-learn>=1.3.0            # Pattern clustering
+
+# Async & Performance
+aiohttp>=3.9.0                 # Async HTTP
+tenacity>=8.2.0                # Retry logic
+
+# Monitoring & Logging
+structlog>=23.2.0              # Structured logging
+python-json-logger>=2.0.7      # JSON logging
+
+# Visualization (Analytics Agent)
+matplotlib>=3.7.0              # Chart generation
+plotly>=5.18.0                 # Interactive dashboards
+
+# Git Integration (Sync Agent)
+gitpython>=3.1.40              # Git automation
+
+# Testing
+pytest>=7.4.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.1.0
+pytest-mock>=3.12.0
+
+# Development
+black>=23.12.0                 # Code formatting
+mypy>=1.7.0                    # Type checking
+ruff>=0.1.9                    # Linting

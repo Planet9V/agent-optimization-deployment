@@ -1,0 +1,56 @@
+{"timestamp": "2025-10-31T15:11:37.648158", "operation": "wave_4_execution_started", "details": {"timestamp": "2025-10-31T15:11:37.648042"}}
+{"timestamp": "2025-10-31T15:11:37.648446", "operation": "phase_started", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T15:11:37.700543", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT threat_actor_id_unique IF NOT EXISTS FOR (..."}}
+{"timestamp": "2025-10-31T15:11:37.757368", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT attack_pattern_id_unique IF NOT EXISTS FOR..."}}
+{"timestamp": "2025-10-31T15:11:37.798085", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT ttp_id_unique IF NOT EXISTS FOR (ttp:TTP) ..."}}
+{"timestamp": "2025-10-31T15:11:37.840503", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT campaign_id_unique IF NOT EXISTS FOR (camp..."}}
+{"timestamp": "2025-10-31T15:11:37.880650", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT detection_signature_id_unique IF NOT EXIST..."}}
+{"timestamp": "2025-10-31T15:11:37.921593", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT mitigation_id_unique IF NOT EXISTS FOR (mi..."}}
+{"timestamp": "2025-10-31T15:11:37.961391", "operation": "constraint_or_index_created", "details": {"statement": "CREATE CONSTRAINT indicator_id_unique IF NOT EXISTS FOR (ind..."}}
+{"timestamp": "2025-10-31T15:11:37.970355", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX threat_actor_type_idx IF NOT EXISTS FOR (ta:Thr..."}}
+{"timestamp": "2025-10-31T15:11:37.976258", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX threat_actor_attribution_idx IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T15:11:37.995417", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX threat_actor_sectors_idx IF NOT EXISTS FOR (ta:..."}}
+{"timestamp": "2025-10-31T15:11:38.007049", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX attack_pattern_mitre_idx IF NOT EXISTS FOR (ap:..."}}
+{"timestamp": "2025-10-31T15:11:38.019493", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX attack_pattern_tactics_idx IF NOT EXISTS FOR (a..."}}
+{"timestamp": "2025-10-31T15:11:38.035502", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX ttp_type_idx IF NOT EXISTS FOR (ttp:TTP) ON (tt..."}}
+{"timestamp": "2025-10-31T15:11:38.044561", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX campaign_status_idx IF NOT EXISTS FOR (camp:Cam..."}}
+{"timestamp": "2025-10-31T15:11:38.061392", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX campaign_sectors_idx IF NOT EXISTS FOR (camp:Ca..."}}
+{"timestamp": "2025-10-31T15:11:38.074071", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX detection_signature_type_idx IF NOT EXISTS FOR ..."}}
+{"timestamp": "2025-10-31T15:11:38.089967", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX detection_severity_idx IF NOT EXISTS FOR (ds:De..."}}
+{"timestamp": "2025-10-31T15:11:38.104659", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX mitigation_type_idx IF NOT EXISTS FOR (mit:Miti..."}}
+{"timestamp": "2025-10-31T15:11:38.122700", "operation": "constraint_or_index_created", "details": {"statement": "CREATE INDEX indicator_type_idx IF NOT EXISTS FOR (ind:Indic..."}}
+{"timestamp": "2025-10-31T15:11:38.129193", "operation": "phase_completed", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T15:11:38.129357", "operation": "phase_started", "details": {"phase": "create_threat_actors", "target_count": 50}}
+{"timestamp": "2025-10-31T15:11:38.180145", "operation": "threat_actors_created", "details": {"count": 50}}
+{"timestamp": "2025-10-31T15:11:38.180394", "operation": "phase_completed", "details": {"phase": "create_threat_actors", "nodes_created": 50}}
+{"timestamp": "2025-10-31T15:11:38.180519", "operation": "phase_started", "details": {"phase": "create_attack_patterns", "target_count": 200}}
+{"timestamp": "2025-10-31T15:11:38.227399", "operation": "attack_patterns_created", "details": {"count": 200}}
+{"timestamp": "2025-10-31T15:11:38.227577", "operation": "phase_completed", "details": {"phase": "create_attack_patterns", "nodes_created": 200}}
+{"timestamp": "2025-10-31T15:11:38.227639", "operation": "phase_started", "details": {"phase": "create_ttps", "target_count": 500}}
+{"timestamp": "2025-10-31T15:11:38.282908", "operation": "ttps_created", "details": {"count": 500}}
+{"timestamp": "2025-10-31T15:11:38.283095", "operation": "phase_completed", "details": {"phase": "create_ttps", "nodes_created": 500}}
+{"timestamp": "2025-10-31T15:11:38.283156", "operation": "phase_started", "details": {"phase": "create_campaigns", "target_count": 100}}
+{"timestamp": "2025-10-31T15:11:38.317066", "operation": "campaigns_created", "details": {"count": 100}}
+{"timestamp": "2025-10-31T15:11:38.317249", "operation": "phase_completed", "details": {"phase": "create_campaigns", "nodes_created": 100}}
+{"timestamp": "2025-10-31T15:11:38.317315", "operation": "phase_started", "details": {"phase": "create_detection_signatures", "target_count": 1000}}
+{"timestamp": "2025-10-31T15:11:38.387229", "operation": "detection_signatures_created", "details": {"count": 1000}}
+{"timestamp": "2025-10-31T15:11:38.387425", "operation": "phase_completed", "details": {"phase": "create_detection_signatures", "nodes_created": 1000}}
+{"timestamp": "2025-10-31T15:11:38.387483", "operation": "phase_started", "details": {"phase": "create_mitigations", "target_count": 300}}
+{"timestamp": "2025-10-31T15:11:38.422369", "operation": "mitigations_created", "details": {"count": 300}}
+{"timestamp": "2025-10-31T15:11:38.422555", "operation": "phase_completed", "details": {"phase": "create_mitigations", "nodes_created": 300}}
+{"timestamp": "2025-10-31T15:11:38.422614", "operation": "phase_started", "details": {"phase": "create_indicators", "target_count": 5000}}
+{"timestamp": "2025-10-31T15:11:38.900611", "operation": "indicators_created", "details": {"count": 5000}}
+{"timestamp": "2025-10-31T15:11:38.900801", "operation": "phase_completed", "details": {"phase": "create_indicators", "nodes_created": 5000}}
+{"timestamp": "2025-10-31T15:11:38.900867", "operation": "phase_started", "details": {"phase": "create_relationships"}}
+{"timestamp": "2025-10-31T15:11:38.950221", "operation": "relationships_created", "details": {"type": "ORCHESTRATES_CAMPAIGN", "count": 150}}
+{"timestamp": "2025-10-31T15:11:39.061894", "operation": "relationships_created", "details": {"type": "USES_ATTACK_PATTERN", "count": 976}}
+{"timestamp": "2025-10-31T15:11:39.164894", "operation": "relationships_created", "details": {"type": "IMPLEMENTS", "count": 1599}}
+{"timestamp": "2025-10-31T15:11:39.962765", "operation": "relationships_created", "details": {"type": "TARGETS_DEVICE", "count": 4483}}
+{"timestamp": "2025-10-31T15:11:40.105444", "operation": "relationships_created", "details": {"type": "DETECTS", "count": 1998}}
+{"timestamp": "2025-10-31T15:11:40.192761", "operation": "relationships_created", "details": {"type": "MITIGATES", "count": 911}}
+{"timestamp": "2025-10-31T15:11:40.243572", "operation": "relationships_created", "details": {"type": "USES_TTP", "count": 472}}
+{"timestamp": "2025-10-31T15:11:40.447002", "operation": "relationships_created", "details": {"type": "INDICATES", "count": 8000}}
+{"timestamp": "2025-10-31T15:11:40.508255", "operation": "relationships_created", "details": {"type": "EXPLOITS_CVE", "count": 0}}
+{"timestamp": "2025-10-31T15:11:40.571749", "operation": "relationships_created", "details": {"type": "PART_OF_CAMPAIGN", "count": 500}}
+{"timestamp": "2025-10-31T15:11:40.571955", "operation": "phase_completed", "details": {"phase": "create_relationships", "total_relationships": 19089}}
+{"timestamp": "2025-10-31T15:11:40.572054", "operation": "wave_4_execution_completed", "details": {"timestamp": "2025-10-31T15:11:40.572050", "nodes_created": 7150, "relationships_created": 19089}}

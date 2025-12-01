@@ -1,0 +1,403 @@
+{
+  "neural_training_config": {
+    "metadata": {
+      "name": "NER10-Week1-Foundation-Training",
+      "version": "1.0.0",
+      "created": "2025-11-25",
+      "status": "READY_FOR_PHASE_4_INTEGRATION",
+      "training_phase": "Week 1 Neural Pattern Foundation"
+    },
+
+    "training_data_source": {
+      "annotated_count": 2137,
+      "total_target": 15000,
+      "coverage": 34.6,
+      "quality_baseline": "Good",
+      "validation_status": "Phase 1 Complete"
+    },
+
+    "entity_types": [
+      {
+        "entity_type": "COGNITIVE_BIAS",
+        "count": 652,
+        "confidence": 0.91,
+        "validation_rate": 0.98,
+        "boundary_pattern": "Named bias with modifiers (1-4 words)",
+        "training_priority": "HIGH",
+        "ready_for_training": true
+      },
+      {
+        "entity_type": "THREAT_VECTOR",
+        "count": 521,
+        "confidence": 0.89,
+        "validation_rate": 0.96,
+        "boundary_pattern": "Attack technique name (2-5 words)",
+        "training_priority": "HIGH",
+        "ready_for_training": true
+      },
+      {
+        "entity_type": "ATTACKER_MOTIVATION",
+        "count": 423,
+        "confidence": 0.87,
+        "validation_rate": 0.95,
+        "boundary_pattern": "Motivation type description (2-4 words)",
+        "training_priority": "HIGH",
+        "ready_for_training": true
+      },
+      {
+        "entity_type": "DEFENSE_MECHANISM",
+        "count": 512,
+        "confidence": 0.85,
+        "validation_rate": 0.93,
+        "boundary_pattern": "Control name with optional type (2-6 words)",
+        "training_priority": "HIGH",
+        "ready_for_training": true
+      },
+      {
+        "entity_type": "EMOTION",
+        "count": 143,
+        "confidence": 0.71,
+        "validation_rate": 0.68,
+        "boundary_pattern": "Emotional state with intensity (1-3 words)",
+        "training_priority": "CRITICAL_GAP",
+        "ready_for_training": false,
+        "correction_target": 600,
+        "gap": 457
+      },
+      {
+        "entity_type": "SECURITY_CULTURE",
+        "count": 201,
+        "confidence": 0.72,
+        "validation_rate": 0.70,
+        "boundary_pattern": "Culture type with scope (2-4 words)",
+        "training_priority": "CRITICAL_GAP",
+        "ready_for_training": false,
+        "correction_target": 800,
+        "gap": 599
+      },
+      {
+        "entity_type": "COMMUNICATION_PATTERN",
+        "count": 167,
+        "confidence": 0.68,
+        "validation_rate": 0.66,
+        "boundary_pattern": "Communication type with direction (2-5 words)",
+        "training_priority": "CRITICAL_GAP",
+        "ready_for_training": false,
+        "correction_target": 650,
+        "gap": 483
+      },
+      {
+        "entity_type": "DETECTION_METHOD",
+        "count": 456,
+        "confidence": 0.83,
+        "validation_rate": 0.92,
+        "boundary_pattern": "Detection technique name (2-5 words)",
+        "training_priority": "HIGH",
+        "ready_for_training": true
+      },
+      {
+        "entity_type": "MITIGATION_ACTION",
+        "count": 498,
+        "confidence": 0.82,
+        "validation_rate": 0.91,
+        "boundary_pattern": "Mitigation action description (2-6 words)",
+        "training_priority": "HIGH",
+        "ready_for_training": true
+      },
+      {
+        "entity_type": "HISTORICAL_PATTERN",
+        "count": 365,
+        "confidence": 0.84,
+        "validation_rate": 0.94,
+        "boundary_pattern": "Named incident or pattern (2-5 words)",
+        "training_priority": "MEDIUM",
+        "ready_for_training": true
+      },
+      {
+        "entity_type": "DECISION_FACTOR",
+        "count": 387,
+        "confidence": 0.83,
+        "validation_rate": 0.92,
+        "boundary_pattern": "Decision influence descriptor (2-5 words)",
+        "training_priority": "MEDIUM",
+        "ready_for_training": true
+      },
+      {
+        "entity_type": "BEHAVIORAL_INDICATOR",
+        "count": 389,
+        "confidence": 0.81,
+        "validation_rate": 0.90,
+        "boundary_pattern": "Behavior pattern description (2-4 words)",
+        "training_priority": "MEDIUM",
+        "ready_for_training": true
+      },
+      {
+        "entity_type": "THREAT_PERCEPTION",
+        "count": 287,
+        "confidence": 0.79,
+        "validation_rate": 0.88,
+        "boundary_pattern": "Perception type with context (2-4 words)",
+        "training_priority": "MEDIUM",
+        "ready_for_training": true
+      },
+      {
+        "entity_type": "ORGANIZATIONAL_CONTEXT",
+        "count": 298,
+        "confidence": 0.80,
+        "validation_rate": 0.89,
+        "boundary_pattern": "Org context descriptor (2-4 words)",
+        "training_priority": "MEDIUM",
+        "ready_for_training": true
+      },
+      {
+        "entity_type": "INCIDENT_CHARACTERISTIC",
+        "count": 434,
+        "confidence": 0.81,
+        "validation_rate": 0.90,
+        "boundary_pattern": "Incident feature description (2-5 words)",
+        "training_priority": "MEDIUM",
+        "ready_for_training": true
+      },
+      {
+        "entity_type": "STAKEHOLDER_ROLE",
+        "count": 276,
+        "confidence": 0.79,
+        "validation_rate": 0.88,
+        "boundary_pattern": "Role name with context (2-4 words)",
+        "training_priority": "LOW",
+        "ready_for_training": true
+      },
+      {
+        "entity_type": "FUTURE_THREAT",
+        "count": 189,
+        "confidence": 0.77,
+        "validation_rate": 0.86,
+        "boundary_pattern": "Threat prediction description (2-6 words)",
+        "training_priority": "CRITICAL_GAP",
+        "ready_for_training": false,
+        "correction_target": 700,
+        "gap": 511
+      },
+      {
+        "entity_type": "LACANIAN_AXIS",
+        "count": 124,
+        "confidence": 0.65,
+        "validation_rate": 0.62,
+        "boundary_pattern": "Lacanian concept with application (2-4 words)",
+        "training_priority": "CRITICAL_GAP",
+        "ready_for_training": false,
+        "correction_target": 500,
+        "gap": 376
+      }
+    ],
+
+    "relationship_patterns": [
+      {
+        "relationship_id": "RP-001-COGNITIVE-BIAS-MITIGATED-BY-DEFENSE",
+        "source_entity": "COGNITIVE_BIAS",
+        "target_entity": "DEFENSE_MECHANISM",
+        "relationship_type": "MITIGATED_BY",
+        "frequency": 0.44,
+        "confidence": 0.89,
+        "context_markers": ["mitigation for", "reduces impact of", "control for"],
+        "training_signal": 0.44
+      },
+      {
+        "relationship_id": "RP-002-THREAT-VECTOR-DETECTED-BY-DETECTION-METHOD",
+        "source_entity": "THREAT_VECTOR",
+        "target_entity": "DETECTION_METHOD",
+        "relationship_type": "DETECTED_BY",
+        "frequency": 0.599,
+        "confidence": 0.92,
+        "context_markers": ["detect", "identified by", "signatures for"],
+        "training_signal": 0.58
+      },
+      {
+        "relationship_id": "RP-003-EMOTION-TRIGGERS-COGNITIVE-BIAS",
+        "source_entity": "EMOTION",
+        "target_entity": "COGNITIVE_BIAS",
+        "relationship_type": "TRIGGERS",
+        "frequency": 0.685,
+        "confidence": 0.90,
+        "context_markers": ["drives", "activates", "triggers", "induces"],
+        "training_signal": 0.65
+      },
+      {
+        "relationship_id": "RP-004-ATTACKER-MOTIVATION-EVIDENCED-BY-HISTORICAL-PATTERN",
+        "source_entity": "ATTACKER_MOTIVATION",
+        "target_entity": "HISTORICAL_PATTERN",
+        "relationship_type": "EVIDENCED_BY",
+        "frequency": 0.579,
+        "confidence": 0.88,
+        "context_markers": ["demonstrated in", "evident in", "shown by"],
+        "training_signal": 0.52
+      },
+      {
+        "relationship_id": "RP-005-THREAT-VECTOR-AFFECTS-STAKEHOLDER",
+        "source_entity": "THREAT_VECTOR",
+        "target_entity": "STAKEHOLDER_ROLE",
+        "relationship_type": "AFFECTS",
+        "frequency": 0.357,
+        "confidence": 0.84,
+        "context_markers": ["impacts", "affects", "targets", "exploits"],
+        "training_signal": 0.30
+      }
+    ],
+
+    "dependency_chains": [
+      {
+        "chain_id": "EC-001-BIAS-ANALYSIS",
+        "entity_sequence": ["COGNITIVE_BIAS", "EMOTION", "BEHAVIORAL_INDICATOR", "DECISION_FACTOR", "MITIGATION_ACTION"],
+        "frequency": 0.256,
+        "confidence": 0.85,
+        "description": "Cognitive bias analysis chain from bias through emotion to mitigation"
+      },
+      {
+        "chain_id": "EC-002-THREAT-ANALYSIS",
+        "entity_sequence": ["THREAT_VECTOR", "ATTACKER_MOTIVATION", "HISTORICAL_PATTERN", "FUTURE_THREAT"],
+        "frequency": 0.363,
+        "confidence": 0.84,
+        "description": "Threat intelligence chain from vector through historical to future projection"
+      },
+      {
+        "chain_id": "EC-003-DEFENSE-ANALYSIS",
+        "entity_sequence": ["THREAT_VECTOR", "DEFENSE_MECHANISM", "DETECTION_METHOD", "MITIGATION_ACTION"],
+        "frequency": 0.449,
+        "confidence": 0.86,
+        "description": "Defense framework chain from threat through defense to mitigation"
+      }
+    ],
+
+    "confidence_thresholds": {
+      "high_confidence_entities": {
+        "threshold": 0.85,
+        "entity_types": ["COGNITIVE_BIAS", "THREAT_VECTOR", "ATTACKER_MOTIVATION", "DEFENSE_MECHANISM"],
+        "rationale": "Coverage > 40%, established patterns"
+      },
+      "medium_confidence_entities": {
+        "threshold": 0.75,
+        "entity_types": ["DETECTION_METHOD", "MITIGATION_ACTION", "DECISION_FACTOR", "BEHAVIORAL_INDICATOR", "HISTORICAL_PATTERN", "ORGANIZATIONAL_CONTEXT", "INCIDENT_CHARACTERISTIC"],
+        "rationale": "Coverage 30-40%, developing patterns"
+      },
+      "gap_entities": {
+        "threshold": 0.65,
+        "entity_types": ["EMOTION", "SECURITY_CULTURE", "COMMUNICATION_PATTERN", "LACANIAN_AXIS", "FUTURE_THREAT"],
+        "rationale": "Coverage < 30%, need aggressive learning for gap closure"
+      }
+    },
+
+    "neural_training_directives": [
+      {
+        "rule_id": "NTR-001-BOUNDARY-ENHANCEMENT",
+        "description": "Entity boundary enhancement for high-confidence entities",
+        "source_patterns": ["COGNITIVE_BIAS (91% confidence)"],
+        "training_data_count": 652,
+        "directive": "Learn capitalized bias names with 1-4 word spans"
+      },
+      {
+        "rule_id": "NTR-002-CO-OCCURRENCE-SIGNAL",
+        "description": "Co-occurrence signal boost for predictable relationships",
+        "source_patterns": ["THREAT_VECTOR → DETECTION_METHOD (59.9% frequency)"],
+        "training_data_count": 312,
+        "directive": "When THREAT_VECTOR found, boost DETECTION_METHOD probability +0.58"
+      },
+      {
+        "rule_id": "NTR-003-RELATIONSHIP-CONTEXT",
+        "description": "Relationship context learning for entity connections",
+        "source_patterns": ["MITIGATION relationships (44% frequency)"],
+        "training_data_count": 287,
+        "directive": "Learn preposition patterns for bidirectional relationships"
+      },
+      {
+        "rule_id": "NTR-004-DOCUMENT-STRUCTURE",
+        "description": "Document-level structural integration",
+        "source_patterns": ["Cognitive Bias Reference, MITRE Intelligence, Psychohistory Predictions"],
+        "training_data_count": 5346,
+        "directive": "Apply document-type specific entity distribution expectations"
+      },
+      {
+        "rule_id": "NTR-005-GAP-PRIORITY",
+        "description": "Priority learning for critical gap entities",
+        "source_patterns": ["EMOTION (23.8%), SECURITY_CULTURE (25.1%), COMMUNICATION_PATTERN (25.7%), LACANIAN_AXIS (24.8%)"],
+        "training_data_count": 635,
+        "directive": "Enable aggressive boundary expansion and contextual inference for gap entities"
+      }
+    ],
+
+    "phase_4_integration": {
+      "status": "AWAITING_CORRECTIONS",
+      "correction_targets": {
+        "EMOTION": {
+          "current": 143,
+          "target": 600,
+          "gap": 457,
+          "priority": "CRITICAL"
+        },
+        "SECURITY_CULTURE": {
+          "current": 201,
+          "target": 800,
+          "gap": 599,
+          "priority": "CRITICAL"
+        },
+        "COMMUNICATION_PATTERN": {
+          "current": 167,
+          "target": 650,
+          "gap": 483,
+          "priority": "CRITICAL"
+        },
+        "LACANIAN_AXIS": {
+          "current": 124,
+          "target": 500,
+          "gap": 376,
+          "priority": "CRITICAL"
+        },
+        "FUTURE_THREAT": {
+          "current": 189,
+          "target": 700,
+          "gap": 511,
+          "priority": "CRITICAL"
+        }
+      },
+      "total_phase_4_annotations_needed": 2426,
+      "neural_training_command": "npx claude-flow@alpha neural train --name 'NER10-Week1-Foundation' --version '1.0.0' --patterns './docs/neural_patterns/Week_1_Neural_Pattern_Extraction.md' --validation-data './1_AEON_Cyber_DTv3_2025-11-19/15_NER10_Approach/reports/Quality_Baseline_Report.json' --entity-types 18 --training-samples 2137 --confidence-threshold 0.82 --gap-priority 'EMOTION,SECURITY_CULTURE,COMMUNICATION_PATTERN,LACANIAN_AXIS' --output './docs/neural_patterns/neural_model_week1_trained.json'"
+    },
+
+    "validation_checkpoints": [
+      {
+        "checkpoint": "Week 1 Extraction Complete",
+        "status": "COMPLETE",
+        "items_validated": 2137,
+        "confidence_average": 0.81,
+        "date_completed": "2025-11-25"
+      },
+      {
+        "checkpoint": "Neural Patterns Documented",
+        "status": "COMPLETE",
+        "patterns_documented": 29,
+        "coverage": "100%",
+        "date_completed": "2025-11-25"
+      },
+      {
+        "checkpoint": "Phase 4 Corrections Required",
+        "status": "AWAITING",
+        "annotations_needed": 2426,
+        "entity_types_affected": 5,
+        "estimated_completion": "Week 2-3"
+      },
+      {
+        "checkpoint": "Neural Model Training Ready",
+        "status": "AWAITING",
+        "prerequisites_met": true,
+        "estimated_date": "After Phase 4 Corrections"
+      }
+    ],
+
+    "success_metrics": {
+      "patterns_extracted": "10/10 Entity Boundary Patterns",
+      "confidence_score": 0.81,
+      "training_data_ready": 2137,
+      "validation_status": "Phase 1 Complete",
+      "next_phase": "Phase 4 - Corrections & Neural Training"
+    }
+  }
+}

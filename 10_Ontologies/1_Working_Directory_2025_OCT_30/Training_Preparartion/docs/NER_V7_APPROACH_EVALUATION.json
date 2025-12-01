@@ -1,0 +1,38 @@
+{
+  "semantic_mapping": {
+    "cve_cwes": 111,
+    "capec_cwes": 337,
+    "current_overlap": 1,
+    "manual_mappings_needed": 111,
+    "reliability": "HIGH (if validated by experts)",
+    "effort": "VERY HIGH (50-100+ expert hours)",
+    "risk": "MEDIUM (subjective expert judgment)",
+    "time_to_implement": "2-4 weeks",
+    "achievable_now": false,
+    "score": 6.333333333333333
+  },
+  "probabilistic_inference": {
+    "cve_training_samples": 421,
+    "attack_training_samples": 149,
+    "embedding_coverage": "2177 CWEs for similarity",
+    "overlap_rate": "0.22%",
+    "reliability": "MEDIUM (probabilistic, not deterministic)",
+    "effort": "HIGH (ML model training required)",
+    "risk": "MEDIUM-HIGH (false positive chains)",
+    "time_to_implement": "1-2 weeks",
+    "achievable_now": false,
+    "score": 5.666666666666667
+  },
+  "partial_chain_training": {
+    "cve_cwe_examples": 430,
+    "cve_cwe_diversity": "0.26",
+    "attack_chain_examples": 615,
+    "attack_chain_diversity": "0.96",
+    "reliability": "HIGH (proven approach, validated data)",
+    "effort": "LOW (data already exists)",
+    "risk": "LOW (no chain completion required)",
+    "time_to_implement": "IMMEDIATE (< 1 hour)",
+    "achievable_now": true,
+    "score": 9.0
+  }
+}

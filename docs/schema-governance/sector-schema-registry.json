@@ -1,0 +1,1776 @@
+{
+  "schema_version": "1.0",
+  "created": "2025-11-21T00:00:00Z",
+  "last_updated": "2025-11-22T03:38:20.604600Z",
+  "sectors_registered": [
+    "WATER",
+    "ENERGY",
+    "COMMUNICATIONS",
+    "EMERGENCY_SERVICES",
+    "FOOD_AGRICULTURE",
+    "INFORMATION_TECHNOLOGY",
+    "FINANCIAL_SERVICES"
+  ],
+  "total_sectors_target": 16,
+  "registry_purpose": "Centralized schema governance for multi-sector critical infrastructure knowledge graph",
+  "gold_standard_sectors": {
+    "WATER": {
+      "total_nodes": 27200,
+      "validation_status": "CONFIRMED",
+      "expected_range": "26000-35000",
+      "variance_from_expected": "+1200 nodes (4.6% above expected)",
+      "node_types": {
+        "Measurement": {
+          "count": 19000,
+          "percentage": 69.85,
+          "description": "Monitoring and measurement data points"
+        },
+        "Property": {
+          "count": 4500,
+          "percentage": 16.54,
+          "description": "Water properties and attributes"
+        },
+        "Device": {
+          "count": 1450,
+          "percentage": 5.33,
+          "description": "Physical devices and equipment"
+        },
+        "Process": {
+          "count": 874,
+          "percentage": 3.21,
+          "description": "Treatment and operational processes"
+        },
+        "Control": {
+          "count": 676,
+          "percentage": 2.49,
+          "description": "Control systems and SCADA"
+        },
+        "WaterAlert": {
+          "count": 500,
+          "percentage": 1.84,
+          "description": "Alert and notification nodes"
+        },
+        "WaterZone": {
+          "count": 200,
+          "percentage": 0.74,
+          "description": "Zone and area definitions"
+        }
+      },
+      "relationships": {
+        "total_relationships": 881338,
+        "breakdown": {
+          "VULNERABLE_TO": {
+            "count": 852485,
+            "percentage": 96.73,
+            "description": "Security vulnerability relationships"
+          },
+          "HAS_MEASUREMENT": {
+            "count": 18000,
+            "percentage": 2.04,
+            "description": "Device has measurement data"
+          },
+          "HAS_PROPERTY": {
+            "count": 4500,
+            "percentage": 0.51,
+            "description": "Entity has properties"
+          },
+          "CONTROLS": {
+            "count": 3000,
+            "percentage": 0.34,
+            "description": "Control device controls entity"
+          },
+          "CONTAINS": {
+            "count": 2500,
+            "percentage": 0.28,
+            "description": "Zone or system contains entity"
+          },
+          "USES_DEVICE": {
+            "count": 2000,
+            "percentage": 0.23,
+            "description": "Process uses device"
+          },
+          "EXTENDS_SAREF_DEVICE": {
+            "count": 1500,
+            "percentage": 0.17,
+            "description": "SAREF ontology extension"
+          },
+          "DEPENDS_ON_ENERGY": {
+            "count": 1000,
+            "percentage": 0.11,
+            "description": "Device depends on energy source"
+          },
+          "TRIGGERED_BY": {
+            "count": 1000,
+            "percentage": 0.11,
+            "description": "Alert triggered by measurement"
+          }
+        }
+      },
+      "labels_per_node_avg": 4.32,
+      "labels_per_node_range": {
+        "minimum": 4,
+        "maximum": 8,
+        "median": 4,
+        "mode": 4
+      },
+      "label_distribution": {
+        "4_labels": {
+          "count": 20500,
+          "percentage": 75.37,
+          "description": "Core nodes with sector + type + function + monitoring"
+        },
+        "5_labels": {
+          "count": 4500,
+          "percentage": 16.54,
+          "description": "Enhanced nodes with additional property or ontology labels"
+        },
+        "7_labels": {
+          "count": 1700,
+          "percentage": 6.25,
+          "description": "Complex nodes with SAREF standard compliance"
+        },
+        "8_labels": {
+          "count": 500,
+          "percentage": 1.84,
+          "description": "Health monitoring nodes with maximum label complexity"
+        }
+      },
+      "subsectors": {
+        "Water_Treatment": {
+          "count": 25199,
+          "percentage": 92.64,
+          "description": "Water treatment plants and processes"
+        },
+        "Water_Distribution": {
+          "count": 2001,
+          "percentage": 7.36,
+          "description": "Water distribution networks and infrastructure"
+        }
+      },
+      "ontology_integration": {
+        "SAREF_compliance": {
+          "nodes_with_SAREF": 1500,
+          "percentage_of_total": 5.51,
+          "pattern": "Property + Measurement + SAREF + Monitoring + SAREF_Core"
+        },
+        "Water_specific_ontologies": {
+          "WaterProperty": 3000,
+          "WaterDevice": 1325,
+          "TreatmentProcess": 500,
+          "WaterAlert": 500,
+          "WaterZone": 200
+        },
+        "monitoring_framework": {
+          "total_monitoring_nodes": 25699,
+          "percentage_of_total": 94.47,
+          "key_label": "Monitoring"
+        }
+      },
+      "unique_label_names": 24,
+      "total_label_assignments": 117536
+    },
+    "ENERGY": {
+      "total_nodes": 35475,
+      "validation_status": "COMPLETE",
+      "expected_range": "26000-35000",
+      "variance_from_expected": "Within expected range",
+      "node_types": {
+        "Measurement": {
+          "count": 18000,
+          "percentage": 50.74,
+          "description": "Energy measurement nodes tracking values across transmission systems"
+        },
+        "Device": {
+          "count": 10000,
+          "percentage": 28.19,
+          "description": "Energy devices including EnergyDevice and distributed energy resources"
+        },
+        "Property": {
+          "count": 6000,
+          "percentage": 16.91,
+          "description": "Energy properties tracking device characteristics and specifications"
+        },
+        "Asset": {
+          "count": 1350,
+          "percentage": 3.8,
+          "description": "Physical energy assets including DERs, transmission lines, substations"
+        },
+        "Control": {
+          "count": 125,
+          "percentage": 0.35,
+          "description": "Control and management systems (EMS, NERC CIP compliance)"
+        }
+      },
+      "specialized_node_types": {
+        "DistributedEnergyResource": {
+          "count": 750,
+          "label_count": 4,
+          "parent_labels": [
+            "Energy",
+            "Asset",
+            "ENERGY",
+            "Energy_Generation"
+          ]
+        },
+        "TransmissionLine": {
+          "count": 400,
+          "label_count": 4,
+          "parent_labels": [
+            "Energy",
+            "Asset",
+            "ENERGY",
+            "Energy_Transmission"
+          ]
+        },
+        "Substation": {
+          "count": 200,
+          "label_count": 4,
+          "parent_labels": [
+            "Energy",
+            "Asset",
+            "ENERGY",
+            "Energy_Distribution"
+          ]
+        },
+        "EnergyDevice": {
+          "count": 10000,
+          "label_count": 6,
+          "parent_labels": [
+            "Device",
+            "EnergyDevice",
+            "Energy",
+            "Monitoring",
+            "ENERGY",
+            "Energy_Distribution"
+          ]
+        }
+      },
+      "relationships": {
+        "total_relationships": 1519521,
+        "breakdown": {
+          "VULNERABLE_TO": {
+            "count": 1311734,
+            "percentage": 86.28,
+            "description": "Security vulnerability relationships mapping attack surfaces"
+          },
+          "HAS_ENERGY_PROPERTY": {
+            "count": 30000,
+            "percentage": 1.97,
+            "description": "Links devices to their energy-specific properties"
+          },
+          "GENERATES_MEASUREMENT": {
+            "count": 18000,
+            "percentage": 1.19,
+            "description": "Links devices/assets to measurement data"
+          },
+          "CONTROLLED_BY_EMS": {
+            "count": 10000,
+            "percentage": 0.66,
+            "description": "Links devices to Energy Management Systems"
+          },
+          "INSTALLED_AT_SUBSTATION": {
+            "count": 10000,
+            "percentage": 0.66,
+            "description": "Locates devices at specific substations"
+          },
+          "COMPLIES_WITH_NERC_CIP": {
+            "count": 5000,
+            "percentage": 0.33,
+            "description": "Compliance relationships with NERC CIP standards"
+          },
+          "EXTENDS_SAREF_DEVICE": {
+            "count": 3000,
+            "percentage": 0.2,
+            "description": "Extends SAREF (Smart Appliances REFerence) device ontology"
+          },
+          "CONNECTS_SUBSTATIONS": {
+            "count": 780,
+            "percentage": 0.05,
+            "description": "Transmission line connections between substations"
+          },
+          "CONNECTED_TO_GRID": {
+            "count": 750,
+            "percentage": 0.05,
+            "description": "Links distributed energy resources to power grid"
+          },
+          "DEPLOYED_AT": {
+            "count": 257,
+            "percentage": 0.02,
+            "description": "Asset deployment location relationships"
+          }
+        }
+      },
+      "labels_per_node_avg": 4.94,
+      "labels_per_node_range": {
+        "minimum": 4,
+        "maximum": 6,
+        "typical_4_labels": "Specialized assets (DER, TransmissionLine, Substation)",
+        "typical_5_labels": "Measurement and property nodes",
+        "typical_6_labels": "EnergyDevice nodes (10000 nodes)"
+      },
+      "subsectors": {
+        "Energy_Transmission": {
+          "count": 24400,
+          "percentage": 68.8,
+          "primary_node_types": [
+            "Measurement (18000)",
+            "Property (6000)",
+            "TransmissionLine (400)"
+          ],
+          "description": "Transmission system nodes focusing on long-distance power delivery"
+        },
+        "Energy_Distribution": {
+          "count": 10325,
+          "percentage": 29.09,
+          "primary_node_types": [
+            "Device (10000)",
+            "Substation (200)",
+            "Control (125)"
+          ],
+          "description": "Distribution network nodes for local power delivery and control"
+        },
+        "Energy_Generation": {
+          "count": 750,
+          "percentage": 2.11,
+          "primary_node_types": [
+            "DistributedEnergyResource (750)"
+          ],
+          "description": "Generation source nodes for renewable and distributed energy"
+        }
+      },
+      "governance_model": "Multi-layered hierarchical with subsector stratification",
+      "compliance_focus": "NERC CIP standards with SAREF ontology extension",
+      "security_emphasis": "High - vulnerability mapping dominant relationship type"
+    },
+    "COMMUNICATIONS": {
+      "total_nodes": 40759,
+      "validation_status": "DEPLOYED",
+      "expected_range": "26000-45000",
+      "variance_from_expected": "Within expected range",
+      "node_types": {
+        "Measurement": {
+          "count": 27458,
+          "percentage": 67.39,
+          "description": "Network measurement nodes tracking performance across telecom, data centers, and satellite systems"
+        },
+        "Property": {
+          "count": 5000,
+          "percentage": 12.27,
+          "description": "Communications properties tracking bandwidth, latency, packet loss, jitter characteristics"
+        },
+        "Device": {
+          "count": 2300,
+          "percentage": 5.64,
+          "description": "Communications devices including routers, switches, modems, transceivers, satellites"
+        },
+        "Control": {
+          "count": 1500,
+          "percentage": 3.68,
+          "description": "Network management systems and control systems (NMS, SNMP managers)"
+        },
+        "Process": {
+          "count": 3000,
+          "percentage": 7.36,
+          "description": "Communications processes including routing, switching, signal processing"
+        },
+        "Zone": {
+          "count": 450,
+          "percentage": 1.1,
+          "description": "Communications zones and network segments"
+        },
+        "Alert": {
+          "count": 900,
+          "percentage": 2.21,
+          "description": "Communications alerts and notifications"
+        },
+        "Asset": {
+          "count": 151,
+          "percentage": 0.37,
+          "description": "Major communications infrastructure assets"
+        }
+      },
+      "specialized_node_types": {
+        "NetworkMeasurement": {
+          "count": 27458,
+          "label_count": 5,
+          "parent_labels": [
+            "Measurement",
+            "Monitoring",
+            "COMMUNICATIONS",
+            "NetworkMeasurement",
+            "subsector"
+          ]
+        },
+        "CommunicationsDevice": {
+          "count": 2300,
+          "label_count": 6,
+          "parent_labels": [
+            "Device",
+            "Monitoring",
+            "COMMUNICATIONS",
+            "CommunicationsDevice",
+            "subsector",
+            "Communications"
+          ]
+        },
+        "CommunicationsProperty": {
+          "count": 5000,
+          "label_count": 6,
+          "parent_labels": [
+            "Property",
+            "Monitoring",
+            "COMMUNICATIONS",
+            "subsector",
+            "CommunicationsProperty",
+            "Communications"
+          ]
+        },
+        "NetworkManagementSystem": {
+          "count": 1500,
+          "label_count": 4,
+          "parent_labels": [
+            "Control",
+            "COMMUNICATIONS",
+            "Communications",
+            "NetworkManagementSystem"
+          ]
+        },
+        "RoutingProcess": {
+          "count": 3000,
+          "label_count": 4,
+          "parent_labels": [
+            "Process",
+            "COMMUNICATIONS",
+            "Communications",
+            "RoutingProcess"
+          ]
+        },
+        "CommunicationsAlert": {
+          "count": 900,
+          "label_count": 4,
+          "parent_labels": [
+            "Monitoring",
+            "COMMUNICATIONS",
+            "CommunicationsAlert",
+            "Alert"
+          ]
+        },
+        "CommunicationsZone": {
+          "count": 450,
+          "label_count": 4,
+          "parent_labels": [
+            "Zone",
+            "Asset",
+            "COMMUNICATIONS",
+            "CommunicationsZone"
+          ]
+        }
+      },
+      "relationships": {
+        "total_relationships": 8945,
+        "breakdown": {
+          "CONTROLS": {
+            "count": 4503,
+            "percentage": 50.33,
+            "description": "Network management systems control network devices and functions"
+          },
+          "HAS_PROPERTY": {
+            "count": 2302,
+            "percentage": 25.73,
+            "description": "Devices and processes have associated properties"
+          },
+          "HAS_MEASUREMENT": {
+            "count": 2136,
+            "percentage": 23.87,
+            "description": "Devices and processes generate measurement data"
+          },
+          "ROUTES_THROUGH": {
+            "count": 4,
+            "percentage": 0.04,
+            "description": "Traffic routing paths through network devices"
+          }
+        }
+      },
+      "labels_per_node_avg": 4.8,
+      "labels_per_node_range": {
+        "minimum": 4,
+        "maximum": 6,
+        "median": 5,
+        "mode": 5
+      },
+      "label_distribution": {
+        "4_labels": {
+          "count": 5850,
+          "percentage": 14.35,
+          "description": "Control and Process nodes with basic structure"
+        },
+        "5_labels": {
+          "count": 28308,
+          "percentage": 69.47,
+          "description": "Core nodes with full classification hierarchy"
+        },
+        "6_labels": {
+          "count": 6601,
+          "percentage": 16.19,
+          "description": "Device and Property nodes with enhanced attributes"
+        }
+      },
+      "subsectors": {
+        "Telecom_Infrastructure": {
+          "count": 19851,
+          "percentage": 48.71,
+          "primary_node_types": [
+            "Measurement (15527)",
+            "Property (2950)",
+            "Device (1374)"
+          ],
+          "description": "Telecommunications infrastructure including cellular, fixed-line, fiber networks"
+        },
+        "Data_Centers": {
+          "count": 12458,
+          "percentage": 30.56,
+          "primary_node_types": [
+            "Measurement (8627)",
+            "Property (1819)",
+            "Device (812)"
+          ],
+          "description": "Data center network systems and infrastructure"
+        },
+        "Satellite_Systems": {
+          "count": 3649,
+          "percentage": 8.95,
+          "primary_node_types": [
+            "Measurement (3304)",
+            "Property (231)",
+            "Device (114)"
+          ],
+          "description": "Satellite communications and orbital network systems"
+        },
+        "Network_Management": {
+          "count": 4801,
+          "percentage": 11.78,
+          "primary_node_types": [
+            "Control (1500)",
+            "Process (3000)",
+            "Alert (300)"
+          ],
+          "description": "Network operations centers and management systems"
+        }
+      },
+      "ontology_integration": {
+        "network_ontologies": {
+          "SNMP_MIBs": 450,
+          "ITU_Standards": 850,
+          "3GPP_Standards": 320,
+          "IEEE_Standards": 600
+        },
+        "monitoring_framework": {
+          "total_monitoring_nodes": 38108,
+          "percentage_of_total": 93.5,
+          "key_label": "Monitoring"
+        }
+      },
+      "unique_label_names": 22,
+      "total_label_assignments": 195648,
+      "governance_model": "Multi-subsector hierarchical with network topology stratification",
+      "compliance_focus": "ITU-T, IEEE 802, 3GPP standards with SNMP monitoring",
+      "security_emphasis": "High - network control relationships and operational continuity tracking"
+    },
+    "FOOD_AGRICULTURE": {
+      "total_nodes": 28000,
+      "validation_status": "DEPLOYED",
+      "expected_range": "26000-35000",
+      "variance_from_expected": "Within expected range",
+      "deployment_date": "2025-11-21T21:30:33Z",
+      "deployment_time_seconds": 6,
+      "node_types": {
+        "Measurement": {
+          "count": 17000,
+          "percentage": 60.7,
+          "description": "Agricultural measurements tracking soil, weather, crop health, livestock, food safety metrics"
+        },
+        "Property": {
+          "count": 5000,
+          "percentage": 17.9,
+          "description": "Food agriculture properties for equipment specs, field characteristics, compliance certifications"
+        },
+        "Device": {
+          "count": 3500,
+          "percentage": 12.5,
+          "description": "Agricultural equipment, processing machinery, and monitoring devices"
+        },
+        "Process": {
+          "count": 1200,
+          "percentage": 4.3,
+          "description": "Agricultural workflows and food processing procedures"
+        },
+        "Control": {
+          "count": 600,
+          "percentage": 2.1,
+          "description": "Farm management systems and SCADA platforms"
+        },
+        "Alert": {
+          "count": 400,
+          "percentage": 1.4,
+          "description": "Critical notifications for agricultural operations and food safety"
+        },
+        "Zone": {
+          "count": 250,
+          "percentage": 0.9,
+          "description": "Farm zones, fields, barns, and facility areas"
+        },
+        "Asset": {
+          "count": 50,
+          "percentage": 0.2,
+          "description": "Major agricultural facilities and critical infrastructure assets"
+        }
+      },
+      "specialized_node_types": {
+        "FoodAgricultureDevice": {
+          "count": 3500,
+          "label_count": 6,
+          "parent_labels": [
+            "Device",
+            "FoodAgricultureDevice",
+            "EquipmentType",
+            "Monitoring",
+            "FOOD_AGRICULTURE",
+            "Subsector"
+          ]
+        },
+        "AgricultureMetric": {
+          "count": 17000,
+          "label_count": 5,
+          "parent_labels": [
+            "Measurement",
+            "AgricultureMetric",
+            "MetricType",
+            "TimeSeries",
+            "FOOD_AGRICULTURE"
+          ]
+        },
+        "FoodAgricultureProperty": {
+          "count": 5000,
+          "label_count": 4,
+          "parent_labels": [
+            "Property",
+            "FoodAgricultureProperty",
+            "PropertyCategory",
+            "FOOD_AGRICULTURE"
+          ]
+        }
+      },
+      "relationships": {
+        "total_relationships": 45309,
+        "breakdown": {
+          "MONITORS": {
+            "count": 17000,
+            "percentage": 37.52,
+            "description": "Device generates measurement data"
+          },
+          "HAS_PROPERTY": {
+            "count": 5000,
+            "percentage": 11.03,
+            "description": "Device has associated properties"
+          },
+          "EXECUTES": {
+            "count": 3600,
+            "percentage": 7.95,
+            "description": "Device participates in agricultural process"
+          },
+          "REPORTS_TO": {
+            "count": 3500,
+            "percentage": 7.72,
+            "description": "Device reports to farm management system"
+          },
+          "LOCATED_IN": {
+            "count": 3500,
+            "percentage": 7.72,
+            "description": "Device assigned to farm zone"
+          },
+          "SUPPORTS": {
+            "count": 3500,
+            "percentage": 7.72,
+            "description": "Facility supports agricultural equipment"
+          },
+          "CONTROLS": {
+            "count": 3600,
+            "percentage": 7.95,
+            "description": "Farm management system controls equipment"
+          },
+          "REQUIRES": {
+            "count": 4809,
+            "percentage": 10.61,
+            "description": "Process requires specific equipment"
+          },
+          "TRIGGERS": {
+            "count": 800,
+            "percentage": 1.77,
+            "description": "Measurement threshold triggers alert"
+          }
+        }
+      },
+      "labels_per_node_avg": 5.2,
+      "labels_per_node_range": {
+        "minimum": 4,
+        "maximum": 6,
+        "median": 5,
+        "mode": 5
+      },
+      "subsectors": {
+        "CropProduction": {
+          "count": 1750,
+          "percentage": 50.0,
+          "description": "Crop production equipment and operations"
+        },
+        "Livestock": {
+          "count": 1050,
+          "percentage": 30.0,
+          "description": "Livestock operations and monitoring"
+        },
+        "FoodProcessing": {
+          "count": 700,
+          "percentage": 20.0,
+          "description": "Food processing facilities and cold chain"
+        }
+      },
+      "governance_model": "Multi-subsector hierarchical with farm-to-fork traceability",
+      "compliance_focus": "FDA FSMA, HACCP, GAP, USDA standards with food safety monitoring",
+      "security_emphasis": "High - food safety critical control points and supply chain integrity"
+    },
+    "INFORMATION_TECHNOLOGY": {
+      "total_nodes": 28000,
+      "validation_status": "DEPLOYED",
+      "deployment_date": "2025-11-22T03:37:09.080288Z",
+      "expected_range": "26000-35000",
+      "variance_from_expected": "Within expected range",
+      "node_types": {
+        "Measurement": {
+          "count": 18000,
+          "percentage": 64.3,
+          "description": "System metrics, performance monitoring, uptime data, security metrics"
+        },
+        "Property": {
+          "count": 4500,
+          "percentage": 16.1,
+          "description": "Configuration parameters, system attributes, capacity specifications"
+        },
+        "Device": {
+          "count": 2800,
+          "percentage": 10.0,
+          "description": "Servers, storage systems, databases, cloud instances, DNS servers, authentication systems"
+        },
+        "Process": {
+          "count": 1200,
+          "percentage": 4.3,
+          "description": "Data processing workflows, backup operations, authentication flows, API management, CI/CD pipelines"
+        },
+        "Control": {
+          "count": 700,
+          "percentage": 2.5,
+          "description": "Orchestration systems, automation controllers, monitoring platforms, ITSM tools"
+        },
+        "Alert": {
+          "count": 500,
+          "percentage": 1.8,
+          "description": "System alerts, security incidents, performance warnings, outage notifications"
+        },
+        "Zone": {
+          "count": 200,
+          "percentage": 0.7,
+          "description": "Data center zones, cloud regions, network segments, security zones"
+        },
+        "Asset": {
+          "count": 100,
+          "percentage": 0.4,
+          "description": "Major infrastructure: data centers, cloud platforms, enterprise applications, SaaS platforms"
+        }
+      },
+      "subsectors": {
+        "Cloud_Services": {
+          "count": 10600,
+          "percentage": 37.9,
+          "description": "Cloud infrastructure, IaaS, PaaS, SaaS platforms"
+        },
+        "Enterprise_IT": {
+          "count": 10150,
+          "percentage": 36.3,
+          "description": "On-premise infrastructure, corporate IT systems, enterprise applications"
+        },
+        "Managed_Services": {
+          "count": 7250,
+          "percentage": 25.9,
+          "description": "MSP operations, IT service management, infrastructure management"
+        }
+      },
+      "labels_per_node_avg": 5.7,
+      "governance_model": "Multi-subsector with cloud/enterprise/managed service stratification",
+      "compliance_focus": "ISO 27001, NIST CSF, SOC 2, FedRAMP, ITIL standards",
+      "security_emphasis": "High - IAM, data encryption, vulnerability management"
+    },
+    "FINANCIAL_SERVICES": {
+      "total_nodes": 28000,
+      "validation_status": "DEPLOYED",
+      "expected_range": "26000-35000",
+      "variance_from_expected": "Within expected range",
+      "deployment_date": "2025-11-22T03:45:00Z",
+      "deployment_time_seconds": 1.57,
+      "node_types": {
+        "Measurement": {
+          "count": 17000,
+          "percentage": 60.7,
+          "description": "Transaction metrics tracking financial system performance"
+        },
+        "Property": {
+          "count": 5000,
+          "percentage": 17.9,
+          "description": "Financial services properties and compliance attributes"
+        },
+        "Device": {
+          "count": 3500,
+          "percentage": 12.5,
+          "description": "Financial services equipment including ATMs, terminals, and trading systems"
+        },
+        "Process": {
+          "count": 1200,
+          "percentage": 4.3,
+          "description": "Financial transaction workflows and operational procedures"
+        },
+        "Control": {
+          "count": 600,
+          "percentage": 2.1,
+          "description": "Risk management, compliance, and security controls"
+        },
+        "Alert": {
+          "count": 400,
+          "percentage": 1.4,
+          "description": "Critical notifications for fraud, failures, and compliance issues"
+        },
+        "Zone": {
+          "count": 250,
+          "percentage": 0.9,
+          "description": "Geographic regions, regulatory jurisdictions, and network segments"
+        },
+        "Asset": {
+          "count": 50,
+          "percentage": 0.2,
+          "description": "Major financial facilities and infrastructure"
+        }
+      },
+      "specialized_node_types": {
+        "FinancialServicesDevice": {
+          "count": 3500,
+          "label_count": 5,
+          "parent_labels": [
+            "Device",
+            "FinancialServicesDevice",
+            "Monitoring",
+            "FINANCIAL_SERVICES",
+            "Subsector"
+          ]
+        },
+        "TransactionMetric": {
+          "count": 17000,
+          "label_count": 5,
+          "parent_labels": [
+            "Measurement",
+            "TransactionMetric",
+            "TimeSeries",
+            "Monitoring",
+            "FINANCIAL_SERVICES"
+          ]
+        },
+        "FinancialServicesProperty": {
+          "count": 5000,
+          "label_count": 5,
+          "parent_labels": [
+            "Property",
+            "FinancialServicesProperty",
+            "Configuration",
+            "FINANCIAL_SERVICES",
+            "Subsector"
+          ]
+        },
+        "FinancialProcess": {
+          "count": 1200,
+          "label_count": 4,
+          "parent_labels": [
+            "Process",
+            "FinancialProcess",
+            "Workflow",
+            "FINANCIAL_SERVICES"
+          ]
+        },
+        "FinancialControl": {
+          "count": 600,
+          "label_count": 4,
+          "parent_labels": [
+            "Control",
+            "FinancialControl",
+            "Governance",
+            "FINANCIAL_SERVICES"
+          ]
+        },
+        "FinancialAlert": {
+          "count": 400,
+          "label_count": 4,
+          "parent_labels": [
+            "Alert",
+            "FinancialAlert",
+            "Notification",
+            "FINANCIAL_SERVICES"
+          ]
+        },
+        "FinancialZone": {
+          "count": 250,
+          "label_count": 4,
+          "parent_labels": [
+            "Zone",
+            "FinancialZone",
+            "Geography",
+            "FINANCIAL_SERVICES"
+          ]
+        },
+        "MajorFacility": {
+          "count": 50,
+          "label_count": 5,
+          "parent_labels": [
+            "Asset",
+            "MajorFacility",
+            "Infrastructure",
+            "Critical",
+            "FINANCIAL_SERVICES"
+          ]
+        }
+      },
+      "relationships": {
+        "total_relationships": 0,
+        "breakdown": {
+          "PROCESSES": {
+            "count": 0,
+            "percentage": 0,
+            "description": "Device processes transactions (pending deployment)"
+          },
+          "HAS_PROPERTY": {
+            "count": 0,
+            "percentage": 0,
+            "description": "Entity has configuration or attribute (pending deployment)"
+          },
+          "EXECUTES": {
+            "count": 0,
+            "percentage": 0,
+            "description": "System executes financial process (pending deployment)"
+          },
+          "CONTROLS": {
+            "count": 0,
+            "percentage": 0,
+            "description": "Control system governs operations (pending deployment)"
+          },
+          "TRIGGERS": {
+            "count": 0,
+            "percentage": 0,
+            "description": "Event triggers alert (pending deployment)"
+          },
+          "LOCATED_IN": {
+            "count": 0,
+            "percentage": 0,
+            "description": "Entity located in zone (pending deployment)"
+          },
+          "SUPPORTS": {
+            "count": 0,
+            "percentage": 0,
+            "description": "Facility supports operations (pending deployment)"
+          }
+        }
+      },
+      "labels_per_node_avg": 5.1,
+      "labels_per_node_range": {
+        "minimum": 4,
+        "maximum": 6,
+        "median": 5,
+        "mode": 5
+      },
+      "label_distribution": {
+        "4_labels": {
+          "count": 2500,
+          "percentage": 8.93,
+          "description": "Control, Process, Alert, Zone nodes with basic structure"
+        },
+        "5_labels": {
+          "count": 22500,
+          "percentage": 80.36,
+          "description": "Core nodes with full classification hierarchy"
+        },
+        "6_labels": {
+          "count": 3000,
+          "percentage": 10.71,
+          "description": "Device nodes with enhanced monitoring attributes"
+        }
+      },
+      "subsectors": {
+        "Banking": {
+          "count": 9630,
+          "percentage": 34.4,
+          "primary_node_types": [
+            "Measurement (6800)",
+            "Property (1800)",
+            "Device (1400)"
+          ],
+          "description": "Retail, commercial, investment, and digital banking operations"
+        },
+        "CapitalMarkets": {
+          "count": 9329,
+          "percentage": 33.3,
+          "primary_node_types": [
+            "Measurement (5950)",
+            "Property (1654)",
+            "Device (1225)"
+          ],
+          "description": "Securities trading, asset management, and investment services"
+        },
+        "PaymentSystems": {
+          "count": 9041,
+          "percentage": 32.3,
+          "primary_node_types": [
+            "Measurement (4250)",
+            "Property (1546)",
+            "Device (875)"
+          ],
+          "description": "Payment processing, clearing, settlement, and money transfer"
+        }
+      },
+      "ontology_integration": {
+        "compliance_frameworks": {
+          "PCI_DSS": 450,
+          "SOX": 320,
+          "Basel_III": 280,
+          "Dodd_Frank": 250
+        },
+        "monitoring_framework": {
+          "total_monitoring_nodes": 20500,
+          "percentage_of_total": 73.21,
+          "key_label": "Monitoring"
+        }
+      },
+      "unique_label_names": 29,
+      "total_label_assignments": 142800,
+      "governance_model": "Multi-subsector hierarchical with financial regulatory compliance",
+      "compliance_focus": "PCI-DSS, SOX, Basel III, Dodd-Frank with real-time transaction monitoring",
+      "security_emphasis": "Critical - fraud detection, AML/KYC controls, and regulatory compliance tracking"
+    }
+  },
+  "common_label_patterns": {
+    "description": "Universal label patterns appearing in both Water and Energy sectors",
+    "universal_pattern_structure": {
+      "template": "[NodeType]:[SectorSpecificType]:[Domain]:[Monitoring]:[SECTOR]:[Subsector]",
+      "components": [
+        "Level 1: NodeType (Device, Measurement, Property, Vulnerability, etc.)",
+        "Level 2: SectorSpecificType (WaterDevice, EnergyDevice, etc.)",
+        "Level 3: Domain (Infrastructure, Treatment, Transmission, etc.)",
+        "Level 4: Monitoring status (Monitoring, Legacy, Decommissioned, etc.)",
+        "Level 5: SECTOR (WATER, ENERGY)",
+        "Level 6: Subsector (Water_Treatment, Energy_Transmission, etc.)"
+      ],
+      "examples": {
+        "water_device": "Device:WaterTreatmentPlant:Infrastructure:Monitoring:WATER:Water_Treatment",
+        "water_measurement": "Measurement:pH:WaterQuality:Monitoring:WATER:Water_Distribution",
+        "energy_device": "Device:Generator:PowerGeneration:Monitoring:ENERGY:Energy_Generation",
+        "energy_measurement": "Measurement:Voltage:Transmission:Monitoring:ENERGY:Energy_Transmission"
+      }
+    },
+    "most_common_water_patterns": [
+      {
+        "rank": 1,
+        "labels": [
+          "Measurement",
+          "Monitoring",
+          "WATER",
+          "Water_Treatment"
+        ],
+        "count": 19000,
+        "percentage": 69.85,
+        "pattern_type": "Core Monitoring"
+      },
+      {
+        "rank": 2,
+        "labels": [
+          "Property",
+          "WaterProperty",
+          "Monitoring",
+          "WATER",
+          "Water_Treatment"
+        ],
+        "count": 2250,
+        "percentage": 8.27,
+        "pattern_type": "Water Properties"
+      },
+      {
+        "rank": 3,
+        "labels": [
+          "Property",
+          "Measurement",
+          "SAREF",
+          "Monitoring",
+          "SAREF_Core",
+          "WATER",
+          "Water_Treatment"
+        ],
+        "count": 1500,
+        "percentage": 5.51,
+        "pattern_type": "SAREF Standard Properties"
+      }
+    ],
+    "most_common_energy_patterns": [
+      {
+        "rank": 1,
+        "labels": [
+          "Measurement",
+          "Monitoring",
+          "ENERGY",
+          "Energy_Transmission"
+        ],
+        "count": 18000,
+        "percentage": 50.74,
+        "pattern_type": "Primary transmission system measurements"
+      },
+      {
+        "rank": 2,
+        "labels": [
+          "Device",
+          "EnergyDevice",
+          "Energy",
+          "Monitoring",
+          "ENERGY",
+          "Energy_Distribution"
+        ],
+        "count": 10000,
+        "percentage": 28.19,
+        "pattern_type": "Standard pattern for distribution devices with monitoring"
+      },
+      {
+        "rank": 3,
+        "labels": [
+          "Property",
+          "EnergyProperty",
+          "Energy",
+          "Monitoring",
+          "ENERGY",
+          "Energy_Transmission"
+        ],
+        "count": 6000,
+        "percentage": 16.91,
+        "pattern_type": "Transmission properties with monitoring capabilities"
+      }
+    ]
+  },
+  "required_node_types": {
+    "description": "Eight core node types present in both sectors with consistent definitions",
+    "count": 8,
+    "types": {
+      "Device": {
+        "definition": "Physical or logical infrastructure component",
+        "water_examples": [
+          "WaterTreatmentPlant",
+          "Pump",
+          "Valve",
+          "Tank",
+          "Sensor"
+        ],
+        "energy_examples": [
+          "Generator",
+          "Transformer",
+          "CircuitBreaker",
+          "Substation",
+          "Relay"
+        ],
+        "required_properties": [
+          "ID",
+          "Name",
+          "Status",
+          "Location",
+          "ManufacturerID",
+          "Model"
+        ],
+        "required_relationships": [
+          "HAS_MEASUREMENT",
+          "HAS_PROPERTY",
+          "VULNERABLE_TO",
+          "OPERATES_IN",
+          "MANUFACTURED_BY"
+        ]
+      },
+      "Measurement": {
+        "definition": "Quantifiable metric collected from devices",
+        "water_examples": [
+          "pH",
+          "Turbidity",
+          "FlowRate",
+          "Pressure",
+          "WaterLevel"
+        ],
+        "energy_examples": [
+          "Voltage",
+          "Current",
+          "Frequency",
+          "PowerFactor",
+          "Watts"
+        ],
+        "required_properties": [
+          "ID",
+          "Name",
+          "Unit",
+          "DataType",
+          "SamplingRate",
+          "Min",
+          "Max"
+        ],
+        "required_relationships": [
+          "MEASURED_BY",
+          "BELONGS_TO_DEVICE",
+          "HAS_TIMESERIES",
+          "THRESHOLD_DEFINED"
+        ]
+      },
+      "Property": {
+        "definition": "Qualitative or derived attribute of an entity",
+        "water_examples": [
+          "ChlorineResidual",
+          "TotalSuspendedSolids",
+          "BiochemicalOxygenDemand"
+        ],
+        "energy_examples": [
+          "TotalHarmonicDistortion",
+          "ApparentPower",
+          "ImpedanceLevel"
+        ],
+        "required_properties": [
+          "ID",
+          "Name",
+          "Type",
+          "Value",
+          "Unit",
+          "Timestamp"
+        ],
+        "required_relationships": [
+          "CHARACTERIZES",
+          "BELONGS_TO",
+          "DERIVED_FROM"
+        ]
+      },
+      "Vulnerability": {
+        "definition": "Known or potential security weakness",
+        "common_examples": [
+          "CVE-XXXX-XXXXX",
+          "DefaultCredentials",
+          "UnauthorizedAccess",
+          "WeakAuthentication"
+        ],
+        "required_properties": [
+          "ID",
+          "CVENumber",
+          "Severity",
+          "Description",
+          "CVSS_Score",
+          "PublishedDate"
+        ],
+        "required_relationships": [
+          "AFFECTS",
+          "EXPLOITS",
+          "MITIGATED_BY",
+          "REQUIRES_PATCH"
+        ]
+      },
+      "Vendor": {
+        "definition": "Equipment or software manufacturer",
+        "water_examples": [
+          "Xylem",
+          "Veolia",
+          "SUEZ",
+          "Grundfos",
+          "Endress+Hauser"
+        ],
+        "energy_examples": [
+          "Siemens",
+          "ABB",
+          "General Electric",
+          "Schneider Electric",
+          "Honeywell"
+        ],
+        "required_properties": [
+          "ID",
+          "Name",
+          "Country",
+          "FoundedYear",
+          "SpecialityAreas"
+        ],
+        "required_relationships": [
+          "MANUFACTURES",
+          "PRODUCES",
+          "PROVIDES",
+          "SUPPORTS"
+        ]
+      },
+      "Standard": {
+        "definition": "Regulatory or technical standard",
+        "water_examples": [
+          "EPA Method",
+          "AWWA",
+          "SDWA",
+          "Clean Water Act",
+          "ISO 24516"
+        ],
+        "energy_examples": [
+          "NERC CIP",
+          "IEEE 1686",
+          "IEC 61850",
+          "ISA-62443",
+          "ISO 27001"
+        ],
+        "required_properties": [
+          "ID",
+          "Name",
+          "Organization",
+          "PublishedYear",
+          "RevisionLevel"
+        ],
+        "required_relationships": [
+          "GOVERNS",
+          "APPLIES_TO",
+          "REQUIRES",
+          "REFERENCES"
+        ]
+      },
+      "Protocol": {
+        "definition": "Communication protocol or standard",
+        "water_examples": [
+          "Modbus",
+          "DNP3",
+          "OPC UA",
+          "BACnet",
+          "M-Bus"
+        ],
+        "energy_examples": [
+          "Modbus",
+          "DNP3",
+          "IEC 60870-5",
+          "PROFINET",
+          "GOOSE"
+        ],
+        "required_properties": [
+          "ID",
+          "Name",
+          "Layer",
+          "SecurityLevel",
+          "Version"
+        ],
+        "required_relationships": [
+          "USES",
+          "COMMUNICATES_VIA",
+          "SUPPORTS_SECURITY_LEVEL"
+        ]
+      },
+      "ThreatActor": {
+        "definition": "Entity that poses a security threat",
+        "water_examples": [
+          "Not explicitly modeled in water patterns"
+        ],
+        "energy_examples": [
+          "APT-28",
+          "Nation-State",
+          "InsiderThreat",
+          "Hacktivist"
+        ],
+        "required_properties": [
+          "ID",
+          "Name",
+          "Type",
+          "Motivation",
+          "CountryOrigin",
+          "CapabilityLevel"
+        ],
+        "required_relationships": [
+          "CONDUCTS_ATTACK",
+          "TARGETS",
+          "EXPLOITS_VULNERABILITY"
+        ],
+        "sector_applicability": "Primarily Energy sector, optional for Water"
+      }
+    }
+  },
+  "relationship_types": {
+    "description": "Common relationship types across both sectors",
+    "universal_relationships": [
+      {
+        "type": "HAS_MEASUREMENT",
+        "from": "Device",
+        "to": "Measurement",
+        "cardinality": "1..N",
+        "description": "Device produces or is associated with measurements",
+        "water_count": 18000,
+        "energy_count": 18000
+      },
+      {
+        "type": "HAS_PROPERTY",
+        "from": "Device",
+        "to": "Property",
+        "cardinality": "1..N",
+        "description": "Device has associated properties",
+        "water_count": 4500,
+        "energy_count": 30000
+      },
+      {
+        "type": "VULNERABLE_TO",
+        "from": "Device",
+        "to": "Vulnerability",
+        "cardinality": "1..N",
+        "description": "Device is susceptible to a vulnerability",
+        "water_count": 852485,
+        "energy_count": 1311734,
+        "note": "Dominant relationship type in both sectors"
+      },
+      {
+        "type": "MANUFACTURED_BY",
+        "from": "Device",
+        "to": "Vendor",
+        "cardinality": "N..1",
+        "description": "Device is manufactured by a specific vendor"
+      },
+      {
+        "type": "USES_PROTOCOL",
+        "from": "Device",
+        "to": "Protocol",
+        "cardinality": "N..M",
+        "description": "Device communicates using a specific protocol"
+      },
+      {
+        "type": "GOVERNED_BY",
+        "from": "Device",
+        "to": "Standard",
+        "cardinality": "N..M",
+        "description": "Device must comply with standards"
+      },
+      {
+        "type": "OPERATES_IN",
+        "from": "Device",
+        "to": "Subsystem",
+        "cardinality": "N..1",
+        "description": "Device is part of a subsystem"
+      },
+      {
+        "type": "MEASURED_BY",
+        "from": "Measurement",
+        "to": "Device",
+        "cardinality": "N..1",
+        "description": "Measurement is collected from device"
+      }
+    ],
+    "sector_specific_relationships": {
+      "WATER": [
+        {
+          "type": "CONTROLS",
+          "description": "Control device controls entity",
+          "count": 3000
+        },
+        {
+          "type": "CONTAINS",
+          "description": "Zone or system contains entity",
+          "count": 2500
+        },
+        {
+          "type": "USES_DEVICE",
+          "description": "Process uses device",
+          "count": 2000
+        },
+        {
+          "type": "EXTENDS_SAREF_DEVICE",
+          "description": "SAREF ontology extension",
+          "count": 1500
+        },
+        {
+          "type": "DEPENDS_ON_ENERGY",
+          "description": "Device depends on energy source",
+          "count": 1000
+        },
+        {
+          "type": "TRIGGERED_BY",
+          "description": "Alert triggered by measurement",
+          "count": 1000
+        }
+      ],
+      "ENERGY": [
+        {
+          "type": "GENERATES_MEASUREMENT",
+          "description": "Links devices/assets to measurement data",
+          "count": 18000
+        },
+        {
+          "type": "CONTROLLED_BY_EMS",
+          "description": "Links devices to Energy Management Systems",
+          "count": 10000
+        },
+        {
+          "type": "INSTALLED_AT_SUBSTATION",
+          "description": "Locates devices at specific substations",
+          "count": 10000
+        },
+        {
+          "type": "COMPLIES_WITH_NERC_CIP",
+          "description": "Compliance with NERC CIP standards",
+          "count": 5000
+        },
+        {
+          "type": "EXTENDS_SAREF_DEVICE",
+          "description": "Extends SAREF device ontology",
+          "count": 3000
+        },
+        {
+          "type": "CONNECTS_SUBSTATIONS",
+          "description": "Transmission line connections",
+          "count": 780
+        },
+        {
+          "type": "CONNECTED_TO_GRID",
+          "description": "Links DERs to power grid",
+          "count": 750
+        },
+        {
+          "type": "DEPLOYED_AT",
+          "description": "Asset deployment location",
+          "count": 257
+        }
+      ]
+    }
+  },
+  "multi_label_rules": {
+    "description": "Rules for label assignment per node across sectors",
+    "minimum_labels": 4,
+    "target_labels": "5-6",
+    "maximum_labels": 8,
+    "target_average": 5.0,
+    "water_actual_average": 4.32,
+    "energy_actual_average": 4.94,
+    "reasoning": "Balanced between expressiveness and query performance",
+    "mandatory_labels": [
+      "NodeType (Device, Measurement, Property, etc.)",
+      "SectorSpecificType (WaterDevice, EnergyDevice, etc.)",
+      "Monitoring status",
+      "SECTOR (WATER or ENERGY)"
+    ],
+    "conditional_labels": {
+      "if_device": [
+        "Status",
+        "Location",
+        "ManufacturerID"
+      ],
+      "if_measurement": [
+        "Unit",
+        "DataType",
+        "SamplingRate"
+      ],
+      "if_vulnerability": [
+        "Severity",
+        "CVSS_Score",
+        "PublishedDate"
+      ],
+      "if_critical_infrastructure": [
+        "GovernedBy",
+        "SecurityLevel",
+        "OperationalStatus"
+      ]
+    },
+    "label_assignment_algorithm": [
+      "Step 1: Assign NodeType (1 label)",
+      "Step 2: Assign SectorSpecificType (1 label)",
+      "Step 3: Assign Domain (1 label)",
+      "Step 4: Assign Monitoring status (1 label)",
+      "Step 5: Assign SECTOR classification (1 label)",
+      "Step 6: Assign Subsector (1 label)",
+      "Step 7: Assign domain-specific attributes (0-2 labels)"
+    ],
+    "quality_metrics": {
+      "coverage": "All nodes must have minimum 4 labels",
+      "consistency": "Same entity type should have similar label counts (+/- 1 label)",
+      "performance": "Query performance optimal at 5-6 labels per node"
+    }
+  },
+  "gold_standard_metrics": {
+    "description": "Target metrics for sector graph completeness based on Water and Energy examples",
+    "nodes_per_sector": {
+      "minimum": 26000,
+      "target": 30000,
+      "maximum": 35000,
+      "water_actual": 27200,
+      "energy_actual": 35475,
+      "reasoning": "Both sectors fall within target range"
+    },
+    "measurement_nodes": {
+      "percentage_range": "50-70%",
+      "count_range": "15000-24500",
+      "water_actual": "19000 (69.85%)",
+      "energy_actual": "18000 (50.74%)",
+      "rationale": "Measurements are most frequent entity type in operational systems"
+    },
+    "property_nodes": {
+      "percentage_range": "15-20%",
+      "count_range": "3900-7000",
+      "water_actual": "4500 (16.54%)",
+      "energy_actual": "6000 (16.91%)",
+      "rationale": "Properties characterize devices and measurements"
+    },
+    "device_nodes": {
+      "percentage_range": "5-30%",
+      "count_range": "1300-10500",
+      "water_actual": "1450 (5.33%)",
+      "energy_actual": "10000 (28.19%)",
+      "rationale": "Devices are core infrastructure; count varies by sector complexity"
+    },
+    "relationship_density": {
+      "edges_per_node": "20-45",
+      "water_actual": "32.4 edges/node",
+      "energy_actual": "42.8 edges/node",
+      "total_relationships_water": 881338,
+      "total_relationships_energy": 1519521,
+      "rationale": "High connectivity for security vulnerability tracking"
+    },
+    "vulnerability_relationships": {
+      "percentage_range": "85-97%",
+      "water_actual": "96.73%",
+      "energy_actual": "86.28%",
+      "rationale": "Security tracking is dominant relationship type in critical infrastructure"
+    }
+  },
+  "cross_sector_query_patterns": {
+    "description": "Common query patterns applicable to both Water and Energy sectors",
+    "pattern_1_device_vulnerability_chain": {
+      "name": "Find all vulnerable devices",
+      "cypher_template": "MATCH (d:Device)-[:VULNERABLE_TO]->(v:Vulnerability) WHERE v.severity = 'Critical' RETURN d, v",
+      "water_use_case": "Identify water treatment plants vulnerable to critical CVEs",
+      "energy_use_case": "Identify power generation systems vulnerable to critical CVEs"
+    },
+    "pattern_2_measurement_anomaly_detection": {
+      "name": "Find measurements outside normal range",
+      "cypher_template": "MATCH (m:Measurement)-[:MEASURED_BY]->(d:Device) WHERE m.value > m.max OR m.value < m.min RETURN d, m",
+      "water_use_case": "pH levels outside safe drinking water range",
+      "energy_use_case": "Voltage levels outside nominal operating range"
+    },
+    "pattern_3_compliance_mapping": {
+      "name": "Map devices to applicable standards",
+      "cypher_template": "MATCH (d:Device)-[:GOVERNED_BY]->(s:Standard) WHERE s.sector = $sector RETURN d, COLLECT(s.name)",
+      "water_use_case": "Water system compliance with EPA and AWWA standards",
+      "energy_use_case": "Power system compliance with NERC CIP and IEEE standards"
+    },
+    "pattern_4_vendor_ecosystem": {
+      "name": "Map vendor impact across infrastructure",
+      "cypher_template": "MATCH (v:Vendor)<-[:MANUFACTURED_BY]-(d:Device)-[:VULNERABLE_TO]->(vuln:Vulnerability) RETURN v.name, COUNT(DISTINCT d), COUNT(DISTINCT vuln)",
+      "water_use_case": "Xylem device vulnerabilities impact assessment",
+      "energy_use_case": "Siemens device vulnerabilities impact assessment"
+    },
+    "pattern_5_subsector_distribution": {
+      "name": "Analyze node distribution across subsectors",
+      "cypher_template": "MATCH (n) WHERE n:WATER OR n:ENERGY RETURN labels(n), COUNT(n) ORDER BY COUNT(n) DESC",
+      "water_use_case": "Distribution between Treatment (92.64%) and Distribution (7.36%)",
+      "energy_use_case": "Distribution between Transmission (68.8%), Distribution (29.09%), Generation (2.11%)"
+    },
+    "pattern_6_protocol_security": {
+      "name": "Assess protocol security across devices",
+      "cypher_template": "MATCH (d:Device)-[:USES_PROTOCOL]->(p:Protocol)-[:VULNERABLE_TO]->(v:Vulnerability) RETURN d, p, v",
+      "water_use_case": "Modbus protocol vulnerabilities in water SCADA systems",
+      "energy_use_case": "DNP3 protocol vulnerabilities in power systems"
+    }
+  },
+  "validation_rules": {
+    "description": "Validation rules for ensuring schema compliance across sectors",
+    "before_import": [
+      "All 8 core node types must be defined",
+      "Common relationship types must be documented",
+      "Multi-label rules must be testable (4-8 labels)",
+      "Gold standard metrics must be achievable",
+      "Naming conventions must be consistent",
+      "Cross-sector patterns must be applicable to both Water and Energy",
+      "Query patterns must work on sample data",
+      "Node IDs must be globally unique",
+      "All vulnerability CVEs must be traceable"
+    ],
+    "during_import": [
+      "Validate label cardinality (4-8 labels per node)",
+      "Verify relationship cardinality (1:N, N:M)",
+      "Check for orphaned nodes (nodes without relationships)",
+      "Validate sector classification (WATER or ENERGY)",
+      "Verify all referenced IDs exist",
+      "Check timestamp formats (ISO 8601)",
+      "Validate numeric ranges (CVSS 0-10, etc.)",
+      "Verify subsector assignments are valid"
+    ],
+    "post_import": [
+      "Run cross-sector query patterns against populated graph",
+      "Verify node count falls within gold standard range (26000-35000)",
+      "Validate relationship density (20-45 edges per node)",
+      "Test vulnerability impact queries",
+      "Verify compliance mapping for standards",
+      "Check measurement anomaly detection scenarios",
+      "Validate subsector distribution percentages",
+      "Confirm VULNERABLE_TO dominance (85-97% of relationships)"
+    ],
+    "quality_checks": {
+      "data_quality": "HIGH",
+      "coverage": "100% of labeled nodes",
+      "consistency": "All nodes follow multi-label hierarchy pattern",
+      "completeness": "All major patterns accounted for"
+    }
+  },
+  "registry_usage_guidelines": {
+    "purpose": "This registry serves as the authoritative schema template for all 16 critical infrastructure sectors",
+    "application": [
+      "Use Water sector patterns as reference for liquid/fluid infrastructure sectors",
+      "Use Energy sector patterns as reference for power/electrical infrastructure sectors",
+      "Adapt label patterns while maintaining core structure (NodeType:Specific:Domain:Monitoring:SECTOR:Subsector)",
+      "Maintain 4-8 label rule across all sectors",
+      "Ensure VULNERABLE_TO relationships dominate security tracking",
+      "Apply cross-sector query patterns for consistent analysis across sectors"
+    ],
+    "extension_rules": [
+      "New sectors must define subsector breakdown (minimum 2 subsectors)",
+      "New sectors must identify primary node types (minimum 5 types)",
+      "New sectors must document specialized node types unique to domain",
+      "New sectors must maintain relationship density in range of 20-45 edges/node",
+      "New sectors must achieve 26000-35000 total nodes for comprehensive coverage"
+    ],
+    "next_sectors_to_register": [
+      "Healthcare and Public Health",
+      "Information Technology",
+      "Transportation Systems",
+      "Communications",
+      "Chemical",
+      "Commercial Facilities",
+      "Critical Manufacturing",
+      "Dams",
+      "Defense Industrial Base",
+      "Emergency Services",
+      "Financial Services",
+      "Food and Agriculture",
+      "Government Facilities",
+      "Nuclear Reactors, Materials, and Waste"
+    ]
+  },
+  "metadata": {
+    "extraction_methods": {
+      "water": "Cypher-shell queries on openspg-neo4j database",
+      "energy": "Cypher-shell queries on openspg-neo4j database",
+      "communications": "Cypher-shell queries on openspg-neo4j database"
+    },
+    "validation_status": {
+      "water": "CONFIRMED",
+      "energy": "COMPLETE",
+      "communications": "DEPLOYED"
+    },
+    "data_sources": {
+      "water": "/home/jim/2_OXOT_Projects_Dev/temp/schema-governance-water-patterns.json",
+      "energy": "/home/jim/2_OXOT_Projects_Dev/temp/schema-governance-energy-patterns.json",
+      "communications": "Live extraction from openspg-neo4j (2025-11-21)",
+      "common": "/home/jim/2_OXOT_Projects_Dev/temp/schema-governance-common-patterns.json"
+    },
+    "registry_completeness": "43.75% (7 of 16 sectors registered)",
+    "next_update": "Upon completion of additional sector extractions"
+  },
+  "registry_completeness": "37.50% (6 of 16 sectors registered)"
+}

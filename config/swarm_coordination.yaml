@@ -1,0 +1,191 @@
+# Claude-Flow Swarm Coordination Configuration
+# Multi-agent coordination for Cyber DT system
+
+swarm:
+  # Topology configuration
+  topology: "mesh"              # mesh, hierarchical, ring, or star
+  max_agents: 10               # Maximum concurrent agents
+  min_agents: 3                # Minimum agents to maintain
+
+  # Agent distribution strategy
+  strategy: "adaptive"          # adaptive, balanced, or specialized
+
+  # Auto-scaling
+  auto_scaling:
+    enabled: true
+    scale_up_threshold: 0.8    # CPU/memory above 80%
+    scale_down_threshold: 0.3  # CPU/memory below 30%
+    check_interval: 30         # Seconds
+
+# Coordination settings
+coordination:
+  # Memory management
+  memory_namespace: "cyber_dt"
+  memory_ttl: 3600            # Time-to-live in seconds
+  checkpoint_interval: 300    # Checkpoint every 5 minutes
+
+  # Communication
+  heartbeat_interval: 10      # Seconds
+  message_timeout: 30         # Seconds
+  retry_attempts: 3
+
+  # Synchronization
+  sync_strategy: "eventual"   # immediate or eventual
+  conflict_resolution: "latest-write-wins"
+
+# Agent definitions
+agents:
+  - type: "researcher"
+    name: "Research Agent"
+    capabilities:
+      - document_analysis
+      - entity_extraction
+      - threat_intelligence_gathering
+    concurrency: 2
+    resources:
+      memory_mb: 512
+      timeout_seconds: 600
+
+  - type: "coder"
+    name: "Development Agent"
+    capabilities:
+      - script_generation
+      - data_processing
+      - code_analysis
+    concurrency: 2
+    resources:
+      memory_mb: 1024
+      timeout_seconds: 900
+
+  - type: "analyzer"
+    name: "Analysis Agent"
+    capabilities:
+      - pattern_analysis
+      - graph_analysis
+      - statistics_computation
+    concurrency: 2
+    resources:
+      memory_mb: 768
+      timeout_seconds: 1200
+
+  - type: "integrator"
+    name: "Integration Agent"
+    capabilities:
+      - neo4j_integration
+      - data_normalization
+      - relationship_building
+    concurrency: 1
+    resources:
+      memory_mb: 2048
+      timeout_seconds: 1800
+
+  - type: "reviewer"
+    name: "Review Agent"
+    capabilities:
+      - quality_assurance
+      - validation
+      - compliance_checking
+    concurrency: 1
+    resources:
+      memory_mb: 512
+      timeout_seconds: 600
+
+# Task orchestration
+tasks:
+  # Default task configuration
+  default:
+    priority: "medium"
+    timeout: 600
+    retry_on_failure: true
+    max_retries: 3
+
+  # High-priority task configuration
+  high:
+    priority: "high"
+    timeout: 300
+    retry_on_failure: true
+    max_retries: 1
+
+  # Background task configuration
+  background:
+    priority: "low"
+    timeout: 3600
+    retry_on_failure: true
+    max_retries: 5
+
+# Monitoring and health checks
+monitoring:
+  enabled: true
+  check_interval: 30          # Seconds
+
+  # Health check parameters
+  health_checks:
+    - type: "cpu"
+      threshold: 90           # Alert if >90%
+
+    - type: "memory"
+      threshold: 85           # Alert if >85%
+
+    - type: "disk"
+      threshold: 80           # Alert if >80%
+
+    - type: "task_queue"
+      threshold: 1000         # Alert if >1000 queued
+
+  # Logging
+  log_level: "INFO"
+  log_file: "processing/logs/swarm_coordination.log"
+
+# Performance tuning
+performance:
+  # Parallel execution settings
+  max_parallel_tasks: 10
+  batch_size: 100
+
+  # Optimization
+  use_caching: true
+  cache_ttl: 1800            # 30 minutes
+
+  # Resource limits
+  global_memory_limit_mb: 8192
+  global_cpu_cores: 8
+
+# Error handling and recovery
+error_handling:
+  strategy: "retry_with_backoff"
+  backoff_multiplier: 2
+  max_backoff_seconds: 300
+
+  # Failure modes
+  on_agent_failure: "reassign"        # reassign or skip
+  on_task_failure: "retry"            # retry or mark_failed
+  on_memory_full: "spill_to_disk"     # spill_to_disk or fail
+
+# Integration with external services
+integrations:
+  neo4j:
+    enabled: true
+    connection_pool_size: 10
+    retry_strategy: "exponential_backoff"
+
+  nvd_api:
+    enabled: true
+    rate_limit: 50
+    rate_limit_period: 30
+
+  slack:
+    enabled: false
+    webhook_url: "https://hooks.slack.com/services/YOUR/WEBHOOK/URL"
+    alert_level: "error"
+
+# Audit and compliance
+audit:
+  enabled: true
+  log_file: "processing/logs/audit.log"
+  capture_events:
+    - agent_spawn
+    - agent_terminate
+    - task_start
+    - task_complete
+    - task_fail
+    - data_modification

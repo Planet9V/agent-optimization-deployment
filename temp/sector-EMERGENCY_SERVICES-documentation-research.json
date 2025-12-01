@@ -1,0 +1,534 @@
+{
+  "sector": "EMERGENCY_SERVICES",
+  "research_timestamp": "2025-11-21T19:30:00Z",
+  "documentation_sources": [
+    "/home/jim/2_OXOT_Projects_Dev/Training_Data_Check_to_see/Emergency_Sector/emergency_operations_center_activation.md",
+    "/home/jim/2_OXOT_Projects_Dev/Training_Data_Check_to_see/Emergency_Sector/emergency_mass_notification.md",
+    "/home/jim/2_OXOT_Projects_Dev/Training_Data_Check_to_see/Emergency_Sector/911_dispatch_cad_operations.md",
+    "/home/jim/2_OXOT_Projects_Dev/Training_Data_Check_to_see/Emergency_Sector/Computer_Aided_Dispatch.md",
+    "/home/jim/2_OXOT_Projects_Dev/Training_Data_Check_to_see/Emergency_Sector/P25_Standards.md",
+    "/home/jim/2_OXOT_Projects_Dev/Training_Data_Check_to_see/Emergency_Sector/Mobile_Data_Terminals.md",
+    "/home/jim/2_OXOT_Projects_Dev/scripts/deploy_emergency_services_sector.cypher"
+  ],
+  "equipment_types": [
+    "Computer-Aided Dispatch (CAD) Systems",
+    "CAD Workstations",
+    "CAD Servers (Primary and Backup)",
+    "911 Call Taking Equipment",
+    "ANI/ALI Display Systems",
+    "Emergency Call Routing Systems",
+    "P25 Phase I Radio Systems",
+    "P25 Phase II TDMA Radio Systems",
+    "P25 Portable Radios",
+    "P25 Mobile Radios",
+    "P25 Base Stations",
+    "P25 Repeaters",
+    "Radio Dispatch Consoles",
+    "Radio Control Heads",
+    "Mobile Data Terminals (MDTs)",
+    "Ruggedized Laptops (Panasonic Toughbook)",
+    "Ruggedized Tablets (Getac, Dell Latitude Rugged)",
+    "Vehicle Docking Stations",
+    "GPS/AVL Tracking Systems",
+    "Automatic Vehicle Location Equipment",
+    "GIS Mapping Systems",
+    "Esri ArcGIS Software",
+    "WebEOC Crisis Management Platform",
+    "Emergency Operations Center Equipment",
+    "EOC Video Walls",
+    "Situation Display Systems",
+    "Mass Notification Systems",
+    "Reverse 911 Systems",
+    "Emergency Alert System (EAS) Equipment",
+    "Wireless Emergency Alerts (WEA) Systems",
+    "IPAWS (Integrated Public Alert and Warning System)",
+    "Outdoor Warning Sirens",
+    "Siren Control Systems",
+    "Fire Station Alerting Systems",
+    "Tone Alert Equipment",
+    "Body-Worn Cameras",
+    "In-Car Video Systems",
+    "Evidence Management Systems",
+    "Records Management Systems (RMS)",
+    "Incident Reporting Software",
+    "License Plate Recognition (LPR) Systems",
+    "Automated License Plate Readers",
+    "NCIC/NLETS Query Terminals",
+    "Criminal Database Access Systems",
+    "Encryption Key Management Systems",
+    "AES-256 Encryption Equipment",
+    "OTAR (Over-The-Air Rekeying) Systems",
+    "Key Fill Devices (KVL-4000, KVL-5000)",
+    "911 Call Recording Systems",
+    "Digital Logging Recorders",
+    "Radio Recording Equipment",
+    "Backup Power Systems (UPS)",
+    "Emergency Generators",
+    "Network Switches",
+    "Routers",
+    "Firewalls",
+    "4G LTE Mobile Broadband Modems",
+    "5G Mobile Broadband Equipment",
+    "Vehicle Wi-Fi Hotspots (Cradlepoint)",
+    "Cellular Signal Boosters",
+    "GPS Antennas",
+    "Radio Antennas (VHF/UHF/700MHz/800MHz)",
+    "Microwave Communication Equipment",
+    "Satellite Communication Systems",
+    "TTY/TDD Equipment (Text Telephone)",
+    "Text-to-911 Systems",
+    "Real-Time Text (RTT) Equipment",
+    "Fire Alarm Monitoring Systems",
+    "Fire Alarm Panels",
+    "Public Address Systems",
+    "Emergency Notification Speakers",
+    "Mobile Command Centers",
+    "Command Vehicle Equipment",
+    "Tactical Communication Equipment",
+    "Interoperability Gateways",
+    "ACU (Audio Control Unit) Systems",
+    "Patch Panels",
+    "Radio Programming Equipment",
+    "Service Monitors",
+    "Spectrum Analyzers",
+    "Incident Command System (ICS) Software",
+    "Resource Tracking Systems",
+    "Personnel Accountability Systems",
+    "SCBA (Self-Contained Breathing Apparatus) Tracking",
+    "Hazmat Detection Equipment",
+    "Gas Monitors",
+    "Defibrillators (AEDs)",
+    "Patient Monitoring Equipment",
+    "EMS Dispatch Software",
+    "Hospital Notification Systems",
+    "Ambulance Routing Systems",
+    "Traffic Signal Preemption Systems",
+    "Emergency Vehicle Preemption Equipment"
+  ],
+  "processes": [
+    "911 Emergency Call Processing",
+    "Computer-Aided Dispatch Operations",
+    "Emergency Response Coordination",
+    "Unit Dispatching and Assignment",
+    "Incident Status Tracking",
+    "Emergency Medical Dispatch (EMD) Protocol",
+    "Fire/EMS/Police Resource Allocation",
+    "Automatic Vehicle Location (AVL) Tracking",
+    "GPS Location Monitoring",
+    "Multi-Agency Coordination",
+    "Mutual Aid Request and Coordination",
+    "Emergency Operations Center (EOC) Activation",
+    "Incident Command System (ICS) Implementation",
+    "NIMS (National Incident Management System) Compliance",
+    "Mass Notification Deployment",
+    "Reverse 911 Activation",
+    "Wireless Emergency Alert Distribution",
+    "Emergency Alert System (EAS) Broadcasting",
+    "Public Warning Siren Activation",
+    "Evacuation Notification Procedures",
+    "P25 Radio Communication",
+    "Encrypted Radio Traffic",
+    "Interoperable Communications",
+    "CAD-to-CAD Information Sharing",
+    "Mobile Data Terminal Operations",
+    "Field Incident Reporting",
+    "Evidence Collection and Management",
+    "Body-Worn Camera Operations",
+    "License Plate Recognition Processing",
+    "NCIC/NLETS Database Queries",
+    "Criminal Records Checks",
+    "Warrant Verification",
+    "Call Recording and Retention",
+    "Quality Assurance Review",
+    "Emergency Medical Pre-Arrival Instructions",
+    "CPR Coaching",
+    "Fire Apparatus Alerting",
+    "Station Tone-Out Procedures",
+    "GIS Mapping and Geocoding",
+    "Address Validation",
+    "Premise Hazard Alerting",
+    "Officer Safety Warnings",
+    "Emergency Button/Panic Alarm Response",
+    "Officer Welfare Checks",
+    "Text-to-911 Processing",
+    "TTY/TDD Communication",
+    "Language Interpretation Services",
+    "PSAP-to-PSAP Call Transfer",
+    "Jurisdictional Call Routing",
+    "Disaster Response Coordination",
+    "Critical Infrastructure Monitoring",
+    "Damage Assessment Coordination",
+    "Resource Ordering and Tracking",
+    "Emergency Support Function (ESF) Activation",
+    "Joint Information Center (JIC) Operations",
+    "Public Information Dissemination",
+    "After Action Review (AAR)",
+    "Performance Metrics Reporting"
+  ],
+  "subsectors": [
+    {
+      "name": "Fire Services",
+      "description": "Fire suppression, rescue operations, hazmat response",
+      "estimated_percentage": 25,
+      "key_equipment": ["Fire apparatus", "Fire station alerting systems", "Fire alarm monitoring", "SCBA tracking"],
+      "standards": ["NFPA 1221", "NFPA 1710"]
+    },
+    {
+      "name": "Emergency Medical Services (EMS)",
+      "description": "Pre-hospital emergency medical care and patient transport",
+      "estimated_percentage": 25,
+      "key_equipment": ["Ambulances", "Defibrillators", "Patient monitoring", "Hospital notification systems"],
+      "standards": ["IAED/NAED Protocols", "FDA medical device regulations"]
+    },
+    {
+      "name": "Law Enforcement",
+      "description": "Police services, criminal investigation, public safety",
+      "estimated_percentage": 25,
+      "key_equipment": ["Police vehicles", "Body-worn cameras", "LPR systems", "Evidence management"],
+      "standards": ["CJIS Security Policy", "CALEA Standards"]
+    },
+    {
+      "name": "Emergency Communications/911 Dispatch",
+      "description": "Emergency call processing, dispatching, and coordination",
+      "estimated_percentage": 20,
+      "key_equipment": ["CAD systems", "911 call taking equipment", "Radio consoles", "Call recording"],
+      "standards": ["NENA Standards", "FCC Enhanced 911 Rules", "APCO Standards"]
+    },
+    {
+      "name": "Emergency Management",
+      "description": "Disaster coordination, EOC operations, mass notification",
+      "estimated_percentage": 5,
+      "key_equipment": ["WebEOC", "Mass notification systems", "EOC facilities", "Warning sirens"],
+      "standards": ["NIMS", "HSPD-5", "PPD-8"]
+    }
+  ],
+  "facilities": [
+    "Fire Stations",
+    "Fire Department Headquarters",
+    "EMS Stations",
+    "Ambulance Bases",
+    "Police Stations",
+    "Police Precincts",
+    "Sheriff's Offices",
+    "Law Enforcement Centers",
+    "911 Call Centers (PSAPs - Public Safety Answering Points)",
+    "Emergency Communications Centers",
+    "Dispatch Centers",
+    "Emergency Operations Centers (EOCs)",
+    "Joint Operations Centers",
+    "Training Facilities",
+    "Public Safety Training Centers",
+    "Fire Training Towers",
+    "Police Academies",
+    "Communication Tower Sites",
+    "Radio Repeater Sites",
+    "Microwave Tower Sites",
+    "Mobile Command Centers",
+    "Evidence Storage Facilities",
+    "Crime Labs",
+    "Forensic Facilities",
+    "Vehicle Maintenance Facilities",
+    "Equipment Storage Warehouses"
+  ],
+  "standards_and_regulations": [
+    "NIMS (National Incident Management System)",
+    "NFPA 1221 (Emergency Services Communications Systems)",
+    "NFPA 1710 (Fire Suppression Operations)",
+    "NENA (National Emergency Number Association) Standards",
+    "NENA i3 (Next Generation 911)",
+    "FCC Enhanced 911 (E911) Rules",
+    "FCC Part 90 (Private Land Mobile Radio)",
+    "FCC Part 11 (Emergency Alert System)",
+    "APCO (Association of Public-Safety Communications Officials) Standards",
+    "APCO Project 25 (P25) Radio Standard",
+    "TIA-102 (P25 Technical Standards)",
+    "CJIS Security Policy (Criminal Justice Information Services)",
+    "CALEA (Commission on Accreditation for Law Enforcement Agencies)",
+    "IAED/NAED EMD Protocols (Emergency Medical Dispatch)",
+    "HSPD-5 (Homeland Security Presidential Directive)",
+    "PPD-8 (Presidential Policy Directive - National Preparedness)",
+    "Stafford Act (Federal Disaster Assistance)",
+    "ADA Title II (Accessibility Requirements)",
+    "HIPAA (Health Insurance Portability and Accountability Act)",
+    "FIPS 140-2 (Federal Information Processing Standard - Cryptography)",
+    "FIPS 197 (Advanced Encryption Standard)",
+    "CAP (Common Alerting Protocol - OASIS Standard)",
+    "IPAWS (Integrated Public Alert and Warning System)",
+    "P25 CAP (Compliance Assessment Program)",
+    "MIL-STD-810 (Military Standard for Equipment Durability)",
+    "IP Rating Standards (Ingress Protection)",
+    "SOC 2 Type 2 (Service Organization Control)"
+  ],
+  "vendors": [
+    {
+      "name": "Motorola Solutions",
+      "products": ["P25 radios", "PremierOne CAD", "CommandCentral suite", "APX radio series", "Radio infrastructure"],
+      "category": "Communications and CAD"
+    },
+    {
+      "name": "Harris (L3Harris)",
+      "products": ["P25 radios", "XL-200P radios", "Unity XG radio system", "Encryption equipment"],
+      "category": "Radio Communications"
+    },
+    {
+      "name": "Hexagon Safety & Infrastructure",
+      "products": ["Intergraph CAD", "Public Safety CAD", "RMS", "GIS integration"],
+      "category": "CAD and Records Management"
+    },
+    {
+      "name": "Tyler Technologies",
+      "products": ["New World CAD", "New World RMS", "Public safety software suite"],
+      "category": "CAD and Records Management"
+    },
+    {
+      "name": "CentralSquare Technologies",
+      "products": ["CAD systems", "RMS", "Jail management", "Public safety software"],
+      "category": "CAD and Records Management"
+    },
+    {
+      "name": "Mark43",
+      "products": ["Cloud-native CAD", "Mark43 RMS", "Mark43 Analytics"],
+      "category": "Cloud CAD/RMS"
+    },
+    {
+      "name": "Juvare (ESi)",
+      "products": ["WebEOC", "Crisis management platforms", "EMTrack"],
+      "category": "Emergency Management"
+    },
+    {
+      "name": "Everbridge",
+      "products": ["Mass notification", "Critical event management", "Emergency alerts"],
+      "category": "Mass Notification"
+    },
+    {
+      "name": "Rave Mobile Safety",
+      "products": ["Rave Alert", "Mass notification systems", "Panic button solutions"],
+      "category": "Mass Notification"
+    },
+    {
+      "name": "OnSolve (CodeRED)",
+      "products": ["CodeRED emergency notification", "Mass alerting"],
+      "category": "Mass Notification"
+    },
+    {
+      "name": "Esri",
+      "products": ["ArcGIS", "Public safety GIS", "Real-time mapping"],
+      "category": "GIS and Mapping"
+    },
+    {
+      "name": "Panasonic Connect",
+      "products": ["Toughbook laptops", "Rugged tablets", "Mobile computing"],
+      "category": "Mobile Data Terminals"
+    },
+    {
+      "name": "Getac",
+      "products": ["Rugged laptops", "Rugged tablets", "Vehicle-mount computers"],
+      "category": "Mobile Data Terminals"
+    },
+    {
+      "name": "Dell Technologies",
+      "products": ["Latitude Rugged laptops", "Rugged tablets"],
+      "category": "Mobile Data Terminals"
+    },
+    {
+      "name": "Zebra Technologies",
+      "products": ["Rugged tablets", "Mobile printers", "Barcode scanners"],
+      "category": "Mobile Computing"
+    },
+    {
+      "name": "Axon (formerly TASER)",
+      "products": ["Body-worn cameras", "In-car video", "Evidence.com cloud storage", "Fleet dashcams"],
+      "category": "Video Evidence"
+    },
+    {
+      "name": "WatchGuard Video",
+      "products": ["Body cameras", "In-car video", "Evidence management"],
+      "category": "Video Evidence"
+    },
+    {
+      "name": "Vigilant Solutions",
+      "products": ["License plate recognition", "LPR analytics", "Investigative platforms"],
+      "category": "License Plate Recognition"
+    },
+    {
+      "name": "Zoll Medical",
+      "products": ["Defibrillators", "Patient monitoring", "EMS equipment"],
+      "category": "EMS Medical Equipment"
+    },
+    {
+      "name": "Stryker",
+      "products": ["Ambulance equipment", "Patient transport", "Medical devices"],
+      "category": "EMS Medical Equipment"
+    },
+    {
+      "name": "Priority Dispatch",
+      "products": ["ProQA EMD software", "Emergency medical dispatch protocols"],
+      "category": "EMD Software"
+    },
+    {
+      "name": "PowerPhone",
+      "products": ["Total Response EMD software", "Fire/police protocols"],
+      "category": "EMD Software"
+    },
+    {
+      "name": "Gamber-Johnson",
+      "products": ["Vehicle docking stations", "MDT mounts", "Console systems"],
+      "category": "Vehicle Equipment"
+    },
+    {
+      "name": "Havis",
+      "products": ["Vehicle docking", "Console systems", "Mounting solutions"],
+      "category": "Vehicle Equipment"
+    },
+    {
+      "name": "Cradlepoint",
+      "products": ["Vehicle routers", "Mobile broadband", "4G/5G connectivity"],
+      "category": "Vehicle Networking"
+    },
+    {
+      "name": "Sierra Wireless",
+      "products": ["4G/5G modems", "IoT connectivity", "Mobile broadband"],
+      "category": "Cellular Connectivity"
+    },
+    {
+      "name": "AT&T FirstNet",
+      "products": ["Public safety LTE network", "Priority communications", "Broadband services"],
+      "category": "Telecommunications"
+    },
+    {
+      "name": "Verizon Frontline",
+      "products": ["Public safety network", "Priority LTE", "Mission-critical communications"],
+      "category": "Telecommunications"
+    },
+    {
+      "name": "Federal Signal",
+      "products": ["Outdoor warning sirens", "Emergency notification", "Alerting systems"],
+      "category": "Warning Systems"
+    },
+    {
+      "name": "Whelen Engineering",
+      "products": ["Emergency vehicle lighting", "Sirens", "Warning equipment"],
+      "category": "Emergency Vehicle Equipment"
+    },
+    {
+      "name": "NC4",
+      "products": ["E Team crisis management", "Threat assessment", "Situational awareness"],
+      "category": "Emergency Management"
+    },
+    {
+      "name": "Samsung Electronics",
+      "products": ["Galaxy Tab Active rugged tablets", "Knox security platform", "Mobile devices"],
+      "category": "Mobile Devices"
+    }
+  ],
+  "operational_characteristics": {
+    "criticality_level": "CRITICAL",
+    "uptime_requirement": "99.99% (52 minutes downtime per year)",
+    "response_time_targets": {
+      "call_answer": "10 seconds (NENA standard)",
+      "call_processing": "60 seconds",
+      "dispatch_time_priority_1": "90 seconds",
+      "total_response_time_priority_1": "8 minutes",
+      "fire_turnout_time": "60 seconds (NFPA 1710)",
+      "police_turnout_time": "90 seconds"
+    },
+    "redundancy_requirements": {
+      "cad_systems": "N+1 or 2N redundancy",
+      "radio_systems": "Multiple sites with overlap",
+      "911_call_routing": "Automatic failover to backup PSAP",
+      "backup_power": "72-hour generator runtime minimum"
+    },
+    "security_requirements": {
+      "encryption": "FIPS 140-2 certified AES-256",
+      "authentication": "Multi-factor authentication",
+      "access_control": "Role-based access control (RBAC)",
+      "audit_logging": "Comprehensive audit trails",
+      "cjis_compliance": "FBI CJIS Security Policy compliance"
+    },
+    "interoperability_needs": {
+      "p25_compliance": "Full P25 Phase I and Phase II support",
+      "cad_to_cad": "Multi-agency CAD data sharing",
+      "issi_support": "Inter-RF Subsystem Interface for roaming",
+      "nena_i3": "Next Generation 911 standards",
+      "ipaws_integration": "Integrated Public Alert and Warning System"
+    },
+    "coverage_requirements": {
+      "geographic": "Full jurisdictional coverage",
+      "radio_coverage": "95% portable coverage, 99% mobile coverage",
+      "in_building_coverage": "90% reliability in buildings",
+      "cellular_coverage": "Priority and preemption on public safety networks"
+    },
+    "capacity_planning": {
+      "concurrent_911_calls": "Design for 1% blocking probability",
+      "cad_users": "100-500 concurrent users typical",
+      "radio_channels": "Trunking capacity 20-50 Erlangs per RF pair",
+      "mdts": "One MDT per emergency vehicle minimum"
+    },
+    "training_requirements": {
+      "telecommunicator_training": "40-80 hours initial training",
+      "emd_certification": "Emergency Medical Dispatch certification",
+      "cjis_training": "Annual CJIS security awareness",
+      "ics_training": "ICS-100/200/300/400 for command staff",
+      "ongoing_training": "Quarterly refresher training"
+    }
+  },
+  "cyber_threats": [
+    "Ransomware attacks on CAD/RMS systems",
+    "DDoS attacks on 911 call centers",
+    "Radio jamming and interference",
+    "GPS spoofing affecting AVL",
+    "Unauthorized access to NCIC/NLETS",
+    "Encryption key compromise",
+    "MDT malware and compromise",
+    "Video evidence tampering",
+    "Mass notification system hijacking",
+    "EOC system compromise during disasters"
+  ],
+  "integration_points": [
+    "CAD to RMS (Records Management System)",
+    "CAD to P25 Radio System",
+    "CAD to Mobile Data Terminals",
+    "CAD to GIS/Mapping Systems",
+    "CAD to AVL (Automatic Vehicle Location)",
+    "CAD to NCIC/NLETS Criminal Databases",
+    "CAD to Hospital Notification Systems",
+    "911 to CAD Integration",
+    "WebEOC to CAD Integration",
+    "Mass Notification to CAD/EOC",
+    "Body-Worn Camera to Evidence Management",
+    "LPR to CAD/RMS Integration",
+    "MDT to CAD Bidirectional Data",
+    "IPAWS to EAS Integration",
+    "FirstNet/Frontline to Mobile Devices"
+  ],
+  "key_metrics": [
+    "Call Answer Time (seconds)",
+    "Call Processing Time (seconds)",
+    "Dispatch Time (seconds)",
+    "Turnout Time (seconds)",
+    "Response Time (minutes)",
+    "CAD System Uptime (%)",
+    "Radio System Coverage (%)",
+    "MDT Availability (%)",
+    "Mass Notification Delivery Rate (%)",
+    "GPS Location Accuracy (meters)",
+    "Encryption Key Distribution Success Rate",
+    "911 Call Volume (calls per day)",
+    "Mutual Aid Requests (count)",
+    "Officer Safety Events (count)",
+    "System Failures and Outages (count)"
+  ],
+  "research_notes": [
+    "Documentation covers 16 files with comprehensive operational procedures",
+    "Equipment types include communications, dispatch, mobile computing, and emergency management systems",
+    "Strong emphasis on P25 digital radio standards and interoperability",
+    "CAD systems are central integration point for all emergency services",
+    "Mass notification and 911 systems governed by federal regulations (FCC, FEMA)",
+    "Mobile Data Terminals require ruggedized equipment meeting MIL-STD-810 standards",
+    "Security critical: CJIS compliance, FIPS 140-2 encryption, multi-factor authentication",
+    "99.99% uptime requirement drives redundancy and failover design",
+    "Multi-agency coordination essential through NIMS/ICS frameworks",
+    "Integration with federal systems: NCIC, NLETS, IPAWS, FirstNet"
+  ],
+  "subsector_distribution_rationale": "Fire, EMS, and Law Enforcement each represent approximately 25% of emergency services operations. Emergency Communications (911/Dispatch) represents 20% as it serves all three primary subsectors. Emergency Management represents 5% focused on disaster coordination and EOC operations. Distribution based on operational scope and resource allocation typical in combined public safety agencies."
+}

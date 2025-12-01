@@ -1,0 +1,93 @@
+{"timestamp": "2025-10-31T02:27:30.228236", "operation": "wave_1_execution_started", "details": {"timestamp": "2025-10-31T02:27:30.228230"}}
+{"timestamp": "2025-10-31T02:27:30.228426", "operation": "phase_started", "details": {"phase": "constraints_and_indexes"}}
+{"timestamp": "2025-10-31T02:27:30.296542", "operation": "constraint_created", "details": {"constraint": "CREATE CONSTRAINT device_id_unique IF NOT EXISTS F"}}
+{"timestamp": "2025-10-31T02:27:30.353614", "operation": "constraint_created", "details": {"constraint": "CREATE CONSTRAINT property_id_unique IF NOT EXISTS"}}
+{"timestamp": "2025-10-31T02:27:30.399675", "operation": "constraint_created", "details": {"constraint": "CREATE CONSTRAINT measurement_id_unique IF NOT EXI"}}
+{"timestamp": "2025-10-31T02:27:30.443960", "operation": "constraint_created", "details": {"constraint": "CREATE CONSTRAINT service_id_unique IF NOT EXISTS "}}
+{"timestamp": "2025-10-31T02:27:30.491509", "operation": "constraint_created", "details": {"constraint": "CREATE CONSTRAINT function_id_unique IF NOT EXISTS"}}
+{"timestamp": "2025-10-31T02:27:30.540248", "operation": "constraint_created", "details": {"constraint": "CREATE CONSTRAINT command_id_unique IF NOT EXISTS "}}
+{"timestamp": "2025-10-31T02:27:30.553158", "operation": "index_created", "details": {"index": "CREATE INDEX device_manufacturer_idx IF NOT EXISTS"}}
+{"timestamp": "2025-10-31T02:27:30.563490", "operation": "index_created", "details": {"index": "CREATE INDEX device_model_idx IF NOT EXISTS FOR (d"}}
+{"timestamp": "2025-10-31T02:27:30.573784", "operation": "index_created", "details": {"index": "CREATE INDEX device_status_idx IF NOT EXISTS FOR ("}}
+{"timestamp": "2025-10-31T02:27:30.581179", "operation": "index_created", "details": {"index": "CREATE INDEX device_criticality_idx IF NOT EXISTS "}}
+{"timestamp": "2025-10-31T02:27:30.595021", "operation": "index_created", "details": {"index": "CREATE INDEX property_type_idx IF NOT EXISTS FOR ("}}
+{"timestamp": "2025-10-31T02:27:30.617075", "operation": "index_created", "details": {"index": "CREATE INDEX property_unit_idx IF NOT EXISTS FOR ("}}
+{"timestamp": "2025-10-31T02:27:30.630192", "operation": "index_created", "details": {"index": "CREATE INDEX measurement_timestamp_idx IF NOT EXIS"}}
+{"timestamp": "2025-10-31T02:27:30.645638", "operation": "index_created", "details": {"index": "CREATE INDEX measurement_anomaly_idx IF NOT EXISTS"}}
+{"timestamp": "2025-10-31T02:27:30.660300", "operation": "index_created", "details": {"index": "CREATE INDEX service_type_idx IF NOT EXISTS FOR (s"}}
+{"timestamp": "2025-10-31T02:27:30.683316", "operation": "index_created", "details": {"index": "CREATE INDEX function_type_idx IF NOT EXISTS FOR ("}}
+{"timestamp": "2025-10-31T02:27:30.687994", "operation": "phase_completed", "details": {"phase": "constraints_and_indexes", "constraints": 6, "indexes": 10}}
+{"timestamp": "2025-10-31T02:27:30.688189", "operation": "phase_started", "details": {"phase": "create_devices", "target_count": 500}}
+{"timestamp": "2025-10-31T02:27:30.879593", "operation": "devices_batch_created", "details": {"batch": 0, "count": 50, "total": 50}}
+{"timestamp": "2025-10-31T02:27:30.919194", "operation": "devices_batch_created", "details": {"batch": 1, "count": 50, "total": 100}}
+{"timestamp": "2025-10-31T02:27:30.942132", "operation": "devices_batch_created", "details": {"batch": 2, "count": 50, "total": 150}}
+{"timestamp": "2025-10-31T02:27:30.962323", "operation": "devices_batch_created", "details": {"batch": 3, "count": 50, "total": 200}}
+{"timestamp": "2025-10-31T02:27:30.981577", "operation": "devices_batch_created", "details": {"batch": 4, "count": 50, "total": 250}}
+{"timestamp": "2025-10-31T02:27:30.998647", "operation": "devices_batch_created", "details": {"batch": 5, "count": 50, "total": 300}}
+{"timestamp": "2025-10-31T02:27:31.017402", "operation": "devices_batch_created", "details": {"batch": 6, "count": 50, "total": 350}}
+{"timestamp": "2025-10-31T02:27:31.033254", "operation": "devices_batch_created", "details": {"batch": 7, "count": 50, "total": 400}}
+{"timestamp": "2025-10-31T02:27:31.049484", "operation": "devices_batch_created", "details": {"batch": 8, "count": 50, "total": 450}}
+{"timestamp": "2025-10-31T02:27:31.065806", "operation": "devices_batch_created", "details": {"batch": 9, "count": 50, "total": 500}}
+{"timestamp": "2025-10-31T02:27:31.066064", "operation": "phase_completed", "details": {"phase": "create_devices", "nodes_created": 500}}
+{"timestamp": "2025-10-31T02:27:31.066172", "operation": "phase_started", "details": {"phase": "create_properties", "target_count": 2000}}
+{"timestamp": "2025-10-31T02:27:31.119020", "operation": "properties_batch_created", "details": {"batch": 0, "count": 100, "total": 100}}
+{"timestamp": "2025-10-31T02:27:31.137531", "operation": "properties_batch_created", "details": {"batch": 1, "count": 100, "total": 200}}
+{"timestamp": "2025-10-31T02:27:31.155675", "operation": "properties_batch_created", "details": {"batch": 2, "count": 100, "total": 300}}
+{"timestamp": "2025-10-31T02:27:31.172428", "operation": "properties_batch_created", "details": {"batch": 3, "count": 100, "total": 400}}
+{"timestamp": "2025-10-31T02:27:31.188797", "operation": "properties_batch_created", "details": {"batch": 4, "count": 100, "total": 500}}
+{"timestamp": "2025-10-31T02:27:31.203899", "operation": "properties_batch_created", "details": {"batch": 5, "count": 100, "total": 600}}
+{"timestamp": "2025-10-31T02:27:31.217993", "operation": "properties_batch_created", "details": {"batch": 6, "count": 100, "total": 700}}
+{"timestamp": "2025-10-31T02:27:31.233451", "operation": "properties_batch_created", "details": {"batch": 7, "count": 100, "total": 800}}
+{"timestamp": "2025-10-31T02:27:31.247513", "operation": "properties_batch_created", "details": {"batch": 8, "count": 100, "total": 900}}
+{"timestamp": "2025-10-31T02:27:31.261911", "operation": "properties_batch_created", "details": {"batch": 9, "count": 100, "total": 1000}}
+{"timestamp": "2025-10-31T02:27:31.279212", "operation": "properties_batch_created", "details": {"batch": 10, "count": 100, "total": 1100}}
+{"timestamp": "2025-10-31T02:27:31.294580", "operation": "properties_batch_created", "details": {"batch": 11, "count": 100, "total": 1200}}
+{"timestamp": "2025-10-31T02:27:31.308445", "operation": "properties_batch_created", "details": {"batch": 12, "count": 100, "total": 1300}}
+{"timestamp": "2025-10-31T02:27:31.323530", "operation": "properties_batch_created", "details": {"batch": 13, "count": 100, "total": 1400}}
+{"timestamp": "2025-10-31T02:27:31.338541", "operation": "properties_batch_created", "details": {"batch": 14, "count": 100, "total": 1500}}
+{"timestamp": "2025-10-31T02:27:31.353101", "operation": "properties_batch_created", "details": {"batch": 15, "count": 100, "total": 1600}}
+{"timestamp": "2025-10-31T02:27:31.367234", "operation": "properties_batch_created", "details": {"batch": 16, "count": 100, "total": 1700}}
+{"timestamp": "2025-10-31T02:27:31.384688", "operation": "properties_batch_created", "details": {"batch": 17, "count": 100, "total": 1800}}
+{"timestamp": "2025-10-31T02:27:31.403926", "operation": "properties_batch_created", "details": {"batch": 18, "count": 100, "total": 1900}}
+{"timestamp": "2025-10-31T02:27:31.417385", "operation": "properties_batch_created", "details": {"batch": 19, "count": 100, "total": 2000}}
+{"timestamp": "2025-10-31T02:27:31.417661", "operation": "phase_completed", "details": {"phase": "create_properties", "nodes_created": 2000}}
+{"timestamp": "2025-10-31T02:27:31.417784", "operation": "phase_started", "details": {"phase": "create_measurements", "target_count": 10000}}
+{"timestamp": "2025-10-31T02:27:31.478143", "operation": "measurements_batch_created", "details": {"batch": 0, "count": 500, "total": 500}}
+{"timestamp": "2025-10-31T02:27:31.641986", "operation": "measurements_batch_created", "details": {"batch": 5, "count": 500, "total": 3000}}
+{"timestamp": "2025-10-31T02:27:31.802950", "operation": "measurements_batch_created", "details": {"batch": 10, "count": 500, "total": 5500}}
+{"timestamp": "2025-10-31T02:27:31.942612", "operation": "measurements_batch_created", "details": {"batch": 15, "count": 500, "total": 8000}}
+{"timestamp": "2025-10-31T02:27:32.048717", "operation": "phase_completed", "details": {"phase": "create_measurements", "nodes_created": 10000}}
+{"timestamp": "2025-10-31T02:27:32.048974", "operation": "phase_started", "details": {"phase": "create_services", "target_count": 1500}}
+{"timestamp": "2025-10-31T02:27:32.088429", "operation": "services_batch_created", "details": {"batch": 0, "count": 100, "total": 100}}
+{"timestamp": "2025-10-31T02:27:32.100842", "operation": "services_batch_created", "details": {"batch": 1, "count": 100, "total": 200}}
+{"timestamp": "2025-10-31T02:27:32.113670", "operation": "services_batch_created", "details": {"batch": 2, "count": 100, "total": 300}}
+{"timestamp": "2025-10-31T02:27:32.125252", "operation": "services_batch_created", "details": {"batch": 3, "count": 100, "total": 400}}
+{"timestamp": "2025-10-31T02:27:32.136229", "operation": "services_batch_created", "details": {"batch": 4, "count": 100, "total": 500}}
+{"timestamp": "2025-10-31T02:27:32.147804", "operation": "services_batch_created", "details": {"batch": 5, "count": 100, "total": 600}}
+{"timestamp": "2025-10-31T02:27:32.159275", "operation": "services_batch_created", "details": {"batch": 6, "count": 100, "total": 700}}
+{"timestamp": "2025-10-31T02:27:32.170118", "operation": "services_batch_created", "details": {"batch": 7, "count": 100, "total": 800}}
+{"timestamp": "2025-10-31T02:27:32.181664", "operation": "services_batch_created", "details": {"batch": 8, "count": 100, "total": 900}}
+{"timestamp": "2025-10-31T02:27:32.192559", "operation": "services_batch_created", "details": {"batch": 9, "count": 100, "total": 1000}}
+{"timestamp": "2025-10-31T02:27:32.205907", "operation": "services_batch_created", "details": {"batch": 10, "count": 100, "total": 1100}}
+{"timestamp": "2025-10-31T02:27:32.220912", "operation": "services_batch_created", "details": {"batch": 11, "count": 100, "total": 1200}}
+{"timestamp": "2025-10-31T02:27:32.231576", "operation": "services_batch_created", "details": {"batch": 12, "count": 100, "total": 1300}}
+{"timestamp": "2025-10-31T02:27:32.243333", "operation": "services_batch_created", "details": {"batch": 13, "count": 100, "total": 1400}}
+{"timestamp": "2025-10-31T02:27:32.253929", "operation": "services_batch_created", "details": {"batch": 14, "count": 100, "total": 1500}}
+{"timestamp": "2025-10-31T02:27:32.254175", "operation": "phase_completed", "details": {"phase": "create_services", "nodes_created": 1500}}
+{"timestamp": "2025-10-31T02:27:32.254283", "operation": "phase_started", "details": {"phase": "create_functions", "target_count": 1000}}
+{"timestamp": "2025-10-31T02:27:32.391576", "operation": "phase_completed", "details": {"phase": "create_functions", "nodes_created": 1000}}
+{"timestamp": "2025-10-31T02:27:32.391821", "operation": "phase_started", "details": {"phase": "create_commands", "target_count": 2000}}
+{"timestamp": "2025-10-31T02:27:32.646771", "operation": "phase_completed", "details": {"phase": "create_commands", "nodes_created": 2000}}
+{"timestamp": "2025-10-31T02:27:32.647013", "operation": "phase_started", "details": {"phase": "create_relationships"}}
+{"timestamp": "2025-10-31T02:27:32.738958", "operation": "relationships_created", "details": {"type": "HAS_PROPERTY", "count": 3000}}
+{"timestamp": "2025-10-31T02:27:32.915519", "operation": "relationships_created", "details": {"type": "HAS_MEASUREMENT", "count": 20000}}
+{"timestamp": "2025-10-31T02:27:32.985855", "operation": "relationships_created", "details": {"type": "OFFERS_SERVICE", "count": 2500}}
+{"timestamp": "2025-10-31T02:27:33.039880", "operation": "relationships_created", "details": {"type": "HAS_FUNCTION", "count": 2000}}
+{"timestamp": "2025-10-31T02:27:33.103446", "operation": "relationships_created", "details": {"type": "HAS_COMMAND", "count": 3000}}
+{"timestamp": "2025-10-31T02:27:37.403008", "operation": "relationships_created", "details": {"type": "VULNERABLE_TO", "count": 5000}}
+{"timestamp": "2025-10-31T02:27:40.639148", "operation": "relationships_created", "details": {"type": "VULNERABLE_TO", "manufacturer": "Rockwell", "count": 3000}}
+{"timestamp": "2025-10-31T02:27:44.281214", "operation": "relationships_created", "details": {"type": "VULNERABLE_TO", "manufacturer": "Schneider", "count": 3000}}
+{"timestamp": "2025-10-31T02:27:47.933564", "operation": "relationships_created", "details": {"type": "VULNERABLE_TO", "manufacturer": "ABB", "count": 3000}}
+{"timestamp": "2025-10-31T02:27:53.971798", "operation": "relationships_created", "details": {"type": "VULNERABLE_TO", "manufacturer": "Honeywell", "count": 3000}}
+{"timestamp": "2025-10-31T02:27:53.972064", "operation": "phase_completed", "details": {"phase": "create_relationships", "total_relationships": 47500}}
+{"timestamp": "2025-10-31T02:27:53.972184", "operation": "wave_1_execution_completed", "details": {"timestamp": "2025-10-31T02:27:53.972180", "nodes_created": 17000, "relationships_created": 47500, "constraints_created": 6, "indexes_created": 10}}

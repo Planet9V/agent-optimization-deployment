@@ -1,0 +1,1116 @@
+{
+  "test_metadata": {
+    "test_date": "2025-11-07T19:57:04.749627",
+    "model_path": "ner_model",
+    "documents_tested": 20,
+    "model_load_time": 0.9668757915496826
+  },
+  "summary": {
+    "total_documents": 20,
+    "successful": 20,
+    "failed": 0,
+    "total_characters": 522604,
+    "total_words": 73762,
+    "total_entities_extracted": 559,
+    "avg_entities_per_doc": 27.95,
+    "unique_entity_types": 20
+  },
+  "entity_distribution": {
+    "total_by_type": {
+      "TACTIC": 147,
+      "SUPPLIER": 21,
+      "EQUIPMENT": 26,
+      "SECURITY": 102,
+      "MITIGATION": 39,
+      "TECHNIQUE": 57,
+      "ARCHITECTURE": 17,
+      "INDICATOR": 19,
+      "SOCIAL_ENGINEERING": 33,
+      "CAMPAIGN": 25,
+      "INSIDER_INDICATOR": 31,
+      "ATTACK_VECTOR": 5,
+      "VULNERABILITY": 6,
+      "THREAT_ACTOR": 14,
+      "VENDOR": 6,
+      "ATTACK_PATTERN": 5,
+      "PROTOCOL": 2,
+      "HARDWARE_COMPONENT": 1,
+      "OPERATION": 1,
+      "SOFTWARE_COMPONENT": 2
+    },
+    "unique_by_type": {
+      "TACTIC": 66,
+      "SUPPLIER": 19,
+      "EQUIPMENT": 14,
+      "SECURITY": 68,
+      "MITIGATION": 18,
+      "TECHNIQUE": 16,
+      "ARCHITECTURE": 13,
+      "INDICATOR": 8,
+      "SOCIAL_ENGINEERING": 10,
+      "CAMPAIGN": 22,
+      "INSIDER_INDICATOR": 19,
+      "ATTACK_VECTOR": 5,
+      "VULNERABILITY": 5,
+      "THREAT_ACTOR": 12,
+      "VENDOR": 4,
+      "ATTACK_PATTERN": 4,
+      "PROTOCOL": 1,
+      "HARDWARE_COMPONENT": 1,
+      "OPERATION": 1,
+      "SOFTWARE_COMPONENT": 2
+    },
+    "top_10_types": [
+      [
+        "TACTIC",
+        147
+      ],
+      [
+        "SECURITY",
+        102
+      ],
+      [
+        "TECHNIQUE",
+        57
+      ],
+      [
+        "MITIGATION",
+        39
+      ],
+      [
+        "SOCIAL_ENGINEERING",
+        33
+      ],
+      [
+        "INSIDER_INDICATOR",
+        31
+      ],
+      [
+        "EQUIPMENT",
+        26
+      ],
+      [
+        "CAMPAIGN",
+        25
+      ],
+      [
+        "SUPPLIER",
+        21
+      ],
+      [
+        "INDICATOR",
+        19
+      ]
+    ]
+  },
+  "detailed_results": [
+    {
+      "success": true,
+      "file": "AICD-Directors-Introduction-to-AI-2025.md",
+      "char_count": 33282,
+      "word_count": 4858,
+      "total_entities": 12,
+      "unique_types": 3,
+      "entities_by_type": {
+        "TACTIC": 9,
+        "SUPPLIER": 1,
+        "EQUIPMENT": 2
+      },
+      "unique_entities": {
+        "TACTIC": 3,
+        "SUPPLIER": 1,
+        "EQUIPMENT": 2
+      },
+      "sample_entities": {
+        "TACTIC": [
+          "impact",
+          "IMPACT",
+          "collection"
+        ],
+        "SUPPLIER": [
+          "supply chain."
+        ],
+        "EQUIPMENT": [
+          "Description[^1",
+          "IEC-22989"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "Accenture-State-of-Cybersecurity-2025.md",
+      "char_count": 29423,
+      "word_count": 3963,
+      "total_entities": 13,
+      "unique_types": 5,
+      "entities_by_type": {
+        "SECURITY": 7,
+        "TACTIC": 1,
+        "SUPPLIER": 3,
+        "MITIGATION": 1,
+        "TECHNIQUE": 1
+      },
+      "unique_entities": {
+        "SECURITY": 5,
+        "TACTIC": 1,
+        "SUPPLIER": 3,
+        "MITIGATION": 1,
+        "TECHNIQUE": 1
+      },
+      "sample_entities": {
+        "SECURITY": [
+          "security assessment",
+          "Zero Trust",
+          "vulnerability extends"
+        ],
+        "TACTIC": [
+          "impact"
+        ],
+        "SUPPLIER": [
+          "deeply embedded\n",
+          "supply chain attacks",
+          "supply chain risks"
+        ],
+        "MITIGATION": [
+          "multi-factor authentication"
+        ],
+        "TECHNIQUE": [
+          "phishing"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "ArticWolfLabs-Cybersecurity-Predictions-2025.md",
+      "char_count": 35506,
+      "word_count": 5136,
+      "total_entities": 85,
+      "unique_types": 9,
+      "entities_by_type": {
+        "MITIGATION": 19,
+        "TACTIC": 18,
+        "SECURITY": 16,
+        "ARCHITECTURE": 9,
+        "INDICATOR": 3,
+        "TECHNIQUE": 13,
+        "SOCIAL_ENGINEERING": 1,
+        "CAMPAIGN": 3,
+        "INSIDER_INDICATOR": 3
+      },
+      "unique_entities": {
+        "MITIGATION": 4,
+        "TACTIC": 8,
+        "SECURITY": 9,
+        "ARCHITECTURE": 6,
+        "INDICATOR": 1,
+        "TECHNIQUE": 1,
+        "SOCIAL_ENGINEERING": 1,
+        "CAMPAIGN": 3,
+        "INSIDER_INDICATOR": 2
+      },
+      "sample_entities": {
+        "MITIGATION": [
+          "MFA",
+          "network segmentation",
+          "multi-factor \n"
+        ],
+        "TACTIC": [
+          "Initial Access",
+          "execution",
+          "initial access"
+        ],
+        "SECURITY": [
+          "threat detection",
+          "vulnerability and",
+          "vulnerability management"
+        ],
+        "ARCHITECTURE": [
+          "VPN gateways",
+          "VPN Gateways",
+          "VPN access"
+        ],
+        "INDICATOR": [
+          "\u2019re"
+        ],
+        "TECHNIQUE": [
+          "phishing"
+        ],
+        "SOCIAL_ENGINEERING": [
+          "vishing"
+        ],
+        "CAMPAIGN": [
+          "campaign of",
+          "campaign which",
+          "campaign workflows"
+        ],
+        "INSIDER_INDICATOR": [
+          "unauthorized access",
+          "data exfiltration"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "BeyondTrust-Microsoft-Vulnerability-Report-2025.md",
+      "char_count": 6205,
+      "word_count": 848,
+      "total_entities": 8,
+      "unique_types": 3,
+      "entities_by_type": {
+        "MITIGATION": 4,
+        "SECURITY": 3,
+        "ATTACK_VECTOR": 1
+      },
+      "unique_entities": {
+        "MITIGATION": 2,
+        "SECURITY": 3,
+        "ATTACK_VECTOR": 1
+      },
+      "sample_entities": {
+        "MITIGATION": [
+          "Least Privilege",
+          "least privilege"
+        ],
+        "SECURITY": [
+          "Vulnerability Data](#accuracy",
+          "vulnerability analyses",
+          "vulnerability categories"
+        ],
+        "ATTACK_VECTOR": [
+          "Remote Code Execution"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "BlackDuck-Open-Source-Risk-Analysis-Report-2025.md",
+      "char_count": 7544,
+      "word_count": 962,
+      "total_entities": 10,
+      "unique_types": 5,
+      "entities_by_type": {
+        "TACTIC": 5,
+        "INDICATOR": 1,
+        "SUPPLIER": 1,
+        "MITIGATION": 1,
+        "SECURITY": 2
+      },
+      "unique_entities": {
+        "TACTIC": 2,
+        "INDICATOR": 1,
+        "SUPPLIER": 1,
+        "MITIGATION": 1,
+        "SECURITY": 2
+      },
+      "sample_entities": {
+        "TACTIC": [
+          "Impact",
+          "impact"
+        ],
+        "INDICATOR": [
+          "of-2024"
+        ],
+        "SUPPLIER": [
+          "supply chain,"
+        ],
+        "MITIGATION": [
+          "input validation"
+        ],
+        "SECURITY": [
+          "vulnerability management",
+          "vulnerability percentages"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "CalypsoAI-Insider-Threat-Report-2025.md",
+      "char_count": 16793,
+      "word_count": 2556,
+      "total_entities": 5,
+      "unique_types": 3,
+      "entities_by_type": {
+        "INDICATOR": 3,
+        "INSIDER_INDICATOR": 1,
+        "TACTIC": 1
+      },
+      "unique_entities": {
+        "INDICATOR": 2,
+        "INSIDER_INDICATOR": 1,
+        "TACTIC": 1
+      },
+      "sample_entities": {
+        "INDICATOR": [
+          "CalypsoAI](#about",
+          "\u2019re"
+        ],
+        "INSIDER_INDICATOR": [
+          "malicious threat"
+        ],
+        "TACTIC": [
+          "impact"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "Chainguard-The-Cost-of-CVEs-2025.md",
+      "char_count": 29868,
+      "word_count": 3988,
+      "total_entities": 18,
+      "unique_types": 6,
+      "entities_by_type": {
+        "CAMPAIGN": 1,
+        "VULNERABILITY": 1,
+        "ATTACK_VECTOR": 1,
+        "SECURITY": 8,
+        "TACTIC": 2,
+        "EQUIPMENT": 5
+      },
+      "unique_entities": {
+        "CAMPAIGN": 1,
+        "VULNERABILITY": 1,
+        "ATTACK_VECTOR": 1,
+        "SECURITY": 6,
+        "TACTIC": 1,
+        "EQUIPMENT": 1
+      },
+      "sample_entities": {
+        "CAMPAIGN": [
+          "Log4Shell"
+        ],
+        "VULNERABILITY": [
+          "CVE-2021-44228"
+        ],
+        "ATTACK_VECTOR": [
+          "remote code execution"
+        ],
+        "SECURITY": [
+          "Vulnerability Management",
+          "vulnerability remediation",
+          "vulnerability management"
+        ],
+        "TACTIC": [
+          "impact"
+        ],
+        "EQUIPMENT": [
+          "\u2019ll"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "CheckPoint-Cybersecurity-Report-2025.md",
+      "char_count": 34833,
+      "word_count": 4593,
+      "total_entities": 79,
+      "unique_types": 13,
+      "entities_by_type": {
+        "CAMPAIGN": 13,
+        "TACTIC": 14,
+        "SECURITY": 12,
+        "INSIDER_INDICATOR": 3,
+        "ARCHITECTURE": 3,
+        "EQUIPMENT": 5,
+        "THREAT_ACTOR": 10,
+        "TECHNIQUE": 9,
+        "VENDOR": 1,
+        "ATTACK_VECTOR": 2,
+        "VULNERABILITY": 5,
+        "MITIGATION": 1,
+        "ATTACK_PATTERN": 1
+      },
+      "unique_entities": {
+        "CAMPAIGN": 11,
+        "TACTIC": 7,
+        "SECURITY": 8,
+        "INSIDER_INDICATOR": 2,
+        "ARCHITECTURE": 3,
+        "EQUIPMENT": 3,
+        "THREAT_ACTOR": 9,
+        "TECHNIQUE": 2,
+        "VENDOR": 1,
+        "ATTACK_VECTOR": 2,
+        "VULNERABILITY": 4,
+        "MITIGATION": 1,
+        "ATTACK_PATTERN": 1
+      },
+      "sample_entities": {
+        "CAMPAIGN": [
+          "TRENDS](#cyber",
+          "operation against",
+          "campaign targeting"
+        ],
+        "TACTIC": [
+          "impact",
+          "lateral movement",
+          "Execution"
+        ],
+        "SECURITY": [
+          "encryption",
+          "IPS and",
+          "vulnerability in"
+        ],
+        "INSIDER_INDICATOR": [
+          "data exfiltration",
+          "unauthorized access"
+        ],
+        "ARCHITECTURE": [
+          "VPN Information",
+          "VPN devices",
+          "VPN appliances"
+        ],
+        "EQUIPMENT": [
+          "CVE-2024-24919",
+          "CVE-2024-0517",
+          "CVE-2024-21413"
+        ],
+        "THREAT_ACTOR": [
+          "Nobelium",
+          "APT29",
+          "APT31"
+        ],
+        "TECHNIQUE": [
+          "phishing",
+          "PowerShell"
+        ],
+        "VENDOR": [
+          "Fortinet"
+        ],
+        "ATTACK_VECTOR": [
+          "Remote Code",
+          "Remote Code \n"
+        ],
+        "VULNERABILITY": [
+          "CVE-2017-3506",
+          "CVE-2023-21839",
+          "CVE-2017-10271"
+        ],
+        "MITIGATION": [
+          "multi-factor \n"
+        ],
+        "ATTACK_PATTERN": [
+          "Denial of Service"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "Checkmarx-Future-of-Application-Security-2025.md",
+      "char_count": 17907,
+      "word_count": 2460,
+      "total_entities": 8,
+      "unique_types": 4,
+      "entities_by_type": {
+        "EQUIPMENT": 1,
+        "TACTIC": 2,
+        "SECURITY": 3,
+        "SUPPLIER": 2
+      },
+      "unique_entities": {
+        "EQUIPMENT": 1,
+        "TACTIC": 2,
+        "SECURITY": 3,
+        "SUPPLIER": 2
+      },
+      "sample_entities": {
+        "EQUIPMENT": [
+          "play](#tools-"
+        ],
+        "TACTIC": [
+          "Execution",
+          "impact"
+        ],
+        "SECURITY": [
+          "vulnerability remediation",
+          "vulnerability management",
+          "vulnerability discovery"
+        ],
+        "SUPPLIER": [
+          "Supply Chain Security",
+          "supply chain compromises"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "Cisco-Cyber-Threats-Trends-Report-2025.md",
+      "char_count": 26357,
+      "word_count": 3836,
+      "total_entities": 40,
+      "unique_types": 13,
+      "entities_by_type": {
+        "EQUIPMENT": 2,
+        "VENDOR": 4,
+        "ARCHITECTURE": 1,
+        "TECHNIQUE": 3,
+        "INSIDER_INDICATOR": 4,
+        "INDICATOR": 1,
+        "CAMPAIGN": 1,
+        "TACTIC": 7,
+        "THREAT_ACTOR": 2,
+        "SECURITY": 8,
+        "SUPPLIER": 1,
+        "MITIGATION": 4,
+        "PROTOCOL": 2
+      },
+      "unique_entities": {
+        "EQUIPMENT": 2,
+        "VENDOR": 2,
+        "ARCHITECTURE": 1,
+        "TECHNIQUE": 1,
+        "INSIDER_INDICATOR": 2,
+        "INDICATOR": 1,
+        "CAMPAIGN": 1,
+        "TACTIC": 5,
+        "THREAT_ACTOR": 1,
+        "SECURITY": 5,
+        "SUPPLIER": 1,
+        "MITIGATION": 4,
+        "PROTOCOL": 1
+      },
+      "sample_entities": {
+        "EQUIPMENT": [
+          "APT)](#our-analysis",
+          "1110R"
+        ],
+        "VENDOR": [
+          "Cisco Talos",
+          "Cisco Security Service"
+        ],
+        "ARCHITECTURE": [
+          "VPN login"
+        ],
+        "TECHNIQUE": [
+          "phishing"
+        ],
+        "INSIDER_INDICATOR": [
+          "unauthorized access",
+          "data exfiltration"
+        ],
+        "INDICATOR": [
+          "\u2019re"
+        ],
+        "CAMPAIGN": [
+          "campaign that"
+        ],
+        "TACTIC": [
+          "persistence",
+          "command and control",
+          "privilege escalation"
+        ],
+        "THREAT_ACTOR": [
+          "Advanced Persistent Threat"
+        ],
+        "SECURITY": [
+          "authentication",
+          "penetration testing",
+          "intrusion detection"
+        ],
+        "SUPPLIER": [
+          "supply chain compromises"
+        ],
+        "MITIGATION": [
+          "network segmentation",
+          "least privilege",
+          "IDS"
+        ],
+        "PROTOCOL": [
+          "Cisco Secure Access"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "Cisco-Privacy-Benchmark-Study-2025.md",
+      "char_count": 11174,
+      "word_count": 1574,
+      "total_entities": 6,
+      "unique_types": 2,
+      "entities_by_type": {
+        "TACTIC": 5,
+        "CAMPAIGN": 1
+      },
+      "unique_entities": {
+        "TACTIC": 1,
+        "CAMPAIGN": 1
+      },
+      "sample_entities": {
+        "TACTIC": [
+          "impact"
+        ],
+        "CAMPAIGN": [
+          "operation and"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "Cisco-State-of-AI-Security-2025.md",
+      "char_count": 44086,
+      "word_count": 6323,
+      "total_entities": 39,
+      "unique_types": 11,
+      "entities_by_type": {
+        "VENDOR": 1,
+        "EQUIPMENT": 3,
+        "SECURITY": 4,
+        "SUPPLIER": 7,
+        "TACTIC": 8,
+        "INSIDER_INDICATOR": 5,
+        "ATTACK_PATTERN": 1,
+        "TECHNIQUE": 6,
+        "SOCIAL_ENGINEERING": 2,
+        "THREAT_ACTOR": 1,
+        "ATTACK_VECTOR": 1
+      },
+      "unique_entities": {
+        "VENDOR": 1,
+        "EQUIPMENT": 2,
+        "SECURITY": 4,
+        "SUPPLIER": 7,
+        "TACTIC": 2,
+        "INSIDER_INDICATOR": 2,
+        "ATTACK_PATTERN": 1,
+        "TECHNIQUE": 1,
+        "SOCIAL_ENGINEERING": 1,
+        "THREAT_ACTOR": 1,
+        "ATTACK_VECTOR": 1
+      },
+      "sample_entities": {
+        "VENDOR": [
+          "Cisco State"
+        ],
+        "EQUIPMENT": [
+          "in-2024",
+          "\u2019ll"
+        ],
+        "SECURITY": [
+          "vulnerability detection",
+          "vulnerability scanning",
+          "vulnerability research"
+        ],
+        "SUPPLIER": [
+          "supply chain\n",
+          "Supply Chain Compromise",
+          "supply chain."
+        ],
+        "TACTIC": [
+          "impact",
+          "execution"
+        ],
+        "INSIDER_INDICATOR": [
+          "data exfiltration",
+          "unauthorized access"
+        ],
+        "ATTACK_PATTERN": [
+          "denial of service"
+        ],
+        "TECHNIQUE": [
+          "phishing"
+        ],
+        "SOCIAL_ENGINEERING": [
+          "vishing"
+        ],
+        "THREAT_ACTOR": [
+          "advanced persistent threat"
+        ],
+        "ATTACK_VECTOR": [
+          "remote code execution"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "Cobalt-State-of-Pentesting-2025.md",
+      "char_count": 10808,
+      "word_count": 1583,
+      "total_entities": 9,
+      "unique_types": 6,
+      "entities_by_type": {
+        "TACTIC": 2,
+        "EQUIPMENT": 2,
+        "TECHNIQUE": 1,
+        "INDICATOR": 1,
+        "SECURITY": 2,
+        "HARDWARE_COMPONENT": 1
+      },
+      "unique_entities": {
+        "TACTIC": 2,
+        "EQUIPMENT": 1,
+        "TECHNIQUE": 1,
+        "INDICATOR": 1,
+        "SECURITY": 2,
+        "HARDWARE_COMPONENT": 1
+      },
+      "sample_entities": {
+        "TACTIC": [
+          "persistence",
+          "impact"
+        ],
+        "EQUIPMENT": [
+          "\u2019ll"
+        ],
+        "TECHNIQUE": [
+          "snuff"
+        ],
+        "INDICATOR": [
+          "\u2019re"
+        ],
+        "SECURITY": [
+          "vulnerability scans",
+          "Vulnerability Scan"
+        ],
+        "HARDWARE_COMPONENT": [
+          "SOC"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "Comptia-State-of-Cybersecurity-2025.md",
+      "char_count": 38815,
+      "word_count": 5640,
+      "total_entities": 28,
+      "unique_types": 6,
+      "entities_by_type": {
+        "TACTIC": 10,
+        "ARCHITECTURE": 4,
+        "SECURITY": 10,
+        "MITIGATION": 1,
+        "TECHNIQUE": 2,
+        "SUPPLIER": 1
+      },
+      "unique_entities": {
+        "TACTIC": 3,
+        "ARCHITECTURE": 3,
+        "SECURITY": 3,
+        "MITIGATION": 1,
+        "TECHNIQUE": 2,
+        "SUPPLIER": 1
+      },
+      "sample_entities": {
+        "TACTIC": [
+          "impact",
+          "Impact",
+          "collection"
+        ],
+        "ARCHITECTURE": [
+          "Data architecture",
+          "business architecture",
+          "Data Architecture"
+        ],
+        "SECURITY": [
+          "zero trust",
+          "Zero Trust",
+          "penetration testing"
+        ],
+        "MITIGATION": [
+          "multi-factor authentication"
+        ],
+        "TECHNIQUE": [
+          "phishing",
+          "Phishing"
+        ],
+        "SUPPLIER": [
+          "Supply chain attacks"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "CrowdStrike-Threat-Hunting-Report-2025.md",
+      "char_count": 22370,
+      "word_count": 2860,
+      "total_entities": 39,
+      "unique_types": 7,
+      "entities_by_type": {
+        "TACTIC": 22,
+        "INSIDER_INDICATOR": 2,
+        "MITIGATION": 1,
+        "SECURITY": 3,
+        "TECHNIQUE": 4,
+        "SOCIAL_ENGINEERING": 6,
+        "CAMPAIGN": 1
+      },
+      "unique_entities": {
+        "TACTIC": 13,
+        "INSIDER_INDICATOR": 2,
+        "MITIGATION": 1,
+        "SECURITY": 2,
+        "TECHNIQUE": 3,
+        "SOCIAL_ENGINEERING": 2,
+        "CAMPAIGN": 1
+      },
+      "sample_entities": {
+        "TACTIC": [
+          "impact",
+          "execution",
+          "persistence"
+        ],
+        "INSIDER_INDICATOR": [
+          "insider threat",
+          "DATA EXFILTRATION"
+        ],
+        "MITIGATION": [
+          "security information and event management"
+        ],
+        "SECURITY": [
+          "SIEM",
+          "vulnerability research"
+        ],
+        "TECHNIQUE": [
+          "PHISHING",
+          "phishing",
+          "Masquerading"
+        ],
+        "SOCIAL_ENGINEERING": [
+          "VISHING",
+          "vishing"
+        ],
+        "CAMPAIGN": [
+          "campaign content"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "Crowdstrike-Global-Threat-Report-2025.md",
+      "char_count": 39950,
+      "word_count": 5672,
+      "total_entities": 99,
+      "unique_types": 9,
+      "entities_by_type": {
+        "EQUIPMENT": 1,
+        "TACTIC": 28,
+        "TECHNIQUE": 18,
+        "SOCIAL_ENGINEERING": 22,
+        "INSIDER_INDICATOR": 8,
+        "SECURITY": 10,
+        "ATTACK_PATTERN": 1,
+        "CAMPAIGN": 5,
+        "MITIGATION": 6
+      },
+      "unique_entities": {
+        "EQUIPMENT": 1,
+        "TACTIC": 7,
+        "TECHNIQUE": 4,
+        "SOCIAL_ENGINEERING": 5,
+        "INSIDER_INDICATOR": 5,
+        "SECURITY": 7,
+        "ATTACK_PATTERN": 1,
+        "CAMPAIGN": 4,
+        "MITIGATION": 2
+      },
+      "sample_entities": {
+        "EQUIPMENT": [
+          "\u2019ll"
+        ],
+        "TACTIC": [
+          "impact",
+          "exfiltration",
+          "initial access"
+        ],
+        "TECHNIQUE": [
+          "phishing",
+          "PowerShell",
+          "valid credential"
+        ],
+        "SOCIAL_ENGINEERING": [
+          "vishing",
+          "Vishing",
+          "VISHING"
+        ],
+        "INSIDER_INDICATOR": [
+          "insider threat",
+          "INSIDER THREAT",
+          "unauthorized access"
+        ],
+        "SECURITY": [
+          "vulnerability threat",
+          "vulnerability research",
+          "SIEM"
+        ],
+        "ATTACK_PATTERN": [
+          "attack chain \u2014 from"
+        ],
+        "CAMPAIGN": [
+          "campaign that",
+          "operation to",
+          "campaign targeting"
+        ],
+        "MITIGATION": [
+          "MFA",
+          "IDs"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "Crowdstrike-SaaS-Security-Posture-Management-2025.md",
+      "char_count": 39895,
+      "word_count": 5744,
+      "total_entities": 11,
+      "unique_types": 3,
+      "entities_by_type": {
+        "TACTIC": 6,
+        "SECURITY": 4,
+        "INSIDER_INDICATOR": 1
+      },
+      "unique_entities": {
+        "TACTIC": 2,
+        "SECURITY": 3,
+        "INSIDER_INDICATOR": 1
+      },
+      "sample_entities": {
+        "TACTIC": [
+          "discovery",
+          "impact"
+        ],
+        "SECURITY": [
+          "Access Secure",
+          "threat detection",
+          "threat prevention"
+        ],
+        "INSIDER_INDICATOR": [
+          "insider threat"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "CyberArk-State-of-Machine-Identity-Security-Report-2025.md",
+      "char_count": 22661,
+      "word_count": 3086,
+      "total_entities": 18,
+      "unique_types": 6,
+      "entities_by_type": {
+        "SECURITY": 9,
+        "TACTIC": 2,
+        "INSIDER_INDICATOR": 3,
+        "OPERATION": 1,
+        "ATTACK_PATTERN": 2,
+        "MITIGATION": 1
+      },
+      "unique_entities": {
+        "SECURITY": 5,
+        "TACTIC": 2,
+        "INSIDER_INDICATOR": 1,
+        "OPERATION": 1,
+        "ATTACK_PATTERN": 1,
+        "MITIGATION": 1
+      },
+      "sample_entities": {
+        "SECURITY": [
+          "authentication",
+          "authorization",
+          "encryption"
+        ],
+        "TACTIC": [
+          "impact",
+          "Impact"
+        ],
+        "INSIDER_INDICATOR": [
+          "unauthorized access"
+        ],
+        "OPERATION": [
+          "Frequency of"
+        ],
+        "ATTACK_PATTERN": [
+          "man-in-the-middle"
+        ],
+        "MITIGATION": [
+          "least privilege"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "Cycode-State-of-Application-Security-Posture-Management-2025.md",
+      "char_count": 28902,
+      "word_count": 4135,
+      "total_entities": 8,
+      "unique_types": 3,
+      "entities_by_type": {
+        "SOCIAL_ENGINEERING": 2,
+        "SUPPLIER": 3,
+        "TACTIC": 3
+      },
+      "unique_entities": {
+        "SOCIAL_ENGINEERING": 1,
+        "SUPPLIER": 2,
+        "TACTIC": 2
+      },
+      "sample_entities": {
+        "SOCIAL_ENGINEERING": [
+          "CEO of"
+        ],
+        "SUPPLIER": [
+          "supply chain security",
+          "Supply Chain:"
+        ],
+        "TACTIC": [
+          "impact",
+          "Impact"
+        ]
+      }
+    },
+    {
+      "success": true,
+      "file": "Cyentia-Information-Risk-Insights-Study-2025.md",
+      "char_count": 26225,
+      "word_count": 3945,
+      "total_entities": 24,
+      "unique_types": 8,
+      "entities_by_type": {
+        "TACTIC": 2,
+        "INDICATOR": 10,
+        "SOFTWARE_COMPONENT": 2,
+        "THREAT_ACTOR": 1,
+        "INSIDER_INDICATOR": 1,
+        "EQUIPMENT": 5,
+        "SECURITY": 1,
+        "SUPPLIER": 2
+      },
+      "unique_entities": {
+        "TACTIC": 2,
+        "INDICATOR": 2,
+        "SOFTWARE_COMPONENT": 2,
+        "THREAT_ACTOR": 1,
+        "INSIDER_INDICATOR": 1,
+        "EQUIPMENT": 1,
+        "SECURITY": 1,
+        "SUPPLIER": 1
+      },
+      "sample_entities": {
+        "TACTIC": [
+          "collection",
+          "impact"
+        ],
+        "INDICATOR": [
+          "\u2019re",
+          "^5"
+        ],
+        "SOFTWARE_COMPONENT": [
+          "^6",
+          "^8"
+        ],
+        "THREAT_ACTOR": [
+          "APT1"
+        ],
+        "INSIDER_INDICATOR": [
+          "unauthorized access"
+        ],
+        "EQUIPMENT": [
+          "\u2019ll"
+        ],
+        "SECURITY": [
+          "encryption"
+        ],
+        "SUPPLIER": [
+          "supply chain sectors"
+        ]
+      }
+    }
+  ]
+}

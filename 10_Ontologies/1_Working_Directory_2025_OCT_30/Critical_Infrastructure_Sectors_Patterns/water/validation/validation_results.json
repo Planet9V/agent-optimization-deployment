@@ -1,0 +1,487 @@
+{
+  "test_sections": 7,
+  "avg_f1_score": 0.7907647907647908,
+  "category_results": {
+    "equipment": 0.888888888888889,
+    "operations": 0.5454545454545454,
+    "scada": 0.9333333333333333,
+    "vendors": 0.8
+  },
+  "passed": false,
+  "threshold": 0.85,
+  "total_patterns": 299,
+  "data_quality_issues": [
+    "Only 7 test sections (not 9)",
+    "Missing security and standards categories",
+    "Limited source diversity (2 documents)",
+    "Duplicate content between documents",
+    ".docx format conversion issues"
+  ],
+  "comparison_to_dams": {
+    "dams_f1": 0.929,
+    "water_f1": 0.7907647907647908,
+    "difference": -0.13823520923520927
+  },
+  "detailed_results": [
+    {
+      "section": {
+        "id": 1,
+        "filename": "section_01_equipment.txt",
+        "category": "equipment",
+        "source_document": "IACS_Water Management Equipment Manufacturing.md.docx",
+        "section_id": "doc1_sec35",
+        "title": "Works cited",
+        "word_count": 1176
+      },
+      "total_entities": 9,
+      "entity_counts": {
+        "operations": 3,
+        "equipment": 3,
+        "vendors": 1,
+        "protocols": 2
+      },
+      "entity_examples": {
+        "operations": [
+          "Sedimentation",
+          "Filtration",
+          "screening"
+        ],
+        "equipment": [
+          "Bar Screen",
+          "flow meter",
+          "PVC Pipe"
+        ],
+        "vendors": [
+          "Siemens"
+        ],
+        "protocols": [
+          "http",
+          "https"
+        ]
+      },
+      "raw_entities": [
+        {
+          "text": "Sedimentation",
+          "type": "operations",
+          "name": "OPERATION",
+          "start": 1807,
+          "end": 1820
+        },
+        {
+          "text": "Filtration",
+          "type": "operations",
+          "name": "OPERATION",
+          "start": 2627,
+          "end": 2637
+        },
+        {
+          "text": "screening",
+          "type": "operations",
+          "name": "OPERATION",
+          "start": 1001,
+          "end": 1010
+        },
+        {
+          "text": "Bar Screen",
+          "type": "equipment",
+          "name": "EQUIPMENT",
+          "start": 1193,
+          "end": 1203
+        },
+        {
+          "text": "flow meter",
+          "type": "equipment",
+          "name": "EQUIPMENT",
+          "start": 11856,
+          "end": 11866
+        },
+        {
+          "text": "PVC Pipe",
+          "type": "equipment",
+          "name": "EQUIPMENT",
+          "start": 4756,
+          "end": 4764
+        },
+        {
+          "text": "Siemens",
+          "type": "vendors",
+          "name": "VENDOR",
+          "start": 352,
+          "end": 359
+        },
+        {
+          "text": "http",
+          "type": "protocols",
+          "name": "PROTOCOL",
+          "start": 5958,
+          "end": 5962
+        },
+        {
+          "text": "https",
+          "type": "protocols",
+          "name": "PROTOCOL",
+          "start": 133,
+          "end": 138
+        }
+      ],
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1_score": 0.888888888888889
+    },
+    {
+      "section": {
+        "id": 2,
+        "filename": "section_02_equipment.txt",
+        "category": "equipment",
+        "source_document": "Water Management Equipment Manufacturing Overview.docx",
+        "section_id": "doc2_sec35",
+        "title": "Works cited",
+        "word_count": 1176
+      },
+      "total_entities": 9,
+      "entity_counts": {
+        "operations": 3,
+        "equipment": 3,
+        "vendors": 1,
+        "protocols": 2
+      },
+      "entity_examples": {
+        "operations": [
+          "Sedimentation",
+          "Filtration",
+          "screening"
+        ],
+        "equipment": [
+          "Bar Screen",
+          "flow meter",
+          "PVC Pipe"
+        ],
+        "vendors": [
+          "Siemens"
+        ],
+        "protocols": [
+          "http",
+          "https"
+        ]
+      },
+      "raw_entities": [
+        {
+          "text": "Sedimentation",
+          "type": "operations",
+          "name": "OPERATION",
+          "start": 1807,
+          "end": 1820
+        },
+        {
+          "text": "Filtration",
+          "type": "operations",
+          "name": "OPERATION",
+          "start": 2627,
+          "end": 2637
+        },
+        {
+          "text": "screening",
+          "type": "operations",
+          "name": "OPERATION",
+          "start": 1001,
+          "end": 1010
+        },
+        {
+          "text": "Bar Screen",
+          "type": "equipment",
+          "name": "EQUIPMENT",
+          "start": 1193,
+          "end": 1203
+        },
+        {
+          "text": "flow meter",
+          "type": "equipment",
+          "name": "EQUIPMENT",
+          "start": 11856,
+          "end": 11866
+        },
+        {
+          "text": "PVC Pipe",
+          "type": "equipment",
+          "name": "EQUIPMENT",
+          "start": 4756,
+          "end": 4764
+        },
+        {
+          "text": "Siemens",
+          "type": "vendors",
+          "name": "VENDOR",
+          "start": 352,
+          "end": 359
+        },
+        {
+          "text": "http",
+          "type": "protocols",
+          "name": "PROTOCOL",
+          "start": 5958,
+          "end": 5962
+        },
+        {
+          "text": "https",
+          "type": "protocols",
+          "name": "PROTOCOL",
+          "start": 133,
+          "end": 138
+        }
+      ],
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1_score": 0.888888888888889
+    },
+    {
+      "section": {
+        "id": 3,
+        "filename": "section_03_operations.txt",
+        "category": "operations",
+        "source_document": "IACS_Water Management Equipment Manufacturing.md.docx",
+        "section_id": "doc1_sec4",
+        "title": "Fine Screens",
+        "word_count": 306
+      },
+      "total_entities": 1,
+      "entity_counts": {
+        "operations": 1
+      },
+      "entity_examples": {
+        "operations": [
+          "screening"
+        ]
+      },
+      "raw_entities": [
+        {
+          "text": "screening",
+          "type": "operations",
+          "name": "OPERATION",
+          "start": 1636,
+          "end": 1645
+        }
+      ],
+      "precision": 1.0,
+      "recall": 0.375,
+      "f1_score": 0.5454545454545454
+    },
+    {
+      "section": {
+        "id": 4,
+        "filename": "section_04_operations.txt",
+        "category": "operations",
+        "source_document": "Water Management Equipment Manufacturing Overview.docx",
+        "section_id": "doc2_sec4",
+        "title": "Fine Screens",
+        "word_count": 306
+      },
+      "total_entities": 1,
+      "entity_counts": {
+        "operations": 1
+      },
+      "entity_examples": {
+        "operations": [
+          "screening"
+        ]
+      },
+      "raw_entities": [
+        {
+          "text": "screening",
+          "type": "operations",
+          "name": "OPERATION",
+          "start": 1636,
+          "end": 1645
+        }
+      ],
+      "precision": 1.0,
+      "recall": 0.375,
+      "f1_score": 0.5454545454545454
+    },
+    {
+      "section": {
+        "id": 5,
+        "filename": "section_05_scada.txt",
+        "category": "scada",
+        "source_document": "IACS_Water Management Equipment Manufacturing.md.docx",
+        "section_id": "doc1_sec17",
+        "title": "Control Systems",
+        "word_count": 459
+      },
+      "total_entities": 6,
+      "entity_counts": {
+        "equipment": 4,
+        "standards": 1,
+        "architectures": 1
+      },
+      "entity_examples": {
+        "equipment": [
+          "SCADA",
+          "PLC",
+          "VFD"
+        ],
+        "standards": [
+          "UL 508A"
+        ],
+        "architectures": [
+          "Supervisory Control"
+        ]
+      },
+      "raw_entities": [
+        {
+          "text": "SCADA",
+          "type": "equipment",
+          "name": "CONTROL_SYSTEM",
+          "start": 1172,
+          "end": 1177
+        },
+        {
+          "text": "PLC",
+          "type": "equipment",
+          "name": "CONTROL_SYSTEM",
+          "start": 1795,
+          "end": 1798
+        },
+        {
+          "text": "VFD",
+          "type": "equipment",
+          "name": "CONTROL_SYSTEM",
+          "start": 1877,
+          "end": 1880
+        },
+        {
+          "text": "pressure sensor",
+          "type": "equipment",
+          "name": "EQUIPMENT",
+          "start": 2364,
+          "end": 2379
+        },
+        {
+          "text": "UL 508A",
+          "type": "standards",
+          "name": "STANDARD",
+          "start": 236,
+          "end": 243
+        },
+        {
+          "text": "Supervisory Control",
+          "type": "architectures",
+          "name": "ARCHITECTURE",
+          "start": 1130,
+          "end": 1149
+        }
+      ],
+      "precision": 1.0,
+      "recall": 0.875,
+      "f1_score": 0.9333333333333333
+    },
+    {
+      "section": {
+        "id": 6,
+        "filename": "section_06_scada.txt",
+        "category": "scada",
+        "source_document": "Water Management Equipment Manufacturing Overview.docx",
+        "section_id": "doc2_sec17",
+        "title": "Control Systems",
+        "word_count": 459
+      },
+      "total_entities": 6,
+      "entity_counts": {
+        "equipment": 4,
+        "standards": 1,
+        "architectures": 1
+      },
+      "entity_examples": {
+        "equipment": [
+          "SCADA",
+          "PLC",
+          "VFD"
+        ],
+        "standards": [
+          "UL 508A"
+        ],
+        "architectures": [
+          "Supervisory Control"
+        ]
+      },
+      "raw_entities": [
+        {
+          "text": "SCADA",
+          "type": "equipment",
+          "name": "CONTROL_SYSTEM",
+          "start": 1172,
+          "end": 1177
+        },
+        {
+          "text": "PLC",
+          "type": "equipment",
+          "name": "CONTROL_SYSTEM",
+          "start": 1795,
+          "end": 1798
+        },
+        {
+          "text": "VFD",
+          "type": "equipment",
+          "name": "CONTROL_SYSTEM",
+          "start": 1877,
+          "end": 1880
+        },
+        {
+          "text": "pressure sensor",
+          "type": "equipment",
+          "name": "EQUIPMENT",
+          "start": 2364,
+          "end": 2379
+        },
+        {
+          "text": "UL 508A",
+          "type": "standards",
+          "name": "STANDARD",
+          "start": 236,
+          "end": 243
+        },
+        {
+          "text": "Supervisory Control",
+          "type": "architectures",
+          "name": "ARCHITECTURE",
+          "start": 1130,
+          "end": 1149
+        }
+      ],
+      "precision": 1.0,
+      "recall": 0.875,
+      "f1_score": 0.9333333333333333
+    },
+    {
+      "section": {
+        "id": 7,
+        "filename": "section_07_vendors.txt",
+        "category": "vendors",
+        "source_document": "IACS_Water Management Equipment Manufacturing.md.docx",
+        "section_id": "doc1_sec28",
+        "title": "Electronic (Ultrasonic) Meter Manufacturing",
+        "word_count": 513
+      },
+      "total_entities": 1,
+      "entity_counts": {
+        "security": 1
+      },
+      "entity_examples": {
+        "security": [
+          "cybersecurity"
+        ]
+      },
+      "raw_entities": [
+        {
+          "text": "cybersecurity",
+          "type": "security",
+          "name": "SECURITY",
+          "start": 3607,
+          "end": 3620
+        }
+      ],
+      "precision": 1.0,
+      "recall": 0.6666666666666666,
+      "f1_score": 0.8
+    }
+  ]
+}

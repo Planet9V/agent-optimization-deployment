@@ -1,0 +1,220 @@
+{
+    "title": "Death of a Salesman: Symphonic Calculus Score",
+    "act": 1,
+    "engine": "Maximus Optimus",
+    "scenes": [
+        {
+            "id": "SCENE_1_THE_RETURN",
+            "location": "Kitchen",
+            "tonnetz_start": "C Major",
+            "beats": [
+                {
+                    "beat": 1,
+                    "speaker": "Stage",
+                    "text": "A melody is heard, played upon a flute. It is small and fine, telling of grass and trees and the horizon.",
+                    "metrics": {
+                        "H": 0.1,
+                        "R": 0.0,
+                        "V": 0.2
+                    },
+                    "music": {
+                        "operation": "Identity",
+                        "chord": "C Major",
+                        "texture": "Monophonic",
+                        "instrument": "Flute"
+                    }
+                },
+                {
+                    "beat": 2,
+                    "speaker": "Willy",
+                    "text": "It's all right. I came back.",
+                    "metrics": {
+                        "H": 0.4,
+                        "R": 0.2,
+                        "V": 0.1
+                    },
+                    "music": {
+                        "operation": "R",
+                        "chord": "a minor",
+                        "texture": "Block Chord",
+                        "instrument": "Cello"
+                    }
+                },
+                {
+                    "beat": 3,
+                    "speaker": "Linda",
+                    "text": "Why? What happened? Did something happen, Willy?",
+                    "metrics": {
+                        "H": 0.6,
+                        "R": 0.4,
+                        "V": 0.5
+                    },
+                    "music": {
+                        "operation": "L",
+                        "chord": "F Major",
+                        "texture": "Tremolo",
+                        "instrument": "Flute"
+                    }
+                },
+                {
+                    "beat": 4,
+                    "speaker": "Willy",
+                    "text": "No, nothing happened.",
+                    "metrics": {
+                        "H": 0.3,
+                        "R": 0.8,
+                        "V": 0.1
+                    },
+                    "music": {
+                        "operation": "P",
+                        "chord": "f minor",
+                        "texture": "Staccato",
+                        "instrument": "Cello"
+                    }
+                },
+                {
+                    "beat": 5,
+                    "speaker": "Willy",
+                    "text": "I'm tired to the death. I couldn't make it. I just couldn't make it, Linda.",
+                    "metrics": {
+                        "H": 0.2,
+                        "R": 0.9,
+                        "V": 0.0
+                    },
+                    "music": {
+                        "operation": "PL",
+                        "chord": "Db Major",
+                        "texture": "Sustain",
+                        "instrument": "Cello + Bass"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "SCENE_2_THE_BOYS",
+            "location": "Bedroom",
+            "tonnetz_start": "G Major",
+            "beats": [
+                {
+                    "beat": 6,
+                    "speaker": "Biff",
+                    "text": "Why does Dad mock me all the time?",
+                    "metrics": {
+                        "H": 0.5,
+                        "R": 0.6,
+                        "V": 0.4
+                    },
+                    "music": {
+                        "operation": "L",
+                        "chord": "e minor",
+                        "texture": "Arpeggio",
+                        "instrument": "Trumpet"
+                    }
+                },
+                {
+                    "beat": 7,
+                    "speaker": "Happy",
+                    "text": "He doesn't mock you, he just wants you to make good.",
+                    "metrics": {
+                        "H": 0.3,
+                        "R": 0.2,
+                        "V": 0.3
+                    },
+                    "music": {
+                        "operation": "R",
+                        "chord": "G Major",
+                        "texture": "Legato",
+                        "instrument": "Saxophone"
+                    }
+                },
+                {
+                    "beat": 8,
+                    "speaker": "Biff",
+                    "text": "I don't know what the future is. I don't know - what I'm supposed to want.",
+                    "metrics": {
+                        "H": 0.8,
+                        "R": 0.5,
+                        "V": 0.2
+                    },
+                    "music": {
+                        "operation": "PLP",
+                        "chord": "bb minor",
+                        "texture": "Polyrhythm",
+                        "instrument": "Trumpet"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "SCENE_3_THE_WOMAN",
+            "location": "Hotel Room / Memory",
+            "tonnetz_start": "E Major",
+            "beats": [
+                {
+                    "beat": 9,
+                    "speaker": "The Woman",
+                    "text": "I picked you.",
+                    "metrics": {
+                        "H": 0.2,
+                        "R": 0.1,
+                        "V": 0.6
+                    },
+                    "music": {
+                        "operation": "Identity",
+                        "chord": "E Major",
+                        "texture": "Seductive",
+                        "instrument": "Synthesizer"
+                    }
+                },
+                {
+                    "beat": 10,
+                    "speaker": "Willy",
+                    "text": "You picked me?",
+                    "metrics": {
+                        "H": 0.4,
+                        "R": 0.3,
+                        "V": 0.7
+                    },
+                    "music": {
+                        "operation": "P",
+                        "chord": "e minor",
+                        "texture": "Echo",
+                        "instrument": "Cello"
+                    }
+                },
+                {
+                    "beat": 11,
+                    "speaker": "The Woman",
+                    "text": "I did. I've been sitting at that desk watching all the salesmen go by, day in, day out. But you've got such a sense of humor.",
+                    "metrics": {
+                        "H": 0.3,
+                        "R": 0.0,
+                        "V": 0.5
+                    },
+                    "music": {
+                        "operation": "L",
+                        "chord": "C Major",
+                        "texture": "Laughter",
+                        "instrument": "Synthesizer"
+                    }
+                },
+                {
+                    "beat": 12,
+                    "speaker": "Willy",
+                    "text": "(Laughing) I sure have.",
+                    "metrics": {
+                        "H": 0.5,
+                        "R": 0.7,
+                        "V": 0.8
+                    },
+                    "music": {
+                        "operation": "PL",
+                        "chord": "Ab Major",
+                        "texture": "Distorted",
+                        "instrument": "Cello"
+                    }
+                }
+            ]
+        }
+    ]
+}

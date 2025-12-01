@@ -1,0 +1,348 @@
+# Manufacturing Sector Security Patterns
+# Extracted from: /home/jim/2_OXOT_Projects_Dev/Import 1 NOV 2025/13_Critical_Sector_IACS/Sector - Manufacturing
+# Date: 2025-11-05
+# Total Patterns: 58
+
+patterns:
+  # Network Security Controls
+  - label: "SECURITY_CONTROL"
+    pattern: "Zero-trust architecture"
+    context: "IIoT network security model"
+    source: "network-pattern-industrial-iot"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Network Segmentation"
+    context: "Divide network into secure segments and zones"
+    source: "network-pattern-industrial-iot"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Firewalls"
+    context: "Next-generation firewalls, stateful firewalls, application firewalls"
+    source: "network-pattern-industrial-iot"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Intrusion Detection/Prevention Systems"
+    context: "IDS/IPS with signature-based and anomaly-based detection"
+    source: "network-pattern-industrial-iot"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Virtual Private Networks"
+    context: "Site-to-site VPN, remote access VPN for secure connectivity"
+    source: "network-pattern-industrial-iot"
+
+  # Device Security
+  - label: "SECURITY_CONTROL"
+    pattern: "Device Authentication"
+    context: "X.509 certificates, digital certificates, multi-factor authentication"
+    source: "network-pattern-industrial-iot"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Device Encryption"
+    context: "AES encryption, RSA encryption, ECC encryption"
+    source: "network-pattern-industrial-iot"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Device Management"
+    context: "Device provisioning, configuration management, firmware updates"
+    source: "network-pattern-industrial-iot"
+
+  # Application Security
+  - label: "SECURITY_CONTROL"
+    pattern: "Application Authentication"
+    context: "OAuth 2.0, OpenID Connect, API keys, JWT tokens"
+    source: "network-pattern-industrial-iot"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Application Encryption"
+    context: "TLS/SSL, application-level encryption, database encryption"
+    source: "network-pattern-industrial-iot"
+
+  # OPC UA Security
+  - label: "SECURITY_CONTROL"
+    pattern: "Certificate-Based Authentication"
+    context: "X.509 certificates for OPC UA authentication"
+    source: "protocol-opc-ua"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Username/Password Authentication"
+    context: "OPC UA authentication with password hashing"
+    source: "protocol-opc-ua"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Token-Based Authentication"
+    context: "OAuth tokens, JWT tokens for OPC UA"
+    source: "protocol-opc-ua"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Windows Authentication"
+    context: "Kerberos authentication, NTLM for OPC UA"
+    source: "protocol-opc-ua"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Role-Based Access Control"
+    context: "RBAC for OPC UA resource access control"
+    source: "protocol-opc-ua"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Attribute-Based Access Control"
+    context: "ABAC with policy evaluation for OPC UA"
+    source: "protocol-opc-ua"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Data Encryption"
+    context: "AES, RSA, ECC encryption for OPC UA data"
+    source: "protocol-opc-ua"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Channel Security"
+    context: "TLS/SSL, DTLS for secure OPC UA communication channels"
+    source: "protocol-opc-ua"
+
+  # Modbus Security Weaknesses
+  - label: "VULNERABILITY"
+    pattern: "No Built-in Encryption"
+    context: "Modbus TCP/IP basic authentication, no built-in encryption"
+    source: "protocol-modbus"
+
+  - label: "VULNERABILITY"
+    pattern: "Unencrypted Serial Communication"
+    context: "Modbus-RTU and Modbus-ASCII lack encryption"
+    source: "protocol-modbus"
+
+  # PLC Security
+  - label: "SECURITY_CONTROL"
+    pattern: "Safety PLCs"
+    context: "IEC 61508, IEC 62061 compliant safety-critical control"
+    source: "device-plc"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Safety I/O Modules"
+    context: "Redundant design, fail-safe operation for safety devices"
+    source: "device-plc"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Safety Communication"
+    context: "PROFIsafe, CIP Safety, EtherCAT Safety protocols"
+    source: "device-plc"
+
+  # CNC Machine Security
+  - label: "SECURITY_CONTROL"
+    pattern: "Machine Safety Systems"
+    context: "Light curtains, safety gates, emergency stops, interlocks"
+    source: "device-cnc-machine"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Electrical Safety"
+    context: "Grounding, insulation, circuit protection for CNC machines"
+    source: "device-cnc-machine"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Mechanical Safety"
+    context: "Machine guarding, interlocks, safety devices for CNC"
+    source: "device-cnc-machine"
+
+  # Vendor Security - Siemens
+  - label: "SECURITY_CONTROL"
+    pattern: "PROFINET Security"
+    context: "Authentication, encryption for PROFINET networks"
+    source: "vendor-siemens"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Ethernet Security"
+    context: "Siemens Ethernet security with authentication, encryption"
+    source: "vendor-siemens"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "OPC UA Security"
+    context: "Siemens OPC UA security with authentication, encryption"
+    source: "vendor-siemens"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Access Control"
+    context: "User authentication, role-based access control for Siemens devices"
+    source: "vendor-siemens"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Device Authentication"
+    context: "Certificate management for Siemens device authentication"
+    source: "vendor-siemens"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Device Encryption"
+    context: "Data encryption, secure communication for Siemens devices"
+    source: "vendor-siemens"
+
+  # Vendor Security - Rockwell Automation
+  - label: "SECURITY_CONTROL"
+    pattern: "EtherNet/IP Security"
+    context: "Authentication, encryption for EtherNet/IP networks"
+    source: "vendor-rockwell-automation"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "ControlNet Security"
+    context: "Authentication, encryption for ControlNet networks"
+    source: "vendor-rockwell-automation"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "DeviceNet Security"
+    context: "Authentication, encryption for DeviceNet networks"
+    source: "vendor-rockwell-automation"
+
+  # Maintenance Security
+  - label: "SECURITY_CONTROL"
+    pattern: "Lockout/Tagout Procedures"
+    context: "OSHA 1910.147 compliant LOTO for PLC maintenance"
+    source: "procedure-plc-maintenance"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Risk Assessment"
+    context: "ISO 31000 risk assessment for maintenance activities"
+    source: "procedure-plc-maintenance"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Security Audit"
+    context: "Monthly PLC security audit for access control, authentication"
+    source: "procedure-plc-maintenance"
+
+  # Semiconductor Fab Security
+  - label: "SECURITY_CONTROL"
+    pattern: "Chemical Safety"
+    context: "Gas detection, leak detection, neutralization for fab chemicals"
+    source: "facility-semiconductor-fab"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Electrical Safety"
+    context: "Lockout/tagout, arc flash protection for fab electrical systems"
+    source: "facility-semiconductor-fab"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "Mechanical Safety"
+    context: "Machine guarding, interlock systems for fab equipment"
+    source: "facility-semiconductor-fab"
+
+  - label: "SECURITY_CONTROL"
+    pattern: "MES Integration Security"
+    context: "Access control, data encryption, audit trails for MES"
+    source: "facility-semiconductor-fab"
+
+  # Standards and Compliance
+  - label: "STANDARD"
+    pattern: "IEC 62443"
+    context: "Industrial automation and control systems security standard"
+    source: "multiple-sources"
+
+  - label: "STANDARD"
+    pattern: "NIST SP 800-82"
+    context: "Guide to Industrial Control Systems (ICS) Security"
+    source: "multiple-sources"
+
+  - label: "STANDARD"
+    pattern: "ISO/IEC 27001"
+    context: "Information security management systems standard"
+    source: "multiple-sources"
+
+  - label: "STANDARD"
+    pattern: "IEC 61508"
+    context: "Functional safety of electrical/electronic/programmable systems"
+    source: "multiple-sources"
+
+  - label: "STANDARD"
+    pattern: "IEC 62061"
+    context: "Safety of machinery - Functional safety of control systems"
+    source: "multiple-sources"
+
+  - label: "STANDARD"
+    pattern: "EN ISO 13849-1"
+    context: "Safety of machinery - Safety-related parts of control systems"
+    source: "multiple-sources"
+
+  - label: "STANDARD"
+    pattern: "ISO 31000"
+    context: "Risk management guidelines"
+    source: "procedure-plc-maintenance"
+
+  - label: "STANDARD"
+    pattern: "OSHA 1910.147"
+    context: "The control of hazardous energy (lockout/tagout)"
+    source: "procedure-plc-maintenance"
+
+  # Threat Patterns
+  - label: "THREAT"
+    pattern: "Unauthorized Network Access"
+    context: "IIoT networks vulnerable without proper segmentation"
+    source: "network-pattern-industrial-iot"
+
+  - label: "THREAT"
+    pattern: "Man-in-the-Middle Attack"
+    context: "Unencrypted Modbus communication vulnerable to MITM"
+    source: "protocol-modbus"
+
+  - label: "THREAT"
+    pattern: "Unauthorized Device Access"
+    context: "PLC systems vulnerable without proper authentication"
+    source: "device-plc"
+
+  - label: "THREAT"
+    pattern: "Malicious Firmware Updates"
+    context: "CNC machine firmware vulnerable to unauthorized updates"
+    source: "device-cnc-machine"
+
+  - label: "THREAT"
+    pattern: "Chemical System Tampering"
+    context: "Fab chemical distribution systems vulnerable to manipulation"
+    source: "facility-semiconductor-fab"
+
+  # Security Best Practices
+  - label: "BEST_PRACTICE"
+    pattern: "Defense in Depth"
+    context: "Multiple layers of security controls for IIoT networks"
+    source: "network-pattern-industrial-iot"
+
+  - label: "BEST_PRACTICE"
+    pattern: "Least Privilege"
+    context: "Minimum necessary access rights for users and devices"
+    source: "multiple-sources"
+
+  - label: "BEST_PRACTICE"
+    pattern: "Security by Design"
+    context: "Integrate security from initial architecture design"
+    source: "multiple-sources"
+
+# Pattern Statistics
+statistics:
+  total_patterns: 58
+  by_category:
+    SECURITY_CONTROL: 39
+    VULNERABILITY: 2
+    THREAT: 5
+    STANDARD: 9
+    BEST_PRACTICE: 3
+
+  by_domain:
+    network_security: 11
+    device_security: 8
+    application_security: 6
+    protocol_security: 10
+    vendor_security: 9
+    maintenance_security: 3
+    facility_security: 4
+    standards_compliance: 9
+
+  sources_analyzed:
+    - network-pattern-industrial-iot-20250102-06.md
+    - device-plc-20250102-06.md
+    - device-cnc-machine-20250102-06.md
+    - protocol-opc-ua-20250102-06.md
+    - protocol-modbus-20250102-06.md
+    - vendor-siemens-20250102-06.md
+    - vendor-rockwell-automation-20250102-06.md
+    - procedure-plc-maintenance-20250102-06.md
+    - facility-semiconductor-fab-20250102-06.md
+
+# Metadata
+metadata:
+  extraction_date: "2025-11-05"
+  sector: "critical-manufacturing"
+  focus: "security-patterns"
+  confidence: "high"
+  completeness: "comprehensive"

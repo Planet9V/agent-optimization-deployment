@@ -1,0 +1,12 @@
+Persona,Primary Goals,Key Features Used,Data Access
+Security Consultant,"Assess client risk, document findings, deliver reports","Risk assessment dashboard, client data segregation, report generation",Client-specific + Common threat data
+IEC 62443 Assessor,"Map controls to IEC 62443, identify gaps, generate compliance reports","IEC 62443 gap analysis, control mapping, audit trail documentation",Client-specific + IEC 62443 standards
+Penetration Testing Lead,"Plan and execute pentests, document vulnerabilities, provide remediation","Attack path visualization, exploit DB, pentest report templates",Client-specific + Common exploit data
+Autonomous Penetration Tester (AI),"Autonomously discover attack paths, exploit vulnerabilities, learn from KG","KG query/update API, attack simulator, exploit selection, learning feedback",All KG data (read/write for learning)
+Threat Modeling Specialist,"Model threats using STRIDE/MITRE, identify attack scenarios","Threat model builder, MITRE ATT&CK integration, scenario analysis",Client-specific + Common threat patterns
+Security Architect,"Design secure architectures for ICS/OT/IT, validate controls","Architecture modeling, zone/conduit design, control validation",Client-specific + Industry best practices
+Vulnerability Manager,"Prioritize vulnerabilities, track remediation, integrate with asset DB","Vulnerability prioritization, asset-CVE linking, remediation tracking",Client-specific + Global CVE/CWE/CAPEC
+Crisis Management / IR,"Support incident response, access crisis intel, coordinate teams","Real-time threat intel, incident timeline, playbook access",Client-specific + Real-time threat feeds
+SOC Integration Analyst,"Enrich SOC data with KG context, provide threat intelligence","SOC API integration, alert enrichment, threat context provision",Client-specific + Common IoCs
+Asset & RAMS Manager,"Link assets to vulnerabilities, track critical items, RAMS integration","Asset import, critical item tracking, reliability data (MTBF/MTTR)",Client-specific assets + Common reliability standards
+Client Project Manager,"Oversee client engagements, track deliverables, monitor progress","Multi-client dashboard, engagement tracking, deliverable status",All client data (admin role)

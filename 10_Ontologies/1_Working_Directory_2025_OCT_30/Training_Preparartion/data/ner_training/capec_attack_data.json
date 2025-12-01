@@ -1,0 +1,1906 @@
+[
+  {
+    "capec_id": "CAPEC-1",
+    "capec_name": "Accessing Functionality Not Properly Constrained by ACLs",
+    "capec_description": "In applications, particularly web applications, access to functionality is mitigated by an authorization framework. This framework maps Access Control Lists (ACLs) to elements of the application's functionality; particularly URL's for web apps. In the case that the administrator failed to specify an ACL for a particular element, an attacker may be able to access it with impunity. An attacker with the ability to access functionality not properly constrained by ACLs can obtain sensitive informatio",
+    "attack_id": "1574.010",
+    "attack_name": "Hijack Execution Flow: ServicesFile Permissions Weakness",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-11",
+    "capec_name": "Cause Web Server Misclassification",
+    "capec_description": "An attack of this type exploits a Web server's decision to take action based on filename or file extension. Because different file types are handled by different server processes, misclassification may force the Web server to take unexpected action, or expected actions in an unexpected sequence. This may cause the server to exhaust resources, supply debug or system data to the attacker, or bind an attacker to a remote process.",
+    "attack_id": "1036.006",
+    "attack_name": "Masquerading: Space after Filename",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-112",
+    "capec_name": "Brute Force",
+    "capec_description": "In this attack, some asset (information, functionality, identity, etc.) is protected by a finite secret value. The attacker attempts to gain access to this asset by using trial-and-error to exhaustively explore all the possible secret values in the hope of finding the secret (or a value that is functionally equivalent) that will unlock the asset.",
+    "attack_id": "1110",
+    "attack_name": "Brute Force",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-114",
+    "capec_name": "Authentication Abuse",
+    "capec_description": "An attacker obtains unauthorized access to an application, service or device either through knowledge of the inherent weaknesses of an authentication mechanism, or by exploiting a flaw in the authentication scheme's implementation. In such an attack an authentication mechanism is functioning but a carefully controlled sequence of events causes the mechanism to grant access to the attacker.",
+    "attack_id": "1548",
+    "attack_name": "Abuse Elevation Control Mechanism",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-115",
+    "capec_name": "Authentication Bypass",
+    "capec_description": "An attacker gains access to application, service, or device with the privileges of an authorized or privileged user by evading or circumventing an authentication mechanism. The attacker is therefore able to access protected data without authentication ever having taken place.",
+    "attack_id": "1548",
+    "attack_name": "Abuse Elevation Control Mechanism",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-122",
+    "capec_name": "Privilege Abuse",
+    "capec_description": "An adversary is able to exploit features of the target that should be reserved for privileged users or administrators but are exposed to use by lower or non-privileged accounts. Access to sensitive information and functionality must be controlled to ensure that only authorized users are able to access these resources.",
+    "attack_id": "1548",
+    "attack_name": "Abuse Elevation Control Mechanism",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-125",
+    "capec_name": "Flooding",
+    "capec_description": "An adversary consumes the resources of a target by rapidly engaging in a large number of interactions with the target. This type of attack generally exposes a weakness in rate limiting or flow. When successful this attack prevents legitimate users from accessing the service and can cause the target to crash. This attack differs from resource depletion through leaks or allocations in that the latter attacks do not rely on the volume of requests made to the target but instead focus on manipulation",
+    "attack_id": "1498.001",
+    "attack_name": "Network Denial of Service: Direct Network Flood",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-125",
+    "capec_name": "Flooding",
+    "capec_description": "An adversary consumes the resources of a target by rapidly engaging in a large number of interactions with the target. This type of attack generally exposes a weakness in rate limiting or flow. When successful this attack prevents legitimate users from accessing the service and can cause the target to crash. This attack differs from resource depletion through leaks or allocations in that the latter attacks do not rely on the volume of requests made to the target but instead focus on manipulation",
+    "attack_id": "1499",
+    "attack_name": "Endpoint Denial of Service",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-127",
+    "capec_name": "Directory Indexing",
+    "capec_description": "An adversary crafts a request to a target that results in the target listing/indexing the content of a directory as output. One common method of triggering directory contents as output is to construct a request containing a path that terminates in a directory name rather than a file name since many applications are configured to provide a list of the directory's contents when such a request is received. An adversary can use this to explore the directory tree on a target as well as learn the name",
+    "attack_id": "1083",
+    "attack_name": "File and Directory Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-13",
+    "capec_name": "Subverting Environment Variable Values",
+    "capec_description": "The adversary directly or indirectly modifies environment variables used by or controlling the target software. The adversary's goal is to cause the target software to deviate from its expected operation in a manner that benefits the adversary.",
+    "attack_id": "1562.003",
+    "attack_name": "Impair Defenses:Impair Command History Logging",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-13",
+    "capec_name": "Subverting Environment Variable Values",
+    "capec_description": "The adversary directly or indirectly modifies environment variables used by or controlling the target software. The adversary's goal is to cause the target software to deviate from its expected operation in a manner that benefits the adversary.",
+    "attack_id": "1574.006",
+    "attack_name": "Hijack Execution Flow:Dynamic Linker Hijacking",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-13",
+    "capec_name": "Subverting Environment Variable Values",
+    "capec_description": "The adversary directly or indirectly modifies environment variables used by or controlling the target software. The adversary's goal is to cause the target software to deviate from its expected operation in a manner that benefits the adversary.",
+    "attack_id": "1574.007",
+    "attack_name": "Hijack Execution Flow:Path Interception by PATH Environment Variable",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-130",
+    "capec_name": "Excessive Allocation",
+    "capec_description": "An adversary causes the target to allocate excessive resources to servicing the attackers' request, thereby reducing the resources available for legitimate services and degrading or denying services. Usually, this attack focuses on memory allocation, but any finite resource on the target could be the attacked, including bandwidth, processing cycles, or other resources. This attack does not attempt to force this allocation through a large number of requests (that would be Resource Depletion throu",
+    "attack_id": "1499.003",
+    "attack_name": "Endpoint Denial of Service:Application Exhaustion Flood",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-131",
+    "capec_name": "Resource Leak Exposure",
+    "capec_description": "An adversary utilizes a resource leak on the target to deplete the quantity of the resource available to service legitimate requests.",
+    "attack_id": "1499",
+    "attack_name": "Endpoint Denial of Service",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-132",
+    "capec_name": "Symlink Attack",
+    "capec_description": "An adversary positions a symbolic link in such a manner that the targeted user or application accesses the link's endpoint, assuming that it is accessing a file with the link's name.",
+    "attack_id": "1547.009",
+    "attack_name": "Boot or Logon Autostart Execution:Shortcut Modification",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-141",
+    "capec_name": "Cache Poisoning",
+    "capec_description": "An attacker exploits the functionality of cache technologies to cause specific data to be cached that aids the attackers' objectives. This describes any attack whereby an attacker places incorrect or harmful material in cache. The targeted cache can be an application's cache (e.g. a web browser cache) or a public cache (e.g. a DNS or ARP cache). Until the cache is refreshed, most applications or clients will treat the corrupted cache value as valid. This can lead to a wide range of exploits incl",
+    "attack_id": "1557.002",
+    "attack_name": "Adversary-in-the-Middle: ARP Cache Poisoning",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-142",
+    "capec_name": "DNS Cache Poisoning",
+    "capec_description": "A domain name server translates a domain name (such as www.example.com) into an IP address that Internet hosts use to contact Internet resources. An adversary modifies a public DNS cache to cause certain names to resolve to incorrect addresses that the adversary specifies. The result is that client applications that rely upon the targeted cache for domain name resolution will be directed not to the actual address of the specified domain name but to some other address. Adversaries can use this to",
+    "attack_id": "1584.002",
+    "attack_name": "Compromise Infrastructure: DNS Server",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-148",
+    "capec_name": "Content Spoofing",
+    "capec_description": "An adversary modifies content to make it contain something other than what the original content producer intended while keeping the apparent source of the content unchanged. The term content spoofing is most often used to describe modification of web pages hosted by a target to display the adversary's content instead of the owner's content. However, any content can be spoofed, including the content of email messages, file transfers, or the content of other network communication protocols. Conten",
+    "attack_id": "1491",
+    "attack_name": "Defacement",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-150",
+    "capec_name": "Collect Data from Common Resource Locations",
+    "capec_description": "An adversary exploits well-known locations for resources for the purposes of undermining the security of the target. In many, if not most systems, files and resources are organized in a default tree structure. This can be useful for adversaries because they often know where to look for resources or files that are necessary for attacks. Even when the precise location of a targeted resource may not be known, naming conventions may indicate a small area of the target machine's file tree where the r",
+    "attack_id": "1003",
+    "attack_name": "OS Credential Dumping",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-150",
+    "capec_name": "Collect Data from Common Resource Locations",
+    "capec_description": "An adversary exploits well-known locations for resources for the purposes of undermining the security of the target. In many, if not most systems, files and resources are organized in a default tree structure. This can be useful for adversaries because they often know where to look for resources or files that are necessary for attacks. Even when the precise location of a targeted resource may not be known, naming conventions may indicate a small area of the target machine's file tree where the r",
+    "attack_id": "1119",
+    "attack_name": "Automated Collection",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-150",
+    "capec_name": "Collect Data from Common Resource Locations",
+    "capec_description": "An adversary exploits well-known locations for resources for the purposes of undermining the security of the target. In many, if not most systems, files and resources are organized in a default tree structure. This can be useful for adversaries because they often know where to look for resources or files that are necessary for attacks. Even when the precise location of a targeted resource may not be known, naming conventions may indicate a small area of the target machine's file tree where the r",
+    "attack_id": "1213",
+    "attack_name": "Data from Information Repositories",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-150",
+    "capec_name": "Collect Data from Common Resource Locations",
+    "capec_description": "An adversary exploits well-known locations for resources for the purposes of undermining the security of the target. In many, if not most systems, files and resources are organized in a default tree structure. This can be useful for adversaries because they often know where to look for resources or files that are necessary for attacks. Even when the precise location of a targeted resource may not be known, naming conventions may indicate a small area of the target machine's file tree where the r",
+    "attack_id": "1530",
+    "attack_name": "Data from Cloud Storage Object",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-150",
+    "capec_name": "Collect Data from Common Resource Locations",
+    "capec_description": "An adversary exploits well-known locations for resources for the purposes of undermining the security of the target. In many, if not most systems, files and resources are organized in a default tree structure. This can be useful for adversaries because they often know where to look for resources or files that are necessary for attacks. Even when the precise location of a targeted resource may not be known, naming conventions may indicate a small area of the target machine's file tree where the r",
+    "attack_id": "1555",
+    "attack_name": "Credentials from Password Stores",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-150",
+    "capec_name": "Collect Data from Common Resource Locations",
+    "capec_description": "An adversary exploits well-known locations for resources for the purposes of undermining the security of the target. In many, if not most systems, files and resources are organized in a default tree structure. This can be useful for adversaries because they often know where to look for resources or files that are necessary for attacks. Even when the precise location of a targeted resource may not be known, naming conventions may indicate a small area of the target machine's file tree where the r",
+    "attack_id": "1602",
+    "attack_name": "Data from Configuration Repository",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-158",
+    "capec_name": "Sniffing Network Traffic",
+    "capec_description": "In this attack pattern, the adversary monitors network traffic between nodes of a public or multicast network in an attempt to capture sensitive information at the protocol level. Network sniffing applications can reveal TCP/IP, DNS, Ethernet, and other low-level network communication information. The adversary takes a passive role in this attack pattern and simply observes and analyzes the traffic. The adversary may precipitate or indirectly influence the content of the observed transaction, bu",
+    "attack_id": "1040",
+    "attack_name": "Network Sniffing",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-158",
+    "capec_name": "Sniffing Network Traffic",
+    "capec_description": "In this attack pattern, the adversary monitors network traffic between nodes of a public or multicast network in an attempt to capture sensitive information at the protocol level. Network sniffing applications can reveal TCP/IP, DNS, Ethernet, and other low-level network communication information. The adversary takes a passive role in this attack pattern and simply observes and analyzes the traffic. The adversary may precipitate or indirectly influence the content of the observed transaction, bu",
+    "attack_id": "1111",
+    "attack_name": "Multi-Factor Authentication Interception",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-159",
+    "capec_name": "Redirect Access to Libraries",
+    "capec_description": "An adversary exploits a weakness in the way an application searches for external libraries to manipulate the execution flow to point to an adversary supplied library or code base. This pattern of attack allows the adversary to compromise the application or server via the execution of unauthorized code. An application typically makes calls to functions that are a part of libraries external to the application. These libraries may be part of the operating system or they may be third party libraries",
+    "attack_id": "1574.008",
+    "attack_name": "Hijack Execution Flow:Path Interception by Search Order Hijacking",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-163",
+    "capec_name": "Spear Phishing",
+    "capec_description": "An adversary targets a specific user or group with a Phishing (CAPEC-98) attack tailored to a category of users in order to have maximum relevance and deceptive capability. Spear Phishing is an enhanced version of the Phishing attack targeted to a specific user or group. The quality of the targeted email is usually enhanced by appearing to come from a known or trusted entity. If the email account of some trusted entity has been compromised the message may be digitally signed. The message will co",
+    "attack_id": "1534",
+    "attack_name": "Internal Spearfishing",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-163",
+    "capec_name": "Spear Phishing",
+    "capec_description": "An adversary targets a specific user or group with a Phishing (CAPEC-98) attack tailored to a category of users in order to have maximum relevance and deceptive capability. Spear Phishing is an enhanced version of the Phishing attack targeted to a specific user or group. The quality of the targeted email is usually enhanced by appearing to come from a known or trusted entity. If the email account of some trusted entity has been compromised the message may be digitally signed. The message will co",
+    "attack_id": "1566.001",
+    "attack_name": "Phishing: Spearfishing Attachment",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-163",
+    "capec_name": "Spear Phishing",
+    "capec_description": "An adversary targets a specific user or group with a Phishing (CAPEC-98) attack tailored to a category of users in order to have maximum relevance and deceptive capability. Spear Phishing is an enhanced version of the Phishing attack targeted to a specific user or group. The quality of the targeted email is usually enhanced by appearing to come from a known or trusted entity. If the email account of some trusted entity has been compromised the message may be digitally signed. The message will co",
+    "attack_id": "1566.002",
+    "attack_name": "Phishing: Spearfishing Link",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-163",
+    "capec_name": "Spear Phishing",
+    "capec_description": "An adversary targets a specific user or group with a Phishing (CAPEC-98) attack tailored to a category of users in order to have maximum relevance and deceptive capability. Spear Phishing is an enhanced version of the Phishing attack targeted to a specific user or group. The quality of the targeted email is usually enhanced by appearing to come from a known or trusted entity. If the email account of some trusted entity has been compromised the message may be digitally signed. The message will co",
+    "attack_id": "1566.003",
+    "attack_name": "Phishing: Spearfishing via Service",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-163",
+    "capec_name": "Spear Phishing",
+    "capec_description": "An adversary targets a specific user or group with a Phishing (CAPEC-98) attack tailored to a category of users in order to have maximum relevance and deceptive capability. Spear Phishing is an enhanced version of the Phishing attack targeted to a specific user or group. The quality of the targeted email is usually enhanced by appearing to come from a known or trusted entity. If the email account of some trusted entity has been compromised the message may be digitally signed. The message will co",
+    "attack_id": "1598.001",
+    "attack_name": "Phishing for Information: Spearfishing Service",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-163",
+    "capec_name": "Spear Phishing",
+    "capec_description": "An adversary targets a specific user or group with a Phishing (CAPEC-98) attack tailored to a category of users in order to have maximum relevance and deceptive capability. Spear Phishing is an enhanced version of the Phishing attack targeted to a specific user or group. The quality of the targeted email is usually enhanced by appearing to come from a known or trusted entity. If the email account of some trusted entity has been compromised the message may be digitally signed. The message will co",
+    "attack_id": "1598.002",
+    "attack_name": "Phishing for Information: Spearfishing Attachment",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-163",
+    "capec_name": "Spear Phishing",
+    "capec_description": "An adversary targets a specific user or group with a Phishing (CAPEC-98) attack tailored to a category of users in order to have maximum relevance and deceptive capability. Spear Phishing is an enhanced version of the Phishing attack targeted to a specific user or group. The quality of the targeted email is usually enhanced by appearing to come from a known or trusted entity. If the email account of some trusted entity has been compromised the message may be digitally signed. The message will co",
+    "attack_id": "1598.003",
+    "attack_name": "Phishing for Information: Spearfishing Link",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-165",
+    "capec_name": "File Manipulation",
+    "capec_description": "An attacker modifies file contents or attributes (such as extensions or names) of files in a manner to cause incorrect processing by an application. Attackers use this class of attacks to cause applications to enter unstable states, overwrite or expose sensitive information, and even execute arbitrary code with the application's privileges. This class of attacks differs from attacks on configuration information (even if file-based) in that file manipulation causes the file processing to result i",
+    "attack_id": "1036.003",
+    "attack_name": "Masquerading: Rename System Utilities",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-169",
+    "capec_name": "Footprinting",
+    "capec_description": "An adversary engages in probing and exploration activities to identify constituents and properties of the target.",
+    "attack_id": "1217",
+    "attack_name": "Browser Bookmark Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-169",
+    "capec_name": "Footprinting",
+    "capec_description": "An adversary engages in probing and exploration activities to identify constituents and properties of the target.",
+    "attack_id": "1592",
+    "attack_name": "Gather Victim Host Information",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-169",
+    "capec_name": "Footprinting",
+    "capec_description": "An adversary engages in probing and exploration activities to identify constituents and properties of the target.",
+    "attack_id": "1595",
+    "attack_name": "Active Scanning",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-17",
+    "capec_name": "Using Malicious Files",
+    "capec_description": "An attack of this type exploits a system's configuration that allows an adversary to either directly access an executable file, for example through shell access; or in a possible worst case allows an adversary to upload a file and then execute it. Web servers, ftp servers, and message oriented middleware systems which have many integration points are particularly vulnerable, because both the programmers and the administrators must be in synch regarding the interfaces and the correct privileges f",
+    "attack_id": "1574.005",
+    "attack_name": "Hijack Execution Flow: Executable Installer File Permissions Weakness",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-17",
+    "capec_name": "Using Malicious Files",
+    "capec_description": "An attack of this type exploits a system's configuration that allows an adversary to either directly access an executable file, for example through shell access; or in a possible worst case allows an adversary to upload a file and then execute it. Web servers, ftp servers, and message oriented middleware systems which have many integration points are particularly vulnerable, because both the programmers and the administrators must be in synch regarding the interfaces and the correct privileges f",
+    "attack_id": "1574.010",
+    "attack_name": "Hijack Execution Flow: ServicesFile Permissions Weakness",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-177",
+    "capec_name": "Create files with the same name as files protected with a higher classification",
+    "capec_description": "An attacker exploits file location algorithms in an operating system or application by creating a file with the same name as a protected or privileged file. The attacker could manipulate the system if the attacker-created file is trusted by the operating system or an application component that attempts to load the original file. Applications often load or include external files, such as libraries or configuration files. These files should be protected against malicious manipulation. However, if",
+    "attack_id": "1036",
+    "attack_name": "Masquerading",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-180",
+    "capec_name": "Exploiting Incorrectly Configured Access Control Security Levels",
+    "capec_description": "An attacker exploits a weakness in the configuration of access controls and is able to bypass the intended protection that these measures guard against and thereby obtain unauthorized access to the system or network. Sensitive functionality should always be protected with access controls. However configuring all but the most trivial access control systems can be very complicated and there are many opportunities for mistakes. If an attacker can learn of incorrectly configured access security sett",
+    "attack_id": "1574.010",
+    "attack_name": "Hijack Execution Flow: ServicesFile Permissions Weakness",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-186",
+    "capec_name": "Malicious Software Update",
+    "capec_description": "An adversary uses deceptive methods to cause a user or an automated process to download and install dangerous code believed to be a valid update that originates from an adversary controlled source.",
+    "attack_id": "1195.002",
+    "attack_name": "Supply Chain Compromise: Compromise Software Supply Chain",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-187",
+    "capec_name": "Malicious Automated Software Update via Redirection",
+    "capec_description": "An attacker exploits two layers of weaknesses in server or client software for automated update mechanisms to undermine the integrity of the target code-base. The first weakness involves a failure to properly authenticate a server as a source of update or patch content. This type of weakness typically results from authentication mechanisms which can be defeated, allowing a hostile server to satisfy the criteria that establish a trust relationship. The second weakness is a systemic failure to val",
+    "attack_id": "1072",
+    "attack_name": "Software Deployment Tools",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-19",
+    "capec_name": "Embedding Scripts within Scripts",
+    "capec_description": "An adversary leverages the capability to execute their own script by embedding it within other scripts that the target software is likely to execute due to programs' vulnerabilities that are brought on by allowing remote hosts to execute scripts.",
+    "attack_id": "1027.009",
+    "attack_name": "Obfuscated Files or Information: Embedded Payloads",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-19",
+    "capec_name": "Embedding Scripts within Scripts",
+    "capec_description": "An adversary leverages the capability to execute their own script by embedding it within other scripts that the target software is likely to execute due to programs' vulnerabilities that are brought on by allowing remote hosts to execute scripts.",
+    "attack_id": "1546.004",
+    "attack_name": "Event Triggered Execution:.bash_profile and .bashrc",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-19",
+    "capec_name": "Embedding Scripts within Scripts",
+    "capec_description": "An adversary leverages the capability to execute their own script by embedding it within other scripts that the target software is likely to execute due to programs' vulnerabilities that are brought on by allowing remote hosts to execute scripts.",
+    "attack_id": "1546.016",
+    "attack_name": "Event Triggered Execution: Installer Packages",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-196",
+    "capec_name": "Session Credential Falsification through Forging",
+    "capec_description": "An attacker creates a false but functional session credential in order to gain or usurp access to a service. Session credentials allow users to identify themselves to a service after an initial authentication without needing to resend the authentication information (usually a username and password) with every message. If an attacker is able to forge valid session credentials they may be able to bypass authentication or piggy-back off some other authenticated user's session. This attack differs f",
+    "attack_id": "1134.002",
+    "attack_name": "Access Token Manipulation: Create Process with Token",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-196",
+    "capec_name": "Session Credential Falsification through Forging",
+    "capec_description": "An attacker creates a false but functional session credential in order to gain or usurp access to a service. Session credentials allow users to identify themselves to a service after an initial authentication without needing to resend the authentication information (usually a username and password) with every message. If an attacker is able to forge valid session credentials they may be able to bypass authentication or piggy-back off some other authenticated user's session. This attack differs f",
+    "attack_id": "1134.003",
+    "attack_name": "Access Token Manipulation: Make and Impersonate Token",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-196",
+    "capec_name": "Session Credential Falsification through Forging",
+    "capec_description": "An attacker creates a false but functional session credential in order to gain or usurp access to a service. Session credentials allow users to identify themselves to a service after an initial authentication without needing to resend the authentication information (usually a username and password) with every message. If an attacker is able to forge valid session credentials they may be able to bypass authentication or piggy-back off some other authenticated user's session. This attack differs f",
+    "attack_id": "1606",
+    "attack_name": "Forge Web Credentials",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-2",
+    "capec_name": "Inducing Account Lockout",
+    "capec_description": "An attacker leverages the security functionality of the system aimed at thwarting potential attacks to launch a denial of service attack against a legitimate system user. Many systems, for instance, implement a password throttling mechanism that locks an account after a certain number of incorrect log in attempts. An attacker can leverage this throttling mechanism to lock a legitimate user out of their own account. The weakness that is being leveraged by an attacker is the very security feature",
+    "attack_id": "1531",
+    "attack_name": "Account Access Removal",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-203",
+    "capec_name": "Manipulate Registry Information",
+    "capec_description": "An adversary exploits a weakness in authorization in order to modify content within a registry (e.g., Windows Registry, Mac plist, application registry). Editing registry information can permit the adversary to hide configuration information or remove indicators of compromise to cover up activity. Many applications utilize registries to store configuration and service information. As such, modification of registry information can affect individual services (affecting billing, authorization, or e",
+    "attack_id": "1112",
+    "attack_name": "Modify Registry",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-203",
+    "capec_name": "Manipulate Registry Information",
+    "capec_description": "An adversary exploits a weakness in authorization in order to modify content within a registry (e.g., Windows Registry, Mac plist, application registry). Editing registry information can permit the adversary to hide configuration information or remove indicators of compromise to cover up activity. Many applications utilize registries to store configuration and service information. As such, modification of registry information can affect individual services (affecting billing, authorization, or e",
+    "attack_id": "1647",
+    "attack_name": "Plist Modification",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-204",
+    "capec_name": "Lifting Sensitive Data Embedded in Cache",
+    "capec_description": "An adversary examines a target application's cache, or a browser cache, for sensitive information. Many applications that communicate with remote entities or which perform intensive calculations utilize caches to improve efficiency. However, if the application computes or receives sensitive information and the cache is not appropriately protected, an attacker can browse the cache and retrieve this information. This can result in the disclosure of sensitive information.",
+    "attack_id": "1005",
+    "attack_name": "Data from Local System",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-206",
+    "capec_name": "Signing Malicious Code",
+    "capec_description": "The adversary extracts credentials used for code signing from a production environment and then uses these credentials to sign malicious content with the developer's key. Many developers use signing keys to sign code or hashes of code. When users or applications verify the signatures are accurate they are led to believe that the code came from the owner of the signing key and that the code has not been modified since the signature was applied. If the adversary has extracted the signing credentia",
+    "attack_id": "1553.002",
+    "attack_name": "Subvert Trust Controls:Code Signing",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-227",
+    "capec_name": "Sustained Client Engagement",
+    "capec_description": "An adversary attempts to deny legitimate users access to a resource by continually engaging a specific resource in an attempt to keep the resource tied up as long as possible. The adversary's primary goal is not to crash or flood the target, which would alert defenders; rather it is to repeatedly perform actions or abuse algorithmic flaws such that a given resource is tied up and not available to a legitimate user. By carefully crafting a requests that keep the resource engaged through what is s",
+    "attack_id": "1499",
+    "attack_name": "Endpoint Denial of Service",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-233",
+    "capec_name": "Privilege Escalation",
+    "capec_description": "An adversary exploits a weakness enabling them to elevate their privilege and perform an action that they are not supposed to be authorized to perform.",
+    "attack_id": "1548",
+    "attack_name": "Abuse Elevation Control Mechanism",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-25",
+    "capec_name": "Forced Deadlock",
+    "capec_description": "The adversary triggers and exploits a deadlock condition in the target software to cause a denial of service. A deadlock can occur when two or more competing actions are waiting for each other to finish, and thus neither ever does. Deadlock conditions can be difficult to detect.",
+    "attack_id": "1499.004",
+    "attack_name": "Endpoint Denial of Service: Application or System Exploitation",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-251",
+    "capec_name": "Local Code Inclusion",
+    "capec_description": "The attacker forces an application to load arbitrary code files from the local machine. The attacker could use this to try to load old versions of library files that have known vulnerabilities, to load files that the attacker placed on the local machine during a prior attack, or to otherwise change the functionality of the targeted application in unexpected ways.",
+    "attack_id": "1055",
+    "attack_name": "Process Injection",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-267",
+    "capec_name": "Leverage Alternate Encoding",
+    "capec_description": "An adversary leverages the possibility to encode potentially harmful input or content used by applications such that the applications are ineffective at validating this encoding standard.",
+    "attack_id": "1027",
+    "attack_name": "Obfuscated Files or Information",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-268",
+    "capec_name": "Audit Log Manipulation",
+    "capec_description": "The attacker injects, manipulates, deletes, or forges malicious log entries into the log file, in an attempt to mislead an audit of the log file or cover tracks of an attack. Due to either insufficient access controls of the log files or the logging mechanism, the attacker is able to perform such actions.",
+    "attack_id": "1070",
+    "attack_name": "Indicator Removal on Host",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-268",
+    "capec_name": "Audit Log Manipulation",
+    "capec_description": "The attacker injects, manipulates, deletes, or forges malicious log entries into the log file, in an attempt to mislead an audit of the log file or cover tracks of an attack. Due to either insufficient access controls of the log files or the logging mechanism, the attacker is able to perform such actions.",
+    "attack_id": "1562.002",
+    "attack_name": "Impair Defenses: Disable Windows Event Logging",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-268",
+    "capec_name": "Audit Log Manipulation",
+    "capec_description": "The attacker injects, manipulates, deletes, or forges malicious log entries into the log file, in an attempt to mislead an audit of the log file or cover tracks of an attack. Due to either insufficient access controls of the log files or the logging mechanism, the attacker is able to perform such actions.",
+    "attack_id": "1562.003",
+    "attack_name": "Impair Defenses:Impair Command History Logging",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-268",
+    "capec_name": "Audit Log Manipulation",
+    "capec_description": "The attacker injects, manipulates, deletes, or forges malicious log entries into the log file, in an attempt to mislead an audit of the log file or cover tracks of an attack. Due to either insufficient access controls of the log files or the logging mechanism, the attacker is able to perform such actions.",
+    "attack_id": "1562.008",
+    "attack_name": "Impair Defenses: Disable Cloud Logs",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-270",
+    "capec_name": "Modification of Registry Run Keys",
+    "capec_description": "An adversary adds a new entry to the \\run keys\\ in the Windows registry so that an application of their choosing is executed when a user logs in. In this way, the adversary can get their executable to operate and run on the target system with the authorized user's level of permissions. This attack is a good way for an adversary to run persistent spyware on a user's machine, such as a keylogger.",
+    "attack_id": "1547.001",
+    "attack_name": "Boot or Logon Autostart Execution: Registry Run Keys / Start Folder",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-270",
+    "capec_name": "Modification of Registry Run Keys",
+    "capec_description": "An adversary adds a new entry to the \\run keys\\ in the Windows registry so that an application of their choosing is executed when a user logs in. In this way, the adversary can get their executable to operate and run on the target system with the authorized user's level of permissions. This attack is a good way for an adversary to run persistent spyware on a user's machine, such as a keylogger.",
+    "attack_id": "1547.014",
+    "attack_name": "Boot or Logon Autostart Execution: Active",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-292",
+    "capec_name": "Host Discovery",
+    "capec_description": "An adversary sends a probe to an IP address to determine if the host is alive. Host discovery is one of the earliest phases of network reconnaissance. The adversary usually starts with a range of IP addresses belonging to a target network and uses various methods to determine if a host is present at that IP address. Host discovery is usually referred to as 'Ping' scanning using a sonar analogy. The goal is to send a packet through to the IP address and solicit a response from the host. As such,",
+    "attack_id": "1018",
+    "attack_name": "Remote System Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-295",
+    "capec_name": "Timestamp Request",
+    "capec_description": "This pattern of attack leverages standard requests to learn the exact time associated with a target system. An adversary may be able to use the timestamp returned from the target to attack time-based security algorithms, such as random number generators, or time-based authentication mechanisms.",
+    "attack_id": "1124",
+    "attack_name": "System Time Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-30",
+    "capec_name": "Hijacking a Privileged Thread of Execution",
+    "capec_description": "An adversary hijacks a privileged thread of execution by injecting malicious code into a running process. By using a privleged thread to do their bidding, adversaries can evade process-based detection that would stop an attack that creates a new process. This can lead to an adversary gaining access to the process's memory and can also enable elevated privileges. The most common way to perform this attack is by suspending an existing thread and manipulating its memory.",
+    "attack_id": "1055.003",
+    "attack_name": "Process Injection: Thread Execution Hijacking",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-300",
+    "capec_name": "Port Scanning",
+    "capec_description": "An adversary uses a combination of techniques to determine the state of the ports on a remote target. Any service or application available for TCP or UDP networking will have a port open for communications over the network.",
+    "attack_id": "1046",
+    "attack_name": "Network Service Scanning",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-309",
+    "capec_name": "Network Topology Mapping",
+    "capec_description": "An adversary engages in scanning activities to map network nodes, hosts, devices, and routes. Adversaries usually perform this type of network reconnaissance during the early stages of attack against an external network. Many types of scanning utilities are typically employed, including ICMP tools, network mappers, port scanners, and route testing utilities such as traceroute.",
+    "attack_id": "1016",
+    "attack_name": "System Network Configuration Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-309",
+    "capec_name": "Network Topology Mapping",
+    "capec_description": "An adversary engages in scanning activities to map network nodes, hosts, devices, and routes. Adversaries usually perform this type of network reconnaissance during the early stages of attack against an external network. Many types of scanning utilities are typically employed, including ICMP tools, network mappers, port scanners, and route testing utilities such as traceroute.",
+    "attack_id": "1049",
+    "attack_name": "System Network Connections Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-309",
+    "capec_name": "Network Topology Mapping",
+    "capec_description": "An adversary engages in scanning activities to map network nodes, hosts, devices, and routes. Adversaries usually perform this type of network reconnaissance during the early stages of attack against an external network. Many types of scanning utilities are typically employed, including ICMP tools, network mappers, port scanners, and route testing utilities such as traceroute.",
+    "attack_id": "1590",
+    "attack_name": "Gather Victim Network Information",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-31",
+    "capec_name": "Accessing/Intercepting/Modifying HTTP Cookies",
+    "capec_description": "This attack relies on the use of HTTP Cookies to store credentials, state information and other critical data on client systems. There are several different forms of this attack. The first form of this attack involves accessing HTTP Cookies to mine for potentially sensitive data contained therein. The second form involves intercepting this data as it is transmitted from client to server. This intercepted information is then used by the adversary to impersonate the remote user/session. The third",
+    "attack_id": "1539",
+    "attack_name": "Steal Web Session Cookie",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-312",
+    "capec_name": "Active OS Fingerprinting",
+    "capec_description": "An adversary engages in activity to detect the operating system or firmware version of a remote target by interrogating a device, server, or platform with a probe designed to solicit behavior that will reveal information about the operating systems or firmware in the environment. Operating System detection is possible because implementations of common protocols (Such as IP or TCP) differ in distinct ways. While the implementation differences are not sufficient to 'break' compatibility with the p",
+    "attack_id": "1082",
+    "attack_name": "System Information Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-313",
+    "capec_name": "Passive OS Fingerprinting",
+    "capec_description": "An adversary engages in activity to detect the version or type of OS software in a an environment by passively monitoring communication between devices, nodes, or applications. Passive techniques for operating system detection send no actual probes to a target, but monitor network or client-server communication between nodes in order to identify operating systems based on observed behavior as compared to a database of known signatures or values. While passive OS fingerprinting is not usually as",
+    "attack_id": "1082",
+    "attack_name": "System Information Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-35",
+    "capec_name": "Leverage Executable Code in Non-Executable Files",
+    "capec_description": "An attack of this type exploits a system's trust in configuration and resource files. When the executable loads the resource (such as an image file or configuration file) the attacker has modified the file to either execute malicious code directly or manipulate the target process (e.g. application server) to execute based on the malicious configuration parameters. Since systems are increasingly interrelated mashing up resources from local and remote sources the possibility of this attack occurri",
+    "attack_id": "1027.006",
+    "attack_name": "Obfuscated Files or Information: HTML Smuggling",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-35",
+    "capec_name": "Leverage Executable Code in Non-Executable Files",
+    "capec_description": "An attack of this type exploits a system's trust in configuration and resource files. When the executable loads the resource (such as an image file or configuration file) the attacker has modified the file to either execute malicious code directly or manipulate the target process (e.g. application server) to execute based on the malicious configuration parameters. Since systems are increasingly interrelated mashing up resources from local and remote sources the possibility of this attack occurri",
+    "attack_id": "1027.009",
+    "attack_name": "Obfuscated Files or Information: Embedded Payloads",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-35",
+    "capec_name": "Leverage Executable Code in Non-Executable Files",
+    "capec_description": "An attack of this type exploits a system's trust in configuration and resource files. When the executable loads the resource (such as an image file or configuration file) the attacker has modified the file to either execute malicious code directly or manipulate the target process (e.g. application server) to execute based on the malicious configuration parameters. Since systems are increasingly interrelated mashing up resources from local and remote sources the possibility of this attack occurri",
+    "attack_id": "1564.009",
+    "attack_name": "Hide Artifacts: Resource Forking",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-37",
+    "capec_name": "Retrieve Embedded Sensitive Data",
+    "capec_description": "An attacker examines a target system to find sensitive data that has been embedded within it. This information can reveal confidential contents, such as account numbers or individual keys/credentials that can be used as an intermediate step in a larger attack.",
+    "attack_id": "1005",
+    "attack_name": "Data from Local System",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-37",
+    "capec_name": "Retrieve Embedded Sensitive Data",
+    "capec_description": "An attacker examines a target system to find sensitive data that has been embedded within it. This information can reveal confidential contents, such as account numbers or individual keys/credentials that can be used as an intermediate step in a larger attack.",
+    "attack_id": "1552.004",
+    "attack_name": "Unsecured Credentials: Private Keys",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-38",
+    "capec_name": "Leveraging/Manipulating Configuration File Search Paths",
+    "capec_description": "This pattern of attack sees an adversary load a malicious resource into a program's standard path so that when a known command is executed then the system instead executes the malicious component. The adversary can either modify the search path a program uses, like a PATH variable or classpath, or they can manipulate resources on the path to point to their malicious components. J2EE applications and other component based applications that are built from multiple binaries can have very long list",
+    "attack_id": "1574.007",
+    "attack_name": "Hijack Execution Flow:Path Interception by PATH Environment Variable",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-38",
+    "capec_name": "Leveraging/Manipulating Configuration File Search Paths",
+    "capec_description": "This pattern of attack sees an adversary load a malicious resource into a program's standard path so that when a known command is executed then the system instead executes the malicious component. The adversary can either modify the search path a program uses, like a PATH variable or classpath, or they can manipulate resources on the path to point to their malicious components. J2EE applications and other component based applications that are built from multiple binaries can have very long list",
+    "attack_id": "1574.009",
+    "attack_name": "Hijack Execution Flow: Path Interception by Unquoted Path",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-383",
+    "capec_name": "Harvesting Information via API Event Monitoring",
+    "capec_description": "An adversary hosts an event within an application framework and then monitors the data exchanged during the course of the event for the purpose of harvesting any important data leaked during the transactions. One example could be harvesting lists of usernames or userIDs for the purpose of sending spam messages to those users. One example of this type of attack involves the adversary creating an event within the sub-application. Assume the adversary hosts a \\virtual sale\\ of rare items. As other",
+    "attack_id": "1056.004",
+    "attack_name": "Input Capture: Credential API Hooking",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-407",
+    "capec_name": "Pretexting",
+    "capec_description": "An adversary engages in pretexting behavior to solicit information from target persons, or manipulate the target into performing some action that serves the adversary's interests. During a pretexting attack, the adversary creates an invented scenario, assuming an identity or role to persuade a targeted victim to release information or perform some action. It is more than just creating a lie; in some cases it can be creating a whole new identity and then using that identity to manipulate the rece",
+    "attack_id": "1589",
+    "attack_name": "Gather Victim Identity Information",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-438",
+    "capec_name": "Modification During Manufacture",
+    "capec_description": "An attacker modifies a technology, product, or component during a stage in its manufacture for the purpose of carrying out an attack against some entity involved in the supply chain lifecycle. There are an almost limitless number of ways an attacker can modify a technology when they are involved in its manufacture, as the attacker has potential inroads to the software composition, hardware design and assembly, firmware, or basic design mechanics. Additionally, manufacturing of key components is",
+    "attack_id": "1195",
+    "attack_name": "Supply Chain Compromise",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-439",
+    "capec_name": "Manipulation During Distribution",
+    "capec_description": "An attacker undermines the integrity of a product, software, or technology at some stage of the distribution channel. The core threat of modification or manipulation during distribution arise from the many stages of distribution, as a product may traverse multiple suppliers and integrators as the final asset is delivered. Components and services provided from a manufacturer to a supplier may be tampered with during integration or packaging.",
+    "attack_id": "1195",
+    "attack_name": "Supply Chain Compromise",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-440",
+    "capec_name": "Hardware Integrity Attack",
+    "capec_description": "An adversary exploits a weakness in the system maintenance process and causes a change to be made to a technology, product, component, or sub-component or a new one installed during its deployed use at the victim location for the purpose of carrying out an attack.",
+    "attack_id": "1195.003",
+    "attack_name": "Supply Chain Compromise: Compromise Hardware Supply Chain",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-440",
+    "capec_name": "Hardware Integrity Attack",
+    "capec_description": "An adversary exploits a weakness in the system maintenance process and causes a change to be made to a technology, product, component, or sub-component or a new one installed during its deployed use at the victim location for the purpose of carrying out an attack.",
+    "attack_id": "1200",
+    "attack_name": "Hardware Additions",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-442",
+    "capec_name": "Infected Software",
+    "capec_description": "An adversary adds malicious logic, often in the form of a computer virus, to otherwise benign software. This logic is often hidden from the user of the software and works behind the scenes to achieve negative impacts. Many times, the malicious logic is inserted into empty space between legitimate code, and is then called when the software is executed. This pattern of attack focuses on software already fielded and used in operation as opposed to software that is still under development and part o",
+    "attack_id": "1195.001",
+    "attack_name": "Supply Chain Compromise: Compromise Software Dependencies and Development Tools",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-442",
+    "capec_name": "Infected Software",
+    "capec_description": "An adversary adds malicious logic, often in the form of a computer virus, to otherwise benign software. This logic is often hidden from the user of the software and works behind the scenes to achieve negative impacts. Many times, the malicious logic is inserted into empty space between legitimate code, and is then called when the software is executed. This pattern of attack focuses on software already fielded and used in operation as opposed to software that is still under development and part o",
+    "attack_id": "1195.002",
+    "attack_name": "Supply Chain Compromise: Compromise Software Supply Chain",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-443",
+    "capec_name": "Malicious Logic Inserted Into Product by Authorized Developer",
+    "capec_description": "An adversary uses their privileged position within an authorized development organization to inject malicious logic into a codebase or product.",
+    "attack_id": "1195.002",
+    "attack_name": "Supply Chain Compromise: Compromise Software Supply Chain",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-443",
+    "capec_name": "Malicious Logic Inserted Into Product by Authorized Developer",
+    "capec_description": "An adversary uses their privileged position within an authorized development organization to inject malicious logic into a codebase or product.",
+    "attack_id": "1195.003",
+    "attack_name": "Supply Chain Compromise: Compromise Hardware Supply Chain",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-448",
+    "capec_name": "Embed Virus into DLL",
+    "capec_description": "An adversary tampers with a DLL and embeds a computer virus into gaps between legitimate machine instructions. These gaps may be the result of compiler optimizations that pad memory blocks for performance gains. The embedded virus then attempts to infect any machine which interfaces with the product, and possibly steal private data or eavesdrop.",
+    "attack_id": "1027.009",
+    "attack_name": "Obfuscated Files or Information: Embedded Payloads",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-457",
+    "capec_name": "USB Memory Attacks",
+    "capec_description": "An adversary loads malicious code onto a USB memory stick in order to infect any system which the device is plugged in to. USB drives present a significant security risk for business and government agencies. Given the ability to integrate wireless functionality into a USB stick, it is possible to design malware that not only steals confidential data, but sniffs the network, or monitor keystrokes, and then exfiltrates the stolen data off-site via a Wireless connection. Also, viruses can be transm",
+    "attack_id": "1091",
+    "attack_name": "Replication Through Removable Media",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-457",
+    "capec_name": "USB Memory Attacks",
+    "capec_description": "An adversary loads malicious code onto a USB memory stick in order to infect any system which the device is plugged in to. USB drives present a significant security risk for business and government agencies. Given the ability to integrate wireless functionality into a USB stick, it is possible to design malware that not only steals confidential data, but sniffs the network, or monitor keystrokes, and then exfiltrates the stolen data off-site via a Wireless connection. Also, viruses can be transm",
+    "attack_id": "1092",
+    "attack_name": "Communication Through Removable Media",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-464",
+    "capec_name": "Evercookie",
+    "capec_description": "An attacker creates a very persistent cookie that stays present even after the user thinks it has been removed. The cookie is stored on the victim's machine in over ten places. When the victim clears the cookie cache via traditional means inside the browser, that operation removes the cookie from certain places but not others. The malicious code then replicates the cookie from all of the places where it was not deleted to all of the possible storage locations once again. So the victim again has",
+    "attack_id": "1606.001",
+    "attack_name": "Forge Web Credentials: Web Cookies",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-465",
+    "capec_name": "Transparent Proxy Abuse",
+    "capec_description": "A transparent proxy serves as an intermediate between the client and the internet at large. It intercepts all requests originating from the client and forwards them to the correct location. The proxy also intercepts all responses to the client and forwards these to the client. All of this is done in a manner transparent to the client.",
+    "attack_id": "1090.001",
+    "attack_name": "Proxy: Internal Proxy",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-469",
+    "capec_name": "HTTP DoS",
+    "capec_description": "An attacker performs flooding at the HTTP level to bring down only a particular web application rather than anything listening on a TCP/IP connection. This denial of service attack requires substantially fewer packets to be sent which makes DoS harder to detect. This is an equivalent of SYN flood in HTTP. The idea is to keep the HTTP session alive indefinitely and then repeat that hundreds of times. This attack targets resource depletion weaknesses in web server software. The web server will wai",
+    "attack_id": "1499.002",
+    "attack_name": "Endpoint Denial of Service: Service Exhaustion Flood",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-471",
+    "capec_name": "Search Order Hijacking",
+    "capec_description": "An adversary exploits a weakness in an application's specification of external libraries to exploit the functionality of the loader where the process loading the library searches first in the same directory in which the process binary resides and then in other directories. Exploitation of this preferential search order can allow an attacker to make the loading process load the adversary's rogue library rather than the legitimate library. This attack can be leveraged with many different libraries",
+    "attack_id": "1574.001",
+    "attack_name": "Hijack Execution Flow:DLL search order hijacking",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-471",
+    "capec_name": "Search Order Hijacking",
+    "capec_description": "An adversary exploits a weakness in an application's specification of external libraries to exploit the functionality of the loader where the process loading the library searches first in the same directory in which the process binary resides and then in other directories. Exploitation of this preferential search order can allow an attacker to make the loading process load the adversary's rogue library rather than the legitimate library. This attack can be leveraged with many different libraries",
+    "attack_id": "1574.004",
+    "attack_name": "Hijack Execution Flow: Dylib Hijacking",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-471",
+    "capec_name": "Search Order Hijacking",
+    "capec_description": "An adversary exploits a weakness in an application's specification of external libraries to exploit the functionality of the loader where the process loading the library searches first in the same directory in which the process binary resides and then in other directories. Exploitation of this preferential search order can allow an attacker to make the loading process load the adversary's rogue library rather than the legitimate library. This attack can be leveraged with many different libraries",
+    "attack_id": "1574.008",
+    "attack_name": "Hijack Execution Flow:Path Interception by Search Order Hijacking",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-473",
+    "capec_name": "Signature Spoof",
+    "capec_description": "An attacker generates a message or datablock that causes the recipient to believe that the message or datablock was generated and cryptographically signed by an authoritative or reputable source, misleading a victim or victim operating system into performing malicious actions.",
+    "attack_id": "1036.001",
+    "attack_name": "Masquerading: Invalid Code Signature",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-473",
+    "capec_name": "Signature Spoof",
+    "capec_description": "An attacker generates a message or datablock that causes the recipient to believe that the message or datablock was generated and cryptographically signed by an authoritative or reputable source, misleading a victim or victim operating system into performing malicious actions.",
+    "attack_id": "1553.002",
+    "attack_name": "Subvert Trust Controls:Code Signing",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-474",
+    "capec_name": "Signature Spoofing by Key Theft",
+    "capec_description": "An attacker obtains an authoritative or reputable signer's private signature key by theft and then uses this key to forge signatures from the original signer to mislead a victim into performing actions that benefit the attacker.",
+    "attack_id": "1552.004",
+    "attack_name": "Unsecured Credentials: Private Keys",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-478",
+    "capec_name": "Modification of Windows Service Configuration",
+    "capec_description": "An adversary exploits a weakness in access control to modify the execution parameters of a Windows service. The goal of this attack is to execute a malicious binary in place of an existing service.",
+    "attack_id": "1574.011",
+    "attack_name": "Hijack Execution Flow:Service Registry Permissions Weakness",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-478",
+    "capec_name": "Modification of Windows Service Configuration",
+    "capec_description": "An adversary exploits a weakness in access control to modify the execution parameters of a Windows service. The goal of this attack is to execute a malicious binary in place of an existing service.",
+    "attack_id": "1543.003",
+    "attack_name": "Create or Modify System Process:Windows Service",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-479",
+    "capec_name": "Malicious Root Certificate",
+    "capec_description": "An adversary exploits a weakness in authorization and installs a new root certificate on a compromised system. Certificates are commonly used for establishing secure TLS/SSL communications within a web browser. When a user attempts to browse a website that presents a certificate that is not trusted an error message will be displayed to warn the user of the security risk. Depending on the security settings, the browser may not allow the user to establish a connection to the website. Adversaries h",
+    "attack_id": "1553.004",
+    "attack_name": "Subvert Trust Controls:Install Root Certificate",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-480",
+    "capec_name": "Escaping Virtualization",
+    "capec_description": "An adversary gains access to an application, service, or device with the privileges of an authorized or privileged user by escaping the confines of a virtualized environment. The adversary is then able to access resources or execute unauthorized code within the host environment, generally with the privileges of the user running the virtualized process. Successfully executing an attack of this type is often the first step in executing more complex attacks.",
+    "attack_id": "1611",
+    "attack_name": "Escape to Host",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-481",
+    "capec_name": "Contradictory Destinations in Traffic Routing Schemes",
+    "capec_description": "Adversaries can provide contradictory destinations when sending messages. Traffic is routed in networks using the domain names in various headers available at different levels of the OSI model. In a Content Delivery Network (CDN) multiple domains might be available, and if there are contradictory domain names provided it is possible to route traffic to an inappropriate destination. The technique, called Domain Fronting, involves using different domain names in the SNI field of the TLS header and",
+    "attack_id": "1090.004",
+    "attack_name": "Proxy:Domain Fronting",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-482",
+    "capec_name": "TCP Flood",
+    "capec_description": "An adversary may execute a flooding attack using the TCP protocol with the intent to deny legitimate users access to a service. These attacks exploit the weakness within the TCP protocol where there is some state information for the connection the server needs to maintain. This often involves the use of TCP SYN messages.",
+    "attack_id": "1498.001",
+    "attack_name": "Network Denial of Service: Direct Network Flood",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-482",
+    "capec_name": "TCP Flood",
+    "capec_description": "An adversary may execute a flooding attack using the TCP protocol with the intent to deny legitimate users access to a service. These attacks exploit the weakness within the TCP protocol where there is some state information for the connection the server needs to maintain. This often involves the use of TCP SYN messages.",
+    "attack_id": "1499.001",
+    "attack_name": "Endpoint Denial of Service: OS Exhaustion Flood",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-482",
+    "capec_name": "TCP Flood",
+    "capec_description": "An adversary may execute a flooding attack using the TCP protocol with the intent to deny legitimate users access to a service. These attacks exploit the weakness within the TCP protocol where there is some state information for the connection the server needs to maintain. This often involves the use of TCP SYN messages.",
+    "attack_id": "1499.002",
+    "attack_name": "Endpoint Denial of Service: Service Exhaustion Flood",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-485",
+    "capec_name": "Signature Spoofing by Key Recreation",
+    "capec_description": "An attacker obtains an authoritative or reputable signer's private signature key by exploiting a cryptographic weakness in the signature algorithm or pseudorandom number generation and then uses this key to forge signatures from the original signer to mislead a victim into performing actions that benefit the attacker.",
+    "attack_id": "1552.004",
+    "attack_name": "Unsecured Credentials: Private Keys",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-488",
+    "capec_name": "HTTP Flood",
+    "capec_description": "An adversary may execute a flooding attack using the HTTP protocol with the intent to deny legitimate users access to a service by consuming resources at the application layer such as web services and their infrastructure. These attacks use legitimate session-based HTTP GET requests designed to consume large amounts of a server's resources. Since these are legitimate sessions this attack is very difficult to detect.",
+    "attack_id": "1499.002",
+    "attack_name": "Endpoint Denial of Service: Service Exhaustion Flood",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-489",
+    "capec_name": "SSL Flood",
+    "capec_description": "An adversary may execute a flooding attack using the SSL protocol with the intent to deny legitimate users access to a service by consuming all the available resources on the server side. These attacks take advantage of the asymmetric relationship between the processing power used by the client and the processing power used by the server to create a secure connection. In this manner the attacker can make a large number of HTTPS requests on a low provisioned machine to tie up a disproportionately",
+    "attack_id": "1499.002",
+    "attack_name": "Endpoint Denial of Service: Service Exhaustion Flood",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-49",
+    "capec_name": "Password Brute Forcing",
+    "capec_description": "An adversary tries every possible value for a password until they succeed. A brute force attack, if feasible computationally, will always be successful because it will essentially go through all possible passwords given the alphabet used (lower case letters, upper case letters, numbers, symbols, etc.) and the maximum length of the password.",
+    "attack_id": "1110.001",
+    "attack_name": "Brute Force:Password Guessing",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-490",
+    "capec_name": "Amplification",
+    "capec_description": "An adversary may execute an amplification where the size of a response is far greater than that of the request that generates it. The goal of this attack is to use a relatively few resources to create a large amount of traffic against a target server. To execute this attack, an adversary send a request to a 3rd party service, spoofing the source address to be that of the target server. The larger response that is generated by the 3rd party service is then sent to the target server. By sending a",
+    "attack_id": "1498.002",
+    "attack_name": "Network Denial of Service:Reflection Amplification",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-497",
+    "capec_name": "File Discovery",
+    "capec_description": "An adversary engages in probing and exploration activities to determine if common key files exists. Such files often contain configuration and security parameters of the targeted application, system or network. Using this knowledge may often pave the way for more damaging attacks.",
+    "attack_id": "1083",
+    "attack_name": "File and Directory Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-504",
+    "capec_name": "Task Impersonation",
+    "capec_description": "An adversary, through a previously installed malicious application, impersonates an expected or routine task in an attempt to steal sensitive information or leverage a user's privileges.",
+    "attack_id": "1036.004",
+    "attack_name": "Masquerading: Masquerade Task or Service",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-509",
+    "capec_name": "Kerberoasting",
+    "capec_description": "Through the exploitation of how service accounts leverage Kerberos authentication with Service Principal Names (SPNs), the adversary obtains and subsequently cracks the hashed credentials of a service account target to exploit its privileges. The Kerberos authentication protocol centers around a ticketing system which is used to request/grant access to services and to then access the requested services. As an authenticated user, the adversary may request Active Directory and obtain a service tic",
+    "attack_id": "1558.003",
+    "attack_name": "Steal or Forge Kerberos Tickets:Kerberoasting",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-511",
+    "capec_name": "Infiltration of Software Development Environment",
+    "capec_description": "An attacker uses common delivery mechanisms such as email attachments or removable media to infiltrate the IDE (Integrated Development Environment) of a victim manufacturer with the intent of implanting malware allowing for attack control of the victim IDE environment. The attack then uses this access to exfiltrate sensitive data or information, manipulate said data or information, and conceal these actions. This will allow and aid the attack to meet the goal of future compromise of a recipient",
+    "attack_id": "1195.001",
+    "attack_name": "Supply Chain Compromise: Compromise Software Dependencies and Development Tools",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-516",
+    "capec_name": "Hardware Component Substitution During Baselining",
+    "capec_description": "An adversary with access to system components during allocated baseline development can substitute a maliciously altered hardware component for a baseline component during the product development and research phases. This can lead to adjustments and calibrations being made in the product so that when the final product, now containing the modified component, is deployed it will not perform as designed and be advantageous to the adversary.",
+    "attack_id": "1195.003",
+    "attack_name": "Supply Chain Compromise: Compromise Hardware Supply Chain",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-520",
+    "capec_name": "Counterfeit Hardware Component Inserted During Product Assembly",
+    "capec_description": "An adversary with either direct access to the product assembly process or to the supply of subcomponents used in the product assembly process introduces counterfeit hardware components into product assembly. The assembly containing the counterfeit components results in a system specifically designed for malicious purposes.",
+    "attack_id": "1195.003",
+    "attack_name": "Supply Chain Compromise: Compromise Hardware Supply Chain",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-522",
+    "capec_name": "Malicious Hardware Component Replacement",
+    "capec_description": "An adversary replaces legitimate hardware in the system with faulty counterfeit or tampered hardware in the supply chain distribution channel, with purpose of causing malicious disruption or allowing for additional compromise when the system is deployed.",
+    "attack_id": "1195.003",
+    "attack_name": "Supply Chain Compromise: Compromise Hardware Supply Chain",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-523",
+    "capec_name": "Malicious Software Implanted",
+    "capec_description": "An attacker implants malicious software into the system in the supply chain distribution channel, with purpose of causing malicious disruption or allowing for additional compromise when the system is deployed.",
+    "attack_id": "1195.002",
+    "attack_name": "Supply Chain Compromise: Compromise Software Supply Chain",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-528",
+    "capec_name": "XML Flood",
+    "capec_description": "An adversary may execute a flooding attack using XML messages with the intent to deny legitimate users access to a web service. These attacks are accomplished by sending a large number of XML based requests and letting the service attempt to parse each one. In many cases this type of an attack will result in a XML Denial of Service (XDoS) due to an application becoming unstable, freezing, or crashing.",
+    "attack_id": "1499.002",
+    "attack_name": "Endpoint Denial of Service: Service Exhaustion Flood",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-528",
+    "capec_name": "XML Flood",
+    "capec_description": "An adversary may execute a flooding attack using XML messages with the intent to deny legitimate users access to a web service. These attacks are accomplished by sending a large number of XML based requests and letting the service attempt to parse each one. In many cases this type of an attack will result in a XML Denial of Service (XDoS) due to an application becoming unstable, freezing, or crashing.",
+    "attack_id": "1498.001",
+    "attack_name": "Network Denial of Service: Direct Network Flood",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-531",
+    "capec_name": "Hardware Component Substitution",
+    "capec_description": "An attacker substitutes out a tested and approved hardware component for a maliciously-altered hardware component. This type of attack is carried out directly on the system, enabling the attacker to then cause disruption or additional compromise.",
+    "attack_id": "1195.003",
+    "attack_name": "Supply Chain Compromise: Compromise Hardware Supply Chain",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-532",
+    "capec_name": "Altered Installed BIOS",
+    "capec_description": "An attacker with access to download and update system software sends a maliciously altered BIOS to the victim or victim supplier/integrator, which when installed allows for future exploitation.",
+    "attack_id": "1495",
+    "attack_name": "Firmware Corruption",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-532",
+    "capec_name": "Altered Installed BIOS",
+    "capec_description": "An attacker with access to download and update system software sends a maliciously altered BIOS to the victim or victim supplier/integrator, which when installed allows for future exploitation.",
+    "attack_id": "1542.001",
+    "attack_name": "Pre-OS Boot:System Firmware",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-537",
+    "capec_name": "Infiltration of Hardware Development Environment",
+    "capec_description": "An adversary, leveraging the ability to manipulate components of primary support systems and tools within the development and production environments, inserts malicious software within the hardware and/or firmware development environment. The infiltration purpose is to alter developed hardware components in a system destined for deployment at the victim's organization, for the purpose of disruption or further compromise.",
+    "attack_id": "1195.003",
+    "attack_name": "Supply Chain Compromise: Compromise Hardware Supply Chain",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-538",
+    "capec_name": "Open-Source Library Manipulation",
+    "capec_description": "Adversaries implant malicious code in open source software (OSS) libraries to have it widely distributed, as OSS is commonly downloaded by developers and other users to incorporate into software development projects. The adversary can have a particular system in mind to target, or the implantation can be the first stage of follow-on attacks on many systems.",
+    "attack_id": "1195.001",
+    "attack_name": "Supply Chain Compromise: Compromise Software Dependencies and Development Tools",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-539",
+    "capec_name": "ASIC With Malicious Functionality",
+    "capec_description": "An attacker with access to the development environment process of an application-specific integrated circuit (ASIC) for a victim system being developed or maintained after initial deployment can insert malicious functionality into the system for the purpose of disruption or further compromise.",
+    "attack_id": "1195.003",
+    "attack_name": "Supply Chain Compromise: Compromise Hardware Supply Chain",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-541",
+    "capec_name": "Application Fingerprinting",
+    "capec_description": "An adversary engages in fingerprinting activities to determine the type or version of an application installed on a remote target.",
+    "attack_id": "1592.002",
+    "attack_name": "Gather Victim Host Information: Software",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-542",
+    "capec_name": "Targeted Malware",
+    "capec_description": "An adversary develops targeted malware that takes advantage of a known vulnerability in an organizational information technology environment. The malware crafted for these attacks is based specifically on information gathered about the technology environment. Successfully executing the malware enables an adversary to achieve a wide variety of negative technical impacts.",
+    "attack_id": "1587.001",
+    "attack_name": "Develop Capabilities: Malware",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-542",
+    "capec_name": "Targeted Malware",
+    "capec_description": "An adversary develops targeted malware that takes advantage of a known vulnerability in an organizational information technology environment. The malware crafted for these attacks is based specifically on information gathered about the technology environment. Successfully executing the malware enables an adversary to achieve a wide variety of negative technical impacts.",
+    "attack_id": "1027",
+    "attack_name": "Obfuscated Files or Information",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-543",
+    "capec_name": "Counterfeit Websites",
+    "capec_description": "Adversary creates duplicates of legitimate websites. When users visit a counterfeit site, the site can gather information or upload malware.",
+    "attack_id": "1036.005",
+    "attack_name": "Masquerading: Match Legitimate Name or Location",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-545",
+    "capec_name": "Pull Data from System Resources",
+    "capec_description": "An adversary who is authorized or has the ability to search known system resources, does so with the intention of gathering useful information. System resources include files, memory, and other aspects of the target system. In this pattern of attack, the adversary does not necessarily know what they are going to find when they start pulling data. This is different than CAPEC-150 where the adversary knows what they are looking for due to the common location.",
+    "attack_id": "1005",
+    "attack_name": "Data from Local System",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-545",
+    "capec_name": "Pull Data from System Resources",
+    "capec_description": "An adversary who is authorized or has the ability to search known system resources, does so with the intention of gathering useful information. System resources include files, memory, and other aspects of the target system. In this pattern of attack, the adversary does not necessarily know what they are going to find when they start pulling data. This is different than CAPEC-150 where the adversary knows what they are looking for due to the common location.",
+    "attack_id": "1555.001",
+    "attack_name": "Credentials from Password Stores:Keychain",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-55",
+    "capec_name": "Rainbow Table Password Cracking",
+    "capec_description": "An attacker gets access to the database table where hashes of passwords are stored. They then use a rainbow table of pre-computed hash chains to attempt to look up the original password. Once the original password corresponding to the hash is obtained, the attacker uses the original password to gain access to the system.",
+    "attack_id": "1110.002",
+    "attack_name": "Brute Force:Password Cracking",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-550",
+    "capec_name": "Install New Service",
+    "capec_description": "When an operating system starts, it also starts programs called services or daemons. Adversaries may install a new service which will be executed at startup (on a Windows system, by modifying the registry). The service name may be disguised by using a name from a related operating system or benign software. Services are usually run with elevated privileges.",
+    "attack_id": "1543",
+    "attack_name": "Create or Modify System Process",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-551",
+    "capec_name": "Modify Existing Service",
+    "capec_description": "When an operating system starts, it also starts programs called services or daemons. Modifying existing services may break existing services or may enable services that are disabled/not commonly used.",
+    "attack_id": "1543",
+    "attack_name": "Create or Modify System Process",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-552",
+    "capec_name": "Install Rootkit",
+    "capec_description": "An adversary exploits a weakness in authentication to install malware that alters the functionality and information provide by targeted operating system API calls. Often referred to as rootkits, it is often used to hide the presence of programs, files, network connections, services, drivers, and other system components.",
+    "attack_id": "1014",
+    "attack_name": "Rootkit",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-552",
+    "capec_name": "Install Rootkit",
+    "capec_description": "An adversary exploits a weakness in authentication to install malware that alters the functionality and information provide by targeted operating system API calls. Often referred to as rootkits, it is often used to hide the presence of programs, files, network connections, services, drivers, and other system components.",
+    "attack_id": "1542.003",
+    "attack_name": "Pre-OS Boot:Bootkit",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-552",
+    "capec_name": "Install Rootkit",
+    "capec_description": "An adversary exploits a weakness in authentication to install malware that alters the functionality and information provide by targeted operating system API calls. Often referred to as rootkits, it is often used to hide the presence of programs, files, network connections, services, drivers, and other system components.",
+    "attack_id": "1547.006",
+    "attack_name": "Boot or Logon Autostart Execution:Kernel Modules and Extensions",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-555",
+    "capec_name": "Remote Services with Stolen Credentials",
+    "capec_description": "This pattern of attack involves an adversary that uses stolen credentials to leverage remote services such as RDP, telnet, SSH, and VNC to log into a system. Once access is gained, any number of malicious activities could be performed.",
+    "attack_id": "1021",
+    "attack_name": "Remote Services",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-555",
+    "capec_name": "Remote Services with Stolen Credentials",
+    "capec_description": "This pattern of attack involves an adversary that uses stolen credentials to leverage remote services such as RDP, telnet, SSH, and VNC to log into a system. Once access is gained, any number of malicious activities could be performed.",
+    "attack_id": "1114.002",
+    "attack_name": "Email Collection:Remote Email Collection",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-555",
+    "capec_name": "Remote Services with Stolen Credentials",
+    "capec_description": "This pattern of attack involves an adversary that uses stolen credentials to leverage remote services such as RDP, telnet, SSH, and VNC to log into a system. Once access is gained, any number of malicious activities could be performed.",
+    "attack_id": "1133",
+    "attack_name": "External Remote Services",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-556",
+    "capec_name": "Replace File Extension Handlers",
+    "capec_description": "When a file is opened, its file handler is checked to determine which program opens the file. File handlers are configuration properties of many operating systems. Applications can modify the file handler for a given file extension to call an arbitrary program when a file with the given extension is opened.",
+    "attack_id": "1546.001",
+    "attack_name": "Event Triggered Execution:Change Default File Association",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-558",
+    "capec_name": "Replace Trusted Executable",
+    "capec_description": "An adversary exploits weaknesses in privilege management or access control to replace a trusted executable with a malicious version and enable the execution of malware when that trusted executable is called.",
+    "attack_id": "1505.005",
+    "attack_name": "Server Software Component: Terminal Services DLL",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-558",
+    "capec_name": "Replace Trusted Executable",
+    "capec_description": "An adversary exploits weaknesses in privilege management or access control to replace a trusted executable with a malicious version and enable the execution of malware when that trusted executable is called.",
+    "attack_id": "1546.008",
+    "attack_name": "Event Triggered Execution: Accessibility Features",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-561",
+    "capec_name": "Windows Admin Shares with Stolen Credentials",
+    "capec_description": "An adversary guesses or obtains (i.e. steals or purchases) legitimate Windows administrator credentials (e.g. userID/password) to access Windows Admin Shares on a local machine or within a Windows domain.",
+    "attack_id": "1021.002",
+    "attack_name": "Remote Services:SMB/Windows Admin Shares",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-562",
+    "capec_name": "Modify Shared File",
+    "capec_description": "An adversary manipulates the files in a shared location by adding malicious programs, scripts, or exploit code to valid content. Once a user opens the shared content, the tainted content is executed.",
+    "attack_id": "1080",
+    "attack_name": "Taint shared content",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-564",
+    "capec_name": "Run Software at Logon",
+    "capec_description": "Operating system allows logon scripts to be run whenever a specific user or users logon to a system. If adversaries can access these scripts, they may insert additional code into the logon script. This code can allow them to maintain persistence or move laterally within an enclave because it is executed every time the affected user or users logon to a computer. Modifying logon scripts can effectively bypass workstation and enclave firewalls. Depending on the access configuration of the logon scr",
+    "attack_id": "1037",
+    "attack_name": "Boot or Logon Initialization Scripts",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-564",
+    "capec_name": "Run Software at Logon",
+    "capec_description": "Operating system allows logon scripts to be run whenever a specific user or users logon to a system. If adversaries can access these scripts, they may insert additional code into the logon script. This code can allow them to maintain persistence or move laterally within an enclave because it is executed every time the affected user or users logon to a computer. Modifying logon scripts can effectively bypass workstation and enclave firewalls. Depending on the access configuration of the logon scr",
+    "attack_id": "1543.001",
+    "attack_name": "Create or Modify System Process: Launch Agent",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-564",
+    "capec_name": "Run Software at Logon",
+    "capec_description": "Operating system allows logon scripts to be run whenever a specific user or users logon to a system. If adversaries can access these scripts, they may insert additional code into the logon script. This code can allow them to maintain persistence or move laterally within an enclave because it is executed every time the affected user or users logon to a computer. Modifying logon scripts can effectively bypass workstation and enclave firewalls. Depending on the access configuration of the logon scr",
+    "attack_id": "1543.004",
+    "attack_name": "Create or Modify System Process: Launch Daemon",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-564",
+    "capec_name": "Run Software at Logon",
+    "capec_description": "Operating system allows logon scripts to be run whenever a specific user or users logon to a system. If adversaries can access these scripts, they may insert additional code into the logon script. This code can allow them to maintain persistence or move laterally within an enclave because it is executed every time the affected user or users logon to a computer. Modifying logon scripts can effectively bypass workstation and enclave firewalls. Depending on the access configuration of the logon scr",
+    "attack_id": "1547",
+    "attack_name": "Boot or Logon Autostart Execution",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-568",
+    "capec_name": "Capture Credentials via Keylogger",
+    "capec_description": "An adversary deploys a keylogger in an effort to obtain credentials directly from a system's user. After capturing all the keystrokes made by a user, the adversary can analyze the data and determine which string are likely to be passwords or other credential related information.",
+    "attack_id": "1056.001",
+    "attack_name": "Input Capture:Keylogging",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-569",
+    "capec_name": "Collect Data as Provided by Users",
+    "capec_description": "An attacker leverages a tool, device, or program to obtain specific information as provided by a user of the target system. This information is often needed by the attacker to launch a follow-on attack. This attack is different than Social Engineering as the adversary is not tricking or deceiving the user. Instead the adversary is putting a mechanism in place that captures the information that a user legitimately enters into a system. Deploying a keylogger, performing a UAC prompt, or wrapping t",
+    "attack_id": "1056",
+    "attack_name": "Input Capture",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-57",
+    "capec_name": "Utilizing REST's Trust in the System Resource to Obtain Sensitive Data",
+    "capec_description": "This attack utilizes a REST(REpresentational State Transfer)-style applications' trust in the system resources and environment to obtain sensitive data once SSL is terminated.",
+    "attack_id": "1040",
+    "attack_name": "Network Sniffing",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-573",
+    "capec_name": "Process Footprinting",
+    "capec_description": "An adversary exploits functionality meant to identify information about the currently running processes on the target system to an authorized user. By knowing what processes are running on the target system, the adversary can learn about the target environment as a means towards further malicious behavior.",
+    "attack_id": "1057",
+    "attack_name": "Process Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-574",
+    "capec_name": "Services Footprinting",
+    "capec_description": "An adversary exploits functionality meant to identify information about the services on the target system to an authorized user. By knowing what services are registered on the target system, the adversary can learn about the target environment as a means towards further malicious behavior. Depending on the operating system, commands that can obtain services information include \\sc\\ and \\tasklist/svc\\ using Tasklist, and \\net start\\ using Net.",
+    "attack_id": "1007",
+    "attack_name": "System Service Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-575",
+    "capec_name": "Account Footprinting",
+    "capec_description": "An adversary exploits functionality meant to identify information about the domain accounts and their permissions on the target system to an authorized user. By knowing what accounts are registered on the target system, the adversary can inform further and more targeted malicious behavior. Example Windows commands which can acquire this information are: \\net user\\ and \\dsquery\\.",
+    "attack_id": "1087",
+    "attack_name": "Account Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-576",
+    "capec_name": "Group Permission Footprinting",
+    "capec_description": "An adversary exploits functionality meant to identify information about user groups and their permissions on the target system to an authorized user. By knowing what users/permissions are registered on the target system, the adversary can inform further and more targeted malicious behavior. An example Windows command which can list local groups is \\net localgroup\\.",
+    "attack_id": "1069",
+    "attack_name": "Permission Groups Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-576",
+    "capec_name": "Group Permission Footprinting",
+    "capec_description": "An adversary exploits functionality meant to identify information about user groups and their permissions on the target system to an authorized user. By knowing what users/permissions are registered on the target system, the adversary can inform further and more targeted malicious behavior. An example Windows command which can list local groups is \\net localgroup\\.",
+    "attack_id": "1615",
+    "attack_name": "Group Policy Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-577",
+    "capec_name": "Owner Footprinting",
+    "capec_description": "An adversary exploits functionality meant to identify information about the primary users on the target system to an authorized user. They may do this, for example, by reviewing logins or file modification times. By knowing what owners use the target system, the adversary can inform further and more targeted malicious behavior. An example Windows command that may accomplish this is \\dir /A ntuser.dat\\. Which will display the last modified time of a user's ntuser.dat file when run within the root",
+    "attack_id": "1033",
+    "attack_name": "System Owner/User Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-578",
+    "capec_name": "Disable Security Software",
+    "capec_description": "An adversary exploits a weakness in access control to disable security tools so that detection does not occur. This can take the form of killing processes, deleting registry keys so that tools do not start at run time, deleting log files, or other methods.",
+    "attack_id": "1556.006",
+    "attack_name": "Modify Authentication Process: Multi-Factor Authentication",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-578",
+    "capec_name": "Disable Security Software",
+    "capec_description": "An adversary exploits a weakness in access control to disable security tools so that detection does not occur. This can take the form of killing processes, deleting registry keys so that tools do not start at run time, deleting log files, or other methods.",
+    "attack_id": "1562.001",
+    "attack_name": "Impair Defenses: Disable or Modify Tools",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-578",
+    "capec_name": "Disable Security Software",
+    "capec_description": "An adversary exploits a weakness in access control to disable security tools so that detection does not occur. This can take the form of killing processes, deleting registry keys so that tools do not start at run time, deleting log files, or other methods.",
+    "attack_id": "1562.002",
+    "attack_name": "Impair Defenses: Disable Windows Event Logging",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-578",
+    "capec_name": "Disable Security Software",
+    "capec_description": "An adversary exploits a weakness in access control to disable security tools so that detection does not occur. This can take the form of killing processes, deleting registry keys so that tools do not start at run time, deleting log files, or other methods.",
+    "attack_id": "1562.004",
+    "attack_name": "Impair Defenses: Disable or Modify System Firewall",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-578",
+    "capec_name": "Disable Security Software",
+    "capec_description": "An adversary exploits a weakness in access control to disable security tools so that detection does not occur. This can take the form of killing processes, deleting registry keys so that tools do not start at run time, deleting log files, or other methods.",
+    "attack_id": "1562.007",
+    "attack_name": "Impair Defenses: Disable or Modify Cloud Firewall",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-578",
+    "capec_name": "Disable Security Software",
+    "capec_description": "An adversary exploits a weakness in access control to disable security tools so that detection does not occur. This can take the form of killing processes, deleting registry keys so that tools do not start at run time, deleting log files, or other methods.",
+    "attack_id": "1562.008",
+    "attack_name": "Impair Defenses: Disable Cloud Logs",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-578",
+    "capec_name": "Disable Security Software",
+    "capec_description": "An adversary exploits a weakness in access control to disable security tools so that detection does not occur. This can take the form of killing processes, deleting registry keys so that tools do not start at run time, deleting log files, or other methods.",
+    "attack_id": "1562.009",
+    "attack_name": "Impair Defenses: Safe Mode Boot",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-579",
+    "capec_name": "Replace Winlogon Helper DLL",
+    "capec_description": "Winlogon is a part of Windows that performs logon actions. In Windows systems prior to Windows Vista, a registry key can be modified that causes Winlogon to load a DLL on startup. Adversaries may take advantage of this feature to load adversarial code at startup.",
+    "attack_id": "1547.004",
+    "attack_name": "Boot or Logon Autostart Execution: Winlogon helper DLL",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-580",
+    "capec_name": "System Footprinting",
+    "capec_description": "An adversary engages in active probing and exploration activities to determine security information about a remote target system. Often times adversaries will rely on remote applications that can be probed for system configurations.",
+    "attack_id": "1082",
+    "attack_name": "System Information Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-581",
+    "capec_name": "Security Software Footprinting",
+    "capec_description": "Adversaries may attempt to get a listing of security tools that are installed on the system and their configurations. This may include security related system features (such as a built-in firewall or anti-spyware) as well as third-party security software.",
+    "attack_id": "1518.001",
+    "attack_name": "Software Discovery:Security Software Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-593",
+    "capec_name": "Session Hijacking",
+    "capec_description": "This type of attack involves an adversary that exploits weaknesses in an application's use of sessions in performing authentication. The adversary is able to steal or manipulate an active session and use it to gain unathorized access to the application.",
+    "attack_id": "1185",
+    "attack_name": "Browser Session Hijacking",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-593",
+    "capec_name": "Session Hijacking",
+    "capec_description": "This type of attack involves an adversary that exploits weaknesses in an application's use of sessions in performing authentication. The adversary is able to steal or manipulate an active session and use it to gain unathorized access to the application.",
+    "attack_id": "1550.001",
+    "attack_name": "Use Alternate Authentication Material:Application Access Token",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-593",
+    "capec_name": "Session Hijacking",
+    "capec_description": "This type of attack involves an adversary that exploits weaknesses in an application's use of sessions in performing authentication. The adversary is able to steal or manipulate an active session and use it to gain unathorized access to the application.",
+    "attack_id": "1563",
+    "attack_name": "Remote Service Session Hijacking",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-60",
+    "capec_name": "Reusing Session IDs (aka Session Replay)",
+    "capec_description": "This attack targets the reuse of valid session ID to spoof the target system in order to gain privileges. The attacker tries to reuse a stolen session ID used previously during a transaction to perform spoofing and session hijacking. Another name for this type of attack is Session Replay.",
+    "attack_id": "1134.001",
+    "attack_name": "Access Token Manipulation:Token Impersonation/Theft",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-60",
+    "capec_name": "Reusing Session IDs (aka Session Replay)",
+    "capec_description": "This attack targets the reuse of valid session ID to spoof the target system in order to gain privileges. The attacker tries to reuse a stolen session ID used previously during a transaction to perform spoofing and session hijacking. Another name for this type of attack is Session Replay.",
+    "attack_id": "1550.004",
+    "attack_name": "Use Alternate Authentication Material:Web Session Cookie",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-609",
+    "capec_name": "Cellular Traffic Intercept",
+    "capec_description": "Cellular traffic for voice and data from mobile devices and retransmission devices can be intercepted via numerous methods. Malicious actors can deploy their own cellular tower equipment and intercept cellular traffic surreptitiously. Additionally, government agencies of adversaries and malicious actors can intercept cellular traffic via the telecommunications backbone over which mobile traffic is transmitted.",
+    "attack_id": "1111",
+    "attack_name": "Multi-Factor Authentication Interception",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-616",
+    "capec_name": "Establish Rogue Location",
+    "capec_description": "An adversary provides a malicious version of a resource at a location that is similar to the expected location of a legitimate resource. After establishing the rogue location, the adversary waits for a victim to visit the location and access the malicious resource.",
+    "attack_id": "1036.005",
+    "attack_name": "Masquerading: Match Legitimate Name or Location",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-620",
+    "capec_name": "Drop Encryption Level",
+    "capec_description": "An attacker forces the encryption level to be lowered, thus enabling a successful attack against the encrypted data.",
+    "attack_id": "1600",
+    "attack_name": "Weaken Encryption",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-633",
+    "capec_name": "Token Impersonation",
+    "capec_description": "An adversary exploits a weakness in authentication to create an access token (or equivalent) that impersonates a different entity, and then associates a process/thread to that that impersonated token. This action causes a downstream user to make a decision or take action that is based on the assumed identity, and not the response that blocks the adversary.",
+    "attack_id": "1134",
+    "attack_name": "Access Token Manipulation",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-634",
+    "capec_name": "Probe Audio and Video Peripherals",
+    "capec_description": "The adversary exploits the target system's audio and video functionalities through malware or scheduled tasks. The goal is to capture sensitive information about the target for financial, personal, political, or other gains which is accomplished by collecting communication data between two parties via the use of peripheral devices (e.g. microphones and webcams) or applications with audio and video capabilities (e.g. Skype) on a system.",
+    "attack_id": "1123",
+    "attack_name": "Audio Capture",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-634",
+    "capec_name": "Probe Audio and Video Peripherals",
+    "capec_description": "The adversary exploits the target system's audio and video functionalities through malware or scheduled tasks. The goal is to capture sensitive information about the target for financial, personal, political, or other gains which is accomplished by collecting communication data between two parties via the use of peripheral devices (e.g. microphones and webcams) or applications with audio and video capabilities (e.g. Skype) on a system.",
+    "attack_id": "1125",
+    "attack_name": "Video Capture",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-635",
+    "capec_name": "Alternative Execution Due to Deceptive Filenames",
+    "capec_description": "The extension of a file name is often used in various contexts to determine the application that is used to open and use it. If an attacker can cause an alternative application to be used, it may be able to execute malicious code, cause a denial of service or expose sensitive information.",
+    "attack_id": "1036.007",
+    "attack_name": "Masquerading: Double File Extension",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-636",
+    "capec_name": "Hiding Malicious Data or Code within Files",
+    "capec_description": "Files on various operating systems can have a complex format which allows for the storage of other data, in addition to its contents. Often this is metadata about the file, such as a cached thumbnail for an image file. Unless utilities are invoked in a particular way, this data is not visible during the normal use of the file. It is possible for an attacker to store malicious data or code using these facilities, which would be difficult to discover.",
+    "attack_id": "1001.002",
+    "attack_name": "Data Obfuscation: Steganography",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-636",
+    "capec_name": "Hiding Malicious Data or Code within Files",
+    "capec_description": "Files on various operating systems can have a complex format which allows for the storage of other data, in addition to its contents. Often this is metadata about the file, such as a cached thumbnail for an image file. Unless utilities are invoked in a particular way, this data is not visible during the normal use of the file. It is possible for an attacker to store malicious data or code using these facilities, which would be difficult to discover.",
+    "attack_id": "1027.003",
+    "attack_name": "Obfuscated Files or Information: Steganography",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-636",
+    "capec_name": "Hiding Malicious Data or Code within Files",
+    "capec_description": "Files on various operating systems can have a complex format which allows for the storage of other data, in addition to its contents. Often this is metadata about the file, such as a cached thumbnail for an image file. Unless utilities are invoked in a particular way, this data is not visible during the normal use of the file. It is possible for an attacker to store malicious data or code using these facilities, which would be difficult to discover.",
+    "attack_id": "1027.004",
+    "attack_name": "Obfuscated Files or Information: Compile After Delivery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-636",
+    "capec_name": "Hiding Malicious Data or Code within Files",
+    "capec_description": "Files on various operating systems can have a complex format which allows for the storage of other data, in addition to its contents. Often this is metadata about the file, such as a cached thumbnail for an image file. Unless utilities are invoked in a particular way, this data is not visible during the normal use of the file. It is possible for an attacker to store malicious data or code using these facilities, which would be difficult to discover.",
+    "attack_id": "1218.001",
+    "attack_name": "Signed Binary Proxy Execution: Compiled HTML File",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-636",
+    "capec_name": "Hiding Malicious Data or Code within Files",
+    "capec_description": "Files on various operating systems can have a complex format which allows for the storage of other data, in addition to its contents. Often this is metadata about the file, such as a cached thumbnail for an image file. Unless utilities are invoked in a particular way, this data is not visible during the normal use of the file. It is possible for an attacker to store malicious data or code using these facilities, which would be difficult to discover.",
+    "attack_id": "1221",
+    "attack_name": "Template Injection",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-637",
+    "capec_name": "Collect Data from Clipboard",
+    "capec_description": "The adversary exploits an application that allows for the copying of sensitive data or information by collecting information copied to the clipboard. Data copied to the clipboard can be accessed by other applications, such as malware built to exfiltrate or log clipboard contents on a periodic basis. In this way, the adversary aims to garner information to which they are unauthorized.",
+    "attack_id": "1115",
+    "attack_name": "Clipboard Data",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-638",
+    "capec_name": "Altered Component Firmware",
+    "capec_description": "An adversary exploits systems features and/or improperly protected firmware of hardware components, such as Hard Disk Drives (HDD), with the goal of executing malicious code from within the component's Master Boot Record (MBR). Conducting this type of attack entails the adversary infecting the target with firmware altering malware, using known tools, and a payload. Once this malware is executed, the MBR is modified to include instructions to execute the payload at desired intervals and when the",
+    "attack_id": "1542.002",
+    "attack_name": "Pre-OS Boot:Component Firmware",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-639",
+    "capec_name": "Probe System Files",
+    "capec_description": "An adversary obtains unauthorized information due to improperly protected files. If an application stores sensitive information in a file that is not protected by proper access control, then an adversary can access the file and search for sensitive information.",
+    "attack_id": "1039",
+    "attack_name": "Data from Network Shared Drive",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-639",
+    "capec_name": "Probe System Files",
+    "capec_description": "An adversary obtains unauthorized information due to improperly protected files. If an application stores sensitive information in a file that is not protected by proper access control, then an adversary can access the file and search for sensitive information.",
+    "attack_id": "1552.001",
+    "attack_name": "Unsecured Credentials:Credentials in files",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-639",
+    "capec_name": "Probe System Files",
+    "capec_description": "An adversary obtains unauthorized information due to improperly protected files. If an application stores sensitive information in a file that is not protected by proper access control, then an adversary can access the file and search for sensitive information.",
+    "attack_id": "1552.003",
+    "attack_name": "Unsecured Credentials: Bash History",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-639",
+    "capec_name": "Probe System Files",
+    "capec_description": "An adversary obtains unauthorized information due to improperly protected files. If an application stores sensitive information in a file that is not protected by proper access control, then an adversary can access the file and search for sensitive information.",
+    "attack_id": "1552.004",
+    "attack_name": "Unsecured Credentials: Private Keys",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-639",
+    "capec_name": "Probe System Files",
+    "capec_description": "An adversary obtains unauthorized information due to improperly protected files. If an application stores sensitive information in a file that is not protected by proper access control, then an adversary can access the file and search for sensitive information.",
+    "attack_id": "1552.006",
+    "attack_name": "Unsecured Credentials: Group Policy Preferences",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-640",
+    "capec_name": "Inclusion of Code in Existing Process",
+    "capec_description": "The adversary takes advantage of a bug in an application failing to verify the integrity of the running process to execute arbitrary code in the address space of a separate live process. The adversary could use running code in the context of another process to try to access process's memory, system/network resources, etc. The goal of this attack is to evade detection defenses and escalate privileges by masking the malicious code under an existing legitimate process. Examples of approaches includ",
+    "attack_id": "1505.005",
+    "attack_name": "Server Software Component: Terminal Services DLL",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-640",
+    "capec_name": "Inclusion of Code in Existing Process",
+    "capec_description": "The adversary takes advantage of a bug in an application failing to verify the integrity of the running process to execute arbitrary code in the address space of a separate live process. The adversary could use running code in the context of another process to try to access process's memory, system/network resources, etc. The goal of this attack is to evade detection defenses and escalate privileges by masking the malicious code under an existing legitimate process. Examples of approaches includ",
+    "attack_id": "1574.006",
+    "attack_name": "Hijack Execution Flow:Dynamic Linker Hijacking",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-640",
+    "capec_name": "Inclusion of Code in Existing Process",
+    "capec_description": "The adversary takes advantage of a bug in an application failing to verify the integrity of the running process to execute arbitrary code in the address space of a separate live process. The adversary could use running code in the context of another process to try to access process's memory, system/network resources, etc. The goal of this attack is to evade detection defenses and escalate privileges by masking the malicious code under an existing legitimate process. Examples of approaches includ",
+    "attack_id": "1574.013",
+    "attack_name": "Hijack Execution Flow: KernelCallbackTable",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-640",
+    "capec_name": "Inclusion of Code in Existing Process",
+    "capec_description": "The adversary takes advantage of a bug in an application failing to verify the integrity of the running process to execute arbitrary code in the address space of a separate live process. The adversary could use running code in the context of another process to try to access process's memory, system/network resources, etc. The goal of this attack is to evade detection defenses and escalate privileges by masking the malicious code under an existing legitimate process. Examples of approaches includ",
+    "attack_id": "1620",
+    "attack_name": "Reflective Code Loading",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-641",
+    "capec_name": "DLL Side-Loading",
+    "capec_description": "An adversary places a malicious version of a Dynamic-Link Library (DLL) in the Windows Side-by-Side (WinSxS) directory to trick the operating system into loading this malicious DLL instead of a legitimate DLL. Programs specify the location of the DLLs to load via the use of WinSxS manifests or DLL redirection and if they aren't used then Windows searches in a predefined set of directories to locate the file. If the applications improperly specify a required DLL or WinSxS manifests aren't explici",
+    "attack_id": "1574.002",
+    "attack_name": "Hijack Execution Flow:DLL Side-Loading",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-642",
+    "capec_name": "Replace Binaries",
+    "capec_description": "Adversaries know that certain binaries will be regularly executed as part of normal processing. If these binaries are not protected with the appropriate file system permissions, it could be possible to replace them with malware. This malware might be executed at higher system permission levels. A variation of this pattern is to discover self-extracting installation packages that unpack binaries to directories with weak file permissions which it does not clean up appropriately. These binaries can",
+    "attack_id": "1505.005",
+    "attack_name": "Server Software Component: Terminal Services DLL",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-642",
+    "capec_name": "Replace Binaries",
+    "capec_description": "Adversaries know that certain binaries will be regularly executed as part of normal processing. If these binaries are not protected with the appropriate file system permissions, it could be possible to replace them with malware. This malware might be executed at higher system permission levels. A variation of this pattern is to discover self-extracting installation packages that unpack binaries to directories with weak file permissions which it does not clean up appropriately. These binaries can",
+    "attack_id": "1554",
+    "attack_name": "Compromise Client Software Binary",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-642",
+    "capec_name": "Replace Binaries",
+    "capec_description": "Adversaries know that certain binaries will be regularly executed as part of normal processing. If these binaries are not protected with the appropriate file system permissions, it could be possible to replace them with malware. This malware might be executed at higher system permission levels. A variation of this pattern is to discover self-extracting installation packages that unpack binaries to directories with weak file permissions which it does not clean up appropriately. These binaries can",
+    "attack_id": "1574.005",
+    "attack_name": "Hijack Execution Flow: Executable Installer File Permissions Weakness",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-643",
+    "capec_name": "Identify Shared Files/Directories on System",
+    "capec_description": "An adversary discovers connections between systems by exploiting the target system's standard practice of revealing them in searchable, common areas. Through the identification of shared folders/drives between systems, the adversary may further their goals of locating and collecting sensitive information/files, or map potential routes for lateral movement within the network.",
+    "attack_id": "1135",
+    "attack_name": "Network Share Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-644",
+    "capec_name": "Use of Captured Hashes (Pass The Hash)",
+    "capec_description": "An adversary obtains (i.e. steals or purchases) legitimate Windows domain credential hash values to access systems within the domain that leverage the Lan Man (LM) and/or NT Lan Man (NTLM) authentication protocols.",
+    "attack_id": "1550.002",
+    "attack_name": "Use Alternate Authentication Material:Pass The Hash",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-645",
+    "capec_name": "Use of Captured Tickets (Pass The Ticket)",
+    "capec_description": "An adversary uses stolen Kerberos tickets to access systems/resources that leverage the Kerberos authentication protocol. The Kerberos authentication protocol centers around a ticketing system which is used to request/grant access to services and to then access the requested services. An adversary can obtain any one of these tickets (e.g. Service Ticket, Ticket Granting Ticket, Silver Ticket, or Golden Ticket) to authenticate to a system/resource without needing the account's credentials. Depend",
+    "attack_id": "1550.003",
+    "attack_name": "Use Alternate Authentication Material:Pass The Ticket",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-646",
+    "capec_name": "Peripheral Footprinting",
+    "capec_description": "Adversaries may attempt to obtain information about attached peripheral devices and components connected to a computer system. Examples may include discovering the presence of iOS devices by searching for backups, analyzing the Windows registry to determine what USB devices have been connected, or infecting a victim system with malware to report when a USB device has been connected. This may allow the adversary to gain additional insight about the system or network environment, which may be usef",
+    "attack_id": "1120",
+    "attack_name": "Peripheral Device Discovery",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-647",
+    "capec_name": "Collect Data from Registries",
+    "capec_description": "An adversary exploits a weakness in authorization to gather system-specific data and sensitive information within a registry (e.g., Windows Registry, Mac plist). These contain information about the system configuration, software, operating system, and security. The adversary can leverage information gathered in order to carry out further attacks.",
+    "attack_id": "1005",
+    "attack_name": "Data from Local System",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-647",
+    "capec_name": "Collect Data from Registries",
+    "capec_description": "An adversary exploits a weakness in authorization to gather system-specific data and sensitive information within a registry (e.g., Windows Registry, Mac plist). These contain information about the system configuration, software, operating system, and security. The adversary can leverage information gathered in order to carry out further attacks.",
+    "attack_id": "1012",
+    "attack_name": "Query Registry",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-647",
+    "capec_name": "Collect Data from Registries",
+    "capec_description": "An adversary exploits a weakness in authorization to gather system-specific data and sensitive information within a registry (e.g., Windows Registry, Mac plist). These contain information about the system configuration, software, operating system, and security. The adversary can leverage information gathered in order to carry out further attacks.",
+    "attack_id": "1552.002",
+    "attack_name": "Unsecured Credentials: Credentials in Registry",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-648",
+    "capec_name": "Collect Data from Screen Capture",
+    "capec_description": "An adversary gathers sensitive information by exploiting the system's screen capture functionality. Through screenshots, the adversary aims to see what happens on the screen over the course of an operation. The adversary can leverage information gathered in order to carry out further attacks.",
+    "attack_id": "1113",
+    "attack_name": "Screen Capture",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-648",
+    "capec_name": "Collect Data from Screen Capture",
+    "capec_description": "An adversary gathers sensitive information by exploiting the system's screen capture functionality. Through screenshots, the adversary aims to see what happens on the screen over the course of an operation. The adversary can leverage information gathered in order to carry out further attacks.",
+    "attack_id": "1513",
+    "attack_name": "Screen Capture",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-649",
+    "capec_name": "Adding a Space to a File Extension",
+    "capec_description": "An adversary adds a space character to the end of a file extension and takes advantage of an application that does not properly neutralize trailing special elements in file names. This extra space, which can be difficult for a user to notice, affects which default application is used to operate on the file and can be leveraged by the adversary to control execution.",
+    "attack_id": "1036.006",
+    "attack_name": "Masquerading: Space after Filename",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-65",
+    "capec_name": "Sniff Application Code",
+    "capec_description": "An adversary passively sniffs network communications and captures application code bound for an authorized client. Once obtained, they can use it as-is, or through reverse-engineering glean sensitive information or exploit the trust relationship between the client and server. Such code may belong to a dynamic update to the client, a patch being applied to a client component or any such interaction where the client is authorized to communicate with the server.",
+    "attack_id": "1040",
+    "attack_name": "Network Sniffing",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-650",
+    "capec_name": "Upload a Web Shell to a Web Server",
+    "capec_description": "By exploiting insufficient permissions, it is possible to upload a web shell to a web server in such a way that it can be executed remotely. This shell can have various capabilities, thereby acting as a \\gateway\\ to the underlying web server. The shell might execute at the higher permission level of the web server, providing the ability the execute malicious code at elevated levels.",
+    "attack_id": "1505.003",
+    "attack_name": "Server Software Component:Web Shell",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-651",
+    "capec_name": "Eavesdropping",
+    "capec_description": "An adversary intercepts a form of communication (e.g. text, audio, video) by way of software (e.g., microphone and audio recording application), hardware (e.g., recording equipment), or physical means (e.g., physical proximity). The goal of eavesdropping is typically to gain unauthorized access to sensitive information about the target for financial, personal, political, or other gains. Eavesdropping is different from a sniffing attack as it does not take place on a network-based communication c",
+    "attack_id": "1111",
+    "attack_name": "Multi-Factor Authentication Interception",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-652",
+    "capec_name": "Use of Known Kerberos Credentials",
+    "capec_description": "An adversary obtains (i.e. steals or purchases) legitimate Kerberos credentials (e.g. Kerberos service account userID/password or Kerberos Tickets) with the goal of achieving authenticated access to additional systems, applications, or services within the domain.",
+    "attack_id": "1558",
+    "attack_name": "Steal or Forge Kerberos Tickets",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-654",
+    "capec_name": "Credential Prompt Impersonation",
+    "capec_description": "An adversary, through a previously installed malicious application, impersonates a credential prompt in an attempt to steal a user's credentials.",
+    "attack_id": "1056",
+    "attack_name": "Input Capture",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-654",
+    "capec_name": "Credential Prompt Impersonation",
+    "capec_description": "An adversary, through a previously installed malicious application, impersonates a credential prompt in an attempt to steal a user's credentials.",
+    "attack_id": "1548.004",
+    "attack_name": "Abuse Elevation Control Mechanism: Elevated Execution with Prompt",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-657",
+    "capec_name": "Malicious Automated Software Update via Spoofing",
+    "capec_description": "An attackers uses identify or content spoofing to trick a client into performing an automated software update from a malicious source. A malicious automated software update that leverages spoofing can include content or identity spoofing as well as protocol spoofing. Content or identity spoofing attacks can trigger updates in software by embedding scripted mechanisms within a malicious web page, which masquerades as a legitimate update source. Scripting mechanisms communicate with software compo",
+    "attack_id": "1072",
+    "attack_name": "Software Deployment Tools",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-660",
+    "capec_name": "Root/Jailbreak Detection Evasion via Hooking",
+    "capec_description": "An adversary forces a non-restricted mobile application to load arbitrary code or code files, via Hooking, with the goal of evading Root/Jailbreak detection. Mobile device users often Root/Jailbreak their devices in order to gain administrative control over the mobile operating system and/or to install third-party mobile applications that are not provided by authorized application stores (e.g. Google Play Store and Apple App Store). Adversaries may further leverage these capabilities to escalate",
+    "attack_id": "1055",
+    "attack_name": "Process Injection",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-666",
+    "capec_name": "BlueSmacking",
+    "capec_description": "An adversary uses Bluetooth flooding to transfer large packets to Bluetooth enabled devices over the L2CAP protocol with the goal of creating a DoS. This attack must be carried out within close proximity to a Bluetooth enabled device.",
+    "attack_id": "1498.001",
+    "attack_name": "Network Denial of Service: Direct Network Flood",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-666",
+    "capec_name": "BlueSmacking",
+    "capec_description": "An adversary uses Bluetooth flooding to transfer large packets to Bluetooth enabled devices over the L2CAP protocol with the goal of creating a DoS. This attack must be carried out within close proximity to a Bluetooth enabled device.",
+    "attack_id": "1499.001",
+    "attack_name": "Endpoint Denial of Service: OS Exhaustion Flood",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-668",
+    "capec_name": "Key Negotiation of Bluetooth Attack (KNOB)",
+    "capec_description": "An adversary can exploit a flaw in Bluetooth key negotiation allowing them to decrypt information sent between two devices communicating via Bluetooth. The adversary uses an Adversary in the Middle setup to modify packets sent between the two devices during the authentication process, specifically the entropy bits. Knowledge of the number of entropy bits will allow the attacker to easily decrypt information passing over the line of communication.",
+    "attack_id": "1565.002",
+    "attack_name": "Data Manipulation: Transmitted Data Manipulation",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-670",
+    "capec_name": "Software Development Tools Maliciously Altered",
+    "capec_description": "An adversary with the ability to alter tools used in a development environment causes software to be developed with maliciously modified tools. Such tools include requirements management and database tools, software design tools, configuration management tools, compilers, system build tools, and software performance testing and load testing tools. The adversary then carries out malicious acts once the software is deployed including malware infection of other systems to support further compromise",
+    "attack_id": "1127",
+    "attack_name": "Trusted Developer Utilities Proxy Execution",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-670",
+    "capec_name": "Software Development Tools Maliciously Altered",
+    "capec_description": "An adversary with the ability to alter tools used in a development environment causes software to be developed with maliciously modified tools. Such tools include requirements management and database tools, software design tools, configuration management tools, compilers, system build tools, and software performance testing and load testing tools. The adversary then carries out malicious acts once the software is deployed including malware infection of other systems to support further compromise",
+    "attack_id": "1195.001",
+    "attack_name": "Supply Chain Compromise: Compromise Software Dependencies and Development Tools",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-671",
+    "capec_name": "Requirements for ASIC Functionality Maliciously Altered",
+    "capec_description": "An adversary with access to functional requirements for an application specific integrated circuit (ASIC), a chip designed/customized for a singular particular use, maliciously alters requirements derived from originating capability needs. In the chip manufacturing process, requirements drive the chip design which, when the chip is fully manufactured, could result in an ASIC which may not meet the user’s needs, contain malicious functionality, or exhibit other anomalous behaviors thereby affecti",
+    "attack_id": "1195.003",
+    "attack_name": "Supply Chain Compromise: Compromise Hardware Supply Chain",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-68",
+    "capec_name": "Subvert Code-signing Facilities",
+    "capec_description": "Many languages use code signing facilities to vouch for code's identity and to thus tie code to its assigned privileges within an environment. Subverting this mechanism can be instrumental in an attacker escalating privilege. Any means of subverting the way that a virtual machine enforces code signing classifies for this style of attack.",
+    "attack_id": "1553.002",
+    "attack_name": "Subvert Trust Controls:Code Signing",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-70",
+    "capec_name": "Try Common or Default Usernames and Passwords",
+    "capec_description": "An adversary may try certain common or default usernames and passwords to gain access into the system and perform unauthorized actions. An adversary may try an intelligent brute force using empty passwords, known vendor default credentials, as well as a dictionary of common usernames and passwords. Many vendor products come preconfigured with default (and thus well-known) usernames and passwords that should be deleted prior to usage in a production environment. It is a common mistake to forget t",
+    "attack_id": "1078.001",
+    "attack_name": "Valid Accounts:Default Accounts",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-700",
+    "capec_name": "Network Boundary Bridging",
+    "capec_description": "An adversary which has gained elevated access to network boundary devices may use these devices to create a channel to bridge trusted and untrusted networks. Boundary devices do not necessarily have to be on the network’s edge, but rather must serve to segment portions of the target network the adversary wishes to cross into.",
+    "attack_id": "1599",
+    "attack_name": "Network Boundary Bridging",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-98",
+    "capec_name": "Phishing",
+    "capec_description": "Phishing is a social engineering technique where an attacker masquerades as a legitimate entity with which the victim might do business in order to prompt the user to reveal some confidential information (very frequently authentication credentials) that can later be used by an attacker. Phishing is essentially a form of information gathering or \\fishing\\ for information.",
+    "attack_id": "1566",
+    "attack_name": "Phishing",
+    "attack_description": "NULL"
+  },
+  {
+    "capec_id": "CAPEC-98",
+    "capec_name": "Phishing",
+    "capec_description": "Phishing is a social engineering technique where an attacker masquerades as a legitimate entity with which the victim might do business in order to prompt the user to reveal some confidential information (very frequently authentication credentials) that can later be used by an attacker. Phishing is essentially a form of information gathering or \\fishing\\ for information.",
+    "attack_id": "1598",
+    "attack_name": "Phishing for Information",
+    "attack_description": "NULL"
+  }
+]
