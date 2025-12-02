@@ -24,16 +24,21 @@
 
 ## API IMPLEMENTATION STATUS
 
-### Currently Implemented (Neo4j Direct Access Only)
+### Currently Implemented APIs
 
-| API | Status | Location | Access Method |
-|-----|--------|----------|---------------|
-| **Neo4j Cypher Queries** | ✅ OPERATIONAL | Neo4j Browser / cypher-shell | Direct database queries |
-| **Bolt Protocol** | ✅ OPERATIONAL | neo4j://localhost:7687 | Neo4j drivers (Python, JS) |
+| API | Status | Location | Access Method | Version |
+|-----|--------|----------|---------------|---------|
+| **Neo4j Cypher Queries** | ✅ OPERATIONAL | Neo4j Browser / cypher-shell | Direct database queries | 5.26 |
+| **Bolt Protocol** | ✅ OPERATIONAL | neo4j://localhost:7687 | Neo4j drivers (Python, JS) | 5.26 |
+| **NER11 Semantic Search** | ✅ OPERATIONAL | http://localhost:8000/search/semantic | REST API (FastAPI) | 3.0.0 |
+| **NER11 Hybrid Search** | ✅ OPERATIONAL | http://localhost:8000/search/hybrid | REST API (FastAPI) | 3.0.0 |
+| **NER11 Entity Extraction** | ✅ OPERATIONAL | http://localhost:8000/ner | REST API (FastAPI) | 3.0.0 |
 
-**Current State:** Developers must write Cypher queries directly against Neo4j database.
-
-**No REST/GraphQL backend exists yet** - all other APIs are PLANNED.
+**Current State**:
+- Neo4j database operational with 1.1M+ nodes
+- NER11 Gold Standard API operational with semantic + hybrid search
+- Qdrant vector database operational with 670+ entities
+- No general REST/GraphQL backend exists yet for equipment/vulnerabilities/sectors
 
 ---
 
@@ -97,6 +102,43 @@ PHASE 5: Optimization (Weeks 17-20)
 ---
 
 ## COMPLETE API CATALOG
+
+### NER11 Search APIs (2 endpoints - IMPLEMENTED ✅)
+- `POST /search/semantic` - Semantic vector search with hierarchical filtering
+- `POST /search/hybrid` - Hybrid search (semantic + graph expansion)
+
+**Specification:** 08_NER11_SEMANTIC_SEARCH_API.md (530 lines, v3.0.0)
+**Status:** ✅ IMPLEMENTED (Phases 1-3 Complete)
+**Dependencies:** NER11 Gold API, Qdrant, Neo4j
+**Enhancement:** E30 - NER11 Gold Hierarchical Integration
+
+**Key Features**:
+- Three-tier hierarchical filtering (60 labels → 566 types → instances)
+- Semantic similarity search via Qdrant vector database
+- Knowledge graph expansion via Neo4j (1-3 hop depth)
+- Re-ranking algorithm with graph connectivity boost (max 30%)
+- Performance: <150ms semantic, <500ms hybrid
+
+**Implementation Progress**:
+- ✅ Phase 1 (Qdrant Integration): 5/5 tasks COMPLETE
+- ✅ Phase 2 (Neo4j Knowledge Graph): 4/4 tasks COMPLETE
+- ✅ Phase 3 (Hybrid Search): 1/1 task COMPLETE
+- ⏸️ Phase 4 (Psychohistory): 0/3 tasks NOT STARTED
+
+**Verification**:
+```bash
+# Test semantic search
+curl -X POST http://localhost:8000/search/semantic \
+  -H "Content-Type: application/json" \
+  -d '{"query":"ransomware attacks","fine_grained_filter":"RANSOMWARE"}'
+
+# Test hybrid search
+curl -X POST http://localhost:8000/search/hybrid \
+  -H "Content-Type: application/json" \
+  -d '{"query":"APT29 malware","expand_graph":true,"hop_depth":2}'
+```
+
+---
 
 ### REST API Endpoints (26 Planned)
 

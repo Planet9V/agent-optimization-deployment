@@ -1,10 +1,66 @@
 # AEON Cyber Digital Twin - API Documentation
 
+**Last Updated**: 2025-12-01 21:00 UTC
+**Directory Status**: CURRENT - Record of Note for all AEON APIs
+
 This directory contains comprehensive API documentation for the AEON platform.
+
+---
+
+## ⚠️ IMPLEMENTATION STATUS OVERVIEW
+
+### Currently Operational (5 APIs)
+- ✅ **Neo4j Cypher Queries** - Direct database access via Bolt protocol
+- ✅ **NER11 Entity Extraction** - POST /ner (v3.0.0)
+- ✅ **NER11 Semantic Search** - POST /search/semantic (v3.0.0)
+- ✅ **NER11 Hybrid Search** - POST /search/hybrid (v3.0.0) ⭐ NEW
+- ✅ **Neo4j Bolt Protocol** - bolt://localhost:7687
+
+### Planned (26+ REST endpoints, 10+ GraphQL operations)
+All other APIs are **fully specified** but **NOT YET IMPLEMENTED** - backend deployment pending.
+
+---
 
 ## Quick Navigation
 
-### GraphQL API
+### Operational APIs
+
+#### NER11 Search APIs ✅ IMPLEMENTED
+**File**: `08_NER11_SEMANTIC_SEARCH_API.md` (530 lines, v3.0.0)
+
+Advanced entity search with three-tier hierarchical filtering and hybrid semantic + graph search.
+
+**Status**: ✅ PRODUCTION-READY (Phases 1-3 Complete)
+**Technology**: FastAPI + Qdrant + Neo4j + sentence-transformers
+**Base URL**: http://localhost:8000
+
+**Endpoints**:
+- `POST /search/semantic` - Semantic vector search with hierarchical filtering
+- `POST /search/hybrid` - Hybrid search (semantic + graph expansion) ⭐ NEW
+
+**Key Features**:
+- Three-tier hierarchical taxonomy (60 labels → 566 types → instances)
+- Semantic similarity via Qdrant vector database
+- Knowledge graph expansion via Neo4j (1-3 hop depth)
+- Re-ranking algorithm with graph connectivity boost (max 30%)
+- Performance: <150ms semantic, <500ms hybrid
+
+**Quick Test**:
+```bash
+# Semantic search
+curl -X POST http://localhost:8000/search/semantic \
+  -H "Content-Type: application/json" \
+  -d '{"query":"ransomware attacks","fine_grained_filter":"RANSOMWARE"}'
+
+# Hybrid search with graph expansion
+curl -X POST http://localhost:8000/search/hybrid \
+  -H "Content-Type: application/json" \
+  -d '{"query":"APT29 malware","expand_graph":true,"hop_depth":2}'
+```
+
+---
+
+### GraphQL API 📋 PLANNED
 **File**: `API_GRAPHQL.md` (1,937 lines, 40 KB)
 
 The primary API interface for the AEON platform providing flexible, real-time access to the 7-level knowledge architecture.

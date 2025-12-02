@@ -1,27 +1,40 @@
-# API Specification: NER11 Semantic Search
+# API Specification: NER11 Semantic Search & Hybrid Search
 **API ID**: API-08
-**Version**: 2.0.0
-**Status**: ✅ IMPLEMENTED (Phase 1 Complete)
+**Version**: 3.0.0
+**Status**: ✅ IMPLEMENTED (Phase 1-3 Complete)
 **Base URL**: http://localhost:8000
-**Technology**: FastAPI + Qdrant + sentence-transformers
+**Technology**: FastAPI + Qdrant + Neo4j + sentence-transformers
 **Authentication**: None (internal API)
 **Related Enhancement**: E30 - NER11 Gold Hierarchical Integration
+**Last Updated**: 2025-12-01 21:00 UTC
 
 ---
 
 ## OVERVIEW
 
-The NER11 Semantic Search API provides semantic vector search capabilities over cybersecurity entities extracted by the NER11 Gold Standard model, with hierarchical filtering supporting the complete 566 fine-grained entity type taxonomy.
+The NER11 Semantic Search & Hybrid Search API provides advanced search capabilities over cybersecurity entities extracted by the NER11 Gold Standard model, combining semantic vector similarity (Qdrant) with knowledge graph expansion (Neo4j) for comprehensive entity discovery.
 
-**Key Innovation**: Three-tier hierarchical filtering enables precise entity type queries (e.g., "find RANSOMWARE" not just "find MALWARE") while maintaining semantic search capabilities.
+**Key Innovations**:
+- **Three-tier hierarchical filtering**: Precise entity type queries (e.g., "find RANSOMWARE" not just "find MALWARE")
+- **Hybrid search**: Combines semantic similarity with graph relationship traversal
+- **Re-ranking algorithm**: Graph connectivity boosts semantic scores by up to 30%
+- **Configurable graph expansion**: 1-3 hop depth for exploring entity relationships
+
+**Implementation Status**:
+- ✅ Phase 1 (Qdrant Integration): COMPLETE
+- ✅ Phase 2 (Neo4j Knowledge Graph): COMPLETE
+- ✅ Phase 3 (Hybrid Search): COMPLETE
+- ⏸️ Phase 4 (Psychohistory Integration): NOT STARTED
 
 ---
 
 ## ENDPOINTS
 
-### POST /search/semantic
+### POST /search/semantic (Phase 1 - IMPLEMENTED)
 
 **Purpose**: Semantic search over NER11-extracted entities with hierarchical filtering
+**Technology**: Qdrant vector similarity search
+**Performance**: <150ms average response time
 
 **Request**:
 ```json
@@ -196,33 +209,214 @@ curl -X POST http://localhost:8000/search/semantic \
 
 ---
 
+### POST /search/hybrid (Phase 3 - IMPLEMENTED ✅)
+
+**Purpose**: Hybrid search combining semantic similarity with knowledge graph expansion
+**Technology**: Qdrant + Neo4j graph traversal + re-ranking algorithm
+**Performance**: <500ms average response time
+
+**Request**:
+```json
+{
+  "query": "string (required, 1-1000 characters)",
+  "limit": "integer (optional, 1-100, default 10)",
+  "expand_graph": "boolean (optional, default true)",
+  "hop_depth": "integer (optional, 1-3, default 2)",
+  "label_filter": "string (optional, Tier 1: 60 NER labels)",
+  "fine_grained_filter": "string (optional, Tier 2: 566 types)",
+  "confidence_threshold": "float (optional, 0.0-1.0, default 0.0)",
+  "relationship_types": "array of strings (optional)"
+}
+```
+
+**Response**:
+```json
+{
+  "results": [
+    {
+      "score": "float (0.0-1.0, adjusted with graph boost)",
+      "entity": "string",
+      "ner_label": "string",
+      "fine_grained_type": "string",
+      "hierarchy_path": "string",
+      "confidence": "float",
+      "doc_id": "string",
+      "related_entities": [
+        {
+          "name": "string",
+          "label": "string",
+          "ner_label": "string",
+          "fine_grained_type": "string",
+          "hierarchy_path": "string",
+          "hop_distance": "integer (1-3)",
+          "relationship": "string",
+          "relationship_direction": "string (outgoing|incoming)"
+        }
+      ],
+      "graph_context": {
+        "node_exists": "boolean",
+        "outgoing_relationships": "integer",
+        "incoming_relationships": "integer",
+        "labels": "array of strings",
+        "properties": "object"
+      }
+    }
+  ],
+  "query": "string (original query)",
+  "total_results": "integer",
+  "search_type": "hybrid",
+  "qdrant_time_ms": "float",
+  "neo4j_time_ms": "float",
+  "total_time_ms": "float",
+  "filters_applied": "object"
+}
+```
+
+**Status Codes**:
+- 200: Success
+- 400: Invalid request (query too long, invalid hop depth, invalid filters)
+- 500: Server error (Qdrant unavailable, Neo4j unavailable, embedding model error)
+- 503: Service unavailable (one or more backend services down)
+
+**Example Request**:
+```bash
+curl -X POST http://localhost:8000/search/hybrid \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "APT29 ransomware attacks",
+    "expand_graph": true,
+    "hop_depth": 2,
+    "fine_grained_filter": "RANSOMWARE",
+    "relationship_types": ["USES", "TARGETS", "ATTRIBUTED_TO"]
+  }'
+```
+
+**Example Response**:
+```json
+{
+  "results": [
+    {
+      "score": 0.92,
+      "entity": "WannaCry",
+      "ner_label": "MALWARE",
+      "fine_grained_type": "RANSOMWARE",
+      "hierarchy_path": "MALWARE/RANSOMWARE/WannaCry",
+      "confidence": 1.0,
+      "doc_id": "training_doc_042",
+      "related_entities": [
+        {
+          "name": "APT29",
+          "label": "ThreatActor",
+          "ner_label": "THREAT_ACTOR",
+          "fine_grained_type": "NATION_STATE",
+          "hierarchy_path": "THREAT_ACTOR/NATION_STATE/APT29",
+          "hop_distance": 2,
+          "relationship": "ATTRIBUTED_TO",
+          "relationship_direction": "incoming"
+        },
+        {
+          "name": "Siemens_S7-1500",
+          "label": "Asset",
+          "ner_label": "DEVICE",
+          "fine_grained_type": "PLC",
+          "hierarchy_path": "DEVICE/PLC/Siemens_S7-1500",
+          "hop_distance": 1,
+          "relationship": "TARGETS",
+          "relationship_direction": "outgoing"
+        }
+      ],
+      "graph_context": {
+        "node_exists": true,
+        "outgoing_relationships": 12,
+        "incoming_relationships": 5,
+        "labels": ["Malware"],
+        "properties": {
+          "ner_label": "MALWARE",
+          "fine_grained_type": "RANSOMWARE",
+          "tier": 2
+        }
+      }
+    }
+  ],
+  "query": "APT29 ransomware attacks",
+  "total_results": 1,
+  "search_type": "hybrid",
+  "qdrant_time_ms": 87.3,
+  "neo4j_time_ms": 142.5,
+  "total_time_ms": 229.8,
+  "filters_applied": {
+    "fine_grained_filter": "RANSOMWARE",
+    "relationship_types": ["USES", "TARGETS", "ATTRIBUTED_TO"]
+  }
+}
+```
+
+**Re-ranking Algorithm**:
+The hybrid search applies a graph connectivity boost to semantic similarity scores:
+- **Base score**: Qdrant semantic similarity (0.0-1.0)
+- **Graph boost**: +10% per related entity (max 30% boost)
+- **Final score**: min(1.0, base_score + graph_boost)
+
+Example: Entity with 0.75 semantic score and 3 related entities:
+- Graph boost: 3 × 0.10 = 0.30
+- Final score: min(1.0, 0.75 + 0.30) = 1.0
+
+**Relationship Types**:
+Common relationship types for filtering:
+- `EXPLOITS` - Malware exploits vulnerabilities
+- `USES` - Threat actors use malware/tools
+- `TARGETS` - Attacks target assets
+- `AFFECTS` - Vulnerabilities affect software/devices
+- `ATTRIBUTED_TO` - Attacks attributed to threat actors
+- `MITIGATES` - Controls mitigate vulnerabilities
+- `INDICATES` - Indicators signal threats
+
+---
+
 ## INTEGRATION WITH OTHER APIS
 
 ### Complements:
 - **API-01**: Equipment API (can query for specific device types via fine_grained_filter)
 - **API-02**: Vulnerabilities API (semantic search for CVEs)
 - **E27**: Psychohistory API (cognitive bias search enabled)
+- **Neo4j Graph API**: Direct Cypher queries for complex graph patterns
 
-### Future Enhancement:
-- **Phase 3**: Hybrid search (combine this API with Neo4j graph traversal)
+### Integration Points:
+- **Qdrant**: Vector embeddings for semantic similarity
+- **Neo4j**: Knowledge graph for relationship expansion (1.1M+ nodes)
+- **NER11 API**: Entity extraction and classification
 
 ---
 
 ## PERFORMANCE
 
 ### Response Time Targets:
+
+**Semantic Search (POST /search/semantic)**:
 - **Simple query**: <100ms
 - **Filtered query**: <150ms
 - **Complex query** (multiple filters): <200ms
 
+**Hybrid Search (POST /search/hybrid)**:
+- **Target**: <500ms total (Qdrant + Neo4j + re-ranking)
+- **Qdrant component**: <150ms (semantic search)
+- **Neo4j component**: <300ms (graph expansion, 1-2 hops)
+- **Re-ranking**: <50ms (score adjustment)
+
 ### Throughput:
 - **Concurrent requests**: 100+ requests/second
 - **Max query latency**: 500ms (99th percentile)
+- **Hybrid search**: 50+ requests/second (graph expansion overhead)
 
 ### Scalability:
-- **Tested**: 670 entities
-- **Designed**: 1M+ entities
-- **Qdrant**: Scales to 100M+ vectors
+- **Qdrant**:
+  - Tested: 670+ entities with hierarchical classification
+  - Designed: 1M+ entities
+  - Platform capacity: 100M+ vectors
+- **Neo4j**:
+  - Current: 1.1M nodes, 3.3M+ relationships
+  - Query performance: <500ms for 2-hop graph traversal
+  - Indexes: 25+ indexes for hierarchical queries
 
 ---
 
@@ -294,6 +488,42 @@ CONFIRMATION_BIAS, NORMALCY_BIAS, AVAILABILITY_HEURISTIC, ANCHORING_BIAS, RECENC
 
 ---
 
-**API Status**: ✅ PRODUCTION-READY
-**Implementation**: Phase 1 Complete
-**Next**: Phase 3 will add hybrid search (semantic + graph)
+## IMPLEMENTATION STATUS
+
+**Overall Progress**: 71% (10/14 tasks complete)
+
+| Phase | Status | Tasks | Key Deliverables |
+|-------|--------|-------|------------------|
+| **Phase 1: Qdrant Integration** | ✅ COMPLETE | 5/5 | Hierarchical entity processor, Qdrant collection, semantic search endpoint |
+| **Phase 2: Neo4j Knowledge Graph** | ✅ COMPLETE | 4/4 | Schema migration, entity mapping, bulk ingestion (1.1M nodes preserved) |
+| **Phase 3: Hybrid Search** | ✅ COMPLETE | 1/1 | Hybrid search endpoint, graph expansion, re-ranking algorithm |
+| **Phase 4: Psychohistory** | ⏸️ NOT STARTED | 0/3 | Psychometric analysis, pattern detection, forecasting |
+
+**Key Achievements**:
+- ✅ 566 fine-grained entity type taxonomy implemented
+- ✅ Three-tier hierarchical classification (Tier 1: 60 labels → Tier 2: 566 types → Tier 3: instances)
+- ✅ Semantic vector search with hierarchical filtering
+- ✅ Knowledge graph integration (1.1M+ nodes)
+- ✅ Hybrid search combining semantic + graph
+- ✅ Re-ranking algorithm with graph connectivity boost
+
+**Files Modified/Created**:
+- `5_NER11_Gold_Model/serve_model.py` - Upgraded to v3.0.0
+- `5_NER11_Gold_Model/pipelines/05_ner11_to_neo4j_hierarchical.py` - Neo4j ingestion
+- `5_NER11_Gold_Model/pipelines/06_bulk_graph_ingestion.py` - Bulk processing
+
+**Git Commits**:
+- Phase 1 & 2: `53bf480` - Schema migration + entity mapping
+- Phase 3: `7be6b15` - Hybrid search system
+
+**Next Steps** (Phase 4):
+- Psychometric analysis integration
+- Threat actor profiling
+- McKenney-Lacan framework
+
+---
+
+**API Status**: ✅ PRODUCTION-READY (Phases 1-3)
+**Last Updated**: 2025-12-01 21:00 UTC
+**Version**: 3.0.0
+**Documentation**: Complete and current
