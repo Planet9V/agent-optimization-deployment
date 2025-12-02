@@ -1,0 +1,49 @@
+{
+  "documents_processed": 5,
+  "documents_successful": 3,
+  "total_entities_qdrant": 466,
+  "total_entities_neo4j": 466,
+  "results": [
+    {
+      "status": "success",
+      "doc_id": "wiki_QUERIES_LIBRARY_UPDATE_SUMMARY",
+      "entities_extracted": 128,
+      "entities_enriched": 128,
+      "qdrant_stored": 128,
+      "neo4j_stored": 128,
+      "tier1_unique": 19,
+      "tier2_unique": 19,
+      "hierarchy_valid": true
+    },
+    {
+      "status": "success",
+      "doc_id": "wiki_WIKI_COMPLETE_SUMMARY",
+      "entities_extracted": 68,
+      "entities_enriched": 68,
+      "qdrant_stored": 68,
+      "neo4j_stored": 68,
+      "tier1_unique": 14,
+      "tier2_unique": 14,
+      "hierarchy_valid": true
+    },
+    {
+      "status": "success",
+      "doc_id": "wiki_WIKI_INDEX_2025_11_12",
+      "entities_extracted": 270,
+      "entities_enriched": 270,
+      "qdrant_stored": 270,
+      "neo4j_stored": 270,
+      "tier1_unique": 22,
+      "tier2_unique": 22,
+      "hierarchy_valid": true
+    },
+    {
+      "status": "no_entities",
+      "entities_extracted": 0
+    },
+    {
+      "status": "no_entities",
+      "entities_extracted": 0
+    }
+  ]
+}

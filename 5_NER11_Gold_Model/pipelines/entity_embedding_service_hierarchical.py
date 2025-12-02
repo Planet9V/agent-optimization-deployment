@@ -824,25 +824,29 @@ class NER11HierarchicalEmbeddingService:
 
         query_filter = Filter(must=filter_conditions) if filter_conditions else None
 
-        # Execute search
-        results = self.qdrant_client.search(
+        # Execute search (using query_points for newer qdrant-client API)
+        results = self.qdrant_client.query_points(
             collection_name=self.collection_name,
-            query_vector=query_embedding,
+            query=query_embedding,
             query_filter=query_filter,
             limit=limit
         )
 
-        # Format results
+        # Format results (handle newer qdrant-client query_points API)
         formatted = []
-        for result in results:
+
+        # query_points returns QueryResponse with .points attribute
+        points = results.points if hasattr(results, 'points') else results
+
+        for point in points:
             formatted.append({
-                "score": result.score,
-                "entity": result.payload["specific_instance"],
-                "ner_label": result.payload["ner_label"],
-                "fine_grained_type": result.payload["fine_grained_type"],
-                "hierarchy_path": result.payload["hierarchy_path"],
-                "confidence": result.payload["confidence"],
-                "doc_id": result.payload["doc_id"]
+                "score": point.score if hasattr(point, 'score') else 0.0,
+                "entity": point.payload.get("specific_instance", point.payload.get("entity", "")),
+                "ner_label": point.payload.get("ner_label", ""),
+                "fine_grained_type": point.payload.get("fine_grained_type", ""),
+                "hierarchy_path": point.payload.get("hierarchy_path", ""),
+                "confidence": point.payload.get("confidence", 0.0),
+                "doc_id": point.payload.get("doc_id", "")
             })
 
         logger.info(f"Search returned {len(formatted)} results")

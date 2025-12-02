@@ -37,11 +37,14 @@ from pipelines.entity_embedding_service_hierarchical import NER11HierarchicalEmb
 import logging
 
 # Configure logging
+log_dir = Path('/home/jim/2_OXOT_Projects_Dev/5_NER11_Gold_Model/logs')
+log_dir.mkdir(parents=True, exist_ok=True)  # Create logs directory if it doesn't exist
+
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('/home/jim/2_OXOT_Projects_Dev/5_NER11_Gold_Model/logs/bulk_processor.log'),
+        logging.FileHandler(log_dir / 'bulk_processor.log'),
         logging.StreamHandler()
     ]
 )
