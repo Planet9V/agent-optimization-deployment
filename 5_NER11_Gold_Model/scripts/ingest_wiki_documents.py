@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
 """
-Wiki Document Ingestion Script
-Processes AEON wiki documents through NER11 → Hierarchical Classification → Qdrant + Neo4j
+Wiki Document Ingestion Script with Relationship Extraction
+Processes AEON wiki documents through:
+NER11 → Hierarchical Classification → Relationship Extraction → Qdrant + Neo4j Graph
+
+ENHANCED: Now extracts relationships automatically!
+- Co-occurrence analysis
+- Pattern-based relationship detection
+- Type-based relationship inference
+- Automatic graph building in Neo4j
 
 Usage:
     python3 scripts/ingest_wiki_documents.py --limit 10  # Process 10 documents
@@ -18,16 +25,24 @@ from datetime import datetime
 import argparse
 
 # Add pipelines to path
-sys.path.insert(0, str(Path(__file__).parent.parent / "pipelines"))
+pipelines_path = Path(__file__).parent.parent / "pipelines"
+sys.path.insert(0, str(pipelines_path))
 
 from qdrant_client import QdrantClient
 from qdrant_client.models import PointStruct
 from sentence_transformers import SentenceTransformer
 from neo4j import GraphDatabase
 
+# Import relationship extractor with direct import
+import importlib.util
+spec = importlib.util.spec_from_file_location("relationship_extractor", pipelines_path / "relationship_extractor.py")
+rel_module = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(rel_module)
+RelationshipExtractor = rel_module.RelationshipExtractor
+
 
 class WikiDocumentIngestionPipeline:
-    """Complete ingestion pipeline for wiki documents."""
+    """Complete ingestion pipeline with automatic relationship extraction."""
 
     def __init__(
         self,
@@ -55,10 +70,15 @@ class WikiDocumentIngestionPipeline:
         print("Loading embedding model...")
         self.embedding_model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 
+        # Initialize relationship extractor
+        print("Initializing relationship extractor...")
+        self.relationship_extractor = RelationshipExtractor()
+
         print(f"✅ Pipeline initialized")
         print(f"   - NER11 API: {ner11_api_url}")
         print(f"   - Qdrant: {qdrant_host}:{qdrant_port}")
         print(f"   - Neo4j: {neo4j_uri}")
+        print(f"   - Relationship extraction: ENABLED")
 
     def extract_entities(self, text: str) -> List[Dict]:
         """Extract entities using NER11 API."""
@@ -248,8 +268,48 @@ class WikiDocumentIngestionPipeline:
 
         return label_map.get(ner_label, "Indicator")  # Default to Indicator
 
+    def create_relationships_in_neo4j(self, relationships: List, doc_id: str) -> int:
+        """Create relationships in Neo4j knowledge graph."""
+        if not relationships:
+            return 0
+
+        created = 0
+        with self.neo4j_driver.session() as session:
+            for rel in relationships:
+                try:
+                    # Map to Neo4j labels
+                    source_label = self._map_to_neo4j_label(rel.source_type)
+                    target_label = self._map_to_neo4j_label(rel.target_type)
+
+                    # Create relationship with MERGE (idempotent)
+                    session.run(f"""
+                        MATCH (source:{source_label} {{name: $source_name}})
+                        MATCH (target:{target_label} {{name: $target_name}})
+                        MERGE (source)-[r:{rel.relationship_type}]->(target)
+                        ON CREATE SET
+                            r.confidence = $confidence,
+                            r.evidence = $evidence,
+                            r.method = $method,
+                            r.doc_id = $doc_id,
+                            r.created_at = datetime()
+                        RETURN r
+                    """,
+                        source_name=rel.source_entity,
+                        target_name=rel.target_entity,
+                        confidence=rel.confidence,
+                        evidence=rel.evidence[:200],  # Limit evidence text
+                        method=rel.method,
+                        doc_id=doc_id
+                    )
+                    created += 1
+                except Exception as e:
+                    # Skip if nodes don't exist or other error
+                    continue
+
+        return created
+
     def process_document(self, doc_path: Path) -> Dict[str, Any]:
-        """Process a single document through the complete pipeline."""
+        """Process a single document through the complete pipeline with relationships."""
         doc_id = f"wiki_{doc_path.stem}"
 
         # Read document
@@ -269,11 +329,21 @@ class WikiDocumentIngestionPipeline:
             self.classify_hierarchical(e, text) for e in entities
         ]
 
-        # Step 3: Store in Qdrant
+        # Step 3: Extract relationships ⭐ NEW
+        relationships = self.relationship_extractor.extract_relationships_from_text(
+            text=text,
+            entities=entities,
+            doc_id=doc_id
+        )
+
+        # Step 4: Store in Qdrant
         qdrant_stored = self.store_in_qdrant(enriched_entities, doc_id)
 
-        # Step 4: Store in Neo4j
+        # Step 5: Store entities in Neo4j
         neo4j_stored = self.store_in_neo4j(enriched_entities, doc_id)
+
+        # Step 6: Create relationships in Neo4j ⭐ NEW
+        relationships_created = self.create_relationships_in_neo4j(relationships, doc_id)
 
         # Validation: Check tier2 > tier1
         tier1_types = set(e["ner_label"] for e in enriched_entities)
@@ -285,15 +355,17 @@ class WikiDocumentIngestionPipeline:
             "doc_id": doc_id,
             "entities_extracted": len(entities),
             "entities_enriched": len(enriched_entities),
+            "relationships_extracted": len(relationships),
             "qdrant_stored": qdrant_stored,
             "neo4j_stored": neo4j_stored,
+            "relationships_created": relationships_created,
             "tier1_unique": len(tier1_types),
             "tier2_unique": len(tier2_types),
             "hierarchy_valid": hierarchy_valid
         }
 
     def process_wiki_documents(self, wiki_root: str, limit: int = None) -> Dict:
-        """Process multiple wiki documents."""
+        """Process multiple wiki documents with relationship extraction."""
         wiki_path = Path(wiki_root)
 
         # Find all markdown files
@@ -302,26 +374,31 @@ class WikiDocumentIngestionPipeline:
         # Apply limit
         docs_to_process = all_docs[:limit] if limit else all_docs
 
-        print(f"\n📚 Wiki Document Ingestion Pipeline")
+        print(f"\n📚 Wiki Document Ingestion Pipeline with Relationship Extraction")
         print(f"   Found: {len(all_docs)} total documents")
-        print(f"   Processing: {len(docs_to_process)} documents\n")
+        print(f"   Processing: {len(docs_to_process)} documents")
+        print(f"   Features: NER + Hierarchy + Co-occurrence + Pattern Matching + Graph Building\n")
 
         # Process each document
         results = []
         total_entities_qdrant = 0
         total_entities_neo4j = 0
+        total_relationships = 0
 
         for doc_path in docs_to_process:
             print(f"📄 {doc_path.name}")
             result = self.process_document(doc_path)
 
             if result["status"] == "success":
-                print(f"   ✅ {result['entities_extracted']} entities → "
+                print(f"   ✅ Entities: {result['entities_extracted']} → "
                       f"Qdrant: {result['qdrant_stored']}, Neo4j: {result['neo4j_stored']}")
+                print(f"   🔗 Relationships: {result['relationships_extracted']} extracted → "
+                      f"{result['relationships_created']} created in graph")
                 print(f"   📊 Tier1: {result['tier1_unique']}, Tier2: {result['tier2_unique']} "
                       f"({'✅ Valid' if result['hierarchy_valid'] else '❌ Invalid'})")
                 total_entities_qdrant += result['qdrant_stored']
                 total_entities_neo4j += result['neo4j_stored']
+                total_relationships += result['relationships_created']
             else:
                 print(f"   ⚠️  {result['status']}")
 
@@ -335,6 +412,7 @@ class WikiDocumentIngestionPipeline:
             "documents_successful": successful,
             "total_entities_qdrant": total_entities_qdrant,
             "total_entities_neo4j": total_entities_neo4j,
+            "total_relationships_created": total_relationships,
             "results": results
         }
 
@@ -361,14 +439,15 @@ def main():
         summary = pipeline.process_wiki_documents(args.wiki_root, limit=limit)
 
         # Print summary
-        print(f"\n{'='*60}")
-        print(f"📊 INGESTION SUMMARY")
-        print(f"{'='*60}")
+        print(f"\n{'='*70}")
+        print(f"📊 INGESTION SUMMARY WITH RELATIONSHIP EXTRACTION")
+        print(f"{'='*70}")
         print(f"Documents Processed: {summary['documents_processed']}")
         print(f"Documents Successful: {summary['documents_successful']}")
         print(f"Entities → Qdrant: {summary['total_entities_qdrant']}")
         print(f"Entities → Neo4j: {summary['total_entities_neo4j']}")
-        print(f"{'='*60}\n")
+        print(f"Relationships → Neo4j Graph: {summary.get('total_relationships_created', 0)} ⭐ NEW")
+        print(f"{'='*70}\n")
 
         # Save summary
         summary_path = "/home/jim/2_OXOT_Projects_Dev/5_NER11_Gold_Model/logs/wiki_ingestion_summary.json"
