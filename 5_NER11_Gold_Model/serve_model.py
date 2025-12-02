@@ -31,17 +31,17 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'pipelines'))
 
 # Import hierarchical embedding service
 try:
-    # Try with numbered prefix first (actual file name)
+    # Try direct import from pipelines directory
     from pipelines import entity_embedding_service_hierarchical as emb_module
     NER11HierarchicalEmbeddingService = emb_module.NER11HierarchicalEmbeddingService
     EMBEDDING_SERVICE_AVAILABLE = True
 except ImportError:
     try:
-        # Fallback: try direct import
+        # Fallback: try with importlib using actual filename
         import importlib.util
         spec = importlib.util.spec_from_file_location(
             "entity_embedding_service_hierarchical",
-            os.path.join(os.path.dirname(__file__), "pipelines", "02_entity_embedding_service_hierarchical.py")
+            os.path.join(os.path.dirname(__file__), "pipelines", "entity_embedding_service_hierarchical.py")
         )
         emb_module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(emb_module)
