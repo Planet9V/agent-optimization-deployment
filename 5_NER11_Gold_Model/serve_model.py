@@ -332,21 +332,24 @@ def expand_graph_for_entity(entity_name: str, hop_depth: int = 2, relationship_t
             else:
                 rel_clause = f"[r*1..{hop_depth}]"
 
-            # Query for outgoing relationships
+            # Query for outgoing relationships (FIXED - proper handling of variable-length paths)
             outgoing_query = f"""
-            MATCH (source {{name: $name}})-{rel_clause}->(target)
-            WHERE source <> target
-            WITH DISTINCT target,
-                 [rel IN relationships((source)-{rel_clause}->(target)) | type(rel)] AS rel_types,
-                 length(shortestPath((source)-{rel_clause}->(target))) AS distance
+            MATCH (source {{name: $name}})
+            CALL {{
+                WITH source
+                MATCH path = (source)-{rel_clause}->(target)
+                WHERE source <> target
+                RETURN target, path
+                LIMIT 20
+            }}
+            WITH DISTINCT target, path
             RETURN target.name AS name,
                    labels(target)[0] AS label,
                    target.ner_label AS ner_label,
                    target.fine_grained_type AS fine_grained_type,
                    target.hierarchy_path AS hierarchy_path,
-                   distance,
-                   rel_types[0] AS relationship
-            LIMIT 20
+                   length(path) AS distance,
+                   [rel IN relationships(path) | type(rel)][0] AS relationship
             """
 
             result = session.run(outgoing_query, name=entity_name)
@@ -363,21 +366,24 @@ def expand_graph_for_entity(entity_name: str, hop_depth: int = 2, relationship_t
                         relationship_direction="outgoing"
                     ))
 
-            # Query for incoming relationships
+            # Query for incoming relationships (FIXED - proper handling of variable-length paths)
             incoming_query = f"""
-            MATCH (source)-{rel_clause}->(target {{name: $name}})
-            WHERE source <> target
-            WITH DISTINCT source,
-                 [rel IN relationships((source)-{rel_clause}->(target)) | type(rel)] AS rel_types,
-                 length(shortestPath((source)-{rel_clause}->(target))) AS distance
+            MATCH (target {{name: $name}})
+            CALL {{
+                WITH target
+                MATCH path = (source)-{rel_clause}->(target)
+                WHERE source <> target
+                RETURN source, path
+                LIMIT 20
+            }}
+            WITH DISTINCT source, path
             RETURN source.name AS name,
                    labels(source)[0] AS label,
                    source.ner_label AS ner_label,
                    source.fine_grained_type AS fine_grained_type,
                    source.hierarchy_path AS hierarchy_path,
-                   distance,
-                   rel_types[0] AS relationship
-            LIMIT 20
+                   length(path) AS distance,
+                   [rel IN relationships(path) | type(rel)][0] AS relationship
             """
 
             result = session.run(incoming_query, name=entity_name)
