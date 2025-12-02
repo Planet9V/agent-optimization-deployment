@@ -13,8 +13,13 @@
 This document presents a **6-level ontology architecture** that solves the fundamental challenge of representing equipment across multiple abstraction levels:
 
 - **Reference Architecture**: Generic equipment types used across all 16 critical infrastructure sectors
-- **Customer Instances**: Specific equipment installations with unique asset IDs and configurations
-- **20-Hop Relationships**: Deep traversal paths for psychohistory modeling and predictive analytics
+- **Customer Instances**: Specific equipment installations with unique asset IDs and configurations.*SBOM-Level Detail**: Track individual software libraries (OpenSSL 1.0.2k vs 3.0.1) across equipment instances
+- **Vulnerability Variation**: Model how identical equipment types have different risks based on software versions
+- **MITRE ATT&CK Integration**: Complete kill chain modeling from initial access to impact
+- **NOW/NEXT/NEVER Prioritization**: Risk-based threat triage framework
+- **Library-Level Psychohistory**: Predict future threats based on version distribution and sector patterns
+
+- **20-Hop Relationships**: Deep traversal paths for Software Bill of Materials (SBOM) for each equipment instance, tracking individual libraries and their dependencies.SBOM and predictive analytics modeli
 - **Zero Duplication**: Single canonical representation of each equipment model with multiple instances
 - **Dual Analysis**: Support both sector-level patterns and customer-specific impact assessment
 
