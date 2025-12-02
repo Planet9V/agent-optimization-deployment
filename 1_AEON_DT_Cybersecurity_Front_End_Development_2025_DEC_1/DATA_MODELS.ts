@@ -5,8 +5,16 @@
  * Copy these types directly into your frontend project.
  *
  * Created: 2025-12-02 05:25:00 UTC
- * Version: 1.0.0
+ * Last Updated: 2025-12-02 07:30:00 UTC
+ * Version: 1.1.0
  * Status: Production-ready types for 3,889 entities
+ *
+ * IMPORTANT UPDATE (2025-12-02):
+ * - Hybrid search graph expansion bug documented
+ * - RelatedEntity interface updated with actual production behavior
+ * - 150+ relationship types from production database added
+ * - Accurate database statistics: 331 hierarchical nodes, 11.9M relationships
+ * - Use semantic search until hybrid search bug is fixed
  */
 
 // ============================================================================
@@ -143,30 +151,65 @@ export interface SemanticSearchResponse {
 
 /**
  * Relationship types in Neo4j knowledge graph
+ *
+ * PRODUCTION DATABASE (Verified 2025-12-02):
+ * - Total relationship types: 150+
+ * - Total relationship instances: 11,998,450
+ * - Hierarchical nodes: 331 with ner_label property
  */
 export type RelationshipType =
-  // Attack relationships
+  // Threat Intelligence (Attack relationships)
   | 'EXPLOITS'        // Malware exploits vulnerabilities
   | 'USES'            // Threat actors use malware/tools
   | 'TARGETS'         // Attacks target assets
   | 'AFFECTS'         // Vulnerabilities affect software/devices
   | 'ATTRIBUTED_TO'   // Attacks attributed to threat actors
+  | 'CONDUCTS'        // Actor conducts campaign
+  | 'CHAINS_TO'       // Attack chains to another
+  | 'CASCADES_TO'     // Effect cascades to system
+  | 'COLLABORATES_WITH' // Actors collaborate
 
-  // Defense relationships
+  // Defense & Mitigation
   | 'MITIGATES'       // Controls mitigate vulnerabilities
   | 'PROTECTS'        // Controls protect assets
   | 'DETECTS'         // Indicators detect threats
+  | 'COMPLIES_WITH'   // System complies with standard
+  | 'COMPLIES_WITH_NERC_CIP' // NERC CIP compliance
 
-  // Analysis relationships
-  | 'INDICATES'       // Indicators signal threats
+  // Cognitive/Behavioral (Psychohistory)
+  | 'ACTIVATES_BIAS'  // Event activates cognitive bias
   | 'EXHIBITS'        // Users exhibit cognitive biases
   | 'CONTRIBUTES_TO'  // Biases contribute to incidents
+  | 'INFLUENCES'      // Bias influences decision
+  | 'BASED_ON_PATTERN' // Behavior based on pattern
 
-  // Structural relationships
-  | 'BELONGS_TO' | 'LOCATED_AT' | 'PART_OF' | 'HAS_VULNERABILITY'
-  | 'RUNS' | 'DEPENDS_ON' | 'CONNECTS_TO'
+  // Infrastructure & Connectivity
+  | 'CONNECTED_TO_GRID'    // Asset connected to power grid
+  | 'CONNECTED_TO_SEGMENT' // Device on network segment
+  | 'CONNECTS_SUBSTATIONS' // Infrastructure connection
+  | 'CONNECTS_TO'          // General connectivity
+  | 'COMPATIBLE_WITH'      // Technology compatibility
+  | 'COMPOSED_OF'          // System composition
+  | 'CONTAINS'             // Container relationship
+  | 'CONTAINS_EQUIPMENT'   // Facility contains equipment
+  | 'CONTAINS_ENTITY'      // Ontology containment
 
-  | string;  // Allow any relationship type
+  // Sector & System Analysis
+  | 'AFFECTS_SECTOR'   // Threat affects industry sector
+  | 'AFFECTS_SYSTEM'   // Impact on system
+  | 'ANALYZES_SECTOR'  // Analysis of sector
+  | 'APPLIES_TO'       // Standard applies to system
+
+  // Structural & Ontology
+  | 'BELONGS_TO_TACTIC' // Technique belongs to tactic
+  | 'CHILDOF'          // Parent-child relationship
+  | 'CANALSOBE'        // Alternative classification
+  | 'CANFOLLOW'        // Sequential relationship
+  | 'CANPRECEDE'       // Precedence relationship
+  | 'CONSUMES_FROM'    // Resource consumption
+
+  // 100+ more types exist in production
+  | string;  // Allow any relationship type for extensibility
 
 /**
  * POST /search/hybrid request
@@ -184,6 +227,14 @@ export interface HybridSearchRequest {
 
 /**
  * Related entity from graph expansion
+ *
+ * ⚠️ IMPORTANT BUG NOTE (2025-12-02):
+ * Graph expansion currently returns empty arrays due to Cypher WHERE clause bug.
+ * This interface shows the EXPECTED structure when bug is fixed.
+ * Current behavior: related_entities is always [] (empty array)
+ *
+ * WORKAROUND: Use semantic search (POST /search/semantic) until fixed
+ * Bug tracked in Phase 4.2 of E30 implementation
  */
 export interface RelatedEntity {
   name: string;                         // Entity name
@@ -209,17 +260,22 @@ export interface GraphContext {
 
 /**
  * Hybrid search result (semantic + graph)
+ *
+ * CURRENT BEHAVIOR (2025-12-02):
+ * - Semantic search component works perfectly
+ * - Graph expansion returns empty related_entities arrays
+ * - Use semantic search endpoint instead until bug fixed
  */
 export interface HybridSearchResult {
-  score: number;                        // Adjusted score (semantic + graph boost)
+  score: number;                        // Currently: only semantic score (no graph boost)
   entity: string;
   ner_label: NERLabel;
   fine_grained_type: FineGrainedType;
   hierarchy_path: string;
   confidence: number;
   doc_id: string;
-  related_entities: RelatedEntity[];    // Graph expansion results
-  graph_context: GraphContext;          // Graph metadata
+  related_entities: RelatedEntity[];    // ⚠️ Currently always [] due to bug
+  graph_context: GraphContext;          // node_exists may be true, but relationships count as 0
 }
 
 /**

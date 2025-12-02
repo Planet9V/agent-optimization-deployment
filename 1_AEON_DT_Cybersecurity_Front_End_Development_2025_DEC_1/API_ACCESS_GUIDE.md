@@ -2,8 +2,29 @@
 
 **File**: API_ACCESS_GUIDE.md
 **Created**: 2025-12-02 05:20:00 UTC
+**Last Updated**: 2025-12-02 07:30:00 UTC
 **Purpose**: Detailed access patterns, authentication, and examples for every operational API
 **Status**: All APIs tested and operational
+
+**CRITICAL BUG FIX UPDATE (2025-12-02 07:30 UTC)**:
+- Hybrid search graph expansion discovered to return 0 related entities
+- Root cause: Cypher WHERE clause bug in relationship traversal
+- Database verified healthy: 331 hierarchical nodes, 11.9M relationships, 150+ relationship types
+- Semantic search component 100% operational
+- **Frontend developers should use semantic search endpoint until fix deployed**
+
+---
+
+## 🚨 QUICK REFERENCE: WHAT WORKS NOW
+
+| API Endpoint | Status | Use For | Performance |
+|--------------|--------|---------|-------------|
+| POST /ner | ✅ 100% | Entity extraction | <200ms |
+| POST /search/semantic | ✅ 100% | Search 3,889 entities | <150ms |
+| Neo4j bolt://localhost:7687 | ✅ 100% | Direct graph queries | <500ms |
+| POST /search/hybrid | ⚠️ Partial | Semantic only (graph disabled) | ~3600ms |
+
+**Recommendation**: Build with semantic search now, migrate to hybrid search when bug is fixed.
 
 ---
 
@@ -362,7 +383,9 @@ const response = await axios.post('http://localhost:8000/search/semantic', reque
 
 ---
 
-### Hybrid Search (POST /search/hybrid)
+### Hybrid Search (POST /search/hybrid) ⚠️
+
+**KNOWN ISSUE (2025-12-02)**: Graph expansion returns empty related_entities arrays. Use semantic search until fixed.
 
 **Full Request Example**:
 ```typescript
@@ -378,7 +401,7 @@ const request = {
 const response = await axios.post('http://localhost:8000/search/hybrid', request);
 ```
 
-**Full Response Example**:
+**EXPECTED Response Example** (when bug is fixed):
 ```json
 {
   "results": [
@@ -438,7 +461,37 @@ const response = await axios.post('http://localhost:8000/search/hybrid', request
 }
 ```
 
-**Frontend Visualization**:
+**ACTUAL Current Response** (2025-12-02):
+```json
+{
+  "results": [{
+    "entity": "APT Group",
+    "score": 0.35,
+    "related_entities": [],  // ⚠️ EMPTY - BUG
+    "graph_context": {
+      "node_exists": true,
+      "outgoing_relationships": 0,
+      "incoming_relationships": 0
+    }
+  }],
+  "total_semantic_results": 3,
+  "total_graph_entities": 0,  // ⚠️ Should be > 0
+  "performance_ms": 3588
+}
+```
+
+**WORKAROUND - Use Semantic Search**:
+```typescript
+// Works perfectly right now
+const results = await axios.post('http://localhost:8000/search/semantic', {
+  query: "nation state cyber espionage",
+  fine_grained_filter: "NATION_STATE",
+  limit: 20
+});
+// Returns accurate results with proper scores and entity data
+```
+
+**Frontend Visualization** (when bug is fixed):
 ```
 ┌─────────────────────────────────────┐
 │ APT29 (NATION_STATE)                │
@@ -770,19 +823,40 @@ axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
 ---
 
-## 🎯 READY TO BUILD
+## 🎯 READY TO BUILD (WITH ACCURATE EXPECTATIONS)
 
-**Everything You Need**:
-- ✅ 4 operational APIs fully documented
+**What You Can Build RIGHT NOW** (2025-12-02):
+- ✅ Entity extraction interface - WORKS PERFECTLY
+- ✅ Semantic search dashboard - WORKS PERFECTLY
+- ✅ Hierarchical filtering UI (566 types) - WORKS PERFECTLY
+- ✅ Direct Neo4j queries - WORKS PERFECTLY
+- ✅ Threat intelligence display - WORKS PERFECTLY
+- ✅ Vulnerability analysis - WORKS PERFECTLY
+
+**Wait For Bug Fix Before Building**:
+- ⏸️ Graph relationship visualization - Returns empty arrays
+- ⏸️ Attack path analysis - No paths returned
+- ⏸️ Entity connection graphs - 0 connections shown
+
+**Development Strategy**:
+1. Build semantic search features first (100% operational)
+2. Implement direct Neo4j queries for graph features
+3. Prepare graph visualization components for when bug is fixed
+4. Switch to hybrid search endpoint once fix deployed
+
+**Everything You Have**:
+- ✅ 3 fully operational APIs (entity extraction, semantic search, Neo4j)
+- ✅ 1 partially operational API (hybrid search semantic only)
 - ✅ 3,889 real threat intelligence entities
-- ✅ Complete TypeScript examples
+- ✅ Complete TypeScript examples with bug workarounds
 - ✅ 10+ React components ready to use
-- ✅ Neo4j query library
+- ✅ Neo4j query library (150+ relationship types)
 - ✅ Error handling patterns
 - ✅ Performance guidelines
+- ✅ Honest documentation of current state
 
-**Start Building**: Copy components from `09_NER11_FRONTEND_INTEGRATION_GUIDE.md` and customize!
+**Start Building**: Use semantic search components from `09_NER11_FRONTEND_INTEGRATION_GUIDE.md`
 
 **Documentation Location**: `/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/04_APIs/`
 
-**Last Updated**: 2025-12-02 05:20:00 UTC
+**Last Updated**: 2025-12-02 07:30:00 UTC

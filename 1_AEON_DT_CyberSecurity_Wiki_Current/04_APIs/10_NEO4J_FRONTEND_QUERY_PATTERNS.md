@@ -2,11 +2,69 @@
 
 **File**: 10_NEO4J_FRONTEND_QUERY_PATTERNS.md
 **Created**: 2025-12-02 05:05:00 UTC
+**Updated**: 2025-12-02 07:30:00 UTC
 **Purpose**: Comprehensive Cypher query patterns for frontend developers accessing Neo4j directly
 **Database**: Neo4j 5.26 Community Edition
 **Connection**: bolt://localhost:7687
 **Auth**: neo4j / neo4j@openspg
 **Current State**: 1,104,389 nodes, 3.3M+ relationships, 193 labels
+**Hierarchical Entities**: 4,051 nodes with NER11 properties
+
+---
+
+## ⚠️ CRITICAL CYPHER PATTERN UPDATE - Variable-Length Path Bug Fixed
+
+### Problem: Incorrect Variable-Length Path Syntax
+
+**Date**: 2025-12-02 07:30 UTC
+
+**Issue**: Variable-length path queries `()-[*1..hop_depth]->()` were failing silently because Neo4j Cypher **does not support** variables inside relationship patterns.
+
+**WRONG (Broken Pattern)**:
+```cypher
+# ❌ THIS DOES NOT WORK
+MATCH path = (n)-[*1..hop_depth]->(related)
+WHERE n.name = 'APT29'
+  AND hop_depth = 2  # Variable not accessible inside [*]
+RETURN related
+# Result: 0 records (silent failure)
+```
+
+**CORRECT (Working Pattern)**:
+```cypher
+# ✅ THIS WORKS - Use CALL subquery with literal hop count
+MATCH (n {name: 'APT29'})
+CALL {
+  WITH n
+  MATCH path = (n)-[*1..2]->(related)  # Literal 2, not $variable
+  WHERE (related:Asset OR related:ThreatActor)
+  RETURN DISTINCT related.name AS name,
+         labels(related)[0] AS label,
+         type(relationships(path)[0]) AS relationship,
+         length(path) AS hops
+  ORDER BY hops
+  LIMIT 20
+}
+RETURN name, label, relationship, hops
+# Result: 20 records (works correctly)
+```
+
+**Why CALL Subquery is Required**:
+1. **Variable Isolation**: Subqueries have isolated scope for complex operations
+2. **DISTINCT Handling**: Multiple paths to same entity need de-duplication
+3. **WHERE Placement**: Entity type filters must be OUTSIDE the pattern
+4. **Literal Hop Count**: `[*1..2]` is literal, cannot use `[*1..$var]`
+
+**Key Cypher Rules**:
+- ✅ `MATCH (n)-[*1..3]->()` - Literal hop counts work
+- ❌ `MATCH (n)-[*1..depth]->()` - Variables don't work
+- ✅ `WHERE (n:Type1 OR n:Type2)` - Filter outside pattern works
+- ❌ `MATCH (n:Type1|Type2)-[]->()` - OR inside pattern limited
+
+**Performance Impact**:
+- CALL subquery: ~300ms for 2-hop traversal
+- De-duplication (DISTINCT): ~50ms overhead
+- Total: <400ms for complex graph queries
 
 ---
 

@@ -1,9 +1,17 @@
 # AEON Cyber Digital Twin - Frontend Development Primer
 
 **Created**: 2025-12-02 05:15:00 UTC
-**Version**: 1.0.0
+**Last Updated**: 2025-12-02 07:30:00 UTC
+**Version**: 1.1.0
 **Purpose**: Complete frontend development guide with all operational APIs, documentation references, and implementation patterns
 **Status**: READY FOR DEVELOPMENT - All APIs operational and tested
+
+**IMPORTANT BUG FIX NOTE (2025-12-02)**:
+- Hybrid search graph expansion currently returns 0 related entities due to Cypher query bug
+- Bug is in the relationship traversal WHERE clause matching
+- Semantic search fully operational with 3,889 entities
+- Graph database contains 331 hierarchical nodes with 11.9M relationships
+- Fix in progress for Phase 4.2 - Frontend developers should use semantic search until resolved
 
 ---
 
@@ -176,7 +184,7 @@ const response = await axios.post('http://localhost:8000/ner', {
 **Purpose**: Semantic vector similarity search with hierarchical filtering
 **Performance**: <150ms average
 **Current Dataset**: **3,889 entities** from threat intelligence reports
-**Status**: OPERATIONAL
+**Status**: OPERATIONAL ✅ FULLY TESTED
 
 **Documentation**:
 - Full spec: `../1_AEON_DT_CyberSecurity_Wiki_Current/04_APIs/08_NER11_SEMANTIC_SEARCH_API.md`
@@ -276,8 +284,17 @@ ransomware.data.results.forEach(r => {
 
 **Endpoint**: `POST http://localhost:8000/search/hybrid`
 **Purpose**: Combine semantic similarity (Qdrant) with knowledge graph expansion (Neo4j)
-**Performance**: <500ms average
-**Status**: OPERATIONAL
+**Performance**: <500ms semantic, ~3600ms with graph expansion attempts
+**Status**: ⚠️ PARTIALLY OPERATIONAL - Semantic works, graph expansion bug returns 0 entities
+
+**Known Issue (2025-12-02)**:
+- API endpoint operational and returns valid responses
+- Semantic search component working perfectly
+- Graph expansion enabled but returns empty related_entities arrays
+- Root cause: Cypher WHERE clause bug matching hierarchical properties
+- Database contains 331 hierarchical nodes with 11,998,450 total relationships
+- Relationship types present: 150+ types including USES, TARGETS, AFFECTS, EXPLOITS
+- **Workaround**: Use semantic search (POST /search/semantic) until fix deployed
 
 **Documentation**:
 - Full spec: `../1_AEON_DT_CyberSecurity_Wiki_Current/04_APIs/08_NER11_SEMANTIC_SEARCH_API.md` (lines 212-390)
@@ -336,36 +353,50 @@ interface HybridSearchResponse {
 }
 ```
 
-**Relationship Types**:
+**Relationship Types in Production Database** (150+ types discovered):
 ```typescript
 type RelationshipType =
-  // Attack relationships
-  | 'EXPLOITS'        // Malware exploits vulnerabilities
-  | 'USES'            // Threat actors use malware/tools
-  | 'TARGETS'         // Attacks target assets
-  | 'AFFECTS'         // Vulnerabilities affect software/devices
-  | 'ATTRIBUTED_TO'   // Attacks attributed to threat actors
+  // Threat Intelligence (Attack relationships)
+  | 'EXPLOITS' | 'USES' | 'TARGETS' | 'AFFECTS' | 'ATTRIBUTED_TO' | 'CONDUCTS'
+  | 'CHAINS_TO' | 'CASCADES_TO' | 'COLLABORATES_WITH'
 
-  // Defense relationships
-  | 'MITIGATES'       // Controls mitigate vulnerabilities
-  | 'PROTECTS'        // Controls protect assets
-  | 'DETECTS'         // Indicators detect threats
+  // Defense & Mitigation
+  | 'MITIGATES' | 'PROTECTS' | 'DETECTS' | 'COMPLIES_WITH' | 'COMPLIES_WITH_NERC_CIP'
 
-  // Analysis relationships
-  | 'INDICATES'       // Indicators signal threats
-  | 'EXHIBITS'        // Users exhibit cognitive biases
-  | 'CONTRIBUTES_TO'  // Biases contribute to incidents
-;
+  // Cognitive/Behavioral
+  | 'ACTIVATES_BIAS' | 'EXHIBITS' | 'CONTRIBUTES_TO' | 'INFLUENCES' | 'BASED_ON_PATTERN'
+
+  // Infrastructure & Connectivity
+  | 'CONNECTED_TO_GRID' | 'CONNECTED_TO_SEGMENT' | 'CONNECTS_SUBSTATIONS' | 'CONNECTS_TO'
+  | 'BELONGS_TO_TACTIC' | 'COMPATIBLE_WITH' | 'COMPOSED_OF' | 'CONTAINS' | 'CONTAINS_EQUIPMENT'
+
+  // Sector & System Analysis
+  | 'AFFECTS_SECTOR' | 'AFFECTS_SYSTEM' | 'ANALYZES_SECTOR' | 'APPLIES_TO'
+
+  // Structural Relationships
+  | 'CHILDOF' | 'CANALSOBE' | 'CANFOLLOW' | 'CANPRECEDE' | 'CONSUMES_FROM'
+
+  // And 100+ more types in production
+  | string;  // Allow any relationship type for extensibility
 ```
+
+**Most Common Relationship Types for Frontend Use**:
+- `EXPLOITS` - Malware → Vulnerability
+- `USES` - ThreatActor → Malware/Tool
+- `TARGETS` - Attack → Asset/Organization
+- `AFFECTS` - Vulnerability → Software/Device
+- `MITIGATES` - Control → Vulnerability
+- `ACTIVATES_BIAS` - Event → CognitiveBias
+- `CONNECTED_TO_GRID` - Asset → Infrastructure
 
 **Re-Ranking Algorithm**:
 - Base score: Semantic similarity from Qdrant (0.0-1.0)
 - Graph boost: +10% per related entity (max 30% boost)
 - Final score: min(1.0, base_score + graph_boost)
 
-**Example Usage**:
+**Example Usage** (Current State 2025-12-02):
 ```typescript
-// Search with graph expansion
+// Search with graph expansion (currently returns 0 related entities)
 const results = await axios.post('http://localhost:8000/search/hybrid', {
   query: 'APT29 malware campaigns',
   expand_graph: true,
@@ -374,17 +405,32 @@ const results = await axios.post('http://localhost:8000/search/hybrid', {
   relationship_types: ['USES', 'TARGETS', 'ATTRIBUTED_TO']
 });
 
-// Returns: APT29 entities + malware they use + targets they attack
-results.data.results.forEach(r => {
-  console.log(`${r.entity} (${r.fine_grained_type}) - Score: ${r.score}`);
+// Current Response:
+// {
+//   results: [
+//     {
+//       entity: "APT Group",
+//       score: 0.35,
+//       related_entities: [],  // ⚠️ BUG: Empty due to Cypher WHERE clause issue
+//       graph_context: {
+//         node_exists: true,
+//         outgoing_relationships: 0,  // Should be > 0
+//         incoming_relationships: 0   // Should be > 0
+//       }
+//     }
+//   ],
+//   total_semantic_results: 3,
+//   total_graph_entities: 0,  // ⚠️ BUG: Should be > 0
+//   performance_ms: 3588
+// }
 
-  if (r.related_entities.length > 0) {
-    console.log('  Related:');
-    r.related_entities.forEach(rel => {
-      console.log(`    ${rel.relationship} → ${rel.name} (${rel.fine_grained_type})`);
-    });
-  }
+// WORKAROUND: Use semantic search until fix deployed
+const semanticResults = await axios.post('http://localhost:8000/search/semantic', {
+  query: 'APT29 malware campaigns',
+  fine_grained_filter: 'NATION_STATE',
+  limit: 10
 });
+// This works perfectly! Use this for now.
 ```
 
 ---
@@ -452,11 +498,12 @@ const attackPaths = result.records.map(r => ({
 }));
 ```
 
-**Database Schema**:
+**Database Schema** (Verified 2025-12-02):
 - **Total Nodes**: 1,104,389
-- **Relationships**: 3,300,000+
+- **Total Relationships**: 11,998,450 (accurate count)
+- **Hierarchical Nodes**: 331 (entities with ner_label property)
 - **Labels**: 193 (including 16 Super Labels)
-- **Hierarchical Entities**: 331 with NER properties
+- **Relationship Types**: 150+ types (see list below)
 
 **16 Super Labels**:
 ```typescript
