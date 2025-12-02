@@ -210,9 +210,9 @@ RETURN n.id,
        -1 * n.vulnerability_score as field_energy
 ```
 
-### 5.3 RUV-Swarm as the Predictor Engine
-The **RUV-Swarm** system provides the computational substrate for running the simulations.
-*   **Agent-Based Modeling (ABM)**: Each RUV-Swarm agent represents a node in the Ising/Schelling model.
+### 5.3 gGNN the Predictor Engine
+The **gGNN** system provides the computational substrate for running the simulations.
+*   **Agent-Based Modeling (ABM)**: Each gGNN agent represents a node in the Ising/Schelling model.
 *   **Neural Forecasting**: Agents use LSTM/Transformer models to predict the evolution of $h_i(t)$.
 *   **WASM Optimization**: Simulations run at near-native speed using WebAssembly.
 
@@ -220,7 +220,7 @@ The **RUV-Swarm** system provides the computational substrate for running the si
 
 ## 6. Conclusion & Roadmap
 
-The **Psychohistory Readiness Matrix** demonstrates that AEON is currently at **Level 2 (Topological)** readiness, with components of **Level 3 (Dynamical)** via RUV-Swarm. To achieve **Level 5 (Psychohistorical)** capability, we must:
+The **Psychohistory Readiness Matrix** demonstrates that AEON is currently at **Level 2 (Topological)** readiness, with components of **Level 3 (Dynamical)** via gGNN. To achieve **Level 5 (Psychohistorical)** capability, we must:
 
 1.  **Complete NER11 Training**: Ensure high-fidelity entity extraction (F1 > 90%).
 2.  **Populate the Graph**: Ingest the 76k+ documents into Neo4j.
