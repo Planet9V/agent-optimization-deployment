@@ -1,9 +1,30 @@
+"""
+NER11 Gold Standard API with Hybrid Search
+==========================================
+
+High-performance Named Entity Recognition API using the NER11 Gold Standard Model.
+Features:
+- Entity extraction (60 NER labels, 566 fine-grained types)
+- Semantic search (Qdrant vector similarity)
+- Hybrid search (Qdrant + Neo4j graph expansion)
+- Hierarchical filtering (Tier 1, Tier 2, Tier 3)
+
+Version: 3.0.0 (Phase 3: Hybrid Search)
+"""
+
 import spacy
 from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List, Dict, Any, Optional
 import os
 import sys
+from neo4j import GraphDatabase
+from neo4j.exceptions import Neo4jError
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Add pipelines directory to Python path for imports
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'pipelines'))
@@ -34,18 +55,22 @@ except ImportError:
 # Initialize FastAPI app
 app = FastAPI(
     title="NER11 Gold Standard API",
-    description="High-performance Named Entity Recognition API using the NER11 Gold Standard Model with Hierarchical Semantic Search.",
-    version="2.0.0"
+    description="High-performance Named Entity Recognition API with Hierarchical Semantic Search and Neo4j Graph Expansion.",
+    version="3.0.0"
 )
 
 # Global model variables
 nlp = None
 embedding_service = None
+neo4j_driver = None
 MODEL_PATH = os.getenv("MODEL_PATH", "models/ner11_v3/model-best")
+NEO4J_URI = os.getenv("NEO4J_URI", "bolt://localhost:7687")
+NEO4J_USER = os.getenv("NEO4J_USER", "neo4j")
+NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD", "neo4j@openspg")
 
 @app.on_event("startup")
 async def load_model():
-    global nlp, embedding_service
+    global nlp, embedding_service, neo4j_driver
     try:
         print(f"Loading NER11 Gold Standard model from {MODEL_PATH}...")
         nlp = spacy.load(MODEL_PATH)
@@ -66,9 +91,32 @@ async def load_model():
                 print(f"⚠️  Warning: Could not initialize embedding service: {emb_error}")
                 print("   Semantic search endpoint will be disabled.")
 
+        # Initialize Neo4j connection for hybrid search
+        try:
+            print(f"Connecting to Neo4j at {NEO4J_URI}...")
+            neo4j_driver = GraphDatabase.driver(
+                NEO4J_URI,
+                auth=(NEO4J_USER, NEO4J_PASSWORD)
+            )
+            # Verify connection
+            with neo4j_driver.session() as session:
+                session.run("RETURN 1")
+            print("✅ Neo4j connection established successfully!")
+        except Exception as neo4j_error:
+            print(f"⚠️  Warning: Could not connect to Neo4j: {neo4j_error}")
+            print("   Hybrid search graph expansion will be disabled.")
+            neo4j_driver = None
+
     except Exception as e:
         print(f"❌ Error loading model: {e}")
         raise RuntimeError(f"Failed to load model: {e}")
+
+@app.on_event("shutdown")
+async def shutdown():
+    global neo4j_driver
+    if neo4j_driver:
+        neo4j_driver.close()
+        print("Neo4j connection closed.")
 
 class TextRequest(BaseModel):
     text: str
@@ -108,6 +156,64 @@ class SemanticSearchResponse(BaseModel):
     query: str
     filters_applied: Dict[str, Any]
     total_results: int
+
+
+# ============================================================================
+# HYBRID SEARCH MODELS (Task 3.1 - Phase 3)
+# ============================================================================
+
+class HybridSearchRequest(BaseModel):
+    """Request model for hybrid search combining semantic + graph expansion."""
+    query: str = Field(..., description="Search query text")
+    limit: int = Field(default=10, ge=1, le=100, description="Max semantic results")
+    expand_graph: bool = Field(default=True, description="Enable Neo4j graph expansion")
+    hop_depth: int = Field(default=2, ge=1, le=3, description="Graph traversal depth (1-3 hops)")
+    label_filter: Optional[str] = Field(default=None, description="Tier 1: NER label filter")
+    fine_grained_filter: Optional[str] = Field(default=None, description="Tier 2: Fine-grained type filter")
+    confidence_threshold: float = Field(default=0.0, ge=0.0, le=1.0, description="Min confidence")
+    relationship_types: Optional[List[str]] = Field(
+        default=None,
+        description="Relationship types to follow (EXPLOITS, USES, TARGETS, AFFECTS, ATTRIBUTED_TO, MITIGATES, INDICATES)"
+    )
+
+
+class GraphEntity(BaseModel):
+    """Entity from Neo4j graph expansion."""
+    name: str
+    label: str
+    ner_label: Optional[str] = None
+    fine_grained_type: Optional[str] = None
+    hierarchy_path: Optional[str] = None
+    hop_distance: int
+    relationship: str
+    relationship_direction: str  # "outgoing" or "incoming"
+
+
+class HybridSearchResult(BaseModel):
+    """Individual hybrid search result with graph context."""
+    # Semantic match
+    score: float
+    entity: str
+    ner_label: str
+    fine_grained_type: str
+    hierarchy_path: str
+    confidence: float
+    doc_id: str
+    # Graph expansion
+    related_entities: List[GraphEntity] = []
+    graph_context: Dict[str, Any] = {}
+
+
+class HybridSearchResponse(BaseModel):
+    """Response model for hybrid search."""
+    results: List[HybridSearchResult]
+    query: str
+    filters_applied: Dict[str, Any]
+    total_semantic_results: int
+    total_graph_entities: int
+    graph_expansion_enabled: bool
+    hop_depth: int
+    performance_ms: float
 
 @app.post("/ner", response_model=NerResponse)
 async def extract_entities(request: TextRequest):
@@ -194,6 +300,275 @@ async def semantic_search(request: SemanticSearchRequest):
             status_code=500,
             detail=f"Semantic search failed: {str(e)}"
         )
+
+
+# ============================================================================
+# HYBRID SEARCH ENDPOINT (Task 3.1 - Phase 3)
+# ============================================================================
+
+def expand_graph_for_entity(entity_name: str, hop_depth: int = 2, relationship_types: Optional[List[str]] = None) -> List[GraphEntity]:
+    """
+    Expand Neo4j graph around an entity to find related entities.
+
+    Args:
+        entity_name: Name of the seed entity
+        hop_depth: How many hops to traverse (1-3)
+        relationship_types: Specific relationships to follow (None = all)
+
+    Returns:
+        List of related entities with relationship info
+    """
+    if not neo4j_driver:
+        return []
+
+    related = []
+
+    try:
+        with neo4j_driver.session() as session:
+            # Build relationship pattern
+            if relationship_types:
+                rel_pattern = "|".join(relationship_types)
+                rel_clause = f"[r:{rel_pattern}*1..{hop_depth}]"
+            else:
+                rel_clause = f"[r*1..{hop_depth}]"
+
+            # Query for outgoing relationships
+            outgoing_query = f"""
+            MATCH (source {{name: $name}})-{rel_clause}->(target)
+            WHERE source <> target
+            WITH DISTINCT target,
+                 [rel IN relationships((source)-{rel_clause}->(target)) | type(rel)] AS rel_types,
+                 length(shortestPath((source)-{rel_clause}->(target))) AS distance
+            RETURN target.name AS name,
+                   labels(target)[0] AS label,
+                   target.ner_label AS ner_label,
+                   target.fine_grained_type AS fine_grained_type,
+                   target.hierarchy_path AS hierarchy_path,
+                   distance,
+                   rel_types[0] AS relationship
+            LIMIT 20
+            """
+
+            result = session.run(outgoing_query, name=entity_name)
+            for record in result:
+                if record["name"]:
+                    related.append(GraphEntity(
+                        name=record["name"],
+                        label=record["label"] or "Unknown",
+                        ner_label=record["ner_label"],
+                        fine_grained_type=record["fine_grained_type"],
+                        hierarchy_path=record["hierarchy_path"],
+                        hop_distance=record["distance"] or 1,
+                        relationship=record["relationship"] or "RELATED_TO",
+                        relationship_direction="outgoing"
+                    ))
+
+            # Query for incoming relationships
+            incoming_query = f"""
+            MATCH (source)-{rel_clause}->(target {{name: $name}})
+            WHERE source <> target
+            WITH DISTINCT source,
+                 [rel IN relationships((source)-{rel_clause}->(target)) | type(rel)] AS rel_types,
+                 length(shortestPath((source)-{rel_clause}->(target))) AS distance
+            RETURN source.name AS name,
+                   labels(source)[0] AS label,
+                   source.ner_label AS ner_label,
+                   source.fine_grained_type AS fine_grained_type,
+                   source.hierarchy_path AS hierarchy_path,
+                   distance,
+                   rel_types[0] AS relationship
+            LIMIT 20
+            """
+
+            result = session.run(incoming_query, name=entity_name)
+            for record in result:
+                if record["name"]:
+                    related.append(GraphEntity(
+                        name=record["name"],
+                        label=record["label"] or "Unknown",
+                        ner_label=record["ner_label"],
+                        fine_grained_type=record["fine_grained_type"],
+                        hierarchy_path=record["hierarchy_path"],
+                        hop_distance=record["distance"] or 1,
+                        relationship=record["relationship"] or "RELATED_TO",
+                        relationship_direction="incoming"
+                    ))
+
+    except Neo4jError as e:
+        logger.warning(f"Neo4j graph expansion error: {e}")
+    except Exception as e:
+        logger.warning(f"Graph expansion error: {e}")
+
+    return related
+
+
+def get_graph_context(entity_name: str) -> Dict[str, Any]:
+    """
+    Get additional graph context for an entity.
+
+    Args:
+        entity_name: Name of the entity
+
+    Returns:
+        Dictionary with graph statistics and metadata
+    """
+    if not neo4j_driver:
+        return {}
+
+    context = {
+        "node_exists": False,
+        "outgoing_relationships": 0,
+        "incoming_relationships": 0,
+        "labels": [],
+        "properties": {}
+    }
+
+    try:
+        with neo4j_driver.session() as session:
+            # Check node existence and get properties
+            result = session.run("""
+                MATCH (n {name: $name})
+                RETURN labels(n) AS labels,
+                       n.ner_label AS ner_label,
+                       n.fine_grained_type AS fine_grained_type,
+                       n.tier AS tier,
+                       size([(n)-[]->() | 1]) AS outgoing,
+                       size([(n)<-[]-() | 1]) AS incoming
+            """, name=entity_name)
+
+            record = result.single()
+            if record:
+                context["node_exists"] = True
+                context["labels"] = record["labels"] or []
+                context["outgoing_relationships"] = record["outgoing"] or 0
+                context["incoming_relationships"] = record["incoming"] or 0
+                context["properties"] = {
+                    "ner_label": record["ner_label"],
+                    "fine_grained_type": record["fine_grained_type"],
+                    "tier": record["tier"]
+                }
+
+    except Exception as e:
+        logger.warning(f"Graph context error: {e}")
+
+    return context
+
+
+@app.post("/search/hybrid", response_model=HybridSearchResponse)
+async def hybrid_search(request: HybridSearchRequest):
+    """
+    Hybrid search combining semantic similarity (Qdrant) with graph expansion (Neo4j).
+
+    This is the core Phase 3 feature that provides:
+    1. Semantic search via Qdrant vector similarity
+    2. Graph expansion via Neo4j relationship traversal
+    3. Re-ranking based on combined scores
+    4. Hierarchical filtering (Tier 1 + Tier 2)
+
+    Example usage:
+    ```
+    POST /search/hybrid
+    {
+        "query": "APT29 ransomware attack",
+        "expand_graph": true,
+        "hop_depth": 2,
+        "relationship_types": ["USES", "TARGETS", "ATTRIBUTED_TO"]
+    }
+    ```
+
+    Returns entities with their graph context and related entities.
+    Performance target: <500ms.
+    """
+    import time
+    start_time = time.time()
+
+    if not embedding_service:
+        raise HTTPException(
+            status_code=503,
+            detail="Semantic search service not available. Ensure Qdrant is running."
+        )
+
+    try:
+        # Step 1: Execute semantic search via Qdrant
+        semantic_results = embedding_service.semantic_search(
+            query=request.query,
+            limit=request.limit,
+            ner_label=request.label_filter,
+            fine_grained_type=request.fine_grained_filter,
+            min_confidence=request.confidence_threshold
+        )
+
+        # Step 2: Enrich with graph expansion if enabled
+        hybrid_results = []
+        total_graph_entities = 0
+
+        for sr in semantic_results:
+            entity_name = sr.get("entity", "")
+
+            # Get related entities from Neo4j graph
+            related_entities = []
+            graph_context = {}
+
+            if request.expand_graph and neo4j_driver:
+                related_entities = expand_graph_for_entity(
+                    entity_name=entity_name,
+                    hop_depth=request.hop_depth,
+                    relationship_types=request.relationship_types
+                )
+                graph_context = get_graph_context(entity_name)
+                total_graph_entities += len(related_entities)
+
+            # Build hybrid result
+            hybrid_result = HybridSearchResult(
+                score=sr.get("score", 0.0),
+                entity=entity_name,
+                ner_label=sr.get("ner_label", ""),
+                fine_grained_type=sr.get("fine_grained_type", ""),
+                hierarchy_path=sr.get("hierarchy_path", ""),
+                confidence=sr.get("confidence", 0.0),
+                doc_id=sr.get("doc_id", ""),
+                related_entities=related_entities,
+                graph_context=graph_context
+            )
+            hybrid_results.append(hybrid_result)
+
+        # Step 3: Re-rank results (semantic score + graph connectivity boost)
+        for result in hybrid_results:
+            graph_boost = min(0.1 * len(result.related_entities), 0.3)  # Max 30% boost
+            result.score = min(1.0, result.score + graph_boost)
+
+        # Sort by adjusted score
+        hybrid_results.sort(key=lambda x: x.score, reverse=True)
+
+        # Calculate performance
+        elapsed_ms = (time.time() - start_time) * 1000
+
+        # Build response
+        filters_applied = {
+            "label_filter": request.label_filter,
+            "fine_grained_filter": request.fine_grained_filter,
+            "confidence_threshold": request.confidence_threshold,
+            "relationship_types": request.relationship_types
+        }
+
+        return HybridSearchResponse(
+            results=hybrid_results,
+            query=request.query,
+            filters_applied=filters_applied,
+            total_semantic_results=len(semantic_results),
+            total_graph_entities=total_graph_entities,
+            graph_expansion_enabled=request.expand_graph and neo4j_driver is not None,
+            hop_depth=request.hop_depth,
+            performance_ms=round(elapsed_ms, 2)
+        )
+
+    except Exception as e:
+        logger.error(f"Hybrid search failed: {e}")
+        raise HTTPException(
+            status_code=500,
+            detail=f"Hybrid search failed: {str(e)}"
+        )
+
 
 @app.get("/health")
 async def health_check():
