@@ -864,13 +864,123 @@ ab -n 500 -c 25 -p hybrid_query.json -T application/json \
 
 ---
 
+## Docker Deployment Configuration
+
+### NER11 Gold API Container
+
+**Docker Compose**: `/home/jim/2_OXOT_Projects_Dev/5_NER11_Gold_Model/docker/docker-compose.yml`
+
+```yaml
+services:
+  ner11-gold-api:
+    image: ner11-gold-api:latest
+    container_name: ner11-gold-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../:/app
+    working_dir: /app
+    environment:
+      - MODEL_PATH=models/ner11_v3/model-best
+      - NVIDIA_VISIBLE_DEVICES=all  # GPU support
+    networks:
+      - aeon-net  # Shared with openspg-neo4j, openspg-qdrant
+    shm_size: '8gb'
+```
+
+**Container Status**:
+```bash
+$ docker ps --filter "name=ner11"
+NAMES            STATUS                  PORTS
+ner11-gold-api   Up 23 hours (healthy)   0.0.0.0:8000->8000/tcp
+```
+
+**Resource Allocation**:
+- CPU: 2-4 cores
+- Memory: 4-8GB (SHM: 8GB for GPU)
+- Storage: Mounted volume (model files + code)
+- GPU: NVIDIA GPU support enabled
+
+### Qdrant Container
+
+**Container**: `openspg-qdrant`
+**Docker Compose**: `/home/jim/2_OXOT_Projects_Dev/openspg-official_neo4j/docker-compose.yml`
+
+```yaml
+# Part of OpenSPG stack
+openspg-qdrant:
+  image: qdrant/qdrant:latest
+  container_name: openspg-qdrant
+  ports:
+    - "6333:6333"  # HTTP API
+    - "6334:6334"  # gRPC API
+  volumes:
+    - qdrant_storage:/qdrant/storage
+  networks:
+    - aeon-net
+```
+
+**Container Status**:
+```bash
+$ docker ps --filter "name=qdrant"
+NAMES            STATUS                    PORTS
+openspg-qdrant   Up 24 hours (unhealthy)   0.0.0.0:6333-6334->6333-6334/tcp
+```
+
+**Collections**:
+- `ner11_entities_hierarchical` - 16 points, 8 payload indexes
+- `aeon_session_state` - Session management
+- `development_process` - Development tracking
+
+### Neo4j Container
+
+**Container**: `openspg-neo4j` (or `release-openspg-neo4j`)
+**Docker Compose**: `/home/jim/2_OXOT_Projects_Dev/openspg-official_neo4j/docker-compose.yml`
+
+```yaml
+neo4j:
+  image: spg-registry.cn-hangzhou.cr.aliyuncs.com/spg/openspg-neo4j:latest
+  container_name: release-openspg-neo4j
+  ports:
+    - "7474:7474"  # HTTP
+    - "7687:7687"  # Bolt
+  environment:
+    - NEO4J_AUTH=neo4j/neo4j@openspg
+    - NEO4J_PLUGINS=["apoc"]
+    - NEO4J_server_memory_heap_max__size=4G
+    - NEO4J_server_memory_pagecache_size=1G
+  networks:
+    - aeon-net
+```
+
+**Database State**:
+- Nodes: 1,104,066+
+- Relationships: 3,300,000+
+- Labels: 193
+- Schema: v3.1 (with hierarchical properties)
+
+### Docker Network: aeon-net
+
+**Network Type**: External bridge network (shared across all services)
+
+**Connected Containers**:
+- `ner11-gold-api` - NER extraction and search API
+- `openspg-qdrant` - Vector database
+- `openspg-neo4j` (or `release-openspg-neo4j`) - Knowledge graph
+- `openspg-server` - OpenSPG orchestration
+- `openspg-mysql` - OpenSPG metadata
+- `openspg-minio` - Object storage
+
+---
+
 ## Current Operational Status
 
 **Deployment Date**: 2025-12-01 21:00 UTC
+**Last Verified**: 2025-12-02 03:57 UTC
 
 **Services Running**:
-- ✅ NER11 Gold API v3.0.0
-- ✅ Qdrant vector database
+- ✅ NER11 Gold API v3.0.0 (Up 23 hours, healthy)
+- ✅ Qdrant vector database (Up 24 hours, 16 points)
 - ✅ Neo4j knowledge graph (1.1M+ nodes)
 - ✅ Hierarchical entity processor
 - ✅ Semantic search endpoint
