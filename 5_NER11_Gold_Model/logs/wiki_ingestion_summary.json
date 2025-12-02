@@ -1,49 +1,214 @@
 {
-  "documents_processed": 5,
-  "documents_successful": 3,
-  "total_entities_qdrant": 466,
-  "total_entities_neo4j": 466,
+  "documents_processed": 20,
+  "documents_successful": 18,
+  "total_entities_qdrant": 3181,
+  "total_entities_neo4j": 3181,
   "results": [
     {
+      "status": "no_entities",
+      "entities_extracted": 0
+    },
+    {
+      "status": "no_entities",
+      "entities_extracted": 0
+    },
+    {
       "status": "success",
-      "doc_id": "wiki_QUERIES_LIBRARY_UPDATE_SUMMARY",
-      "entities_extracted": 128,
-      "entities_enriched": 128,
-      "qdrant_stored": 128,
-      "neo4j_stored": 128,
-      "tier1_unique": 19,
-      "tier2_unique": 19,
+      "doc_id": "wiki_DigitalAI-Application-Security-Threat-Report-2025",
+      "entities_extracted": 162,
+      "entities_enriched": 162,
+      "qdrant_stored": 162,
+      "neo4j_stored": 162,
+      "tier1_unique": 23,
+      "tier2_unique": 24,
       "hierarchy_valid": true
     },
     {
       "status": "success",
-      "doc_id": "wiki_WIKI_COMPLETE_SUMMARY",
-      "entities_extracted": 68,
-      "entities_enriched": 68,
-      "qdrant_stored": 68,
-      "neo4j_stored": 68,
-      "tier1_unique": 14,
-      "tier2_unique": 14,
+      "doc_id": "wiki_Cyentia-Information-Risk-Insights-Study-2025",
+      "entities_extracted": 196,
+      "entities_enriched": 196,
+      "qdrant_stored": 196,
+      "neo4j_stored": 196,
+      "tier1_unique": 18,
+      "tier2_unique": 18,
       "hierarchy_valid": true
     },
     {
       "status": "success",
-      "doc_id": "wiki_WIKI_INDEX_2025_11_12",
-      "entities_extracted": 270,
-      "entities_enriched": 270,
-      "qdrant_stored": 270,
-      "neo4j_stored": 270,
+      "doc_id": "wiki_Comptia-State-of-Cybersecurity-2025",
+      "entities_extracted": 179,
+      "entities_enriched": 179,
+      "qdrant_stored": 179,
+      "neo4j_stored": 179,
       "tier1_unique": 22,
+      "tier2_unique": 23,
+      "hierarchy_valid": true
+    },
+    {
+      "status": "success",
+      "doc_id": "wiki_Sysdig-Cloud-Native-Security-Report-2025",
+      "entities_extracted": 143,
+      "entities_enriched": 143,
+      "qdrant_stored": 143,
+      "neo4j_stored": 143,
+      "tier1_unique": 21,
+      "tier2_unique": 21,
+      "hierarchy_valid": true
+    },
+    {
+      "status": "success",
+      "doc_id": "wiki_Team8-CISO-Survey-2025",
+      "entities_extracted": 178,
+      "entities_enriched": 178,
+      "qdrant_stored": 178,
+      "neo4j_stored": 178,
+      "tier1_unique": 20,
+      "tier2_unique": 20,
+      "hierarchy_valid": true
+    },
+    {
+      "status": "success",
+      "doc_id": "wiki_Guidepoint-Ransomware-Annual_Report-2025",
+      "entities_extracted": 201,
+      "entities_enriched": 201,
+      "qdrant_stored": 201,
+      "neo4j_stored": 201,
+      "tier1_unique": 24,
+      "tier2_unique": 24,
+      "hierarchy_valid": true
+    },
+    {
+      "status": "success",
+      "doc_id": "wiki_WatchGuard-Threat-Report-2025",
+      "entities_extracted": 91,
+      "entities_enriched": 91,
+      "qdrant_stored": 91,
+      "neo4j_stored": 91,
+      "tier1_unique": 15,
+      "tier2_unique": 16,
+      "hierarchy_valid": true
+    },
+    {
+      "status": "success",
+      "doc_id": "wiki_CrowdStrike-Threat-Hunting-Report-2025",
+      "entities_extracted": 151,
+      "entities_enriched": 151,
+      "qdrant_stored": 151,
+      "neo4j_stored": 151,
+      "tier1_unique": 21,
       "tier2_unique": 22,
       "hierarchy_valid": true
     },
     {
-      "status": "no_entities",
-      "entities_extracted": 0
+      "status": "success",
+      "doc_id": "wiki_Trustwave-Hospitality-Risk-Radar-2025",
+      "entities_extracted": 234,
+      "entities_enriched": 234,
+      "qdrant_stored": 234,
+      "neo4j_stored": 234,
+      "tier1_unique": 27,
+      "tier2_unique": 28,
+      "hierarchy_valid": true
     },
     {
-      "status": "no_entities",
-      "entities_extracted": 0
+      "status": "success",
+      "doc_id": "wiki_Edgescan-Midyear-Vulnerability-Statistics-Report-2025",
+      "entities_extracted": 151,
+      "entities_enriched": 151,
+      "qdrant_stored": 151,
+      "neo4j_stored": 151,
+      "tier1_unique": 18,
+      "tier2_unique": 18,
+      "hierarchy_valid": true
+    },
+    {
+      "status": "success",
+      "doc_id": "wiki_Cisco-Cyber-Threats-Trends-Report-2025",
+      "entities_extracted": 168,
+      "entities_enriched": 168,
+      "qdrant_stored": 168,
+      "neo4j_stored": 168,
+      "tier1_unique": 20,
+      "tier2_unique": 22,
+      "hierarchy_valid": true
+    },
+    {
+      "status": "success",
+      "doc_id": "wiki_Picus-RedReport-2025",
+      "entities_extracted": 231,
+      "entities_enriched": 231,
+      "qdrant_stored": 231,
+      "neo4j_stored": 231,
+      "tier1_unique": 23,
+      "tier2_unique": 26,
+      "hierarchy_valid": true
+    },
+    {
+      "status": "success",
+      "doc_id": "wiki_ODNI-Annual-Threat-Assessment-2025",
+      "entities_extracted": 158,
+      "entities_enriched": 158,
+      "qdrant_stored": 158,
+      "neo4j_stored": 158,
+      "tier1_unique": 24,
+      "tier2_unique": 25,
+      "hierarchy_valid": true
+    },
+    {
+      "status": "success",
+      "doc_id": "wiki_LegitSecurity-State-of-Application-Risk-Report-2025",
+      "entities_extracted": 160,
+      "entities_enriched": 160,
+      "qdrant_stored": 160,
+      "neo4j_stored": 160,
+      "tier1_unique": 18,
+      "tier2_unique": 18,
+      "hierarchy_valid": true
+    },
+    {
+      "status": "success",
+      "doc_id": "wiki_SANS-Cyber-Threat-Hunting-Survey-2025",
+      "entities_extracted": 289,
+      "entities_enriched": 289,
+      "qdrant_stored": 289,
+      "neo4j_stored": 289,
+      "tier1_unique": 22,
+      "tier2_unique": 23,
+      "hierarchy_valid": true
+    },
+    {
+      "status": "success",
+      "doc_id": "wiki_Mandiant-M-Trends-2025",
+      "entities_extracted": 182,
+      "entities_enriched": 182,
+      "qdrant_stored": 182,
+      "neo4j_stored": 182,
+      "tier1_unique": 22,
+      "tier2_unique": 23,
+      "hierarchy_valid": true
+    },
+    {
+      "status": "success",
+      "doc_id": "wiki_Splunk-State-of-Security-2025",
+      "entities_extracted": 84,
+      "entities_enriched": 84,
+      "qdrant_stored": 84,
+      "neo4j_stored": 84,
+      "tier1_unique": 17,
+      "tier2_unique": 17,
+      "hierarchy_valid": true
+    },
+    {
+      "status": "success",
+      "doc_id": "wiki_ReliaQuest-Annual-Threat-Report-2025",
+      "entities_extracted": 223,
+      "entities_enriched": 223,
+      "qdrant_stored": 223,
+      "neo4j_stored": 223,
+      "tier1_unique": 25,
+      "tier2_unique": 27,
+      "hierarchy_valid": true
     }
   ]
 }
