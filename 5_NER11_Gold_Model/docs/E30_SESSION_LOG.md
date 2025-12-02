@@ -17,14 +17,15 @@
 
 ---
 
-## Final Statistics
+## Final Statistics (Including Retries)
 
 | Metric | Value |
 |--------|-------|
 | Baseline Entities | 49,139 |
-| Final Entities | 186,532 |
-| Entity Growth | +137,393 (279.6%) |
-| Documents Processed | 763/957 (79.7%) |
+| Final Entities | 189,932 |
+| Entity Growth | +140,793 (286.5%) |
+| Documents Processed | 780/957 (81.5%) |
+| Retry Gain | +17 docs, +3,400 entities |
 | Overall Grade | **B+** |
 
 ---
@@ -109,9 +110,26 @@
 
 ---
 
+## Retry Results
+
+### Batch 4 Retry (Threat Research)
+- **Attempted**: 183 documents
+- **New Successes**: 8 documents (+1,646 entities)
+- **Still Failed**: ~167 documents
+- **Reason**: API crashed again under load
+
+### Batch 5 Retry (Organizations)
+- **Attempted**: 28 documents
+- **New Successes**: 9 documents (+1,754 entities)
+- **Still Failed**: ~10 documents
+- **Reason**: API crashed again under load
+
+---
+
 ## Next Session Tasks
 
-- [ ] Retry failed Batch 4 documents (~175 docs)
-- [ ] Retry failed Batch 5 documents (~19 docs)
+- [ ] Process remaining Batch 4 documents (~167 docs) in smaller batches
+- [ ] Process remaining Batch 5 documents (~10 docs) in smaller batches
 - [ ] Investigate API memory optimization
 - [ ] Consider implementing batch size throttling
+- [ ] Add document size filtering (process smaller docs first)
