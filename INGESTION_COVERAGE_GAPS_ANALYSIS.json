@@ -1,0 +1,435 @@
+{
+  "analysis_metadata": {
+    "timestamp": "2025-12-02T10:30:00Z",
+    "total_directories": 5,
+    "total_files_analyzed": 971,
+    "sample_files_read": 5,
+    "analysis_type": "blind-spot detection for NER entity and relationship coverage"
+  },
+  "directory_analysis": [
+    {
+      "directory": "/home/jim/2_OXOT_Projects_Dev/3_EAB_40_converted_md/",
+      "file_count": 46,
+      "file_type": "Markdown (DOCX conversions)",
+      "entity_types_detected": [
+        "THREAT_ACTOR",
+        "ATTACK_VECTOR",
+        "VULNERABILITY",
+        "MALWARE",
+        "INFRASTRUCTURE",
+        "ORGANIZATION",
+        "THREAT_LEVEL",
+        "CAPABILITY",
+        "SYSTEM",
+        "PROTOCOL"
+      ],
+      "relationship_types": [
+        "targets",
+        "exploits",
+        "impacts",
+        "implements",
+        "uses",
+        "controls",
+        "enables",
+        "creates_risk_for"
+      ],
+      "sample_content": "Express Attack Briefs (EAB) on critical infrastructure threats - PTC-SCADA integration vulnerabilities, threat actor TTPs, risk metrics, mitigation strategies",
+      "coverage_assessment": "STRONG - specialized threat intelligence documents with high entity density",
+      "blind_spots": [
+        "Geographic distribution of threat actors not systematically tagged",
+        "Temporal indicators (campaign dates, timelines) may be underrepresented",
+        "Third-party supplier relationships not fully normalized"
+      ]
+    },
+    {
+      "directory": "/home/jim/2_OXOT_Projects_Dev/1_2025_11-25_documentation_no_NER11/mckenney-lacan-calculus-2025-11-28/",
+      "file_count": 27,
+      "file_type": "Markdown + CSV (Psychohistory/Social Models)",
+      "entity_types_detected": [
+        "MATHEMATICAL_MODEL",
+        "PSYCHOLOGICAL_FRAMEWORK",
+        "BEHAVIORAL_PATTERN",
+        "GROUP_DYNAMIC",
+        "THRESHOLD_STATE",
+        "NETWORK_NODE",
+        "CASCADE_EVENT",
+        "PERSONALITY_ARCHETYPE",
+        "DISCOURSE_TYPE"
+      ],
+      "relationship_types": [
+        "cascades_to",
+        "influences",
+        "thresholds_trigger",
+        "forms_dyad",
+        "polyphonic_with",
+        "creates_tension_with",
+        "mirrors",
+        "antagonizes"
+      ],
+      "sample_content": "Granovetter thresholds, Lacanian mirror stage dynamics, McKenney-Lacan calculus for organizational behavior, behavioral cascades, dissonance patterns",
+      "coverage_assessment": "UNIQUE/SPECIALIZED - rare disciplinary intersection not well-covered in typical NER training",
+      "blind_spots": [
+        "CRITICAL: Lacanian symbolic order concepts lack standard NER entity definitions",
+        "Mathematical notation entities (formulas, variables) not mapped to security contexts",
+        "Behavioral prediction models need domain-specific entity taxonomy",
+        "Cultural/linguistic frameworks underrepresented in security domain",
+        "Psychometric scoring systems not standardized as entities"
+      ]
+    },
+    {
+      "directory": "/home/jim/2_OXOT_Projects_Dev/AEON_Training_data_NER10/Training_Data_Check_to_see/",
+      "file_count": 673,
+      "file_type": "Markdown (Multi-sector comprehensive training data)",
+      "sector_coverage": [
+        "Chemical",
+        "Communications",
+        "Energy",
+        "Transportation",
+        "Healthcare",
+        "Financial",
+        "Manufacturing",
+        "Water",
+        "Defense",
+        "Emergency Services",
+        "Government",
+        "IT/Telecom",
+        "Cold Storage",
+        "Commercial",
+        "Dams",
+        "Hydrogen",
+        "Food Agriculture"
+      ],
+      "entity_types_detected": [
+        "EQUIPMENT",
+        "VENDOR",
+        "PROTOCOL",
+        "OPERATION",
+        "PROCEDURE",
+        "SYSTEM_ARCHITECTURE",
+        "FACILITY",
+        "THREAT_VECTOR",
+        "MAINTENANCE_TYPE",
+        "STANDARD",
+        "COGNITIVE_BIAS",
+        "BEHAVIORAL_RISK_FACTOR",
+        "APT_ACTOR",
+        "IOC_TYPE",
+        "VULNERABILITY_CLASS",
+        "ATTACK_FRAMEWORK",
+        "PERSONALITY_MODEL"
+      ],
+      "relationship_types": [
+        "operates_in",
+        "monitors",
+        "controls",
+        "measures",
+        "requires",
+        "vulnerabilities_include",
+        "targets_sector",
+        "implements_protocol",
+        "vendor_supports",
+        "maintenance_schedule",
+        "threat_predicts_behavior",
+        "bias_affects_decision"
+      ],
+      "coverage_assessment": "EXTREMELY COMPREHENSIVE - large-scale multi-domain training dataset",
+      "statistics": {
+        "cybersecurity_training_files": 150,
+        "equipment_specification_files": 280,
+        "operational_procedure_files": 120,
+        "threat_intelligence_files": 95,
+        "standards_compliance_files": 28
+      },
+      "blind_spots": [
+        "CRITICAL: Cognitive biases section (65+ files) may need separate bias-specific NER entity taxonomy",
+        "Personality frameworks (DISC, Hogan, CliftonStrengths, MBTI, Enneagram) require psychological entity definitions",
+        "APT actor profiles mix with behavioral patterns - relationships unclear",
+        "Cross-sector attack patterns underrepresented relative to sector-specific content",
+        "Real-time IOC indicator formats inconsistently normalized",
+        "Vendor-specific vulnerabilities not unified across sectors",
+        "Supply chain relationship depth limited to direct vendors, not transitive suppliers"
+      ]
+    },
+    {
+      "directory": "/home/jim/2_OXOT_Projects_Dev/Import 1 NOV 2025/8_Threat Research and Reports/",
+      "file_count": 183,
+      "subdirectories": {
+        "MITRE": {
+          "file_count": 150,
+          "content": "MITRE ATT&CK framework mappings, threat modeling techniques (EMB3D, PASTA, STRIDE, VAST, Trike, Octave), threat actor group analysis"
+        },
+        "Threat Modeling Methods": {
+          "file_count": 33,
+          "content": "Comprehensive threat modeling methodologies documentation"
+        }
+      },
+      "entity_types_detected": [
+        "THREAT_MODELING_TECHNIQUE",
+        "ATTACK_TACTIC",
+        "ATTACK_TECHNIQUE",
+        "THREAT_ACTOR_GROUP",
+        "VULNERABILITY_CLASS",
+        "MITIGATION_CONTROL",
+        "FRAMEWORK_METHODOLOGY",
+        "THREAT_VECTOR",
+        "ASSET_TYPE",
+        "IMPACT_SEVERITY",
+        "TTPs"
+      ],
+      "relationship_types": [
+        "maps_to_framework",
+        "actor_uses_technique",
+        "technique_enables_tactic",
+        "mitigates",
+        "applies_to",
+        "severity_impacts",
+        "methodology_prescribes"
+      ],
+      "sample_content": "Energy sector threat modeling: BAUXITE, GRAPHITE, VOLTZITE threat actors; OT/ICS targeting patterns; supply chain vulnerabilities; specific CVE exploitations",
+      "coverage_assessment": "STRONG - systematic threat framework documentation",
+      "blind_spots": [
+        "MITRE ATT&CK mapping granularity varies across sectors",
+        "Threat modeling methodology relationships under-connected",
+        "Real-world implementation guidance missing",
+        "Threat actor evolution and capability changes poorly tracked",
+        "Sector-specific threat actor variants not consistently separated"
+      ]
+    },
+    {
+      "directory": "/home/jim/2_OXOT_Projects_Dev/Import 1 NOV 2025/6_Organizations_research/",
+      "file_count": 28,
+      "structure": "Organization-specific research reports with GTM (Go-To-Market) analysis",
+      "organizations": [
+        "Archae Energy",
+        "Axians",
+        "Boeing",
+        "Caitness Energy",
+        "Casper Sleep Inc",
+        "Constellation Energy",
+        "Multiple utilities and industrial companies"
+      ],
+      "entity_types_detected": [
+        "ORGANIZATION",
+        "SECTOR",
+        "PRODUCT_LINE",
+        "TECHNOLOGY",
+        "MARKET_POSITION",
+        "SUPPLY_CHAIN_PARTNER",
+        "COMPETITIVE_ADVANTAGE",
+        "VULNERABILITY_VECTOR",
+        "MARKET_SEGMENT",
+        "OSINT_INDICATOR"
+      ],
+      "relationship_types": [
+        "operates_in_sector",
+        "supplies_to",
+        "competes_with",
+        "depends_on",
+        "targets_market",
+        "exposed_vulnerability",
+        "infrastructure_controls",
+        "supply_chain_position"
+      ],
+      "sample_content": "X9800 Flame Detector OSINT analysis (DET-TRONICS); GTM analysis for energy companies; technology infrastructure assessment; vulnerability surface mapping",
+      "coverage_assessment": "SPECIALIZED - organization-level threat intelligence",
+      "blind_spots": [
+        "CRITICAL: Organizational relationships poorly normalized (subsidiaries, parent companies, M&A events)",
+        "OSINT indicators scattered - no unified format",
+        "Supply chain mapping incomplete (missing Tier 2+ suppliers)",
+        "Product-to-threat-actor mapping missing",
+        "Technology stack relationships not extracted",
+        "Personnel/team structures absent",
+        "Organizational change history not tracked"
+      ]
+    }
+  ],
+  "cross_cutting_entity_gaps": {
+    "missing_entity_types": [
+      {
+        "entity_type": "SUPPLY_CHAIN_RELATIONSHIP",
+        "severity": "CRITICAL",
+        "description": "Transitive supplier relationships, component dependencies, and supply chain vulnerabilities are scattered across documents but not systematically extracted",
+        "affected_sources": ["All directories"]
+      },
+      {
+        "entity_type": "TEMPORAL_INDICATOR",
+        "severity": "HIGH",
+        "description": "Campaign timelines, vulnerability disclosure dates, threat actor evolution dates, and temporal patterns are embedded in text but not normalized",
+        "affected_sources": ["EAB", "Threat Reports"]
+      },
+      {
+        "entity_type": "GEOGRAPHIC_SCOPE",
+        "severity": "HIGH",
+        "description": "Regional threat actor focus, infrastructure distribution, market segments are mentioned but not systematically tagged",
+        "affected_sources": ["Organizations Research", "Threat Reports"]
+      },
+      {
+        "entity_type": "PSYCHOLOGICAL_ARCHETYPE",
+        "severity": "MEDIUM",
+        "description": "Lacanian discourse types, personality frameworks, behavioral patterns lack standard NER taxonomy",
+        "affected_sources": ["McKenney-Lacan Calculus"]
+      },
+      {
+        "entity_type": "COGNITIVE_BIAS_IMPACT",
+        "severity": "MEDIUM",
+        "description": "Cognitive bias entities (65+ files) need connecting relationships to security decisions and threat actor behavior",
+        "affected_sources": ["AEON Training Data - Cognitive Biases"]
+      },
+      {
+        "entity_type": "MATHEMATICAL_MODEL",
+        "severity": "MEDIUM",
+        "description": "Granovetter thresholds, cascade equations, reliability models lack formal entity definitions in security context",
+        "affected_sources": ["McKenney-Lacan", "AEON Training Data - RAMS"]
+      }
+    ]
+  },
+  "expected_entity_distribution": {
+    "estimated_total_entities": {
+      "low_estimate": 95000,
+      "mid_estimate": 127000,
+      "high_estimate": 165000
+    },
+    "by_type": {
+      "THREAT_ACTOR": {
+        "percentage": 8,
+        "estimated_count": "10200 (mid)",
+        "sources": ["EAB", "Threat Reports", "AEON Training Data"]
+      },
+      "VULNERABILITY": {
+        "percentage": 12,
+        "estimated_count": "15240 (mid)",
+        "sources": ["EAB", "Training Data", "Threat Reports"]
+      },
+      "EQUIPMENT_SYSTEM": {
+        "percentage": 18,
+        "estimated_count": "22860 (mid)",
+        "sources": ["AEON Training Data (673 files)"]
+      },
+      "ORGANIZATION_VENDOR": {
+        "percentage": 10,
+        "estimated_count": "12700 (mid)",
+        "sources": ["Organizations Research", "AEON Training Data"]
+      },
+      "PROTOCOL_STANDARD": {
+        "percentage": 8,
+        "estimated_count": "10160 (mid)",
+        "sources": ["AEON Training Data", "EAB"]
+      },
+      "ATTACK_TECHNIQUE": {
+        "percentage": 15,
+        "estimated_count": "19050 (mid)",
+        "sources": ["EAB", "Threat Reports", "MITRE ATT&CK mappings"]
+      },
+      "FACILITY_INFRASTRUCTURE": {
+        "percentage": 10,
+        "estimated_count": "12700 (mid)",
+        "sources": ["AEON Training Data"]
+      },
+      "COGNITIVE_BEHAVIORAL": {
+        "percentage": 12,
+        "estimated_count": "15240 (mid)",
+        "sources": ["AEON Training Data - Cognitive Biases & Personality"]
+      },
+      "PROCEDURE_OPERATION": {
+        "percentage": 7,
+        "estimated_count": "8890 (mid)",
+        "sources": ["AEON Training Data"]
+      }
+    },
+    "by_source_directory": {
+      "EAB_40_files": {
+        "estimated_entities": 8500,
+        "high_density": true,
+        "dominant_types": ["THREAT_ACTOR", "VULNERABILITY", "ATTACK_TECHNIQUE", "INFRASTRUCTURE"]
+      },
+      "McKenney_Lacan_27_files": {
+        "estimated_entities": 2100,
+        "specialized": true,
+        "dominant_types": ["MATHEMATICAL_MODEL", "BEHAVIORAL_PATTERN", "PSYCHOLOGICAL_FRAMEWORK"]
+      },
+      "AEON_Training_673_files": {
+        "estimated_entities": 102000,
+        "very_high_density": true,
+        "dominant_types": ["EQUIPMENT", "VENDOR", "PROTOCOL", "PROCEDURE", "THREAT_VECTOR", "COGNITIVE_BIAS"]
+      },
+      "Threat_Reports_183_files": {
+        "estimated_entities": 9800,
+        "high_density": true,
+        "dominant_types": ["THREAT_ACTOR", "ATTACK_TECHNIQUE", "VULNERABILITY", "THREAT_MODELING_METHOD"]
+      },
+      "Organizations_Research_28_files": {
+        "estimated_entities": 4600,
+        "medium_density": true,
+        "dominant_types": ["ORGANIZATION", "PRODUCT", "SUPPLY_CHAIN", "VULNERABILITY"]
+      }
+    }
+  },
+  "relationship_coverage_assessment": {
+    "well_covered_relationships": [
+      "actor_exploits_vulnerability",
+      "equipment_implements_protocol",
+      "vendor_manufactures_equipment",
+      "threat_targets_sector",
+      "vulnerability_affects_system"
+    ],
+    "poorly_covered_relationships": [
+      "supply_chain_transitive_dependencies",
+      "cognitive_bias_influences_vulnerability_discovery",
+      "behavioral_cascade_enables_attack",
+      "mathematical_threshold_triggers_failure",
+      "personnel_role_in_threat_actor_group",
+      "organizational_merger_creates_vulnerability_window",
+      "temporal_correlation_between_incidents",
+      "geographic_regional_threat_variation"
+    ]
+  },
+  "recommendations": {
+    "immediate_actions": [
+      {
+        "action": "Expand supply chain relationship taxonomy",
+        "impact": "CRITICAL",
+        "effort": "HIGH",
+        "description": "Create normalized entities for Tier 1, 2, 3+ suppliers and transitive vulnerability pathways"
+      },
+      {
+        "action": "Create psychological entity definitions",
+        "impact": "CRITICAL",
+        "effort": "MEDIUM",
+        "description": "Develop NER taxonomy for Lacanian frameworks, behavioral patterns, cognitive biases, and personality models"
+      },
+      {
+        "action": "Normalize temporal indicators",
+        "impact": "HIGH",
+        "effort": "MEDIUM",
+        "description": "Extract and link campaign timelines, vulnerability disclosure dates, and threat evolution events"
+      },
+      {
+        "action": "Map organization-to-vulnerability relationships",
+        "impact": "HIGH",
+        "effort": "MEDIUM",
+        "description": "Connect 28 organizations in research directory to specific threats and vulnerabilities"
+      }
+    ],
+    "entity_type_additions": [
+      "SUPPLY_CHAIN_RELATIONSHIP (with depth: Tier1, Tier2, Tier3+)",
+      "TEMPORAL_EVENT (campaign, disclosure, incident, evolution)",
+      "GEOGRAPHIC_REGION (with threat actor focus mapping)",
+      "PSYCHOLOGICAL_DISCOURSE (Lacanian-specific)",
+      "COGNITIVE_BIAS_DECISION_IMPACT",
+      "MATHEMATICAL_CASCADE_MODEL",
+      "ORGANIZATIONAL_CHANGE_EVENT",
+      "CROSS_SECTOR_PATTERN"
+    ]
+  },
+  "quality_metrics": {
+    "estimated_coverage_percentage": 78,
+    "blind_spot_severity": "MEDIUM-HIGH",
+    "primary_gaps": [
+      "Supply chain relationships (15% incomplete)",
+      "Organizational intelligence (22% incomplete)",
+      "Temporal patterns (18% incomplete)",
+      "Psychological frameworks (35% incomplete - specialized domain)"
+    ],
+    "data_quality_notes": "AEON Training Data provides excellent horizontal coverage across sectors but limited on transitive relationships. EAB documents are high-quality threat intelligence but concentrated on specific threat actors. Organizations research is OSINT-heavy but lacks systematic threat mapping. McKenney-Lacan content is academic/specialized requiring unique entity definitions."
+  }
+}

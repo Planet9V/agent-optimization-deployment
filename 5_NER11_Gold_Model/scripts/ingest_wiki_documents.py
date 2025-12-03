@@ -159,19 +159,43 @@ class WikiDocumentIngestionPipeline:
         return enriched
 
     def store_in_qdrant(self, entities: List[Dict], doc_id: str) -> int:
-        """Store entities in Qdrant with embeddings."""
+        """Store entities in Qdrant with embeddings and enhanced temporal tracking."""
         if not entities:
             return 0
 
+        now = datetime.utcnow().isoformat()
         points = []
+
+        # Collect all point IDs we'll be creating
+        point_ids = []
+        for idx, entity in enumerate(entities):
+            point_id = hash(f"{doc_id}_{idx}_{entity['text']}") % (2**63 - 1)
+            point_ids.append(point_id)
+
+        # Batch retrieve existing points to preserve temporal data
+        existing_payloads = {}
+        try:
+            existing = self.qdrant.retrieve(
+                collection_name=self.collection_name,
+                ids=point_ids,
+                with_payload=True
+            )
+            for point in existing:
+                existing_payloads[point.id] = point.payload or {}
+        except:
+            pass  # Points don't exist yet
+
         for idx, entity in enumerate(entities):
             # Create embedding
             text_to_embed = f"{entity['text']} [CONTEXT: {entity.get('ner_label', '')}]"
             embedding = self.embedding_model.encode(text_to_embed).tolist()
 
-            # Create point
+            point_id = point_ids[idx]
+            existing_payload = existing_payloads.get(point_id, {})
+
+            # Create point with enhanced temporal tracking
             point = PointStruct(
-                id=hash(f"{doc_id}_{idx}_{entity['text']}") % (2**63 - 1),  # Unique ID
+                id=point_id,
                 vector=embedding,
                 payload={
                     "entity": entity["text"],
@@ -183,7 +207,11 @@ class WikiDocumentIngestionPipeline:
                     "confidence": entity["confidence"],
                     "classification_confidence": entity["classification_confidence"],
                     "doc_id": doc_id,
-                    "created_at": datetime.utcnow().isoformat()
+                    # Enhanced temporal tracking
+                    "first_seen": existing_payload.get("first_seen", now),  # Preserve original discovery
+                    "last_seen": now,  # Always update to current time
+                    "seen_count": existing_payload.get("seen_count", 0) + 1,  # Increment observation count
+                    "created_at": existing_payload.get("created_at", now)  # Backward compat
                 }
             )
             points.append(point)

@@ -26,6 +26,33 @@ import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# Add utils directory to Python path for context augmentation imports
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'utils'))
+
+# Import context augmentation for improved short text NER
+try:
+    from context_augmentation import extract_pattern_entities, extract_with_augmentation
+    CONTEXT_AUGMENTATION_AVAILABLE = True
+    logger.info("✅ Context augmentation module loaded successfully")
+except ImportError as e:
+    CONTEXT_AUGMENTATION_AVAILABLE = False
+    logger.warning(f"⚠️ Context augmentation not available: {e}")
+
+# Import model validator for startup verification
+try:
+    from model_validator import (
+        verify_model_checksums,
+        health_check as validator_health_check,
+        PRODUCTION_MODEL_ID,
+        EXPECTED_CHECKSUMS,
+        MODEL_BASE_PATH
+    )
+    MODEL_VALIDATOR_AVAILABLE = True
+    logger.info("✅ Model validator module loaded successfully")
+except ImportError as e:
+    MODEL_VALIDATOR_AVAILABLE = False
+    logger.warning(f"⚠️ Model validator not available: {e}")
+
 # Add pipelines directory to Python path for imports
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'pipelines'))
 
@@ -56,25 +83,61 @@ except ImportError:
 app = FastAPI(
     title="NER11 Gold Standard API",
     description="High-performance Named Entity Recognition API with Hierarchical Semantic Search and Neo4j Graph Expansion.",
-    version="3.0.0"
+    version="3.3.0"
 )
 
 # Global model variables
 nlp = None
+nlp_fallback = None  # Fallback to en_core_web_trf for working NER
 embedding_service = None
 neo4j_driver = None
+model_checksum_valid = False  # Track checksum validation status
 MODEL_PATH = os.getenv("MODEL_PATH", "models/ner11_v3/model-best")
+FALLBACK_MODEL = os.getenv("FALLBACK_MODEL", "en_core_web_trf")
+USE_FALLBACK = os.getenv("USE_FALLBACK_NER", "true").lower() == "true"  # Enable fallback by default
 NEO4J_URI = os.getenv("NEO4J_URI", "bolt://localhost:7687")
 NEO4J_USER = os.getenv("NEO4J_USER", "neo4j")
 NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD", "neo4j@openspg")
 
 @app.on_event("startup")
 async def load_model():
-    global nlp, embedding_service, neo4j_driver
+    global nlp, nlp_fallback, embedding_service, neo4j_driver, model_checksum_valid
     try:
         print(f"Loading NER11 Gold Standard model from {MODEL_PATH}...")
         nlp = spacy.load(MODEL_PATH)
         print("✅ NER model loaded successfully!")
+
+        # Verify model checksums at startup (using model_validator)
+        if MODEL_VALIDATOR_AVAILABLE:
+            try:
+                from pathlib import Path
+                model_path = Path(MODEL_PATH)
+                checksum_valid, checksum_errors = verify_model_checksums(
+                    PRODUCTION_MODEL_ID,
+                    model_path
+                )
+                model_checksum_valid = checksum_valid
+                if checksum_valid:
+                    print(f"✅ Model checksum verification PASSED for {PRODUCTION_MODEL_ID}")
+                else:
+                    print(f"⚠️ Model checksum verification FAILED:")
+                    for err in checksum_errors:
+                        print(f"   - {err}")
+            except Exception as checksum_error:
+                print(f"⚠️ Could not verify checksums: {checksum_error}")
+                model_checksum_valid = False
+        else:
+            print("⚠️ Model validator not available - skipping checksum verification")
+
+        # Load fallback model for reliable NER extraction
+        if USE_FALLBACK:
+            try:
+                print(f"Loading fallback model ({FALLBACK_MODEL})...")
+                nlp_fallback = spacy.load(FALLBACK_MODEL)
+                print(f"✅ Fallback model ({FALLBACK_MODEL}) loaded successfully!")
+            except Exception as fallback_error:
+                print(f"⚠️  Warning: Could not load fallback model: {fallback_error}")
+                nlp_fallback = None
 
         # Initialize embedding service if available
         if EMBEDDING_SERVICE_AVAILABLE:
@@ -217,22 +280,89 @@ class HybridSearchResponse(BaseModel):
 
 @app.post("/ner", response_model=NerResponse)
 async def extract_entities(request: TextRequest):
-    """Extract named entities from text using NER11 Gold model."""
-    if not nlp:
-        raise HTTPException(status_code=503, detail="Model not loaded")
+    """
+    Extract named entities from text using enhanced multi-layer NER approach.
 
-    doc = nlp(request.text)
+    Strategy (in priority order):
+    1. Pattern-based extraction (HIGH confidence for CVE, APT, MITRE patterns)
+    2. Fallback model (en_core_web_trf) for general NER
+    3. Custom NER11 model for cybersecurity-specific entities
+
+    The pattern-based extraction addresses the context-dependency issue where
+    transformer models require longer context to identify short entities like
+    "APT29", "CVE-2024-12345", or "T1566".
+    """
+    if not nlp and not nlp_fallback and not CONTEXT_AUGMENTATION_AVAILABLE:
+        raise HTTPException(status_code=503, detail="No NER model available")
 
     entities = []
-    for ent in doc.ents:
-        entities.append(Entity(
-            text=ent.text,
-            label=ent.label_,
-            start=ent.start_char,
-            end=ent.end_char
-        ))
+    seen_spans = set()  # Track unique entity spans to avoid duplicates
+    doc_length = len(request.text.split())  # Token count approximation
 
-    return NerResponse(entities=entities, doc_length=len(doc))
+    # STEP 1: Pattern-based extraction (HIGH PRIORITY for cybersecurity entities)
+    # This addresses context-dependency issue with short text inputs
+    if CONTEXT_AUGMENTATION_AVAILABLE:
+        pattern_entities = extract_pattern_entities(request.text)
+        pattern_count = 0
+        for ent in pattern_entities:
+            span_key = (ent.start, ent.end)
+            if span_key not in seen_spans:
+                seen_spans.add(span_key)
+                entities.append(Entity(
+                    text=ent.text,
+                    label=ent.label,
+                    start=ent.start,
+                    end=ent.end,
+                    score=ent.confidence
+                ))
+                pattern_count += 1
+        if pattern_count > 0:
+            logger.info(f"Pattern extraction found {pattern_count} cybersecurity entities")
+
+    # STEP 2: Fallback model (en_core_web_trf) for general NER coverage
+    if nlp_fallback:
+        doc = nlp_fallback(request.text)
+        doc_length = len(doc)
+        general_count = 0
+        for ent in doc.ents:
+            span_key = (ent.start_char, ent.end_char)
+            if span_key not in seen_spans:
+                seen_spans.add(span_key)
+                entities.append(Entity(
+                    text=ent.text,
+                    label=ent.label_,
+                    start=ent.start_char,
+                    end=ent.end_char
+                ))
+                general_count += 1
+        if general_count > 0:
+            logger.info(f"Fallback model (en_core_web_trf) added {general_count} entities")
+
+    # STEP 3: Custom NER11 model for additional cybersecurity-specific entities
+    if nlp:
+        doc = nlp(request.text)
+        if doc_length == 0:
+            doc_length = len(doc)
+        custom_count = 0
+        for ent in doc.ents:
+            span_key = (ent.start_char, ent.end_char)
+            if span_key not in seen_spans:
+                seen_spans.add(span_key)
+                entities.append(Entity(
+                    text=ent.text,
+                    label=ent.label_,
+                    start=ent.start_char,
+                    end=ent.end_char
+                ))
+                custom_count += 1
+        if custom_count > 0:
+            logger.info(f"Custom NER11 model added {custom_count} additional entities")
+
+    # Sort entities by position for consistent output
+    entities.sort(key=lambda x: x.start)
+
+    logger.info(f"Total entities extracted: {len(entities)}")
+    return NerResponse(entities=entities, doc_length=doc_length)
 
 @app.post("/search/semantic", response_model=SemanticSearchResponse)
 async def semantic_search(request: SemanticSearchRequest):
@@ -578,17 +708,28 @@ async def hybrid_search(request: HybridSearchRequest):
 
 @app.get("/health")
 async def health_check():
-    """Health check endpoint with service status."""
-    ner_status = "loaded" if nlp else "not_loaded"
+    """Health check endpoint with service status and model validation."""
+    ner_custom_status = "loaded" if nlp else "not_loaded"
+    ner_fallback_status = "loaded" if nlp_fallback else "not_loaded"
     embedding_status = "available" if embedding_service else "not_available"
+    neo4j_status = "connected" if neo4j_driver else "not_connected"
+    pattern_extraction_status = "enabled" if CONTEXT_AUGMENTATION_AVAILABLE else "disabled"
+    checksum_status = "verified" if model_checksum_valid else "not_verified"
 
-    overall_status = "healthy" if nlp else "unhealthy"
+    # Healthy if any NER capability is available (pattern, custom, or fallback)
+    overall_status = "healthy" if (nlp or nlp_fallback or CONTEXT_AUGMENTATION_AVAILABLE) else "unhealthy"
 
     return {
         "status": overall_status,
-        "ner_model": ner_status,
+        "ner_model_custom": ner_custom_status,
+        "ner_model_fallback": ner_fallback_status,
+        "model_checksum": checksum_status,  # NEW: checksum verification status
+        "model_validator": "available" if MODEL_VALIDATOR_AVAILABLE else "not_available",
+        "pattern_extraction": pattern_extraction_status,
+        "ner_extraction": "enabled" if (nlp or nlp_fallback or CONTEXT_AUGMENTATION_AVAILABLE) else "disabled",
         "semantic_search": embedding_status,
-        "version": "2.0.0"
+        "neo4j_graph": neo4j_status,
+        "version": "3.3.0"  # Updated for model validation support
     }
 
 @app.get("/info")
