@@ -1,6 +1,6 @@
 # AEON Cyber Digital Twin - API Documentation
 
-**Last Updated**: 2025-12-04 19:30 UTC
+**Last Updated**: 2025-12-04 19:45 UTC
 **Directory Status**: CURRENT - Record of Note for all AEON APIs
 
 This directory contains comprehensive API documentation for the AEON platform.
@@ -9,7 +9,7 @@ This directory contains comprehensive API documentation for the AEON platform.
 
 ## ⚠️ IMPLEMENTATION STATUS OVERVIEW
 
-### Currently Operational (147+ APIs)
+### Currently Operational (237+ APIs)
 
 #### Phase B1 - Customer Isolation (December 2025)
 - ✅ **Customer Semantic Search** - POST /api/v2/search/semantic (5 endpoints)
@@ -19,10 +19,15 @@ This directory contains comprehensive API documentation for the AEON platform.
 - ✅ **E15 Vendor Equipment API** - `/api/v2/vendor-equipment` (28 endpoints)
 - ✅ **E03 SBOM Analysis API** - `/api/v2/sbom` (32 endpoints)
 
-#### Phase B3 - Advanced Security Intelligence (December 2025) ⭐ NEW
+#### Phase B3 - Advanced Security Intelligence (December 2025)
 - ✅ **E04 Threat Intelligence API** - `/api/v2/threat-intel` (27 endpoints)
 - ✅ **E05 Risk Scoring API** - `/api/v2/risk` (26 endpoints)
 - ✅ **E06 Remediation API** - `/api/v2/remediation` (29 endpoints)
+
+#### Phase B4 - Compliance & Automation (December 2025) ⭐ NEW
+- ✅ **E07 Compliance Mapping API** - `/api/v2/compliance` (28 endpoints)
+- ✅ **E08 Automated Scanning API** - `/api/v2/scanning` (30 endpoints)
+- ✅ **E09 Alert Management API** - `/api/v2/alerts` (32 endpoints)
 
 #### Core NER11 APIs (November 2025)
 - ✅ **Neo4j Cypher Queries** - Direct database access via Bolt protocol
@@ -36,7 +41,46 @@ Remaining APIs are **fully specified** awaiting backend deployment.
 
 ---
 
-## 🆕 Phase B3 APIs (2025-12-04) ⭐ LATEST
+## 🆕 Phase B4 APIs (2025-12-04) ⭐ LATEST
+
+**Full Documentation**: `API_PHASE_B4_CAPABILITIES_2025-12-04.md`
+
+### E07: Compliance & Framework Mapping (28 endpoints)
+```
+Base: /api/v2/compliance
+```
+- Regulatory framework support (NERC CIP, NIST CSF, ISO 27001, SOC2, PCI DSS, HIPAA, GDPR)
+- Compliance control management and tracking
+- Cross-framework mapping with auto-generation
+- Assessment lifecycle management
+- Evidence collection and verification
+- Gap analysis and remediation planning
+
+### E08: Automated Scanning & Testing (30 endpoints)
+```
+Base: /api/v2/scanning
+```
+- Multi-scanner orchestration (Nessus, Qualys, Rapid7, OpenVAS, Nuclei, Trivy, Prowler)
+- Scan profile and schedule management
+- Vulnerability finding aggregation
+- CVSS scoring and CVE correlation
+- Target management with credentials
+- Scan job lifecycle tracking
+
+### E09: Alert Management (32 endpoints)
+```
+Base: /api/v2/alerts
+```
+- Centralized security alert management
+- Alert rule configuration and automation
+- Multi-channel notifications (Email, Slack, Teams, PagerDuty)
+- Escalation policy management
+- Alert correlation and pattern detection
+- MTTR metrics and SLA tracking
+
+---
+
+## Phase B3 APIs (2025-12-04)
 
 **Full Documentation**: `API_PHASE_B3_CAPABILITIES_2025-12-04.md`
 

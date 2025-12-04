@@ -11,8 +11,11 @@ Modules:
 - threat_intelligence: E04 Threat Intelligence Correlation API
 - risk_scoring: E05 Risk Scoring Engine API
 - remediation: E06 Remediation Workflow API
+- compliance_mapping: E07 Compliance & Framework Mapping API
+- automated_scanning: E08 Automated Scanning & Testing API
+- alert_management: E09 Alert Management API
 
-Version: 4.0.0
+Version: 5.0.0
 Updated: 2025-12-04
 """
 
@@ -33,6 +36,11 @@ from .threat_intelligence import threat_router, ThreatIntelligenceService
 from .risk_scoring import risk_router, RiskScoringService
 from .remediation import remediation_router, RemediationService
 
+# Phase B4 APIs
+from .compliance_mapping import compliance_router, ComplianceService
+from .automated_scanning import scanning_router, ScanningService
+from .alert_management import alert_router, AlertService
+
 __all__ = [
     # Customer Isolation
     "CustomerContext",
@@ -52,4 +60,11 @@ __all__ = [
     "RiskScoringService",
     "remediation_router",
     "RemediationService",
+    # Phase B4 APIs
+    "compliance_router",
+    "ComplianceService",
+    "scanning_router",
+    "ScanningService",
+    "alert_router",
+    "AlertService",
 ]
