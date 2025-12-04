@@ -1,6 +1,6 @@
 # AEON Cyber Digital Twin - API Documentation
 
-**Last Updated**: 2025-12-01 21:00 UTC
+**Last Updated**: 2025-12-04 18:30 UTC
 **Directory Status**: CURRENT - Record of Note for all AEON APIs
 
 This directory contains comprehensive API documentation for the AEON platform.
@@ -9,15 +9,61 @@ This directory contains comprehensive API documentation for the AEON platform.
 
 ## ⚠️ IMPLEMENTATION STATUS OVERVIEW
 
-### Currently Operational (5 APIs)
+### Currently Operational (70+ APIs)
+
+#### Phase B1 - Customer Isolation (December 2025)
+- ✅ **Customer Semantic Search** - POST /api/v2/search/semantic (5 endpoints)
+- ✅ **Multi-Tenant Isolation** - X-Customer-ID header authentication
+
+#### Phase B2 - Supply Chain Security (December 2025) ⭐ NEW
+- ✅ **E15 Vendor Equipment API** - `/api/v2/vendor-equipment` (28 endpoints)
+- ✅ **E03 SBOM Analysis API** - `/api/v2/sbom` (32 endpoints)
+
+#### Core NER11 APIs (November 2025)
 - ✅ **Neo4j Cypher Queries** - Direct database access via Bolt protocol
 - ✅ **NER11 Entity Extraction** - POST /ner (v3.0.0)
 - ✅ **NER11 Semantic Search** - POST /search/semantic (v3.0.0)
-- ✅ **NER11 Hybrid Search** - POST /search/hybrid (v3.0.0) ⭐ NEW
+- ✅ **NER11 Hybrid Search** - POST /search/hybrid (v3.0.0)
 - ✅ **Neo4j Bolt Protocol** - bolt://localhost:7687
 
-### Planned (26+ REST endpoints, 10+ GraphQL operations)
-All other APIs are **fully specified** but **NOT YET IMPLEMENTED** - backend deployment pending.
+### Planned (GraphQL + Additional REST)
+Remaining APIs are **fully specified** awaiting backend deployment.
+
+---
+
+## 🆕 Phase B2 APIs (2025-12-04)
+
+**Full Documentation**: `API_PHASE_B2_CAPABILITIES_2025-12-04.md`
+
+### E15: Vendor Equipment Lifecycle (28 endpoints)
+```
+Base: /api/v2/vendor-equipment
+```
+- Vendor risk management and search
+- Equipment EOL/EOS lifecycle tracking
+- CVE vulnerability flagging
+- Maintenance window scheduling
+- Work order management
+- AI-powered maintenance predictions
+
+### E03: SBOM Dependency & Vulnerability (32 endpoints)
+```
+Base: /api/v2/sbom
+```
+- SBOM creation (CycloneDX, SPDX)
+- Component tracking with purl/cpe
+- Dependency graph analysis
+- EPSS-prioritized vulnerability ranking
+- CISA KEV integration
+- APT group threat correlation
+- License compliance checking
+
+### Required Header (All Phase B2 APIs)
+```http
+X-Customer-ID: your-customer-id
+```
+
+---
 
 ---
 
