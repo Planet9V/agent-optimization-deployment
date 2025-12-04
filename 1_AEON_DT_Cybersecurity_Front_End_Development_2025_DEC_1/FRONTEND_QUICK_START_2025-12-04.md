@@ -295,5 +295,221 @@ GET /api/v2/vendor-equipment/equipment/approaching-eol?days=365
 
 ---
 
-**Generated**: 2025-12-04 18:30:00 UTC
+**Generated**: 2025-12-04 21:30:00 UTC
 **AEON Digital Twin Cybersecurity Platform**
+
+---
+
+## 🚀 PHASE B3/B4 NEW APIs (Added 2025-12-04 21:30:00 UTC)
+
+**172 NEW ENDPOINTS** deployed with full multi-tenant customer isolation.
+
+### Updated API Count (237+ Endpoints)
+
+| API | Path | Endpoints | Purpose | Phase |
+|-----|------|-----------|---------|-------|
+| Vendor Equipment | `/api/v2/vendor-equipment` | 28 | Supply chain tracking | B2 |
+| SBOM Analysis | `/api/v2/sbom` | 32 | Software dependencies | B2 |
+| Semantic Search | `/api/v2/search` | 5 | Entity search | B2 |
+| **Threat Intelligence** | `/api/v2/threat-intel` | **27** | APT tracking, MITRE ATT&CK | **B3** |
+| **Risk Scoring** | `/api/v2/risk` | **26** | Multi-factor risk calculation | **B3** |
+| **Remediation** | `/api/v2/remediation` | **29** | Task management, SLA | **B3** |
+| **Compliance** | `/api/v2/compliance` | **28** | Framework mapping, controls | **B4** |
+| **Scanning** | `/api/v2/scanning` | **30** | Vulnerability scanning | **B4** |
+| **Alerts** | `/api/v2/alerts` | **32** | Alert lifecycle | **B4** |
+
+---
+
+## Phase B3/B4 Dashboard Endpoints
+
+```typescript
+// Threat Intelligence Dashboard
+GET /api/v2/threat-intel/dashboard/summary
+
+// Risk Scoring Dashboard
+GET /api/v2/risk/dashboard/summary
+
+// Remediation Metrics
+GET /api/v2/remediation/dashboard/summary
+
+// Compliance Dashboard
+GET /api/v2/compliance/dashboard/summary
+
+// Scanning Summary
+GET /api/v2/scanning/dashboard/summary
+
+// Alert Dashboard
+GET /api/v2/alerts/dashboard/summary
+```
+
+---
+
+## Phase B3/B4 TypeScript Interfaces
+
+```typescript
+interface ThreatActor {
+  threat_actor_id: string;
+  name: string;
+  aliases: string[];
+  actor_type: 'apt' | 'criminal' | 'hacktivist' | 'state_sponsored' | 'insider' | 'unknown';
+  motivation: 'espionage' | 'financial' | 'disruption' | 'destruction' | 'ideological';
+  target_sectors: string[];
+  ttps: string[];  // MITRE ATT&CK IDs
+  threat_score: number;  // 0-10
+  is_active: boolean;
+  customer_id: string;
+}
+
+interface RiskScore {
+  entity_id: string;
+  customer_id: string;
+  overall_risk_score: number;  // 0-10
+  risk_level: 'low' | 'medium' | 'high' | 'critical';
+  vulnerability_score: number;
+  threat_score: number;
+  exposure_score: number;
+  risk_trend: 'improving' | 'stable' | 'degrading';
+}
+
+interface RemediationTask {
+  task_id: string;
+  customer_id: string;
+  title: string;
+  priority: 'critical' | 'high' | 'medium' | 'low';
+  status: 'open' | 'in_progress' | 'pending_verification' | 'verified' | 'closed';
+  sla_status: 'within_sla' | 'at_risk' | 'breached';
+  sla_deadline: string;
+}
+
+interface ComplianceControl {
+  control_id: string;
+  customer_id: string;
+  framework: string;
+  control_number: string;
+  implementation_status: 'not_implemented' | 'partial' | 'implemented';
+  compliance_status: 'compliant' | 'non_compliant' | 'partially_compliant';
+}
+
+interface ScanResult {
+  result_id: string;
+  customer_id: string;
+  scan_id: string;
+  cve_id?: string;
+  severity: 'critical' | 'high' | 'medium' | 'low' | 'informational';
+  cvss_score?: number;
+  status: 'new' | 'open' | 'remediated' | 'false_positive';
+}
+
+interface Alert {
+  alert_id: string;
+  customer_id: string;
+  title: string;
+  severity: 'critical' | 'high' | 'medium' | 'low' | 'info';
+  status: 'new' | 'acknowledged' | 'in_progress' | 'resolved' | 'closed';
+  sla_status: 'within_sla' | 'at_risk' | 'breached';
+}
+```
+
+---
+
+## Unified Security Dashboard Query
+
+```typescript
+// Fetch all dashboard summaries in parallel
+const headers = { 'X-Customer-ID': customerId };
+
+const dashboards = await Promise.all([
+  fetch(`${API_BASE}/api/v2/threat-intel/dashboard/summary`, { headers }),
+  fetch(`${API_BASE}/api/v2/risk/dashboard/summary`, { headers }),
+  fetch(`${API_BASE}/api/v2/remediation/dashboard/summary`, { headers }),
+  fetch(`${API_BASE}/api/v2/compliance/dashboard/summary`, { headers }),
+  fetch(`${API_BASE}/api/v2/scanning/dashboard/summary`, { headers }),
+  fetch(`${API_BASE}/api/v2/alerts/dashboard/summary`, { headers }),
+  fetch(`${API_BASE}/api/v2/sbom/dashboard/summary`, { headers }),
+  fetch(`${API_BASE}/api/v2/vendor-equipment/dashboard/supply-chain`, { headers }),
+]);
+
+const [
+  threatIntel,
+  riskScoring,
+  remediation,
+  compliance,
+  scanning,
+  alerts,
+  sbom,
+  supplyChain
+] = await Promise.all(dashboards.map(r => r.json()));
+```
+
+---
+
+## Key Phase B3/B4 Features
+
+### Threat Intelligence (E04)
+- APT tracking with threat scores
+- Campaign management
+- MITRE ATT&CK technique mapping
+- IOC management
+- Threat feed integration
+
+### Risk Scoring (E05)
+- Multi-factor risk calculation
+- Asset criticality levels
+- Exposure scoring
+- Risk trend analysis
+- Configurable weights and thresholds
+
+### Remediation Workflow (E06)
+- Task management with SLA tracking
+- Remediation plan coordination
+- MTTR metrics
+- Vulnerability backlog tracking
+
+### Compliance Mapping (E07)
+- NIST CSF, ISO 27001, SOC 2, PCI DSS, NERC CIP support
+- Cross-framework control mapping
+- Evidence management
+- Automated gap analysis
+
+### Scanning Integration (E08)
+- Nessus, Qualys, Rapid7, Tenable support
+- Scheduled scans
+- Result aggregation
+- Coverage reporting
+
+### Alert Management (E09)
+- Alert rules with conditions
+- Multi-channel notifications (email, Slack, Teams, PagerDuty)
+- Escalation policies
+- SLA tracking
+
+---
+
+## Updated Documentation Files
+
+| File | Content |
+|------|---------|
+| `API_REFERENCE_2025-12-04_1830.md` | Original 65 endpoints |
+| `API_ACCESS_GUIDE.md` | **UPDATED** with 172 new endpoints |
+| `COMPREHENSIVE_CAPABILITIES_CATALOG.md` | **UPDATED** with Phase B3/B4 |
+| `README.md` | **UPDATED** with full API listing |
+| `DATA_MODELS.ts` | TypeScript interfaces |
+
+---
+
+## Test Coverage
+
+| API | Tests | Status |
+|-----|-------|--------|
+| E04 Threat Intelligence | 85/85 | ✅ PASSING |
+| E05 Risk Scoring | 85/85 | ✅ PASSING |
+| E06 Remediation Workflow | 85/85 | ✅ PASSING |
+| E07 Compliance Mapping | 85/85 | ✅ PASSING |
+| E08 Scanning Integration | 85/85 | ✅ PASSING |
+| E09 Alert Management | 85/85 | ✅ PASSING |
+
+**Phase B3/B4 Total**: 510 tests passing
+
+---
+
+**Phase B3/B4 Documentation Added**: 2025-12-04 21:30:00 UTC
