@@ -370,6 +370,107 @@ class EntitySearcher:
         return self.search_similar(embedding, limit)
 ```
 
+### 2.3 Customer-Isolated Vector Store Pattern
+
+```python
+from dataclasses import dataclass
+from typing import Optional, List, Dict, Any
+from qdrant_client import QdrantClient
+from qdrant_client.models import Filter, FieldCondition, MatchAny, PointStruct
+
+@dataclass
+class CustomerVectorContext:
+    """Customer context for Qdrant vector operations."""
+    customer_id: str
+    include_system: bool = True
+    access_level: str = "read"
+
+    def get_customer_ids(self) -> List[str]:
+        """Get list of customer IDs to include in search."""
+        if self.include_system:
+            return [self.customer_id, "SYSTEM"]
+        return [self.customer_id]
+
+
+class CustomerIsolatedVectorStore:
+    """
+    Qdrant vector store with automatic customer isolation.
+    All operations automatically filter by customer_id in payload.
+    """
+
+    def __init__(self, url: str = "localhost:6333", collection: str = "ner11_gold_entities"):
+        self.client = QdrantClient(url=url)
+        self.collection = collection
+        self._context: Optional[CustomerVectorContext] = None
+
+    def set_context(self, context: CustomerVectorContext) -> None:
+        """Set customer context for all operations."""
+        self._context = context
+
+    def _build_customer_filter(self, additional: Optional[List] = None) -> Filter:
+        """Build Qdrant filter with customer isolation."""
+        customer_ids = self._context.get_customer_ids()
+        must_conditions = [
+            FieldCondition(key="customer_id", match=MatchAny(any=customer_ids))
+        ]
+        if additional:
+            must_conditions.extend(additional)
+        return Filter(must=must_conditions)
+
+    def search_similar(self, query_embedding: List[float], limit: int = 10) -> List[Dict]:
+        """Search with automatic customer isolation."""
+        results = self.client.search(
+            collection_name=self.collection,
+            query_vector=query_embedding,
+            limit=limit,
+            query_filter=self._build_customer_filter()
+        )
+        return [{'id': r.id, 'score': r.score, 'payload': r.payload} for r in results]
+
+    def upsert_entity(self, entity_id: str, embedding: List[float], payload: Dict) -> None:
+        """Upsert with automatic customer_id assignment."""
+        payload['customer_id'] = self._context.customer_id
+        self.client.upsert(
+            collection_name=self.collection,
+            points=[PointStruct(id=entity_id, vector=embedding, payload=payload)]
+        )
+
+
+# Factory pattern for getting customer-isolated stores
+class CustomerVectorStoreFactory:
+    _instances: Dict[str, CustomerIsolatedVectorStore] = {}
+
+    @classmethod
+    def get_store(cls, customer_id: str, url: str = "localhost:6333",
+                  collection: str = "ner11_gold_entities") -> CustomerIsolatedVectorStore:
+        cache_key = f"{url}:{collection}"
+        if cache_key not in cls._instances:
+            cls._instances[cache_key] = CustomerIsolatedVectorStore(url=url, collection=collection)
+        store = cls._instances[cache_key]
+        store.set_context(CustomerVectorContext(customer_id=customer_id))
+        return store
+```
+
+**Usage Example:**
+```python
+# Get customer-isolated store
+store = CustomerVectorStoreFactory.get_store(
+    customer_id="CUST-001",
+    url="localhost:6333",
+    collection="ner11_gold_entities"
+)
+
+# Search - automatically filters by CUST-001 and SYSTEM
+results = store.search_similar(query_embedding, limit=10)
+
+# Upsert - automatically adds customer_id to payload
+store.upsert_entity(
+    entity_id="entity-123",
+    embedding=embedding_vector,
+    payload={"entity_type": "CVE", "name": "CVE-2024-0001"}
+)
+```
+
 ---
 
 ## 3. External API Integration Patterns
