@@ -513,3 +513,155 @@ const [
 ---
 
 **Phase B3/B4 Documentation Added**: 2025-12-04 21:30:00 UTC
+
+---
+
+## 🚀 PHASE B5 - ADVANCED ANALYTICS (Added 2025-12-04 22:00:00 UTC)
+
+**78 NEW ENDPOINTS** for advanced analytics and intelligent prioritization.
+
+### Updated API Count (315+ Endpoints)
+
+| API | Path | Endpoints | Purpose | Phase |
+|-----|------|-----------|---------|-------|
+| **Economic Impact** | `/api/v2/economic-impact` | **26** | ROI, cost analysis, financial modeling | **B5** |
+| **Demographics Baseline** | `/api/v2/demographics` | **24** | Workforce analytics, psychohistory baseline | **B5** |
+| **Prioritization** | `/api/v2/prioritization` | **28** | NOW-NEXT-NEVER risk-adjusted prioritization | **B5** |
+
+---
+
+## Phase B5 Dashboard Endpoints
+
+```typescript
+// Economic Impact
+GET /api/v2/economic-impact/dashboard/summary
+GET /api/v2/economic-impact/roi/summary
+POST /api/v2/economic-impact/roi/calculate
+
+// Demographics Baseline
+GET /api/v2/demographics/dashboard/summary
+GET /api/v2/demographics/dashboard/baseline  // Psychohistory metrics
+GET /api/v2/demographics/workforce/composition
+
+// Prioritization (NOW-NEXT-NEVER)
+GET /api/v2/prioritization/dashboard/summary
+GET /api/v2/prioritization/now/items         // Immediate action
+GET /api/v2/prioritization/next/items        // Scheduled
+GET /api/v2/prioritization/never/items       // Low priority
+POST /api/v2/prioritization/score/calculate   // Calculate priority score
+```
+
+---
+
+## Phase B5 TypeScript Interfaces
+
+```typescript
+// E10 Economic Impact
+interface ROICalculation {
+  investment_id: string;
+  customer_id: string;
+  name: string;
+  initial_investment: number;
+  annual_benefits: number;
+  annual_costs: number;
+  roi_percentage: number;
+  npv: number;               // Net Present Value
+  irr: number;               // Internal Rate of Return
+  payback_period_months: number;
+  risk_adjusted_roi: number;
+  confidence_score: number;
+}
+
+// E11 Demographics Baseline (Psychohistory)
+interface BaselineMetrics {
+  customer_id: string;
+  population_stability_index: number;  // 0-1
+  role_diversity_score: number;        // 0-1
+  skill_concentration_risk: number;    // 0-10
+  succession_coverage: number;         // 0-1
+  insider_threat_baseline: number;     // 0-10
+  calculated_at: string;
+}
+
+// E12 NOW-NEXT-NEVER Prioritization
+interface PriorityItem {
+  item_id: string;
+  customer_id: string;
+  entity_type: 'vulnerability' | 'remediation_task' | 'asset' | 'threat' | 'compliance_gap';
+  entity_id: string;
+  entity_name: string;
+  priority_category: 'NOW' | 'NEXT' | 'NEVER';  // NOW >= 70, NEXT >= 40, NEVER < 40
+  priority_score: number;
+  deadline: string | null;
+  sla_status: 'within_sla' | 'at_risk' | 'breached';
+  is_now: boolean;
+  is_sla_at_risk: boolean;
+}
+```
+
+---
+
+## Complete Unified Dashboard (All Phases)
+
+```typescript
+const headers = { 'X-Customer-ID': customerId };
+
+const allDashboards = await Promise.all([
+  // Phase B5 - Advanced Analytics
+  fetch(`${API_BASE}/api/v2/economic-impact/dashboard/summary`, { headers }),
+  fetch(`${API_BASE}/api/v2/demographics/dashboard/baseline`, { headers }),
+  fetch(`${API_BASE}/api/v2/prioritization/dashboard/summary`, { headers }),
+  // Phase B4 - Compliance & Automation
+  fetch(`${API_BASE}/api/v2/compliance/dashboard/summary`, { headers }),
+  fetch(`${API_BASE}/api/v2/scanning/dashboard/summary`, { headers }),
+  fetch(`${API_BASE}/api/v2/alerts/dashboard/summary`, { headers }),
+  // Phase B3 - Threat & Risk
+  fetch(`${API_BASE}/api/v2/threat-intel/dashboard/summary`, { headers }),
+  fetch(`${API_BASE}/api/v2/risk/dashboard/summary`, { headers }),
+  fetch(`${API_BASE}/api/v2/remediation/dashboard/summary`, { headers }),
+  // Phase B2 - Supply Chain
+  fetch(`${API_BASE}/api/v2/sbom/dashboard/summary`, { headers }),
+  fetch(`${API_BASE}/api/v2/vendor-equipment/dashboard/supply-chain`, { headers }),
+]);
+
+const [
+  economicImpact,
+  demographics,
+  prioritization,
+  compliance,
+  scanning,
+  alerts,
+  threatIntel,
+  riskScoring,
+  remediation,
+  sbom,
+  supplyChain
+] = await Promise.all(allDashboards.map(r => r.json()));
+```
+
+---
+
+## Phase B5 Test Coverage
+
+| API | Tests | Status |
+|-----|-------|--------|
+| E10 Economic Impact | 85/85 | ✅ PASSING |
+| E11 Demographics Baseline | 85/85 | ✅ PASSING |
+| E12 Prioritization | 85/85 | ✅ PASSING |
+
+**Phase B5 Total**: 255 tests passing
+
+---
+
+## Full Documentation Reference
+
+| Phase | APIs | Documentation File |
+|-------|------|--------------------|
+| B2 | SBOM, Vendor Equipment | `API_REFERENCE_2025-12-04_1830.md` |
+| B3 | Threat Intel, Risk, Remediation | `API_PHASE_B3_CAPABILITIES_2025-12-04.md` |
+| B4 | Compliance, Scanning, Alerts | `API_PHASE_B4_CAPABILITIES_2025-12-04.md` |
+| B5 | Economic, Demographics, Priority | `API_PHASE_B5_CAPABILITIES_2025-12-04.md` |
+
+---
+
+**Phase B5 Documentation Added**: 2025-12-04 22:00:00 UTC

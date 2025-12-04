@@ -1,0 +1,706 @@
+{
+  "analysis_metadata": {
+    "generated_at": "2025-12-04T00:00:00Z",
+    "analyzer": "research-agent",
+    "files_analyzed": [
+      "/home/jim/2_OXOT_Projects_Dev/5_NER11_Gold_Model/api/economic_impact/service.py",
+      "/home/jim/2_OXOT_Projects_Dev/5_NER11_Gold_Model/api/demographics/service.py",
+      "/home/jim/2_OXOT_Projects_Dev/5_NER11_Gold_Model/api/prioritization/service.py"
+    ],
+    "purpose": "Identify actual data requirements to make APIs functional"
+  },
+
+  "E10_Economic_Impact": {
+    "api_summary": "Economic impact calculations, ROI analysis, cost tracking, business value assessment",
+
+    "graph_entities": [
+      {
+        "entity_type": "Customer",
+        "required_properties": ["customer_id", "name"],
+        "relationships": ["HAS_ASSET", "INCURS_COST", "MAKES_INVESTMENT"],
+        "purpose": "Root entity for customer isolation and aggregation"
+      },
+      {
+        "entity_type": "Asset",
+        "required_properties": ["entity_id", "entity_type", "replacement_cost", "operational_hours"],
+        "relationships": ["BELONGS_TO_CUSTOMER", "HAS_COST", "GENERATES_REVENUE", "SUBJECT_TO_REGULATION"],
+        "purpose": "Assets with economic value that can be impacted"
+      },
+      {
+        "entity_type": "CostRecord",
+        "required_properties": ["cost_id", "amount", "category", "date", "currency", "recurring", "cost_type"],
+        "relationships": ["INCURRED_BY_CUSTOMER", "RELATES_TO_ENTITY"],
+        "purpose": "Historical cost tracking for trend analysis"
+      },
+      {
+        "entity_type": "Investment",
+        "required_properties": ["investment_id", "investment_name", "initial_investment", "expected_annual_savings", "annual_operating_costs", "category"],
+        "relationships": ["MADE_BY_CUSTOMER", "TARGETS_ASSET"],
+        "purpose": "ROI calculation and comparison"
+      },
+      {
+        "entity_type": "BusinessValue",
+        "required_properties": ["entity_id", "replacement_cost", "revenue_impact", "reputation_value", "regulatory_exposure", "ip_value", "operational_criticality"],
+        "relationships": ["VALUES_ENTITY", "FOR_CUSTOMER"],
+        "purpose": "Calculated business value for prioritization"
+      },
+      {
+        "entity_type": "ImpactScenario",
+        "required_properties": ["scenario_id", "scenario_type", "severity", "duration_hours", "affected_systems"],
+        "relationships": ["SIMULATED_FOR_CUSTOMER", "AFFECTS_ASSETS"],
+        "purpose": "Impact modeling and 'what-if' analysis"
+      }
+    ],
+
+    "qdrant_collections": [
+      {
+        "collection_name": "ner11_economic_impact",
+        "vector_size": 384,
+        "distance_metric": "COSINE",
+        "payload_types": {
+          "type": "string (cost|roi|business_value|impact_scenario)",
+          "customer_id": "string",
+          "entity_id": "string (optional)",
+          "category": "string (equipment|personnel|downtime|response|recovery|overhead)",
+          "amount": "float",
+          "date": "ISO datetime string",
+          "currency": "string (USD, EUR, etc.)",
+          "recurring": "boolean",
+          "frequency": "string (monthly|quarterly|annual)",
+          "cost_type": "string (direct|indirect)",
+          "is_overhead": "boolean"
+        },
+        "purpose": "Store cost records, ROI calculations, business values, impact scenarios with embeddings for semantic search",
+        "indexed_fields": ["customer_id", "type", "category", "date", "entity_id"],
+        "required_data_volume": "1000+ cost records per customer for meaningful trends"
+      }
+    ],
+
+    "baseline_data": [
+      {
+        "data_type": "Historical Cost Data",
+        "description": "30-90 days of cost records across all categories",
+        "structure": {
+          "customer_id": "string",
+          "date": "date",
+          "category": "equipment|personnel|downtime|response|recovery|overhead",
+          "amount": "float",
+          "currency": "USD",
+          "description": "string",
+          "recurring": "boolean"
+        },
+        "minimum_records": 90,
+        "purpose": "Enable trend analysis, period comparisons, forecasting"
+      },
+      {
+        "data_type": "Asset Replacement Costs",
+        "description": "Current replacement value for all critical assets",
+        "structure": {
+          "entity_id": "string",
+          "entity_type": "string",
+          "replacement_cost": "float",
+          "currency": "USD",
+          "last_updated": "date"
+        },
+        "purpose": "Business value calculations"
+      },
+      {
+        "data_type": "Revenue Attribution",
+        "description": "Annual revenue and attribution to entities/systems",
+        "structure": {
+          "customer_id": "string",
+          "annual_revenue": "float",
+          "entity_id": "string (optional)",
+          "attribution_percentage": "float (0-1)"
+        },
+        "purpose": "Calculate revenue impact and indirect costs"
+      },
+      {
+        "data_type": "Regulatory Requirements",
+        "description": "Compliance requirements and potential fines",
+        "structure": {
+          "customer_id": "string",
+          "requirement_id": "string",
+          "name": "string (GDPR, HIPAA, etc.)",
+          "potential_fine": "float",
+          "applicability": "string[]"
+        },
+        "purpose": "Calculate regulatory exposure in business value"
+      },
+      {
+        "data_type": "Operational Hours",
+        "description": "Operational criticality based on uptime requirements",
+        "structure": {
+          "entity_id": "string",
+          "operational_hours": "float (0-8760 per year)",
+          "criticality": "float (0-1)"
+        },
+        "purpose": "Calculate operational criticality component"
+      },
+      {
+        "data_type": "IP/Patent Portfolio",
+        "description": "Intellectual property assets",
+        "structure": {
+          "customer_id": "string",
+          "patent_count": "int",
+          "estimated_value_per_patent": "float"
+        },
+        "purpose": "Calculate IP value component"
+      },
+      {
+        "data_type": "Customer Base Metrics",
+        "description": "Customer count for reputation value",
+        "structure": {
+          "customer_id": "string",
+          "total_customers": "int",
+          "reputation_value_per_customer": "float"
+        },
+        "purpose": "Calculate reputation impact"
+      }
+    ],
+
+    "external_sources": [
+      {
+        "source_name": "Industry Cost Benchmarks",
+        "description": "Average costs by industry for comparison",
+        "providers": ["Gartner", "Forrester", "IDC"],
+        "update_frequency": "Annual",
+        "integration_method": "Manual import or API",
+        "purpose": "Validate cost calculations, provide context"
+      },
+      {
+        "source_name": "Economic Indicators",
+        "description": "Discount rates, inflation, currency exchange",
+        "providers": ["Federal Reserve", "Treasury", "ECB"],
+        "update_frequency": "Daily/Monthly",
+        "integration_method": "API",
+        "purpose": "ROI/NPV calculations with accurate discount rates"
+      },
+      {
+        "source_name": "Insurance Data",
+        "description": "Asset valuations, coverage limits, premiums",
+        "providers": ["Customer insurance providers"],
+        "update_frequency": "Annual/Policy renewal",
+        "integration_method": "Manual import",
+        "purpose": "Validate replacement costs and business value"
+      },
+      {
+        "source_name": "Incident Cost Database",
+        "description": "Historical incident costs for similar scenarios",
+        "providers": ["Ponemon Institute", "Verizon DBIR", "IBM Cost of Data Breach"],
+        "update_frequency": "Annual",
+        "integration_method": "Manual reference",
+        "purpose": "Validate impact modeling calculations"
+      }
+    ],
+
+    "data_dependencies": {
+      "critical_blockers": [
+        "Historical cost records (minimum 30 days) for any trend analysis",
+        "Asset replacement costs for business value calculations",
+        "Customer revenue data for indirect cost calculations"
+      ],
+      "integration_points": [
+        "E03 SBOM: Asset inventory and component costs",
+        "E05 Risk Scoring: Risk factors for impact modeling",
+        "E08 RAMS: Reliability data for operational criticality",
+        "E11 Demographics: Workforce costs (personnel category)"
+      ]
+    }
+  },
+
+  "E11_Demographics": {
+    "api_summary": "Population analytics, workforce composition, organization structure, psychohistory baseline",
+
+    "graph_entities": [
+      {
+        "entity_type": "Employee",
+        "required_properties": ["employee_id", "age", "tenure_years", "education_level", "role_id", "department_id", "hire_date"],
+        "relationships": ["WORKS_FOR_CUSTOMER", "HAS_ROLE", "MEMBER_OF_DEPARTMENT", "MEMBER_OF_TEAM", "HAS_SKILL"],
+        "purpose": "Core entity for demographics and workforce analytics"
+      },
+      {
+        "entity_type": "Role",
+        "required_properties": ["role_id", "role_name", "category", "security_relevant", "criticality", "access_level"],
+        "relationships": ["ROLE_IN_ORG", "REQUIRES_SKILL"],
+        "purpose": "Role definitions for workforce composition"
+      },
+      {
+        "entity_type": "OrganizationUnit",
+        "required_properties": ["unit_id", "name", "parent_id", "level", "criticality"],
+        "relationships": ["PART_OF_ORG", "HAS_PARENT", "HAS_EMPLOYEES"],
+        "purpose": "Hierarchical organization structure"
+      },
+      {
+        "entity_type": "Department",
+        "required_properties": ["department_id", "name", "employee_count"],
+        "relationships": ["DEPARTMENT_OF_ORG", "HAS_EMPLOYEES"],
+        "purpose": "Departmental groupings"
+      },
+      {
+        "entity_type": "Team",
+        "required_properties": ["team_id", "name", "department_id", "member_count"],
+        "relationships": ["TEAM_IN_DEPARTMENT", "HAS_MEMBERS"],
+        "purpose": "Team-level analytics"
+      },
+      {
+        "entity_type": "Skill",
+        "required_properties": ["skill_id", "skill_name", "category", "criticality"],
+        "relationships": ["SKILL_IN_INVENTORY", "REQUIRED_BY_ROLE", "POSSESSED_BY_EMPLOYEE"],
+        "purpose": "Skills inventory and gap analysis"
+      },
+      {
+        "entity_type": "EmployeeSkill",
+        "required_properties": ["employee_id", "skill_id", "proficiency_level"],
+        "relationships": ["EMPLOYEE_HAS_SKILL"],
+        "purpose": "Link employees to skills with proficiency"
+      }
+    ],
+
+    "qdrant_collections": [
+      {
+        "collection_name": "ner11_demographics",
+        "vector_size": 384,
+        "distance_metric": "COSINE",
+        "payload_types": {
+          "record_type": "string (population|workforce|organization|role|skill)",
+          "customer_id": "string",
+          "employee_id": "string (optional)",
+          "org_unit_id": "string (optional)",
+          "role_id": "string (optional)",
+          "demographics": "object (age_group, tenure, education, etc.)",
+          "turnover_risk": "float (0-1)",
+          "security_relevant": "boolean"
+        },
+        "purpose": "Store demographic profiles, workforce compositions, org structures with embeddings for semantic queries",
+        "indexed_fields": ["customer_id", "record_type", "org_unit_id", "role_id", "security_relevant"],
+        "required_data_volume": "Complete employee roster (1000+ employees for psychohistory baseline)"
+      }
+    ],
+
+    "baseline_data": [
+      {
+        "data_type": "Employee Roster",
+        "description": "Current employee demographics and attributes",
+        "structure": {
+          "employee_id": "string",
+          "customer_id": "string",
+          "age": "int",
+          "tenure_years": "float",
+          "education_level": "string (high_school|bachelors|masters|phd)",
+          "role_id": "string",
+          "department_id": "string",
+          "hire_date": "date",
+          "employment_type": "string (employee|contractor)"
+        },
+        "minimum_records": 100,
+        "purpose": "Population analytics, demographics distribution"
+      },
+      {
+        "data_type": "Organization Hierarchy",
+        "description": "Complete org structure with units and relationships",
+        "structure": {
+          "unit_id": "string",
+          "customer_id": "string",
+          "name": "string",
+          "parent_id": "string (nullable)",
+          "level": "int",
+          "criticality": "string (low|medium|high|critical)",
+          "employee_count": "int"
+        },
+        "minimum_records": 5,
+        "purpose": "Org structure analysis, hierarchy visualization"
+      },
+      {
+        "data_type": "Role Definitions",
+        "description": "Role catalog with attributes",
+        "structure": {
+          "role_id": "string",
+          "customer_id": "string",
+          "role_name": "string",
+          "category": "string (technical|security|management|operational|analytical)",
+          "security_relevant": "boolean",
+          "criticality": "string (low|medium|high|critical)",
+          "access_level": "string (standard|elevated|privileged)"
+        },
+        "minimum_records": 20,
+        "purpose": "Workforce composition, security-relevant role tracking"
+      },
+      {
+        "data_type": "Skills Inventory",
+        "description": "Skills catalog and employee proficiencies",
+        "structure": {
+          "skill_id": "string",
+          "skill_name": "string",
+          "category": "string (technical|security|management|operational|analytical)",
+          "criticality": "string (low|medium|high|critical)",
+          "employee_id": "string",
+          "proficiency_level": "float (0-10)"
+        },
+        "minimum_records": 50,
+        "purpose": "Skills distribution, gap analysis, critical skills tracking"
+      },
+      {
+        "data_type": "Turnover History",
+        "description": "Historical employee departures for trend analysis",
+        "structure": {
+          "employee_id": "string",
+          "customer_id": "string",
+          "departure_date": "date",
+          "role_id": "string",
+          "department_id": "string",
+          "reason": "string (voluntary|involuntary|retirement)"
+        },
+        "minimum_records": 30,
+        "purpose": "Turnover rate calculations, retention predictions"
+      },
+      {
+        "data_type": "Team Assignments",
+        "description": "Team memberships and structures",
+        "structure": {
+          "team_id": "string",
+          "team_name": "string",
+          "department_id": "string",
+          "employee_id": "string",
+          "customer_id": "string"
+        },
+        "purpose": "Team profile analytics, cohesion scoring"
+      }
+    ],
+
+    "external_sources": [
+      {
+        "source_name": "HR Management System (HRMS)",
+        "description": "Employee records, org structure, roles",
+        "providers": ["Workday", "SAP SuccessFactors", "Oracle HCM"],
+        "update_frequency": "Real-time/Daily",
+        "integration_method": "API or CSV export",
+        "purpose": "Primary source for demographic data"
+      },
+      {
+        "source_name": "Learning Management System (LMS)",
+        "description": "Skills, certifications, training completion",
+        "providers": ["Cornerstone", "LinkedIn Learning", "Udemy Business"],
+        "update_frequency": "Daily",
+        "integration_method": "API or CSV export",
+        "purpose": "Skills inventory and proficiency tracking"
+      },
+      {
+        "source_name": "Identity & Access Management (IAM)",
+        "description": "Access levels, security roles, authentication patterns",
+        "providers": ["Okta", "Azure AD", "Ping Identity"],
+        "update_frequency": "Real-time",
+        "integration_method": "API",
+        "purpose": "Security-relevant role tracking, access patterns"
+      },
+      {
+        "source_name": "Industry Demographics Benchmarks",
+        "description": "Workforce demographics by industry",
+        "providers": ["BLS", "LinkedIn Workforce Reports", "Gartner"],
+        "update_frequency": "Quarterly/Annual",
+        "integration_method": "Manual reference",
+        "purpose": "Baseline comparisons, stability index validation"
+      }
+    ],
+
+    "data_dependencies": {
+      "critical_blockers": [
+        "Complete employee roster with demographics (minimum 100 employees)",
+        "Organization hierarchy with at least 5 units",
+        "Role definitions with security relevance flags (minimum 20 roles)"
+      ],
+      "integration_points": [
+        "E10 Economic: Personnel costs, workforce economic impact",
+        "E12 Prioritization: Workforce capacity for remediation effort",
+        "E05 Risk Scoring: Insider threat baseline (demographic patterns)"
+      ]
+    }
+  },
+
+  "E12_Prioritization": {
+    "api_summary": "NOW-NEXT-NEVER prioritization framework with multi-factor scoring and SLA tracking",
+
+    "graph_entities": [
+      {
+        "entity_type": "PriorityItem",
+        "required_properties": ["item_id", "entity_type", "entity_id", "priority_category", "priority_score", "sla_status", "deadline"],
+        "relationships": ["PRIORITIZES_ENTITY", "FOR_CUSTOMER", "HAS_URGENCY_FACTORS", "HAS_RISK_FACTORS", "HAS_ECONOMIC_FACTORS"],
+        "purpose": "Priority assignments with NOW/NEXT/NEVER categorization"
+      },
+      {
+        "entity_type": "UrgencyFactor",
+        "required_properties": ["name", "value", "weight", "deadline"],
+        "relationships": ["CONTRIBUTES_TO_PRIORITY"],
+        "purpose": "Time-sensitive urgency components"
+      },
+      {
+        "entity_type": "RiskFactor",
+        "required_properties": ["name", "value", "weight", "source"],
+        "relationships": ["CONTRIBUTES_TO_PRIORITY", "FROM_RISK_SCORING"],
+        "purpose": "Risk-based prioritization input from E05"
+      },
+      {
+        "entity_type": "EconomicFactor",
+        "required_properties": ["name", "value", "weight", "source"],
+        "relationships": ["CONTRIBUTES_TO_PRIORITY", "FROM_ECONOMIC_IMPACT"],
+        "purpose": "Economic impact input from E10"
+      },
+      {
+        "entity_type": "RemediationEntity",
+        "required_properties": ["entity_id", "entity_type", "entity_name", "current_status"],
+        "relationships": ["SUBJECT_TO_PRIORITIZATION", "REQUIRES_REMEDIATION"],
+        "purpose": "Entities that need prioritization (vulnerabilities, compliance items, incidents)"
+      }
+    ],
+
+    "qdrant_collections": [
+      {
+        "collection_name": "ner11_prioritization",
+        "vector_size": 384,
+        "distance_metric": "COSINE",
+        "payload_types": {
+          "item_id": "string (UUID)",
+          "customer_id": "string",
+          "entity_type": "string (vulnerability|remediation|compliance|risk|incident)",
+          "entity_id": "string",
+          "entity_name": "string",
+          "priority_category": "string (NOW|NEXT|NEVER)",
+          "priority_score": "float (0-100)",
+          "urgency_factors": "array of objects",
+          "risk_factors": "array of objects",
+          "economic_factors": "array of objects",
+          "deadline": "ISO datetime (nullable)",
+          "sla_status": "string (within_sla|at_risk|breached)",
+          "sla_deadline": "ISO datetime (nullable)",
+          "calculated_at": "ISO datetime"
+        },
+        "purpose": "Store priority items with embeddings for semantic search and filtering",
+        "indexed_fields": ["customer_id", "priority_category", "sla_status", "entity_type", "deadline"],
+        "required_data_volume": "100+ prioritization items per customer for meaningful dashboards"
+      }
+    ],
+
+    "baseline_data": [
+      {
+        "data_type": "Prioritization Configuration",
+        "description": "Customer-specific thresholds and weights",
+        "structure": {
+          "customer_id": "string",
+          "now_threshold": "float (0-100)",
+          "next_threshold": "float (0-100)",
+          "urgency_weight": "float (0-1)",
+          "risk_weight": "float (0-1)",
+          "impact_weight": "float (0-1)",
+          "effort_weight": "float (0-1)",
+          "roi_weight": "float (0-1)",
+          "now_sla_hours": "int",
+          "next_sla_hours": "int"
+        },
+        "minimum_records": 1,
+        "purpose": "Customer-specific prioritization rules"
+      },
+      {
+        "data_type": "Entities Requiring Prioritization",
+        "description": "Vulnerabilities, compliance items, incidents to prioritize",
+        "structure": {
+          "entity_id": "string",
+          "entity_type": "string (vulnerability|remediation|compliance|risk|incident)",
+          "entity_name": "string",
+          "customer_id": "string",
+          "description": "string",
+          "discovered_date": "date",
+          "current_status": "string"
+        },
+        "minimum_records": 20,
+        "purpose": "Items to be prioritized"
+      },
+      {
+        "data_type": "Risk Scores (from E05)",
+        "description": "Risk assessment results for prioritization input",
+        "structure": {
+          "entity_id": "string",
+          "customer_id": "string",
+          "risk_score": "float (0-10)",
+          "risk_factors": "array of {name, value, weight}",
+          "calculated_at": "date"
+        },
+        "purpose": "Risk component of prioritization"
+      },
+      {
+        "data_type": "Economic Impact (from E10)",
+        "description": "Economic calculations for prioritization input",
+        "structure": {
+          "entity_id": "string",
+          "customer_id": "string",
+          "economic_value": "float",
+          "cost_of_inaction": "float",
+          "potential_savings": "float",
+          "calculated_at": "date"
+        },
+        "purpose": "Economic component of prioritization"
+      },
+      {
+        "data_type": "Remediation Effort Estimates",
+        "description": "Effort required for remediation",
+        "structure": {
+          "entity_id": "string",
+          "entity_type": "string",
+          "effort_score": "float (0-10)",
+          "estimated_hours": "float",
+          "required_skills": "array of strings",
+          "estimated_at": "date"
+        },
+        "purpose": "Effort component and ROI calculation"
+      }
+    ],
+
+    "external_sources": [
+      {
+        "source_name": "Vulnerability Scanners",
+        "description": "Discovered vulnerabilities with CVSS scores",
+        "providers": ["Qualys", "Tenable Nessus", "Rapid7"],
+        "update_frequency": "Daily/Continuous",
+        "integration_method": "API",
+        "purpose": "Vulnerability entities for prioritization"
+      },
+      {
+        "source_name": "Compliance Management Systems",
+        "description": "Compliance requirements and deadlines",
+        "providers": ["ServiceNow GRC", "RSA Archer", "OneTrust"],
+        "update_frequency": "Daily",
+        "integration_method": "API",
+        "purpose": "Compliance entities with urgency factors (regulatory deadlines)"
+      },
+      {
+        "source_name": "Incident Response Systems",
+        "description": "Active incidents requiring prioritization",
+        "providers": ["PagerDuty", "ServiceNow ITSM", "Jira Service Management"],
+        "update_frequency": "Real-time",
+        "integration_method": "API/Webhook",
+        "purpose": "Incident entities with urgency and impact"
+      },
+      {
+        "source_name": "Threat Intelligence Feeds",
+        "description": "Threat context for urgency factors",
+        "providers": ["MITRE ATT&CK", "CISA KEV", "NVD"],
+        "update_frequency": "Daily",
+        "integration_method": "API",
+        "purpose": "Urgency factors (active exploitation, public disclosure)"
+      }
+    ],
+
+    "data_dependencies": {
+      "critical_blockers": [
+        "Prioritization configuration with thresholds and weights",
+        "Entities requiring prioritization (minimum 20 items)",
+        "Risk scores from E05 (risk component)",
+        "Economic impact from E10 (ROI component)"
+      ],
+      "integration_points": [
+        "E05 Risk Scoring: Risk factors for priority calculation",
+        "E10 Economic Impact: Economic factors and ROI input",
+        "E03 SBOM: Component criticality for effort estimation",
+        "E08 RAMS: Reliability impact on urgency",
+        "E11 Demographics: Workforce capacity for effort estimation"
+      ]
+    }
+  },
+
+  "cross_api_dependencies": {
+    "shared_entities": [
+      "Customer: Root entity for all three APIs",
+      "Asset/Entity: Referenced by E10 (economic value) and E12 (prioritization target)"
+    ],
+    "data_flow": {
+      "E05_to_E12": "Risk scores → Risk factors for prioritization",
+      "E10_to_E12": "Economic impact → Economic factors and ROI for prioritization",
+      "E11_to_E10": "Workforce data → Personnel cost calculations",
+      "E11_to_E12": "Workforce capacity → Effort estimation for prioritization",
+      "E03_to_E10": "SBOM components → Asset costs and business value",
+      "E08_to_E10": "RAMS reliability → Operational criticality in business value"
+    },
+    "integration_requirements": [
+      "Customer isolation: All APIs require customer_id for multi-tenancy",
+      "Timestamp consistency: All APIs use ISO datetime format",
+      "Currency standardization: All economic values in same currency (USD default)",
+      "Shared identifiers: entity_id used consistently across APIs for same entities"
+    ]
+  },
+
+  "data_population_recommendations": {
+    "phase_1_minimum_viable_data": {
+      "priority": "HIGH",
+      "tasks": [
+        "Import 30 days of cost records for E10 (minimum 90 records)",
+        "Import employee roster for E11 (minimum 100 employees)",
+        "Import vulnerability scan results for E12 (minimum 20 items)",
+        "Configure prioritization thresholds for E12",
+        "Define organization hierarchy for E11 (minimum 5 units)",
+        "Define role catalog for E11 (minimum 20 roles)"
+      ],
+      "estimated_effort": "2-3 days with data access"
+    },
+    "phase_2_functional_baseline": {
+      "priority": "MEDIUM",
+      "tasks": [
+        "Import 90 days of cost history for E10 trends",
+        "Import asset replacement costs for E10 business value",
+        "Import skills inventory for E11 (minimum 50 skills)",
+        "Import turnover history for E11 (minimum 30 records)",
+        "Import compliance requirements for E12 urgency",
+        "Configure E10-E12 integration (risk → priority, economic → ROI)"
+      ],
+      "estimated_effort": "1 week"
+    },
+    "phase_3_production_ready": {
+      "priority": "LOW",
+      "tasks": [
+        "Set up real-time HRMS integration for E11",
+        "Set up vulnerability scanner integration for E12",
+        "Import industry benchmarks for E10 validation",
+        "Set up incident response system integration for E12",
+        "Configure economic indicator feeds for E10 (discount rates)",
+        "Set up IAM integration for E11 access patterns"
+      ],
+      "estimated_effort": "2-3 weeks"
+    }
+  },
+
+  "data_quality_requirements": {
+    "E10_Economic": {
+      "completeness": "90%+ of cost records have category, amount, date",
+      "accuracy": "Currency and amounts validated, no negative costs",
+      "consistency": "All dates in ISO format, all currencies normalized",
+      "timeliness": "Cost data updated daily, max 24 hour lag"
+    },
+    "E11_Demographics": {
+      "completeness": "100% employee roster, 90%+ have all demographic fields",
+      "accuracy": "Age/tenure calculated from hire date, roles validated",
+      "consistency": "All org units linked to hierarchy, no orphaned records",
+      "timeliness": "HRMS sync daily, turnover updated within 24 hours"
+    },
+    "E12_Prioritization": {
+      "completeness": "100% of items have priority category and score",
+      "accuracy": "Risk and economic factors from validated sources (E05, E10)",
+      "consistency": "SLA deadlines calculated from config, no orphaned priorities",
+      "timeliness": "Reprioritization triggered by risk/economic updates"
+    }
+  },
+
+  "next_steps": {
+    "immediate_actions": [
+      "1. Generate sample data scripts for all three APIs",
+      "2. Create data import templates (CSV) for manual data loading",
+      "3. Document API-to-API integration contracts (E05→E12, E10→E12, E11→E10)",
+      "4. Set up Qdrant collection initialization scripts",
+      "5. Create Neo4j schema and constraints for graph entities"
+    ],
+    "validation_approach": [
+      "1. Populate E10 with 30 days sample costs, verify trend analysis works",
+      "2. Populate E11 with 100 sample employees, verify demographics dashboard",
+      "3. Populate E12 with 20 sample items, verify NOW/NEXT/NEVER categorization",
+      "4. Test E10→E12 integration: economic factors flow correctly",
+      "5. Test E11→E10 integration: personnel costs aggregate correctly"
+    ]
+  }
+}

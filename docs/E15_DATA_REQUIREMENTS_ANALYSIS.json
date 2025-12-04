@@ -1,0 +1,580 @@
+{
+  "analysis_date": "2025-12-04",
+  "purpose": "Identify data requirements for E15 Vendor Equipment, E04 Threat Intelligence, and E05 Risk Scoring APIs",
+
+  "E15_Vendor_Equipment": {
+    "graph_entities": [
+      {
+        "node_type": "Vendor",
+        "required_properties": ["vendor_id", "name", "customer_id", "risk_score", "risk_level", "support_status"],
+        "optional_properties": ["country", "industry_focus", "supply_chain_tier", "last_incident_date", "total_cves", "avg_cvss_score", "critical_cve_count", "website", "contact_email"],
+        "sample_data_needed": "Real vendor entities (e.g., Siemens, Schneider Electric, Rockwell Automation, GE, ABB)"
+      },
+      {
+        "node_type": "EquipmentModel",
+        "required_properties": ["model_id", "vendor_id", "model_name", "customer_id"],
+        "optional_properties": ["product_line", "release_date", "eol_date", "eos_date", "current_version", "supported_versions", "maintenance_schedule", "criticality", "lifecycle_status", "deployed_count", "vulnerability_count", "category", "firmware_version"],
+        "sample_data_needed": "Real equipment models with EOL/EOS dates (e.g., Siemens S7-1200, Schneider M221 PLC, Allen-Bradley CompactLogix)"
+      },
+      {
+        "node_type": "SupportContract",
+        "required_properties": ["contract_id", "vendor_id", "customer_id", "start_date", "end_date"],
+        "optional_properties": ["service_level", "response_time_sla", "coverage", "status", "annual_cost", "currency", "covered_model_ids"],
+        "sample_data_needed": "Typical ICS vendor support contracts with expiration dates"
+      },
+      {
+        "node_type": "MaintenanceWindow",
+        "required_properties": ["window_id", "customer_id", "name", "window_type", "start_time", "end_time"],
+        "optional_properties": ["duration_hours", "is_recurring", "recurrence_pattern", "equipment_ids", "vendor_ids", "categories", "is_active"],
+        "sample_data_needed": "Typical ICS maintenance windows (monthly, quarterly patterns)"
+      },
+      {
+        "node_type": "MaintenanceWorkOrder",
+        "required_properties": ["work_order_id", "customer_id", "title"],
+        "optional_properties": ["equipment_ids", "vendor_id", "status", "priority", "scheduled_start", "scheduled_end", "tasks", "assigned_to", "estimated_cost"],
+        "sample_data_needed": "Sample maintenance work orders for EOL equipment"
+      }
+    ],
+    "relationships": [
+      {"type": "MANUFACTURES", "from": "Vendor", "to": "EquipmentModel", "properties": []},
+      {"type": "SUPPORTS", "from": "SupportContract", "to": "Vendor", "properties": []},
+      {"type": "COVERS", "from": "SupportContract", "to": "EquipmentModel", "properties": []},
+      {"type": "AFFECTS", "from": "CVE", "to": "Vendor", "properties": ["flagged_at"]},
+      {"type": "AFFECTS", "from": "CVE", "to": "EquipmentModel", "properties": ["flagged_at"]}
+    ],
+    "qdrant_collections": [
+      {
+        "collection_name": "ner11_vendor_equipment",
+        "vector_size": 384,
+        "distance": "COSINE",
+        "entity_types": ["vendor", "equipment_model", "support_contract", "cve", "eol_alert", "maintenance_window", "work_order"],
+        "required_embeddings": [
+          "Vendor name + industry focus for semantic search",
+          "Equipment model name + product line + category for similarity matching",
+          "CVE descriptions for vulnerability search"
+        ],
+        "data_needed": "Pre-generated embeddings using sentence-transformers/all-MiniLM-L6-v2 model"
+      }
+    ],
+    "baseline_data": [
+      {
+        "category": "Vendor Risk Levels",
+        "description": "Pre-calculated risk scores for common ICS vendors",
+        "sample_values": ["VendorRiskLevel.LOW (0.0-3.0)", "MEDIUM (3.1-6.0)", "HIGH (6.1-8.0)", "CRITICAL (8.1-10.0)"],
+        "source": "Historical vulnerability data + market reputation"
+      },
+      {
+        "category": "Support Status",
+        "description": "Current support status for vendor products",
+        "sample_values": ["ACTIVE", "LIMITED", "EOL", "DEPRECATED"],
+        "source": "Vendor public announcements + product lifecycle databases"
+      },
+      {
+        "category": "Lifecycle Status",
+        "description": "Equipment lifecycle classifications",
+        "sample_values": ["CURRENT", "APPROACHING_EOL (within 180 days)", "EOL", "EOS", "RETIRED"],
+        "source": "Vendor EOL/EOS announcement databases"
+      },
+      {
+        "category": "Equipment Categories",
+        "description": "Standard ICS equipment categorizations",
+        "sample_values": ["network", "server", "workstation", "iot", "scada", "plc", "hmi", "rtu"],
+        "source": "Industry standard taxonomies (IEC 62443, NIST CSF)"
+      },
+      {
+        "category": "Industry Focus",
+        "description": "Target industries for vendors",
+        "sample_values": ["ICS", "IT", "Medical", "IoT", "Energy", "Manufacturing", "Water", "Transportation"],
+        "source": "Vendor marketing materials + sector analysis"
+      }
+    ],
+    "external_sources": [
+      {
+        "source_name": "NVD (NIST National Vulnerability Database)",
+        "api_endpoint": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+        "data_provided": ["CVE records", "CVSS scores", "vendor/product CPE names", "vulnerability descriptions"],
+        "update_frequency": "Daily",
+        "integration_method": "REST API + periodic sync",
+        "authentication": "API key required",
+        "priority": "HIGH"
+      },
+      {
+        "source_name": "Vendor EOL Databases",
+        "examples": ["endoflife.date API", "SupportDetailsDB", "vendor-specific lifecycle pages"],
+        "data_provided": ["EOL dates", "EOS dates", "supported versions", "replacement models"],
+        "update_frequency": "Weekly",
+        "integration_method": "Web scraping + API where available",
+        "priority": "HIGH"
+      },
+      {
+        "source_name": "ICS-CERT Advisories",
+        "api_endpoint": "https://www.cisa.gov/uscert/ics/advisories",
+        "data_provided": ["ICS-specific vulnerabilities", "affected products", "mitigation recommendations"],
+        "update_frequency": "As published",
+        "integration_method": "RSS feed + web scraping",
+        "priority": "CRITICAL"
+      },
+      {
+        "source_name": "CPE (Common Platform Enumeration) Dictionary",
+        "api_endpoint": "https://nvd.nist.gov/products/cpe",
+        "data_provided": ["Vendor names", "product names", "version mapping", "standardized identifiers"],
+        "update_frequency": "Monthly",
+        "integration_method": "XML download + parsing",
+        "priority": "MEDIUM"
+      },
+      {
+        "source_name": "Vendor Catalogs",
+        "examples": ["Siemens Product Catalog", "Schneider Electric Online Catalog", "Rockwell Automation Product Selector"],
+        "data_provided": ["Equipment models", "product lines", "specifications", "release dates"],
+        "update_frequency": "Quarterly",
+        "integration_method": "Web scraping + manual curation",
+        "priority": "MEDIUM"
+      }
+    ]
+  },
+
+  "E04_Threat_Intelligence": {
+    "graph_entities": [
+      {
+        "node_type": "ThreatActor",
+        "required_properties": ["threat_actor_id", "customer_id", "name"],
+        "optional_properties": ["aliases", "actor_type", "motivation", "origin_country", "target_sectors", "target_regions", "active_since", "last_seen", "confidence_level", "ttps", "malware_used", "associated_campaigns", "associated_cves"],
+        "sample_data_needed": "Known APT groups (APT28, APT29, Lazarus, Volt Typhoon) with ICS targeting history"
+      },
+      {
+        "node_type": "ThreatCampaign",
+        "required_properties": ["campaign_id", "customer_id", "name"],
+        "optional_properties": ["description", "threat_actor_id", "start_date", "end_date", "status", "target_sectors", "target_regions", "attack_vectors", "objectives", "associated_cves", "iocs"],
+        "sample_data_needed": "Historical ICS-targeted campaigns (e.g., Industroyer, Triton/Trisis, Havex)"
+      },
+      {
+        "node_type": "MITREMapping",
+        "required_properties": ["mapping_id", "customer_id", "entity_type", "entity_id", "technique_id"],
+        "optional_properties": ["tactic", "technique_name", "sub_technique_id", "detection_coverage", "mitigation_status", "confidence_score"],
+        "sample_data_needed": "MITRE ATT&CK for ICS mappings for common vulnerabilities and campaigns"
+      },
+      {
+        "node_type": "ThreatIntelFeed",
+        "required_properties": ["feed_id", "customer_id", "name", "feed_type"],
+        "optional_properties": ["source_url", "api_key_required", "refresh_interval_minutes", "last_updated", "ioc_count", "enabled"],
+        "sample_data_needed": "Pre-configured threat feeds (AlienVault OTX, MISP, commercial feeds)"
+      },
+      {
+        "node_type": "IOC",
+        "required_properties": ["ioc_id", "customer_id", "ioc_type", "value"],
+        "optional_properties": ["first_seen", "last_seen", "confidence", "is_active", "associated_campaigns", "associated_actors", "source"],
+        "sample_data_needed": "Known ICS malware IOCs (IP addresses, file hashes, domains)"
+      }
+    ],
+    "relationships": [
+      {"type": "ATTRIBUTED_TO", "from": "ThreatCampaign", "to": "ThreatActor", "properties": ["confidence"]},
+      {"type": "USES_TTP", "from": "ThreatActor", "to": "MITREMapping", "properties": ["frequency"]},
+      {"type": "EXPLOITS", "from": "ThreatCampaign", "to": "CVE", "properties": ["first_observed"]},
+      {"type": "CONTAINS_IOC", "from": "ThreatCampaign", "to": "IOC", "properties": ["relevance"]},
+      {"type": "TARGETS", "from": "ThreatActor", "to": "Sector", "properties": ["priority"]}
+    ],
+    "qdrant_collections": [
+      {
+        "collection_name": "ner11_threat_intelligence",
+        "vector_size": 384,
+        "distance": "COSINE",
+        "entity_types": ["threat_actor", "threat_campaign", "mitre_mapping", "ioc"],
+        "required_embeddings": [
+          "Threat actor descriptions + TTPs for similarity matching",
+          "Campaign descriptions + objectives for semantic search",
+          "IOC context for correlation",
+          "MITRE technique descriptions for gap analysis"
+        ],
+        "data_needed": "Pre-generated embeddings for threat intelligence correlation"
+      }
+    ],
+    "baseline_data": [
+      {
+        "category": "Actor Types",
+        "description": "Threat actor classifications",
+        "sample_values": ["APT", "Criminal", "Hacktivist", "State-Sponsored", "Insider", "Unknown"],
+        "source": "Industry standard taxonomies"
+      },
+      {
+        "category": "Actor Motivations",
+        "description": "Primary threat actor motivations",
+        "sample_values": ["Espionage", "Financial", "Disruption", "Destruction", "Ideological"],
+        "source": "Threat intelligence frameworks"
+      },
+      {
+        "category": "MITRE ATT&CK for ICS Techniques",
+        "description": "Complete ICS-specific ATT&CK technique catalog",
+        "sample_values": ["T0800-T0899 (ICS tactics)", "Sub-techniques", "Mitigations"],
+        "source": "MITRE ATT&CK for ICS framework v15.1"
+      },
+      {
+        "category": "ICS Target Sectors",
+        "description": "Critical infrastructure sectors",
+        "sample_values": ["Energy", "Water", "Manufacturing", "Transportation", "Healthcare", "Chemical", "Nuclear"],
+        "source": "NIST CSF + CISA sector definitions"
+      },
+      {
+        "category": "IOC Types",
+        "description": "Standard IOC classifications",
+        "sample_values": ["IP", "Domain", "URL", "Hash_MD5", "Hash_SHA1", "Hash_SHA256", "Email", "File_Name"],
+        "source": "STIX 2.1 + OpenIOC standards"
+      }
+    ],
+    "external_sources": [
+      {
+        "source_name": "MITRE ATT&CK for ICS",
+        "api_endpoint": "https://attack.mitre.org/",
+        "data_provided": ["ICS tactics and techniques", "Mitigations", "Detections", "Software", "Groups"],
+        "update_frequency": "Quarterly (with framework updates)",
+        "integration_method": "STIX 2.1 bundles + TAXII server",
+        "priority": "CRITICAL"
+      },
+      {
+        "source_name": "ICS-CERT Advisories",
+        "api_endpoint": "https://www.cisa.gov/uscert/ics/advisories",
+        "data_provided": ["ICS-specific threat intelligence", "Campaign details", "IOCs", "Mitigations"],
+        "update_frequency": "As published",
+        "integration_method": "RSS feed + STIX parsing",
+        "priority": "CRITICAL"
+      },
+      {
+        "source_name": "AlienVault OTX (Open Threat Exchange)",
+        "api_endpoint": "https://otx.alienvault.com/api/v1",
+        "data_provided": ["IOCs", "Threat actors", "Campaigns", "Pulses (threat bundles)"],
+        "update_frequency": "Real-time",
+        "integration_method": "REST API with API key",
+        "priority": "HIGH"
+      },
+      {
+        "source_name": "MISP Threat Sharing",
+        "api_endpoint": "https://www.misp-project.org/",
+        "data_provided": ["IOCs", "Events", "Threat intelligence", "Malware samples"],
+        "update_frequency": "Real-time",
+        "integration_method": "MISP API + STIX export",
+        "priority": "HIGH"
+      },
+      {
+        "source_name": "VirusTotal Intelligence",
+        "api_endpoint": "https://www.virustotal.com/api/v3",
+        "data_provided": ["File hashes", "Domain reputation", "IP reputation", "Malware analysis"],
+        "update_frequency": "Real-time",
+        "integration_method": "REST API (requires premium subscription)",
+        "priority": "MEDIUM"
+      },
+      {
+        "source_name": "Commercial Threat Feeds",
+        "examples": ["Recorded Future", "Mandiant", "CrowdStrike Falcon Intelligence", "Dragos WorldView"],
+        "data_provided": ["ICS-specific threat intelligence", "Actor profiles", "Campaign tracking", "Custom IOCs"],
+        "update_frequency": "Real-time to daily",
+        "integration_method": "STIX/TAXII or proprietary APIs",
+        "priority": "HIGH (if budget available)"
+      }
+    ]
+  },
+
+  "E05_Risk_Scoring": {
+    "graph_entities": [
+      {
+        "node_type": "RiskScore",
+        "required_properties": ["risk_score_id", "customer_id", "entity_type", "entity_id", "entity_name", "overall_score", "risk_level"],
+        "optional_properties": ["vulnerability_score", "threat_score", "exposure_score", "asset_score", "calculation_date", "confidence", "contributing_factors", "trend", "previous_score", "score_change"],
+        "sample_data_needed": "Calculated risk scores for sample assets with historical trends"
+      },
+      {
+        "node_type": "AssetCriticality",
+        "required_properties": ["asset_id", "customer_id", "asset_name", "asset_type"],
+        "optional_properties": ["criticality_level", "criticality_score", "business_impact", "data_classification", "availability_requirement", "dependencies", "dependent_services", "recovery_time_objective_hours", "recovery_point_objective_hours"],
+        "sample_data_needed": "Pre-assessed criticality for ICS asset types (SCADA servers, PLCs, HMIs, historians)"
+      },
+      {
+        "node_type": "ExposureScore",
+        "required_properties": ["exposure_id", "customer_id", "asset_id", "asset_name"],
+        "optional_properties": ["external_exposure", "internet_facing", "open_ports", "exposed_services", "exposure_score", "attack_surface_area", "network_segment", "security_controls", "last_scan_date"],
+        "sample_data_needed": "Network scan results for sample ICS environments"
+      },
+      {
+        "node_type": "RiskAggregation",
+        "required_properties": ["aggregation_id", "customer_id", "aggregation_type", "group_name", "group_id"],
+        "optional_properties": ["average_risk_score", "max_risk_score", "min_risk_score", "entity_count", "high_risk_count", "critical_count", "risk_distribution", "trend"],
+        "sample_data_needed": "Pre-calculated aggregations by vendor, sector, asset type"
+      },
+      {
+        "node_type": "RiskFactor",
+        "required_properties": ["factor_id", "factor_type", "name", "description", "weight", "score"],
+        "optional_properties": ["evidence", "remediation_available"],
+        "sample_data_needed": "Standard risk factors for ICS environments"
+      }
+    ],
+    "relationships": [
+      {"type": "HAS_RISK_SCORE", "from": "Asset", "to": "RiskScore", "properties": ["calculated_at"]},
+      {"type": "HAS_CRITICALITY", "from": "Asset", "to": "AssetCriticality", "properties": []},
+      {"type": "HAS_EXPOSURE", "from": "Asset", "to": "ExposureScore", "properties": ["scan_date"]},
+      {"type": "CONTRIBUTES_TO", "from": "RiskFactor", "to": "RiskScore", "properties": ["weight", "contribution_amount"]},
+      {"type": "DEPENDS_ON", "from": "Asset", "to": "Asset", "properties": ["dependency_type"]},
+      {"type": "AGGREGATES", "from": "RiskAggregation", "to": "RiskScore", "properties": []}
+    ],
+    "qdrant_collections": [
+      {
+        "collection_name": "ner11_risk_scoring",
+        "vector_size": 384,
+        "distance": "COSINE",
+        "entity_types": ["risk_score", "asset_criticality", "exposure_score"],
+        "required_embeddings": [
+          "Risk factor descriptions for similarity matching",
+          "Asset descriptions for risk correlation",
+          "Remediation descriptions for recommendation matching"
+        ],
+        "data_needed": "Pre-generated embeddings for risk-based semantic search"
+      }
+    ],
+    "baseline_data": [
+      {
+        "category": "Risk Levels",
+        "description": "Standardized risk level thresholds",
+        "sample_values": ["LOW (0.0-2.5)", "MEDIUM (2.6-5.0)", "HIGH (5.1-7.5)", "CRITICAL (7.6-10.0)"],
+        "source": "NIST 800-30 risk assessment guidelines"
+      },
+      {
+        "category": "Business Impact Levels",
+        "description": "Business impact classifications",
+        "sample_values": ["Minimal", "Moderate", "Significant", "Severe", "Catastrophic"],
+        "source": "NIST CSF + industry standards"
+      },
+      {
+        "category": "Data Classifications",
+        "description": "Standard data sensitivity levels",
+        "sample_values": ["Public", "Internal", "Confidential", "Restricted", "Top Secret"],
+        "source": "ISO 27001 + government classifications"
+      },
+      {
+        "category": "Availability Requirements",
+        "description": "Uptime requirement tiers",
+        "sample_values": ["Standard (99%)", "Important (99.9%)", "Essential (99.99%)", "Critical (99.999%)"],
+        "source": "SLA standards + industry benchmarks"
+      },
+      {
+        "category": "Attack Surface Areas",
+        "description": "Exposure level classifications",
+        "sample_values": ["Minimal", "Limited", "Moderate", "Extensive", "Critical"],
+        "source": "NIST CSF + penetration testing standards"
+      },
+      {
+        "category": "Risk Factor Types",
+        "description": "Categories of contributing risk factors",
+        "sample_values": ["Vulnerability", "Threat", "Exposure", "Asset", "Compliance"],
+        "source": "ISO 31000 risk management framework"
+      },
+      {
+        "category": "ICS Asset Criticality Baseline",
+        "description": "Pre-assessed criticality for common ICS assets",
+        "sample_values": [
+          "SCADA Server: MISSION_CRITICAL (9.0)",
+          "Safety PLC: CRITICAL (8.5)",
+          "Process Historian: HIGH (7.0)",
+          "Engineering Workstation: MEDIUM (5.0)",
+          "Field Device: LOW-MEDIUM (4.0)"
+        ],
+        "source": "ISA/IEC 62443 + industry best practices"
+      }
+    ],
+    "external_sources": [
+      {
+        "source_name": "NVD CVSS Scores",
+        "api_endpoint": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+        "data_provided": ["Base CVSS scores", "Exploitability metrics", "Impact metrics", "Temporal scores"],
+        "update_frequency": "Daily",
+        "integration_method": "REST API + periodic sync",
+        "priority": "HIGH"
+      },
+      {
+        "source_name": "EPSS (Exploit Prediction Scoring System)",
+        "api_endpoint": "https://api.first.org/data/v1/epss",
+        "data_provided": ["Exploitation probability scores", "Trending CVEs", "Attack likelihood"],
+        "update_frequency": "Daily",
+        "integration_method": "REST API",
+        "priority": "HIGH"
+      },
+      {
+        "source_name": "Shodan/Censys for Exposure Data",
+        "api_endpoint": "https://api.shodan.io/ or https://search.censys.io/api",
+        "data_provided": ["Internet-facing ICS assets", "Open ports", "Exposed services", "Banner grabbing"],
+        "update_frequency": "Weekly scans",
+        "integration_method": "REST API (requires subscription)",
+        "priority": "MEDIUM"
+      },
+      {
+        "source_name": "CISA Known Exploited Vulnerabilities (KEV)",
+        "api_endpoint": "https://www.cisa.gov/known-exploited-vulnerabilities-catalog",
+        "data_provided": ["Actively exploited CVEs", "Remediation deadlines", "Threat context"],
+        "update_frequency": "Daily",
+        "integration_method": "JSON download",
+        "priority": "CRITICAL"
+      },
+      {
+        "source_name": "NIST NVD CPE Match Strings",
+        "api_endpoint": "https://services.nvd.nist.gov/rest/json/cpes/2.0",
+        "data_provided": ["Asset-to-CVE matching", "Version-specific vulnerabilities"],
+        "update_frequency": "Weekly",
+        "integration_method": "REST API",
+        "priority": "HIGH"
+      }
+    ]
+  },
+
+  "core_models": {
+    "threat_types": [
+      "APT (Advanced Persistent Threat)",
+      "Criminal Group",
+      "Hacktivist",
+      "State-Sponsored",
+      "Insider Threat",
+      "Opportunistic Attacker"
+    ],
+    "risk_factors": [
+      {
+        "type": "Vulnerability",
+        "description": "Known CVEs affecting the asset",
+        "default_weight": 0.30,
+        "scoring_method": "CVSS base score weighted by exploitability"
+      },
+      {
+        "type": "Threat",
+        "description": "Active threat actor interest or campaign targeting",
+        "default_weight": 0.25,
+        "scoring_method": "Actor sophistication + targeting confidence"
+      },
+      {
+        "type": "Exposure",
+        "description": "Attack surface and network exposure",
+        "default_weight": 0.20,
+        "scoring_method": "Internet exposure + open services + security controls"
+      },
+      {
+        "type": "Asset",
+        "description": "Asset criticality and business impact",
+        "default_weight": 0.15,
+        "scoring_method": "Business impact + data classification + RTO/RPO"
+      },
+      {
+        "type": "Compliance",
+        "description": "Compliance violations or gaps",
+        "default_weight": 0.10,
+        "scoring_method": "Number of violations + severity + regulatory importance"
+      }
+    ],
+    "vendor_categories": [
+      "ICS Hardware Manufacturer (Siemens, Schneider, Rockwell)",
+      "Network Equipment (Cisco, Juniper, Fortinet)",
+      "SCADA Software (GE Digital, Aveva, Emerson)",
+      "Security Vendor (Nozomi, Claroty, Dragos)",
+      "IT Infrastructure (Dell, HP, Lenovo)"
+    ]
+  },
+
+  "data_enrichment_priorities": [
+    {
+      "priority": 1,
+      "task": "Populate vendor catalog with major ICS vendors",
+      "vendors_needed": ["Siemens", "Schneider Electric", "Rockwell Automation", "ABB", "Emerson", "Honeywell", "GE Digital", "Yokogawa"],
+      "data_points_per_vendor": ["risk_score", "country", "industry_focus", "support_status"]
+    },
+    {
+      "priority": 2,
+      "task": "Load equipment models with EOL/EOS dates",
+      "equipment_families_needed": ["PLCs", "HMIs", "RTUs", "Historians", "SCADA servers", "Engineering workstations"],
+      "data_points": ["eol_date", "eos_date", "current_version", "lifecycle_status", "category"]
+    },
+    {
+      "priority": 3,
+      "task": "Import CVE database for ICS-relevant vulnerabilities",
+      "cve_sources": ["NVD", "ICS-CERT advisories", "CISA KEV catalog"],
+      "filtering": "Focus on CVEs affecting ICS vendors and products"
+    },
+    {
+      "priority": 4,
+      "task": "Load MITRE ATT&CK for ICS framework",
+      "data_needed": ["All ICS tactics (Collection, Command and Control, Inhibit Response, etc.)", "All ICS techniques (T0800-T0899)", "Mitigations", "Detection methods"],
+      "format": "STIX 2.1 bundles"
+    },
+    {
+      "priority": 5,
+      "task": "Populate threat actor database",
+      "actors_needed": ["Known ICS-targeting APTs (APT33, Sandworm, Lazarus, etc.)", "TTPs", "Target sectors", "Associated campaigns"],
+      "sources": ["MITRE ATT&CK Groups", "ICS-CERT", "Commercial threat intelligence"]
+    },
+    {
+      "priority": 6,
+      "task": "Generate embeddings for all entities",
+      "entities_to_embed": ["All vendors", "All equipment models", "All CVE descriptions", "All threat actor profiles", "All campaign descriptions"],
+      "model": "sentence-transformers/all-MiniLM-L6-v2",
+      "vector_size": 384
+    },
+    {
+      "priority": 7,
+      "task": "Pre-calculate baseline risk scores",
+      "calculations_needed": ["Vendor risk scores based on CVE history", "Equipment criticality baselines by type", "Exposure scores for common network segments"],
+      "historical_data": "Last 12-24 months of vulnerability data"
+    }
+  ],
+
+  "data_volume_estimates": {
+    "vendors": {
+      "initial_load": "50-100 major ICS vendors",
+      "growth_rate": "5-10 new vendors per quarter",
+      "storage_per_vendor": "~2KB (payload) + 1.5KB (embedding)"
+    },
+    "equipment_models": {
+      "initial_load": "500-1000 models across major vendors",
+      "growth_rate": "20-50 new models per quarter",
+      "storage_per_model": "~3KB (payload) + 1.5KB (embedding)"
+    },
+    "cves": {
+      "initial_load": "5,000-10,000 ICS-relevant CVEs (last 5 years)",
+      "growth_rate": "50-100 new ICS CVEs per month",
+      "storage_per_cve": "~4KB (payload) + 1.5KB (embedding)"
+    },
+    "threat_actors": {
+      "initial_load": "50-100 known ICS-targeting actors",
+      "growth_rate": "5-10 new actors per year",
+      "storage_per_actor": "~5KB (payload) + 1.5KB (embedding)"
+    },
+    "threat_campaigns": {
+      "initial_load": "100-200 historical ICS campaigns",
+      "growth_rate": "10-20 new campaigns per year",
+      "storage_per_campaign": "~6KB (payload) + 1.5KB (embedding)"
+    },
+    "mitre_mappings": {
+      "initial_load": "1,000-2,000 mappings (vulnerabilities + campaigns to ATT&CK)",
+      "growth_rate": "50-100 new mappings per quarter",
+      "storage_per_mapping": "~2KB (payload) + 1.5KB (embedding)"
+    },
+    "total_storage_estimate": {
+      "initial": "~50-100 MB (data + embeddings)",
+      "year_1": "~150-250 MB",
+      "year_2": "~300-500 MB"
+    }
+  },
+
+  "critical_dependencies": [
+    "Qdrant vector database (running and accessible)",
+    "Neo4j graph database (optional but recommended for relationship queries)",
+    "Sentence-transformers model (all-MiniLM-L6-v2) loaded and functional",
+    "NVD API key (for CVE data)",
+    "ICS-CERT RSS feed access",
+    "MITRE ATT&CK STIX bundles (downloadable from https://attack.mitre.org/)",
+    "Customer isolation context management working correctly"
+  ],
+
+  "next_steps": [
+    "1. Set up data pipeline for NVD CVE ingestion (E15 vendor vulnerability tracking)",
+    "2. Download and parse MITRE ATT&CK for ICS STIX bundles (E04 threat intelligence)",
+    "3. Create vendor seed data with major ICS manufacturers (E15 vendor catalog)",
+    "4. Generate embeddings for seed data using sentence-transformers (all APIs)",
+    "5. Set up ICS-CERT advisory monitoring (E04 + E15 integration)",
+    "6. Pre-calculate risk baselines for common ICS asset types (E05 risk scoring)",
+    "7. Create data loader scripts for bulk import of vendors, equipment, CVEs",
+    "8. Implement periodic sync jobs for external data sources (daily/weekly)",
+    "9. Validate data quality and completeness for demo/MVP scenarios",
+    "10. Document data refresh procedures and automation workflows"
+  ]
+}
