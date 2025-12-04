@@ -37,6 +37,7 @@ class ActorMotivation(Enum):
     DISRUPTION = "disruption"             # Service disruption
     DESTRUCTION = "destruction"           # Data/system destruction
     IDEOLOGICAL = "ideological"           # Political/ideological goals
+    UNKNOWN = "unknown"                   # Unknown motivation
 
 
 class CampaignStatus(Enum):

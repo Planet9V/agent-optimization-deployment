@@ -33,6 +33,10 @@
 | **NER11 Semantic Search** | ✅ OPERATIONAL | http://localhost:8000/search/semantic | REST API (FastAPI) | 3.0.0 | 2025-12-01 |
 | **NER11 Hybrid Search** | ✅ **FIXED** | http://localhost:8000/search/hybrid | REST API (FastAPI) | 3.1.0 | 2025-12-02 |
 | **NER11 Entity Extraction** | ✅ OPERATIONAL | http://localhost:8000/ner | REST API (FastAPI) | 3.0.0 | 2025-12-01 |
+| **Phase B2 SBOM/Vendor** | ✅ OPERATIONAL | /api/v2/sbom, /api/v2/vendor-equipment | REST API (FastAPI) | 1.0.0 | 2025-12-04 |
+| **Phase B3 Threat/Risk/Remediation** | ✅ OPERATIONAL | /api/v2/threat-intel, /api/v2/risk, /api/v2/remediation | REST API (FastAPI) | 1.0.0 | 2025-12-04 |
+| **Phase B4 Compliance/Scanning/Alerts** | ✅ OPERATIONAL | /api/v2/compliance, /api/v2/scanning, /api/v2/alerts | REST API (FastAPI) | 1.0.0 | 2025-12-04 |
+| **Phase B5 Economic/Demographics/Priority** | ✅ **NEW** | /api/v2/economic-impact, /api/v2/demographics, /api/v2/prioritization | REST API (FastAPI) | 1.0.0 | 2025-12-04 |
 
 **Current State** (Updated 2025-12-02 07:30 UTC):
 - Neo4j database operational with 1.1M+ nodes

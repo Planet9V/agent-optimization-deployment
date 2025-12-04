@@ -14,8 +14,11 @@ Modules:
 - compliance_mapping: E07 Compliance & Framework Mapping API
 - automated_scanning: E08 Automated Scanning & Testing API
 - alert_management: E09 Alert Management API
+- economic_impact: E10 Economic Impact Modeling API
+- demographics: E11 Psychohistory Demographics Baseline API
+- prioritization: E12 Prioritization & Urgency Ranking API
 
-Version: 5.0.0
+Version: 5.2.0
 Updated: 2025-12-04
 """
 
@@ -35,11 +38,14 @@ from .sbom_analysis import sbom_router, SBOMAnalysisService
 from .threat_intelligence import threat_router, ThreatIntelligenceService
 from .risk_scoring import risk_router, RiskScoringService
 from .remediation import remediation_router, RemediationService
+from .demographics import demographics_router, DemographicsService
 
 # Phase B4 APIs
 from .compliance_mapping import compliance_router, ComplianceService
 from .automated_scanning import scanning_router, ScanningService
 from .alert_management import alert_router, AlertService
+from .economic_impact import router as economic_router
+from .prioritization import router as prioritization_router
 
 __all__ = [
     # Customer Isolation
@@ -60,6 +66,8 @@ __all__ = [
     "RiskScoringService",
     "remediation_router",
     "RemediationService",
+    "demographics_router",
+    "DemographicsService",
     # Phase B4 APIs
     "compliance_router",
     "ComplianceService",
@@ -67,4 +75,6 @@ __all__ = [
     "ScanningService",
     "alert_router",
     "AlertService",
+    "economic_router",
+    "prioritization_router",
 ]
