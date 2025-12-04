@@ -1,0 +1,325 @@
+[
+  {
+    "gap_id": "GAP-ML-004",
+    "gap_name": "Temporal Versioning (Event Sourcing)",
+    "file_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_GAP_CASES/01_GAP-ML-004_TEMPORAL_VERSIONING.md",
+    "priority": "CRITICAL",
+    "phase": 1,
+    "phase_name": "Foundation",
+    "status": "NOT STARTED",
+    "intent": "Implement full event sourcing with temporal properties to enable point-in-time queries and complete audit trail for all property changes.",
+    "estimated_effort": "L",
+    "estimated_weeks": "4-6",
+    "dependencies": [
+      "Neo4j 5.26+ operational",
+      "Admin access to Neo4j",
+      "No dependencies on other gaps"
+    ],
+    "deliverables": [
+      "Temporal properties on all node types (Actor, Asset, Concept)",
+      "PropertyChangeEvent node type",
+      "Temporal query functions (get_at_timestamp, get_history)",
+      "Migration script for existing nodes",
+      "API integration with temporal endpoints"
+    ],
+    "blocking_issues": []
+  },
+  {
+    "gap_id": "GAP-ML-005",
+    "gap_name": "WebSocket EWS Streaming",
+    "file_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_GAP_CASES/02_GAP-ML-005_WEBSOCKET_EWS.md",
+    "priority": "CRITICAL",
+    "phase": 1,
+    "phase_name": "Foundation",
+    "status": "NOT STARTED",
+    "intent": "Enable WebSocket streaming of Early Warning Signals for sub-second crisis detection with push notifications for threshold breaches.",
+    "estimated_effort": "L",
+    "estimated_weeks": "4-6",
+    "dependencies": [
+      "GAP-ML-004 (Temporal Versioning) - for change detection",
+      "Neo4j CDC or triggers operational",
+      "WebSocket infrastructure"
+    ],
+    "deliverables": [
+      "Socket.io WebSocket server",
+      "EWS calculation engine",
+      "Neo4j CDC listener",
+      "PagerDuty and Slack integrations",
+      "Frontend dashboard subscription"
+    ],
+    "blocking_issues": []
+  },
+  {
+    "gap_id": "GAP-ML-010",
+    "gap_name": "Cascade Event Tracking",
+    "file_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_GAP_CASES/03_GAP-ML-010_CASCADE_TRACKING.md",
+    "priority": "HIGH",
+    "phase": 1,
+    "phase_name": "Foundation",
+    "status": "NOT STARTED",
+    "intent": "Implement full CASCADE_EVENT subgraph with genealogy tracking, velocity metrics, and complete propagation path analysis.",
+    "estimated_effort": "M",
+    "estimated_weeks": "2-4",
+    "dependencies": [
+      "Neo4j schema access",
+      "Granovetter cascade engine (for testing)"
+    ],
+    "deliverables": [
+      "CascadeEvent node type",
+      "TRIGGERED and PARTICIPATED_IN relationships",
+      "Cascade tree traversal queries",
+      "Velocity/acceleration calculations",
+      "Integration with Granovetter cascade engine"
+    ],
+    "blocking_issues": []
+  },
+  {
+    "gap_id": "GAP-ML-011",
+    "gap_name": "Batch Prediction API",
+    "file_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_GAP_CASES/04_GAP-ML-011_BATCH_PREDICTION.md",
+    "priority": "HIGH",
+    "phase": 1,
+    "phase_name": "Foundation",
+    "status": "NOT STARTED",
+    "intent": "Create batch prediction endpoints with async job processing, result caching, and efficient bulk operations for multiple entities.",
+    "estimated_effort": "M",
+    "estimated_weeks": "2-4",
+    "dependencies": [
+      "Redis infrastructure",
+      "Celery installed",
+      "Neo4j connection pool"
+    ],
+    "deliverables": [
+      "Redis job queue infrastructure",
+      "Batch endpoints (/predict/batch/ising, cascade, ews)",
+      "Celery workers for batch processing",
+      "Redis caching layer with invalidation triggers",
+      "Job status and results API endpoints"
+    ],
+    "blocking_issues": []
+  },
+  {
+    "gap_id": "GAP-ML-001",
+    "gap_name": "Loman Operator (L-gGNN) Implementation",
+    "file_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_GAP_CASES/05_GAP-ML-001_LOMAN_OPERATOR.md",
+    "priority": "CRITICAL",
+    "phase": 2,
+    "phase_name": "Core Math",
+    "status": "NOT STARTED",
+    "intent": "Deploy production L-gGNN with real-time processing, GPU inference, and integration with Neo4j for psychodynamic graph learning.",
+    "estimated_effort": "XL",
+    "estimated_weeks": "8+",
+    "dependencies": [
+      "GPU infrastructure",
+      "Labeled training data from historical incidents",
+      "Phase 1 gaps complete (temporal versioning for training data)",
+      "Neo4j CB5T properties populated"
+    ],
+    "deliverables": [
+      "GPU infrastructure provisioning",
+      "PyTorch + PyTorch Geometric environment",
+      "LacanianGRUCell and LomanOperator implementation",
+      "Training pipeline with hyperparameter tuning",
+      "ONNX export and FastAPI inference service",
+      "Neo4j integration for real-time predictions"
+    ],
+    "blocking_issues": [
+      "GPU resource constraints",
+      "Insufficient training data - may require synthetic data generation"
+    ]
+  },
+  {
+    "gap_id": "GAP-ML-002",
+    "gap_name": "Dynamic CB5T Parameters",
+    "file_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_GAP_CASES/06_GAP-ML-002_DYNAMIC_CB5T.md",
+    "priority": "CRITICAL",
+    "phase": 2,
+    "phase_name": "Core Math",
+    "status": "NOT STARTED",
+    "intent": "Enable dynamic psychometric updates from behavioral signals, HR systems, and incident participation with temporal tracking of personality changes.",
+    "estimated_effort": "L",
+    "estimated_weeks": "4-6",
+    "dependencies": [
+      "GAP-ML-004 (Temporal Versioning) for history tracking",
+      "External system APIs (HR, training)",
+      "Neo4j triggers operational"
+    ],
+    "deliverables": [
+      "Enhanced Actor schema with history arrays",
+      "Update triggers (incident participation, training completion, communication patterns)",
+      "HR and training system integration APIs",
+      "Bayesian update formulas with stability constraints",
+      "Lacanian register dynamics from incident data"
+    ],
+    "blocking_issues": [
+      "Privacy concerns - requires anonymization and consent management",
+      "External system integration failures - fallback to manual updates needed"
+    ]
+  },
+  {
+    "gap_id": "GAP-ML-006",
+    "gap_name": "True Autocorrelation",
+    "file_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_GAP_CASES/07_GAP-ML-006_AUTOCORRELATION.md",
+    "priority": "HIGH",
+    "phase": 2,
+    "phase_name": "Core Math",
+    "status": "NOT STARTED",
+    "intent": "Implement rolling window autocorrelation with true ACF/PACF computation using TimescaleDB for accurate EWS metrics.",
+    "estimated_effort": "M",
+    "estimated_weeks": "2-4",
+    "dependencies": [
+      "TimescaleDB infrastructure",
+      "Historical metric data (from GAP-ML-004)",
+      "Neo4j EWS properties"
+    ],
+    "deliverables": [
+      "TimescaleDB hypertable for EWS time-series",
+      "Rolling ACF/PACF calculation service",
+      "Continuous aggregates for performance",
+      "Neo4j sync procedure (TimescaleDB → Neo4j)",
+      "Hourly calculation scheduler"
+    ],
+    "blocking_issues": []
+  },
+  {
+    "gap_id": "GAP-ML-007",
+    "gap_name": "Multi-R0 Ensemble",
+    "file_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_GAP_CASES/08_GAP-ML-007_MULTI_R0.md",
+    "priority": "HIGH",
+    "phase": 2,
+    "phase_name": "Core Math",
+    "status": "NOT STARTED",
+    "intent": "Create multi-vulnerability R0 matrix with dynamic network topology, competing/cooperating malware modeling, and ensemble predictions.",
+    "estimated_effort": "M",
+    "estimated_weeks": "2-4",
+    "dependencies": [
+      "Neo4j GDS library",
+      "Graph projections operational",
+      "Historical outbreak data for validation"
+    ],
+    "deliverables": [
+      "Multi-layer GDS projection for epidemic graphs",
+      "R0Ensemble class with Monte Carlo sampling",
+      "Competing/cooperating vulnerability models",
+      "Sector-specific R0 calculations",
+      "Validation against WannaCry and NotPetya spread patterns"
+    ],
+    "blocking_issues": []
+  },
+  {
+    "gap_id": "GAP-ML-003",
+    "gap_name": "NER11 Gold Pipeline Integration",
+    "file_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_GAP_CASES/09_GAP-ML-003_NER11_PIPELINE.md",
+    "priority": "CRITICAL",
+    "phase": 3,
+    "phase_name": "Data Integration",
+    "status": "IN PROGRESS",
+    "intent": "Complete streaming ingestion pipeline with automated entity-to-graph resolution for real-time graph hydration from threat intelligence sources.",
+    "estimated_effort": "XL",
+    "estimated_weeks": "8+",
+    "dependencies": [
+      "Kafka infrastructure",
+      "NER11 Gold model deployed",
+      "Qdrant operational",
+      "Neo4j streaming import"
+    ],
+    "deliverables": [
+      "Kafka cluster with raw_docs, entities, graph_updates topics",
+      "NER11 gRPC service consuming from Kafka",
+      "EntityResolver with embedding-based matching",
+      "Qdrant collections for all 566+ entity types",
+      "Neo4j streaming MERGE operations",
+      "CISA, NVD, MITRE ATT&CK data source integrations"
+    ],
+    "blocking_issues": [
+      "Model trained and available (566+ entity types)",
+      "Pipeline incomplete - requires streaming ingestion infrastructure"
+    ]
+  },
+  {
+    "gap_id": "GAP-ML-008",
+    "gap_name": "Demographic Data Integration",
+    "file_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_GAP_CASES/10_GAP-ML-008_DEMOGRAPHIC_DATA.md",
+    "priority": "HIGH",
+    "phase": 3,
+    "phase_name": "Data Integration",
+    "status": "NOT STARTED",
+    "intent": "Integrate census and demographic data for population-scale Ising simulations, enabling political/economic actor modeling and regional segmentation.",
+    "estimated_effort": "XL",
+    "estimated_weeks": "8+",
+    "dependencies": [
+      "Census API keys",
+      "World Bank API access",
+      "Phase 1 & 2 gaps complete"
+    ],
+    "deliverables": [
+      "Census, World Bank, BLS API integrations",
+      "Region and DemographicSegment node types in Neo4j",
+      "Geographic hierarchy with coupling matrix",
+      "PopulationIsingModel for opinion dynamics",
+      "Regional visualization and simulation endpoints"
+    ],
+    "blocking_issues": [
+      "Data access limitations - requires multiple source fallbacks",
+      "Privacy concerns - aggregation only, no PII"
+    ]
+  },
+  {
+    "gap_id": "GAP-ML-009",
+    "gap_name": "Economic Indicators Integration",
+    "file_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_GAP_CASES/11_GAP-ML-009_ECONOMIC_INDICATORS.md",
+    "priority": "HIGH",
+    "phase": 3,
+    "phase_name": "Data Integration",
+    "status": "NOT STARTED",
+    "intent": "Enable real-time market data feeds, economic Ising model, and supply chain cascade prediction for dynamic economic impact calculations.",
+    "estimated_effort": "L",
+    "estimated_weeks": "4-6",
+    "dependencies": [
+      "API keys for market data providers",
+      "FRED API access",
+      "Phase 1 gaps complete"
+    ],
+    "deliverables": [
+      "Alpha Vantage and Yahoo Finance integrations",
+      "FRED economic indicators API",
+      "MarketSector and EconomicIndicator nodes",
+      "EconomicBifurcationDetector with EWS metrics",
+      "Recession probability model",
+      "Supply chain cascade API"
+    ],
+    "blocking_issues": [
+      "API rate limits - requires caching and multiple sources"
+    ]
+  },
+  {
+    "gap_id": "GAP-ML-012",
+    "gap_name": "Backtesting Framework",
+    "file_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_GAP_CASES/12_GAP-ML-012_BACKTESTING.md",
+    "priority": "HIGH",
+    "phase": 4,
+    "phase_name": "Validation",
+    "status": "NOT STARTED",
+    "intent": "Create comprehensive backtesting framework with historical validation, model calibration, and confidence intervals for prediction accuracy.",
+    "estimated_effort": "XL",
+    "estimated_weeks": "8+",
+    "dependencies": [
+      "All Phase 1-3 gaps complete",
+      "Historical data collected",
+      "Model implementations stable"
+    ],
+    "deliverables": [
+      "Historical cyber incident database (2015-2024)",
+      "BacktestingFramework class with accuracy metrics",
+      "Historical state reconstruction",
+      "Calibration grid search for optimal parameters",
+      "Validation against 10+ cyber incidents and 5+ economic crises",
+      "Brier score <0.2, accuracy >70% at 30-day window"
+    ],
+    "blocking_issues": [
+      "Requires all previous phases complete",
+      "Insufficient historical data may require synthetic data generation",
+      "Overfitting risk - requires hold-out validation"
+    ]
+  }
+]

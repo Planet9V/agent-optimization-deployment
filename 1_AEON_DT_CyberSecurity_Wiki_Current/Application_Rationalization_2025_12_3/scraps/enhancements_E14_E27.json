@@ -1,0 +1,269 @@
+[
+  {
+    "enhancement_id": "E14",
+    "name": "Lacanian Real/Imaginary Analysis",
+    "status": "PLANNED",
+    "intent": "Applies Lacanian psychoanalytic theory to detect gaps between stated security policies (Symbolic) and actual threats (Real), with Imaginary mediating organizational self-perception. Identifies where security narratives diverge from reality.",
+    "business_value": "HIGH - Exposes hidden security gaps",
+    "technical_complexity": "HIGH - Requires psychoanalytic theory integration",
+    "dependencies": ["E04 (Lacanian Psychometric Ontology)", "E24 (Cognitive Dissonance)", "E27 (Entity Expansion)"],
+    "key_deliverables": [
+      "Lacanian three-register mapping (Real/Symbolic/Imaginary)",
+      "Policy-reality gap detection algorithm",
+      "Organizational blind spot identification"
+    ],
+    "implementation_readiness": "MEDIUM - Theory defined, awaits Neo4j schema integration",
+    "documentation_found": true,
+    "folder_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_Planned_Enhancements/Enhancement_14_Lacanian_RealImaginary"
+  },
+  {
+    "enhancement_id": "E15",
+    "name": "Vendor Equipment Tracking",
+    "status": "PLANNED",
+    "intent": "Comprehensive vendor and equipment asset management integrated with cybersecurity threat intelligence. Tracks vendor relationships, equipment inventory, and associated vulnerabilities.",
+    "business_value": "HIGH - Supply chain risk management",
+    "technical_complexity": "MEDIUM - Asset database integration",
+    "dependencies": ["E07 (RAMS Analysis)", "E16 (Protocol Analysis)", "E27 (Entity Expansion)"],
+    "key_deliverables": [
+      "Vendor entity nodes in Neo4j",
+      "Equipment asset tracking",
+      "Vendor-vulnerability correlation"
+    ],
+    "implementation_readiness": "HIGH - Clear requirements, standard database design",
+    "documentation_found": true,
+    "folder_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_Planned_Enhancements/Enhancement_15_Vendor_Equipment"
+  },
+  {
+    "enhancement_id": "E16",
+    "name": "Protocol Analysis",
+    "status": "PLANNED",
+    "intent": "Deep analysis of communication protocols (ICS/OT, network, application-layer) to identify protocol-specific vulnerabilities and attack vectors. Focuses on industrial control system protocols.",
+    "business_value": "CRITICAL - OT/ICS security",
+    "technical_complexity": "HIGH - Protocol reverse engineering",
+    "dependencies": ["E07 (RAMS Analysis)", "E15 (Vendor Equipment)", "E27 (ICS/OT labels)"],
+    "key_deliverables": [
+      "ICS protocol vulnerability database",
+      "Protocol-specific attack pattern library",
+      "Protocol analysis agents"
+    ],
+    "implementation_readiness": "MEDIUM - Requires protocol expertise and ICS testbed",
+    "documentation_found": false,
+    "folder_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_Planned_Enhancements/Enhancement_16_Protocol_Analysis"
+  },
+  {
+    "enhancement_id": "E17",
+    "name": "Lacanian Dyad Analysis",
+    "status": "PLANNED",
+    "intent": "Models adversarial relationships between defenders and attackers using Lacanian psychoanalytic dyad theory. Predicts escalation dynamics and behavioral patterns in cyber conflicts.",
+    "business_value": "HIGH - Adversary behavior prediction",
+    "technical_complexity": "VERY HIGH - Advanced psychometric modeling",
+    "dependencies": ["E04 (Lacanian Ontology)", "E14 (Real/Imaginary)", "E25 (Threat Actor Personality)", "E26 (McKenney-Lacan Calculus)"],
+    "key_deliverables": [
+      "Dyadic relationship modeling (Λ function)",
+      "Escalation probability calculation",
+      "Jouissance analysis for non-rational motivations"
+    ],
+    "implementation_readiness": "MEDIUM - Mathematical framework defined, requires validation",
+    "documentation_found": true,
+    "folder_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_Planned_Enhancements/Enhancement_17_Lacanian_Dyad_Analysis"
+  },
+  {
+    "enhancement_id": "E18",
+    "name": "Triad Group Dynamics",
+    "status": "PLANNED",
+    "intent": "Analyzes organizational stability using Lacanian three-register Borromean knot topology. Models team dynamics and detects when organizations approach crisis (Seldon Crisis detection).",
+    "business_value": "CRITICAL - Organizational crisis prediction",
+    "technical_complexity": "VERY HIGH - Topology and psychometric integration",
+    "dependencies": ["E17 (Dyad Analysis)", "E22 (Seldon Crisis)", "E26 (McKenney-Lacan Calculus)"],
+    "key_deliverables": [
+      "Borromean stability calculation (Τ function)",
+      "Organizational crisis early warning system",
+      "Team cohesion and conflict prediction"
+    ],
+    "implementation_readiness": "MEDIUM - Mathematical models complete, requires organizational data",
+    "documentation_found": true,
+    "folder_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_Planned_Enhancements/Enhancement_18_Triad_Group_Dynamics"
+  },
+  {
+    "enhancement_id": "E19",
+    "name": "Organizational Blind Spots",
+    "status": "PLANNED",
+    "intent": "Detects security blind spots—threats invisible to the organization due to cognitive biases, structural gaps, or cultural factors. Maps perception gradients to identify zero-visibility threat regions.",
+    "business_value": "CRITICAL - Unknown threat discovery",
+    "technical_complexity": "HIGH - Psychometric gradient analysis",
+    "dependencies": ["E18 (Triad Dynamics)", "E24 (Cognitive Dissonance)", "E26 (McKenney-Lacan Calculus)"],
+    "key_deliverables": [
+      "Blind spot detection algorithm (B function)",
+      "Threat space coverage calculation",
+      "Perception gradient mapping"
+    ],
+    "implementation_readiness": "HIGH - Algorithm defined, awaits organizational data integration",
+    "documentation_found": true,
+    "folder_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_Planned_Enhancements/Enhancement_19_Organizational_Blind_Spots"
+  },
+  {
+    "enhancement_id": "E20",
+    "name": "Personality-Team Fit",
+    "status": "PLANNED",
+    "intent": "Optimizes security team composition using psychometric distance calculations. Predicts person-team fit scores, conflict probability, and performance impact for hiring and team rebalancing decisions.",
+    "business_value": "HIGH - Team performance optimization",
+    "technical_complexity": "MEDIUM - Psychometric distance algorithms",
+    "dependencies": ["E19 (Blind Spots)", "E21 (Transcript Psychometric NER)", "E26 (McKenney-Lacan Calculus)"],
+    "key_deliverables": [
+      "Team fit function (F formula)",
+      "Hiring recommendation engine",
+      "Team rebalancing optimization"
+    ],
+    "implementation_readiness": "HIGH - Mathematical framework complete, requires HR data integration",
+    "documentation_found": true,
+    "folder_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_Planned_Enhancements/Enhancement_20_Personality_Team_Fit"
+  },
+  {
+    "enhancement_id": "E21",
+    "name": "Transcript Psychometric NER",
+    "status": "PLANNED",
+    "intent": "Extracts psychometric profiles (Big Five, Dark Triad, Lacanian registers) from interview transcripts using NER11 Gold model. Converts qualitative interview data into quantitative personality vectors.",
+    "business_value": "HIGH - Automated personality assessment",
+    "technical_complexity": "VERY HIGH - NLP + psychometric feature extraction",
+    "dependencies": ["E20 (Team Fit)", "E26 (McKenney-Lacan Calculus)", "E30 (NER11 Gold Model)"],
+    "key_deliverables": [
+      "NER11 psychometric entity extraction",
+      "Transcript → personality vector pipeline",
+      "Big Five and Dark Triad scoring from text"
+    ],
+    "implementation_readiness": "MEDIUM - Requires NER11 model extension and linguistic marker library",
+    "documentation_found": true,
+    "folder_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_Planned_Enhancements/Enhancement_21_Transcript_Psychometric_NER"
+  },
+  {
+    "enhancement_id": "E22",
+    "name": "Seldon Crisis Prediction",
+    "status": "PLANNED",
+    "intent": "Implements Asimov-inspired psychohistory for cybersecurity: predicts organizational crises using mathematical models (bifurcation, critical slowing, Ising dynamics). Provides early warning signals for system-wide failures.",
+    "business_value": "CRITICAL - Crisis prevention",
+    "technical_complexity": "VERY HIGH - Complex mathematical modeling",
+    "dependencies": ["E18 (Triad Dynamics)", "E23 (Population Forecasting)", "E26 (McKenney-Lacan Calculus)", "E27 (Psychohistory Equations)"],
+    "key_deliverables": [
+      "Crisis probability calculation (P(crisis|t))",
+      "Early warning index (CLI)",
+      "Seldon Crisis detection algorithm",
+      "Intervention window estimation"
+    ],
+    "implementation_readiness": "MEDIUM - Mathematical models validated, requires historical data calibration",
+    "documentation_found": true,
+    "folder_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_Planned_Enhancements/Enhancement_22_Seldon_Crisis_Prediction"
+  },
+  {
+    "enhancement_id": "E23",
+    "name": "Population Event Forecasting",
+    "status": "PLANNED",
+    "intent": "Applies psychohistory principle: individual behavior is unpredictable, but large populations follow statistical laws. Forecasts cybersecurity events at demographic, sectoral, and geographic scales using population-level vulnerability modeling.",
+    "business_value": "CRITICAL - Predictive threat intelligence",
+    "technical_complexity": "VERY HIGH - Demographic modeling + threat intelligence integration",
+    "dependencies": ["E22 (Seldon Crisis)", "E27 (Psychohistory Equations)"],
+    "key_deliverables": [
+      "Population susceptibility equation (S_pop)",
+      "Sector-specific forecasting models (healthcare, financial, critical infrastructure)",
+      "GDELT news + social media sentiment integration",
+      "Demographic vulnerability scoring"
+    ],
+    "implementation_readiness": "LOW - Requires large-scale demographic data and extensive validation",
+    "documentation_found": true,
+    "folder_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_Planned_Enhancements/Enhancement_23_Population_Event_Forecasting"
+  },
+  {
+    "enhancement_id": "E24",
+    "name": "Cognitive Dissonance Breaking",
+    "status": "PLANNED",
+    "intent": "Lacanian-inspired system to detect and resolve cognitive dissonance in cybersecurity decision-making. Identifies gaps between stated security beliefs (Symbolic) and actual behaviors (Real), then deploys targeted interventions to align behavior with reality.",
+    "business_value": "CRITICAL - Behavioral security improvement",
+    "technical_complexity": "HIGH - Behavioral psychology + intervention design",
+    "dependencies": ["E14 (Real/Imaginary)", "E19 (Blind Spots)", "E26 (McKenney-Lacan Calculus)"],
+    "key_deliverables": [
+      "Dissonance magnitude calculation (D function)",
+      "Multi-source evidence collection framework",
+      "Personalized intervention design (confrontation, reframing, incremental change, social proof, authority)",
+      "Intervention effectiveness metrics"
+    ],
+    "implementation_readiness": "MEDIUM - Framework complete, requires organizational behavioral data",
+    "documentation_found": true,
+    "folder_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_Planned_Enhancements/Enhancement_24_Cognitive_Dissonance_Breaking"
+  },
+  {
+    "enhancement_id": "E25",
+    "name": "Threat Actor Personality Modeling",
+    "status": "PLANNED",
+    "intent": "Multi-hop graph traversal (up to 20 hops) to infer threat actor personalities from observable behaviors (TTPs, infrastructure, targets). Applies Big Five, Dark Triad, Enneagram, and MBTI frameworks to predict adversary behavior and inform defensive strategies.",
+    "business_value": "CRITICAL - Adversary prediction",
+    "technical_complexity": "VERY HIGH - Multi-hop reasoning + psychometric inference",
+    "dependencies": ["E17 (Dyad Analysis)", "E26 (McKenney-Lacan Calculus)", "E27 (PersonalityTrait entities)"],
+    "key_deliverables": [
+      "20-hop personality inference queries",
+      "Threat actor personality profiles (APT28, Lazarus, FIN7, etc.)",
+      "Communication style linguistic analysis",
+      "Predictive behavior modeling"
+    ],
+    "implementation_readiness": "MEDIUM - Query patterns defined, requires threat intelligence data integration",
+    "documentation_found": true,
+    "folder_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_Planned_Enhancements/Enhancement_25_Threat_Actor_Personality"
+  },
+  {
+    "enhancement_id": "E26",
+    "name": "McKenney-Lacan Psychometrics Calculus",
+    "status": "PLANNED",
+    "intent": "Revolutionary mathematical framework merging Lacanian psychoanalytic theory with McKenney psychohistory. Provides rigorous formulations for dyad analysis (Λ), triad stability (Τ), group dynamics (Σ), blind spots (B), cognitive dissonance (D), crisis prediction (P), and team fit (F).",
+    "business_value": "CRITICAL - Foundational framework",
+    "technical_complexity": "EXTREME - Advanced mathematics + psychoanalytic theory",
+    "dependencies": ["E17-E25 (all psychometric enhancements)", "E27 (Psychometric labels)"],
+    "key_deliverables": [
+      "Complete mathematical calculus (7 core functions)",
+      "Psychometric Hilbert space (H_Ψ)",
+      "Borromean knot topology implementation",
+      "Neo4j integration APIs"
+    ],
+    "implementation_readiness": "HIGH - Framework documented, APIs designed, awaits implementation",
+    "documentation_found": true,
+    "folder_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_Planned_Enhancements/Enhancement_26_McKenney_Lacan_Calculus"
+  },
+  {
+    "enhancement_id": "E27",
+    "name": "Entity Expansion + Psychohistory",
+    "status": "COMPLETE",
+    "intent": "Expands Neo4j schema from 8 to 32 entity labels to support full NER11 Gold Standard (197 entities → 16 Super Labels). Integrates mathematical psychohistory equations (Epidemic, Ising, Granovetter, Bifurcation, Critical Slowing) for Seldon Crisis detection.",
+    "business_value": "CRITICAL - Foundational infrastructure",
+    "technical_complexity": "VERY HIGH - Schema migration + mathematical modeling",
+    "dependencies": ["E01-E26 (all enhancements)", "E30 (NER11 Gold Model)"],
+    "key_deliverables": [
+      "32 Neo4j labels (8 existing + 24 new)",
+      "6 Psychometric labels (CognitiveBias, LacanianRegister, PersonalityTrait, etc.)",
+      "6 RAMS/Safety labels (Hazard, FailureMode, SafetyFunction, etc.)",
+      "6 ICS/OT labels (ICSAsset, ControlSystem, ICSProtocol, etc.)",
+      "6 Economic/Behavioral labels",
+      "100% NER11 coverage (197 entities mapped)",
+      "5 psychohistory mathematical models",
+      "Seldon Crisis detection queries"
+    ],
+    "implementation_readiness": "PRODUCTION READY - Score 8.5/10",
+    "documentation_found": true,
+    "folder_path": "/home/jim/2_OXOT_Projects_Dev/1_AEON_DT_CyberSecurity_Wiki_Current/08_Planned_Enhancements/Enhancement_27_Entity_Expansion_Psychohistory"
+  },
+  {
+    "enhancement_id": "E30",
+    "name": "NER11 Gold Hierarchical Integration",
+    "status": "COMPLETE",
+    "intent": "Large-scale document ingestion using NER11 Gold model with hierarchical entity extraction. Processes 944 documents from EAB, McKenney-Lacan, AEON Training Data, Threat Research, and Organizations to create comprehensive knowledge graph.",
+    "business_value": "CRITICAL - Knowledge base foundation",
+    "technical_complexity": "HIGH - Large-scale ETL + API rate limiting",
+    "dependencies": ["E27 (Entity Expansion)", "NER11 Gold API"],
+    "key_deliverables": [
+      "216,983 entities in Neo4j",
+      "944/957 documents processed (98.6% success)",
+      "98 cross-domain taxonomy links",
+      "Rate-limited ingestion pipeline",
+      "SKIP_FILES mechanism for API stability"
+    ],
+    "implementation_readiness": "PRODUCTION COMPLETE - Grade A (93/100)",
+    "documentation_found": true,
+    "folder_path": "/home/jim/2_OXOT_Projects_Dev/5_NER11_Gold_Model"
+  }
+]

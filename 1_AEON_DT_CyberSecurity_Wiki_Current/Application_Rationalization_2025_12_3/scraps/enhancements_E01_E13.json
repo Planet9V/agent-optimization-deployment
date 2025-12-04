@@ -1,0 +1,272 @@
+[
+  {
+    "enhancement_id": "E01",
+    "name": "APT Threat Intelligence Ingestion",
+    "status": "ACTIVE",
+    "intent": "Ingest 31 APT (Advanced Persistent Threat) and Malware IoC files containing real-world threat intelligence from state-sponsored actors, ransomware groups, and cybercriminal organizations into Neo4j knowledge graph.",
+    "business_value": "HIGH - Enables threat actor attribution, real-world IoC database, campaign tracking, sector targeting analysis, and vulnerability exploitation mapping",
+    "technical_complexity": "MEDIUM - XML parsing, entity extraction, Neo4j bulk insertion, relationship creation",
+    "dependencies": [
+      "Neo4j Database running",
+      "316,552 CVE nodes existing",
+      "691 MITRE Technique nodes existing",
+      "16 Critical Sector nodes existing"
+    ],
+    "key_deliverables": [
+      "5,000-8,000 threat actor nodes",
+      "15,000-25,000 relationship edges",
+      "31 APT/Malware IoC files processed",
+      "Threat actor profiling capability",
+      "Campaign tracking system",
+      "IoC attribution database"
+    ],
+    "implementation_readiness": "READY - Complete documentation with TASKMASTER v1.0, data sources verified, 4-5 day timeline estimated"
+  },
+  {
+    "enhancement_id": "E02",
+    "name": "STIX 2.1 Threat Intelligence Integration",
+    "status": "ACTIVE",
+    "intent": "Enable AEON Digital Twin to ingest, process, and integrate STIX 2.1 (Structured Threat Information Expression) formatted threat intelligence into Neo4j knowledge graph for standardized threat intelligence sharing and interoperability.",
+    "business_value": "HIGH - Standards compliance, interoperability with security orchestration platforms (SOAR), automated threat intelligence sharing (TAXII), industry-standard format adoption",
+    "technical_complexity": "MEDIUM - STIX 2.1 schema validation, Neo4j mapping, MITRE ATT&CK linkage, relationship integrity validation",
+    "dependencies": [
+      "E01 APT Threat Intelligence",
+      "Neo4j with MITRE ATT&CK nodes (691 techniques)",
+      "MITRE nodes with external_id property"
+    ],
+    "key_deliverables": [
+      "3,000-5,000 STIX nodes",
+      "5,000-10,000 STIX relationships",
+      "50-100 STIX attack patterns linked to MITRE",
+      "STIX 2.1 parser and validator",
+      "Neo4j STIX mapper",
+      "Threat intelligence enrichment system"
+    ],
+    "implementation_readiness": "READY - 3-day timeline (1 day per phase: parsing, ingestion, validation), complete architecture documented"
+  },
+  {
+    "enhancement_id": "E03",
+    "name": "SBOM Dependency Analysis",
+    "status": "ACTIVE",
+    "intent": "Implement Software Bill of Materials (SBOM) ingestion and dependency vulnerability analysis for npm and Python ecosystem packages, enabling library-level vulnerability detection and transitive dependency tracking.",
+    "business_value": "HIGH - Supply chain security, CVE-to-package correlation, transitive dependency mapping, remediation path identification, compliance audit trails",
+    "technical_complexity": "HIGH - SBOM format parsing (CycloneDX, SPDX), transitive dependency resolution, 316K CVE correlation, package manager API integration",
+    "dependencies": [
+      "E01 CVE database (316K nodes)",
+      "E02 STIX threat intelligence",
+      "Package manager APIs (npm, PyPI)",
+      "Vulnerability databases (NVD, OSV, GHSA)"
+    ],
+    "key_deliverables": [
+      "SBOM ingestion framework",
+      "Dependency resolution engine",
+      "CVE-to-package correlation system",
+      "Vulnerability impact analysis",
+      "Remediation roadmap generator",
+      "Executive risk dashboards"
+    ],
+    "implementation_readiness": "READY - Complete architecture with npm/PyPI integration patterns, 316K CVE correlation strategy documented"
+  },
+  {
+    "enhancement_id": "E04",
+    "name": "Psychometric Framework Integration",
+    "status": "ACTIVE",
+    "intent": "Integrate 53 personality framework files into AEON Digital Twin to enable Level 4 Psychology Layer threat actor profiling through validated psychological assessment frameworks (Big Five, MBTI, Dark Triad, DISC, Enneagram).",
+    "business_value": "MEDIUM-HIGH - Threat actor personality profiling, insider threat prediction, attack pattern prediction, organizational risk assessment",
+    "technical_complexity": "MEDIUM - 53 file ingestion, personality dimension scoring, multi-framework triangulation, temporal personality tracking",
+    "dependencies": [
+      "E01 ThreatActor nodes",
+      "E02 STIX threat intelligence",
+      "Psychological assessment training data (53 files)"
+    ],
+    "key_deliverables": [
+      "53 personality framework documentation files",
+      "TASKMASTER psychometric processing layer (Level 4)",
+      "Threat actor personality profiling schema",
+      "Cyber-psychological threat prediction models",
+      "Integration with existing ThreatActor nodes"
+    ],
+    "implementation_readiness": "READY - Complete file organization, Neo4j schema extensions documented, validation metrics defined"
+  },
+  {
+    "enhancement_id": "E05",
+    "name": "Real-Time Threat Feed Integration",
+    "status": "SPECIFICATION",
+    "intent": "Implement real-time threat feed integration connecting six authoritative threat intelligence data sources (VulnCheck, NVD, MITRE ATT&CK, CISA KEV, News sources, STIX/TAXII) to continuously populate and update the cyber security knowledge graph.",
+    "business_value": "HIGH - Real-time vulnerability intelligence, automated threat feed ingestion, zero-day tracking, threat landscape visibility",
+    "technical_complexity": "HIGH - API integration (6 sources), real-time ingestion pipeline, deduplication mechanisms, 5,001+ InformationEvent node enrichment",
+    "dependencies": [
+      "E01 APT Threat Intelligence",
+      "E02 STIX Integration",
+      "5,001+ InformationEvent nodes existing",
+      "API keys for VulnCheck, NVD, MITRE, CISA KEV"
+    ],
+    "key_deliverables": [
+      "VulnCheck API integration",
+      "NVD daily feed processor",
+      "MITRE ATT&CK framework updater",
+      "CISA KEV catalog integration",
+      "STIX/TAXII feed connectors",
+      "Real-time alert generation system"
+    ],
+    "implementation_readiness": "DOCUMENTED - Complete architecture and data flow pipeline documented, awaiting API key prerequisites verification"
+  },
+  {
+    "enhancement_id": "E06",
+    "name": "Executive Dashboard (NOT DOCUMENTED)",
+    "status": "PLANNED",
+    "intent": "Create executive-level dashboard for cyber security metrics and KPIs (assumed based on folder name).",
+    "business_value": "UNKNOWN - No README.md found",
+    "technical_complexity": "UNKNOWN - No documentation available",
+    "dependencies": [
+      "UNKNOWN - Likely depends on E01-E05 threat intelligence"
+    ],
+    "key_deliverables": [
+      "UNKNOWN - No deliverables documented"
+    ],
+    "implementation_readiness": "NOT READY - No documentation exists, folder exists but appears empty or incomplete"
+  },
+  {
+    "enhancement_id": "E06b",
+    "name": "Wiki Truth Correction",
+    "status": "ACTIVE",
+    "intent": "Systematically identify, document, and correct all mismatches between wiki claims and actual database records. Critical issue: Wiki claims 537,043 Equipment entities but database contains only 29,774 (94% overstatement).",
+    "business_value": "CRITICAL - Restores documentation credibility, enables evidence-based decision making, ensures audit compliance, prevents leadership decisions based on false data",
+    "technical_complexity": "LOW-MEDIUM - Database verification queries, wiki document updates, validation procedures",
+    "dependencies": [
+      "Database queries executed 2025-11-25",
+      "Neo4j running instance",
+      "Wiki documents as of 2025-11-25"
+    ],
+    "key_deliverables": [
+      "Equipment count correction (537,043 → 29,774)",
+      "Complete wiki-database discrepancy list",
+      "Correction procedures documentation",
+      "Audit trail for all changes",
+      "Wiki-database sync protocol"
+    ],
+    "implementation_readiness": "READY - Critical issue identified, verification complete, correction strategy documented"
+  },
+  {
+    "enhancement_id": "E07",
+    "name": "IEC 62443 Industrial Safety Integration",
+    "status": "ACTIVE",
+    "intent": "Integrate IEC 62443 industrial control system security standards into AEON DT graph database, enabling security zone modeling (SL1-SL4), safety-critical system assessment, compliance validation, and investment prioritization for 29,774+ industrial equipment nodes.",
+    "business_value": "VERY HIGH - Regulatory compliance (NIS2, NERC CIP, TSA), quantifiable security investment decisions ($645K investment avoids $111M losses, 173x ROI), systematic risk reduction (70% reduction)",
+    "technical_complexity": "HIGH - Safety zone modeling, conduit security mapping, foundational requirements (FR1-FR7) compliance tracking, 29,774 equipment node mapping, security level gap analysis",
+    "dependencies": [
+      "E01 Equipment nodes (29,774 existing)",
+      "IEC 62443 documentation (7 source files)",
+      "Neo4j database with equipment schema"
+    ],
+    "key_deliverables": [
+      "Safety zone modeling (5 security levels: Level 0-4)",
+      "Conduit security mapping for data flow protection",
+      "Foundational Requirements (FR1-FR7) compliance tracking",
+      "Component Security Levels (SL-C) vs Target Security Levels (SL-T) gap analysis",
+      "Equipment certification status and upgrade paths",
+      "ROI-optimized remediation roadmap"
+    ],
+    "implementation_readiness": "READY - Complete 1,625-line documentation, 4-phase implementation roadmap (foundation, assessment, remediation, monitoring), addresses McKenney Questions Q2, Q3, Q8"
+  },
+  {
+    "enhancement_id": "E08",
+    "name": "RAMS Reliability (NOT DOCUMENTED)",
+    "status": "PLANNED",
+    "intent": "Reliability, Availability, Maintainability, Safety (RAMS) engineering integration (assumed based on folder name).",
+    "business_value": "UNKNOWN - No README.md found",
+    "technical_complexity": "UNKNOWN - No documentation available",
+    "dependencies": [
+      "UNKNOWN - Likely depends on E07 IEC 62443 Safety Integration"
+    ],
+    "key_deliverables": [
+      "UNKNOWN - No deliverables documented"
+    ],
+    "implementation_readiness": "NOT READY - No documentation exists, folder exists but appears empty or incomplete"
+  },
+  {
+    "enhancement_id": "E09",
+    "name": "Hazard FMEA (NOT DOCUMENTED)",
+    "status": "PLANNED",
+    "intent": "Hazard Analysis and Failure Mode Effects Analysis (FMEA) integration (assumed based on folder name).",
+    "business_value": "UNKNOWN - No README.md found",
+    "technical_complexity": "UNKNOWN - No documentation available",
+    "dependencies": [
+      "UNKNOWN - Likely depends on E07 IEC 62443 and E08 RAMS"
+    ],
+    "key_deliverables": [
+      "UNKNOWN - No deliverables documented"
+    ],
+    "implementation_readiness": "NOT READY - No documentation exists, folder exists but appears empty or incomplete"
+  },
+  {
+    "enhancement_id": "E10",
+    "name": "Economic Impact (NOT DOCUMENTED)",
+    "status": "PLANNED",
+    "intent": "Economic impact analysis for cyber security incidents and investments (assumed based on folder name).",
+    "business_value": "UNKNOWN - No README.md found",
+    "technical_complexity": "UNKNOWN - No documentation available",
+    "dependencies": [
+      "UNKNOWN - Likely depends on E01-E09 for comprehensive impact modeling"
+    ],
+    "key_deliverables": [
+      "UNKNOWN - No deliverables documented"
+    ],
+    "implementation_readiness": "NOT READY - No documentation exists, folder exists but appears empty or incomplete"
+  },
+  {
+    "enhancement_id": "E11",
+    "name": "Psychohistory Demographics (NOT DOCUMENTED)",
+    "status": "PLANNED",
+    "intent": "Psychohistory-inspired demographic and population-level threat modeling (assumed based on folder name).",
+    "business_value": "UNKNOWN - No README.md found",
+    "technical_complexity": "UNKNOWN - No documentation available",
+    "dependencies": [
+      "UNKNOWN - Likely depends on E04 Psychometric Integration"
+    ],
+    "key_deliverables": [
+      "UNKNOWN - No deliverables documented"
+    ],
+    "implementation_readiness": "NOT READY - No documentation exists, folder exists but appears empty or incomplete"
+  },
+  {
+    "enhancement_id": "E12",
+    "name": "NOW/NEXT/NEVER Prioritization Framework",
+    "status": "ACTIVE",
+    "intent": "Implement risk-based threat triage system categorizing 316,000+ CVE vulnerabilities into actionable priority categories (NOW: immediate action, NEXT: scheduled remediation, NEVER: risk acceptance) by combining technical vulnerability metrics (CVSS, EPSS) with organizational psychological factors (cognitive biases, patch velocity, risk tolerance).",
+    "business_value": "VERY HIGH - Optimizes resource allocation for 316K CVE overload, predicts sector-specific urgency, addresses cognitive bias impact on patching, enables 99.8% vulnerability deferral with data-driven justification",
+    "technical_complexity": "HIGH - 316K CVE scoring algorithm, psychological factor integration, sector-specific risk tolerance modeling, EPSS evolution prediction, 5.06M PriorityAssessment nodes",
+    "dependencies": [
+      "E01 CVE database (316K nodes)",
+      "E04 Cognitive Bias framework",
+      "CVSS scores from NVD",
+      "EPSS scores (Exploit Prediction Scoring System)",
+      "Organizational behavioral profiles"
+    ],
+    "key_deliverables": [
+      "NOW/NEXT/NEVER prioritization algorithm",
+      "Technical + Psychological scoring system",
+      "Sector-specific priority predictions (Energy NOW ≠ Commercial NOW)",
+      "5.06M PriorityAssessment nodes (316K CVEs × 16 sectors)",
+      "Cognitive bias impact analysis",
+      "Resource allocation optimization",
+      "Integration with McKenney Questions Q3, Q8, Q10"
+    ],
+    "implementation_readiness": "READY - Complete 913-line documentation, scoring algorithm defined, 4-phase deployment strategy (POC, multi-sector validation, full deployment, ML enhancement), validation test cases documented"
+  },
+  {
+    "enhancement_id": "E13",
+    "name": "Attack Path Modeling (NOT DOCUMENTED)",
+    "status": "PLANNED",
+    "intent": "Attack path and kill chain modeling for threat scenario analysis (assumed based on folder name).",
+    "business_value": "UNKNOWN - No README.md found",
+    "technical_complexity": "UNKNOWN - No documentation available",
+    "dependencies": [
+      "UNKNOWN - Likely depends on E01 APT Intelligence, E02 STIX, E07 IEC 62443 zones"
+    ],
+    "key_deliverables": [
+      "UNKNOWN - No deliverables documented"
+    ],
+    "implementation_readiness": "NOT READY - No documentation exists, folder exists but appears empty or incomplete"
+  }
+]

@@ -1,0 +1,414 @@
+{
+  "taskmaster_version": "1.0.1",
+  "created": "2025-12-03T20:30:00Z",
+  "last_updated": "2025-12-04T03:20:00Z",
+  "decision_record": {
+    "selected_option": "OPTION_B",
+    "option_name": "Balanced Foundation MVP",
+    "decision_date": "2025-12-04T03:15:00Z",
+    "rationale": "Clean architecture, no tech debt, SBOM dependency graphs, real economic data for NOW/NEXT/NEVER prioritization. Frontend-visible features with proper foundational support."
+  },
+  "mvp_summary": {
+    "total_days": 62,
+    "total_enhancements": 6,
+    "phases": 3,
+    "frontend_visible_features": [
+      "Customer isolation UI (multi-tenant dropdowns)",
+      "IEC 62443 Safety Zone displays (SL0-SL4)",
+      "SBOM dependency graphs (npm/PyPI)",
+      "Economic impact dashboards",
+      "NOW/NEXT/NEVER CVE prioritization"
+    ]
+  },
+  "mvp_phases": [
+    {
+      "phase": "B1",
+      "name": "Structural Foundation",
+      "estimated_days": 20,
+      "start_day": 1,
+      "end_day": 20,
+      "priority": "CRITICAL",
+      "description": "Multi-tenant isolation and industrial safety classification",
+      "enhancements": [
+        {
+          "order_position": 1,
+          "enhancement_id": "CUSTOMER_LABELS",
+          "name": "Customer Labels (Multi-Tenant Isolation)",
+          "estimated_days": 5,
+          "start_day": 1,
+          "end_day": 5,
+          "dependencies_satisfied_by": [],
+          "enables": ["E07", "E15", "E03", "E10", "E12"],
+          "ice_score": 9.5,
+          "priority": "CRITICAL",
+          "mvp_status": "INCLUDED",
+          "rationale": "Multi-tenant isolation is foundational for all enhancements. Customer data must be isolated before any other work proceeds.",
+          "key_deliverables": [
+            "CustomerLabel node type in Neo4j",
+            "BELONGS_TO_CUSTOMER relationships",
+            "Customer isolation middleware",
+            "Query filters for customer context",
+            "Audit trail per customer"
+          ],
+          "frontend_visibility": {
+            "visible": true,
+            "components": ["Customer selector dropdown", "Data isolation indicators", "Customer-scoped dashboards"]
+          },
+          "data_sources": [],
+          "tests_required": ["Unit: Schema validation", "Integration: Cross-customer isolation", "Security: Data leakage prevention"],
+          "documentation_targets": ["Wiki: 08_Planned_Enhancements", "Frontend: Customer context guide"]
+        },
+        {
+          "order_position": 2,
+          "enhancement_id": "E07",
+          "name": "IEC 62443 Industrial Safety Integration",
+          "estimated_days": 15,
+          "start_day": 6,
+          "end_day": 20,
+          "dependencies_satisfied_by": ["CUSTOMER_LABELS"],
+          "enables": ["E15", "E03"],
+          "ice_score": 8.7,
+          "priority": "CRITICAL",
+          "mvp_status": "INCLUDED",
+          "rationale": "IEC 62443 provides the safety zone architecture (SL1-SL4) required for equipment classification and compliance tracking. $111M loss prevention potential.",
+          "key_deliverables": [
+            "SecurityZone node type (SL0-SL4)",
+            "Conduit relationship modeling",
+            "FR1-FR7 compliance tracking",
+            "SL-C vs SL-T gap analysis queries",
+            "Equipment certification status",
+            "ROI-optimized remediation roadmap"
+          ],
+          "frontend_visibility": {
+            "visible": true,
+            "components": ["Safety zone hierarchy display", "SL level badges", "Compliance gap indicators", "Zone-based filtering"]
+          },
+          "data_sources": ["IEC 62443 documentation (7 source files)"],
+          "tests_required": ["Unit: Zone assignment", "Integration: Equipment mapping", "Acceptance: Compliance validation"],
+          "documentation_targets": ["Wiki: Enhancement_07_IEC62443", "Procedure: PROC-121"]
+        }
+      ]
+    },
+    {
+      "phase": "B2",
+      "name": "Supply Chain",
+      "estimated_days": 24,
+      "start_day": 21,
+      "end_day": 44,
+      "priority": "HIGH",
+      "description": "Vendor tracking and SBOM dependency analysis for supply chain visibility",
+      "enhancements": [
+        {
+          "order_position": 3,
+          "enhancement_id": "E15",
+          "name": "Vendor Equipment Tracking",
+          "estimated_days": 12,
+          "start_day": 21,
+          "end_day": 32,
+          "dependencies_satisfied_by": ["CUSTOMER_LABELS", "E07"],
+          "enables": ["E03", "E10"],
+          "ice_score": 7.0,
+          "priority": "HIGH",
+          "mvp_status": "INCLUDED",
+          "rationale": "Vendor tracking enables supply chain risk management and is prerequisite for SBOM analysis. Maps Siemens, Alstom, and other ICS vendors.",
+          "key_deliverables": [
+            "Vendor node type in Neo4j",
+            "MANUFACTURED_BY relationships",
+            "Vendor-vulnerability correlation",
+            "Equipment lifecycle tracking",
+            "Vendor risk scoring"
+          ],
+          "frontend_visibility": {
+            "visible": true,
+            "components": ["Vendor filter dropdowns", "Vendor risk badges", "Equipment-vendor relationships"]
+          },
+          "data_sources": ["Existing equipment nodes (29,774)", "Vendor catalogs"],
+          "tests_required": ["Unit: Vendor CRUD", "Integration: Equipment linking", "Acceptance: Coverage >95%"],
+          "documentation_targets": ["Wiki: Enhancement_15_Vendor_Equipment", "Procedure: PROC-142"]
+        },
+        {
+          "order_position": 4,
+          "enhancement_id": "E03",
+          "name": "SBOM Dependency Analysis",
+          "estimated_days": 12,
+          "start_day": 33,
+          "end_day": 44,
+          "dependencies_satisfied_by": ["E15"],
+          "enables": ["E10", "E12"],
+          "ice_score": 8.0,
+          "priority": "HIGH",
+          "mvp_status": "INCLUDED",
+          "rationale": "MANDATORY per user request. Software Bill of Materials enables supply chain vulnerability detection across npm/Python ecosystems.",
+          "key_deliverables": [
+            "SBOM ingestion framework (CycloneDX, SPDX)",
+            "Package node type",
+            "DEPENDS_ON relationships (transitive)",
+            "CVE-to-package correlation",
+            "Vulnerability impact analysis",
+            "Remediation roadmap generator"
+          ],
+          "frontend_visibility": {
+            "visible": true,
+            "components": ["SBOM dependency graph visualization", "Package vulnerability indicators", "Transitive dependency explorer"]
+          },
+          "data_sources": ["npm registry API", "PyPI API", "NVD", "OSV", "GHSA"],
+          "tests_required": ["Unit: SBOM parsing", "Integration: CVE correlation", "Acceptance: 316K CVE coverage"],
+          "documentation_targets": ["Wiki: Enhancement_03_SBOM", "Procedure: PROC-113"]
+        }
+      ]
+    },
+    {
+      "phase": "B3",
+      "name": "Prioritization",
+      "estimated_days": 18,
+      "start_day": 45,
+      "end_day": 62,
+      "priority": "HIGH",
+      "description": "Economic modeling and actionable CVE prioritization",
+      "enhancements": [
+        {
+          "order_position": 5,
+          "enhancement_id": "E10",
+          "name": "Economic Impact Analysis",
+          "estimated_days": 10,
+          "start_day": 45,
+          "end_day": 54,
+          "dependencies_satisfied_by": ["E03", "E15"],
+          "enables": ["E12"],
+          "ice_score": 7.8,
+          "priority": "HIGH",
+          "mvp_status": "INCLUDED",
+          "rationale": "Economic modeling quantifies breach costs and ROI for security investments. Enables data-driven budget decisions.",
+          "key_deliverables": [
+            "Breach cost calculator",
+            "ROI modeling functions",
+            "Sector-specific impact estimates",
+            "Investment prioritization framework",
+            "Economic impact dashboards"
+          ],
+          "frontend_visibility": {
+            "visible": true,
+            "components": ["Economic impact dashboard", "ROI calculator widget", "Sector comparison charts"]
+          },
+          "data_sources": ["IBM Breach Report 2025 ($4.44M avg)", "FRED API", "World Bank indicators", "Kaggle breach datasets"],
+          "tests_required": ["Unit: Cost calculations", "Integration: Sector mapping", "Acceptance: ROI validation"],
+          "documentation_targets": ["Wiki: Enhancement_10_Economic", "Procedure: PROC-131"]
+        },
+        {
+          "order_position": 6,
+          "enhancement_id": "E12",
+          "name": "NOW/NEXT/NEVER Prioritization",
+          "estimated_days": 8,
+          "start_day": 55,
+          "end_day": 62,
+          "dependencies_satisfied_by": ["E10", "E03"],
+          "enables": [],
+          "ice_score": 8.5,
+          "priority": "CRITICAL",
+          "mvp_status": "INCLUDED",
+          "rationale": "Reduces 316K CVE overload to actionable priorities. Combines CVSS/EPSS with organizational factors for 99.8% deferral rate.",
+          "key_deliverables": [
+            "NOW/NEXT/NEVER scoring algorithm",
+            "PriorityAssessment node type",
+            "5.06M assessment nodes (316K × 16 sectors)",
+            "Cognitive bias integration",
+            "Sector-specific thresholds",
+            "Resource allocation optimization"
+          ],
+          "frontend_visibility": {
+            "visible": true,
+            "components": ["NOW/NEXT/NEVER CVE table", "Priority badges", "Sector-specific views", "Action queue"]
+          },
+          "data_sources": ["NVD CVSS", "EPSS scores", "Organizational profiles"],
+          "tests_required": ["Unit: Scoring algorithm", "Integration: CVE correlation", "Acceptance: Reduction validation"],
+          "documentation_targets": ["Wiki: Enhancement_12_NNN", "Procedure: PROC-133"]
+        }
+      ]
+    }
+  ],
+  "deferred_enhancements": {
+    "description": "Enhancements deferred from MVP, to be implemented after Phase B3 completion",
+    "total_deferred": 13,
+    "total_deferred_days": 162,
+    "enhancements": [
+      {
+        "enhancement_id": "E08",
+        "name": "RAMS Reliability Engineering",
+        "original_phase": 2,
+        "estimated_days": 10,
+        "dependencies": ["E07"],
+        "deferral_reason": "Not frontend-visible, complex metrics without immediate user impact",
+        "recommended_sequence": "After MVP - Phase D1"
+      },
+      {
+        "enhancement_id": "E09",
+        "name": "Hazard & FMEA Analysis",
+        "original_phase": 2,
+        "estimated_days": 8,
+        "dependencies": ["E07", "E08"],
+        "deferral_reason": "Depends on E08 RAMS, not frontend-visible",
+        "recommended_sequence": "After E08"
+      },
+      {
+        "enhancement_id": "E11",
+        "name": "Psychohistory Demographics",
+        "original_phase": 3,
+        "estimated_days": 8,
+        "dependencies": ["E10"],
+        "deferral_reason": "Complex psychohistory feature, not critical for MVP prioritization",
+        "recommended_sequence": "After MVP - Phase D2"
+      },
+      {
+        "enhancement_id": "E13",
+        "name": "Attack Path Modeling",
+        "original_phase": 3,
+        "estimated_days": 15,
+        "dependencies": ["E03", "E12"],
+        "deferral_reason": "Complex 8-hop traversal, can build on MVP foundation",
+        "recommended_sequence": "After MVP - Phase D2"
+      },
+      {
+        "enhancement_id": "E19",
+        "name": "Organizational Blind Spots",
+        "original_phase": 4,
+        "estimated_days": 12,
+        "dependencies": ["E11"],
+        "deferral_reason": "Psychometric feature, requires E11 demographics first",
+        "recommended_sequence": "After E11 - Phase D3"
+      },
+      {
+        "enhancement_id": "E20",
+        "name": "Personality-Team Fit",
+        "original_phase": 4,
+        "estimated_days": 12,
+        "dependencies": ["E19"],
+        "deferral_reason": "Advanced psychometric, requires E19 blind spots",
+        "recommended_sequence": "After E19 - Phase D3"
+      },
+      {
+        "enhancement_id": "E21",
+        "name": "Transcript Psychometric NER",
+        "original_phase": 4,
+        "estimated_days": 15,
+        "dependencies": ["E20", "E30"],
+        "deferral_reason": "Requires NER11 Gold Model and E20 personality work",
+        "recommended_sequence": "After E20 - Phase D3"
+      },
+      {
+        "enhancement_id": "E24",
+        "name": "Cognitive Dissonance Breaking",
+        "original_phase": 4,
+        "estimated_days": 10,
+        "dependencies": ["E19"],
+        "deferral_reason": "Advanced psychometric intervention feature",
+        "recommended_sequence": "After E19 - Phase D3"
+      },
+      {
+        "enhancement_id": "E25",
+        "name": "Threat Actor Personality Modeling",
+        "original_phase": 4,
+        "estimated_days": 12,
+        "dependencies": ["E13", "E21"],
+        "deferral_reason": "Requires attack path and transcript NER",
+        "recommended_sequence": "After E21 - Phase D3"
+      },
+      {
+        "enhancement_id": "E17",
+        "name": "Lacanian Dyad Analysis",
+        "original_phase": 5,
+        "estimated_days": 10,
+        "dependencies": ["E24", "E25"],
+        "deferral_reason": "EXPERIMENTAL - Advanced psychohistory",
+        "status_warning": "EXPERIMENTAL",
+        "recommended_sequence": "Phase D4 - Experimental"
+      },
+      {
+        "enhancement_id": "E18",
+        "name": "Triad Group Dynamics",
+        "original_phase": 5,
+        "estimated_days": 12,
+        "dependencies": ["E17"],
+        "deferral_reason": "EXPERIMENTAL - Borromean topology",
+        "status_warning": "EXPERIMENTAL",
+        "recommended_sequence": "Phase D4 - Experimental"
+      },
+      {
+        "enhancement_id": "E22",
+        "name": "Seldon Crisis Prediction",
+        "original_phase": 5,
+        "estimated_days": 20,
+        "dependencies": ["E18"],
+        "deferral_reason": "EXPERIMENTAL - Requires extensive validation",
+        "status_warning": "EXPERIMENTAL - REQUIRES EXTENSIVE VALIDATION",
+        "recommended_sequence": "Phase D4 - Experimental"
+      },
+      {
+        "enhancement_id": "E23",
+        "name": "Population Event Forecasting",
+        "original_phase": 5,
+        "estimated_days": 18,
+        "dependencies": ["E22"],
+        "deferral_reason": "EXPERIMENTAL - Research initiative",
+        "status_warning": "EXPERIMENTAL - RESEARCH INITIATIVE",
+        "recommended_sequence": "Phase D4 - Experimental"
+      }
+    ]
+  },
+  "deferred_phase_recommendations": {
+    "D1": {
+      "name": "Safety & Reliability",
+      "enhancements": ["E08", "E09"],
+      "estimated_days": 18,
+      "dependencies": ["MVP Complete"]
+    },
+    "D2": {
+      "name": "Advanced Analysis",
+      "enhancements": ["E11", "E13"],
+      "estimated_days": 23,
+      "dependencies": ["D1 or MVP"]
+    },
+    "D3": {
+      "name": "Psychometric Core",
+      "enhancements": ["E19", "E20", "E21", "E24", "E25"],
+      "estimated_days": 61,
+      "dependencies": ["D2"]
+    },
+    "D4": {
+      "name": "Experimental Psychohistory",
+      "enhancements": ["E17", "E18", "E22", "E23"],
+      "estimated_days": 60,
+      "dependencies": ["D3"],
+      "status_warning": "EXPERIMENTAL - RESEARCH INITIATIVE"
+    }
+  },
+  "data_sources_summary": {
+    "mvp_sources": {
+      "free_tier": ["World Bank API", "FRED", "NVD", "npm API", "PyPI API", "OSV", "GHSA"],
+      "internal": ["Neo4j (1.15M nodes)", "Equipment nodes (29,774)", "IEC 62443 docs (7 files)"]
+    },
+    "deferred_sources": {
+      "free_tier": ["UN Population", "GDELT", "Kaggle"],
+      "paid_tier": ["VulnCheck", "Commercial feeds", "Social media APIs"],
+      "internal": ["NER11 Gold Model", "Qdrant (260K+ entities)"]
+    }
+  },
+  "success_metrics": {
+    "mvp_completion_criteria": [
+      "All 6 MVP enhancements deployed",
+      "Customer isolation verified (0 cross-tenant data leaks)",
+      "IEC 62443 zones visible in frontend (SL0-SL4)",
+      "SBOM dependency graphs rendering correctly",
+      "NOW/NEXT/NEVER reducing CVE display by 99.8%",
+      "All unit tests passing (>90% coverage)",
+      "Integration tests passing",
+      "Acceptance tests signed off"
+    ],
+    "frontend_validation": [
+      "Customer selector dropdown functional",
+      "Safety zone badges displaying",
+      "SBOM graph interactive",
+      "Economic dashboard showing sector data",
+      "Priority queue sorting correctly"
+    ]
+  }
+}
