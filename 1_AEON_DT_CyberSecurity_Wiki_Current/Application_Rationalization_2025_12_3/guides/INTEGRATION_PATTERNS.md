@@ -471,6 +471,125 @@ store.upsert_entity(
 )
 ```
 
+### 2.4 NER30 Semantic Search API with Customer Isolation
+
+```python
+from fastapi import APIRouter, Header, Depends, Query
+from pydantic import BaseModel, Field
+from typing import Optional, List, Dict, Any
+from datetime import datetime
+
+from qdrant_client import QdrantClient
+from qdrant_client.models import Filter, FieldCondition, MatchAny
+
+
+class CustomerSemanticSearchRequest(BaseModel):
+    """Request for customer-isolated semantic search."""
+    query: str = Field(..., description="Search query text")
+    limit: int = Field(default=10, ge=1, le=100)
+    customer_id: str = Field(..., description="Customer ID for isolation")
+    label_filter: Optional[str] = Field(default=None, description="Tier 1: NER label")
+    fine_grained_filter: Optional[str] = Field(default=None, description="Tier 2: type")
+    include_system: bool = Field(default=True, description="Include SYSTEM entities")
+
+
+class CustomerIsolatedSemanticService:
+    """
+    NER30 semantic search with automatic customer isolation.
+
+    All searches are filtered by customer_id to ensure multi-tenant isolation.
+    SYSTEM entities (CVEs, CWEs, CAPECs) are optionally included.
+    """
+
+    def __init__(self, qdrant_url: str, collection: str, embedding_model):
+        self.client = QdrantClient(url=qdrant_url)
+        self.collection = collection
+        self.embedding_model = embedding_model
+
+    def _build_customer_filter(
+        self,
+        customer_id: str,
+        include_system: bool = True,
+        additional_filters: List = None
+    ) -> Filter:
+        """Build Qdrant filter with customer isolation."""
+        customer_ids = [customer_id, "SYSTEM"] if include_system else [customer_id]
+
+        must_conditions = [
+            FieldCondition(key="customer_id", match=MatchAny(any=customer_ids))
+        ]
+
+        if additional_filters:
+            must_conditions.extend(additional_filters)
+
+        return Filter(must=must_conditions)
+
+    def search(self, request: CustomerSemanticSearchRequest) -> Dict[str, Any]:
+        """Execute customer-isolated semantic search."""
+        # Generate query embedding
+        query_embedding = self.embedding_model.encode([request.query])[0].tolist()
+
+        # Build filter with customer isolation
+        query_filter = self._build_customer_filter(
+            customer_id=request.customer_id,
+            include_system=request.include_system,
+        )
+
+        # Execute search
+        results = self.client.search(
+            collection_name=self.collection,
+            query_vector=query_embedding,
+            query_filter=query_filter,
+            limit=request.limit,
+        )
+
+        return {
+            "results": [
+                {
+                    "score": r.score,
+                    "entity": r.payload.get("entity"),
+                    "customer_id": r.payload.get("customer_id"),
+                    "is_system": r.payload.get("customer_id") == "SYSTEM",
+                }
+                for r in results
+            ],
+            "customer_id": request.customer_id,
+            "total_results": len(results),
+        }
+
+
+# FastAPI Router
+router = APIRouter(prefix="/api/v2/search", tags=["semantic-search"])
+
+@router.post("/semantic")
+async def semantic_search(
+    request: CustomerSemanticSearchRequest,
+    x_customer_id: str = Header(..., description="Customer ID"),
+):
+    """Customer-isolated semantic search endpoint."""
+    # Verify customer_id matches header (security check)
+    if request.customer_id != x_customer_id:
+        raise HTTPException(status_code=403, detail="Customer ID mismatch")
+
+    service = get_semantic_service()  # Dependency injection
+    return service.search(request)
+```
+
+**Usage Example:**
+```bash
+# Search with customer isolation
+curl -X POST "http://localhost:8000/api/v2/search/semantic" \
+  -H "X-Customer-ID: CUST-001" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "ransomware attack",
+    "customer_id": "CUST-001",
+    "limit": 10,
+    "include_system": true,
+    "label_filter": "MALWARE"
+  }'
+```
+
 ---
 
 ## 3. External API Integration Patterns
