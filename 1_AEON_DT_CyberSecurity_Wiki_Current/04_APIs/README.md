@@ -1,6 +1,6 @@
 # AEON Cyber Digital Twin - API Documentation
 
-**Last Updated**: 2025-12-04 18:30 UTC
+**Last Updated**: 2025-12-04 19:30 UTC
 **Directory Status**: CURRENT - Record of Note for all AEON APIs
 
 This directory contains comprehensive API documentation for the AEON platform.
@@ -9,15 +9,20 @@ This directory contains comprehensive API documentation for the AEON platform.
 
 ## ⚠️ IMPLEMENTATION STATUS OVERVIEW
 
-### Currently Operational (70+ APIs)
+### Currently Operational (147+ APIs)
 
 #### Phase B1 - Customer Isolation (December 2025)
 - ✅ **Customer Semantic Search** - POST /api/v2/search/semantic (5 endpoints)
 - ✅ **Multi-Tenant Isolation** - X-Customer-ID header authentication
 
-#### Phase B2 - Supply Chain Security (December 2025) ⭐ NEW
+#### Phase B2 - Supply Chain Security (December 2025)
 - ✅ **E15 Vendor Equipment API** - `/api/v2/vendor-equipment` (28 endpoints)
 - ✅ **E03 SBOM Analysis API** - `/api/v2/sbom` (32 endpoints)
+
+#### Phase B3 - Advanced Security Intelligence (December 2025) ⭐ NEW
+- ✅ **E04 Threat Intelligence API** - `/api/v2/threat-intel` (27 endpoints)
+- ✅ **E05 Risk Scoring API** - `/api/v2/risk` (26 endpoints)
+- ✅ **E06 Remediation API** - `/api/v2/remediation` (29 endpoints)
 
 #### Core NER11 APIs (November 2025)
 - ✅ **Neo4j Cypher Queries** - Direct database access via Bolt protocol
@@ -31,7 +36,46 @@ Remaining APIs are **fully specified** awaiting backend deployment.
 
 ---
 
-## 🆕 Phase B2 APIs (2025-12-04)
+## 🆕 Phase B3 APIs (2025-12-04) ⭐ LATEST
+
+**Full Documentation**: `API_PHASE_B3_CAPABILITIES_2025-12-04.md`
+
+### E04: Threat Intelligence Correlation (27 endpoints)
+```
+Base: /api/v2/threat-intel
+```
+- APT group tracking and profiling
+- Campaign management and correlation
+- MITRE ATT&CK technique mapping
+- IOC (Indicators of Compromise) management
+- Threat intelligence feed integration
+- Detection coverage gap analysis
+
+### E05: Risk Scoring Engine (26 endpoints)
+```
+Base: /api/v2/risk
+```
+- Multi-factor risk score calculation
+- Asset criticality assessment
+- Attack surface exposure scoring
+- Risk aggregation by vendor/sector/type
+- Risk trending and history tracking
+- Risk matrix visualization data
+
+### E06: Remediation Workflow (29 endpoints)
+```
+Base: /api/v2/remediation
+```
+- Vulnerability fix task management
+- Multi-task remediation plans
+- SLA policy configuration
+- Compliance rate tracking
+- MTTR (Mean Time to Remediate) metrics
+- Team workload distribution
+
+---
+
+## Phase B2 APIs (2025-12-04)
 
 **Full Documentation**: `API_PHASE_B2_CAPABILITIES_2025-12-04.md`
 
