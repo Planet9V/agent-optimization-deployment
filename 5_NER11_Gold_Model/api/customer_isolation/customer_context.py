@@ -51,10 +51,13 @@ class CustomerContext:
 
     def __post_init__(self):
         """Validate customer context on creation."""
-        if not self.customer_id:
-            raise ValueError("customer_id is required")
-        if not self.namespace:
-            raise ValueError("namespace is required")
+        if not self.customer_id or not self.customer_id.strip():
+            raise ValueError("customer_id is required and cannot be empty or whitespace")
+        if not self.namespace or not self.namespace.strip():
+            raise ValueError("namespace is required and cannot be empty or whitespace")
+        # Normalize whitespace
+        self.customer_id = self.customer_id.strip()
+        self.namespace = self.namespace.strip()
 
     def get_customer_ids(self) -> List[str]:
         """
