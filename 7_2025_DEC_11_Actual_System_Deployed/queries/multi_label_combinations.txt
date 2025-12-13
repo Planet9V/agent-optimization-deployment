@@ -1,0 +1,101 @@
+combo, cnt
+["Dependency", "SBOM", "Relationship"], 30000
+["Measurement", "DefenseMeasurement", "SECTOR_DEFENSE_INDUSTRIAL_BASE", "SAREF_Measurement"], 25200
+["SoftwareComponent", "Asset", "SBOM", "Software_Component"], 20000
+["Measurement", "Monitoring", "WATER", "Water_Treatment"], 19000
+["Measurement", "CriticalInfrastructure", "Transportation"], 18200
+["Measurement", "Monitoring", "ENERGY", "Energy_Transmission"], 18000
+["Measurement", "Monitoring", "RadiationMeasurement"], 18000
+["Measurement", "Monitoring", "ITMeasurement", "INFORMATION_TECHNOLOGY"], 18000
+["Measurement", "Monitoring", "COMMUNICATIONS", "NetworkMeasurement", "Telecom_Infrastructure"], 15527
+["Package", "SoftwareComponent", "Asset", "SBOM", "Software_Component"], 10000
+["Device", "EnergyDevice", "Energy", "Monitoring", "ENERGY", "Energy_Distribution"], 10000
+["SoftwareComponent", "Library", "Asset", "SBOM", "Software_Component"], 10000
+["Measurement", "Monitoring", "COMMUNICATIONS", "NetworkMeasurement", "Data_Centers"], 8627
+["Build", "Asset", "SBOM", "Build_Info"], 8000
+["Dependency", "DependencyTree", "SBOM", "Relationship"], 8000
+["SoftwareLicense", "Compliance", "SBOM", "License"], 8000
+["Provenance", "Compliance", "SBOM"], 8000
+["Process", "GovernmentProcess", "GOVERNMENT_FACILITIES"], 7000
+["Property", "SECTOR_DEFENSE_INDUSTRIAL_BASE", "DefenseProperty"], 7000
+["Property", "EnergyProperty", "Energy", "Monitoring", "ENERGY", "Energy_Transmission"], 6000
+["Measurement", "Monitoring", "TimeSeries", "FINANCIAL_SERVICES", "Banking", "TransactionMetric"], 5713
+["Measurement", "Monitoring", "TimeSeries", "FINANCIAL_SERVICES", "PaymentSystems", "TransactionMetric"], 5667
+["Measurement", "Monitoring", "TimeSeries", "FINANCIAL_SERVICES", "CapitalMarkets", "TransactionMetric"], 5620
+["ChemicalEquipment", "CHEMICAL", "Reactors"], 5600
+["Process", "CommercialProcess", "COMMERCIAL_FACILITIES"], 5600
+["Measurement", "Monitoring", "GovernmentMeasurement", "GOVERNMENT_FACILITIES"], 5600
+["BuildSystem", "Asset", "SBOM", "Build_Info"], 5000
+["Property", "GovernmentProperty", "GOVERNMENT_FACILITIES"], 5000
+["Indicator", "ICS", "ICS_THREAT_INTEL", "Detection"], 5000
+["Provenance", "Attestation", "Compliance", "SBOM"], 5000
+["SoftwareComponent", "ContainerImage", "Asset", "SBOM", "Software_Component"], 5000
+["Property", "Monitoring", "Nuclear", "NuclearProperty"], 5000
+["LicenseCompliance", "Compliance", "SBOM", "License"], 5000
+["SoftwareComponent", "Firmware", "Asset", "SBOM", "Software_Component"], 5000
+["Artifact", "Asset", "SBOM", "Software_Component"], 5000
+["Property", "Monitoring", "INFORMATION_TECHNOLOGY", "ITProperty", "IT"], 4500
+["ChemicalEquipment", "CHEMICAL", "SeparationEquipment"], 4480
+["Equipment", "CriticalInfrastructure", "Transportation"], 4200
+["ChemicalEquipment", "CHEMICAL", "StorageTanks"], 4200
+["Control", "CommercialControl", "COMMERCIAL_FACILITIES"], 4200
+["ChemicalEquipment", "CHEMICAL", "HeatExchangeEquipment"], 3920
+["ChemicalEquipment", "CHEMICAL", "PipingAndValves"], 3920
+["Location", "CommercialLocation", "COMMERCIAL_FACILITIES"], 3360
+["ChemicalEquipment", "CHEMICAL", "PumpsAndCompressors"], 3360
+["Measurement", "Monitoring", "COMMUNICATIONS", "NetworkMeasurement", "Satellite_Systems"], 3304
+["Process", "COMMUNICATIONS", "Communications", "RoutingProcess"], 3000
+["Device", "Monitoring", "NuclearDevice", "Nuclear"], 3000
+["Property", "Monitoring", "COMMUNICATIONS", "Telecom_Infrastructure", "CommunicationsProperty", "Communications"], 2950
+["Device", "SECTOR_DEFENSE_INDUSTRIAL_BASE", "SAREF_Device", "DefenseDevice", "Classified", "Aerospace_Defense"], 2800
+["Process", "CriticalInfrastructure", "Transportation"], 2800
+["Device", "Monitoring", "INFORMATION_TECHNOLOGY", "IT", "ITDevice"], 2800
+["Threat", "CommercialThreat", "COMMERCIAL_FACILITIES"], 2800
+["Measurement", "ResponseMetric", "EMERGENCY_SERVICES", "TimeSeries", "ResponseTime"], 2266
+["Property", "WaterProperty", "Monitoring", "WATER", "Water_Treatment"], 2250
+["Measurement", "ResponseMetric", "EMERGENCY_SERVICES", "TimeSeries", "PersonnelAvailability"], 2133
+["Measurement", "ResponseMetric", "EMERGENCY_SERVICES", "TimeSeries", "CommunicationLatency"], 2132
+["Measurement", "ResponseMetric", "EMERGENCY_SERVICES", "TimeSeries", "ResourceAvailability"], 2124
+["Equipment", "Asset", "CommercialAsset", "COMMERCIAL_FACILITIES", "HVAC"], 2100
+["Measurement", "ResponseMetric", "EMERGENCY_SERVICES", "TimeSeries", "TreatmentEffectiveness"], 2098
+["Measurement", "ResponseMetric", "EMERGENCY_SERVICES", "TimeSeries", "EquipmentReadiness"], 2097
+["Measurement", "ResponseMetric", "EMERGENCY_SERVICES", "IncidentResolution", "TimeSeries"], 2090
+["Measurement", "ResponseMetric", "EMERGENCY_SERVICES", "TimeSeries", "FireContainment"], 2060
+["LicensePolicy", "Compliance", "SBOM", "License"], 2000
+["BuildTool", "Asset", "SBOM", "Build_Info"], 2000
+["Dependency", "DependencyPath", "SBOM", "Relationship"], 2000
+["Provenance", "VulnerabilityAttestation", "Compliance", "SBOM"], 2000
+["Vulnerability", "CommercialVulnerability", "COMMERCIAL_FACILITIES"], 1960
+["Property", "Monitoring", "COMMUNICATIONS", "Data_Centers", "CommunicationsProperty", "Communications"], 1819
+["Property", "FINANCIAL_SERVICES", "Banking", "FinancialServicesProperty", "Configuration"], 1691
+["Equipment", "Asset", "Access_Control", "CommercialAsset", "COMMERCIAL_FACILITIES"], 1680
+["Equipment", "Device", "Access_Control", "GovernmentDevice", "GOVERNMENT_FACILITIES"], 1680
+["Equipment", "Device", "GovernmentDevice", "GOVERNMENT_FACILITIES", "CCTV"], 1680
+["ChemicalEquipment", "CHEMICAL", "ProcessControlSystems"], 1680
+["Equipment", "Asset", "CommercialAsset", "COMMERCIAL_FACILITIES", "Fire_Safety"], 1680
+["Property", "FINANCIAL_SERVICES", "CapitalMarkets", "FinancialServicesProperty", "Configuration"], 1666
+["Property", "FINANCIAL_SERVICES", "PaymentSystems", "FinancialServicesProperty", "Configuration"], 1643
+["Equipment", "Asset", "CommercialAsset", "COMMERCIAL_FACILITIES", "BAS"], 1540
+["Control", "COMMUNICATIONS", "Communications", "NetworkManagementSystem"], 1500
+["Property", "Measurement", "SAREF", "Monitoring", "SAREF_Core", "WATER", "Water_Treatment"], 1500
+["Device", "Monitoring", "FinancialServicesDevice", "FINANCIAL_SERVICES", "Banking"], 1400
+["Equipment", "Asset", "Surveillance", "CommercialAsset", "COMMERCIAL_FACILITIES"], 1400
+["Device", "Monitoring", "COMMUNICATIONS", "CommunicationsDevice", "Telecom_Infrastructure", "Communications"], 1374
+["Equipment", "Device", "Communications", "GovernmentDevice", "GOVERNMENT_FACILITIES"], 1260
+["Equipment", "Device", "GovernmentDevice", "GOVERNMENT_FACILITIES", "HVAC_BMS"], 1260
+["Equipment", "Device", "GovernmentDevice", "GOVERNMENT_FACILITIES", "Emergency_Systems"], 1260
+["Equipment", "Device", "GovernmentDevice", "GOVERNMENT_FACILITIES", "Intrusion_Detection"], 1260
+["Measurement", "TimeSeries", "AgricultureMetric", "FOOD_AGRICULTURE", "EquipmentPerformance"], 1246
+["Measurement", "TimeSeries", "AgricultureMetric", "FOOD_AGRICULTURE", "ColdChainTemp"], 1232
+["Measurement", "TimeSeries", "AgricultureMetric", "FOOD_AGRICULTURE", "FeedIntake"], 1232
+["Device", "Monitoring", "FinancialServicesDevice", "FINANCIAL_SERVICES", "CapitalMarkets"], 1225
+["Measurement", "TimeSeries", "AgricultureMetric", "FOOD_AGRICULTURE", "SoilMoisture"], 1225
+["Measurement", "TimeSeries", "AgricultureMetric", "FOOD_AGRICULTURE", "Nutrients"], 1224
+["Measurement", "TimeSeries", "AgricultureMetric", "FOOD_AGRICULTURE", "MilkProduction"], 1221
+["Measurement", "TimeSeries", "AgricultureMetric", "FOOD_AGRICULTURE", "FoodSafety"], 1220
+["Measurement", "TimeSeries", "AgricultureMetric", "FOOD_AGRICULTURE", "WeatherData"], 1218
+["Measurement", "TimeSeries", "AgricultureMetric", "FOOD_AGRICULTURE", "Temperature"], 1215
+["Measurement", "TimeSeries", "AgricultureMetric", "FOOD_AGRICULTURE", "AnimalHealth"], 1209
+["Process", "INFORMATION_TECHNOLOGY", "IT", "ITProcess"], 1200
+["Location", "CriticalInfrastructure", "Transportation"], 1200
+["Property", "SAREF", "SAREF_Core"], 1200

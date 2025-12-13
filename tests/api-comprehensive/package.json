@@ -1,0 +1,32 @@
+{
+  "name": "api-comprehensive-testing",
+  "version": "1.0.0",
+  "description": "Comprehensive testing framework for all 232 APIs",
+  "main": "test-all-apis.ts",
+  "scripts": {
+    "test": "npx ts-node test-all-apis.ts",
+    "test:category": "npx ts-node test-all-apis.ts",
+    "test:all": "./run-tests.sh --all",
+    "test:check": "./run-tests.sh --check",
+    "store:qdrant": "npx ts-node qdrant-storage.ts store",
+    "query:qdrant": "npx ts-node qdrant-storage.ts query",
+    "stats:qdrant": "npx ts-node qdrant-storage.ts stats",
+    "failed:qdrant": "npx ts-node qdrant-storage.ts failed"
+  },
+  "keywords": [
+    "api-testing",
+    "comprehensive",
+    "automation",
+    "qdrant"
+  ],
+  "author": "OXOT Team",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "@qdrant/js-client-rest": "^1.8.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0"
+  },
+  "devDependencies": {}
+}

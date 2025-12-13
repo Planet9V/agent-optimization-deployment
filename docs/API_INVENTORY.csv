@@ -1,0 +1,200 @@
+Service,Port,Category,Method,Endpoint,Description,Status
+ner11-gold-api,8000,Health,GET,/health,Service health check,Active
+ner11-gold-api,8000,Info,GET,/info,Service information,Active
+ner11-gold-api,8000,NER,POST,/ner,Named Entity Recognition,Active
+ner11-gold-api,8000,Search,POST,/search/hybrid,Hybrid search functionality,Active
+ner11-gold-api,8000,Search,POST,/search/semantic,Semantic search,Active
+ner11-gold-api,8000,Remediation-Dashboard,GET,/api/v2/remediation/dashboard/summary,Remediation dashboard summary,Active
+ner11-gold-api,8000,Remediation-Dashboard,GET,/api/v2/remediation/dashboard/workload,Team workload overview,Active
+ner11-gold-api,8000,Remediation-Metrics,GET,/api/v2/remediation/metrics/backlog,Backlog metrics,Active
+ner11-gold-api,8000,Remediation-Metrics,GET,/api/v2/remediation/metrics/mttr,Mean Time To Remediate,Active
+ner11-gold-api,8000,Remediation-Metrics,GET,/api/v2/remediation/metrics/sla-compliance,SLA compliance tracking,Active
+ner11-gold-api,8000,Remediation-Metrics,GET,/api/v2/remediation/metrics/summary,Overall metrics summary,Active
+ner11-gold-api,8000,Remediation-Metrics,GET,/api/v2/remediation/metrics/trends,Remediation trends,Active
+ner11-gold-api,8000,Remediation-Plans,POST,/api/v2/remediation/plans,Create remediation plan,Active
+ner11-gold-api,8000,Remediation-Plans,GET,/api/v2/remediation/plans,List all plans,Active
+ner11-gold-api,8000,Remediation-Plans,GET,/api/v2/remediation/plans/active,Active plans only,Active
+ner11-gold-api,8000,Remediation-Plans,GET,/api/v2/remediation/plans/{plan_id},Get specific plan,Active
+ner11-gold-api,8000,Remediation-Plans,GET,/api/v2/remediation/plans/{plan_id}/progress,Plan progress tracking,Active
+ner11-gold-api,8000,Remediation-Plans,PUT,/api/v2/remediation/plans/{plan_id}/status,Update plan status,Active
+ner11-gold-api,8000,Remediation-SLA,GET,/api/v2/remediation/sla/at-risk,At-risk SLA items,Active
+ner11-gold-api,8000,Remediation-SLA,GET,/api/v2/remediation/sla/breaches,SLA breaches,Active
+ner11-gold-api,8000,Remediation-SLA,POST,/api/v2/remediation/sla/policies,Create SLA policy,Active
+ner11-gold-api,8000,Remediation-SLA,GET,/api/v2/remediation/sla/policies,List SLA policies,Active
+ner11-gold-api,8000,Remediation-SLA,GET,/api/v2/remediation/sla/policies/{policy_id},Get specific policy,Active
+ner11-gold-api,8000,Remediation-SLA,PUT,/api/v2/remediation/sla/policies/{policy_id},Update SLA policy,Active
+ner11-gold-api,8000,Remediation-Tasks,POST,/api/v2/remediation/tasks,Create remediation task,Active
+ner11-gold-api,8000,Remediation-Tasks,GET,/api/v2/remediation/tasks/by-priority/{priority},Tasks by priority,Active
+ner11-gold-api,8000,Remediation-Tasks,GET,/api/v2/remediation/tasks/by-status/{status},Tasks by status,Active
+ner11-gold-api,8000,Remediation-Tasks,GET,/api/v2/remediation/tasks/open,Open tasks,Active
+ner11-gold-api,8000,Remediation-Tasks,GET,/api/v2/remediation/tasks/overdue,Overdue tasks,Active
+ner11-gold-api,8000,Remediation-Tasks,GET,/api/v2/remediation/tasks/search,Search tasks,Active
+ner11-gold-api,8000,Remediation-Tasks,GET,/api/v2/remediation/tasks/{task_id},Get specific task,Active
+ner11-gold-api,8000,Remediation-Tasks,PUT,/api/v2/remediation/tasks/{task_id}/assign,Assign task,Active
+ner11-gold-api,8000,Remediation-Tasks,GET,/api/v2/remediation/tasks/{task_id}/history,Task history,Active
+ner11-gold-api,8000,Remediation-Tasks,PUT,/api/v2/remediation/tasks/{task_id}/status,Update task status,Active
+ner11-gold-api,8000,Risk-Aggregation,GET,/api/v2/risk/aggregation/by-asset-type,Risk by asset type,Active
+ner11-gold-api,8000,Risk-Aggregation,GET,/api/v2/risk/aggregation/by-sector,Risk by sector,Active
+ner11-gold-api,8000,Risk-Aggregation,GET,/api/v2/risk/aggregation/by-vendor,Risk by vendor,Active
+ner11-gold-api,8000,Risk-Aggregation,GET,/api/v2/risk/aggregation/{aggregation_type}/{group_id},Specific aggregation,Active
+ner11-gold-api,8000,Risk-Assets,GET,/api/v2/risk/assets/by-criticality/{level},Assets by criticality,Active
+ner11-gold-api,8000,Risk-Assets,POST,/api/v2/risk/assets/criticality,Set asset criticality,Active
+ner11-gold-api,8000,Risk-Assets,GET,/api/v2/risk/assets/criticality/summary,Criticality summary,Active
+ner11-gold-api,8000,Risk-Assets,GET,/api/v2/risk/assets/mission-critical,Mission-critical assets,Active
+ner11-gold-api,8000,Risk-Assets,GET,/api/v2/risk/assets/{asset_id}/criticality,Asset criticality details,Active
+ner11-gold-api,8000,Risk-Assets,PUT,/api/v2/risk/assets/{asset_id}/criticality,Update criticality,Active
+ner11-gold-api,8000,Risk-Dashboard,GET,/api/v2/risk/dashboard/risk-matrix,Risk matrix visualization,Active
+ner11-gold-api,8000,Risk-Dashboard,GET,/api/v2/risk/dashboard/summary,Risk dashboard summary,Active
+ner11-gold-api,8000,Risk-Exposure,POST,/api/v2/risk/exposure,Calculate exposure,Active
+ner11-gold-api,8000,Risk-Exposure,GET,/api/v2/risk/exposure/attack-surface,Attack surface analysis,Active
+ner11-gold-api,8000,Risk-Exposure,GET,/api/v2/risk/exposure/high-exposure,High exposure items,Active
+ner11-gold-api,8000,Risk-Exposure,GET,/api/v2/risk/exposure/internet-facing,Internet-facing assets,Active
+ner11-gold-api,8000,Risk-Exposure,GET,/api/v2/risk/exposure/{asset_id},Asset exposure details,Active
+ner11-gold-api,8000,Risk-Scores,POST,/api/v2/risk/scores,Calculate risk score,Active
+ner11-gold-api,8000,Risk-Scores,GET,/api/v2/risk/scores/high-risk,High-risk items,Active
+ner11-gold-api,8000,Risk-Scores,GET,/api/v2/risk/scores/history/{entity_type}/{entity_id},Score history,Active
+ner11-gold-api,8000,Risk-Scores,POST,/api/v2/risk/scores/recalculate/{entity_type}/{entity_id},Recalculate score,Active
+ner11-gold-api,8000,Risk-Scores,GET,/api/v2/risk/scores/search,Search risk scores,Active
+ner11-gold-api,8000,Risk-Scores,GET,/api/v2/risk/scores/trending,Trending risks,Active
+ner11-gold-api,8000,Risk-Scores,GET,/api/v2/risk/scores/{entity_type}/{entity_id},Entity risk score,Active
+ner11-gold-api,8000,SBOM-Components,POST,/api/v2/sbom/components,Add component,Active
+ner11-gold-api,8000,SBOM-Components,GET,/api/v2/sbom/components/high-risk,High-risk components,Active
+ner11-gold-api,8000,SBOM-Components,GET,/api/v2/sbom/components/search,Search components,Active
+ner11-gold-api,8000,SBOM-Components,GET,/api/v2/sbom/components/vulnerable,Vulnerable components,Active
+ner11-gold-api,8000,SBOM-Components,GET,/api/v2/sbom/components/{component_id},Component details,Active
+ner11-gold-api,8000,SBOM-Components,GET,/api/v2/sbom/components/{component_id}/dependencies,Component dependencies,Active
+ner11-gold-api,8000,SBOM-Components,GET,/api/v2/sbom/components/{component_id}/dependents,Component dependents,Active
+ner11-gold-api,8000,SBOM-Components,GET,/api/v2/sbom/components/{component_id}/impact,Impact analysis,Active
+ner11-gold-api,8000,SBOM-Components,GET,/api/v2/sbom/components/{component_id}/vulnerabilities,Component vulnerabilities,Active
+ner11-gold-api,8000,SBOM-Dashboard,GET,/api/v2/sbom/dashboard/summary,SBOM dashboard summary,Active
+ner11-gold-api,8000,SBOM-Dependencies,POST,/api/v2/sbom/dependencies,Add dependency,Active
+ner11-gold-api,8000,SBOM-Dependencies,GET,/api/v2/sbom/dependencies/path,Dependency path analysis,Active
+ner11-gold-api,8000,SBOM-SBOMs,POST,/api/v2/sbom/sboms,Upload SBOM,Active
+ner11-gold-api,8000,SBOM-SBOMs,GET,/api/v2/sbom/sboms,List SBOMs,Active
+ner11-gold-api,8000,SBOM-SBOMs,GET,/api/v2/sbom/sboms/{sbom_id},Get SBOM details,Active
+ner11-gold-api,8000,SBOM-SBOMs,DELETE,/api/v2/sbom/sboms/{sbom_id},Delete SBOM,Active
+ner11-gold-api,8000,SBOM-SBOMs,GET,/api/v2/sbom/sboms/{sbom_id}/components,SBOM components,Active
+ner11-gold-api,8000,SBOM-SBOMs,POST,/api/v2/sbom/sboms/{sbom_id}/correlate-equipment,Correlate with equipment,Active
+ner11-gold-api,8000,SBOM-SBOMs,GET,/api/v2/sbom/sboms/{sbom_id}/cycles,Dependency cycles,Active
+ner11-gold-api,8000,SBOM-SBOMs,GET,/api/v2/sbom/sboms/{sbom_id}/graph-stats,Graph statistics,Active
+ner11-gold-api,8000,SBOM-SBOMs,GET,/api/v2/sbom/sboms/{sbom_id}/license-compliance,License compliance,Active
+ner11-gold-api,8000,SBOM-SBOMs,GET,/api/v2/sbom/sboms/{sbom_id}/remediation,Remediation suggestions,Active
+ner11-gold-api,8000,SBOM-SBOMs,GET,/api/v2/sbom/sboms/{sbom_id}/risk-summary,Risk summary,Active
+ner11-gold-api,8000,SBOM-SBOMs,GET,/api/v2/sbom/sboms/{sbom_id}/vulnerable-paths,Vulnerable paths,Active
+ner11-gold-api,8000,SBOM-Vulnerabilities,POST,/api/v2/sbom/vulnerabilities,Add vulnerability,Active
+ner11-gold-api,8000,SBOM-Vulnerabilities,GET,/api/v2/sbom/vulnerabilities/by-apt,Vulnerabilities by APT,Active
+ner11-gold-api,8000,SBOM-Vulnerabilities,GET,/api/v2/sbom/vulnerabilities/critical,Critical vulnerabilities,Active
+ner11-gold-api,8000,SBOM-Vulnerabilities,GET,/api/v2/sbom/vulnerabilities/epss-prioritized,EPSS prioritized,Active
+ner11-gold-api,8000,SBOM-Vulnerabilities,GET,/api/v2/sbom/vulnerabilities/kev,Known Exploited Vulnerabilities,Active
+ner11-gold-api,8000,SBOM-Vulnerabilities,GET,/api/v2/sbom/vulnerabilities/search,Search vulnerabilities,Active
+ner11-gold-api,8000,SBOM-Vulnerabilities,GET,/api/v2/sbom/vulnerabilities/{vulnerability_id},Vulnerability details,Active
+ner11-gold-api,8000,SBOM-Vulnerabilities,POST,/api/v2/sbom/vulnerabilities/{vulnerability_id}/acknowledge,Acknowledge vulnerability,Active
+ner11-gold-api,8000,ThreatIntel-Actors,POST,/api/v2/threat-intel/actors,Add threat actor,Active
+ner11-gold-api,8000,ThreatIntel-Actors,GET,/api/v2/threat-intel/actors/active,Active threat actors,Active
+ner11-gold-api,8000,ThreatIntel-Actors,GET,/api/v2/threat-intel/actors/by-sector/{sector},Actors by sector,Active
+ner11-gold-api,8000,ThreatIntel-Actors,GET,/api/v2/threat-intel/actors/search,Search actors,Active
+ner11-gold-api,8000,ThreatIntel-Actors,GET,/api/v2/threat-intel/actors/{actor_id},Actor details,Active
+ner11-gold-api,8000,ThreatIntel-Actors,GET,/api/v2/threat-intel/actors/{actor_id}/campaigns,Actor campaigns,Active
+ner11-gold-api,8000,ThreatIntel-Actors,GET,/api/v2/threat-intel/actors/{actor_id}/cves,Actor CVEs,Active
+ner11-gold-api,8000,ThreatIntel-Campaigns,POST,/api/v2/threat-intel/campaigns,Add campaign,Active
+ner11-gold-api,8000,ThreatIntel-Campaigns,GET,/api/v2/threat-intel/campaigns/active,Active campaigns,Active
+ner11-gold-api,8000,ThreatIntel-Campaigns,GET,/api/v2/threat-intel/campaigns/search,Search campaigns,Active
+ner11-gold-api,8000,ThreatIntel-Campaigns,GET,/api/v2/threat-intel/campaigns/{campaign_id},Campaign details,Active
+ner11-gold-api,8000,ThreatIntel-Campaigns,GET,/api/v2/threat-intel/campaigns/{campaign_id}/iocs,Campaign IOCs,Active
+ner11-gold-api,8000,ThreatIntel-Dashboard,GET,/api/v2/threat-intel/dashboard/summary,Threat intel dashboard,Active
+ner11-gold-api,8000,ThreatIntel-Feeds,POST,/api/v2/threat-intel/feeds,Add threat feed,Active
+ner11-gold-api,8000,ThreatIntel-Feeds,GET,/api/v2/threat-intel/feeds,List threat feeds,Active
+ner11-gold-api,8000,ThreatIntel-Feeds,PUT,/api/v2/threat-intel/feeds/{feed_id}/refresh,Refresh feed,Active
+ner11-gold-api,8000,ThreatIntel-IOCs,POST,/api/v2/threat-intel/iocs,Add IOC,Active
+ner11-gold-api,8000,ThreatIntel-IOCs,GET,/api/v2/threat-intel/iocs/active,Active IOCs,Active
+ner11-gold-api,8000,ThreatIntel-IOCs,POST,/api/v2/threat-intel/iocs/bulk,Bulk add IOCs,Active
+ner11-gold-api,8000,ThreatIntel-IOCs,GET,/api/v2/threat-intel/iocs/by-type/{ioc_type},IOCs by type,Active
+ner11-gold-api,8000,ThreatIntel-IOCs,GET,/api/v2/threat-intel/iocs/search,Search IOCs,Active
+ner11-gold-api,8000,ThreatIntel-MITRE,GET,/api/v2/threat-intel/mitre/coverage,MITRE coverage analysis,Active
+ner11-gold-api,8000,ThreatIntel-MITRE,GET,/api/v2/threat-intel/mitre/gaps,Coverage gaps,Active
+ner11-gold-api,8000,ThreatIntel-MITRE,POST,/api/v2/threat-intel/mitre/mappings,Add MITRE mapping,Active
+ner11-gold-api,8000,ThreatIntel-MITRE,GET,/api/v2/threat-intel/mitre/mappings/entity/{entity_type}/{entity_id},Entity mappings,Active
+ner11-gold-api,8000,ThreatIntel-MITRE,GET,/api/v2/threat-intel/mitre/techniques/{technique_id}/actors,Actors using technique,Active
+ner11-gold-api,8000,Vendor-Equipment,POST,/api/v2/vendor-equipment/equipment,Add equipment,Active
+ner11-gold-api,8000,Vendor-Equipment,GET,/api/v2/vendor-equipment/equipment,List equipment,Active
+ner11-gold-api,8000,Vendor-Equipment,GET,/api/v2/vendor-equipment/equipment/approaching-eol,Approaching EOL,Active
+ner11-gold-api,8000,Vendor-Equipment,GET,/api/v2/vendor-equipment/equipment/eol,End-of-life equipment,Active
+ner11-gold-api,8000,Vendor-Equipment,GET,/api/v2/vendor-equipment/equipment/{model_id},Equipment details,Active
+ner11-gold-api,8000,Vendor-Maintenance,GET,/api/v2/vendor-equipment/maintenance-schedule,Maintenance schedule,Active
+ner11-gold-api,8000,Vendor-Maintenance,POST,/api/v2/vendor-equipment/maintenance-windows,Create maintenance window,Active
+ner11-gold-api,8000,Vendor-Maintenance,GET,/api/v2/vendor-equipment/maintenance-windows,List maintenance windows,Active
+ner11-gold-api,8000,Vendor-Maintenance,POST,/api/v2/vendor-equipment/maintenance-windows/check-conflict,Check conflicts,Active
+ner11-gold-api,8000,Vendor-Maintenance,GET,/api/v2/vendor-equipment/maintenance-windows/{window_id},Window details,Active
+ner11-gold-api,8000,Vendor-Maintenance,DELETE,/api/v2/vendor-equipment/maintenance-windows/{window_id},Delete window,Active
+ner11-gold-api,8000,Vendor-Predictive,GET,/api/v2/vendor-equipment/predictive-maintenance/forecast,Maintenance forecast,Active
+ner11-gold-api,8000,Vendor-Predictive,GET,/api/v2/vendor-equipment/predictive-maintenance/{equipment_id},Equipment predictions,Active
+ner11-gold-api,8000,Vendor-Vendors,POST,/api/v2/vendor-equipment/vendors,Add vendor,Active
+ner11-gold-api,8000,Vendor-Vendors,GET,/api/v2/vendor-equipment/vendors,List vendors,Active
+ner11-gold-api,8000,Vendor-Vendors,GET,/api/v2/vendor-equipment/vendors/high-risk,High-risk vendors,Active
+ner11-gold-api,8000,Vendor-Vendors,GET,/api/v2/vendor-equipment/vendors/{vendor_id},Vendor details,Active
+ner11-gold-api,8000,Vendor-Vendors,GET,/api/v2/vendor-equipment/vendors/{vendor_id}/risk-summary,Vendor risk summary,Active
+ner11-gold-api,8000,Vendor-WorkOrders,POST,/api/v2/vendor-equipment/vulnerabilities/flag,Flag vulnerability,Active
+ner11-gold-api,8000,Vendor-WorkOrders,POST,/api/v2/vendor-equipment/work-orders,Create work order,Active
+ner11-gold-api,8000,Vendor-WorkOrders,GET,/api/v2/vendor-equipment/work-orders,List work orders,Active
+ner11-gold-api,8000,Vendor-WorkOrders,GET,/api/v2/vendor-equipment/work-orders/summary,Work orders summary,Active
+ner11-gold-api,8000,Vendor-WorkOrders,GET,/api/v2/vendor-equipment/work-orders/{work_order_id},Work order details,Active
+ner11-gold-api,8000,Vendor-WorkOrders,PATCH,/api/v2/vendor-equipment/work-orders/{work_order_id}/status,Update status,Active
+aeon-saas-dev,3000,Analytics,GET,/api/analytics/export,Export analytics data,Active
+aeon-saas-dev,3000,Analytics,POST,/api/analytics/export,Export analytics POST,Active
+aeon-saas-dev,3000,Analytics,GET,/api/analytics/metrics,Analytics metrics,Active
+aeon-saas-dev,3000,Analytics,GET,/api/analytics/timeseries,Time series data,Active
+aeon-saas-dev,3000,Analytics,GET,/api/analytics/trends/cve,CVE trends,Active
+aeon-saas-dev,3000,Analytics,GET,/api/analytics/trends/seasonality,Seasonality analysis,Active
+aeon-saas-dev,3000,Analytics,GET,/api/analytics/trends/threat-timeline,Threat timeline,Active
+aeon-saas-dev,3000,Dashboard,GET,/api/dashboard/activity,Recent activity feed,Active
+aeon-saas-dev,3000,Dashboard,GET,/api/dashboard/distribution,Distribution metrics,Active
+aeon-saas-dev,3000,Dashboard,GET,/api/dashboard/metrics,Dashboard metrics,Active
+aeon-saas-dev,3000,QueryControl,GET,/api/query-control/queries,List all queries,Active
+aeon-saas-dev,3000,QueryControl,POST,/api/query-control/queries,Create new query,Active
+aeon-saas-dev,3000,QueryControl,GET,/api/query-control/queries/[queryId],Get query details,Active
+aeon-saas-dev,3000,QueryControl,DELETE,/api/query-control/queries/[queryId],Terminate query,Active
+aeon-saas-dev,3000,QueryControl,GET,/api/query-control/queries/[queryId]/checkpoints,List checkpoints,Active
+aeon-saas-dev,3000,QueryControl,POST,/api/query-control/queries/[queryId]/model,Switch AI model,Active
+aeon-saas-dev,3000,QueryControl,POST,/api/query-control/queries/[queryId]/pause,Pause query,Active
+aeon-saas-dev,3000,QueryControl,POST,/api/query-control/queries/[queryId]/permissions,Change permissions,Active
+aeon-saas-dev,3000,QueryControl,POST,/api/query-control/queries/[queryId]/resume,Resume query,Active
+aeon-saas-dev,3000,ThreatIntel,GET,/api/threat-intel/analytics,Threat analytics,Active
+aeon-saas-dev,3000,ThreatIntel,GET,/api/threat-intel/ics,ICS threat data,Active
+aeon-saas-dev,3000,ThreatIntel,GET,/api/threat-intel/landscape,Threat landscape,Active
+aeon-saas-dev,3000,ThreatIntel,GET,/api/threat-intel/vulnerabilities,Vulnerability data,Active
+aeon-saas-dev,3000,Threats,GET,/api/threats/geographic,Geographic threat distribution,Active
+aeon-saas-dev,3000,Threats,GET,/api/threats/ics,ICS-specific threats,Active
+aeon-saas-dev,3000,Graph,GET,/api/graph/query,Graph query GET,Active
+aeon-saas-dev,3000,Graph,POST,/api/graph/query,Execute graph query,Active
+aeon-saas-dev,3000,Neo4j,GET,/api/neo4j/cyber-statistics,Cyber security statistics,Active
+aeon-saas-dev,3000,Neo4j,GET,/api/neo4j/statistics,General graph statistics,Active
+aeon-saas-dev,3000,Pipeline,GET,/api/pipeline/process,Get pipeline status,Active
+aeon-saas-dev,3000,Pipeline,POST,/api/pipeline/process,Process pipeline,Active
+aeon-saas-dev,3000,Pipeline,DELETE,/api/pipeline/process,Delete pipeline job,Active
+aeon-saas-dev,3000,Pipeline,GET,/api/pipeline/status/[jobId],Job status,Active
+aeon-saas-dev,3000,Pipeline,DELETE,/api/pipeline/status/[jobId],Delete job,Active
+aeon-saas-dev,3000,Customers,GET,/api/customers,List customers,Active
+aeon-saas-dev,3000,Customers,POST,/api/customers,Create customer,Active
+aeon-saas-dev,3000,Customers,GET,/api/customers/[id],Get customer,Active
+aeon-saas-dev,3000,Customers,PUT,/api/customers/[id],Update customer,Active
+aeon-saas-dev,3000,Customers,DELETE,/api/customers/[id],Delete customer,Active
+aeon-saas-dev,3000,Tags,GET,/api/tags,List tags,Active
+aeon-saas-dev,3000,Tags,POST,/api/tags,Create tag,Active
+aeon-saas-dev,3000,Tags,DELETE,/api/tags,Bulk delete tags,Active
+aeon-saas-dev,3000,Tags,GET,/api/tags/[id],Get tag,Active
+aeon-saas-dev,3000,Tags,PUT,/api/tags/[id],Update tag,Active
+aeon-saas-dev,3000,Tags,DELETE,/api/tags/[id],Delete tag,Active
+aeon-saas-dev,3000,Tags,POST,/api/tags/assign,Assign tags,Active
+aeon-saas-dev,3000,Tags,DELETE,/api/tags/assign,Remove tags,Active
+aeon-saas-dev,3000,Observability,GET,/api/observability/agents,Agent observability,Active
+aeon-saas-dev,3000,Observability,POST,/api/observability/agents,Agent operations,Active
+aeon-saas-dev,3000,Observability,GET,/api/observability/performance,Performance metrics,Active
+aeon-saas-dev,3000,Observability,GET,/api/observability/system,System observability,Active
+aeon-saas-dev,3000,Utility,GET,/api/activity/recent,Recent activity,Active
+aeon-saas-dev,3000,Utility,GET,/api/backend/test,Backend connectivity test,Active
+aeon-saas-dev,3000,Utility,POST,/api/chat,Chat interface,Active
+aeon-saas-dev,3000,Utility,GET,/api/health,Health check,Active
+aeon-saas-dev,3000,Search,POST,/api/search,Hybrid search,Active
+aeon-saas-dev,3000,Search,GET,/api/search,Search health check,Active
+aeon-saas-dev,3000,Upload,POST,/api/upload,File upload,Active
+openspg-server,8887,Frontend,N/A,N/A,Web UI Application (No REST APIs),Frontend-Only

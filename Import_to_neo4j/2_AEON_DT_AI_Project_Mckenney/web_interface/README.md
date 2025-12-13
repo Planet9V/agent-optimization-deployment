@@ -39,6 +39,44 @@ The interface will open automatically at **http://localhost:8501**
 
 ---
 
+## 🔌 Backend API
+
+**API Version:** 3.3.0
+**Base URL:** http://localhost:8000
+**Total Endpoints:** 230
+**Documentation:** [Complete API Reference](./docs/COMPLETE_API_REFERENCE.md) | [Quick Start Guide](./docs/API_QUICK_START.md)
+
+### API Categories
+
+| Phase | Category | Endpoints |
+|-------|----------|-----------|
+| **B2** | SBOM Management | 33 |
+| **B2** | Vendor & Equipment | 19 |
+| **B3** | Threat Intelligence | 25 |
+| **B3** | Risk Management | 27 |
+| **B3** | Remediation | 26 |
+| **B4** | Compliance | 21 |
+| **B5** | Alerts | 19 |
+| **B5** | Demographics | 24 |
+| **B5** | Economic Analysis | 27 |
+| - | Psychometric | 8 |
+| - | Search | 3 |
+| - | Health | 1 |
+
+**Quick Example:**
+```bash
+# Check API health
+curl http://localhost:8000/health
+
+# List SBOMs
+curl -H "X-Customer-ID: customer123" \
+     http://localhost:8000/api/v2/sbom/sboms
+```
+
+See [API Quick Start](./docs/API_QUICK_START.md) for more examples.
+
+---
+
 ## 📋 Features
 
 ### Dashboard (app.py)

@@ -98,6 +98,70 @@ docker stats
 - **MySQL:** 34 tables in openspg database
 - **MinIO:** aeon-documents bucket created
 
+---
+
+## API Endpoints
+
+**API Version:** 3.3.0
+**Base URL:** `http://localhost:8000`
+**Total Endpoints:** 230
+**Authentication:** X-Customer-ID header required
+
+### Quick API Overview
+
+| Phase | Category | Endpoints | Base Path |
+|-------|----------|-----------|-----------|
+| **B2** | SBOM Management | 33 | `/api/v2/sbom/` |
+| **B2** | Vendor & Equipment | 19 | `/api/v2/vendor-equipment/` |
+| **B3** | Threat Intelligence | 25 | `/api/v2/threat-intel/` |
+| **B3** | Risk Management | 27 | `/api/v2/risk/` |
+| **B3** | Remediation | 26 | `/api/v2/remediation/` |
+| **B4** | Compliance | 21 | `/api/v2/compliance/` |
+| **B5** | Alerts | 19 | `/api/v2/alerts/` |
+| **B5** | Demographics | 24 | `/api/v2/demographics/` |
+| **B5** | Economic Analysis | 27 | `/api/v2/economic/` |
+| - | Psychometric | 8 | `/api/v2/psychometric/` |
+| - | Search Services | 3 | `/search/`, `/ner` |
+| - | System Health | 1 | `/health` |
+
+### Common API Examples
+
+```bash
+# Check API health
+curl http://localhost:8000/health
+
+# List all SBOMs
+curl -H "X-Customer-ID: customer123" \
+     http://localhost:8000/api/v2/sbom/sboms
+
+# Get critical vulnerabilities
+curl -H "X-Customer-ID: customer123" \
+     http://localhost:8000/api/v2/sbom/vulnerabilities/critical
+
+# Search threats
+curl -H "X-Customer-ID: customer123" \
+     http://localhost:8000/api/v2/threat-intel/actors/search?q=APT29
+
+# Get compliance dashboard
+curl -H "X-Customer-ID: customer123" \
+     http://localhost:8000/api/v2/compliance/dashboard/summary
+
+# Semantic search
+curl -X POST -H "Content-Type: application/json" \
+     -d '{"query": "ransomware", "limit": 10}' \
+     http://localhost:8000/search/semantic
+```
+
+### Complete API Documentation
+
+See **[COMPLETE_API_REFERENCE.md](./COMPLETE_API_REFERENCE.md)** for:
+- Detailed endpoint descriptions
+- Request/response examples
+- Authentication details
+- Error handling
+- Rate limiting
+- WebSocket support
+
 ## Common Operations
 
 ### Neo4j Queries

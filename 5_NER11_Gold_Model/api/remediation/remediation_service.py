@@ -17,6 +17,7 @@ from uuid import uuid4
 import logging
 
 from qdrant_client import QdrantClient
+from api.database_manager import get_qdrant_client
 from qdrant_client.models import (
     Filter,
     FieldCondition,
@@ -96,7 +97,7 @@ class RemediationWorkflowService:
 
     def __init__(
         self,
-        qdrant_url: str = "http://localhost:6333",
+        qdrant_url: str = "http://openspg-qdrant:6333",
         embedding_service: Optional[Any] = None,
     ):
         """
@@ -106,9 +107,15 @@ class RemediationWorkflowService:
             qdrant_url: Qdrant server URL
             embedding_service: EmbeddingService instance for semantic search
         """
-        self.qdrant_client = QdrantClient(url=qdrant_url)
-        self._embedding_service = embedding_service
-        self._ensure_collection()
+        try:
+            self.qdrant_client = get_qdrant_client()
+            self._embedding_service = embedding_service
+            self._ensure_collection()
+            logger.info(f"✅ Remediation service initialized with Qdrant at {qdrant_url}")
+        except Exception as e:
+            logger.warning(f"⚠️ Could not connect to Qdrant: {e}. Service will run with limited functionality.")
+            self.qdrant_client = None
+            self._embedding_service = None
 
     def _ensure_collection(self) -> None:
         """Ensure Qdrant collection exists."""

@@ -42,6 +42,8 @@ class RiskTrend(Enum):
     IMPROVING = "improving"     # Risk decreasing
     STABLE = "stable"           # Risk unchanged
     DEGRADING = "degrading"     # Risk increasing
+    INCREASING = "degrading"    # Alias for DEGRADING (backward compatibility)
+    DECREASING = "improving"    # Alias for IMPROVING (backward compatibility)
 
 
 class BusinessImpact(Enum):

@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IEC 62443 & TS 50701 Cybersecurity Workshop Toolkit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f5f4;
+            /* Stone-100 - Warm Neutral */
+            color: #1c1917;
+            /* Stone-900 */
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #e7e5e4;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #a8a29e;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #78716c;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            height: 350px;
+            max-height: 400px;
+        }
+
+        /* Timeline Connector Lines */
+        .timeline-connector::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 100%;
+            width: 100%;
+            height: 2px;
+            background-color: #d6d3d1;
+            /* Stone-300 */
+            z-index: 0;
+            transform: translateY(-50%);
+        }
+
+        .timeline-connector:last-child::after {
+            display: none;
+        }
+
+        /* Interactive Node States */
+        .node-active {
+            border-color: #0f766e;
+            /* Teal-700 */
+            background-color: #f0fdfa;
+            /* Teal-50 */
+            color: #0f766e;
+        }
+
+        .node-inactive {
+            border-color: #d6d3d1;
+            background-color: white;
+            color: #78716c;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <!-- Chosen Palette: Warm Neutrals (Stone) with Deep Teal (Professional/Security) and Muted Amber (Warning/Attention) -->
+    <!-- Application Structure Plan: 
+         - Layout: Sidebar navigation for Workshop Phases, Main Content Area for interactive tools.
+         - Top Bar: Global "Readiness" Gauge and Document Repository Status (simulated upload).
+         - Core Visual: A "Sequence Diagram" navigation rail at the top of the main view, visualizing the IEC 62443 lifecycle.
+         - Sections:
+           1. Program Overview: The sequence diagram & methodology.
+           2. Workshop 1 (Definition): RAMS integration, "Worst Case" builder.
+           3. Workshop 2 (Risk Assessment): Zone & Conduit Architect, IRA visualizer.
+           4. Workshop 3 (Design & Consensus): Role-based Question Bank (Owner vs Integrator vs Supplier).
+           5. Handover: Deliverable checklist.
+    -->
+    <!-- Visualization & Content Choices:
+         - Sequence Diagram: Rendered as an interactive HTML/Tailwind horizontal flow. Justification: Better interactivity than static image, allows clicking into phases.
+         - Risk Matrix: Chart.js Bubble Chart. Justification: Standard way to view Likelihood vs Impact.
+         - Document Status: Simple progress bars/checklist. Justification: Quick visual feedback on "prerequisites".
+         - Role Questions: Interactive Accordion/Cards. Justification: Filters information overload for specific stakeholders.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+
+<body class="flex h-screen overflow-hidden text-stone-800">
+
+    <!-- Sidebar Navigation -->
+    <aside class="w-64 bg-stone-900 text-stone-200 flex flex-col shadow-xl z-20 flex-shrink-0">
+        <div class="p-6 border-b border-stone-700">
+            <h1 class="text-xl font-bold tracking-wide text-teal-400">CyberSecure Rail</h1>
+            <p class="text-xs text-stone-400 mt-1">IEC 62443 & TS 50701 Workshop Toolkit</p>
+        </div>
+
+        <nav class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-1">
+                <li>
+                    <button onclick="navTo('dashboard')"
+                        class="nav-btn w-full text-left px-6 py-3 hover:bg-stone-800 transition-colors border-l-4 border-transparent active-nav"
+                        id="btn-dashboard">
+                        <span class="font-medium">Program Overview</span>
+                    </button>
+                </li>
+                <li>
+                    <button onclick="navTo('workshop1')"
+                        class="nav-btn w-full text-left px-6 py-3 hover:bg-stone-800 transition-colors border-l-4 border-transparent"
+                        id="btn-workshop1">
+                        <span class="text-sm uppercase tracking-wider text-stone-500 block mb-1">Phase 1</span>
+                        <span class="font-medium">Context & Worst Case</span>
+                    </button>
+                </li>
+                <li>
+                    <button onclick="navTo('workshop2')"
+                        class="nav-btn w-full text-left px-6 py-3 hover:bg-stone-800 transition-colors border-l-4 border-transparent"
+                        id="btn-workshop2">
+                        <span class="text-sm uppercase tracking-wider text-stone-500 block mb-1">Phase 2</span>
+                        <span class="font-medium">Zones, Conduits & IRA</span>
+                    </button>
+                </li>
+                <li>
+                    <button onclick="navTo('workshop3')"
+                        class="nav-btn w-full text-left px-6 py-3 hover:bg-stone-800 transition-colors border-l-4 border-transparent"
+                        id="btn-workshop3">
+                        <span class="text-sm uppercase tracking-wider text-stone-500 block mb-1">Phase 3</span>
+                        <span class="font-medium">Stakeholder Consensus</span>
+                    </button>
+                </li>
+                <li>
+                    <button onclick="navTo('handover')"
+                        class="nav-btn w-full text-left px-6 py-3 hover:bg-stone-800 transition-colors border-l-4 border-transparent"
+                        id="btn-handover">
+                        <span class="text-sm uppercase tracking-wider text-stone-500 block mb-1">Phase 4</span>
+                        <span class="font-medium">Handover Strategy</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="p-6 border-t border-stone-700 bg-stone-800">
+            <div class="mb-2 flex justify-between items-center">
+                <span class="text-xs font-semibold uppercase text-stone-400">Project Readiness</span>
+                <span class="text-xs font-bold text-teal-400" id="readiness-score">0%</span>
+            </div>
+            <div class="w-full bg-stone-700 rounded-full h-2">
+                <div id="readiness-bar" class="bg-teal-500 h-2 rounded-full transition-all duration-1000"
+                    style="width: 0%"></div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
+
+        <!-- Document "Upload" & Reference Header -->
+        <header class="bg-white border-b border-stone-200 p-4 shadow-sm flex justify-between items-center z-10">
+            <div class="flex items-center space-x-4">
+                <h2 class="text-lg font-semibold text-stone-700" id="page-title">Program Sequence</h2>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <span class="text-xs font-medium text-stone-500 uppercase mr-2">Reference Docs:</span>
+
+                <button onclick="toggleDoc('hazard')" id="doc-hazard"
+                    class="px-3 py-1 text-xs border rounded-full transition-all bg-stone-100 text-stone-400 border-stone-300 hover:border-teal-500">
+                    Hazard Log (RAMS)
+                </button>
+                <button onclick="toggleDoc('arch')" id="doc-arch"
+                    class="px-3 py-1 text-xs border rounded-full transition-all bg-stone-100 text-stone-400 border-stone-300 hover:border-teal-500">
+                    System Arch
+                </button>
+                <button onclick="toggleDoc('policy')" id="doc-policy"
+                    class="px-3 py-1 text-xs border rounded-full transition-all bg-stone-100 text-stone-400 border-stone-300 hover:border-teal-500">
+                    Corp Policy
+                </button>
+            </div>
+        </header>
+
+        <!-- Scrollable Content -->
+        <div id="content-area" class="flex-1 overflow-y-auto p-8 bg-stone-50 scroll-smooth">
+
+            <!-- VIEW: DASHBOARD (Program Overview) -->
+            <section id="view-dashboard" class="fade-in max-w-6xl mx-auto">
+                <div class="mb-8">
+                    <h3 class="text-2xl font-bold text-stone-800 mb-2">IEC 62443 & TS 50701 Lifecycle Sequence</h3>
+                    <p class="text-stone-600 max-w-3xl">
+                        This interactive sequence diagram illustrates the nexus points between safety (RAMS) and
+                        cybersecurity.
+                        Click on any node to understand the inputs, outputs, and stakeholder responsibilities for that
+                        phase.
+                    </p>
+                </div>
+
+                <!-- Interactive Sequence Diagram -->
+                <div class="relative w-full overflow-x-auto pb-12 mb-12">
+                    <div class="flex items-center justify-between min-w-[800px] px-8">
+                        <!-- Step 1 -->
+                        <div class="relative z-10 flex flex-col items-center timeline-connector flex-1 group cursor-pointer"
+                            onclick="navTo('workshop1')">
+                            <div
+                                class="w-16 h-16 rounded-full border-4 border-stone-300 bg-white flex items-center justify-center text-xl font-bold text-stone-400 group-hover:border-teal-500 group-hover:text-teal-600 transition-all shadow-sm">
+                                1
+                            </div>
+                            <div class="mt-4 text-center">
+                                <h4 class="font-bold text-stone-800">Concept & Scope</h4>
+                                <p class="text-xs text-stone-500">Asset Definition<br>RAMS Linkage</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="relative z-10 flex flex-col items-center timeline-connector flex-1 group cursor-pointer"
+                            onclick="navTo('workshop2')">
+                            <div
+                                class="w-16 h-16 rounded-full border-4 border-stone-300 bg-white flex items-center justify-center text-xl font-bold text-stone-400 group-hover:border-teal-500 group-hover:text-teal-600 transition-all shadow-sm">
+                                2
+                            </div>
+                            <div class="mt-4 text-center">
+                                <h4 class="font-bold text-stone-800">Risk Assessment</h4>
+                                <p class="text-xs text-stone-500">Initial (IRA)<br>Zones & Conduits</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="relative z-10 flex flex-col items-center timeline-connector flex-1 group cursor-pointer"
+                            onclick="navTo('workshop2')">
+                            <div
+                                class="w-16 h-16 rounded-full border-4 border-stone-300 bg-white flex items-center justify-center text-xl font-bold text-stone-400 group-hover:border-teal-500 group-hover:text-teal-600 transition-all shadow-sm">
+                                3
+                            </div>
+                            <div class="mt-4 text-center">
+                                <h4 class="font-bold text-stone-800">Detailed Design</h4>
+                                <p class="text-xs text-stone-500">Detailed (DRA)<br>Countermeasures</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="relative z-10 flex flex-col items-center timeline-connector flex-1 group cursor-pointer"
+                            onclick="navTo('workshop3')">
+                            <div
+                                class="w-16 h-16 rounded-full border-4 border-stone-300 bg-white flex items-center justify-center text-xl font-bold text-stone-400 group-hover:border-teal-500 group-hover:text-teal-600 transition-all shadow-sm">
+                                4
+                            </div>
+                            <div class="mt-4 text-center">
+                                <h4 class="font-bold text-stone-800">Integration</h4>
+                                <p class="text-xs text-stone-500">FAT / SAT<br>Pen Testing</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 5 -->
+                        <div class="relative z-10 flex flex-col items-center flex-1 group cursor-pointer"
+                            onclick="navTo('handover')">
+                            <div
+                                class="w-16 h-16 rounded-full border-4 border-stone-300 bg-white flex items-center justify-center text-xl font-bold text-stone-400 group-hover:border-teal-500 group-hover:text-teal-600 transition-all shadow-sm">
+                                5
+                            </div>
+                            <div class="mt-4 text-center">
+                                <h4 class="font-bold text-stone-800">Ops & Maint</h4>
+                                <p class="text-xs text-stone-500">Handover<br>Patch Mgmt</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Intro Card -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-stone-200">
+                        <h4 class="text-lg font-bold text-stone-800 mb-4 flex items-center">
+                            <span class="w-2 h-8 bg-teal-500 mr-3 rounded-full"></span>
+                            Objectives & Approach
+                        </h4>
+                        <p class="text-sm text-stone-600 mb-4">
+                            This toolkit facilitates the structured dialogue required by <strong>IEC 62443-2-1</strong>
+                            (Asset Owner requirements) and <strong>TS 50701</strong> (Railway Specifics).
+                            The goal is to move from a "Safety-only" mindset to a converged "Safety & Security" posture.
+                        </p>
+                        <ul class="text-sm text-stone-600 space-y-2">
+                            <li class="flex items-start">
+                                <span class="text-teal-500 mr-2">✓</span> Establish the "Worst Case" disaster based on
+                                Hazard Logs.
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-teal-500 mr-2">✓</span> Define Zones and Conduits based on functional
+                                criticality.
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-teal-500 mr-2">✓</span> Assign Security Levels (SL-T) and verify
+                                against Capabilities (SL-C).
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Status Chart -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-stone-200 flex flex-col">
+                        <h4 class="text-lg font-bold text-stone-800 mb-4">Current Workshop Progress</h4>
+                        <div class="chart-container flex-1">
+                            <canvas id="progressChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW: WORKSHOP 1 (Context) -->
+            <section id="view-workshop1" class="hidden fade-in max-w-5xl mx-auto">
+                <div class="border-l-4 border-teal-500 pl-6 py-2 mb-8 bg-white rounded-r-lg shadow-sm">
+                    <h2 class="text-2xl font-bold text-stone-800">Workshop 1: Context & "Worst Case" Scenario</h2>
+                    <p class="text-stone-600 mt-1">Goal: Identify critical assets (Crown Jewels) and determine the
+                        maximum impact of a compromise by referencing the RAMS Hazard Log.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <!-- Left: Inputs -->
+                    <div class="lg:col-span-1 space-y-6">
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-stone-200">
+                            <h3 class="font-bold text-stone-800 mb-4">1. Document Reference</h3>
+                            <p class="text-sm text-stone-500 mb-4">Ensure the Hazard Log is "Uploaded" (Simulated in
+                                header) to proceed.</p>
+                            <div id="hazard-warning"
+                                class="bg-amber-50 border border-amber-200 text-amber-700 px-4 py-3 rounded text-sm mb-4">
+                                ⚠ Please toggle "Hazard Log" in the top bar to active.
+                            </div>
+                            <div id="hazard-success"
+                                class="hidden bg-teal-50 border border-teal-200 text-teal-700 px-4 py-3 rounded text-sm mb-4">
+                                ✓ Hazard Log Linked. Proceed.
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-stone-200">
+                            <h3 class="font-bold text-stone-800 mb-4">2. Impact Calculator</h3>
+                            <label class="block text-xs font-bold text-stone-500 uppercase mb-1">Safety Impact
+                                (SIL)</label>
+                            <input type="range" min="0" max="4" value="0" class="w-full mb-4 accent-teal-600"
+                                id="impact-safety" oninput="updateRiskChart()">
+
+                            <label class="block text-xs font-bold text-stone-500 uppercase mb-1">Operational
+                                Impact</label>
+                            <input type="range" min="0" max="4" value="0" class="w-full mb-4 accent-teal-600"
+                                id="impact-ops" oninput="updateRiskChart()">
+
+                            <label
+                                class="block text-xs font-bold text-stone-500 uppercase mb-1">Financial/Reputation</label>
+                            <input type="range" min="0" max="4" value="0" class="w-full mb-4 accent-teal-600"
+                                id="impact-fin" oninput="updateRiskChart()">
+                        </div>
+                    </div>
+
+                    <!-- Right: Visualization -->
+                    <div class="lg:col-span-2">
+                        <div class="bg-white p-6 rounded-lg shadow-sm border border-stone-200 h-full">
+                            <h3 class="font-bold text-stone-800 mb-2">Consequence Analysis Matrix</h3>
+                            <p class="text-xs text-stone-500 mb-4">Visualizing the potential impact of a successful
+                                cyber attack on the identified system.</p>
+                            <div class="chart-container">
+                                <canvas id="impactChart"></canvas>
+                            </div>
+                            <div class="mt-4 p-4 bg-stone-50 rounded text-sm border border-stone-200">
+                                <span class="font-bold text-stone-700">Calculated Security Level Target (High-Level):
+                                </span>
+                                <span id="sl-target-display" class="font-bold text-teal-600 text-lg ml-2">-</span>
+                                <p class="text-xs text-stone-400 mt-1">Based on highest impact score (0-4 mapping to SL
+                                    1-4)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW: WORKSHOP 2 (Zones & IRA) -->
+            <section id="view-workshop2" class="hidden fade-in max-w-6xl mx-auto">
+                <div class="border-l-4 border-teal-500 pl-6 py-2 mb-8 bg-white rounded-r-lg shadow-sm">
+                    <h2 class="text-2xl font-bold text-stone-800">Workshop 2: Zones, Conduits & High-Level Risk</h2>
+                    <p class="text-stone-600 mt-1">Goal: Partition the system into Zones (grouping assets with similar
+                        security requirements) and Conduits (communication paths), then assign SL Targets.</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <!-- Zone Architect Tool -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-stone-200">
+                        <h3 class="font-bold text-stone-800 mb-4">Zone Partitioning Visualizer</h3>
+                        <p class="text-sm text-stone-500 mb-6">Click on a functional area to assign it to a security
+                            zone.</p>
+
+                        <!-- Interactive Zone Diagram -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="border-2 border-dashed border-stone-300 rounded p-4 text-center cursor-pointer hover:bg-stone-50 transition-colors zone-box"
+                                onclick="selectZone(this, 'Control Center')">
+                                <div class="text-3xl mb-2">🖥️</div>
+                                <div class="font-bold text-sm">Control Center</div>
+                                <div class="text-xs text-stone-400 mt-1 zone-label">Unassigned</div>
+                            </div>
+                            <div class="border-2 border-dashed border-stone-300 rounded p-4 text-center cursor-pointer hover:bg-stone-50 transition-colors zone-box"
+                                onclick="selectZone(this, 'Signalling')">
+                                <div class="text-3xl mb-2">🚦</div>
+                                <div class="font-bold text-sm">Signalling</div>
+                                <div class="text-xs text-stone-400 mt-1 zone-label">Unassigned</div>
+                            </div>
+                            <div class="border-2 border-dashed border-stone-300 rounded p-4 text-center cursor-pointer hover:bg-stone-50 transition-colors zone-box"
+                                onclick="selectZone(this, 'Passenger Wi-Fi')">
+                                <div class="text-3xl mb-2">📱</div>
+                                <div class="font-bold text-sm">Passenger Wi-Fi</div>
+                                <div class="text-xs text-stone-400 mt-1 zone-label">Unassigned</div>
+                            </div>
+                            <div class="border-2 border-dashed border-stone-300 rounded p-4 text-center cursor-pointer hover:bg-stone-50 transition-colors zone-box"
+                                onclick="selectZone(this, 'Traction Power')">
+                                <div class="text-3xl mb-2">⚡</div>
+                                <div class="font-bold text-sm">Traction Power</div>
+                                <div class="text-xs text-stone-400 mt-1 zone-label">Unassigned</div>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-stone-100">
+                            <h4 class="text-sm font-bold text-stone-700 mb-2">Assign to Zone:</h4>
+                            <div class="flex space-x-2">
+                                <button onclick="applyZone('Enterprise', 'bg-blue-100', 'border-blue-500', 'SL-1')"
+                                    class="px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded font-medium hover:bg-blue-200">Enterprise
+                                    (SL-1)</button>
+                                <button onclick="applyZone('Operations', 'bg-amber-100', 'border-amber-500', 'SL-2')"
+                                    class="px-3 py-1 bg-amber-100 text-amber-700 text-xs rounded font-medium hover:bg-amber-200">Ops
+                                    (SL-2)</button>
+                                <button onclick="applyZone('Safety Critical', 'bg-red-100', 'border-red-500', 'SL-3')"
+                                    class="px-3 py-1 bg-red-100 text-red-700 text-xs rounded font-medium hover:bg-red-200">Safety
+                                    (SL-3)</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Initial Risk Assessment (IRA) Output -->
+                    <div class="bg-white p-6 rounded-lg shadow-sm border border-stone-200">
+                        <h3 class="font-bold text-stone-800 mb-2">Initial Risk Assessment (IRA)</h3>
+                        <p class="text-xs text-stone-500 mb-4">Risk = Likelihood x Impact (Pre-mitigation)</p>
+                        <div class="chart-container">
+                            <canvas id="iraChart"></canvas>
+                        </div>
+                        <div class="mt-4 text-sm text-stone-600">
+                            <strong>Key Analysis:</strong> Safety Critical zones have high inherent risk due to RAMS
+                            implications. Passenger Wi-Fi has lower safety impact but high likelihood of compromise.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW: WORKSHOP 3 (Stakeholder Consensus) -->
+            <section id="view-workshop3" class="hidden fade-in max-w-5xl mx-auto">
+                <div class="border-l-4 border-teal-500 pl-6 py-2 mb-8 bg-white rounded-r-lg shadow-sm">
+                    <h2 class="text-2xl font-bold text-stone-800">Workshop 3: Stakeholder Alignment & Consensus</h2>
+                    <p class="text-stone-600 mt-1">Goal: Facilitate guided conversations between Asset Owners,
+                        Integrators, and Suppliers to define responsibilities and agree on countermeasures.</p>
+                </div>
+
+                <!-- Role Selector -->
+                <div class="flex justify-center space-x-4 mb-8">
+                    <button onclick="setRole('Owner')" id="role-owner"
+                        class="role-btn px-6 py-3 bg-white border border-stone-300 rounded-lg shadow-sm text-stone-600 font-medium hover:border-teal-500 hover:text-teal-600 transition-all focus:ring-2 ring-teal-500 ring-offset-2">
+                        🏛️ Asset Owner
+                    </button>
+                    <button onclick="setRole('Integrator')" id="role-integrator"
+                        class="role-btn px-6 py-3 bg-white border border-stone-300 rounded-lg shadow-sm text-stone-600 font-medium hover:border-teal-500 hover:text-teal-600 transition-all">
+                        🔧 System Integrator
+                    </button>
+                    <button onclick="setRole('Supplier')" id="role-supplier"
+                        class="role-btn px-6 py-3 bg-white border border-stone-300 rounded-lg shadow-sm text-stone-600 font-medium hover:border-teal-500 hover:text-teal-600 transition-all">
+                        📦 Product Supplier
+                    </button>
+                </div>
+
+                <!-- Questions Container -->
+                <div class="bg-white rounded-lg shadow-sm border border-stone-200 overflow-hidden">
+                    <div class="p-6 border-b border-stone-100 bg-stone-50">
+                        <h3 class="text-lg font-bold text-stone-800" id="role-title">Select a Stakeholder Role</h3>
+                        <p class="text-sm text-stone-500" id="role-desc">Click a button above to see specific guided
+                            questions and responsibilities.</p>
+                    </div>
+
+                    <div id="questions-list" class="p-6 space-y-4">
+                        <!-- Dynamic Content Inserted Here -->
+                        <div class="text-center text-stone-400 py-8 italic">
+                            Waiting for selection...
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW: HANDOVER -->
+            <section id="view-handover" class="hidden fade-in max-w-4xl mx-auto">
+                <div class="border-l-4 border-teal-500 pl-6 py-2 mb-8 bg-white rounded-r-lg shadow-sm">
+                    <h2 class="text-2xl font-bold text-stone-800">Phase 4: Handover & Cybersecurity Case</h2>
+                    <p class="text-stone-600 mt-1">Goal: Compile the Cybersecurity Case, verifying that the system meets
+                        the target Security Levels (SL-T) and is ready for operations.</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-lg shadow-sm border border-stone-200">
+                    <h3 class="font-bold text-stone-800 mb-6 text-xl">Cybersecurity Case Checklist</h3>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start p-4 border rounded-lg hover:bg-stone-50 transition-colors cursor-pointer group"
+                            onclick="toggleCheck(this)">
+                            <div
+                                class="w-6 h-6 rounded border-2 border-stone-300 mr-4 flex items-center justify-center text-white font-bold group-hover:border-teal-500 check-box transition-colors">
+                                ✓</div>
+                            <div>
+                                <h4 class="font-bold text-stone-700">Detailed Risk Assessment (DRA) Report</h4>
+                                <p class="text-sm text-stone-500">Documenting all threats, vulnerabilities, and selected
+                                    countermeasures.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start p-4 border rounded-lg hover:bg-stone-50 transition-colors cursor-pointer group"
+                            onclick="toggleCheck(this)">
+                            <div
+                                class="w-6 h-6 rounded border-2 border-stone-300 mr-4 flex items-center justify-center text-white font-bold group-hover:border-teal-500 check-box transition-colors">
+                                ✓</div>
+                            <div>
+                                <h4 class="font-bold text-stone-700">Traceability Matrix (RAMS <-> Cyber)</h4>
+                                <p class="text-sm text-stone-500">Evidence that safety hazards triggered by cyber events
+                                    are mitigated.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start p-4 border rounded-lg hover:bg-stone-50 transition-colors cursor-pointer group"
+                            onclick="toggleCheck(this)">
+                            <div
+                                class="w-6 h-6 rounded border-2 border-stone-300 mr-4 flex items-center justify-center text-white font-bold group-hover:border-teal-500 check-box transition-colors">
+                                ✓</div>
+                            <div>
+                                <h4 class="font-bold text-stone-700">Hardening Guidelines & Configs</h4>
+                                <p class="text-sm text-stone-500">Specific configuration settings for OS, Network
+                                    devices, and PLCs.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start p-4 border rounded-lg hover:bg-stone-50 transition-colors cursor-pointer group"
+                            onclick="toggleCheck(this)">
+                            <div
+                                class="w-6 h-6 rounded border-2 border-stone-300 mr-4 flex items-center justify-center text-white font-bold group-hover:border-teal-500 check-box transition-colors">
+                                ✓</div>
+                            <div>
+                                <h4 class="font-bold text-stone-700">Incident Response Plan</h4>
+                                <p class="text-sm text-stone-500">Procedures for detection, containment, and recovery.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-6 border-t border-stone-100 flex justify-between items-center">
+                        <span class="text-stone-500 text-sm">Completion Status:</span>
+                        <button
+                            class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded font-medium shadow-sm transition-colors">
+                            Generate Handover Report
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- JavaScript Implementation -->
+    <script>
+        // State Management
+        const state = {
+            currentView: 'dashboard',
+            documents: {
+                hazard: false,
+                arch: false,
+                policy: false
+            },
+            impactScores: {
+                safety: 0,
+                ops: 0,
+                fin: 0
+            },
+            selectedZone: null,
+            readiness: 0
+        };
+
+        // Charts Global Config
+        Chart.defaults.font.family = "'Inter', sans-serif";
+        Chart.defaults.color = '#57534e';
+
+        let progressChart, impactChart, iraChart;
+
+        // Document Toggle Logic
+        function toggleDoc(docType) {
+            state.documents[docType] = !state.documents[docType];
+            const btn = document.getElementById(`doc-${docType}`);
+
+            if (state.documents[docType]) {
+                btn.classList.remove('bg-stone-100', 'text-stone-400', 'border-stone-300');
+                btn.classList.add('bg-teal-50', 'text-teal-700', 'border-teal-500', 'font-bold');
+
+                // Trigger visual feedback in specific sections
+                if (docType === 'hazard') {
+                    document.getElementById('hazard-warning').classList.add('hidden');
+                    document.getElementById('hazard-success').classList.remove('hidden');
+                }
+
+                updateReadiness(10);
+            } else {
+                btn.classList.add('bg-stone-100', 'text-stone-400', 'border-stone-300');
+                btn.classList.remove('bg-teal-50', 'text-teal-700', 'border-teal-500', 'font-bold');
+
+                if (docType === 'hazard') {
+                    document.getElementById('hazard-warning').classList.remove('hidden');
+                    document.getElementById('hazard-success').classList.add('hidden');
+                }
+
+                updateReadiness(-10);
+            }
+        }
+
+        // Navigation Logic
+        function navTo(viewId) {
+            // Hide all views
+            ['dashboard', 'workshop1', 'workshop2', 'workshop3', 'handover'].forEach(id => {
+                document.getElementById(`view-${id}`).classList.add('hidden');
+                document.getElementById(`btn-${id}`).classList.remove('active-nav', 'border-teal-500', 'bg-stone-800');
+                document.getElementById(`btn-${id}`).classList.add('border-transparent');
+
+                // Fix text color for inactive state
+                const span = document.getElementById(`btn-${id}`).querySelector('span.font-medium');
+                if (span) span.classList.remove('text-teal-400');
+            });
+
+            // Show selected view
+            document.getElementById(`view-${viewId}`).classList.remove('hidden');
+
+            // Style active nav button
+            const activeBtn = document.getElementById(`btn-${viewId}`);
+            activeBtn.classList.add('bg-stone-800', 'border-teal-500');
+            activeBtn.classList.remove('border-transparent');
+            activeBtn.querySelector('span.font-medium').classList.add('text-teal-400');
+
+            // Update Header Title
+            const titles = {
+                'dashboard': 'Program Sequence',
+                'workshop1': 'Phase 1: Context & Worst Case',
+                'workshop2': 'Phase 2: Risk Assessment',
+                'workshop3': 'Phase 3: Stakeholder Consensus',
+                'handover': 'Phase 4: Handover'
+            };
+            document.getElementById('page-title').innerText = titles[viewId];
+
+            // Trigger chart resize if needed
+            if (viewId === 'workshop1' && impactChart) impactChart.resize();
+            if (viewId === 'workshop2' && iraChart) iraChart.resize();
+            if (viewId === 'dashboard' && progressChart) progressChart.resize();
+        }
+
+        // Update Readiness Gauge
+        function updateReadiness(amount) {
+            state.readiness = Math.min(100, Math.max(0, state.readiness + amount));
+            document.getElementById('readiness-score').innerText = `${state.readiness}%`;
+            document.getElementById('readiness-bar').style.width = `${state.readiness}%`;
+        }
+
+        // Workshop 1: Impact Chart Logic
+        function initImpactChart() {
+            const ctx = document.getElementById('impactChart').getContext('2d');
+            impactChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Safety (SIL)', 'Operational', 'Financial'],
+                    datasets: [{
+                        label: 'Impact Score (0-4)',
+                        data: [0, 0, 0],
+                        backgroundColor: ['#f87171', '#fbbf24', '#94a3b8'],
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 4,
+                            ticks: { stepSize: 1 }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        function updateRiskChart() {
+            const s = parseInt(document.getElementById('impact-safety').value);
+            const o = parseInt(document.getElementById('impact-ops').value);
+            const f = parseInt(document.getElementById('impact-fin').value);
+
+            impactChart.data.datasets[0].data = [s, o, f];
+            impactChart.update();
+
+            const maxScore = Math.max(s, o, f);
+            const slTarget = maxScore > 0 ? `SL-${maxScore}` : 'SL-1';
+            document.getElementById('sl-target-display').innerText = slTarget;
+        }
+
+        // Workshop 2: Zone Logic
+        let activeZoneElement = null;
+
+        function selectZone(element, zoneName) {
+            // Reset previous
+            document.querySelectorAll('.zone-box').forEach(el => el.classList.remove('ring-2', 'ring-teal-500'));
+
+            // Set active
+            element.classList.add('ring-2', 'ring-teal-500');
+            activeZoneElement = element;
+            state.selectedZone = zoneName;
+        }
+
+        function applyZone(type, bgClass, borderClass, slLevel) {
+            if (!activeZoneElement) return;
+
+            activeZoneElement.className = `border-2 rounded p-4 text-center cursor-pointer transition-colors zone-box ${bgClass} ${borderClass}`;
+            activeZoneElement.querySelector('.zone-label').innerText = `${type} (${slLevel})`;
+            activeZoneElement.querySelector('.zone-label').classList.remove('text-stone-400');
+            activeZoneElement.querySelector('.zone-label').classList.add('text-stone-700', 'font-bold');
+
+            // Update IRA chart based on zone choice (Mock Logic)
+            updateIRAChart(type);
+        }
+
+        // Workshop 2: IRA Chart
+        function initIRAChart() {
+            const ctx = document.getElementById('iraChart').getContext('2d');
+            iraChart = new Chart(ctx, {
+                type: 'bubble',
+                data: {
+                    datasets: [{
+                        label: 'Risk Assets',
+                        data: [
+                            { x: 3, y: 4, r: 15, label: 'Signalling' }, // High Impact, High Like
+                            { x: 4, y: 2, r: 10, label: 'Passenger Wi-Fi' },
+                            { x: 1, y: 4, r: 8, label: 'Traction' }
+                        ],
+                        backgroundColor: 'rgba(239, 68, 68, 0.6)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { title: { display: true, text: 'Likelihood (1-5)' }, min: 0, max: 5 },
+                        y: { title: { display: true, text: 'Impact (1-5)' }, min: 0, max: 5 }
+                    },
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function (context) {
+                                    return context.raw.label || '';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateIRAChart(zoneType) {
+            // Mock dynamic update
+            const newData = iraChart.data.datasets[0].data.map(d => {
+                return { ...d, x: Math.max(1, d.x - 0.5) }; // Simulate mitigation
+            });
+            iraChart.data.datasets[0].data = newData;
+            iraChart.update();
+            updateReadiness(5);
+        }
+
+
+        // Workshop 3: Stakeholder Role Content
+        const roleData = {
+            'Owner': {
+                title: 'Asset Owner (AO) Responsibilities',
+                desc: 'Defines requirements, accepts residual risk, and initiates the program.',
+                questions: [
+                    'What is the maximum tolerable downtime for this system?',
+                    'Have you provided the latest RAMS / Hazard Log?',
+                    'Are there specific corporate compliance policies (ISO 27001) we must adhere to?',
+                    'Who is the designated authorizing officer for remote access requests?'
+                ]
+            },
+            'Integrator': {
+                title: 'System Integrator (SI) Responsibilities',
+                desc: 'Designs the architecture, implements countermeasures, and verifies system integration.',
+                questions: [
+                    'How are you ensuring separation between Safety (SIS) and Control (BPCS) networks?',
+                    'What allows for secure remote maintenance access (e.g., Jump Server)?',
+                    'Have you conducted a vulnerability scan on the integrated system?',
+                    'Is there a patch management procedure defined for handover?'
+                ]
+            },
+            'Supplier': {
+                title: 'Product Supplier (PS) Responsibilities',
+                desc: 'Provides secure components and communicates known vulnerabilities.',
+                questions: [
+                    'Does the product have an IEC 62443-4-1 / 4-2 certification?',
+                    'What are the default accounts and passwords? Have they been documented?',
+                    'How are security updates notified to the Asset Owner?',
+                    'Which unnecessary services/ports can be disabled without affecting function?'
+                ]
+            }
+        };
+
+        function setRole(role) {
+            // Style Buttons
+            document.querySelectorAll('.role-btn').forEach(btn => {
+                btn.classList.remove('ring-2', 'ring-teal-500', 'bg-teal-50', 'text-teal-700', 'border-teal-500');
+                btn.classList.add('bg-white', 'text-stone-600', 'border-stone-300');
+            });
+            const activeBtn = document.getElementById(`role-${role.toLowerCase()}`);
+            activeBtn.classList.remove('bg-white', 'text-stone-600', 'border-stone-300');
+            activeBtn.classList.add('bg-teal-50', 'text-teal-700', 'border-teal-500', 'ring-2', 'ring-teal-500');
+
+            // Update Content
+            const data = roleData[role];
+            document.getElementById('role-title').innerText = data.title;
+            document.getElementById('role-desc').innerText = data.desc;
+
+            const list = document.getElementById('questions-list');
+            list.innerHTML = ''; // Clear
+            data.questions.forEach(q => {
+                const item = document.createElement('div');
+                item.className = 'p-4 border border-stone-200 rounded-lg bg-stone-50 hover:bg-white hover:shadow-sm transition-all cursor-pointer';
+                item.innerHTML = `<p class="font-medium text-stone-700">❓ ${q}</p>`;
+                list.appendChild(item);
+            });
+        }
+
+        // Handover Checklist
+        function toggleCheck(el) {
+            const box = el.querySelector('.check-box');
+            if (box.classList.contains('bg-teal-500')) {
+                box.classList.remove('bg-teal-500');
+                updateReadiness(-5);
+            } else {
+                box.classList.add('bg-teal-500');
+                updateReadiness(5);
+            }
+        }
+
+        // Dashboard Progress Chart
+        function initProgressChart() {
+            const ctx = document.getElementById('progressChart').getContext('2d');
+            progressChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Completed', 'Pending'],
+                    datasets: [{
+                        data: [15, 85],
+                        backgroundColor: ['#14b8a6', '#e7e5e4'], // Teal-500, Stone-200
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '75%',
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+        }
+
+        // Initialize
+        window.onload = function () {
+            initProgressChart();
+            initImpactChart();
+            initIRAChart();
+
+            // Highlight nav
+            navTo('dashboard');
+        };
+
+    </script>
+</body>
+
+</html>

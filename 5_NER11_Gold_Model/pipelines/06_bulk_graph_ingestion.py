@@ -39,6 +39,7 @@ import os
 import sys
 import json
 import logging
+import time
 from pathlib import Path
 from typing import Dict, List, Set, Optional
 from datetime import datetime
@@ -87,7 +88,8 @@ class BulkGraphIngestionProcessor:
         neo4j_uri: str = "bolt://localhost:7687",
         neo4j_user: str = "neo4j",
         neo4j_password: str = "neo4j@openspg",
-        ner11_api_url: str = "http://localhost:8000"
+        ner11_api_url: str = "http://localhost:8000",
+        rate_limit_delay: float = 2.0
     ):
         """
         Initialize bulk ingestion processor.
@@ -100,7 +102,9 @@ class BulkGraphIngestionProcessor:
             neo4j_user: Neo4j username
             neo4j_password: Neo4j password
             ner11_api_url: NER11 API endpoint
+            rate_limit_delay: Seconds to wait between NER11 API calls (default 2.0s to prevent spaCy overload)
         """
+        self.rate_limit_delay = rate_limit_delay
         self.corpus_root = Path(corpus_root)
         self.log_file = Path(log_file)
         self.state_file = Path(state_file)
@@ -211,8 +215,8 @@ class BulkGraphIngestionProcessor:
         """
         documents = []
 
-        # Find all .txt and .json files
-        for ext in ["*.txt", "*.json"]:
+        # Find all .txt, .json, and .md files
+        for ext in ["*.txt", "*.json", "*.md"]:
             documents.extend(self.corpus_root.rglob(ext))
 
         # Filter out non-document files
@@ -427,6 +431,10 @@ class BulkGraphIngestionProcessor:
 
                     # Process document through pipeline
                     doc_stats = self.pipeline.process_document(content, doc_id)
+
+                    # Rate limiting to prevent spaCy container overload
+                    if self.rate_limit_delay > 0:
+                        time.sleep(self.rate_limit_delay)
 
                     # Log processing
                     self._log_document_processing(doc_path, doc_stats)

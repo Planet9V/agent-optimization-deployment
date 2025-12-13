@@ -104,3 +104,9 @@ backups/**/neo4j/neo4j-data/schema/index/
 backups/**/neo4j/neo4j-data/
 **/pre-commit-*/
 
+# Sensitive Files - Do Not Commit
+7_2025_DEC_11_Actual_System_Deployed/2_mckenney_lacan_to_integrate/mckenney_lacan_moveArchive/10_References_antigravity/api-keys.txt
+7_2025_DEC_11_Actual_System_Deployed/2_mckenney_lacan_to_integrate/mckenney_lacan_moveArchive/04_Background/Infrastructure/backend.md
+*.backup
+.swarm/memory.db*
+

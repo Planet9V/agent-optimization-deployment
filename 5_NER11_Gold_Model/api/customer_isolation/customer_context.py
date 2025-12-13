@@ -148,6 +148,7 @@ class CustomerContextManager:
         access_level: CustomerAccessLevel = CustomerAccessLevel.READ,
         user_id: Optional[str] = None,
         include_system: bool = True,
+        can_write: bool = False,
     ) -> CustomerContext:
         """
         Create and set a new customer context.
@@ -158,10 +159,14 @@ class CustomerContextManager:
             access_level: Access level for operations
             user_id: Optional user identifier
             include_system: Include SYSTEM entities in searches
+            can_write: If True, sets WRITE access level (overrides access_level)
 
         Returns:
             Created CustomerContext
         """
+        if can_write:
+            access_level = CustomerAccessLevel.WRITE
+
         if namespace is None:
             namespace = customer_id.lower().replace("-", "_")
 
@@ -177,9 +182,25 @@ class CustomerContextManager:
         return context
 
 
-def get_customer_context() -> Optional[CustomerContext]:
-    """Convenience function to get current customer context."""
+def get_customer_context(customer_id: Optional[str] = None) -> Optional[CustomerContext]:
+    """
+    Convenience function to get or create customer context.
+
+    Args:
+        customer_id: If provided, creates a new context with this ID.
+                    If None, returns existing context.
+
+    Returns:
+        CustomerContext if set or created, None otherwise.
+    """
+    if customer_id:
+        return CustomerContextManager.create_context(customer_id=customer_id)
     return CustomerContextManager.get_context()
+
+
+def set_customer_context(context: CustomerContext) -> None:
+    """Convenience function to set customer context."""
+    CustomerContextManager.set_context(context)
 
 
 def require_customer_context(func: Callable) -> Callable:

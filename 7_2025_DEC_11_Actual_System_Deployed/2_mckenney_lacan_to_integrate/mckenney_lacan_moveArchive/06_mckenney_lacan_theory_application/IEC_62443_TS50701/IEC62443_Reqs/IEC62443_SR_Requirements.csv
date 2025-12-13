@@ -1,0 +1,99 @@
+Foundational Requirement (FR),Requirement ID,Requirement Name,Description,SL-T 1,SL-T 2,SL-T 3,SL-T 4
+FR1 - Identification and Authentication Control (IAC),SR 1.1,Human user identification and authentication,The control system shall provide the capability to identify and authenticate all human users,Required,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.1 RE(1),Unique identification and authentication,Unique identification and authentication of all human users,,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.1 RE(2),Multifactor authentication for untrusted networks,Multifactor authentication for human user access from untrusted networks,,,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.1 RE(3),Multifactor authentication for all interfaces,Multifactor authentication for all human user interfaces,,,,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.2,Software process and device identification and authentication,The control system shall provide the capability to identify and authenticate all software processes and devices,Required,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.2 RE(1),Unique identification and authentication,Unique identification and authentication of software processes and devices,,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.2 RE(2),Multifactor authentication for untrusted networks,Multifactor authentication for software processes and devices from untrusted networks,,,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.2 RE(3),Multifactor authentication for all network connections,Multifactor authentication for all software process and device network connections,,,,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.3,Account management,The control system shall provide the capability to support the management of all accounts,Required,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.4,Identifier management,The control system shall provide the capability to support the management of identifiers by various privileged users,Required,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.5,Authenticator management,The control system shall provide the capability to support the management of authenticators,Required,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.5 RE(1),Hardware security for authenticators,Protection of authenticators using hardware security mechanisms,,,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.6,Wireless access management,The control system shall provide the capability to authorize and restrict wireless access,,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.7,Strength of password-based authentication,The control system shall provide the capability to enforce configurable password strength,,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.7 RE(1),Password generation and lifetime restrictions,Password generation and lifetime restrictions for human users,,,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.7 RE(2),Password lifetime restrictions for all accounts,Password lifetime restrictions for all system accounts,,,,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.8,Public key infrastructure (PKI) certificates,The control system shall provide the capability to use and validate PKI certificates,,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.8 RE(1),Certificate validation and revocation checking,Validate certificates and perform revocation checking,,,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.9,Strength of public key authentication,The control system shall provide the capability to validate public key-based authentication mechanisms,,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.9 RE(1),Hardware security for public key authentication,Hardware-based protection for public key authentication,,,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.10,Authenticator feedback,The control system shall provide the capability to obscure feedback of authentication information,Required,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.11,Unsuccessful login attempts,The control system shall provide the capability to enforce a limit on unsuccessful authentication attempts,,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.12,System use notification,The control system shall provide the capability to display a system use notification message,Required,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),SR 1.13,Access via untrusted networks,The control system shall provide the capability to protect confidentiality of credentials over untrusted networks,,Required,Required,Required
+FR2 - Use Control (UC),SR 2.1,Authorization enforcement,The control system shall provide the capability to enforce assigned privileges of authenticated users,Required,Required,Required,Required
+FR2 - Use Control (UC),SR 2.1 RE(1),Authorization enforcement for all users,"Enforce authorization for all users (human, software process, device) to all protected functions",,Required,Required,Required
+FR2 - Use Control (UC),SR 2.1 RE(2),Permission mapping to roles,Map permissions to roles,,,Required,Required
+FR2 - Use Control (UC),SR 2.2,Wireless use control,"The control system shall provide the capability to authorize, monitor and restrict use of wireless connections",,Required,Required,Required
+FR2 - Use Control (UC),SR 2.3,Use control for portable and mobile devices,"The control system shall provide the capability to authorize, monitor and control use of portable and mobile devices",,Required,Required,Required
+FR2 - Use Control (UC),SR 2.4,Mobile code,The control system shall provide the capability to prevent the execution of unauthorized mobile code,,Required,Required,Required
+FR2 - Use Control (UC),SR 2.4 RE(1),Mobile code integrity check,Perform integrity check on mobile code,,,Required,Required
+FR2 - Use Control (UC),SR 2.5,Session lock,The control system shall provide the capability to prevent further access after a period of inactivity,,Required,Required,Required
+FR2 - Use Control (UC),SR 2.6,Remote session termination,The control system shall provide the capability to terminate a remote session,,,Required,Required
+FR2 - Use Control (UC),SR 2.7,Concurrent session control,The control system shall provide the capability to limit the number of concurrent sessions,,,Required,Required
+FR2 - Use Control (UC),SR 2.8,Auditable events,The control system shall provide the capability to generate audit records,Required,Required,Required,Required
+FR2 - Use Control (UC),SR 2.8 RE(1),Centrally managed system-wide audit trail,Provide capability for centrally managed audit trail,,Required,Required,Required
+FR2 - Use Control (UC),SR 2.9,Audit storage capacity,The control system shall provide the capability to allocate audit record storage capacity,Required,Required,Required,Required
+FR2 - Use Control (UC),SR 2.10,Response to audit processing failures,The control system shall provide the capability to support a defined response to audit processing failures,,,Required,Required
+FR2 - Use Control (UC),SR 2.11,Timestamps,The control system shall provide the capability to generate timestamps for use in audit records,,Required,Required,Required
+FR2 - Use Control (UC),SR 2.11 RE(1),Time synchronization,Synchronize time with authoritative time source,,,Required,Required
+FR2 - Use Control (UC),SR 2.11 RE(2),Protection of time source integrity,Protect integrity of time source,,,,Required
+FR2 - Use Control (UC),SR 2.12,Non-repudiation,The control system shall provide the capability to determine whether a given individual took a particular action,,,Required,Required
+FR2 - Use Control (UC),SR 2.12 RE(1),Non-repudiation for all users,"Non-repudiation for all users (human, software process, device)",,,,Required
+FR2 - Use Control (UC),SR 2.13,Use of physical diagnostic and test interfaces,The control system shall provide the capability to authorize and control use of physical diagnostic and test interfaces,Required,Required,Required,Required
+FR3 - System Integrity (SI),SR 3.1,Communication integrity,The control system shall provide the capability to protect the integrity of transmitted information,Required,Required,Required,Required
+FR3 - System Integrity (SI),SR 3.1 RE(1),Cryptographic protection of integrity,Use cryptographic mechanisms to protect message integrity,,,Required,Required
+FR3 - System Integrity (SI),SR 3.2,Malicious code protection,"The control system shall provide the capability to detect, report and protect against malicious code",Required,Required,Required,Required
+FR3 - System Integrity (SI),SR 3.2 RE(1),Malicious code protection at entry/exit points,Detect and report malicious code at all entry and exit points,,Required,Required,Required
+FR3 - System Integrity (SI),SR 3.2 RE(2),Central management for malicious code protection,Centrally manage malicious code protection mechanisms,,,Required,Required
+FR3 - System Integrity (SI),SR 3.3,Security functionality verification,The control system shall provide the capability to perform security functionality verification,Required,Required,Required,Required
+FR3 - System Integrity (SI),SR 3.3 RE(1),Automated security functionality verification,Automated notification of failed security verification tests,,Required,Required,Required
+FR3 - System Integrity (SI),SR 3.3 RE(2),Security functionality verification during normal operation,Perform security functionality verification during normal operation,,,Required,Required
+FR3 - System Integrity (SI),SR 3.4,Software and information integrity,The control system shall provide the capability to detect and protect against unauthorized changes to software and information,Required,Required,Required,Required
+FR3 - System Integrity (SI),SR 3.4 RE(1),Automated notification of integrity violations,Automated notification of integrity violations,,Required,Required,Required
+FR3 - System Integrity (SI),SR 3.4 RE(2),Automated response to integrity violations,Automated response to integrity violations,,,Required,Required
+FR3 - System Integrity (SI),SR 3.5,Input validation,The control system shall provide the capability to validate inputs,Required,Required,Required,Required
+FR3 - System Integrity (SI),SR 3.6,Deterministic output,The control system shall provide the capability to fail to a predetermined state in the event of an operational failure,Required,Required,Required,Required
+FR3 - System Integrity (SI),SR 3.7,Error handling,The control system shall provide the capability to handle errors in a manner such that the system remains in a secure state,Required,Required,Required,Required
+FR3 - System Integrity (SI),SR 3.8,Session integrity,The control system shall provide the capability to protect the integrity of communications sessions,Required,Required,Required,Required
+FR3 - System Integrity (SI),SR 3.8 RE(1),Invalidate session IDs at logout,Invalidate session identifiers upon session termination,,Required,Required,Required
+FR3 - System Integrity (SI),SR 3.8 RE(2),Randomize session IDs,Generate unique session identifiers with definable entropy,,,Required,Required
+FR3 - System Integrity (SI),SR 3.9,Protection of audit information,The control system shall provide the capability to protect audit information and audit tools from unauthorized access,Required,Required,Required,Required
+FR3 - System Integrity (SI),SR 3.9 RE(1),Hardware-based protection for audit information,Hardware write-once capability or write-protected media for audit records,,,Required,Required
+FR3 - System Integrity (SI),SR 3.10,Support for updates,The control system shall provide the capability to support system updates,,Required,Required,Required
+FR3 - System Integrity (SI),SR 3.10 RE(1),Update authenticity and integrity,Verify authenticity and integrity of updates,,,Required,Required
+FR3 - System Integrity (SI),SR 3.11,Physical tamper resistance and detection,The control system shall provide the capability to detect and protect against physical tampering,,,Required,Required
+FR3 - System Integrity (SI),SR 3.12,Provisioning product supplier roots of trust,The control system shall provide the capability to provision product supplier roots of trust,,,Required,Required
+FR3 - System Integrity (SI),SR 3.13,Provisioning asset owner roots of trust,The control system shall provide the capability to provision asset owner roots of trust,,,Required,Required
+FR3 - System Integrity (SI),SR 3.14,Integrity of the boot process,The control system shall provide the capability to verify the integrity of the boot process,,,Required,Required
+FR4 - Data Confidentiality (DC),SR 4.1,Information confidentiality,The control system shall provide the capability to protect the confidentiality of information at rest and in transit,,Required,Required,Required
+FR4 - Data Confidentiality (DC),SR 4.1 RE(1),Protection of confidentiality on untrusted networks,Protect confidentiality of information transmitted across untrusted networks,,Required,Required,Required
+FR4 - Data Confidentiality (DC),SR 4.2,Information persistence,The control system shall provide the capability to prevent the persistence of information when no longer required,,,Required,Required
+FR4 - Data Confidentiality (DC),SR 4.3,Use of cryptography,The control system shall provide the capability to use cryptographic mechanisms,Required,Required,Required,Required
+FR4 - Data Confidentiality (DC),SR 4.3 RE(1),Cryptographic standards,Use cryptographic mechanisms that comply with applicable standards and regulations,,,Required,Required
+FR5 - Restricted Data Flow (RDF),SR 5.1,Network segmentation,The control system shall provide the capability to logically segment control system network from other networks,Required,Required,Required,Required
+FR5 - Restricted Data Flow (RDF),SR 5.1 RE(1),Physically separate networks,Physically separate control system network from non-control networks,,Required,Required,Required
+FR5 - Restricted Data Flow (RDF),SR 5.2,Zone boundary protection,The control system shall provide the capability to monitor and control communications at zone boundaries,Required,Required,Required,Required
+FR5 - Restricted Data Flow (RDF),SR 5.2 RE(1),"Deny all, permit by exception",Deny network traffic by default and allow by exception,,Required,Required,Required
+FR5 - Restricted Data Flow (RDF),SR 5.2 RE(2),Island mode operation,Operate in island mode when required,,,Required,Required
+FR5 - Restricted Data Flow (RDF),SR 5.3,General purpose person-to-person communication restrictions,The control system shall provide the capability to prohibit or restrict general purpose person-to-person communication,,Required,Required,Required
+FR5 - Restricted Data Flow (RDF),SR 5.3 RE(1),Prohibit all general purpose person-to-person communications,Prohibit all general purpose person-to-person communications,,,Required,Required
+FR5 - Restricted Data Flow (RDF),SR 5.4,Application partitioning,The control system shall provide the capability to separate user functionality from system management functionality,Required,Required,Required,Required
+FR6 - Timely Response to Events (TRE),SR 6.1,Audit log accessibility,The control system shall provide the capability for authorized humans and/or tools to access audit logs,Required,Required,Required,Required
+FR6 - Timely Response to Events (TRE),SR 6.1 RE(1),Programmatic access to audit logs,Provide programmatic read access to audit logs,,,Required,Required
+FR6 - Timely Response to Events (TRE),SR 6.2,Continuous monitoring,The control system shall provide the capability to support continuous monitoring,,Required,Required,Required
+FR7 - Resource Availability (RA),SR 7.1,Denial of service protection,The control system shall provide the capability to protect against or limit the effects of denial of service attacks,Required,Required,Required,Required
+FR7 - Resource Availability (RA),SR 7.1 RE(1),Manage communication load,Manage communication loads to limit effects of denial of service attacks,,,Required,Required
+FR7 - Resource Availability (RA),SR 7.1 RE(2),Limit use of resources,Limit the use of resources by security functions,,,,Required
+FR7 - Resource Availability (RA),SR 7.2,Resource management,"The control system shall provide the capability to allocate resources by priority, quota, reservation and/or partitioning",Required,Required,Required,Required
+FR7 - Resource Availability (RA),SR 7.3,Control system backup,The control system shall provide the capability to perform backups,Required,Required,Required,Required
+FR7 - Resource Availability (RA),SR 7.3 RE(1),Backup integrity verification,Verify integrity of backup information,,Required,Required,Required
+FR7 - Resource Availability (RA),SR 7.3 RE(2),Backup automation,Automate backup process,,,Required,Required
+FR7 - Resource Availability (RA),SR 7.4,Control system recovery and reconstitution,The control system shall provide the capability to recover and reconstitute to a known secure state,Required,Required,Required,Required
+FR7 - Resource Availability (RA),SR 7.5,Emergency power,The control system shall provide the capability to transition to and from emergency power,Required,Required,Required,Required
+FR7 - Resource Availability (RA),SR 7.6,Network and security configuration settings,The control system shall provide the capability to display and manage network and security configuration settings,Required,Required,Required,Required
+FR7 - Resource Availability (RA),SR 7.6 RE(1),Machine-readable reporting of current security settings,Provide machine-readable reporting of current security settings,,,Required,Required
+FR7 - Resource Availability (RA),SR 7.7,Least functionality,"The control system shall provide the capability to restrict the use of unnecessary functions, ports, protocols and/or services",Required,Required,Required,Required
+FR7 - Resource Availability (RA),SR 7.8,Control system component inventory,The control system shall provide the capability to maintain an inventory of system components,Required,Required,Required,Required

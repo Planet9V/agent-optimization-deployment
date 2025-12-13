@@ -1,0 +1,23 @@
+# FastAPI and web framework
+fastapi==0.115.5
+uvicorn[standard]==0.34.0
+pydantic==2.11.5
+pydantic-settings==2.8.0
+
+# Database drivers
+neo4j==6.0.2
+qdrant-client==1.15.1
+
+# HTTP client
+httpx==0.28.1
+
+# Testing
+pytest==8.3.4
+pytest-asyncio==0.25.2
+pytest-cov==6.0.0
+httpx==0.28.1
+
+# Code quality
+black==24.10.0
+flake8==7.1.1
+mypy==1.14.1

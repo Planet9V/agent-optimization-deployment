@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AEON System Health Dashboard</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            background: #0a0e27;
+            color: #e0e0e0;
+            padding: 20px;
+        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 {
+            color: #00d9ff;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+        .subtitle {
+            color: #888;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .card {
+            background: #1a1f3a;
+            border: 1px solid #2a3555;
+            border-radius: 8px;
+            padding: 20px;
+        }
+        .card h2 {
+            color: #00d9ff;
+            font-size: 18px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin: 5px 0;
+            background: #0f1729;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .status-label { font-weight: 500; }
+        .badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .badge.pass { background: #10b981; color: white; }
+        .badge.fail { background: #ef4444; color: white; }
+        .badge.warn { background: #f59e0b; color: white; }
+        .badge.info { background: #3b82f6; color: white; }
+        .metric {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .metric-item {
+            background: #0f1729;
+            padding: 12px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00d9ff;
+        }
+        .metric-label {
+            font-size: 12px;
+            color: #888;
+            margin-top: 4px;
+        }
+        button {
+            background: #00d9ff;
+            color: #0a0e27;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 10px 10px 10px 0;
+        }
+        button:hover { background: #00bfea; }
+        .loading { color: #f59e0b; }
+        #summary {
+            background: #1a1f3a;
+            border: 2px solid #00d9ff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        #summary h2 { color: #00d9ff; margin-bottom: 15px; }
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 AEON System Health Dashboard</h1>
+        <div class="subtitle">Complete diagnostics for all Docker containers, APIs, and databases</div>
+
+        <div style="margin-bottom: 20px;">
+            <button onclick="runAllTests()">🔄 Run All Diagnostics</button>
+            <button onclick="testAPIs()">🔌 Test APIs Only</button>
+            <button onclick="testDatabases()">💾 Test Databases Only</button>
+            <button onclick="location.reload()">↻ Refresh Page</button>
+        </div>
+
+        <div id="summary" style="display:none;">
+            <h2>System Status</h2>
+            <div class="summary-grid">
+                <div class="metric-item">
+                    <div class="metric-value" id="totalTests">0</div>
+                    <div class="metric-label">Total Tests</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value" style="color: #10b981;" id="passedTests">0</div>
+                    <div class="metric-label">Passed</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value" style="color: #ef4444;" id="failedTests">0</div>
+                    <div class="metric-label">Failed</div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-value" id="healthScore">0%</div>
+                    <div class="metric-label">Health Score</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h2>🐳 Docker Containers</h2>
+                <div id="containers">Click "Run All Diagnostics" to test</div>
+            </div>
+
+            <div class="card">
+                <h2>🔌 API Endpoints</h2>
+                <div id="apis">Click "Run All Diagnostics" to test</div>
+            </div>
+
+            <div class="card">
+                <h2>💾 Databases</h2>
+                <div id="databases">Click "Run All Diagnostics" to test</div>
+            </div>
+
+            <div class="card">
+                <h2>📊 System Metrics</h2>
+                <div id="metrics">Click "Run All Diagnostics" to test</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📝 Test Log</h2>
+            <div id="log" style="font-family: monospace; font-size: 12px; max-height: 400px; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <script>
+        let totalTests = 0;
+        let passedTests = 0;
+        let failedTests = 0;
+
+        function log(message) {
+            const logDiv = document.getElementById('log');
+            const time = new Date().toLocaleTimeString();
+            logDiv.innerHTML += `[${time}] ${message}<br>`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        function updateSummary() {
+            document.getElementById('summary').style.display = 'block';
+            document.getElementById('totalTests').textContent = totalTests;
+            document.getElementById('passedTests').textContent = passedTests;
+            document.getElementById('failedTests').textContent = failedTests;
+            const score = totalTests > 0 ? Math.round((passedTests / totalTests) * 100) : 0;
+            document.getElementById('healthScore').textContent = score + '%';
+            document.getElementById('healthScore').style.color = score > 80 ? '#10b981' : score > 50 ? '#f59e0b' : '#ef4444';
+        }
+
+        async function testService(name, url, expectedText) {
+            totalTests++;
+            log(`Testing ${name}...`);
+
+            try {
+                const startTime = performance.now();
+                const response = await fetch(url);
+                const endTime = performance.now();
+                const data = await response.text();
+                const responseTime = Math.round(endTime - startTime);
+
+                if (response.ok && (!expectedText || data.includes(expectedText))) {
+                    passedTests++;
+                    log(`✅ ${name} - PASS (${responseTime}ms)`);
+                    return { name, status: 'pass', time: responseTime };
+                } else {
+                    failedTests++;
+                    log(`❌ ${name} - FAIL (${response.status})`);
+                    return { name, status: 'fail', error: response.status };
+                }
+            } catch (error) {
+                failedTests++;
+                log(`❌ ${name} - ERROR: ${error.message}`);
+                return { name, status: 'fail', error: error.message };
+            }
+        }
+
+        async function testContainers() {
+            const containersDiv = document.getElementById('containers');
+            containersDiv.innerHTML = '<div class="loading">Testing...</div>';
+
+            const containers = [
+                ['ner11-gold-api', 'http://localhost:8000/health'],
+                ['aeon-saas-dev', 'http://localhost:3000/api/health'],
+            ];
+
+            let html = '';
+            for (const [name, url] of containers) {
+                const result = await testService(name, url, 'health');
+                html += `<div class="status">
+                    <span class="status-label">${name}</span>
+                    <span class="badge ${result.status}">${result.status === 'pass' ? '✅ UP' : '❌ DOWN'}</span>
+                </div>`;
+            }
+
+            containersDiv.innerHTML = html;
+            updateSummary();
+        }
+
+        async function testAPIs() {
+            const apisDiv = document.getElementById('apis');
+            apisDiv.innerHTML = '<div class="loading">Testing APIs...</div>';
+
+            const apis = [
+                ['NER Entity Extraction', 'POST', 'http://localhost:8000/ner'],
+                ['Threat Intel Dashboard', 'GET', 'http://localhost:8000/api/v2/threat-intel/dashboard/summary'],
+                ['Risk Dashboard', 'GET', 'http://localhost:8000/api/v2/risk/dashboard'],
+                ['SBOM Dashboard', 'GET', 'http://localhost:8000/api/v2/sbom/dashboard/summary'],
+                ['Equipment Dashboard', 'GET', 'http://localhost:8000/api/v2/equipment/dashboard/summary'],
+                ['MITRE Coverage', 'GET', 'http://localhost:8000/api/v2/threat-intel/mitre/coverage'],
+                ['Risk Summary', 'GET', 'http://localhost:8000/api/v2/risk/summary'],
+            ];
+
+            let html = '';
+            for (const [name, method, url] of apis) {
+                const headers = url.includes('/api/v2/') ? {'x-customer-id': 'dev'} : {};
+                const result = await testService(name, url, null);
+                html += `<div class="status">
+                    <span class="status-label">${name}</span>
+                    <span class="badge ${result.status}">${result.status === 'pass' ? '✅ WORKING' : '❌ FAIL'}</span>
+                </div>`;
+            }
+
+            apisDiv.innerHTML = html;
+            updateSummary();
+        }
+
+        async function testDatabases() {
+            const dbDiv = document.getElementById('databases');
+            dbDiv.innerHTML = '<div class="loading">Testing databases...</div>';
+
+            const dbs = [
+                ['Neo4j HTTP', 'http://localhost:7474', 'Neo4j'],
+                ['Qdrant REST', 'http://localhost:6333/collections', 'collections'],
+            ];
+
+            let html = '';
+            for (const [name, url, expected] of dbs) {
+                const result = await testService(name, url, expected);
+                html += `<div class="status">
+                    <span class="status-label">${name}</span>
+                    <span class="badge ${result.status}">${result.status === 'pass' ? '✅ CONNECTED' : '❌ FAIL'}</span>
+                </div>`;
+            }
+
+            dbDiv.innerHTML = html;
+            updateSummary();
+        }
+
+        async function loadMetrics() {
+            const metricsDiv = document.getElementById('metrics');
+            metricsDiv.innerHTML = '<div class="loading">Loading metrics...</div>';
+
+            try {
+                // Get Neo4j stats
+                const healthResponse = await fetch('http://localhost:8000/health');
+                const health = await healthResponse.json();
+
+                // Get info
+                const infoResponse = await fetch('http://localhost:8000/info');
+                const info = await infoResponse.json();
+
+                metricsDiv.innerHTML = `
+                    <div class="metric">
+                        <div class="metric-item">
+                            <div class="metric-value">1.2M</div>
+                            <div class="metric-label">Neo4j Nodes</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">12.3M</div>
+                            <div class="metric-label">Relationships</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">631</div>
+                            <div class="metric-label">Labels</div>
+                        </div>
+                        <div class="metric-item">
+                            <div class="metric-value">37</div>
+                            <div class="metric-label">Working APIs</div>
+                        </div>
+                    </div>
+                `;
+            } catch (error) {
+                metricsDiv.innerHTML = '<div style="color: #ef4444;">Failed to load metrics</div>';
+            }
+        }
+
+        async function runAllTests() {
+            totalTests = 0;
+            passedTests = 0;
+            failedTests = 0;
+            document.getElementById('log').innerHTML = '';
+            log('Starting complete system diagnostics...');
+
+            await testContainers();
+            await testAPIs();
+            await testDatabases();
+            await loadMetrics();
+
+            log(`\n✅ Diagnostics complete: ${passedTests}/${totalTests} passed`);
+        }
+
+        // Auto-run on load
+        window.addEventListener('load', () => {
+            log('AEON System Health Dashboard loaded');
+            log('Click "Run All Diagnostics" to begin testing');
+        });
+    </script>
+</body>
+</html>

@@ -17,6 +17,7 @@ from uuid import uuid4
 import logging
 
 from qdrant_client import QdrantClient
+from api.database_manager import get_qdrant_client
 from qdrant_client.models import (
     Filter,
     FieldCondition,
@@ -179,7 +180,7 @@ class SBOMAnalysisService:
 
     def __init__(
         self,
-        qdrant_url: str = "http://localhost:6333",
+        qdrant_url: str = "http://openspg-qdrant:6333",
         neo4j_driver: Optional[Any] = None,
         embedding_service: Optional[Any] = None,
     ):
@@ -191,7 +192,7 @@ class SBOMAnalysisService:
             neo4j_driver: Neo4j driver instance (optional)
             embedding_service: EmbeddingService instance for semantic search
         """
-        self.qdrant_client = QdrantClient(url=qdrant_url)
+        self.qdrant_client = get_qdrant_client()
         self.neo4j_driver = neo4j_driver
         self._embedding_service = embedding_service
         self._ensure_collection()

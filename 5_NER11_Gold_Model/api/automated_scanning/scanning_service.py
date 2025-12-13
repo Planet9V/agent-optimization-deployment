@@ -8,6 +8,7 @@ from typing import List, Optional, Dict, Any
 from datetime import datetime, timedelta
 from fastapi import HTTPException
 from qdrant_client import QdrantClient
+from api.database_manager import get_qdrant_client
 from qdrant_client.models import PointStruct, Filter, FieldCondition, MatchValue, Range
 
 from .scanning_router import (
@@ -25,9 +26,9 @@ class ScanningService:
 
     COLLECTION_NAME = "ner11_scanning"
 
-    def __init__(self, qdrant_url: str = "http://localhost:6333"):
+    def __init__(self, qdrant_url: str = "http://openspg-qdrant:6333"):
         """Initialize service with Qdrant client"""
-        self.client = QdrantClient(url=qdrant_url)
+        self.client = get_qdrant_client()
 
     def _generate_id(self) -> str:
         """Generate unique ID"""

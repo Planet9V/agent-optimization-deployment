@@ -1,0 +1,51 @@
+label_combo, node_count
+["CVE"], 316552
+["Measurement", "ManufacturingMeasurement"], 72800
+["Entity"], 55569
+["Control"], 48800
+["Dependency", "SBOM", "Relationship"], 30000
+["Measurement", "DefenseMeasurement", "SECTOR_DEFENSE_INDUSTRIAL_BASE", "SAREF_Measurement"], 25200
+["SoftwareComponent", "Asset", "SBOM", "Software_Component"], 20000
+["Measurement", "Monitoring", "WATER", "Water_Treatment"], 19000
+["Healthcare", "HealthcareMeasurement"], 18200
+["Measurement", "CriticalInfrastructure", "Transportation"], 18200
+["Measurement", "Monitoring", "RadiationMeasurement"], 18000
+["Measurement", "Monitoring", "ITMeasurement", "INFORMATION_TECHNOLOGY"], 18000
+["Measurement", "Monitoring", "ENERGY", "Energy_Transmission"], 18000
+["Measurement", "Monitoring", "COMMUNICATIONS", "NetworkMeasurement", "Telecom_Infrastructure"], 15527
+["HistoricalPattern"], 14985
+["Equipment", "DamsEquipment"], 14074
+["Equipment", "ManufacturingEquipment"], 11200
+["Package", "SoftwareComponent", "Asset", "SBOM", "Software_Component"], 10000
+["SoftwareComponent", "Library", "Asset", "SBOM", "Software_Component"], 10000
+["Device", "EnergyDevice", "Energy", "Monitoring", "ENERGY", "Energy_Distribution"], 10000
+["FutureThreat"], 8900
+["Measurement", "Monitoring", "COMMUNICATIONS", "NetworkMeasurement", "Data_Centers"], 8627
+["Provenance", "Compliance", "SBOM"], 8000
+["Dependency", "DependencyTree", "SBOM", "Relationship"], 8000
+["Build", "Asset", "SBOM", "Build_Info"], 8000
+["SoftwareLicense", "Compliance", "SBOM", "License"], 8000
+["Property", "SECTOR_DEFENSE_INDUSTRIAL_BASE", "DefenseProperty"], 7000
+["Process", "GovernmentProcess", "GOVERNMENT_FACILITIES"], 7000
+["Property", "EnergyProperty", "Energy", "Monitoring", "ENERGY", "Energy_Transmission"], 6000
+["Vulnerability"], 5840
+["Measurement", "Monitoring", "TimeSeries", "FINANCIAL_SERVICES", "Banking", "TransactionMetric"], 5713
+["Measurement", "Monitoring", "TimeSeries", "FINANCIAL_SERVICES", "PaymentSystems", "TransactionMetric"], 5667
+["Process", "DamsProcess"], 5630
+["Measurement", "Monitoring", "TimeSeries", "FINANCIAL_SERVICES", "CapitalMarkets", "TransactionMetric"], 5620
+["Process", "CommercialProcess", "COMMERCIAL_FACILITIES"], 5600
+["Measurement", "Monitoring", "GovernmentMeasurement", "GOVERNMENT_FACILITIES"], 5600
+["ChemicalEquipment", "CHEMICAL", "Reactors"], 5600
+["Healthcare", "HealthcareProperty"], 5000
+["LicenseCompliance", "Compliance", "SBOM", "License"], 5000
+["SoftwareComponent", "Firmware", "Asset", "SBOM", "Software_Component"], 5000
+["BuildSystem", "Asset", "SBOM", "Build_Info"], 5000
+["InformationEvent", "Level5"], 5000
+["Property", "GovernmentProperty", "GOVERNMENT_FACILITIES"], 5000
+["Property", "Monitoring", "Nuclear", "NuclearProperty"], 5000
+["Indicator", "ICS", "ICS_THREAT_INTEL", "Detection"], 5000
+["Artifact", "Asset", "SBOM", "Software_Component"], 5000
+["Provenance", "Attestation", "Compliance", "SBOM"], 5000
+["SoftwareComponent", "ContainerImage", "Asset", "SBOM", "Software_Component"], 5000
+["Property", "ManufacturingProperty"], 5000
+["Property", "Monitoring", "INFORMATION_TECHNOLOGY", "ITProperty", "IT"], 4500

@@ -845,9 +845,10 @@ class ComprehensiveTaxonomyLoader:
         print(f"{'='*60}")
 
         with self.driver.session() as session:
-            # Count nodes by label
+            # Count nodes by label (filter out labels with dots to avoid syntax errors)
             result = session.run("""
                 CALL db.labels() YIELD label
+                WHERE NOT label CONTAINS "."
                 CALL apoc.cypher.run('MATCH (n:' + label + ') RETURN count(n) as count', {})
                     YIELD value
                 RETURN label, value.count as count
@@ -858,9 +859,10 @@ class ComprehensiveTaxonomyLoader:
             for record in result:
                 print(f"   {record['label']}: {record['count']:,}")
 
-            # Count relationships
+            # Count relationships (filter out relationship types with dots)
             result = session.run("""
                 CALL db.relationshipTypes() YIELD relationshipType
+                WHERE NOT relationshipType CONTAINS "."
                 CALL apoc.cypher.run('MATCH ()-[r:' + relationshipType + ']->() RETURN count(r) as count', {})
                     YIELD value
                 RETURN relationshipType, value.count as count

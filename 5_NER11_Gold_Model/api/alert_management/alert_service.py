@@ -17,6 +17,7 @@ from uuid import uuid4
 import logging
 
 from qdrant_client import QdrantClient
+from api.database_manager import get_qdrant_client
 from qdrant_client.models import (
     Filter,
     FieldCondition,
@@ -80,7 +81,7 @@ class AlertService:
 
     def __init__(
         self,
-        qdrant_url: str = "http://localhost:6333",
+        qdrant_url: str = "http://openspg-qdrant:6333",
         embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2",
     ):
         """
@@ -90,7 +91,7 @@ class AlertService:
             qdrant_url: Qdrant server URL
             embedding_model: Sentence transformer model name
         """
-        self.qdrant_client = QdrantClient(url=qdrant_url)
+        self.qdrant_client = get_qdrant_client()
         self._embedding_model = SentenceTransformer(embedding_model)
         self._ensure_collection()
 

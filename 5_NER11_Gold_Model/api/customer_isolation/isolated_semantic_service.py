@@ -97,7 +97,7 @@ class CustomerIsolatedSemanticService:
 
     def __init__(
         self,
-        qdrant_url: str = "http://localhost:6333",
+        qdrant_url: str = "http://openspg-qdrant:6333",
         collection_name: str = "ner11_gold_entities",
         embedding_model: Optional[Any] = None,
         api_key: Optional[str] = None,
@@ -376,7 +376,7 @@ class CustomerIsolatedSemanticService:
 # ============================================================================
 
 def create_isolated_semantic_service(
-    qdrant_url: str = "http://localhost:6333",
+    qdrant_url: str = "http://openspg-qdrant:6333",
     collection_name: str = "ner11_gold_entities",
     api_key: Optional[str] = None,
 ) -> CustomerIsolatedSemanticService:

@@ -79,12 +79,62 @@ except ImportError:
         print(f"⚠️  Warning: Embedding service not available: {import_error}")
         print("   Semantic search endpoint will be disabled.")
 
+
+# Sprint 1 API Routers - SBOM and Equipment Management (v2)
+# Disabled - using Phase B implementations instead
+SPRINT1_ROUTERS_AVAILABLE = False
+
+# =============================================================================
+# PHASE B API ROUTERS (B2-B5) - Sprint 2-5 Capabilities
+# =============================================================================
+# Phase B2 routers enabled (SBOM + Vendor Equipment)
+# Phase B3-B5 disabled due to circular import issues
+PHASE_B2_ROUTERS_AVAILABLE = True
+
+# Phase B3 routers enabled (Threat Intel + Risk + Remediation) - DAY 2
+PHASE_B3_ROUTERS_AVAILABLE = True
+logger.info("✅ Phase B3 API routers ENABLED (Threat Intel + Risk + Remediation)")
+logger.info("✅ Phase B2 API routers ENABLED (SBOM + Vendor Equipment)")
+
+
+
 # Initialize FastAPI app
 app = FastAPI(
     title="NER11 Gold Standard API",
     description="High-performance Named Entity Recognition API with Hierarchical Semantic Search and Neo4j Graph Expansion.",
     version="3.3.0"
 )
+
+# =============================================================================
+# CUSTOMER CONTEXT MIDDLEWARE - Multi-Tenancy Support
+# =============================================================================
+from fastapi import Request
+
+# Import customer context utilities
+try:
+    from api.customer_isolation.customer_context import get_customer_context, set_customer_context
+    CUSTOMER_CONTEXT_AVAILABLE = True
+    logger.info("✅ Customer context middleware enabled")
+except ImportError as e:
+    CUSTOMER_CONTEXT_AVAILABLE = False
+    logger.warning(f"⚠️ Customer context not available: {e}")
+
+if CUSTOMER_CONTEXT_AVAILABLE:
+    @app.middleware("http")
+    async def customer_context_middleware(request: Request, call_next):
+        """Extract customer ID from headers and set context for multi-tenancy"""
+        customer_id = request.headers.get("x-customer-id") or request.headers.get("X-Customer-ID")
+
+        if customer_id:
+            # Set customer context for this request
+            context = get_customer_context(customer_id)
+            set_customer_context(context)
+            logger.debug(f"Customer context set for: {customer_id}")
+        else:
+            logger.debug("No customer ID in request headers")
+
+        response = await call_next(request)
+        return response
 
 # Global model variables
 nlp = None
@@ -95,9 +145,127 @@ model_checksum_valid = False  # Track checksum validation status
 MODEL_PATH = os.getenv("MODEL_PATH", "models/ner11_v3/model-best")
 FALLBACK_MODEL = os.getenv("FALLBACK_MODEL", "en_core_web_trf")
 USE_FALLBACK = os.getenv("USE_FALLBACK_NER", "true").lower() == "true"  # Enable fallback by default
+
+# =============================================================================
+# PHASE B2 ROUTER IMPORTS - SBOM Analysis + Vendor Equipment (60 APIs)
+# =============================================================================
+if PHASE_B2_ROUTERS_AVAILABLE:
+    try:
+        from api.sbom_analysis.sbom_router import router as sbom_router
+        from api.vendor_equipment.vendor_router import router as vendor_router
+
+        # Register Phase B2 routers (routers already have prefixes in their definitions)
+        app.include_router(sbom_router)
+        app.include_router(vendor_router)
+
+        logger.info("✅ Phase B2 routers registered: SBOM (32 APIs) + Vendor Equipment (28 APIs)")
+    except Exception as router_error:
+        logger.error(f"❌ Failed to import Phase B2 routers: {router_error}")
+        PHASE_B2_ROUTERS_AVAILABLE = False
+
+# =============================================================================
+# SBOM V2 Advanced Router (5 Additional APIs with Neo4j + Qdrant)
+# Advanced SBOM analysis with graph database and semantic search
+# =============================================================================
+SBOM_V2_ROUTER_AVAILABLE = True
+
+if SBOM_V2_ROUTER_AVAILABLE:
+    try:
+        from api.v2.sbom.routes import router as sbom_v2_router
+        app.include_router(sbom_v2_router)
+        logger.info("✅ SBOM V2 Advanced router registered: 5 additional APIs (Neo4j + Qdrant)")
+    except Exception as v2_error:
+        logger.warning(f"⚠️ SBOM V2 router not available: {v2_error}")
+        SBOM_V2_ROUTER_AVAILABLE = False
+
+
+
+
+# =============================================================================
+# PHASE B3 ROUTER IMPORTS - Threat Intel + Risk + Remediation (82 APIs)
+# =============================================================================
+if PHASE_B3_ROUTERS_AVAILABLE:
+    try:
+        from api.threat_intelligence.threat_router import router as threat_router
+        from api.risk_scoring.risk_router import router as risk_router
+        from api.remediation.remediation_router import router as remediation_router
+
+        # Register Phase B3 routers (prefix already set in each router)
+        app.include_router(threat_router)
+        app.include_router(risk_router)
+        app.include_router(remediation_router)
+
+        logger.info("✅ Phase B3 routers registered: Threat Intel (27 APIs), Risk Scoring (26 APIs), Remediation (29 APIs)")
+    except Exception as router_error:
+        logger.error(f"❌ Failed to import Phase B3 routers: {router_error}")
+        PHASE_B3_ROUTERS_AVAILABLE = False
+
+
+# =============================================================================
+# PHASE B4 ROUTER IMPORTS - Compliance Mapping (28 APIs)
+# =============================================================================
+PHASE_B4_ROUTERS_AVAILABLE = True
+
+if PHASE_B4_ROUTERS_AVAILABLE:
+    try:
+        from api.compliance_mapping.compliance_router import router as compliance_router
+        
+        # Register Phase B4 router (prefix already set in router definition)
+        app.include_router(compliance_router)
+        
+        logger.info("✅ Phase B4 router registered: Compliance Mapping (28 APIs)")
+    except Exception as router_error:
+        logger.error(f"❌ Failed to import Phase B4 router: {router_error}")
+        PHASE_B4_ROUTERS_AVAILABLE = False
+
+
+# =============================================================================
+# PSYCHOMETRIC API ROUTERS - Personality Traits & Cognitive Biases (8 APIs)
+# =============================================================================
+PSYCHOMETRIC_ROUTERS_AVAILABLE = True
+
+if PSYCHOMETRIC_ROUTERS_AVAILABLE:
+    try:
+        from api.psychometrics.psychometric_router import router as psychometric_router
+
+        # Register Psychometric router (prefix already set in router)
+        app.include_router(psychometric_router)
+
+        logger.info("✅ Psychometric router registered: 8 APIs (Traits, Biases, Lacanian Framework)")
+    except Exception as router_error:
+        logger.error(f"❌ Failed to import Psychometric router: {router_error}")
+        PSYCHOMETRIC_ROUTERS_AVAILABLE = False
+
+
+# =============================================================================
+# PHASE B5 API ROUTERS - Alerts + Demographics + Economic Impact (19 APIs Total)
+# Alert Management (10), Demographics (5), Economic Impact (4)
+# Note: Psychometric (8 APIs) already registered above as separate section
+# =============================================================================
+PHASE_B5_ROUTERS_AVAILABLE = True
+
+if PHASE_B5_ROUTERS_AVAILABLE:
+    try:
+        from api.alert_management.alert_router import router as alert_router
+        from api.demographics.router import router as demographics_router
+        from api.economic_impact.router import router as economic_router
+        
+        # Register Phase B5 routers (prefixes already set in router definitions)
+        app.include_router(alert_router)
+        app.include_router(demographics_router)
+        app.include_router(economic_router)
+        
+        logger.info("✅ Phase B5 routers registered: Alerts (10 APIs), Demographics (5 APIs), Economic Impact (4 APIs)")
+    except Exception as router_error:
+        logger.error(f"❌ Failed to import Phase B5 routers: {router_error}")
+        PHASE_B5_ROUTERS_AVAILABLE = False
+
+
 NEO4J_URI = os.getenv("NEO4J_URI", "bolt://localhost:7687")
 NEO4J_USER = os.getenv("NEO4J_USER", "neo4j")
 NEO4J_PASSWORD = os.getenv("NEO4J_PASSWORD", "neo4j@openspg")
+
+
 
 @app.on_event("startup")
 async def load_model():
@@ -154,17 +322,12 @@ async def load_model():
                 print(f"⚠️  Warning: Could not initialize embedding service: {emb_error}")
                 print("   Semantic search endpoint will be disabled.")
 
-        # Initialize Neo4j connection for hybrid search
+        # Initialize Neo4j connection using shared connection manager
         try:
-            print(f"Connecting to Neo4j at {NEO4J_URI}...")
-            neo4j_driver = GraphDatabase.driver(
-                NEO4J_URI,
-                auth=(NEO4J_USER, NEO4J_PASSWORD)
-            )
-            # Verify connection
-            with neo4j_driver.session() as session:
-                session.run("RETURN 1")
-            print("✅ Neo4j connection established successfully!")
+            from api.database_manager import get_neo4j_driver
+            print(f"Connecting to Neo4j at {NEO4J_URI} via connection manager...")
+            neo4j_driver = get_neo4j_driver()
+            print("✅ Neo4j connection established via shared driver (pool size: 50)!")
         except Exception as neo4j_error:
             print(f"⚠️  Warning: Could not connect to Neo4j: {neo4j_error}")
             print("   Hybrid search graph expansion will be disabled.")
@@ -176,9 +339,12 @@ async def load_model():
 
 @app.on_event("shutdown")
 async def shutdown():
-    global neo4j_driver
-    if neo4j_driver:
-        neo4j_driver.close()
+    # Close all database connections via connection manager
+    try:
+        from api.database_manager import close_database_connections
+        close_database_connections()
+    except Exception as e:
+        print(f"⚠️  Warning: Error closing database connections: {e}")
         print("Neo4j connection closed.")
 
 class TextRequest(BaseModel):

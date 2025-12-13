@@ -131,7 +131,7 @@ async def create_task(
 
     Creates a remediation task for vulnerability remediation with SLA tracking.
     """
-    with CustomerContextManager.create_context(x_customer_id, can_write=True):
+    with CustomerContextManager.create_context(x_customer_id, can_write=True) as ctx:
         task = RemediationTask(
             task_id=f"TASK-{uuid4().hex[:8].upper()}",
             customer_id=x_customer_id,
@@ -163,7 +163,7 @@ async def get_task(
 
     Returns detailed information about a specific remediation task.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         task = service.get_task(task_id)
         if not task:
             raise HTTPException(status_code=404, detail=f"Task {task_id} not found")
@@ -184,7 +184,7 @@ async def search_tasks(
 
     Search tasks with optional filters and semantic search.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         search_request = TaskSearchRequest(
             query=query,
             customer_id=x_customer_id,
@@ -208,7 +208,7 @@ async def get_open_tasks(
 
     Returns tasks that are not completed (open, in_progress, pending_verification).
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         tasks = service.get_open_tasks(limit=limit)
         return [task.to_dict() for task in tasks]
 
@@ -223,7 +223,7 @@ async def get_overdue_tasks(
 
     Returns tasks that have breached their SLA deadline.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         tasks = service.get_overdue_tasks(limit=limit)
         return [task.to_dict() for task in tasks]
 
@@ -239,7 +239,7 @@ async def get_tasks_by_priority(
 
     Returns all tasks with the specified priority (critical, high, medium, low, emergency).
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         try:
             priority_enum = TaskPriority(priority)
         except ValueError:
@@ -260,7 +260,7 @@ async def get_tasks_by_status(
 
     Returns all tasks with the specified status.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         try:
             status_enum = TaskStatus(status)
         except ValueError:
@@ -281,7 +281,7 @@ async def update_task_status(
 
     Changes task status with audit trail recording.
     """
-    with CustomerContextManager.create_context(x_customer_id, can_write=True):
+    with CustomerContextManager.create_context(x_customer_id, can_write=True) as ctx:
         try:
             new_status = TaskStatus(request.status)
         except ValueError:
@@ -311,7 +311,7 @@ async def assign_task(
 
     Updates task assignment with audit trail.
     """
-    with CustomerContextManager.create_context(x_customer_id, can_write=True):
+    with CustomerContextManager.create_context(x_customer_id, can_write=True) as ctx:
         success = service.assign_task(
             task_id=task_id,
             assigned_to=request.assigned_to,
@@ -335,7 +335,7 @@ async def get_task_history(
 
     Returns complete audit trail for a task.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         actions = service.get_task_history(task_id)
         return [action.to_dict() for action in actions]
 
@@ -355,7 +355,7 @@ async def create_plan(
 
     Creates a plan to coordinate multiple remediation tasks.
     """
-    with CustomerContextManager.create_context(x_customer_id, can_write=True):
+    with CustomerContextManager.create_context(x_customer_id, can_write=True) as ctx:
         plan = RemediationPlan(
             plan_id=f"PLAN-{uuid4().hex[:8].upper()}",
             customer_id=x_customer_id,
@@ -381,7 +381,7 @@ async def get_plan(
 
     Returns detailed information about a remediation plan.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         plan = service.get_plan(plan_id)
         if not plan:
             raise HTTPException(status_code=404, detail=f"Plan {plan_id} not found")
@@ -398,7 +398,7 @@ async def list_plans(
 
     Returns plans with optional status filter.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         # Simplified - in production, implement proper list operation
         return []
 
@@ -412,7 +412,7 @@ async def get_active_plans(
 
     Returns plans with status ACTIVE.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         # Simplified - in production, filter by active status
         return []
 
@@ -428,7 +428,7 @@ async def update_plan_status(
 
     Changes plan status (DRAFT, ACTIVE, COMPLETED, CANCELLED).
     """
-    with CustomerContextManager.create_context(x_customer_id, can_write=True):
+    with CustomerContextManager.create_context(x_customer_id, can_write=True) as ctx:
         # Simplified - in production, implement proper update
         return {"success": True, "plan_id": plan_id, "new_status": request.status}
 
@@ -443,7 +443,7 @@ async def get_plan_progress(
 
     Returns completion percentage and task status breakdown.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         progress = service.get_plan_progress(plan_id)
         if not progress:
             raise HTTPException(status_code=404, detail=f"Plan {plan_id} not found")
@@ -465,7 +465,7 @@ async def create_sla_policy(
 
     Defines remediation SLA thresholds by severity.
     """
-    with CustomerContextManager.create_context(x_customer_id, can_write=True):
+    with CustomerContextManager.create_context(x_customer_id, can_write=True) as ctx:
         policy = SLAPolicy(
             policy_id=f"SLA-{uuid4().hex[:8].upper()}",
             customer_id=x_customer_id,
@@ -490,7 +490,7 @@ async def list_sla_policies(
 
     Returns all SLA policies for the customer.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         # Simplified - in production, implement proper list operation
         return []
 
@@ -505,7 +505,7 @@ async def get_sla_policy(
 
     Returns detailed SLA policy configuration.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         # Simplified - in production, implement proper get operation
         raise HTTPException(status_code=404, detail=f"Policy {policy_id} not found")
 
@@ -521,7 +521,7 @@ async def update_sla_policy(
 
     Modifies SLA policy configuration.
     """
-    with CustomerContextManager.create_context(x_customer_id, can_write=True):
+    with CustomerContextManager.create_context(x_customer_id, can_write=True) as ctx:
         # Simplified - in production, implement proper update
         return {"success": True, "policy_id": policy_id}
 
@@ -536,7 +536,7 @@ async def get_sla_breaches(
 
     Returns tasks that have breached SLA deadlines.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         tasks = service.get_overdue_tasks(limit=limit)
         return [task.to_dict() for task in tasks]
 
@@ -551,7 +551,7 @@ async def get_at_risk_tasks(
 
     Returns tasks with less than 20% time remaining.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         # Use search to filter by SLA status
         search_request = TaskSearchRequest(
             customer_id=x_customer_id,
@@ -576,7 +576,7 @@ async def get_metrics_summary(
 
     Returns overall remediation performance metrics.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         return service.calculate_metrics_summary()
 
 
@@ -589,7 +589,7 @@ async def get_mttr_by_severity(
 
     Returns average remediation time for each severity level.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         return service.calculate_mttr_by_severity()
 
 
@@ -603,7 +603,7 @@ async def get_sla_compliance(
 
     Returns percentage of tasks completed within SLA.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         summary = service.calculate_metrics_summary()
         # Simplified calculation
         return {
@@ -623,7 +623,7 @@ async def get_backlog_metrics(
 
     Returns backlog size and trend.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         summary = service.calculate_metrics_summary()
         return {
             "total_backlog": summary["open_tasks"],
@@ -643,7 +643,7 @@ async def get_remediation_trends(
 
     Returns time-series metrics for the specified period.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         # Simplified - in production, implement time-series analysis
         return {
             "period_days": period_days,
@@ -667,7 +667,7 @@ async def get_dashboard_summary(
 
     Returns comprehensive dashboard data for remediation overview.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         return service.get_dashboard_summary()
 
 
@@ -680,7 +680,7 @@ async def get_workload_distribution(
 
     Returns task distribution by assignee and team.
     """
-    with CustomerContextManager.create_context(x_customer_id):
+    with CustomerContextManager.create_context(x_customer_id) as ctx:
         summary = service.calculate_metrics_summary()
         return {
             "by_priority": summary["priority_breakdown"],

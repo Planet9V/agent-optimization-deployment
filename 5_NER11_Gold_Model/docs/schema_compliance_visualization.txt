@@ -1,0 +1,174 @@
+================================================================================
+AEON NEO4J SCHEMA V3.1 COMPLIANCE VISUALIZATION
+================================================================================
+
+OVERALL COMPLIANCE: 4.25/10 ⚠️ PARTIAL COMPLIANCE
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│                         COMPLIANCE SCORECARD                               │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  Super Label Implementation    [████████████░░░░░░░░]  6.5/10  ⚠️         │
+│  Property Discriminators       [██░░░░░░░░░░░░░░░░░░]  1.0/10  ❌         │
+│  Hierarchical Properties       [█░░░░░░░░░░░░░░░░░░░]  0.5/10  ❌         │
+│  Multi-Labeling Approach       [██████████████████░░]  9.0/10  ✅         │
+│                                                                            │
+│  ─────────────────────────────────────────────────────────────────────     │
+│  OVERALL COMPLIANCE            [████████░░░░░░░░░░░░]  4.25/10 ⚠️         │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│                      SUPER LABEL COVERAGE                                  │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  Total Nodes:           1,426,989                                          │
+│  With Super Labels:        83,052  [█░░░░░░░░░░░░░░░░░░░]  5.8%           │
+│  Without Super Labels:  1,343,937  [███████████████████░] 94.2%           │
+│                                                                            │
+│  ⚠️  CRITICAL: 94% of nodes lack super label classification               │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│                  SUPER LABEL USAGE (13 of 16 Active)                       │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  ✅ Entity             [██████████████████████████████████████] 55,569     │
+│  ✅ Vulnerability      [██████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░] 12,022     │
+│  ✅ Indicator          [█████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  6,601     │
+│  ✅ Location           [███░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  4,577     │
+│  ✅ ThreatActor        [█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  1,067     │
+│  ✅ Technique          [█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  1,023     │
+│  ✅ Malware            [█░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]  1,016     │
+│  ✅ Organization       [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]    575     │
+│  ✅ Event              [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]    179     │
+│  ✅ Campaign           [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]    163     │
+│  ✅ Document           [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]    118     │
+│  ✅ Tool               [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]     92     │
+│  ✅ Infrastructure     [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]     50     │
+│  ❌ Industry           [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]      0     │
+│  ❌ Technology         [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]      0     │
+│  ❌ Concept            [░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░]      0     │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│                    PROPERTY IMPLEMENTATION STATUS                          │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  PROPERTY DISCRIMINATORS:                                                  │
+│    ❌ actorType          [░░░░░░░░░░░░░░░░░░░░]  NOT FOUND                │
+│    ❌ malwareFamily      [░░░░░░░░░░░░░░░░░░░░]  NOT FOUND                │
+│    ❌ campaignType       [░░░░░░░░░░░░░░░░░░░░]  NOT FOUND                │
+│    ❌ entity_type        [░░░░░░░░░░░░░░░░░░░░]  NOT FOUND                │
+│    ⚠️  node_type          [██░░░░░░░░░░░░░░░░░░]  LIMITED (measurements)   │
+│                                                                            │
+│  HIERARCHICAL PROPERTIES:                                                  │
+│    ❌ tier1              [░░░░░░░░░░░░░░░░░░░░]  NOT FOUND                │
+│    ❌ tier2              [░░░░░░░░░░░░░░░░░░░░]  NOT FOUND                │
+│    ⚠️  level              [█░░░░░░░░░░░░░░░░░░░]  12 nodes only            │
+│    ❌ parent_id          [░░░░░░░░░░░░░░░░░░░░]  NOT FOUND                │
+│                                                                            │
+│  ⚠️  CRITICAL: 566-type taxonomy NOT accessible via properties            │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│                         CVE CLASSIFICATION GAP                             │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  Total CVE Nodes:                                         316,552          │
+│                                                                            │
+│  With "Vulnerability" Super Label:    12,022  [███░░░░░░░░░░░░░]  3.8%    │
+│  WITHOUT Super Label:                304,530  [█████████████████] 96.2%    │
+│                                                                            │
+│  ⚠️  CRITICAL: 96% of CVEs not properly classified                        │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│                      CRITICAL ISSUES SUMMARY                               │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  1. ❌ Property discriminator system completely absent                     │
+│     Impact: Cannot distinguish 566 fine-grained entity types              │
+│                                                                            │
+│  2. ❌ Hierarchical properties (tier1, tier2, parent_id) not implemented   │
+│     Impact: Cannot navigate taxonomy tree or query by hierarchy           │
+│                                                                            │
+│  3. ❌ 94% of nodes lack super label classification                        │
+│     Impact: Incomplete entity classification, limited query capability    │
+│                                                                            │
+│  4. ⚠️  3 super labels completely unused (Industry, Technology, Concept)   │
+│     Impact: Gaps in knowledge graph coverage                              │
+│                                                                            │
+│  5. ⚠️  304,530 CVE nodes missing "Vulnerability" super label              │
+│     Impact: CVEs not queryable as vulnerabilities                         │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│                        REMEDIATION ROADMAP                                 │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  PHASE 1: IMMEDIATE (16 hours)                                             │
+│    ▸ Add super labels to existing nodes                                   │
+│    ▸ Focus: CVE → Vulnerability classification                            │
+│    ▸ Impact: 304,530 nodes properly classified                            │
+│                                                                            │
+│  PHASE 2: SHORT-TERM (24 hours)                                            │
+│    ▸ Implement property discriminators                                    │
+│    ▸ Focus: actorType, malwareFamily, campaignType                        │
+│    ▸ Impact: Enable fine-grained entity type queries                      │
+│                                                                            │
+│  PHASE 3: LONG-TERM (20 hours)                                             │
+│    ▸ Add hierarchical properties (tier1, tier2, level, parent_id)         │
+│    ▸ Focus: All super-labeled nodes                                       │
+│    ▸ Impact: Enable taxonomy-based navigation                             │
+│                                                                            │
+│  TOTAL ESTIMATED EFFORT: 60 hours                                          │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│                         SPECIFICATION vs ACTUAL                            │
+├────────────────────────────────────────────────────────────────────────────┤
+│                                                                            │
+│  SPECIFICATION (v3.1):                                                     │
+│  ┌────────────────────────────────────────────────────────────────┐       │
+│  │ (:ThreatActor:Entity {                                         │       │
+│  │   name: "APT28",                                               │       │
+│  │   actorType: "apt_group",          ← Property discriminator    │       │
+│  │   sophistication: "advanced",                                  │       │
+│  │   tier1: "TECHNICAL",              ← Hierarchical properties   │       │
+│  │   tier2: "ThreatActor",                                        │       │
+│  │   level: 2,                                                    │       │
+│  │   parent_id: "..."                                             │       │
+│  │ })                                                             │       │
+│  └────────────────────────────────────────────────────────────────┘       │
+│                                                                            │
+│  ACTUAL IMPLEMENTATION:                                                    │
+│  ┌────────────────────────────────────────────────────────────────┐       │
+│  │ (:ThreatActor:Adversary:CybersecurityKB_ThreatActor {          │       │
+│  │   name: "APT28"                                                │       │
+│  │   // Missing: actorType                                        │       │
+│  │   // Missing: sophistication                                   │       │
+│  │   // Missing: tier1                                            │       │
+│  │   // Missing: tier2                                            │       │
+│  │   // Missing: level                                            │       │
+│  │   // Missing: parent_id                                        │       │
+│  │ })                                                             │       │
+│  └────────────────────────────────────────────────────────────────┘       │
+│                                                                            │
+│  ⚠️  CRITICAL GAP: Implementation missing all v3.1 property requirements  │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+================================================================================
+END OF COMPLIANCE VISUALIZATION
+================================================================================
+
+Generated: 2025-12-11
+Full Report: /docs/AEON_SCHEMA_COMPLIANCE_REPORT.md
+JSON Data: /docs/aeon_schema_compliance_findings.json

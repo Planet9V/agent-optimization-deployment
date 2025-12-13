@@ -1,0 +1,80 @@
+{
+  "timestamp": "2025-12-10T20:32:21.995158",
+  "validation_status": "FAILED",
+  "baseline_verification": {
+    "status": "PASSED",
+    "total_nodes": 1150174,
+    "expected_baseline": 1150171,
+    "baseline_preserved": true,
+    "delta_from_baseline": 3
+  },
+  "e01_ingestion": {
+    "status": "FAILED",
+    "apt_entities_found": 0,
+    "expected_apt_entities": 7,
+    "ingestion_successful": false,
+    "findings": [
+      "No nodes with ner_label='APT' found in database",
+      "APT_GROUP label exists with only 3 nodes (pre-existing)",
+      "E01 APT entity ingestion pipeline did NOT execute successfully",
+      "Source documents were not processed for APT entity extraction"
+    ]
+  },
+  "hierarchical_enrichment": {
+    "status": "FAILED",
+    "ner_label_nodes": 1661,
+    "super_label_nodes": 0,
+    "super_label_property_exists": false,
+    "findings": [
+      "Property 'super_label' does not exist in database",
+      "Hierarchical taxonomy NOT applied",
+      "Only ner_label property exists on 1,661 nodes",
+      "No parent-child hierarchy established"
+    ]
+  },
+  "taxonomy_validation": {
+    "status": "FAILED",
+    "hierarchy_exists": false,
+    "findings": [
+      "No hierarchical taxonomy structure found",
+      "Expected super_label \u2192 ner_label mapping not present",
+      "Tier properties exist but not linked to super_labels"
+    ]
+  },
+  "database_state": {
+    "node_labels_count": "200+ distinct labels",
+    "apt_related_nodes": {
+      "APT_GROUP": 3,
+      "ATTACK_Group": 187,
+      "ATTACK_Tactic": 14,
+      "ATTACK_Technique": 691
+    },
+    "ner_label_distribution": "1,661 nodes with ner_label property",
+    "relationship_types": "Multiple types exist"
+  },
+  "root_causes": [
+    "E01 ingestion pipeline did not execute successfully",
+    "APT entity extraction from source documents failed",
+    "Hierarchical taxonomy enrichment step not completed",
+    "super_label property mapping not applied to graph",
+    "Validation checks not run during ingestion process"
+  ],
+  "recommendations": [
+    "IMMEDIATE: Re-run E01 ingestion pipeline with proper error handling",
+    "Verify APT entity extraction from E01_Cybersecurity_KB.csv source file",
+    "Implement super_label property mapping for hierarchical taxonomy",
+    "Add pre-flight and post-flight validation checks to ingestion pipeline",
+    "Create comprehensive error logging for ingestion failures",
+    "Test ingestion pipeline on small dataset before full run"
+  ],
+  "overall_assessment": {
+    "baseline_preserved": true,
+    "e01_ingested": false,
+    "hierarchical_enrichment": false,
+    "validation_passed": false,
+    "requires_remediation": true
+  },
+  "final_node_count": 1150174,
+  "apt_group_count": 3,
+  "ner_label_count": 1644
+}

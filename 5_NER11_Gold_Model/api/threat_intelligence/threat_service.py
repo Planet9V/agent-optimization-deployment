@@ -17,6 +17,7 @@ from uuid import uuid4
 import logging
 
 from qdrant_client import QdrantClient
+from api.database_manager import get_qdrant_client
 from qdrant_client.models import (
     Filter,
     FieldCondition,
@@ -65,7 +66,7 @@ class CampaignSearchRequest:
     """Request parameters for campaign search."""
     query: Optional[str] = None
     customer_id: Optional[str] = None
-    threat_actor_id: Optional[str] = None
+    threat_id: Optional[str] = None
     target_sector: Optional[str] = None
     is_active: Optional[bool] = None
     limit: int = 20
@@ -85,7 +86,7 @@ class IOCSearchRequest:
     query: Optional[str] = None
     customer_id: Optional[str] = None
     ioc_type: Optional[str] = None
-    threat_actor_id: Optional[str] = None
+    threat_id: Optional[str] = None
     campaign_id: Optional[str] = None
     min_confidence: Optional[int] = None
     is_active: Optional[bool] = None
@@ -122,7 +123,7 @@ class ThreatIntelligenceService:
 
     def __init__(
         self,
-        qdrant_url: str = "http://localhost:6333",
+        qdrant_url: str = "http://openspg-qdrant:6333",
         embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2",
     ):
         """
@@ -132,7 +133,7 @@ class ThreatIntelligenceService:
             qdrant_url: Qdrant server URL
             embedding_model: Sentence transformer model name
         """
-        self.qdrant_client = QdrantClient(url=qdrant_url)
+        self.qdrant_client = get_qdrant_client()
         self._embedding_model = SentenceTransformer(embedding_model)
         self._ensure_collection()
 
@@ -218,10 +219,10 @@ class ThreatIntelligenceService:
             ],
         )
 
-        logger.info(f"Created threat actor {actor.actor_id}: {actor.name}")
+        logger.info(f"Created threat actor {actor.id}: {actor.name}")
         return actor
 
-    def get_threat_actor(self, actor_id: str) -> Optional[Any]:
+    def get_threat_actor(self, id: str) -> Optional[Any]:
         """Get threat actor by ID with customer isolation."""
         context = self._get_customer_context()
 
@@ -229,7 +230,7 @@ class ThreatIntelligenceService:
             collection_name=self.COLLECTION_NAME,
             scroll_filter=Filter(
                 must=[
-                    FieldCondition(key="actor_id", match=MatchValue(value=actor_id)),
+                    FieldCondition(key="id", match=MatchValue(value=id)),
                     FieldCondition(
                         key="customer_id",
                         match=MatchAny(any=context.get_customer_ids()),
@@ -250,7 +251,7 @@ class ThreatIntelligenceService:
         from .threat_models import ThreatActor, ActorType, SophisticationLevel
 
         return ThreatActor(
-            actor_id=payload["actor_id"],
+            id=payload["id"],
             customer_id=payload["customer_id"],
             name=payload["name"],
             aliases=payload.get("aliases", []),
@@ -383,7 +384,7 @@ class ThreatIntelligenceService:
             for point in results[0]
         ]
 
-    def get_actor_campaigns(self, actor_id: str, limit: int = 50) -> List[Dict[str, Any]]:
+    def get_actor_campaigns(self, id: str, limit: int = 50) -> List[Dict[str, Any]]:
         """Get campaigns associated with a threat actor."""
         context = self._get_customer_context()
 
@@ -392,7 +393,7 @@ class ThreatIntelligenceService:
             scroll_filter=Filter(
                 must=[
                     FieldCondition(key="entity_type", match=MatchValue(value="threat_campaign")),
-                    FieldCondition(key="threat_actor_ids", match=MatchAny(any=[actor_id])),
+                    FieldCondition(key="threat_ids", match=MatchAny(any=[id])),
                     FieldCondition(
                         key="customer_id",
                         match=MatchAny(any=context.get_customer_ids()),
@@ -412,7 +413,7 @@ class ThreatIntelligenceService:
             for p in results[0]
         ]
 
-    def get_actor_cves(self, actor_id: str, limit: int = 50) -> List[Dict[str, Any]]:
+    def get_actor_cves(self, id: str, limit: int = 50) -> List[Dict[str, Any]]:
         """Get CVEs associated with a threat actor."""
         # This would typically query the SBOM/vulnerability service
         # For now, return placeholder
@@ -484,7 +485,7 @@ class ThreatIntelligenceService:
             campaign_id=payload["campaign_id"],
             customer_id=payload["customer_id"],
             name=payload["name"],
-            threat_actor_ids=payload.get("threat_actor_ids", []),
+            threat_ids=payload.get("threat_ids", []),
             start_date=datetime.fromisoformat(payload["start_date"]).date() if payload.get("start_date") else None,
             end_date=datetime.fromisoformat(payload["end_date"]).date() if payload.get("end_date") else None,
             target_sectors=payload.get("target_sectors", []),
@@ -503,9 +504,9 @@ class ThreatIntelligenceService:
             FieldCondition(key="entity_type", match=MatchValue(value="threat_campaign"))
         ]
 
-        if request.threat_actor_id:
+        if request.threat_id:
             conditions.append(
-                FieldCondition(key="threat_actor_ids", match=MatchAny(any=[request.threat_actor_id]))
+                FieldCondition(key="threat_ids", match=MatchAny(any=[request.threat_id]))
             )
 
         if request.target_sector:
@@ -661,7 +662,7 @@ class ThreatIntelligenceService:
                     customer_id=context.customer_id,
                     ioc_type=IOCType(ioc_data.ioc_type),
                     value=ioc_data.value,
-                    threat_actor_id=ioc_data.threat_actor_id,
+                    threat_id=ioc_data.threat_id,
                     campaign_id=ioc_data.campaign_id,
                     first_seen=ioc_data.first_seen,
                     last_seen=ioc_data.last_seen,
@@ -698,9 +699,9 @@ class ThreatIntelligenceService:
                 FieldCondition(key="ioc_type", match=MatchValue(value=request.ioc_type))
             )
 
-        if request.threat_actor_id:
+        if request.threat_id:
             conditions.append(
-                FieldCondition(key="threat_actor_id", match=MatchValue(value=request.threat_actor_id))
+                FieldCondition(key="threat_id", match=MatchValue(value=request.threat_id))
             )
 
         if request.campaign_id:
@@ -764,7 +765,7 @@ class ThreatIntelligenceService:
             customer_id=payload["customer_id"],
             ioc_type=IOCType(payload.get("ioc_type", "ip")),
             value=payload["value"],
-            threat_actor_id=payload.get("threat_actor_id"),
+            threat_id=payload.get("threat_id"),
             campaign_id=payload.get("campaign_id"),
             first_seen=datetime.fromisoformat(payload["first_seen"]).date() if payload.get("first_seen") else None,
             last_seen=datetime.fromisoformat(payload["last_seen"]).date() if payload.get("last_seen") else None,
@@ -910,14 +911,14 @@ class ThreatIntelligenceService:
             limit=100,
         )
 
-        actor_ids = [p.payload["mapped_entity_id"] for p in results[0]]
+        ids = [p.payload["mapped_entity_id"] for p in results[0]]
 
         actors = []
-        for actor_id in actor_ids:
-            actor = self.get_threat_actor(actor_id)
+        for id in ids:
+            actor = self.get_threat_actor(id)
             if actor:
                 actors.append({
-                    "actor_id": actor.actor_id,
+                    "id": actor.id,
                     "name": actor.name,
                     "actor_type": actor.actor_type.value if hasattr(actor.actor_type, 'value') else actor.actor_type,
                     "is_active": actor.is_active,

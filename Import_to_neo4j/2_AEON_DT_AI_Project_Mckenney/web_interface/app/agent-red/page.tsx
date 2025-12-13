@@ -35,7 +35,7 @@ export default function AgentRedPage() {
 
                 <div className="max-w-4xl mx-auto text-center">
                     <p className="text-lg md:text-xl text-gray-400 italic border-l-4 border-primary pl-6 text-left py-2 bg-white/5 backdrop-blur-sm rounded-r-lg">
-                        "This is not a simulation. This is an autonomous entity. It must capture the full scope of the 'Agent Zero' capability—an AI that writes its own code, spins up its own infrastructure, and relentlessly pursues the objective within the Rules of Engagement."
+                        &ldquo;This is not a simulation. This is an autonomous entity. It must capture the full scope of the &lsquo;Agent Zero&rsquo; capability—an AI that writes its own code, spins up its own infrastructure, and relentlessly pursues the objective within the Rules of Engagement.&rdquo;
                     </p>
                 </div>
             </section>
@@ -54,13 +54,13 @@ export default function AgentRedPage() {
                     </div>
                     <div className="lg:col-span-8 space-y-6 text-lg leading-relaxed text-gray-400">
                         <p>
-                            <strong className="text-white">Agent Red</strong> is the "Verification and Validation" submind of the AEON Digital Twin. It is a fully capable, <strong className="text-primary">Autonomous Adversarial Entity</strong> designed to perform scenario-based testing of organizational cybersecurity.
+                            <strong className="text-white">Agent Red</strong> is the &ldquo;Verification and Validation&rdquo; submind of the AEON Digital Twin. It is a fully capable, <strong className="text-primary">Autonomous Adversarial Entity</strong> designed to perform scenario-based testing of organizational cybersecurity.
                         </p>
                         <p>
-                            It operates under a simple directive: <strong className="text-white">"Achieve the Goal at All Costs (Without Breaking Rules of Engagement)."</strong>
+                            It operates under a simple directive: <strong className="text-white">&ldquo;Achieve the Goal at All Costs (Without Breaking Rules of Engagement).&rdquo;</strong>
                         </p>
                         <p>
-                            Unlike traditional scanners or "dockerized" tools that simply check for known vulnerabilities, Agent Red is a <strong>Submind Orchestrator</strong> led by <strong className="text-secondary">Red Team Leader One</strong>. It spins up distinct, autonomous personas that act as independent threat actors. It thinks, it plans, it adapts, and it executes using <strong className="text-white">"Living off the Land"</strong> techniques and deep source code analysis.
+                            Unlike traditional scanners or &ldquo;dockerized&rdquo; tools that simply check for known vulnerabilities, Agent Red is a <strong>Submind Orchestrator</strong> led by <strong className="text-secondary">Red Team Leader One</strong>. It spins up distinct, autonomous personas that act as independent threat actors. It thinks, it plans, it adapts, and it executes using <strong className="text-white">&ldquo;Living off the Land&rdquo;</strong> techniques and deep source code analysis.
                         </p>
                     </div>
                 </section>
@@ -89,7 +89,7 @@ export default function AgentRedPage() {
                                 </li>
                                 <li className="flex gap-4 items-start group">
                                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 group-hover:shadow-[0_0_10px_#00e0b0] transition-shadow"></div>
-                                    <div><span className="text-white font-bold">The Cartographer</span>: A submind dedicated to mapping the target's digital footprint (Equipment, Layouts, Suppliers).</div>
+                                    <div><span className="text-white font-bold">The Cartographer</span>: A submind dedicated to mapping the target&apos;s digital footprint (Equipment, Layouts, Suppliers).</div>
                                 </li>
                                 <li className="flex gap-4 items-start group">
                                     <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 group-hover:shadow-[0_0_10px_#00e0b0] transition-shadow"></div>
@@ -152,7 +152,7 @@ export default function AgentRedPage() {
                                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" /></svg>
                                 </div>
                                 <strong className="text-white block mb-2 text-lg">Zero-Risk Validation</strong>
-                                This ensures that "destructive" tests can be run without risking the actual production environment.
+                                This ensures that &ldquo;destructive&rdquo; tests can be run without risking the actual production environment.
                             </div>
                         </div>
                     </div>
@@ -167,10 +167,10 @@ export default function AgentRedPage() {
                                 <span className="text-primary">●</span> DEEP OSINT & DARK WEB
                             </h4>
                             <ul className="space-y-4 text-sm text-gray-400">
-                                <li className="flex gap-3"><span className="text-primary font-mono">01</span><span><strong className="text-white">Public RFPs:</strong> Analyzes RFPs to identify specific technologies (e.g., "Seeking Cisco ISE vendor").</span></li>
-                                <li className="flex gap-3"><span className="text-primary font-mono">02</span><span><strong className="text-white">Job Listings:</strong> Scrapes job boards to infer tech stacks (e.g., "Hiring: Kubernetes Expert").</span></li>
+                                <li className="flex gap-3"><span className="text-primary font-mono">01</span><span><strong className="text-white">Public RFPs:</strong> Analyzes RFPs to identify specific technologies (e.g., &ldquo;Seeking Cisco ISE vendor&rdquo;).</span></li>
+                                <li className="flex gap-3"><span className="text-primary font-mono">02</span><span><strong className="text-white">Job Listings:</strong> Scrapes job boards to infer tech stacks (e.g., &ldquo;Hiring: Kubernetes Expert&rdquo;).</span></li>
                                 <li className="flex gap-3"><span className="text-primary font-mono">03</span><span><strong className="text-white">Employee Profiling:</strong> Maps the org chart via LinkedIn to identify key targets.</span></li>
-                                <li className="flex gap-3"><span className="text-primary font-mono">04</span><span><strong className="text-white">Dark Web:</strong> Monitors marketplaces for stolen credentials and "Access for Sale".</span></li>
+                                <li className="flex gap-3"><span className="text-primary font-mono">04</span><span><strong className="text-white">Dark Web:</strong> Monitors marketplaces for stolen credentials and &ldquo;Access for Sale&rdquo;.</span></li>
                             </ul>
                         </div>
                         <div className="bg-surface/30 p-8 border border-white/10 rounded-xl backdrop-blur-sm hover:border-primary/30 transition-all">
@@ -178,7 +178,7 @@ export default function AgentRedPage() {
                                 <span className="text-secondary">●</span> SUPPLY CHAIN & VENDOR INTEL
                             </h4>
                             <ul className="space-y-4 text-sm text-gray-400">
-                                <li className="flex gap-3"><span className="text-secondary font-mono">01</span><span><strong className="text-white">Common Suppliers:</strong> Knows the "Shared Fate" of the sector. If SolarWinds is hit, it knows who is affected.</span></li>
+                                <li className="flex gap-3"><span className="text-secondary font-mono">01</span><span><strong className="text-white">Common Suppliers:</strong> Knows the &ldquo;Shared Fate&rdquo; of the sector. If SolarWinds is hit, it knows who is affected.</span></li>
                                 <li className="flex gap-3"><span className="text-secondary font-mono">02</span><span><strong className="text-white">Operating Manuals:</strong> Ingests thousands of PDF manuals searching for default passwords (admin/1234) and hidden debug ports.</span></li>
                             </ul>
                         </div>
@@ -257,16 +257,16 @@ export default function AgentRedPage() {
                             <div className="bg-surface/30 p-6 rounded-lg border border-white/5">
                                 <h4 className="text-lg font-bold text-secondary mb-3">Team Dynamics Analysis</h4>
                                 <ul className="list-disc list-inside text-gray-400 space-y-2 text-sm">
-                                    <li><strong>"Big 5" Profiling:</strong> Builds profiles of SOC analysts based on public comms.</li>
-                                    <li><strong>Cognitive Dissonance:</strong> Exploits "Alert Fatigue" and "Groupthink".</li>
+                                    <li><strong>&ldquo;Big 5&rdquo; Profiling:</strong> Builds profiles of SOC analysts based on public comms.</li>
+                                    <li><strong>Cognitive Dissonance:</strong> Exploits &ldquo;Alert Fatigue&rdquo; and &ldquo;Groupthink&rdquo;.</li>
                                     <li><strong>Timing Attacks:</strong> Launches diversions during shift changes (Friday 4:55 PM).</li>
                                 </ul>
                             </div>
                             <div className="bg-surface/30 p-6 rounded-lg border border-white/5">
                                 <h4 className="text-lg font-bold text-secondary mb-3">Lacanian Topology (GGNN)</h4>
                                 <ul className="list-disc list-inside text-gray-400 space-y-2 text-sm">
-                                    <li><strong>The Master Signifier ($S_1$):</strong> Identifies core "Truths" (e.g., "Our Perimeter is Secure").</li>
-                                    <li><strong>The Object a (Desire):</strong> Identifies what the org <em>wants</em> (e.g., "Compliance").</li>
+                                    <li><strong>The Master Signifier ($S_1$):</strong> Identifies core &ldquo;Truths&rdquo; (e.g., &ldquo;Our Perimeter is Secure&rdquo;).</li>
+                                    <li><strong>The Object a (Desire):</strong> Identifies what the org <em>wants</em> (e.g., &ldquo;Compliance&rdquo;).</li>
                                     <li><strong>The Exploit:</strong> Crafts attacks that align with desires (e.g., Fake Compliance Portal).</li>
                                 </ul>
                             </div>
@@ -327,7 +327,7 @@ export default function AgentRedPage() {
                         <div>
                             <h4 className="text-lg font-bold text-primary mb-4">The Multi-Hop Map</h4>
                             <p className="text-sm text-gray-400 leading-relaxed">
-                                <strong>"Small Cause, Massive Effect."</strong> An isometric view of 5 layers (Firmware, Equipment, Network, Facility, Supply Chain) showing how a firmware bug shatters the supply chain.
+                                <strong>&ldquo;Small Cause, Massive Effect.&rdquo;</strong> An isometric view of 5 layers (Firmware, Equipment, Network, Facility, Supply Chain) showing how a firmware bug shatters the supply chain.
                             </p>
                         </div>
                     </div>

@@ -1,0 +1,53 @@
+Testing 123 Phase B APIs...
+
+❌ GET    /api/v2/remediation/dashboard/summary (500)
+❌ GET    /api/v2/remediation/dashboard/workload (500)
+❌ GET    /api/v2/remediation/metrics/backlog (500)
+❌ GET    /api/v2/remediation/metrics/mttr (500)
+❌ GET    /api/v2/remediation/metrics/sla-compliance (500)
+❌ GET    /api/v2/remediation/metrics/summary (500)
+❌ GET    /api/v2/remediation/metrics/trends (500)
+❌ POST   /api/v2/remediation/plans (422)
+❌ GET    /api/v2/remediation/plans (500)
+❌ GET    /api/v2/remediation/plans/active (500)
+❌ GET    /api/v2/remediation/plans/{plan_id} (500)
+❌ GET    /api/v2/remediation/plans/{plan_id}/progress (500)
+❌ GET    /api/v2/remediation/sla/at-risk (500)
+❌ GET    /api/v2/remediation/sla/breaches (500)
+❌ POST   /api/v2/remediation/sla/policies (422)
+❌ GET    /api/v2/remediation/sla/policies (500)
+❌ GET    /api/v2/remediation/sla/policies/{policy_id} (500)
+❌ POST   /api/v2/remediation/tasks (422)
+❌ GET    /api/v2/remediation/tasks/by-priority/{priority} (500)
+❌ GET    /api/v2/remediation/tasks/by-status/{status} (500)
+❌ GET    /api/v2/remediation/tasks/open (500)
+❌ GET    /api/v2/remediation/tasks/overdue (500)
+❌ GET    /api/v2/remediation/tasks/search (500)
+❌ GET    /api/v2/remediation/tasks/{task_id} (500)
+❌ GET    /api/v2/remediation/tasks/{task_id}/history (500)
+✅ GET    /api/v2/risk/aggregation/by-asset-type
+✅ GET    /api/v2/risk/aggregation/by-sector
+✅ GET    /api/v2/risk/aggregation/by-vendor
+❌ GET    /api/v2/risk/aggregation/{aggregation_type}/{group_id} (400)
+❌ GET    /api/v2/risk/assets/by-criticality/{level} (400)
+❌ POST   /api/v2/risk/assets/criticality (422)
+✅ GET    /api/v2/risk/assets/criticality/summary
+✅ GET    /api/v2/risk/assets/mission-critical
+❌ GET    /api/v2/risk/assets/{asset_id}/criticality (404)
+✅ GET    /api/v2/risk/dashboard/risk-matrix
+✅ GET    /api/v2/risk/dashboard/summary
+❌ POST   /api/v2/risk/exposure (422)
+❌ GET    /api/v2/risk/exposure/attack-surface (404)
+❌ GET    /api/v2/risk/exposure/high-exposure (404)
+❌ GET    /api/v2/risk/exposure/internet-facing (404)
+❌ GET    /api/v2/risk/exposure/{asset_id} (404)
+❌ POST   /api/v2/risk/scores (422)
+✅ GET    /api/v2/risk/scores/high-risk
+❌ GET    /api/v2/risk/scores/history/{entity_type}/{entity_id} (500)
+❌ POST   /api/v2/risk/scores/recalculate/{entity_type}/{entity_id} (500)
+✅ GET    /api/v2/risk/scores/search
+❌ GET    /api/v2/risk/scores/trending (400)
+❌ GET    /api/v2/risk/scores/{entity_type}/{entity_id} (500)
+❌ POST   /api/v2/sbom/components (422)
+
+9/49 APIs working (18%)

@@ -1,0 +1,255 @@
+# =============================================================================
+# AEON CYBERSECURITY SYSTEM - GIT IGNORE
+# =============================================================================
+# CRITICAL: Never commit credentials, secrets, or sensitive data
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Credentials and Secrets (CRITICAL - NEVER COMMIT)
+# -----------------------------------------------------------------------------
+.env
+.env.local
+.env.*.local
+.env.production
+.env.staging
+
+# Credential files
+credentials.json
+secrets.yaml
+secrets.yml
+secrets.json
+auth.json
+config.secret.json
+
+# Private keys
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_rsa.pub
+*.pub
+
+# SSL/TLS certificates (private)
+*.crt
+*.csr
+*.der
+
+# API keys
+apikeys.txt
+.api_keys
+api-keys.json
+
+# Password files
+passwords.txt
+.passwords
+
+# Actual credentials guide (contains real passwords)
+docs/CREDENTIALS_AND_SECRETS_GUIDE.md
+
+# -----------------------------------------------------------------------------
+# Database Files
+# -----------------------------------------------------------------------------
+*.db
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+
+# Database dumps
+*.sql
+*.dump
+*.backup
+
+# -----------------------------------------------------------------------------
+# Python
+# -----------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+*.ipynb
+
+# pyenv
+.python-version
+
+# Spyder
+.spyderproject
+.spyproject
+
+# -----------------------------------------------------------------------------
+# Node.js
+# -----------------------------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# -----------------------------------------------------------------------------
+# Docker
+# -----------------------------------------------------------------------------
+docker-compose.override.yml
+.dockerignore
+
+# Docker secrets
+docker/secrets/
+secrets/
+
+# -----------------------------------------------------------------------------
+# IDE and Editors
+# -----------------------------------------------------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# -----------------------------------------------------------------------------
+# Logs
+# -----------------------------------------------------------------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# -----------------------------------------------------------------------------
+# Testing
+# -----------------------------------------------------------------------------
+.coverage
+.pytest_cache/
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# -----------------------------------------------------------------------------
+# Temporary Files
+# -----------------------------------------------------------------------------
+tmp/
+temp/
+*.tmp
+*.temp
+.cache/
+
+# -----------------------------------------------------------------------------
+# OS Files
+# -----------------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# -----------------------------------------------------------------------------
+# Backup Files
+# -----------------------------------------------------------------------------
+*.bak
+*.backup
+*.old
+*~
+
+# -----------------------------------------------------------------------------
+# Data Files (exclude large datasets)
+# -----------------------------------------------------------------------------
+data/*.csv
+data/*.json
+data/*.parquet
+data/*.pkl
+data/*.pickle
+
+# Model files
+models/*.h5
+models/*.pkl
+models/*.pth
+models/*.onnx
+
+# -----------------------------------------------------------------------------
+# System-Specific
+# -----------------------------------------------------------------------------
+# Qdrant data
+qdrant_storage/
+qdrant_data/
+
+# Neo4j data
+neo4j_data/
+neo4j_logs/
+neo4j_plugins/
+
+# PostgreSQL data
+postgres_data/
+
+# MySQL data
+mysql_data/
+
+# MinIO data
+minio_data/
+
+# Redis data
+redis_data/
+
+# -----------------------------------------------------------------------------
+# Documentation (generated)
+# -----------------------------------------------------------------------------
+# Keep markdown docs in version control, except sensitive ones
+# docs/CREDENTIALS_AND_SECRETS_GUIDE.md is explicitly excluded above
+
+# Compiled documentation
+docs/_build/
+docs/.doctrees/
+
+# -----------------------------------------------------------------------------
+# Misc
+# -----------------------------------------------------------------------------
+.env.example  # Keep template, exclude actual .env
+!.env.example  # Exception: keep .env.example in version control

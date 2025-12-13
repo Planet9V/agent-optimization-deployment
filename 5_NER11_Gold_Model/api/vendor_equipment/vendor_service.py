@@ -72,8 +72,8 @@ class CVERecord:
     cvss_score: float
     severity: str  # critical, high, medium, low
     description: str
-    affected_vendor_id: str
-    affected_equipment_ids: List[str]
+    affected_id: str
+    affected_ids: List[str]
     published_date: Optional[date] = None
     customer_id: str = "SYSTEM"  # CVEs are typically system-wide
     flagged_at: Optional[datetime] = None
@@ -99,8 +99,8 @@ class CVERecord:
             "cvss_score": self.cvss_score,
             "severity": self.severity,
             "description": self.description,
-            "affected_vendor_id": self.affected_vendor_id,
-            "affected_equipment_ids": self.affected_equipment_ids,
+            "affected_id": self.affected_id,
+            "affected_ids": self.affected_ids,
             "published_date": self.published_date.isoformat() if self.published_date else None,
             "customer_id": self.customer_id,
             "flagged_at": self.flagged_at.isoformat() if self.flagged_at else None,
@@ -199,7 +199,7 @@ class VendorEquipmentService:
 
     def __init__(
         self,
-        qdrant_url: str = "http://localhost:6333",
+        qdrant_url: str = "http://openspg-qdrant:6333",
         neo4j_driver: Optional[Any] = None,
         embedding_model: Optional[Any] = None,
         embedding_service: Optional[EmbeddingService] = None,
@@ -304,7 +304,7 @@ class VendorEquipmentService:
             collection_name=self.COLLECTION_NAME,
             points=[
                 PointStruct(
-                    id=point_id,
+                    vendor_id=point_id,
                     vector=embedding,
                     payload=vendor.to_qdrant_payload(),
                 )
@@ -502,7 +502,7 @@ class VendorEquipmentService:
             collection_name=self.COLLECTION_NAME,
             points=[
                 PointStruct(
-                    id=point_id,
+                    vendor_id=point_id,
                     vector=embedding,
                     payload=equipment.to_qdrant_payload(),
                 )
@@ -706,7 +706,7 @@ class VendorEquipmentService:
         request = EquipmentSearchRequest(vendor_id=vendor_id, limit=1000)
         equipment_list = self.search_equipment(request)
 
-        affected_equipment_ids = [eq.equipment.model_id for eq in equipment_list]
+        affected_ids = [eq.equipment.model_id for eq in equipment_list]
         affected_count = len(equipment_list)
 
         # Count critical equipment
@@ -731,8 +731,8 @@ class VendorEquipmentService:
             cvss_score=cvss_score,
             severity=severity,
             description=description,
-            affected_vendor_id=vendor_id,
-            affected_equipment_ids=affected_equipment_ids,
+            affected_id=vendor_id,
+            affected_ids=affected_ids,
             published_date=published_date,
             customer_id="SYSTEM",
         )
@@ -747,7 +747,7 @@ class VendorEquipmentService:
             collection_name=self.COLLECTION_NAME,
             points=[
                 PointStruct(
-                    id=point_id,
+                    vendor_id=point_id,
                     vector=cve_embedding,
                     payload=cve_record.to_qdrant_payload(),
                 )
@@ -813,7 +813,7 @@ class VendorEquipmentService:
 
         conditions = [
             FieldCondition(key="entity_type", match=MatchValue(value="cve")),
-            FieldCondition(key="affected_vendor_id", match=MatchValue(value=vendor_id)),
+            FieldCondition(key="affected_id", match=MatchValue(value=vendor_id)),
         ]
 
         if severity:
@@ -865,8 +865,8 @@ class VendorEquipmentService:
             cvss_score=payload["cvss_score"],
             severity=payload["severity"],
             description=payload["description"],
-            affected_vendor_id=payload["affected_vendor_id"],
-            affected_equipment_ids=payload.get("affected_equipment_ids", []),
+            affected_id=payload["affected_id"],
+            affected_ids=payload.get("affected_ids", []),
             published_date=published_date,
             customer_id=payload.get("customer_id", "SYSTEM"),
             flagged_at=flagged_at,
@@ -955,12 +955,12 @@ class VendorEquipmentService:
             cve = self._payload_to_cve(payload)
 
             # Get vendor info
-            vendor = self.get_vendor(cve.affected_vendor_id)
+            vendor = self.get_vendor(cve.affected_id)
             vendor_name = vendor.name if vendor else "Unknown"
 
             # Count critical equipment
             critical_count = 0
-            for eq_id in cve.affected_equipment_ids[:10]:  # Limit to first 10
+            for eq_id in cve.affected_ids[:10]:  # Limit to first 10
                 eq = self.get_equipment(eq_id)
                 if eq and eq.criticality in ["critical", "high"]:
                     critical_count += 1
@@ -973,11 +973,11 @@ class VendorEquipmentService:
             alerts.append(
                 VulnerabilityAlert(
                     cve_id=cve.cve_id,
-                    vendor_id=cve.affected_vendor_id,
+                    vendor_id=cve.affected_id,
                     vendor_name=vendor_name,
                     cvss_score=cve.cvss_score,
                     severity=cve.severity,
-                    affected_equipment_count=len(cve.affected_equipment_ids),
+                    affected_equipment_count=len(cve.affected_ids),
                     critical_equipment_affected=critical_count,
                     recommendation=recommendation,
                 )
@@ -2316,7 +2316,7 @@ class VendorEquipmentService:
 
         # Store in Qdrant
         point = PointStruct(
-            id=str(uuid4()),
+            vendor_id=str(uuid4()),
             vector=embedding,
             payload=window.to_qdrant_payload(),
         )
@@ -2411,7 +2411,7 @@ class VendorEquipmentService:
 
     def get_available_windows(
         self,
-        equipment_id: Optional[str] = None,
+        vendor_id: Optional[str] = None,
         start_date: Optional[date] = None,
         end_date: Optional[date] = None,
     ) -> List[Dict[str, Any]]:
@@ -2419,7 +2419,7 @@ class VendorEquipmentService:
         Get available maintenance windows for equipment within a date range.
 
         Args:
-            equipment_id: Filter for specific equipment
+            vendor_id: Filter for specific equipment
             start_date: Start of search range
             end_date: End of search range
 
@@ -2441,9 +2441,9 @@ class VendorEquipmentService:
         available = []
         for window in windows:
             # Check if equipment is in scope
-            if equipment_id:
-                eq_ids = window.get("equipment_ids", [])
-                if eq_ids and equipment_id not in eq_ids:
+            if vendor_id:
+                eq_ids = window.get("ids", [])
+                if eq_ids and vendor_id not in eq_ids:
                     continue
 
             # Parse start time
@@ -2487,7 +2487,7 @@ class VendorEquipmentService:
 
     def check_maintenance_conflict(
         self,
-        equipment_id: str,
+        vendor_id: str,
         proposed_start: datetime,
         proposed_end: datetime,
     ) -> Dict[str, Any]:
@@ -2495,7 +2495,7 @@ class VendorEquipmentService:
         Check if proposed maintenance time conflicts with existing windows or work orders.
 
         Args:
-            equipment_id: Equipment to check
+            vendor_id: Equipment to check
             proposed_start: Proposed maintenance start time
             proposed_end: Proposed maintenance end time
 
@@ -2508,8 +2508,8 @@ class VendorEquipmentService:
         windows = self.list_maintenance_windows(active_only=True, window_type="change_freeze")
 
         for window in windows:
-            eq_ids = window.get("equipment_ids", [])
-            if eq_ids and equipment_id not in eq_ids:
+            eq_ids = window.get("ids", [])
+            if eq_ids and vendor_id not in eq_ids:
                 continue
 
             start_time_str = window.get("start_time")
@@ -2533,7 +2533,7 @@ class VendorEquipmentService:
                     pass
 
         # Check existing work orders
-        work_orders = self.list_work_orders(equipment_id=equipment_id, status="approved")
+        work_orders = self.list_work_orders(vendor_id=vendor_id, status="approved")
         for wo in work_orders:
             wo_start_str = wo.get("scheduled_start")
             wo_end_str = wo.get("scheduled_end")
@@ -2568,7 +2568,7 @@ class VendorEquipmentService:
 
     def predict_maintenance(
         self,
-        equipment_id: Optional[str] = None,
+        vendor_id: Optional[str] = None,
         days_ahead: int = 90,
     ) -> List["MaintenancePrediction"]:
         """
@@ -2578,7 +2578,7 @@ class VendorEquipmentService:
         schedule to predict when maintenance should be performed.
 
         Args:
-            equipment_id: Specific equipment ID, or None for all equipment
+            vendor_id: Specific equipment ID, or None for all equipment
             days_ahead: Prediction window in days
 
         Returns:
@@ -2590,9 +2590,9 @@ class VendorEquipmentService:
         context = self._get_customer_context()
 
         # Get equipment
-        if equipment_id:
+        if vendor_id:
             request = EquipmentSearchRequest(limit=1)
-            equipment_list = [eq for eq in self.search_equipment(request) if eq.equipment.model_id == equipment_id]
+            equipment_list = [eq for eq in self.search_equipment(request) if eq.equipment.model_id == vendor_id]
         else:
             request = EquipmentSearchRequest(limit=1000)
             equipment_list = self.search_equipment(request)
@@ -2708,7 +2708,7 @@ class VendorEquipmentService:
                 reason = f"Regular {schedule_value} maintenance schedule"
 
             prediction = MaintenancePrediction(
-                equipment_id=equipment.model_id,
+                vendor_id=equipment.model_id,
                 equipment_name=equipment.model_name,
                 customer_id=context.customer_id,
                 next_maintenance_date=next_maintenance,
@@ -2761,7 +2761,7 @@ class VendorEquipmentService:
                 "high_count": 0,
                 "estimated_hours": 0.0,
                 "estimated_cost": 0.0,
-                "equipment_ids": [],
+                "ids": [],
             }
 
         for pred in predictions:
@@ -2772,7 +2772,7 @@ class VendorEquipmentService:
                 monthly_forecast[month_key]["maintenance_count"] += 1
                 monthly_forecast[month_key]["estimated_hours"] += pred.estimated_downtime_hours
                 monthly_forecast[month_key]["estimated_cost"] += pred.estimated_cost
-                monthly_forecast[month_key]["equipment_ids"].append(pred.equipment_id)
+                monthly_forecast[month_key]["ids"].append(pred.vendor_id)
 
                 if pred.risk_score >= 8:
                     monthly_forecast[month_key]["critical_count"] += 1
@@ -2821,7 +2821,7 @@ class VendorEquipmentService:
 
         # Store in Qdrant
         point = PointStruct(
-            id=str(uuid4()),
+            vendor_id=str(uuid4()),
             vector=embedding,
             payload=work_order.to_qdrant_payload(),
         )
@@ -2869,7 +2869,7 @@ class VendorEquipmentService:
 
     def list_work_orders(
         self,
-        equipment_id: Optional[str] = None,
+        vendor_id: Optional[str] = None,
         status: Optional[str] = None,
         priority: Optional[str] = None,
         assigned_to: Optional[str] = None,
@@ -2878,7 +2878,7 @@ class VendorEquipmentService:
         List work orders with optional filters.
 
         Args:
-            equipment_id: Filter by equipment
+            vendor_id: Filter by equipment
             status: Filter by status
             priority: Filter by priority
             assigned_to: Filter by assignee
@@ -2925,11 +2925,11 @@ class VendorEquipmentService:
 
         work_orders = [point.payload for point in results]
 
-        # Filter by equipment_id if specified (check list membership)
-        if equipment_id:
+        # Filter by vendor_id if specified (check list membership)
+        if vendor_id:
             work_orders = [
                 wo for wo in work_orders
-                if equipment_id in wo.get("equipment_ids", [])
+                if vendor_id in wo.get("ids", [])
             ]
 
         return work_orders
@@ -2993,7 +2993,7 @@ class VendorEquipmentService:
             collection_name=self.COLLECTION_NAME,
             points=[
                 PointStruct(
-                    id=point.id,
+                    vendor_id=point.vendor_id,
                     vector=point.vector,
                     payload=payload,
                 )
@@ -3114,7 +3114,7 @@ class VendorEquipmentService:
             work_order_id=f"WO-{uuid4().hex[:8].upper()}",
             customer_id=prediction.customer_id,
             title=f"{title_prefix}: {prediction.equipment_name}",
-            equipment_ids=[prediction.equipment_id],
+            ids=[prediction.vendor_id],
             status=WorkOrderStatus.DRAFT,
             priority=priority,
             scheduled_start=scheduled_start,

@@ -1,0 +1,4 @@
+FR Category,Requirement ID,Requirement Name,Requirement Description,Compliance Status (Met/Not Met/Unsure),Evidence from TVCS SAT Document,TVCS Implementation Status
+FR6 - Timely Response to Events,SR 6.1,Audit log accessibility,The control system shall provide the capability for authorized humans and/or tools to access audit logs,Met,"LibreNMS provides access to logs and alerts, Windows event logs mentioned",Complete
+FR6 - Timely Response to Events,SR 6.1 RE(1),Programmatic access to audit logs,Provide programmatic read access to audit logs,Met,"LibreNMS API likely available, SNMP traps integrated (NET-2A-TC206)",Complete
+FR6 - Timely Response to Events,SR 6.2,Continuous monitoring,The control system shall provide the capability to support continuous monitoring,Met,"LibreNMS continuous monitoring with alerting (NET-2A-TC206, NET-2A-TC203)",Complete

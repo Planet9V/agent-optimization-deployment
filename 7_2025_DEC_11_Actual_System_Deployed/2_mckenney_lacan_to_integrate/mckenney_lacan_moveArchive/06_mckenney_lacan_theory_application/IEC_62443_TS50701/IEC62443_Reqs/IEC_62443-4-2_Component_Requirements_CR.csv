@@ -1,0 +1,90 @@
+Foundational Requirement (FR),Requirement ID,Requirement Name,Description,SL-C 1,SL-C 2,SL-C 3,SL-C 4
+FR1 - Identification and Authentication Control (IAC),CR 1.1,Human user identification and authentication,Component shall provide capability to identify and authenticate all human users,Required,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.1 RE(1),Unique identification and authentication,Unique identification and authentication,,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.1 RE(2),Multifactor authentication for untrusted networks,Multifactor authentication from untrusted networks,,,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.1 RE(3),Multifactor authentication for all interfaces,Multifactor authentication for all interfaces,,,,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.2,Software process and device identification and authentication,Component shall provide capability to identify itself and authenticate to any other component,Required,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.2 RE(1),Unique identification and authentication,Unique identification and authentication,,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.2 RE(2),Multifactor authentication for untrusted networks,Multifactor authentication from untrusted networks,,,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.2 RE(3),Multifactor authentication for all network connections,Multifactor authentication for all network connections,,,,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.3,Account management,Component shall provide capability to support account management,Required,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.4,Identifier management,Component shall provide capability to support identifier management,Required,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.5,Authenticator management,Component shall provide capability to support authenticator management,Required,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.5 RE(1),Hardware security for authenticators,Hardware security for authenticators,,,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.7,Strength of password-based authentication,Component shall enforce configurable password strength and lifetime restrictions,,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.7 RE(1),Password generation and lifetime restrictions,Password generation and lifetime restrictions,,,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.7 RE(2),Password lifetime restrictions for all accounts,Password lifetime restrictions for all accounts,,,,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.8,Public key infrastructure certificates,Component shall support use and validation of PKI certificates,,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.8 RE(1),Certificate validation and revocation checking,Certificate validation and revocation checking,,,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.9,Strength of public key authentication,Component shall support public key-based authentication mechanisms meeting strength requirements,,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.9 RE(1),Hardware security for public key authentication,Hardware security for public key authentication,,,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.10,Authenticator feedback,Component shall obscure feedback of authentication information,Required,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.11,Unsuccessful login attempts,Component shall enforce limit on unsuccessful authentication attempts,,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.12,System use notification,Component shall display system use notification message,Required,Required,Required,Required
+FR1 - Identification and Authentication Control (IAC),CR 1.13,Access via untrusted networks,Component shall protect confidentiality of credentials over untrusted networks,,Required,Required,Required
+FR2 - Use Control (UC),CR 2.1,Authorization enforcement,Component shall enforce assigned privileges of authenticated users,Required,Required,Required,Required
+FR2 - Use Control (UC),CR 2.1 RE(1),Authorization enforcement for all users,Authorization enforcement for all users,,Required,Required,Required
+FR2 - Use Control (UC),CR 2.1 RE(2),Permission mapping to roles,Permission mapping to roles,,,Required,Required
+FR2 - Use Control (UC),CR 2.1 RE(3),User transaction profiles,Least privilege through user transaction profiles,,,,Required
+FR2 - Use Control (UC),CR 2.4,Mobile code,Component shall prevent execution of unauthorized mobile code,,Required,Required,Required
+FR2 - Use Control (UC),CR 2.4 RE(1),Mobile code integrity check,Mobile code integrity check,,,Required,Required
+FR2 - Use Control (UC),CR 2.5,Session lock,Component shall prevent further access after period of inactivity,,Required,Required,Required
+FR2 - Use Control (UC),CR 2.6,Remote session termination,Component shall provide capability to terminate remote sessions,,,Required,Required
+FR2 - Use Control (UC),CR 2.7,Concurrent session control,Component shall limit number of concurrent sessions,,,Required,Required
+FR2 - Use Control (UC),CR 2.8,Auditable events,Component shall provide capability to generate audit records,Required,Required,Required,Required
+FR2 - Use Control (UC),CR 2.9,Audit storage capacity,Component shall allocate audit record storage capacity,Required,Required,Required,Required
+FR2 - Use Control (UC),CR 2.9 RE(1),Warn when audit record storage capacity threshold reached,Warn when threshold reached,,,Required,Required
+FR2 - Use Control (UC),CR 2.10,Response to audit processing failures,Component shall support defined response to audit processing failures,,,Required,Required
+FR2 - Use Control (UC),CR 2.11,Timestamps,Component shall generate timestamps for audit records,,Required,Required,Required
+FR2 - Use Control (UC),CR 2.11 RE(1),Time synchronization,Time synchronization with authoritative source,,,Required,Required
+FR2 - Use Control (UC),CR 2.11 RE(2),Protection of time source integrity,Protection of time source integrity,,,,Required
+FR2 - Use Control (UC),CR 2.12,Non-repudiation,Component shall determine whether individual took particular action,,,Required,Required
+FR2 - Use Control (UC),CR 2.12 RE(1),Non-repudiation for all users,Non-repudiation for all users,,,,Required
+FR2 - Use Control (UC),CR 2.13,Use of physical diagnostic and test interfaces,Component shall authorize and control physical diagnostic and test interfaces,Required,Required,Required,Required
+FR3 - System Integrity (SI),CR 3.1,Communication integrity,Component shall protect integrity of transmitted information,Required,Required,Required,Required
+FR3 - System Integrity (SI),CR 3.1 RE(1),Cryptographic protection of integrity,Cryptographic protection of message integrity,,,Required,Required
+FR3 - System Integrity (SI),CR 3.3,Security functionality verification,Component shall support verification of security functions,Required,Required,Required,Required
+FR3 - System Integrity (SI),CR 3.3 RE(1),Automated notification of failed security tests,Automated notification of failed security tests,,Required,Required,Required
+FR3 - System Integrity (SI),CR 3.3 RE(2),Security functionality verification during normal operation,Verification during normal operation,,,Required,Required
+FR3 - System Integrity (SI),CR 3.4,Software and information integrity,Component shall detect and protect against unauthorized changes to software and information,Required,Required,Required,Required
+FR3 - System Integrity (SI),CR 3.4 RE(1),Automated notification of integrity violations,Automated notification,,Required,Required,Required
+FR3 - System Integrity (SI),CR 3.4 RE(2),Automated response to integrity violations,Automated response,,,Required,Required
+FR3 - System Integrity (SI),CR 3.5,Input validation,Component shall validate inputs,Required,Required,Required,Required
+FR3 - System Integrity (SI),CR 3.6,Deterministic output,Component shall fail to predetermined state in event of operational failure,Required,Required,Required,Required
+FR3 - System Integrity (SI),CR 3.7,Error handling,Component shall handle errors to remain in secure state,Required,Required,Required,Required
+FR3 - System Integrity (SI),CR 3.8,Session integrity,Component shall protect integrity of communications sessions,Required,Required,Required,Required
+FR3 - System Integrity (SI),CR 3.8 RE(1),Invalidate session IDs at logout,Invalidate session identifiers upon termination,,Required,Required,Required
+FR3 - System Integrity (SI),CR 3.8 RE(2),Randomize session IDs,Generate unique session identifiers,,,Required,Required
+FR3 - System Integrity (SI),CR 3.9,Protection of audit information,Component shall protect audit information from unauthorized access,Required,Required,Required,Required
+FR3 - System Integrity (SI),CR 3.9 RE(1),Hardware-based protection for audit information,Hardware write-once or write-protected media,,,Required,Required
+FR3 - System Integrity (SI),CR 3.10,Support for updates,Component shall support updates,,Required,Required,Required
+FR3 - System Integrity (SI),CR 3.10 RE(1),Update authenticity and integrity,Verify authenticity and integrity of updates,,,Required,Required
+FR3 - System Integrity (SI),CR 3.11,Physical tamper resistance and detection,Component shall detect and protect against physical tampering,,,Required,Required
+FR3 - System Integrity (SI),CR 3.12,Provisioning product supplier roots of trust,Component shall provision product supplier roots of trust,,,Required,Required
+FR3 - System Integrity (SI),CR 3.13,Provisioning asset owner roots of trust,Component shall provision asset owner roots of trust,,,Required,Required
+FR3 - System Integrity (SI),CR 3.14,Integrity of the boot process,Component shall verify integrity of boot process,,,Required,Required
+FR4 - Data Confidentiality (DC),CR 4.1,Information confidentiality,Component shall protect confidentiality of information at rest and in transit,,Required,Required,Required
+FR4 - Data Confidentiality (DC),CR 4.1 RE(1),Protection of confidentiality on untrusted networks,Protect confidentiality on untrusted networks,,Required,Required,Required
+FR4 - Data Confidentiality (DC),CR 4.2,Information persistence,Component shall prevent persistence of information when no longer required,,,Required,Required
+FR4 - Data Confidentiality (DC),CR 4.3,Use of cryptography,Component shall use cryptographic mechanisms,Required,Required,Required,Required
+FR4 - Data Confidentiality (DC),CR 4.3 RE(1),Cryptographic standards,Use compliant cryptographic mechanisms,,,Required,Required
+FR5 - Restricted Data Flow (RDF),CR 5.1,Network segmentation,Component shall support logical segmentation of control system network,Required,Required,Required,Required
+FR5 - Restricted Data Flow (RDF),CR 5.2,Zone boundary protection,Component shall monitor and control communications at zone boundaries,Required,Required,Required,Required
+FR5 - Restricted Data Flow (RDF),CR 5.2 RE(1),"Deny all, permit by exception","Deny by default, allow by exception",,Required,Required,Required
+FR5 - Restricted Data Flow (RDF),CR 5.2 RE(2),Island mode operation,Island mode operation capability,,,Required,Required
+FR5 - Restricted Data Flow (RDF),CR 5.4,Application partitioning,Component shall separate user functionality from management functionality,Required,Required,Required,Required
+FR6 - Timely Response to Events (TRE),CR 6.1,Audit log accessibility,Component shall provide authorized access to audit logs,Required,Required,Required,Required
+FR6 - Timely Response to Events (TRE),CR 6.1 RE(1),Programmatic access to audit logs,Programmatic read access to audit logs,,,Required,Required
+FR6 - Timely Response to Events (TRE),CR 6.2,Continuous monitoring,Component shall support continuous monitoring,,Required,Required,Required
+FR7 - Resource Availability (RA),CR 7.1,Denial of service protection,Component shall protect against or limit effects of denial of service attacks,Required,Required,Required,Required
+FR7 - Resource Availability (RA),CR 7.1 RE(1),Manage communication load,Manage communication load to limit DoS effects,,,Required,Required
+FR7 - Resource Availability (RA),CR 7.1 RE(2),Limit use of resources by security functions,Limit resource use by security functions,,,,Required
+FR7 - Resource Availability (RA),CR 7.2,Resource management,"Component shall allocate resources by priority, quota, reservation or partitioning",Required,Required,Required,Required
+FR7 - Resource Availability (RA),CR 7.3,Control system backup,Component shall support backups,Required,Required,Required,Required
+FR7 - Resource Availability (RA),CR 7.3 RE(1),Backup integrity verification,Verify backup integrity,,Required,Required,Required
+FR7 - Resource Availability (RA),CR 7.3 RE(2),Local backup,Local backup capability,,,Required,Required
+FR7 - Resource Availability (RA),CR 7.4,Control system recovery and reconstitution,Component shall support recovery and reconstitution to known secure state,Required,Required,Required,Required
+FR7 - Resource Availability (RA),CR 7.6,Network and security configuration settings,Component shall display and manage network and security configuration settings,Required,Required,Required,Required
+FR7 - Resource Availability (RA),CR 7.6 RE(1),Machine-readable reporting of current security settings,Machine-readable reporting of security settings,,,Required,Required
+FR7 - Resource Availability (RA),CR 7.7,Least functionality,"Component shall restrict use of unnecessary functions, ports, protocols and services",Required,Required,Required,Required
+FR7 - Resource Availability (RA),CR 7.8,Control system component inventory,Component shall support component inventory,Required,Required,Required,Required

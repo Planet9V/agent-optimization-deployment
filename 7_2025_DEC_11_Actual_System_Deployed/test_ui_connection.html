@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AEON Platform - Connection Test</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2.5em;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .test-section {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .test-section h2 {
+      color: #667eea;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #667eea;
+      padding-bottom: 10px;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .status.loading {
+      background: #ffd93d;
+      color: #333;
+    }
+
+    .status.success {
+      background: #6bcf7f;
+      color: white;
+    }
+
+    .status.error {
+      background: #ff6b6b;
+      color: white;
+    }
+
+    .result-box {
+      background: #f8f9fa;
+      border-left: 4px solid #667eea;
+      padding: 15px;
+      margin-top: 10px;
+      border-radius: 5px;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .threat-card {
+      border: 1px solid #ddd;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 5px;
+      background: white;
+      transition: transform 0.2s;
+    }
+
+    .threat-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .threat-card h3 {
+      color: #764ba2;
+      margin-bottom: 10px;
+    }
+
+    .country-badge {
+      background: #667eea;
+      color: white;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.8em;
+      margin-left: 10px;
+    }
+
+    .malware-list {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
+
+    .malware-list li {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    button {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      margin: 5px;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #764ba2;
+    }
+
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+
+    pre {
+      background: #2d3748;
+      color: #68d391;
+      padding: 15px;
+      border-radius: 5px;
+      overflow-x: auto;
+      font-size: 0.9em;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .stat-card h3 {
+      font-size: 2em;
+      margin-bottom: 5px;
+    }
+
+    .stat-card p {
+      opacity: 0.9;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 AEON Platform - Connection Test</h1>
+
+    <!-- API Health Check -->
+    <div class="test-section">
+      <h2>1. API Health Check</h2>
+      <span id="health-status" class="status loading">Testing...</span>
+      <div id="health-result" class="result-box"></div>
+      <button onclick="testHealth()">Retry Health Check</button>
+    </div>
+
+    <!-- Neo4j Connection -->
+    <div class="test-section">
+      <h2>2. Neo4j Graph Database</h2>
+      <span id="neo4j-status" class="status loading">Testing...</span>
+      <div id="neo4j-result" class="result-box"></div>
+      <button onclick="testNeo4j()">Retry Neo4j Query</button>
+    </div>
+
+    <!-- Qdrant Connection -->
+    <div class="test-section">
+      <h2>3. Qdrant Vector Database</h2>
+      <span id="qdrant-status" class="status loading">Testing...</span>
+      <div id="qdrant-result" class="result-box"></div>
+      <button onclick="testQdrant()">Retry Qdrant Query</button>
+    </div>
+
+    <!-- Live Threat Dashboard -->
+    <div class="test-section">
+      <h2>4. Live Threat Intelligence Dashboard</h2>
+      <span id="threats-status" class="status loading">Loading...</span>
+      <div id="threats-result"></div>
+      <button onclick="loadThreats()">Refresh Threats</button>
+    </div>
+
+    <!-- System Statistics -->
+    <div class="test-section">
+      <h2>5. System Statistics</h2>
+      <div id="stats-result" class="stats"></div>
+    </div>
+  </div>
+
+  <script>
+    // Test 1: API Health Check
+    async function testHealth() {
+      const statusEl = document.getElementById('health-status');
+      const resultEl = document.getElementById('health-result');
+
+      statusEl.className = 'status loading';
+      statusEl.textContent = 'Testing...';
+
+      try {
+        const response = await fetch('http://localhost:3001/health');
+        const data = await response.json();
+
+        statusEl.className = 'status success';
+        statusEl.textContent = '✓ Connected';
+        resultEl.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+      } catch (error) {
+        statusEl.className = 'status error';
+        statusEl.textContent = '✗ Failed';
+        resultEl.innerHTML = `<p style="color: red">Error: ${error.message}</p>
+          <p>Make sure the AEON API is running on port 3001</p>`;
+      }
+    }
+
+    // Test 2: Neo4j Query
+    async function testNeo4j() {
+      const statusEl = document.getElementById('neo4j-status');
+      const resultEl = document.getElementById('neo4j-result');
+
+      statusEl.className = 'status loading';
+      statusEl.textContent = 'Querying...';
+
+      try {
+        const response = await fetch('http://localhost:3001/api/v1/neo4j/query', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            query: 'MATCH (apt:APTGroup) RETURN apt.name, apt.country LIMIT 10'
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.results && data.results.length > 0) {
+          statusEl.className = 'status success';
+          statusEl.textContent = `✓ ${data.results.length} APT Groups Found`;
+
+          resultEl.innerHTML = '<h4>Sample APT Groups:</h4><ul>' +
+            data.results.map(r =>
+              `<li><strong>${r['apt.name']}</strong> (${r['apt.country'] || 'Unknown'})</li>`
+            ).join('') + '</ul>';
+        } else {
+          throw new Error('No results returned');
+        }
+      } catch (error) {
+        statusEl.className = 'status error';
+        statusEl.textContent = '✗ Query Failed';
+        resultEl.innerHTML = `<p style="color: red">Error: ${error.message}</p>`;
+      }
+    }
+
+    // Test 3: Qdrant Collections
+    async function testQdrant() {
+      const statusEl = document.getElementById('qdrant-status');
+      const resultEl = document.getElementById('qdrant-result');
+
+      statusEl.className = 'status loading';
+      statusEl.textContent = 'Checking...';
+
+      try {
+        const response = await fetch('http://localhost:6333/collections');
+        const data = await response.json();
+
+        if (data.result && data.result.collections) {
+          statusEl.className = 'status success';
+          statusEl.textContent = `✓ ${data.result.collections.length} Collections Found`;
+
+          resultEl.innerHTML = '<h4>Available Collections:</h4><ul>' +
+            data.result.collections.map(c =>
+              `<li><strong>${c.name}</strong></li>`
+            ).join('') + '</ul>';
+        } else {
+          throw new Error('No collections found');
+        }
+      } catch (error) {
+        statusEl.className = 'status error';
+        statusEl.textContent = '✗ Connection Failed';
+        resultEl.innerHTML = `<p style="color: red">Error: ${error.message}</p>`;
+      }
+    }
+
+    // Test 4: Load Live Threats
+    async function loadThreats() {
+      const statusEl = document.getElementById('threats-status');
+      const resultEl = document.getElementById('threats-result');
+
+      statusEl.className = 'status loading';
+      statusEl.textContent = 'Loading threats...';
+      resultEl.innerHTML = '<p>Fetching threat intelligence...</p>';
+
+      try {
+        const response = await fetch('http://localhost:3001/api/v1/neo4j/query', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            query: `
+              MATCH (apt:APTGroup)-[:USES]->(m:Malware)
+              RETURN
+                apt.name as aptName,
+                apt.country as country,
+                collect(DISTINCT m.name)[0..5] as malware
+              LIMIT 20
+            `
+          })
+        });
+
+        const data = await response.json();
+
+        if (data.results && data.results.length > 0) {
+          statusEl.className = 'status success';
+          statusEl.textContent = `✓ ${data.results.length} Active Threats`;
+
+          resultEl.innerHTML = data.results.map(threat => `
+            <div class="threat-card">
+              <h3>
+                ${threat.aptName}
+                <span class="country-badge">${threat.country || 'Unknown'}</span>
+              </h3>
+              <p><strong>Known Malware:</strong></p>
+              <ul class="malware-list">
+                ${threat.malware.map(m => `<li>${m}</li>`).join('')}
+              </ul>
+            </div>
+          `).join('');
+        } else {
+          throw new Error('No threat data available');
+        }
+      } catch (error) {
+        statusEl.className = 'status error';
+        statusEl.textContent = '✗ Load Failed';
+        resultEl.innerHTML = `<p style="color: red">Error: ${error.message}</p>`;
+      }
+    }
+
+    // Load System Statistics
+    async function loadStats() {
+      const statsEl = document.getElementById('stats-result');
+
+      try {
+        // Parallel queries for statistics
+        const [aptCount, malwareCount, vulnCount, equipCount] = await Promise.all([
+          fetch('http://localhost:3001/api/v1/neo4j/query', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ query: 'MATCH (apt:APTGroup) RETURN count(apt) as count' })
+          }).then(r => r.json()),
+
+          fetch('http://localhost:3001/api/v1/neo4j/query', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ query: 'MATCH (m:Malware) RETURN count(m) as count' })
+          }).then(r => r.json()),
+
+          fetch('http://localhost:3001/api/v1/neo4j/query', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ query: 'MATCH (v:Vulnerability) RETURN count(v) as count' })
+          }).then(r => r.json()),
+
+          fetch('http://localhost:3001/api/v1/neo4j/query', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ query: 'MATCH (e:Equipment) RETURN count(e) as count' })
+          }).then(r => r.json())
+        ]);
+
+        statsEl.innerHTML = `
+          <div class="stat-card">
+            <h3>${aptCount.results[0]?.count || 0}</h3>
+            <p>APT Groups</p>
+          </div>
+          <div class="stat-card">
+            <h3>${malwareCount.results[0]?.count || 0}</h3>
+            <p>Malware Families</p>
+          </div>
+          <div class="stat-card">
+            <h3>${vulnCount.results[0]?.count || 0}</h3>
+            <p>Vulnerabilities</p>
+          </div>
+          <div class="stat-card">
+            <h3>${equipCount.results[0]?.count || 0}</h3>
+            <p>Equipment Assets</p>
+          </div>
+        `;
+      } catch (error) {
+        statsEl.innerHTML = `<p style="color: red">Error loading statistics: ${error.message}</p>`;
+      }
+    }
+
+    // Run all tests on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      testHealth();
+      testNeo4j();
+      testQdrant();
+      loadThreats();
+      loadStats();
+    });
+  </script>
+</body>
+</html>

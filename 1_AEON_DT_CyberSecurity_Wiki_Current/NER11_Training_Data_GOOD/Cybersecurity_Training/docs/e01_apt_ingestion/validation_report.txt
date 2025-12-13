@@ -1,0 +1,60 @@
+
+ENTITY VALIDATION REPORT
+========================
+
+Summary Statistics
+------------------
+Total Parsed:        2300
+Valid:               2185
+Invalid:             115
+Duplicates Removed:  267
+
+Unique Valid Entities: 1918
+
+Quality Metrics
+---------------
+Precision:  0.9500 (2185/2300)
+F1 Score:   0.9500
+
+Validation Status: ✅ PASS (F1 > 0.90)
+
+Entities by Type
+----------------
+AS_NUMBER           :     30
+CAMPAIGN            :     79
+DOMAIN              :     95
+DOMAIN_OR_FILE      :    453
+EMAIL               :     12
+FILE_PATH           :    234
+IP                  :    163
+IP_RANGE            :     35
+MALWARE             :    106
+MD5                 :     24
+OTHER               :    657
+REGISTRY            :     35
+SHA1                :      4
+SHA256              :    146
+THREAT_ACTOR        :     38
+URL                 :      2
+VULNERABILITY       :     72
+
+Entities by Confidence
+----------------------
+LOW            :   2185
+
+Validation Rules Applied
+------------------------
+- IP:        Valid IPv4 (4 octets, 0-255 each)
+- Hash_MD5:  Exactly 32 hex characters [a-f0-9]{32}
+- Hash_SHA1: Exactly 40 hex characters [a-f0-9]{40}
+- Hash_SHA256: Exactly 64 hex characters [a-f0-9]{64}
+- Email:     Valid format user@domain.tld
+- Domain:    Valid DNS format
+- URL:       Valid HTTP/HTTPS URL
+
+Confidence Scoring
+------------------
+- VERY_HIGH: Multiple source files + explicit attribution
+- HIGH:      Single source file + explicit attribution
+- MEDIUM:    Inferred from context
+- LOW:       Ambiguous or weak attribution

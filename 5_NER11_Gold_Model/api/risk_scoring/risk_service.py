@@ -17,6 +17,7 @@ from uuid import uuid4
 import logging
 
 from qdrant_client import QdrantClient
+from api.database_manager import get_qdrant_client
 from qdrant_client.models import (
     Filter,
     FieldCondition,
@@ -94,11 +95,11 @@ class RiskScoringService:
 
     def __init__(
         self,
-        qdrant_url: str = "http://localhost:6333",
+        qdrant_url: str = "http://openspg-qdrant:6333",
         embedding_service: Optional[Any] = None,
     ):
         """Initialize risk scoring service."""
-        self.qdrant_client = QdrantClient(url=qdrant_url)
+        self.qdrant_client = get_qdrant_client()
         self._embedding_service = embedding_service
         self._ensure_collection()
 
@@ -272,7 +273,7 @@ class RiskScoringService:
         )
         return self.search_risk_scores(request)
 
-    def get_trending_entities(self, trend: RiskTrend = RiskTrend.INCREASING) -> List[RiskSearchResult]:
+    def get_trending_entities(self, trend: RiskTrend = RiskTrend.DEGRADING) -> List[RiskSearchResult]:
         """Get entities with specific risk trend."""
         request = RiskSearchRequest(
             trend=trend,
@@ -384,7 +385,7 @@ class RiskScoringService:
 
     # ===== Asset Criticality Operations =====
 
-    def set_asset_criticality(self, asset_id: str, asset_name: str, criticality: AssetCriticality) -> AssetCriticality:
+    def set_asset_criticality(self, id: str, asset_name: str, criticality: AssetCriticality) -> AssetCriticality:
         """Set asset criticality rating."""
         context = self._get_customer_context()
 
@@ -392,7 +393,7 @@ class RiskScoringService:
             raise PermissionError("Write access required to set asset criticality")
 
         criticality.customer_id = context.customer_id
-        criticality.asset_id = asset_id
+        criticality.id = id
         criticality.asset_name = asset_name
 
         # Store in Qdrant
@@ -411,10 +412,10 @@ class RiskScoringService:
             ],
         )
 
-        logger.info(f"Set criticality for asset {asset_id} to {criticality.criticality_level.value}")
+        logger.info(f"Set criticality for asset {id} to {criticality.criticality_level.value}")
         return criticality
 
-    def get_asset_criticality(self, asset_id: str) -> Optional[AssetCriticality]:
+    def get_asset_criticality(self, id: str) -> Optional[AssetCriticality]:
         """Get asset criticality rating."""
         context = self._get_customer_context()
 
@@ -422,7 +423,7 @@ class RiskScoringService:
             collection_name=self.COLLECTION_NAME,
             scroll_filter=Filter(
                 must=[
-                    FieldCondition(key="asset_id", match=MatchValue(value=asset_id)),
+                    FieldCondition(key="id", match=MatchValue(value=id)),
                     FieldCondition(key="customer_id", match=MatchValue(value=context.customer_id)),
                     FieldCondition(key="record_type", match=MatchValue(value="asset_criticality")),
                 ]
@@ -433,7 +434,7 @@ class RiskScoringService:
         if results[0]:
             payload = results[0][0].payload
             return AssetCriticality(
-                asset_id=payload["asset_id"],
+                id=payload["id"],
                 asset_name=payload["asset_name"],
                 customer_id=payload["customer_id"],
                 criticality_level=CriticalityLevel(payload["criticality_level"]),
@@ -469,7 +470,7 @@ class RiskScoringService:
         for r in results:
             payload = r.payload
             assets.append(AssetCriticality(
-                asset_id=payload["asset_id"],
+                id=payload["id"],
                 asset_name=payload["asset_name"],
                 customer_id=payload["customer_id"],
                 criticality_level=CriticalityLevel(payload["criticality_level"]),
@@ -514,14 +515,14 @@ class RiskScoringService:
 
     # ===== Exposure Score Operations =====
 
-    def calculate_exposure_score(self, asset_id: str, asset_name: str, exposure: ExposureScore) -> ExposureScore:
+    def calculate_exposure_score(self, id: str, asset_name: str, exposure: ExposureScore) -> ExposureScore:
         """Calculate and store asset exposure score."""
         context = self._get_customer_context()
 
         if not context.can_write():
             raise PermissionError("Write access required to calculate exposure")
 
-        exposure.asset_id = asset_id
+        exposure.id = id
         exposure.asset_name = asset_name
         exposure.customer_id = context.customer_id
 
@@ -576,10 +577,10 @@ class RiskScoringService:
             ],
         )
 
-        logger.info(f"Calculated exposure score {exposure.exposure_score:.2f} for asset {asset_id}")
+        logger.info(f"Calculated exposure score {exposure.exposure_score:.2f} for asset {id}")
         return exposure
 
-    def get_exposure_score(self, asset_id: str) -> Optional[ExposureScore]:
+    def get_exposure_score(self, id: str) -> Optional[ExposureScore]:
         """Get asset exposure score."""
         context = self._get_customer_context()
 
@@ -587,7 +588,7 @@ class RiskScoringService:
             collection_name=self.COLLECTION_NAME,
             scroll_filter=Filter(
                 must=[
-                    FieldCondition(key="asset_id", match=MatchValue(value=asset_id)),
+                    FieldCondition(key="id", match=MatchValue(value=id)),
                     FieldCondition(key="customer_id", match=MatchValue(value=context.customer_id)),
                     FieldCondition(key="record_type", match=MatchValue(value="exposure_score")),
                 ]
@@ -598,7 +599,7 @@ class RiskScoringService:
         if results[0]:
             payload = results[0][0].payload
             return ExposureScore(
-                asset_id=payload["asset_id"],
+                id=payload["id"],
                 asset_name=payload["asset_name"],
                 customer_id=payload["customer_id"],
                 is_internet_facing=payload.get("is_internet_facing", False),
@@ -630,7 +631,7 @@ class RiskScoringService:
         for r in results:
             payload = r.payload
             exposures.append(ExposureScore(
-                asset_id=payload["asset_id"],
+                id=payload["id"],
                 asset_name=payload["asset_name"],
                 customer_id=payload["customer_id"],
                 is_internet_facing=payload.get("is_internet_facing", False),
@@ -663,7 +664,7 @@ class RiskScoringService:
         for r in results:
             payload = r.payload
             exposures.append(ExposureScore(
-                asset_id=payload["asset_id"],
+                id=payload["id"],
                 asset_name=payload["asset_name"],
                 customer_id=payload["customer_id"],
                 is_internet_facing=payload.get("is_internet_facing", False),

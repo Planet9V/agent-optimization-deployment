@@ -1,0 +1,171 @@
+/home/jim/.local/lib/python3.12/site-packages/requests/__init__.py:102: RequestsDependencyWarning: urllib3 (1.26.20) or chardet (5.2.0)/charset_normalizer (2.0.12) doesn't match a supported version!
+  warnings.warn("urllib3 ({}) or chardet ({})/charset_normalizer ({}) doesn't match a supported "
+====================================================================================================
+                                 INDEPENDENT API VERIFICATION TEST                                  
+                                  Date: 2025-12-12T15:05:48.445826                                  
+====================================================================================================
+
+🔍 Fetching OpenAPI specification from http://localhost:8000...
+📋 Extracting endpoints...
+✅ Found 103 GET endpoints to test
+
+====================================================================================================
+Status Method Endpoint                                                     Result                        
+====================================================================================================
+❌ GET    /api/v2/remediation/dashboard/summary                        -> HTTP 500 (    3ms)
+❌ GET    /api/v2/remediation/dashboard/workload                       -> HTTP 500 (    4ms)
+❌ GET    /api/v2/remediation/metrics/backlog                          -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/metrics/mttr                             -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/metrics/sla-compliance                   -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/metrics/summary                          -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/metrics/trends                           -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/plans                                    -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/plans/active                             -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/plans/{plan_id}                          -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/plans/{plan_id}/progress                 -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/sla/at-risk                              -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/sla/breaches                             -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/sla/policies                             -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/sla/policies/{policy_id}                 -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/tasks/by-priority/{priority}             -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/tasks/by-status/{status}                 -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/tasks/open                               -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/tasks/overdue                            -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/tasks/search                             -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/tasks/{task_id}                          -> HTTP 500 (    2ms)
+❌ GET    /api/v2/remediation/tasks/{task_id}/history                  -> HTTP 500 (    2ms)
+✅ GET    /api/v2/risk/aggregation/by-asset-type                       -> HTTP 200 (  108ms)
+✅ GET    /api/v2/risk/aggregation/by-sector                           -> HTTP 200 (   99ms)
+✅ GET    /api/v2/risk/aggregation/by-vendor                           -> HTTP 200 (  132ms)
+❌ GET    /api/v2/risk/aggregation/{aggregation_type}/{group_id}       -> HTTP 400 (  120ms)
+❌ GET    /api/v2/risk/assets/by-criticality/{level}                   -> HTTP 400 (  109ms)
+✅ GET    /api/v2/risk/assets/criticality/summary                      -> HTTP 200 (  114ms)
+✅ GET    /api/v2/risk/assets/mission-critical                         -> HTTP 200 (  108ms)
+❌ GET    /api/v2/risk/assets/{asset_id}/criticality                   -> HTTP 404 (  112ms)
+✅ GET    /api/v2/risk/dashboard/risk-matrix                           -> HTTP 200 (  107ms)
+✅ GET    /api/v2/risk/dashboard/summary                               -> HTTP 200 (  100ms)
+❌ GET    /api/v2/risk/exposure/attack-surface                         -> HTTP 404 (  100ms)
+❌ GET    /api/v2/risk/exposure/high-exposure                          -> HTTP 404 (  105ms)
+❌ GET    /api/v2/risk/exposure/internet-facing                        -> HTTP 404 (  106ms)
+❌ GET    /api/v2/risk/exposure/{asset_id}                             -> HTTP 404 (  117ms)
+✅ GET    /api/v2/risk/scores/high-risk                                -> HTTP 200 (  130ms)
+❌ GET    /api/v2/risk/scores/history/{entity_type}/{entity_id}        -> HTTP 500 (  111ms)
+✅ GET    /api/v2/risk/scores/search                                   -> HTTP 200 (  109ms)
+❌ GET    /api/v2/risk/scores/trending                                 -> HTTP 400 (  107ms)
+❌ GET    /api/v2/risk/scores/{entity_type}/{entity_id}                -> HTTP 500 (   99ms)
+❌ GET    /api/v2/sbom/components/high-risk                            -> HTTP 404 (  100ms)
+❌ GET    /api/v2/sbom/components/search                               -> HTTP 404 (  109ms)
+❌ GET    /api/v2/sbom/components/vulnerable                           -> HTTP 404 (  103ms)
+❌ GET    /api/v2/sbom/components/{component_id}                       -> HTTP 404 (  103ms)
+✅ GET    /api/v2/sbom/components/{component_id}/dependencies          -> HTTP 200 (   98ms)
+❌ GET    /api/v2/sbom/components/{component_id}/dependents            -> HTTP 500 (  103ms)
+✅ GET    /api/v2/sbom/components/{component_id}/impact                -> HTTP 200 (  103ms)
+❌ GET    /api/v2/sbom/components/{component_id}/vulnerabilities       -> HTTP 500 (  109ms)
+✅ GET    /api/v2/sbom/dashboard/summary                               -> HTTP 200 (  105ms)
+❌ GET    /api/v2/sbom/dependencies/path                               -> HTTP 422 (  106ms)
+✅ GET    /api/v2/sbom/sboms                                           -> HTTP 200 (  125ms)
+❌ GET    /api/v2/sbom/sboms/{sbom_id}                                 -> HTTP 404 (  120ms)
+❌ GET    /api/v2/sbom/sboms/{sbom_id}/components                      -> HTTP 500 (  100ms)
+✅ GET    /api/v2/sbom/sboms/{sbom_id}/cycles                          -> HTTP 200 (  106ms)
+✅ GET    /api/v2/sbom/sboms/{sbom_id}/graph-stats                     -> HTTP 200 (  104ms)
+❌ GET    /api/v2/sbom/sboms/{sbom_id}/license-compliance              -> HTTP 500 (  104ms)
+✅ GET    /api/v2/sbom/sboms/{sbom_id}/remediation                     -> HTTP 200 (  119ms)
+❌ GET    /api/v2/sbom/sboms/{sbom_id}/risk-summary                    -> HTTP 500 (  103ms)
+✅ GET    /api/v2/sbom/sboms/{sbom_id}/vulnerable-paths                -> HTTP 200 (  104ms)
+❌ GET    /api/v2/sbom/vulnerabilities/by-apt                          -> HTTP 404 (  132ms)
+❌ GET    /api/v2/sbom/vulnerabilities/critical                        -> HTTP 404 (  130ms)
+❌ GET    /api/v2/sbom/vulnerabilities/epss-prioritized                -> HTTP 404 (  112ms)
+❌ GET    /api/v2/sbom/vulnerabilities/kev                             -> HTTP 404 (  101ms)
+❌ GET    /api/v2/sbom/vulnerabilities/search                          -> HTTP 404 (  113ms)
+❌ GET    /api/v2/sbom/vulnerabilities/{vulnerability_id}              -> HTTP 404 (  101ms)
+❌ GET    /api/v2/threat-intel/actors/active                           -> HTTP 404 ( 1325ms)
+✅ GET    /api/v2/threat-intel/actors/by-sector/{sector}               -> HTTP 200 ( 1232ms)
+❌ GET    /api/v2/threat-intel/actors/search                           -> HTTP 404 ( 1189ms)
+❌ GET    /api/v2/threat-intel/actors/{actor_id}                       -> HTTP 404 ( 1252ms)
+✅ GET    /api/v2/threat-intel/actors/{actor_id}/campaigns             -> HTTP 200 ( 1233ms)
+✅ GET    /api/v2/threat-intel/actors/{actor_id}/cves                  -> HTTP 200 ( 1209ms)
+❌ GET    /api/v2/threat-intel/campaigns/active                        -> HTTP 404 ( 1292ms)
+❌ GET    /api/v2/threat-intel/campaigns/search                        -> HTTP 404 ( 1167ms)
+❌ GET    /api/v2/threat-intel/campaigns/{campaign_id}                 -> HTTP 404 ( 1266ms)
+✅ GET    /api/v2/threat-intel/campaigns/{campaign_id}/iocs            -> HTTP 200 ( 1190ms)
+✅ GET    /api/v2/threat-intel/dashboard/summary                       -> HTTP 200 ( 1204ms)
+❌ GET    /api/v2/threat-intel/feeds                                   -> HTTP 500 ( 1230ms)
+✅ GET    /api/v2/threat-intel/iocs/active                             -> HTTP 200 ( 1186ms)
+✅ GET    /api/v2/threat-intel/iocs/by-type/{ioc_type}                 -> HTTP 200 ( 1177ms)
+✅ GET    /api/v2/threat-intel/iocs/search                             -> HTTP 200 ( 1199ms)
+✅ GET    /api/v2/threat-intel/mitre/coverage                          -> HTTP 200 ( 1181ms)
+✅ GET    /api/v2/threat-intel/mitre/gaps                              -> HTTP 200 ( 1169ms)
+✅ GET    /api/v2/threat-intel/mitre/mappings/entity/{entity_type}/{entity_id} -> HTTP 200 ( 1208ms)
+✅ GET    /api/v2/threat-intel/mitre/techniques/{technique_id}/actors  -> HTTP 200 ( 1327ms)
+✅ GET    /health                                                      -> HTTP 200 (    3ms)
+✅ GET    /info                                                        -> HTTP 200 (    5ms)
+✅ GET    /api/v2/vendor-equipment/equipment                           -> HTTP 200 (  128ms)
+❌ GET    /api/v2/vendor-equipment/equipment/approaching-eol           -> HTTP 404 (  112ms)
+❌ GET    /api/v2/vendor-equipment/equipment/eol                       -> HTTP 404 (  109ms)
+❌ GET    /api/v2/vendor-equipment/equipment/{model_id}                -> HTTP 404 (  109ms)
+✅ GET    /api/v2/vendor-equipment/maintenance-schedule                -> HTTP 200 (  141ms)
+❌ GET    /api/v2/vendor-equipment/maintenance-windows                 -> HTTP 500 (  118ms)
+❌ GET    /api/v2/vendor-equipment/maintenance-windows/{window_id}     -> HTTP 404 (  112ms)
+✅ GET    /api/v2/vendor-equipment/predictive-maintenance/forecast     -> HTTP 200 (  125ms)
+✅ GET    /api/v2/vendor-equipment/predictive-maintenance/{equipment_id} -> HTTP 200 (  124ms)
+✅ GET    /api/v2/vendor-equipment/vendors                             -> HTTP 200 (  121ms)
+❌ GET    /api/v2/vendor-equipment/vendors/high-risk                   -> HTTP 404 (  129ms)
+❌ GET    /api/v2/vendor-equipment/vendors/{vendor_id}                 -> HTTP 404 (  113ms)
+❌ GET    /api/v2/vendor-equipment/vendors/{vendor_id}/risk-summary    -> HTTP 404 (  108ms)
+❌ GET    /api/v2/vendor-equipment/work-orders                         -> HTTP 500 (  104ms)
+❌ GET    /api/v2/vendor-equipment/work-orders/summary                 -> HTTP 404 (  111ms)
+❌ GET    /api/v2/vendor-equipment/work-orders/{work_order_id}         -> HTTP 404 (  123ms)
+
+====================================================================================================
+                                     FINAL VERIFICATION SUMMARY                                     
+====================================================================================================
+
+📊 Overall Results:
+   Total APIs Tested:  103
+   ✅ Passing:         36
+   ❌ Failing:         67
+   Success Rate:       35.0%
+   Avg Response Time:  291ms
+   Max Response Time:  1327ms
+
+📋 Results by Category:
+   remediation          ->   0/ 22 passing (  0.0%)
+   risk                 ->   9/ 19 passing ( 47.4%)
+   sbom                 ->   8/ 25 passing ( 32.0%)
+   threat-intel         ->  12/ 19 passing ( 63.2%)
+   unknown              ->   2/  2 passing (100.0%)
+   vendor-equipment     ->   5/ 16 passing ( 31.2%)
+
+⚠️  Common Errors by Category:
+
+   remediation:
+      - /api/v2/remediation/tasks/open: HTTP 500 - Internal Server Error
+      - /api/v2/remediation/sla/policies: HTTP 500 - Internal Server Error
+      - /api/v2/remediation/tasks/overdue: HTTP 500 - Internal Server Error
+
+   risk:
+      - /api/v2/risk/exposure/high-exposure: HTTP 404 - Exposure score for asset high-exposure not found
+      - /api/v2/risk/assets/{asset_id}/criticality: HTTP 404 - Asset criticality for {asset_id} not found
+      - /api/v2/risk/exposure/attack-surface: HTTP 404 - Exposure score for asset attack-surface not found
+
+   sbom:
+      - /api/v2/sbom/vulnerabilities/by-apt: HTTP 404 - Vulnerability by-apt not found
+      - /api/v2/sbom/vulnerabilities/kev: HTTP 404 - Vulnerability kev not found
+      - /api/v2/sbom/components/high-risk: HTTP 404 - Component high-risk not found
+
+   threat-intel:
+      - /api/v2/threat-intel/actors/search: HTTP 404 - Threat actor search not found
+      - /api/v2/threat-intel/campaigns/{campaign_id}: HTTP 404 - Campaign {campaign_id} not found
+      - /api/v2/threat-intel/campaigns/search: HTTP 404 - Campaign search not found
+
+   vendor-equipment:
+      - /api/v2/vendor-equipment/vendors/high-risk: HTTP 404 - Vendor high-risk not found
+      - /api/v2/vendor-equipment/equipment/approaching-eol: HTTP 404 - Equipment approaching-eol not found
+      - /api/v2/vendor-equipment/work-orders/summary: HTTP 404 - Work order summary not found
+
+====================================================================================================
+❌ VERDICT: FAILING - MAJOR ISSUES - NOT PRODUCTION READY
+====================================================================================================
+
+📝 Results saved to: /home/jim/2_OXOT_Projects_Dev/docs/VERIFICATION_FINAL_2025-12-12.md
+

@@ -48,7 +48,7 @@ class PrioritizationService:
 
     def __init__(self):
         """Initialize prioritization service with Qdrant client."""
-        qdrant_url = os.getenv("QDRANT_URL", "http://localhost:6333")
+        qdrant_url = os.getenv("QDRANT_URL", "http://openspg-qdrant:6333")
         self.client = QdrantClient(url=qdrant_url)
         self._ensure_collection()
 

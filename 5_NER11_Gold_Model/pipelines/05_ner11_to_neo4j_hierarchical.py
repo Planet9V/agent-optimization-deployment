@@ -34,6 +34,7 @@ import sys
 import json
 import logging
 import requests
+import time
 from typing import Dict, List, Tuple, Optional, Set
 from datetime import datetime
 from neo4j import GraphDatabase
@@ -157,9 +158,9 @@ class NER11ToNeo4jPipeline:
         """
         try:
             response = requests.post(
-                f"{self.ner11_api_url}/extract",
+                f"{self.ner11_api_url}/ner",
                 json={"text": text},
-                timeout=30
+                timeout=90
             )
             response.raise_for_status()
 
@@ -282,6 +283,11 @@ class NER11ToNeo4jPipeline:
                     n.tier = $tier,
                     n.created_at = datetime()
                 ON MATCH SET
+                    n.ner_label = $ner_label,
+                    n.fine_grained_type = $fine_grained_type,
+                    n.specific_instance = $specific_instance,
+                    n.hierarchy_path = $hierarchy_path,
+                    n.tier = $tier,
                     n.updated_at = datetime()
                 """
 
@@ -570,9 +576,10 @@ class NER11ToNeo4jPipeline:
                     report["tier2_count"] > report["tier1_count"]
                 )
 
-                # Check super label distribution
+                # Check super label distribution (filter out labels with dots to avoid syntax errors)
                 result = session.run("""
                     CALL db.labels() YIELD label
+                    WHERE NOT label CONTAINS "."
                     CALL apoc.cypher.run(
                         'MATCH (n:' + label + ') RETURN count(n) as count',
                         {}

@@ -1,0 +1,168 @@
+{
+  "analysis_date": "2025-12-11",
+  "database": "bolt://localhost:7687",
+  "total_nodes": 1426989,
+  "compliance_summary": {
+    "overall_score": "4.25/10",
+    "status": "PARTIAL COMPLIANCE",
+    "critical_gaps": 3,
+    "warnings": 2,
+    "passes": 2
+  },
+  "super_labels": {
+    "specification": 16,
+    "implemented": 13,
+    "unused": [
+      "Industry",
+      "Technology",
+      "Concept"
+    ],
+    "coverage_percentage": 5.8,
+    "nodes_with_super_labels": 83052,
+    "nodes_without_super_labels": 1343937,
+    "usage": {
+      "Entity": 55569,
+      "Vulnerability": 12022,
+      "Indicator": 6601,
+      "Location": 4577,
+      "ThreatActor": 1067,
+      "Technique": 1023,
+      "Malware": 1016,
+      "Organization": 575,
+      "Event": 179,
+      "Campaign": 163,
+      "Document": 118,
+      "Tool": 92,
+      "Infrastructure": 50,
+      "Industry": 0,
+      "Technology": 0,
+      "Concept": 0
+    }
+  },
+  "property_discriminators": {
+    "status": "NOT IMPLEMENTED",
+    "severity": "CRITICAL",
+    "expected_properties": [
+      "actorType",
+      "malwareFamily",
+      "campaignType",
+      "entity_type",
+      "node_type"
+    ],
+    "found_properties": {
+      "node_type": "Limited usage on measurement nodes only"
+    },
+    "missing_properties": [
+      "actorType",
+      "malwareFamily",
+      "campaignType",
+      "entity_type"
+    ],
+    "impact": "Cannot distinguish 566 fine-grained entity types"
+  },
+  "hierarchical_properties": {
+    "status": "NOT IMPLEMENTED",
+    "severity": "CRITICAL",
+    "expected_properties": [
+      "tier1",
+      "tier2",
+      "level",
+      "parent_id"
+    ],
+    "found_properties": {
+      "level": "12 nodes (personality traits only)"
+    },
+    "missing_properties": [
+      "tier1",
+      "tier2",
+      "parent_id"
+    ],
+    "impact": "Cannot navigate taxonomy hierarchically"
+  },
+  "label_combinations": {
+    "total_unique": 580,
+    "status": "EXCELLENT",
+    "multi_labeling": "Extensive and semantic",
+    "top_combinations": [
+      {
+        "labels": "CVE",
+        "count": 316552
+      },
+      {
+        "labels": "ManufacturingMeasurement + Measurement",
+        "count": 72800
+      },
+      {
+        "labels": "Entity",
+        "count": 55569
+      },
+      {
+        "labels": "Control",
+        "count": 48800
+      },
+      {
+        "labels": "Dependency + Relationship + SBOM",
+        "count": 30000
+      }
+    ]
+  },
+  "critical_issues": [
+    {
+      "issue": "Property discriminator system absent",
+      "severity": "CRITICAL",
+      "affected_nodes": "ALL",
+      "impact": "Loss of fine-grained entity typing"
+    },
+    {
+      "issue": "Hierarchical properties not implemented",
+      "severity": "CRITICAL",
+      "affected_nodes": "ALL",
+      "impact": "Cannot navigate taxonomy tree"
+    },
+    {
+      "issue": "94% of nodes lack super labels",
+      "severity": "CRITICAL",
+      "affected_nodes": 1343937,
+      "impact": "Incomplete entity classification"
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": 1,
+      "action": "Add super labels to existing nodes",
+      "query": "MATCH (n:CVE) WHERE NOT n:Vulnerability SET n:Vulnerability",
+      "estimated_impact": "304,530 CVE nodes properly classified",
+      "effort_hours": 16
+    },
+    {
+      "priority": 1,
+      "action": "Implement property discriminators",
+      "query": "MATCH (n:ThreatActor) SET n.actorType = ...",
+      "estimated_impact": "Enable fine-grained querying",
+      "effort_hours": 24
+    },
+    {
+      "priority": 1,
+      "action": "Add hierarchical properties",
+      "query": "MATCH (n) WHERE n:ThreatActor SET n.tier1='TECHNICAL', n.tier2=...",
+      "estimated_impact": "Enable taxonomy navigation",
+      "effort_hours": 20
+    }
+  ],
+  "root_cause_analysis": {
+    "pipeline_gap": "v3.1 pipeline code exists but not used for bulk data",
+    "legacy_migration": "Data ingested before v3.1 schema designed",
+    "timeline_mismatch": "Schema specification created 2025-12-01, data accumulated earlier",
+    "multiple_sources": "CVE, SBOM, Measurement data from different loaders"
+  },
+  "compliance_scores": {
+    "super_label_implementation": "6.5/10",
+    "property_discriminators": "1/10",
+    "hierarchical_properties": "0.5/10",
+    "multi_labeling": "9/10",
+    "overall": "4.25/10"
+  },
+  "report_location": "/home/jim/2_OXOT_Projects_Dev/5_NER11_Gold_Model/docs/AEON_SCHEMA_COMPLIANCE_REPORT.md",
+  "generated_by": "AEON Schema Compliance Analyst",
+  "timestamp": "2025-12-11T23:53:02.290762"
+}

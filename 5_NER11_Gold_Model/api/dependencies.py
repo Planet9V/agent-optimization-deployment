@@ -37,7 +37,7 @@ def get_qdrant_client() -> QdrantClient:
     Returns:
         QdrantClient: Configured Qdrant client instance
     """
-    qdrant_url = os.getenv("QDRANT_URL", "http://localhost:6333")
+    qdrant_url = os.getenv("QDRANT_URL", "http://openspg-qdrant:6333")
     qdrant_api_key = os.getenv("QDRANT_API_KEY")
 
     if qdrant_api_key:
